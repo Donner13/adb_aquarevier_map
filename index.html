@@ -803,7 +803,7 @@
         // Fetch contacts
         async function loadContacts() {
             try {
-                const res = await fetch('/contacts.geojson');
+                const res = await fetch('contacts.geojson');
                 if (res.ok) {
                     geojsonData = await res.json();
                     renderMapAndSidebar();
