@@ -1,0 +1,5344 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "excel_0",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.763386005809698,
+          51.21870800270761
+        ]
+      },
+      "properties": {
+        "name": "Astrid Vogelheim (Astrid Vogelheim)",
+        "group": "Einzelakteure",
+        "description": "Vorschlag für eine Enquete-Kommission zum Thema Wasser",
+        "phone": "+49 211 884 46 35",
+        "email": "astrid.vogelheim@landtag.nrw.de",
+        "color": "#00f5d4"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.0773820056721455,
+          50.758800003672576
+        ]
+      },
+      "properties": {
+        "name": "Svenja Borgmann (Stadt Aachen)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 241 432-36713",
+        "email": "svenja.borgmann@mail.aachen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.0773820056721455,
+          50.758800003672576
+        ]
+      },
+      "properties": {
+        "name": "Jens Hasse (Stadt Aachen)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 241 432-7722",
+        "email": "jens.hasse@mail.aachen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_3",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.0773820056721455,
+          50.758800003672576
+        ]
+      },
+      "properties": {
+        "name": "Klaus Meiners (Stadt Aachen)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "0241 432-36000",
+        "email": "klaus.meiners@mail.aachen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_4",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.0773820056721455,
+          50.758800003672576
+        ]
+      },
+      "properties": {
+        "name": "Rena Stehn (Stadt Aachen)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "0241 432-36300",
+        "email": "rena.stehn@mail.aachen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_5",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.0773820056721455,
+          50.758800003672576
+        ]
+      },
+      "properties": {
+        "name": "Karl-Heinz Stolz (Stadt Aachen)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 241 432-36313",
+        "email": "karl.heinz.stolz@mail.aachen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_6",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.098880996297133,
+          50.768892997477025
+        ]
+      },
+      "properties": {
+        "name": "Sebastian Albring (StädteRegion Aachen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 241 5198-2179",
+        "email": "sebastian.albring@staedteregion-aachen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_7",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.09781700610447,
+          50.76879400497947
+        ]
+      },
+      "properties": {
+        "name": "Sander Lutterbach (StädteRegion Aachen)",
+        "group": "Gebietskörperschaft",
+        "description": "Austausch auch in KAHR und JCAR",
+        "phone": "+49 241 5198-2524",
+        "email": "sander.lutterbach@staedteregion-aachen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_8",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.098880996297133,
+          50.768892997477025
+        ]
+      },
+      "properties": {
+        "name": "Verena Olesch (StädteRegion Aachen)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 241 5198-7010",
+        "email": "verena.olesch@staedteregion-aachen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_9",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.098880996297133,
+          50.768892997477025
+        ]
+      },
+      "properties": {
+        "name": "Barbara Schilling (StädteRegion Aachen)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 241 5198-7000",
+        "email": "barbara.schilling@staedteregion-aachen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_10",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.097285999646101,
+          50.76869799771627
+        ]
+      },
+      "properties": {
+        "name": "Frederic Wentz (StädteRegion Aachen)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 241 5198-2670",
+        "email": "frederic.wentz@staedteregion-aachen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_11",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.283033993164288,
+          50.8938940025143
+        ]
+      },
+      "properties": {
+        "name": "Christina Breuer (Gemeinde Aldenhoven)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2464 586-145",
+        "email": "christina.breuer@aldenhoven.de;\ngemeinde@aldenhoven.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_12",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.283033993164288,
+          50.8938940025143
+        ]
+      },
+      "properties": {
+        "name": "Bastian Breuer (Gemeinde Aldenhoven)",
+        "group": "Gebietskörperschaft",
+        "description": "WG von Christina Breuer",
+        "phone": "+49 2464 586-346",
+        "email": "b.breuer@aldenhoven.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_13",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.283033993164288,
+          50.8938940025143
+        ]
+      },
+      "properties": {
+        "name": "Marcel Dederichs (Gemeinde Aldenhoven)",
+        "group": "Gebietskörperschaft",
+        "description": "WG von Christina Breuer",
+        "phone": "+49 2464 586-240",
+        "email": "M.Dederichs@Aldenhoven.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_14",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.166521881509866,
+          50.875370311002975
+        ]
+      },
+      "properties": {
+        "name": "Dominika Wirtz (Stadt Alsdorf)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2404 5545031",
+        "email": "dominika.wirtz@alsdorf.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_15",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.465282047481766,
+          50.81678307291724
+        ]
+      },
+      "properties": {
+        "name": "Armin Schmitz (ANKER Gebr. Schoeller GmbH + Co. KG)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2421 804-445",
+        "email": "ar.schmitz@anker-dueren.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_16",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.571160002477338,
+          50.13458200123828
+        ]
+      },
+      "properties": {
+        "name": "Jan Bösche (Bundesamt für Wirtschaft und Ausfuhrkontrolle)",
+        "group": "Behörde",
+        "description": "",
+        "phone": "",
+        "email": "jan.boesche@bafa.bund.de",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_17",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.571160002477338,
+          50.13458200123828
+        ]
+      },
+      "properties": {
+        "name": "Buu-An Nguyen (Bundesamt für Wirtschaft und Ausfuhrkontrolle)",
+        "group": "Behörde",
+        "description": "Zuständige Person für ZWB BMWE",
+        "phone": "+49 6196 908-1040",
+        "email": "stark@bafa.bund.de",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_18",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.571160002477338,
+          50.13458200123828
+        ]
+      },
+      "properties": {
+        "name": "Charlotte Steffen (Bundesamt für Wirtschaft und Ausfuhrkontrolle)",
+        "group": "Behörde",
+        "description": "Zuständige Person für ZWB BMWE",
+        "phone": "+49 6196 908-2725",
+        "email": "stark@bafa.bund.de",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_19",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.551017995930067,
+          51.00674100413568
+        ]
+      },
+      "properties": {
+        "name": "Anke Pötter (Stadt Bedburg)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2272 402-620",
+        "email": "a.poetter@bedburg.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_20",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.551017995930067,
+          51.00674100413568
+        ]
+      },
+      "properties": {
+        "name": "Sarah-Kristin Röder (Stadt Bedburg)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2272 402-613",
+        "email": "sk.roeder@bedburg.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_21",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.551017995930067,
+          51.00674100413568
+        ]
+      },
+      "properties": {
+        "name": "Lucas Scheer (Stadt Bedburg)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2272 402-604",
+        "email": "l.scheer@bedburg.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_22",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.541941004983921,
+          51.00091799646982
+        ]
+      },
+      "properties": {
+        "name": "Josef Hamm (Bewässerungsverband Pütz)",
+        "group": "Landwirtschaft",
+        "description": "Assoziierter Partner\n(LoI liegt vor)\nHerr Alois Herbst (Berater des Verbands, ehemalig bei RWE Power tätig) hatte LoI seinerzeit aufgesetzt\nBeregnungsverband hat 6 Tiefbrunnen im Bedburger Land abgeteuft, Kosten ~ 8 Mio. €, 70% Förderung von Bund & Land",
+        "phone": "+49 2162 77532\n+49 175 2471953",
+        "email": "j.hamm@bewaesserungsverband-puetz.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_23",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.642214999154687,
+          50.95492100080168
+        ]
+      },
+      "properties": {
+        "name": "Kristian Fetz (Kreisstadt Bergheim)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2271 89362",
+        "email": "kristian.fetz@Bergheim.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_24",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.642214999154687,
+          50.95492100080168
+        ]
+      },
+      "properties": {
+        "name": "Frederik Stappen (Kreisstadt Bergheim)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2271 89276",
+        "email": "frederik.stappen@bergheim.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_25",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.642214999154687,
+          50.95492100080168
+        ]
+      },
+      "properties": {
+        "name": "Katarina Vuleta (Kreisstadt Bergheim)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2271 89843",
+        "email": "katarina.vuleta@bergheim.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_26",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.955884006056397,
+          50.76774500505751
+        ]
+      },
+      "properties": {
+        "name": "Orhan Güven (Biohof Bursch)",
+        "group": "Landwirtschaft",
+        "description": "Einladung am 24.04.2026 über NOt",
+        "phone": "+49 2227 9199 49",
+        "email": "og@biohof-bursch.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_27",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.466865995105866,
+          50.68966200219804
+        ]
+      },
+      "properties": {
+        "name": "Heidrun Düssel (Biologische Station im Kreis Düren e.V.)",
+        "group": "Sonstige",
+        "description": "",
+        "phone": "+49 2427 94 987 21",
+        "email": "heidrun.duessel@biostation-dueren.de",
+        "color": "#8b5cf6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_28",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.65088500077043,
+          50.43663499969177
+        ]
+      },
+      "properties": {
+        "name": "Jennifer Meuren (Gemeinde Blankenheim)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2449 870",
+        "email": "info@blankenheim.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_29",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.631574005557042,
+          50.951577998213295
+        ]
+      },
+      "properties": {
+        "name": "Christine Bernt (Rhein-Erft-Kreis)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "02271 83-1701(0 oder 2)",
+        "email": "christine.bernt@rhein-erft-kreis.de;\n70@rhein-erft-kreis.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_30",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.631574005557042,
+          50.951577998213295
+        ]
+      },
+      "properties": {
+        "name": "Vanessa Dederichs (Rhein-Erft-Kreis)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2271 8311212",
+        "email": "vanessa.dederichs@rhein-erft-kreis.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_31",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.631574005557042,
+          50.951577998213295
+        ]
+      },
+      "properties": {
+        "name": "Philipp Glasenapp (Rhein-Erft-Kreis)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2271 8311224",
+        "email": "philipp.glasenapp@rhein-erft-kreis.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_32",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.631574005557042,
+          50.951577998213295
+        ]
+      },
+      "properties": {
+        "name": "Uwe Ulbrich (Rhein-Erft-Kreis)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "02271 83-11210",
+        "email": "12@rhein-erft-kreis.de;\nuwe.ulbrich@rhein-erft-kreis.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_33",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.378533995832547,
+          52.50802200217439
+        ]
+      },
+      "properties": {
+        "name": "Alexander Schülke (Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit und Verbraucherschutz)",
+        "group": "Behörde",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 30 18 305-0",
+        "email": "alexander.schuelke@bmuv.bund.de;\nalexander.schuelke@bmu.bund.de;\nalexander.schuelke@bmukn.bund.de",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_34",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.432572488022284,
+          51.11936804847443
+        ]
+      },
+      "properties": {
+        "name": "Harald Steins (H.-W. Böhmer Verpackung und Vertrieb GmbH & Co. KG)",
+        "group": "Behörde",
+        "description": "Im Niesverband-Gebiet,\nAnhang 3 AbwV",
+        "phone": "02166 96 81 62",
+        "email": "h.steins@kartoffel-boehmer.de",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_35",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4846119941441325,
+          50.80499500338719
+        ]
+      },
+      "properties": {
+        "name": "Maximilian Jeglorz (Bezirksregierung Arnsberg)",
+        "group": "Behörde",
+        "description": "",
+        "phone": "+49 2931 82-6419",
+        "email": "maximilian.jeglorz@bra.nrw.de",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_36",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.772462995935434,
+          51.2379440034258
+        ]
+      },
+      "properties": {
+        "name": "Guido Gohres (Bezirksregierung Düsseldorf)",
+        "group": "Behörde",
+        "description": "Teile des RR sind im Zuständigkeitsbereich der BR Düsseldorf",
+        "phone": "+40 211 475-5411",
+        "email": "guido.gohres@brd.nrw.de",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_37",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.772462995935434,
+          51.2379440034258
+        ]
+      },
+      "properties": {
+        "name": "Petra Korp (Bezirksregierung Düsseldorf)",
+        "group": "Behörde",
+        "description": "Teile des RR sind im Zuständigkeitsbereich der BR Düsseldorf",
+        "phone": "+40 211 475-5401",
+        "email": "petra.korp@brd.nrw.de",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_38",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.949756000650613,
+          50.94140600452596
+        ]
+      },
+      "properties": {
+        "name": "Gero Babin (Bezirksregierung Köln)",
+        "group": "Behörde",
+        "description": "Zuständige Person für ZWB Land NRW",
+        "phone": "+49 221 147-3177",
+        "email": "gero.babin@bezreg-koeln.nrw.de",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_39",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.949756000650613,
+          50.94140600452596
+        ]
+      },
+      "properties": {
+        "name": "Michael Mohren (Bezirksregierung Köln)",
+        "group": "Behörde",
+        "description": "Teile des RR sind im Zuständigkeitsbereich der BR Köln",
+        "phone": "+49 221 147-3430",
+        "email": "michael.mohren@bezreg-koeln.nrw.de",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_40",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.432197998541517,
+          51.121919001382985
+        ]
+      },
+      "properties": {
+        "name": "Linda Dohrmann (Coca-Cola Europacific Partners (CCEP) Deutschland GmbH – Standort Mönchengladbach)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Im Niesverband-Gebiet,\nAnhang 3 AbwV",
+        "phone": "",
+        "email": "linda.dohrmann@ccep.com",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_41",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.55775799916853,
+          50.42058799924306
+        ]
+      },
+      "properties": {
+        "name": "Nima Haghighatian (Gemeinde Dahlem)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "02447 955556",
+        "email": "n.haghighatian@dahlem.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_42",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.55775799916853,
+          50.42058799924306
+        ]
+      },
+      "properties": {
+        "name": "Jana Lembach (Gemeinde Dahlem)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2447 9555 0",
+        "email": "buergermeister@dahlem.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_43",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Martin Baumann (Kreis Düren)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2421 22-1060120",
+        "email": "m.baumann@kreis-dueren.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_44",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Natascha Bücken (Kreis Düren)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2421 22-1066100",
+        "email": "N.Buecken@kreis-dueren.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_45",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Susanne Dettlaff (Kreis Düren)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2421 22-1000500",
+        "email": "S.Dettlaff@kreis-dueren.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_46",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Lothar Gerhards (Kreis Düren)",
+        "group": "Gebietskörperschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 2421 22-1066310",
+        "email": "l.gerhards@Kreis-Dueren.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_47",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487291993499523,
+          50.80658599848388
+        ]
+      },
+      "properties": {
+        "name": "Hanna Hage (Kreis Düren)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2424 22-1084130",
+        "email": "h.hage@kreis-dueren.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_48",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Kathrin Hamacher (Kreis Düren)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2421 22-1066121",
+        "email": "K.Hamacher@Kreis-Dueren.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_49",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Ralf Kreischer (Kreis Düren)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2421 22-1066001",
+        "email": "r.kreischer@kreis-dueren.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_50",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Kim Katharina Ruland (Kreis Düren)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2421 22-1060113",
+        "email": "k.ruland@kreis-dueren.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_51",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Christian Schemp (Kreis Düren)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2421 22-1060311",
+        "email": "ch.schemp@kreis-dueren.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_52",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487291993499523,
+          50.80658599848388
+        ]
+      },
+      "properties": {
+        "name": "Anne Schüssler (Kreis Düren)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2421 22 106 1001;\n+49 1785495400",
+        "email": "A.Schuessler@kreis-dueren.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_53",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.820876002321518,
+          51.09273700224804
+        ]
+      },
+      "properties": {
+        "name": "Janis Hackbarth (Stadt Dormagen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2133 257-6137",
+        "email": "janis.hackbarth@stadt-dormagen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_54",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.482060995704271,
+          50.80328900127496
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Raßmanns (Stadt Düren)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2421 25-2487",
+        "email": "b.rassmanns@dueren.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_55",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.482060995704271,
+          50.80328900127496
+        ]
+      },
+      "properties": {
+        "name": "Steffen Rosier (Stadt Düren)",
+        "group": "Gebietskörperschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 2421 25-2436",
+        "email": "s.rosier@dueren.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_56",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.562243998179771,
+          50.93819400464263
+        ]
+      },
+      "properties": {
+        "name": "Chiara Dick (Stadt Elsdorf)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2274 709 249",
+        "email": "cdick@elsdorf.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_57",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.562243998179771,
+          50.93819400464263
+        ]
+      },
+      "properties": {
+        "name": "Sabine Kirchbach-Niesel (Stadt Elsdorf)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2274 709 259",
+        "email": "Sabine.Kirchbach-Niesel@elsdorf.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_58",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.562243998179771,
+          50.93819400464263
+        ]
+      },
+      "properties": {
+        "name": "Jan Leonhardt (Stadt Elsdorf)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2274 709-247",
+        "email": "jleonhardt@elsdorf.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_59",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.562243998179771,
+          50.93819400464263
+        ]
+      },
+      "properties": {
+        "name": "Caroline Metzen (Stadt Elsdorf)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2274 709 261",
+        "email": "cmetzen@elsdorf.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_60",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.562243998179771,
+          50.93819400464263
+        ]
+      },
+      "properties": {
+        "name": "Katharina Piront (Stadt Elsdorf)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2274 709-248",
+        "email": "kpiront@elsdorf.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_61",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.562243998179771,
+          50.93819400464263
+        ]
+      },
+      "properties": {
+        "name": "Eleonore Witschass (Stadt Elsdorf)",
+        "group": "Gebietskörperschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 2274 709 240",
+        "email": "eleonore.witschass@elsdorf.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_62",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.790890996277695,
+          51.290269000003974
+        ]
+      },
+      "properties": {
+        "name": "Shayan Alizadeh (NRW.Energy4Climate GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "",
+        "phone": "+49 211 822 086-556",
+        "email": "shayan.alizadeh@energy4climate.nrw",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_63",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.790890996277695,
+          51.290269000003974
+        ]
+      },
+      "properties": {
+        "name": "Verena Busse (NRW.Energy4Climate GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 211 822 086-547",
+        "email": "verena.busse@energy4climate.nrw",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_64",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.790890996277695,
+          51.290269000003974
+        ]
+      },
+      "properties": {
+        "name": "Regina Dietrich (NRW.Energy4Climate GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "",
+        "phone": "+49 211 822 086-424",
+        "email": "regina.dietrich@energy4climate.nrw",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_65",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.790890996277695,
+          51.290269000003974
+        ]
+      },
+      "properties": {
+        "name": "Elisa Kügler (NRW.Energy4Climate GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "",
+        "phone": "+49 211 822 086-426",
+        "email": "elisa.kuegler@energy4climate.nrw",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_66",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.815100000451524,
+          50.8022950021455
+        ]
+      },
+      "properties": {
+        "name": "Bärbel Ackermann (Stadt Erftstadt)",
+        "group": "Gebietskörperschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 2235 409533",
+        "email": "Baerbel.Ackermann@erftstadt.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_67",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.630731001425003,
+          50.96050800238247
+        ]
+      },
+      "properties": {
+        "name": "Nils Cremer (Erftverband)",
+        "group": "Ver-/ Entsorger",
+        "description": "Vortrag beim Netzwerktreffen KOMM.RHEIN.REVIER; über Herrn Küppers des Projektes kontaktieren",
+        "phone": "+49 2271 88-1228",
+        "email": "nils.cremer@erftverband.de",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_68",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.630731001425003,
+          50.96050800238247
+        ]
+      },
+      "properties": {
+        "name": "Dietmar Jansen (Erftverband)",
+        "group": "Ver-/ Entsorger",
+        "description": "",
+        "phone": "+49 2271 88-1217",
+        "email": "Dietmar.Jansen@Erftverband.de",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_69",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.630731001425003,
+          50.96050800238247
+        ]
+      },
+      "properties": {
+        "name": "Tobias Küppers (Erftverband)",
+        "group": "Ver-/ Entsorger",
+        "description": "Mitglied des Projekts KOMM.RHEIN.REVIER",
+        "phone": "+49 2271 88-1397",
+        "email": "tobias.kueppers@erftverbannd.de",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_70",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.630731001425003,
+          50.96050800238247
+        ]
+      },
+      "properties": {
+        "name": "Petra von Zehmen (Erftverband)",
+        "group": "Ver-/ Entsorger",
+        "description": "Mitglied des Projekts KOMM.RHEIN.REVIER",
+        "phone": "+49 2271 88-1379",
+        "email": "Petra.vonZehmen@erftverband.de",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_71",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.314079000354718,
+          51.08019100254338
+        ]
+      },
+      "properties": {
+        "name": "Jana Fricke (Stadt Erkelenz)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2431 85 134",
+        "email": "jana.fricke@erkelenz.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_72",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.314079000354718,
+          51.08019100254338
+        ]
+      },
+      "properties": {
+        "name": "Eric Kappes (Stadt Erkelenz)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2431 85-394",
+        "email": "eric.kappes@erkelenz.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_73",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.314079000354718,
+          51.08019100254338
+        ]
+      },
+      "properties": {
+        "name": "Svetlana Saraev (Stadt Erkelenz)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2431 85 155",
+        "email": "svetlana.saraev@erkelenz.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_74",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.314079000354718,
+          51.08019100254338
+        ]
+      },
+      "properties": {
+        "name": "Sandra Schürger (Stadt Erkelenz)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2431 85 250",
+        "email": "sandra.schuerger@erkelenz.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_75",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.314079000354718,
+          51.08019100254338
+        ]
+      },
+      "properties": {
+        "name": "Benedikt Wouters (Stadt Erkelenz)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2431 85 188",
+        "email": "benedikt.wouters@erkelenz.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_76",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.922688012453882,
+          50.94550503252443
+        ]
+      },
+      "properties": {
+        "name": "Bernadette Gehlen (erlebnisplan Deutschland GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "",
+        "email": "bgehlen1108@gmail.com",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_77",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.271954998565629,
+          50.81796900385408
+        ]
+      },
+      "properties": {
+        "name": "Ute Bennerscheidt (Stadt Eschweiler)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2403 71-745",
+        "email": "ute.bennerscheidt@eschweiler.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_78",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.271954998565629,
+          50.81796900385408
+        ]
+      },
+      "properties": {
+        "name": "Nikolas Bongard (Stadt Eschweiler)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2403 71 615",
+        "email": "nikolas.bongard@eschweiler.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_79",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.271954998565629,
+          50.81796900385408
+        ]
+      },
+      "properties": {
+        "name": "Kristina Jacquorie (Stadt Eschweiler)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2403 71-453",
+        "email": "kristina.jacquorie@eschweiler.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_80",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.271954998565629,
+          50.81796900385408
+        ]
+      },
+      "properties": {
+        "name": "Raphael Kamp (Stadt Eschweiler)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2403 71-764",
+        "email": "raphael.kamp@eschweiler.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_81",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.715854820976373,
+          51.20765738905613
+        ]
+      },
+      "properties": {
+        "name": "Angel Castro (Essity Operations Neuss GmbH)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Außerhalb Wasserverbände NRW,\nAnhang 28, AbwV",
+        "phone": "+49 2131 296-0",
+        "email": "minini777@hotmail.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_82",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.783701003338692,
+          50.66979799813469
+        ]
+      },
+      "properties": {
+        "name": "Achim Blindert (Kreis Euskirchen)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "02251 15-334",
+        "email": "achim.blindert@kreis-euskirchen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_83",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.783701003338692,
+          50.66979799813469
+        ]
+      },
+      "properties": {
+        "name": "Saskia Gall-Röhrig (Kreis Euskirchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken):\nKennengelernt beim Netzwerktreffen zu KOMM.RHEIN.REVIER; involviert in Machbarkeitsstudie zur Wasserwiederverwendung in der Zülpicher Börde",
+        "phone": "02251 15-237",
+        "email": "saskia.gall-roehrig@kreis-euskirchen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_84",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.783701003338692,
+          50.66979799813469
+        ]
+      },
+      "properties": {
+        "name": "Sarah Komp (Kreis Euskirchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2251 15-904",
+        "email": "sarah.komp@kreis-euskirchen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_85",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.783701003338692,
+          50.66979799813469
+        ]
+      },
+      "properties": {
+        "name": "Marcel Schneider (Kreis Euskirchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Nachfolger für Herrn Hartwig Kaven",
+        "phone": "02251 15-357",
+        "email": "marcel.schneider@kreis-euskirchen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_86",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.792006992789286,
+          50.65583600368933
+        ]
+      },
+      "properties": {
+        "name": "Pia Rehburg (Stadt Euskirchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 (0)2251 14-534",
+        "email": "prehburg@euskirchen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_87",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.973935923315187,
+          50.837215954874175
+        ]
+      },
+      "properties": {
+        "name": "Olaf Breuer (Evonik Operations GmbH – Werk Wesseling-Nord)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Außerhalb Wasserverbände NRW,\nAnhang 22, AbwV,\nansässig auf dem Chemiepark Wesseling",
+        "phone": "",
+        "email": "olaf.breuer@evonik.com;\nolaf@breuerathome.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_88",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.975411841550042,
+          50.83297847787497
+        ]
+      },
+      "properties": {
+        "name": "Olaf Breuer (Evonik Operations GmbH – Werk Wesseling-Süd)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Außerhalb Wasserverbände NRW,\nAnhang 37, AbwV,\nansässig auf dem Chemiepark Wesseling",
+        "phone": "",
+        "email": "olaf.breuer@evonik.com;\nolaf@breuerathome.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_89",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.447741997349302,
+          50.689314998428905
+        ]
+      },
+      "properties": {
+        "name": "Sven Leygraf (FaserInnovationsZentrum Zerkall e.V.)",
+        "group": "Forschung",
+        "description": "auf ZRR-Veranstaltung kennengelernt (FAc)",
+        "phone": "",
+        "email": "sven.leygraf@fizz-ev.de",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_90",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.808373996823214,
+          50.90803200494908
+        ]
+      },
+      "properties": {
+        "name": "Charlotte Königstein (Stadt Frechen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2234 5011493",
+        "email": "charlotte.koenigstein@stadt-frechen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_91",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.808373996823214,
+          50.90803200494908
+        ]
+      },
+      "properties": {
+        "name": "Philipp Schlenkert (Stadt Frechen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2234 5011470",
+        "email": "philipp.schlenkert@stadt-frechen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_92",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.404387960907907,
+          50.902699947286756
+        ]
+      },
+      "properties": {
+        "name": "Frank Herrmann (Forschungszentrum Jülich GmbH)",
+        "group": "Forschung",
+        "description": "Mitglied beim WVER;\nEntwicklung des Modells mGROWA, Mitarbeit im Projekt WADKlim",
+        "phone": "+49 2461 61-3847",
+        "email": "f.herrmann@fz-juelich.de",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_93",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.997856011129132,
+          50.99096900170716
+        ]
+      },
+      "properties": {
+        "name": "Guido Willems (Gemeinde Gangelt)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 (0) 2454 588-0",
+        "email": "info@gangelt.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_94",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.121082007184799,
+          50.964522996453
+        ]
+      },
+      "properties": {
+        "name": "Maurice Gottschalk (Stadt Geilenkirchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 2451 629-349",
+        "email": "maurice.gottschalk@geilenkirchen.de; klimaschutz@geilenkirchen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_95",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.589958001859014,
+          51.08918199654813
+        ]
+      },
+      "properties": {
+        "name": "Christian Eßer (Stadt Grevenbroich)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2181 608-270",
+        "email": "christian.esser@grevenbroich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_96",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.589958001859014,
+          51.08918199654813
+        ]
+      },
+      "properties": {
+        "name": "Christian Moede (Stadt Grevenbroich)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2181 608-266",
+        "email": "christian.moede@grevenbroich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_97",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.033170185165486,
+          51.08893287563091
+        ]
+      },
+      "properties": {
+        "name": "Hubert Verbeek (Hubert Verbeek)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Mitglied beim WVER",
+        "phone": "01732843281",
+        "email": "haarenermuehle@yahoo.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_98",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.477943002701191,
+          50.633650998482665
+        ]
+      },
+      "properties": {
+        "name": "Frank Pick (Stadt Heimbach)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2446 80812",
+        "email": "frank.pick@Heimbach-Eifel.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_99",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.442452995514315,
+          50.489583997689
+        ]
+      },
+      "properties": {
+        "name": "Werner Wamser (Gemeinde Hellenthal)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2482 85-0",
+        "email": "gemeinde@hellenthal.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_100",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.09367900003882,
+          50.866411003019685
+        ]
+      },
+      "properties": {
+        "name": "Eva Klee (Stadt Herzogenrath)",
+        "group": "Gebietskörperschaft",
+        "description": "ehemalige WM am IWW, Kontakt über M. Born & F. Achten",
+        "phone": "+49 2406 83-368",
+        "email": "eva.klee@herzogenrath.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_101",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.09367900003882,
+          50.866411003019685
+        ]
+      },
+      "properties": {
+        "name": "Jonathan Lieder (Stadt Herzogenrath)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2406 83-327",
+        "email": "jonathan.lieder@herzogenrath.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_102",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.09367900003882,
+          50.866411003019685
+        ]
+      },
+      "properties": {
+        "name": "Julia Siebert-Thaden (Stadt Herzogenrath)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2406 83-358",
+        "email": "julia.siebert-thaden@herzogenrath.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_103",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.690930807467659,
+          50.6427245211491
+        ]
+      },
+      "properties": {
+        "name": "Florian Geurden (Hochwald Foods Whey Ingredients GmbH – Werk Mechernich)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Im Erftverband-Gebiet,\nAnhang 3 AbwV",
+        "phone": "02256 95903 2001",
+        "email": "f.geurden@hochwald.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_104",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.958546995967418,
+          50.74910700339347
+        ]
+      },
+      "properties": {
+        "name": "Norbert Pesch (Hof Pesch)",
+        "group": "Landwirtschaft",
+        "description": "Einladung am 24.04.2026 über NOt",
+        "phone": "",
+        "email": "n.pesch@t-online.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_105",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.107434997194719,
+          51.060543996345515
+        ]
+      },
+      "properties": {
+        "name": "Alexander Küsters (Kreis Heinsberg)",
+        "group": "Gebietskörperschaft",
+        "description": "Nachfolger von Frau Sonja Zaunbrecher",
+        "phone": "+49 2452 136101",
+        "email": "alexander.kuesters@kreis-heinsberg.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_106",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.224518998529188,
+          51.05509000000724
+        ]
+      },
+      "properties": {
+        "name": "Christoph Breuer (Stadt Hückelhoven)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2433 82-300",
+        "email": "Christoph.Breuer@Hueckelhoven.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_107",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.395581994491171,
+          50.72209299707408
+        ]
+      },
+      "properties": {
+        "name": "Ulf Breuer (Gemeinde Hürtgenwald)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2429 309-0",
+        "email": "buergermeister@huertgenwald.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_108",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.878769994172183,
+          50.879705998199064
+        ]
+      },
+      "properties": {
+        "name": "Julia Baltin (Stadt Hürth)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2233 53196",
+        "email": "jbaltin@huerth.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_109",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.878769994172183,
+          50.879705998199064
+        ]
+      },
+      "properties": {
+        "name": "Henriette Conzen (Stadt Hürth)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2233 53215",
+        "email": "hconzen@huerth.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_110",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.878769994172183,
+          50.879705998199064
+        ]
+      },
+      "properties": {
+        "name": "Max Hochstein (Stadt Hürth)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2233 53179",
+        "email": "mhochstein@huerth.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_111",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Daniela Eskelson (Entwicklungsgesellschaft indeland GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2421 22-1084128",
+        "email": "d.eskelson@kreis-dueren.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_112",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Tom Guse (Entwicklungsgesellschaft indeland GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "02421 22-1084127",
+        "email": "t.guse@kreis-dueren.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_113",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Maren Krätzschmar (Entwicklungsgesellschaft indeland GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2421 221084126",
+        "email": "m.kraetzschmar@kreis-dueren.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_114",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Silvia Proff (Entwicklungsgesellschaft indeland GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "02421 22-1084132",
+        "email": "S.Proff@kreis-dueren.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_115",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Svenja Zeimetz (Entwicklungsgesellschaft indeland GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "02421 22-1084131",
+        "email": "s.zeimetz@kreis-dueren.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_116",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.358255994541316,
+          50.84638899692941
+        ]
+      },
+      "properties": {
+        "name": "Alina Behrens (Gemeinde Inden)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2465 3933",
+        "email": "abehrens@inden.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_117",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.358255994541316,
+          50.84638899692941
+        ]
+      },
+      "properties": {
+        "name": "Janika Ketzler (Gemeinde Inden)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2465 3954",
+        "email": "jketzler@inden.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_118",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.358255994541316,
+          50.84638899692941
+        ]
+      },
+      "properties": {
+        "name": "Steffen Krüger (Gemeinde Inden)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "02465 3949",
+        "email": "skrueger@inden.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_119",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.358255994541316,
+          50.84638899692941
+        ]
+      },
+      "properties": {
+        "name": "Stefanie Schander (Gemeinde Inden)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2465 3983",
+        "email": "sschander@inden.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_120",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.358255994541316,
+          50.84638899692941
+        ]
+      },
+      "properties": {
+        "name": "Christiane Wüst (Gemeinde Inden)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "02465 3948",
+        "email": "cwuest@inden.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_121",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.358255994541316,
+          50.84638899692941
+        ]
+      },
+      "properties": {
+        "name": "Eva-Maria Zingel (Gemeinde Inden)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2465 3919",
+        "email": "ezingel@inden.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_124",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.501080002718897,
+          51.100223000421444
+        ]
+      },
+      "properties": {
+        "name": "Carolin Voigt (Stadt Jüchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2165 915-6118",
+        "email": "carolin.voigt@juechen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_125",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.501080002718897,
+          51.100223000421444
+        ]
+      },
+      "properties": {
+        "name": "Jan Martin von der Heide (Stadt Jüchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2165 915-6117",
+        "email": "janmartin.vonderheide@juechen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_126",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.362850993371082,
+          50.92107000002269
+        ]
+      },
+      "properties": {
+        "name": "Petra Dören-Delahaye (Stadt Jülich)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2461 63-433",
+        "email": "pdoeren-delahaye@juelich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_127",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.362850993371082,
+          50.92107000002269
+        ]
+      },
+      "properties": {
+        "name": "Karen Steffens (Stadt Jülich)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2461 63-436",
+        "email": "ksteffens@juelich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_128",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.362850993371082,
+          50.92107000002269
+        ]
+      },
+      "properties": {
+        "name": "Eva Strehl (Stadt Jülich)",
+        "group": "Gebietskörperschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 2461 63-267",
+        "email": "EStrehl@Juelich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_129",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.618526997261625,
+          51.22631900316577
+        ]
+      },
+      "properties": {
+        "name": "Sabine Zierz (Stadt Kaarst)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2131 987-830",
+        "email": "sabine.zierz@kaarst.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_130",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.556840002645612,
+          50.53969800284889
+        ]
+      },
+      "properties": {
+        "name": "Emmanuel Kunz (Gemeinde Kall)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2441 888-0",
+        "email": "posteingang@kall.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_132",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.363702005568335,
+          50.943833003267194
+        ]
+      },
+      "properties": {
+        "name": "Paul-Heinz Müller (Kreisbauernschaft Aachen)",
+        "group": "Landwirtschaft",
+        "description": "",
+        "phone": "+49 2421 52890",
+        "email": "aachen@kb.rlv.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_133",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.363702005568335,
+          50.943833003267194
+        ]
+      },
+      "properties": {
+        "name": "Michael Niesen (Kreisbauernschaft Düren)",
+        "group": "Landwirtschaft",
+        "description": "",
+        "phone": "+49 2421 52890",
+        "email": "Dueren@kb.rlv.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_134",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.798856002611889,
+          50.66448799770508
+        ]
+      },
+      "properties": {
+        "name": "Martin Spiegelhalter (Kreisbauernschaft  Euskirchen)",
+        "group": "Landwirtschaft",
+        "description": "",
+        "phone": "+49 2251 2515",
+        "email": "Euskirchen@kb.rlv.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_135",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.363702005568335,
+          50.943833003267194
+        ]
+      },
+      "properties": {
+        "name": "Katharina Schmitz (Kreisbauernschaft Heinsberg)",
+        "group": "Landwirtschaft",
+        "description": "",
+        "phone": "+49 2452 22059",
+        "email": "Katharina.Schmitz.hs@kb.rlv.de; \nHeinsberg@kb.rlv.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_136",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.677750995165886,
+          51.038704000907664
+        ]
+      },
+      "properties": {
+        "name": "Peter Herzogenrath (Kreisbauernschaft Köln/Rhein-Erft-Kreis)",
+        "group": "Landwirtschaft",
+        "description": "",
+        "phone": "+49 2183 389910-70",
+        "email": "Koeln-Rhein-Erft-Kreis@kb.rlv.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_137",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.677750995165886,
+          51.038704000907664
+        ]
+      },
+      "properties": {
+        "name": "Peter Herzogenrath (Kreisbauernschaft Neuss-Mönchengladbach e.V.)",
+        "group": "Landwirtschaft",
+        "description": "Assoziierter Partner\n(LoI liegt vor)",
+        "phone": "+49 2183 389910-70",
+        "email": "Neuss-Moenchengladbach@kb.rlv.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_138",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.691647999170792,
+          50.87278500268475
+        ]
+      },
+      "properties": {
+        "name": "Julian Bleckmann (Stadt Kerpen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2237 58164",
+        "email": "jbleckmann@stadt-kerpen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_139",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.691647999170792,
+          50.87278500268475
+        ]
+      },
+      "properties": {
+        "name": "Ina Breuer (Stadt Kerpen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2237 58597",
+        "email": "ibreuer@stadt-kerpen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_140",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.691647999170792,
+          50.87278500268475
+        ]
+      },
+      "properties": {
+        "name": "Eva Klarenbach (Stadt Kerpen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2237 58593",
+        "email": "eklarenbach@stadt-kerpen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_141",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.691647999170792,
+          50.87278500268475
+        ]
+      },
+      "properties": {
+        "name": "Rüdiger Wagner (Stadt Kerpen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2237 58594",
+        "email": "rwagner@stadt-kerpen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_142",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.691647999170792,
+          50.87278500268475
+        ]
+      },
+      "properties": {
+        "name": "Jan Winther (Stadt Kerpen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2237 58594",
+        "email": "jwinther@stadt-kerpen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_143",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.514092997234924,
+          51.18883700268726
+        ]
+      },
+      "properties": {
+        "name": "Melda Gümüsbas (Stadt Korschenbroich)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2161 613-134",
+        "email": "melda.guemuesbas@korschenbroich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_144",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.486848003836921,
+          50.75130000303114
+        ]
+      },
+      "properties": {
+        "name": "Lisa Claß (Gemeinde Kreuzau)",
+        "group": "Gebietskörperschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 2422 507255",
+        "email": "Lisa.Class@kreuzau.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_145",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.381162003901893,
+          50.90966000359491
+        ]
+      },
+      "properties": {
+        "name": "Karin Piesch (LAG Rheinisches Revier an Inde und Rur e.V.)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 2461 801 81 65",
+        "email": "piesch@inde-rur.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_146",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.361810005218879,
+          50.81492300104932
+        ]
+      },
+      "properties": {
+        "name": "Gabriele Cremer (Gemeinde Langerwehe)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2423 409104",
+        "email": "gcremer@langerwehe.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_147",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.361810005218879,
+          50.81492300104932
+        ]
+      },
+      "properties": {
+        "name": "Stephanie Heidner (Gemeinde Langerwehe)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2423 409104",
+        "email": "sheidner@langerwehe.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_148",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.361810005218879,
+          50.81492300104932
+        ]
+      },
+      "properties": {
+        "name": "Myrjam Passing (Gemeinde Langerwehe)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2423 409145",
+        "email": "MPassing@langerwehe.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_149",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.361810005218879,
+          50.81492300104932
+        ]
+      },
+      "properties": {
+        "name": "Patrick Schillberg (Gemeinde Langerwehe)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2423 409102",
+        "email": "pschillberg@langerwehe.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_150",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.770524999538103,
+          51.24619699625452
+        ]
+      },
+      "properties": {
+        "name": "Anna Lith (Provinz Limburg)",
+        "group": "Gebietskörperschaft",
+        "description": "Kollegin von Rebenich, soll ebenfalls Infos/Einladungen erhalten",
+        "phone": "",
+        "email": "at.lith@prvlimburg.nl",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_151",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.770524999538103,
+          51.24619699625452
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Rebenich (Provinz Limburg)",
+        "group": "Gebietskörperschaft",
+        "description": "haben sich bei uns gemeldet",
+        "phone": "+31 6 11 52 45 52",
+        "email": "b.rebenich@prvlimburg.nl",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_152",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.2681890052613936,
+          50.97588600495055
+        ]
+      },
+      "properties": {
+        "name": "Christina Rausch (Stadt Linnich)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2462 9908425",
+        "email": "crausch@linnich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_153",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.850030004058255,
+          51.00195599835699
+        ]
+      },
+      "properties": {
+        "name": "Natascha Bellinghausen (Landwirtschaftskammer NRW)",
+        "group": "Landwirtschaft",
+        "description": "",
+        "phone": "0221-5340-582\n01578 811 85 55",
+        "email": "Natascha.Bellinghausen@lwk.nrw.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_154",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480183001239305,
+          50.79613200076388
+        ]
+      },
+      "properties": {
+        "name": "Marco Breuer (Landwirtschaftskammer NRW)",
+        "group": "Landwirtschaft",
+        "description": "Einladung am 24.04.2026 über NOt",
+        "phone": "+49 2421 5923-30",
+        "email": "Marco.Breuer@LWK.NRW.DE",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_155",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.850030004058255,
+          51.00195599835699
+        ]
+      },
+      "properties": {
+        "name": "Tobias Heggemann (Landwirtschaftskammer NRW)",
+        "group": "Landwirtschaft",
+        "description": "",
+        "phone": "0221 5340-331 \n0175 - 450 36 22",
+        "email": "tobias.heggemann@lwk.nrw.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_156",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.850030004058255,
+          51.00195599835699
+        ]
+      },
+      "properties": {
+        "name": "Kristina Humpesch (Landwirtschaftskammer NRW)",
+        "group": "Landwirtschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "0221 5340-340",
+        "email": "kristina.humpesch@maillwk.nrw.de; \nkristina.humpesch@lwk.nrw.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_157",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.850030004058255,
+          51.00195599835699
+        ]
+      },
+      "properties": {
+        "name": "Simon Keutmann (Landwirtschaftskammer NRW)",
+        "group": "Landwirtschaft",
+        "description": "",
+        "phone": "0221 5340-547;\n0177 5045818",
+        "email": "simon.keutmann@lwk.nrw.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_158",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.3997100020100115,
+          51.25123399619098
+        ]
+      },
+      "properties": {
+        "name": "Michael Rütten (Landwirtschaftskammer NRW)",
+        "group": "Landwirtschaft",
+        "description": "Kollegin vom FiW hatte vor ein paar Jahren Kontakt",
+        "phone": "02162 3706-82",
+        "email": "michael.ruetten@lwk.nrw.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_159",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.850030004058255,
+          51.00195599835699
+        ]
+      },
+      "properties": {
+        "name": "Josef Schmitz (Landwirtschaftskammer NRW)",
+        "group": "Landwirtschaft",
+        "description": "",
+        "phone": "0221 5340-520; \n0160 90 800 266",
+        "email": "josef_schmitz@lwk.nrw.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_160",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480183001239305,
+          50.79613200076388
+        ]
+      },
+      "properties": {
+        "name": "Marvin Serve (Landwirtschaftskammer NRW)",
+        "group": "Landwirtschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2421 5923-18",
+        "email": "marvin.serve@lwk.nrw.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_161",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.689048995768911,
+          51.307748001299046
+        ]
+      },
+      "properties": {
+        "name": "Dana Frey (Stadt Meerbusch)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2150 916-274",
+        "email": "dana.frey@meerbusch.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_162",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.527835005884107,
+          50.825489996429035
+        ]
+      },
+      "properties": {
+        "name": "Anna Hecker (Gemeinde Merzenich)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2421 399186",
+        "email": "ahecker@gemeinde-merzenich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_163",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.527835005884107,
+          50.825489996429035
+        ]
+      },
+      "properties": {
+        "name": "Dominik Ortseifen (Gemeinde Merzenich)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2421 399176",
+        "email": "dortseifen@gemeinde-merzenich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_164",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.527835005884107,
+          50.825489996429035
+        ]
+      },
+      "properties": {
+        "name": "Lennart Schminnes (Gemeinde Merzenich)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2421 399176",
+        "email": "lschminnes@gemeinde-merzenich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_165",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.527835005884107,
+          50.825489996429035
+        ]
+      },
+      "properties": {
+        "name": "Maximilian Schmitz (Gemeinde Merzenich)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2421 399 176",
+        "email": "maschmitz@gemeinde-merzenich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_166",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.527835005884107,
+          50.825489996429035
+        ]
+      },
+      "properties": {
+        "name": "Karina Vonhögen (Gemeinde Merzenich)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2421 399 135",
+        "email": "kvonhoegen@gemeinde-merzenich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_167",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.468726426053332,
+          50.81584434084138
+        ]
+      },
+      "properties": {
+        "name": "Michael Barth (Metsä Graeseproof Papers GmbH - Werk Düren)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 (0) 2421 4405 0",
+        "email": "Michael.Barth@metsagroup.com",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_168",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4728703875733755,
+          50.725874387384245
+        ]
+      },
+      "properties": {
+        "name": "Dirk Hammann (Metsä Tissue GmbH - Werk Kreuzau)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 (0) 2422 56-0",
+        "email": "Dirk.Hammann@metsagroup.com",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_169",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.445169996205545,
+          51.16736900072223
+        ]
+      },
+      "properties": {
+        "name": "Martina Delbos (Stadt Mönchengladbach)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2161 25-8561",
+        "email": "martina.delbos@moenchengladbach.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_170",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.445169996205545,
+          51.16736900072223
+        ]
+      },
+      "properties": {
+        "name": "Anette Harings (Stadt Mönchengladbach)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2161 25-9902",
+        "email": "anette.harings@moenchengladbach.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_171",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.445895996692886,
+          51.167405001419425
+        ]
+      },
+      "properties": {
+        "name": "Olaf Holtrup (Stadt Mönchengladbach)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2161 25-8220",
+        "email": "Olaf.Holtrup@moenchengladbach.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_172",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.445895996692886,
+          51.167405001419425
+        ]
+      },
+      "properties": {
+        "name": "Marcus Klancicar (Stadt Mönchengladbach)",
+        "group": "Gebietskörperschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 2161 25-8265",
+        "email": "marcus.klancicar@moenchengladbach.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_173",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.392272993091082,
+          51.17576700183264
+        ]
+      },
+      "properties": {
+        "name": "Kajetan Lis (Stadt Mönchengladbach)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2161 25 9900",
+        "email": "kajetan.lis@moenchengladbach.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_174",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.054215005758713,
+          50.75295700432372
+        ]
+      },
+      "properties": {
+        "name": "Manfred Aletsee (NABU-Naturschutzstation Aachen e.V.)",
+        "group": "Sonstige",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 (0)241-957 845 36",
+        "email": "info@naturschutzstation-aachen.de",
+        "color": "#8b5cf6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_175",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.595272999095041,
+          51.08441399869182
+        ]
+      },
+      "properties": {
+        "name": "Michael Albrecht (Rhein-Kreis Neuss)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2181 6016145",
+        "email": "michael.albrecht@rhein-kreis-neuss.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_176",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.595272999095041,
+          51.08441399869182
+        ]
+      },
+      "properties": {
+        "name": "Gabriele Bemba (Rhein-Kreis Neuss)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 (0) 2181 601-6803",
+        "email": "gabriele.bemba@rhein-kreis-neuss.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_177",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.594629006769339,
+          51.086550002750705
+        ]
+      },
+      "properties": {
+        "name": "Volker Ganse (Rhein-Kreis Neuss)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2181 601-6144",
+        "email": "volker.ganse@rhein-kreis-neuss.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_178",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.594463000698894,
+          51.0868980001667
+        ]
+      },
+      "properties": {
+        "name": "Regina Krings (Rhein-Kreis Neuss)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2181 601-6119",
+        "email": "regina.krings@rhein-kreis-neuss.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_179",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.594463000698894,
+          51.0868980001667
+        ]
+      },
+      "properties": {
+        "name": "Sven Schumacher (Rhein-Kreis Neuss)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2181 601-7701",
+        "email": "sven.schumacher@rhein-kreis-neuss.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_180",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.6562669943886545,
+          50.50900999898168
+        ]
+      },
+      "properties": {
+        "name": "Norbert Crump (Gemeinde Nettersheim)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 (0)2486 78-0",
+        "email": "buergermeister@nettersheim.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_181",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.63317700322339,
+          50.91448600179361
+        ]
+      },
+      "properties": {
+        "name": "Monika Arns (NEULAND HAMBACH GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "02274 9359 301",
+        "email": "arns@neuland-hambach.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_182",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.63317700322339,
+          50.91448600179361
+        ]
+      },
+      "properties": {
+        "name": "Christina Brincker (NEULAND HAMBACH GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "02274 9359 303",
+        "email": "brincker@neuland-hambach.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_183",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.63317700322339,
+          50.91448600179361
+        ]
+      },
+      "properties": {
+        "name": "Sophie Graß (NEULAND HAMBACH GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "02274 9359-304",
+        "email": "grass@neuland-hambach.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_184",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.63317700322339,
+          50.91448600179361
+        ]
+      },
+      "properties": {
+        "name": "Johanna Janning (NEULAND HAMBACH GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "02274 9359 308",
+        "email": "janning@neuland-hambach.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_185",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.63317700322339,
+          50.91448600179361
+        ]
+      },
+      "properties": {
+        "name": "Marie Schuler (NEULAND HAMBACH GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "02274 9359 305",
+        "email": "schuler@neuland-hambach.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_186",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.63317700322339,
+          50.91448600179361
+        ]
+      },
+      "properties": {
+        "name": "Claudia Stacker (NEULAND HAMBACH GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "02274 9359 300",
+        "email": "stacker@neuland-hambach.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_187",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.63317700322339,
+          50.91448600179361
+        ]
+      },
+      "properties": {
+        "name": "Jana Weber (NEULAND HAMBACH GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken); tu! Hambach",
+        "phone": "02274 9359 307",
+        "email": "weber@neuland-hambach.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_188",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.63317700322339,
+          50.91448600179361
+        ]
+      },
+      "properties": {
+        "name": "Matti Wirth (NEULAND HAMBACH GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken); Rhein-Erft-Kreis",
+        "phone": "02274 9359 300; \n0172 7060 440 (Mo. bis Do.)",
+        "email": "wirth@neuland-hambach.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_189",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.693821003374508,
+          51.197065996525254
+        ]
+      },
+      "properties": {
+        "name": "Joshua Bühler (Stadt Neuss)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2131 90-3316",
+        "email": "joshua.buehler@stadt.neuss.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_190",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.390173993404847,
+          51.26058200050656
+        ]
+      },
+      "properties": {
+        "name": "Katharina Greven (NEW NiederrheinWasser GmbH)",
+        "group": "Ver-/ Entsorger",
+        "description": "Tochtergesellschaft der NEW AG,\nVersorgungsgebiet: Städte Mönchengladbach, Viersen, Korschenbroich,\nTW-Verteilung über NEW Netz GmbH,\nkennengelernt bei Neueröffnung TW-Werk MG-Rasseln",
+        "phone": "02166 2752750",
+        "email": "katharina.greven@new.de",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_191",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.390173993404847,
+          51.26058200050656
+        ]
+      },
+      "properties": {
+        "name": "Detlef Schumacher (NEW NiederrheinWasser GmbH)",
+        "group": "Ver-/ Entsorger",
+        "description": "Tochtergesellschaft der NEW AG,\nVersorgungsgebiet: Städte Mönchengladbach, Viersen, Korschenbroich,\nTW-Verteilung über NEW Netz GmbH",
+        "phone": "02166 2752750",
+        "email": "detlef.schumacher@new.de",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_192",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.481903003796331,
+          50.68967100474714
+        ]
+      },
+      "properties": {
+        "name": "Wiebke Ehrlich (Stadt Nideggen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2427 80938",
+        "email": "w.ehrlich@nideggen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_193",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.165451994165743,
+          51.21248599764797
+        ]
+      },
+      "properties": {
+        "name": "Thomas Ricker (Gemeinde Niederkrüchten)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2163 980-0",
+        "email": "info@niederkruechten.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_194",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.46165999620356,
+          50.885029004182925
+        ]
+      },
+      "properties": {
+        "name": "Jonas Hamacher (Gemeinde Niederzier)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2428 84630",
+        "email": "jhamacher@niederzier.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_195",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.46165999620356,
+          50.885029004182925
+        ]
+      },
+      "properties": {
+        "name": "Cornelia Neunzig (Gemeinde Niederzier)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2428 84632",
+        "email": "cneunzig@niederzier.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_196",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.46165999620356,
+          50.885029004182925
+        ]
+      },
+      "properties": {
+        "name": "José Schroeder (Gemeinde Niederzier)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2428 84633",
+        "email": "jschroeder@niederzier.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_197",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.495611343391177,
+          50.55929032437896
+        ]
+      },
+      "properties": {
+        "name": "Martin Uhlmann (Pappenfabrik Nierfeld Josef Piront GmbH & Co. KG)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2444 91290",
+        "email": "info@nierfeld-pappe.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_198",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.642038993688657,
+          50.808964997111616
+        ]
+      },
+      "properties": {
+        "name": "Samara Gomes Gnech (Gemeinde Nörvenich)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "(02426) 101 163",
+        "email": "strukturwandel@noervenich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_199",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.642038993688657,
+          50.808964997111616
+        ]
+      },
+      "properties": {
+        "name": "Judith Krieger (Gemeinde Nörvenich)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "(02426) 101 163",
+        "email": "strukturwandel@noervenich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_200",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.642038993688657,
+          50.808964997111616
+        ]
+      },
+      "properties": {
+        "name": "Lars Richter (Gemeinde Nörvenich)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2426 101149",
+        "email": "l.richter@noervenich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_201",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.762565996394015,
+          51.212903997402556
+        ]
+      },
+      "properties": {
+        "name": "Lena Mählen (NRW.Global Business GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 211 13000-506",
+        "email": "maehlen@nrwglobalbusiness.com",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_202",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.645743653440136,
+          50.65815396011936
+        ]
+      },
+      "properties": {
+        "name": "Hans-Josef Hellwich (Fa. Katharina Tillmann Papier- und Wellpappenfabrik e.K.)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Assoziierter Partner\n(LoI liegt vor)\nim EZG des Erftverbands,\nFührung (MBo, NOt, FAc, HRi, MDu) am 21.08.2025 durch die Papierfabrik erfolgt (H-JHe)",
+        "phone": "+49 2252 83059 20",
+        "email": "Hans-Josef.Hellwich@Papierfabrik-Tillmann.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_203",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4861408972778,
+          50.74343562638902
+        ]
+      },
+      "properties": {
+        "name": "Markus Körner (Papierfabrik Niederauer Mühle GmbH)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 (0) 2422 9494-0",
+        "email": "mail@niederauer-muehle.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_204",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.307440005833304,
+          50.902710002234016
+        ]
+      },
+      "properties": {
+        "name": "Frank Féron (Papierfabrik Zerkall GmbH - Werk Aldenhoven)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Im EZG des WVER,\nAnhang 28, AbwVO",
+        "phone": "+49 2464 - 99 130-0",
+        "email": "info@zerkall.com",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_205",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.447741997349302,
+          50.689314998428905
+        ]
+      },
+      "properties": {
+        "name": "Frank Féron (Papierfabrik Zerkall GmbH - Werk Zerkall)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Im EZG des WVER,\nAnhang 28, AbwVO",
+        "phone": "+49 2464 99 13 00",
+        "email": "info@zerkall.com",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_206",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.373073895626992,
+          50.91659859776186
+        ]
+      },
+      "properties": {
+        "name": "Heike Becker (Pfeifer & Langen GmbH & Co. KG - Werk Jülich)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2461 624-0",
+        "email": "juelich@pfeifer-langen.com",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_207",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.800351001919644,
+          50.99764000464636
+        ]
+      },
+      "properties": {
+        "name": "Elisa Haefele (Stadt Pulheim)",
+        "group": "Gebietskörperschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 2238 808355",
+        "email": "elisa.haefele@pulheim.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_208",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.127031993688151,
+          50.779147000451694
+        ]
+      },
+      "properties": {
+        "name": "Nico Hermanns (Region Aachen Zweckverband)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "haben sich bei uns gemeldet",
+        "phone": "+49 241 9278721-13",
+        "email": "hermanns@regionaachen.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_209",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.468844004321795,
+          50.81600900513741
+        ]
+      },
+      "properties": {
+        "name": "Tiemo Arndt (Reflex GmbH & Co. KG)",
+        "group": "Gewerbe/ Industrie",
+        "description": "",
+        "phone": "+49 2421 497 598",
+        "email": "Tiemo.arndt@reflex-paper.com",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_210",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.468844004321795,
+          50.81600900513741
+        ]
+      },
+      "properties": {
+        "name": "Frank Pütz (Reflex GmbH & Co. KG)",
+        "group": "Gewerbe/ Industrie",
+        "description": "im EZG des WVER",
+        "phone": "+49 2421 497 413",
+        "email": "Frank.puetz@reflex-paper.com",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_211",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9610019961502445,
+          50.93456199746558
+        ]
+      },
+      "properties": {
+        "name": "Rebecca Grunert (Region Köln/Bonn e.V.)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Kennengelernt beim Netzwerktreffen zu KOMM.RHEIN.REVIER",
+        "phone": "+49 221 925 477-53",
+        "email": "grunert@region-koeln-bonn.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_212",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9610019961502445,
+          50.93456199746558
+        ]
+      },
+      "properties": {
+        "name": "Marlon Müller (Region Köln/Bonn e.V.)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "",
+        "phone": "+49 221 925 477-67",
+        "email": "Mueller@region-koeln-bonn.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_213",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0598280029215195,
+          50.72117800411567
+        ]
+      },
+      "properties": {
+        "name": "Bernd Lüttgens (Rheinischer Landwirtschafts-Verband e.V.)",
+        "group": "Landwirtschaft",
+        "description": "",
+        "phone": "+49 228 52006 121",
+        "email": "bernd.luettgens@rlv.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_214",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0598280029215195,
+          50.72117800411567
+        ]
+      },
+      "properties": {
+        "name": "Wolfgang Patzlaff (Rheinischer Landwirtschafts-Verband e.V.)",
+        "group": "Landwirtschaft",
+        "description": "",
+        "phone": "+49 228 52006 172",
+        "email": "wolfgang.patzlaff@rlv.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_215",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0598280029215195,
+          50.72117800411567
+        ]
+      },
+      "properties": {
+        "name": "Heinz-Jürgen Zens (Rheinischer Landwirtschafts-Verband e.V.)",
+        "group": "Landwirtschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 228 52006 138",
+        "email": "Heinz-juergen.zens@rlv.de",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_216",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.195044005462653,
+          50.64761000458117
+        ]
+      },
+      "properties": {
+        "name": "Rainer Nießen (Gemeinde Roetgen)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2471 18-0",
+        "email": "info@roetgen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_217",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.695884006084197,
+          51.03600399854141
+        ]
+      },
+      "properties": {
+        "name": "Pauline Backes (Gemeinde Rommerskirchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2183 800 0",
+        "email": "pauline.backes@rommerskirchen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_218",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.695884006084197,
+          51.03600399854141
+        ]
+      },
+      "properties": {
+        "name": "Karolin Gathen (Gemeinde Rommerskirchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2183 800 16; +49 2183 800 0",
+        "email": "karolin.gathen@rommerskirchen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_219",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.695884006084197,
+          51.03600399854141
+        ]
+      },
+      "properties": {
+        "name": "Felix Hemmer (Gemeinde Rommerskirchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2183 800 0",
+        "email": "felix.hemmer@rommerskirchen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_220",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.695884006084197,
+          51.03600399854141
+        ]
+      },
+      "properties": {
+        "name": "Ulrike Neumann (Gemeinde Rommerskirchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2183 80031; +49 2183 800 0",
+        "email": "ulrike.neumann@rommerskirchen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_221",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.695884006084197,
+          51.03600399854141
+        ]
+      },
+      "properties": {
+        "name": "Florian Plück (Gemeinde Rommerskirchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2183 800 94; +49 2183 800 0",
+        "email": "florian.plueck@rommerskirchen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_222",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.695884006084197,
+          51.03600399854141
+        ]
+      },
+      "properties": {
+        "name": "Joachim Tiefenthal (Gemeinde Rommerskirchen)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2183 80017; +49 2183 800 0",
+        "email": "joachim.tiefenthal@rommerskirchen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_223",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.078552993371811,
+          50.77926600283405
+        ]
+      },
+      "properties": {
+        "name": "Clausen Elisabeth (RWTH Aachen University - Institut für Advanced Mining Technologies (AMT))",
+        "group": "Forschung",
+        "description": "",
+        "phone": "+49 241 80-95680",
+        "email": "eclausen@amt.rwth-aachen.de",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_224",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.067663002870716,
+          50.77953300420479
+        ]
+      },
+      "properties": {
+        "name": "Florian Achten (RWTH Aachen University - Institut für Siedlungswasserwirtschaft)",
+        "group": "Forschung",
+        "description": "Teil des Konsortiums",
+        "phone": "+49 241 80 23975",
+        "email": "F.Achten@isa.rwth-aachen.de",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_225",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.067663002870716,
+          50.77953300420479
+        ]
+      },
+      "properties": {
+        "name": "Thomas Wintgens (RWTH Aachen University - Institut für Siedlungswasserwirtschaft)",
+        "group": "Forschung",
+        "description": "Teil des Konsortiums",
+        "phone": "+49 241 80-25207",
+        "email": "wintgens@isa.rwth-aachen.de",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_227",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.082009996768572,
+          50.77580300169914
+        ]
+      },
+      "properties": {
+        "name": "Ayça Sancar (RWTH Aachen University - Institut für Landschaftsarchitektur)",
+        "group": "Forschung",
+        "description": "",
+        "phone": "+49 241 80-95032;\n+49 157 30967137",
+        "email": "asancar@la.rwth-aachen.de;\nayca.sancar@rwth-aachen.de",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_228",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.874167995406817,
+          51.42627700197096
+        ]
+      },
+      "properties": {
+        "name": "Leif Frederik Blum (RWW Rheinisch-Westfälische Wasserwerksgesellschaft mbH)",
+        "group": "Ver-/ Entsorger",
+        "description": "haben sich bei uns gemeldet",
+        "phone": "0172 6518277",
+        "email": "leif.blum@rww.de",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_229",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4795580000750395,
+          50.528956002401095
+        ]
+      },
+      "properties": {
+        "name": "Frederik Link (Stadt Schleiden)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2445 89-275",
+        "email": "frederik.link@schleiden.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_230",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487426998603715,
+          50.77701599992516
+        ]
+      },
+      "properties": {
+        "name": "Christoph Nahrath (SCHOELLERSHAMMER GmbH)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Mitglied beim WVER,\nAssoziierter Partner\n(LoI vom 03.03.2022 liegt vor)",
+        "phone": "+49 2421 557 272",
+        "email": "CNahrath@schoellershammer.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_231",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487426998603715,
+          50.77701599992516
+        ]
+      },
+      "properties": {
+        "name": "Armin Vetter (SCHOELLERSHAMMER GmbH)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Mitglied beim WVER,\nAssoziierter Partner\n(LoI vom 03.03.2022 liegt vor)",
+        "phone": "+49 2421 557-139",
+        "email": "avetter@schoellershammer.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_232",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487426998603715,
+          50.77701599992516
+        ]
+      },
+      "properties": {
+        "name": "Maren Wolf (SCHOELLERSHAMMER GmbH)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Mitglied beim WVER,\nAssoziierter Partner\n(LoI vom 03.03.2022 liegt vor)\nim Rahmen der Führung durch die Papierfabrik kennengelernt",
+        "phone": "+49 2421 557 222\n+49 174 3334172",
+        "email": "mwolf@schoellershammer.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_233",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.902080995652788,
+          51.015703003748015
+        ]
+      },
+      "properties": {
+        "name": "Gerard Küsters (Gemeinde Selfkant)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2456 499-0",
+        "email": "info@selfkant.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_234",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.275603190783867,
+          50.981336887409256
+        ]
+      },
+      "properties": {
+        "name": "Erich Kremp (SIG Combibloc GmbH)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2462 79 0",
+        "email": "erich.kremp@sig.biz",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_235",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.303847994927506,
+          50.606602998018374
+        ]
+      },
+      "properties": {
+        "name": "Bernd\nSander Goffart\nLutterbach (Gemeinde Simmerath)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2473 607-0",
+        "email": "gemeinde@simmerath.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_236",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.652299994739826,
+          50.705773001400665
+        ]
+      },
+      "properties": {
+        "name": "Jürgen Groth (Smurfit Westrock Zülpich Paper GmbH)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Assoziierter Partner\n(LoI liegt vor)",
+        "phone": "02252 306 1130",
+        "email": "Juergen.groth@smurfitwestrock.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_237",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.652299994739826,
+          50.705773001400665
+        ]
+      },
+      "properties": {
+        "name": "Patrick Offer (Smurfit Westrock Zülpich Paper GmbH)",
+        "group": "Gewerbe/ Industrie",
+        "description": "Assoziierter Partner\n(LoI liegt vor)\nNachfolger von Herrn Dr. Heberz",
+        "phone": "+49 2252 306-108",
+        "email": "Patrick.offer@smurfitwestrock.de",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_238",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.25539899857828,
+          50.75203699927471
+        ]
+      },
+      "properties": {
+        "name": "Arndt Bleimann (Stadt Stolberg)",
+        "group": "Gebietskörperschaft",
+        "description": "Termin über KAHR Projekt",
+        "phone": "+49 2402 13302",
+        "email": "Arndt.Bleimann@stolberg.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_239",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.25539899857828,
+          50.75203699927471
+        ]
+      },
+      "properties": {
+        "name": "Sophie Große-Oetringhaus (Stadt Stolberg)",
+        "group": "Gebietskörperschaft",
+        "description": "Zusammenarbeitim KAHR-Projekt, gemeinsame interdisziplinäre Studierendenarbeiten mit iPE",
+        "phone": "+49 2402 13434",
+        "email": "Sophie.Grosse-Oetringhaus@stolberg.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_240",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.25539899857828,
+          50.75203699927471
+        ]
+      },
+      "properties": {
+        "name": "Anette Kliems (Stadt Stolberg)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2402 13304",
+        "email": "Annette.Kliems@stolberg.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_241",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.25539899857828,
+          50.75203699927471
+        ]
+      },
+      "properties": {
+        "name": "Yannik Zohren (Stadt Stolberg)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2402 13676",
+        "email": "yannick.zohren@stolberg.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_242",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.424934996773038,
+          51.00335799734719
+        ]
+      },
+      "properties": {
+        "name": "Lucia Blender (Gemeinde Titz)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2463 9954211",
+        "email": "lucia.blender@titz.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_243",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.424934996773038,
+          51.00335799734719
+        ]
+      },
+      "properties": {
+        "name": "Yasmin Hucko (Gemeinde Titz)",
+        "group": "Gebietskörperschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 2463 9954212",
+        "email": "yasmin.hucko@titz.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_244",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.424934996773038,
+          51.00335799734719
+        ]
+      },
+      "properties": {
+        "name": "Jens Simon (Gemeinde Titz)",
+        "group": "Gebietskörperschaft",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2463 9954210",
+        "email": "jens.simon@titz.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_245",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.658797001420176,
+          49.8752769976867
+        ]
+      },
+      "properties": {
+        "name": "Antje Kersten (TU Darmstadt - Papierfabrikation und Mechanische Verfahrenstechnik)",
+        "group": "Forschung",
+        "description": "über Rosario Othen vermittelt",
+        "phone": "+49 6151 16-22637",
+        "email": "antje.kersten@tu-darmstadt.de",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_246",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.118750996918522,
+          50.91913899704941
+        ]
+      },
+      "properties": {
+        "name": "R. Mittelstaedt (Stadt Übach-Palenberg)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2451-979 6620",
+        "email": "r.mittelstaedt@uebach-palenberg.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_247",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.132031471214872,
+          51.05999297723656
+        ]
+      },
+      "properties": {
+        "name": "Dirk Cichy (Veolia Industriepark Deutschland GmbH)",
+        "group": "Ver-/ Entsorger",
+        "description": "Mitglied beim WVER",
+        "phone": "",
+        "email": "dirk.cichy@veolia.com",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_248",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.132031471214872,
+          51.05999297723656
+        ]
+      },
+      "properties": {
+        "name": "Anna Garipova (Veolia Industriepark Deutschland GmbH)",
+        "group": "Ver-/ Entsorger",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 151 55516196",
+        "email": "anna.garipova@veolia.com",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_249",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.132031471214872,
+          51.05999297723656
+        ]
+      },
+      "properties": {
+        "name": "Stefan Langer (Veolia Industriepark Deutschland GmbH)",
+        "group": "Ver-/ Entsorger",
+        "description": "Mit glied beim WVER;\nErste Kontaktaufnahme durch T. Wintgens  (ISA) im Februar 2022;\ndie Veolia Industriepark Deutschland GmbH ist Eigentümer/Betreiber des Industrieparks HS-Oberbruch sowie Betreiber des IPD",
+        "phone": "+49 2452 15 2693\n+49 172 36 25 753",
+        "email": "stefan.langer@veolia.com",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_250",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.60121700442202,
+          50.74250400481001
+        ]
+      },
+      "properties": {
+        "name": "Joachim Kunth (Gemeinde Vettweiß)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2424 209 0",
+        "email": "buergermeister@vettweiss.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_251",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.206135992885357,
+          50.66072700129587
+        ]
+      },
+      "properties": {
+        "name": "Walter Dautzenberg (Wassergewinnungs- u. -aufbereitungsgesellschaft Nordeifel mbH)",
+        "group": "Ver-/ Entsorger",
+        "description": "Mitglied beim WVER",
+        "phone": "02471 1300",
+        "email": "Walter.Dautzenberg@wag-nordeifel.de",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_252",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.980722812581418,
+          51.06741590943364
+        ]
+      },
+      "properties": {
+        "name": "Marcell Breuer (Gemeinde Waldfeucht)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2455 399-0",
+        "email": "gemeinde@waldfeucht.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_253",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.102748993108804,
+          50.778876004942724
+        ]
+      },
+      "properties": {
+        "name": "Janine Möller (Wasserhub Aachen)",
+        "group": "Forschung",
+        "description": "",
+        "phone": "",
+        "email": "janine.moeller@rwth-aachen.de",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_257",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.277196003850308,
+          51.14148500123546
+        ]
+      },
+      "properties": {
+        "name": "Jörg Krapoll (Stadt Wegberg)",
+        "group": "Gebietskörperschaft",
+        "description": "Erweiterter Verteiler blau-grüne Infrastruktur R. Hausmann",
+        "phone": "+49 2434 83-680",
+        "email": "joerg.krapoll@stadt.wegberg.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_258",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.845121993726548,
+          50.75249599772255
+        ]
+      },
+      "properties": {
+        "name": "Anna-Katharina Horst (Gemeinde Weilerswist)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2254 9600-0",
+        "email": "Gemeinde@weilerswist.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_259",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.981757003048151,
+          50.82781499652073
+        ]
+      },
+      "properties": {
+        "name": "A. Bedronka (Stadt Wesseling)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2236 701318",
+        "email": "Abedronka@wesseling.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_260",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.981757003048151,
+          50.82781499652073
+        ]
+      },
+      "properties": {
+        "name": "J. Forstner (Stadt Wesseling)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2236 701244",
+        "email": "Jforstner@wesseling.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_261",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.094212996370038,
+          51.0629089982431
+        ]
+      },
+      "properties": {
+        "name": "Matthias Pusch (Wirtschaftsfördergesellschaft für den Kreis Heinsberg mbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2452 1318-20",
+        "email": "pusch@wfg-kreis-heinsberg.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_262",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.470921005233685,
+          50.83133699707422
+        ]
+      },
+      "properties": {
+        "name": "Hannah Ruyters (WIN.DN GmbH - Wirtschafts- und Innovationsnetzwerk Düren)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2421 69540 28",
+        "email": "h.ruyters@windn.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_263",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.470921005233685,
+          50.83133699707422
+        ]
+      },
+      "properties": {
+        "name": "Julia Simons (WIN.DN GmbH - Wirtschafts- und Innovationsnetzwerk Düren)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2421 69540-26",
+        "email": "j.simons@windn.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_264",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.12998500695204,
+          50.81958099907437
+        ]
+      },
+      "properties": {
+        "name": "Heike Ohlmann (Stadt Würselen)",
+        "group": "Gebietskörperschaft",
+        "description": "Mitglied beim WVER",
+        "phone": "+49 2405 67-6000",
+        "email": "heike.ohlmann@wuerselen.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_265",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480183994931681,
+          50.80981099764889
+        ]
+      },
+      "properties": {
+        "name": "Gerd Demny (Wasserverband Eifel-Rur)",
+        "group": "Ver-/ Entsorger",
+        "description": "",
+        "phone": "02421 494 1400",
+        "email": "Gerd.Demny@wver.de",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_266",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480183994931681,
+          50.80981099764889
+        ]
+      },
+      "properties": {
+        "name": "Susanne Kozerke (Wasserverband Eifel-Rur)",
+        "group": "Ver-/ Entsorger",
+        "description": "",
+        "phone": "02421 494 1066",
+        "email": "Susanne.Kozerke@wver.de",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_267",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480183994931681,
+          50.80981099764889
+        ]
+      },
+      "properties": {
+        "name": "Torsten Rose (Wasserverband Eifel-Rur)",
+        "group": "Ver-/ Entsorger",
+        "description": "",
+        "phone": "02421 494 1150",
+        "email": "Torsten.Rose@wver.de",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_268",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.267913998040347,
+          50.582056000308775
+        ]
+      },
+      "properties": {
+        "name": "Gerhard Schmitz (Wasserversorgungszweckverband Perlenbach)",
+        "group": "Ver-/ Entsorger",
+        "description": "Mitglied beim WVER",
+        "phone": "02472 9916-12",
+        "email": "gerhard.schmitz@wasserwerk-perlenbach.de",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_269",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Michelle Belkarim (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2461 70396 72",
+        "email": "michelle.belkarim@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_270",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Annekatrin Dretzke (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2461 70396 25",
+        "email": "annekatrin.dretzke@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_271",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Carola Gather (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2461 70396 70",
+        "email": "carola.gather@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_272",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Susanne Hartig (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2461 70396 56",
+        "email": "susanne.hartig@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_273",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Ruth Hausmann (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "ZRR ist zentraler Akteur im RR; wird Keynote Speech halten",
+        "phone": "+49 2461 70396 45",
+        "email": "ruth.hausmann@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_274",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Pascal Pierre Janssen (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2461 70396-59",
+        "email": "pascal.janssen@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_275",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Julia Jungbluth (Zukunftsagentur Rheinisches Revier)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "0173 7070224",
+        "email": "julia@hock-y.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_276",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Thomas Kirschmeier (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Orga-Team Workshop",
+        "phone": "+49 2461 70396-60",
+        "email": "thomas.kirschmeier@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_277",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Nicole Krüttgen (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2461 70396-47",
+        "email": "nicole.kruettgen@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_278",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Diane Lieken (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Orga-Team Workshop",
+        "phone": "+49 2461 70396-31",
+        "email": "diane.lieken@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_279",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Ulrich Lingenberg (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2461 70396-55",
+        "email": "ulrich.lingenberg@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_280",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Vera Petzold (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2461 70396 71",
+        "email": "vera.petzold@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_281",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Nora Robertz-Peters (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2461 70396 32",
+        "email": "nora.robertz-peters@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_282",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Tobias Sannig (Zukunftsagentur Rheinisches Revier GmbH)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2461 70396 42",
+        "email": "tobias.sannig@rheinisches-revier.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_283",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.647691997856808,
+          50.69245699743169
+        ]
+      },
+      "properties": {
+        "name": "Jürgen Kremer (Stadt Zülpich)",
+        "group": "Gebietskörperschaft",
+        "description": "",
+        "phone": "+49 2252 52232",
+        "email": "Jkremer@stadt-zuelpich.de",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_284",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.390703994510381,
+          51.083150002770715
+        ]
+      },
+      "properties": {
+        "name": "Andreas Bräuer (Zweckverband LANDFOLGE Garzweiler)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2164 70366-21",
+        "email": "andreas.braeuer@landfolge.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_285",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.390703994510381,
+          51.083150002770715
+        ]
+      },
+      "properties": {
+        "name": "Bianca Linden (Zweckverband LANDFOLGE Garzweiler)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 174 2075977",
+        "email": "bianca.linden@landfolge.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_286",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.390703994510381,
+          51.083150002770715
+        ]
+      },
+      "properties": {
+        "name": "Jörg Meyer zu Altenschildesche (Zweckverband LANDFOLGE Garzweiler)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Mündliche Ergänzung Dinale Lieken (ZRR)",
+        "phone": "+49 2164 70366-26",
+        "email": "joerg.meyer@landfolge.de",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "excel_287",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.390703994510381,
+          51.083150002770715
+        ]
+      },
+      "properties": {
+        "name": "Nicole Weber (Zweckverband LANDFOLGE Garzweiler)",
+        "group": "Netzwerk/ Multiplikator",
+        "description": "Verteiler ZRR (K. Werken)",
+        "phone": "+49 2164 70366-28",
+        "email": "nicole.weber@landfolge.de",
+        "color": "#ff007f"
+      }
+    }
+  ]
+}

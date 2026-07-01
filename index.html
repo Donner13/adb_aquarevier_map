@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Map Visualizer - ADB AquaRevier</title>
+    
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <style>
+        :root {
+            --bg-base: #0b0f19;
+            --bg-surface: rgba(17, 24, 39, 0.75);
+            --bg-surface-hover: rgba(31, 41, 55, 0.85);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-primary: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.4);
+            
+            /* Group Colors (9 Groups from Excel/Screenshot) */
+            --color-behorde: #f43f5e;
+            --color-einzelakteure: #00f5d4;
+            --color-forschung: #3b82f6;
+            --color-gebietskorperschaft: #fbbf24;
+            --color-gewerbe: #d946ef;
+            --color-landwirtschaft: #10b981;
+            --color-netzwerk: #ff007f;
+            --color-sonstige: #8b5cf6;
+            --color-entsorger: #ff7300;
+        }
+
+        body.light-theme {
+            --bg-base: #f1f5f9;
+            --bg-surface: rgba(255, 255, 255, 0.85);
+            --bg-surface-hover: rgba(226, 232, 240, 0.95);
+            --border-color: rgba(0, 0, 0, 0.08);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-primary: #4f46e5;
+            --accent-glow: rgba(79, 70, 229, 0.2);
+        }
+
+        body.light-theme .form-row input,
+        body.light-theme .form-row select,
+        body.light-theme .form-row textarea,
+        body.light-theme .search-box input {
+            background: #ffffff;
+            color: #0f172a;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        body.light-theme .leaflet-popup-content-wrapper {
+            background: rgba(255, 255, 255, 0.95) !important;
+            color: #0f172a !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        body.light-theme .leaflet-popup-tip {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+        }
+
+        body.light-theme .popup-title {
+            color: #0f172a;
+        }
+
+        body.light-theme .leaflet-control-layers {
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: #0f172a !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+        }
+
+        body.light-theme .leaflet-control-layers-toggle {
+            filter: none;
+        }
+
+        body.light-theme .contact-item:hover {
+            background: var(--bg-surface-hover);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        #app-container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Sidebar Glassmorphism */
+        #sidebar {
+            width: 440px;
+            height: 100vh;
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        #map {
+            flex: 1;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        /* Header */
+        .sidebar-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a5b4fc, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+        }
+
+        .sidebar-header p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Scrollable content area */
+        .sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .sidebar-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+        .sidebar-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Filter Panel */
+        .section-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            color: var(--text-primary);
+            font-size: 11px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .filter-btn.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-behorde { background-color: var(--color-behorde); }
+        .dot-einzelakteure { background-color: var(--color-einzelakteure); }
+        .dot-forschung { background-color: var(--color-forschung); }
+        .dot-gebietskorperschaft { background-color: var(--color-gebietskorperschaft); }
+        .dot-gewerbe { background-color: var(--color-gewerbe); }
+        .dot-landwirtschaft { background-color: var(--color-landwirtschaft); }
+        .dot-netzwerk { background-color: var(--color-netzwerk); }
+        .dot-sonstige { background-color: var(--color-sonstige); }
+        .dot-entsorger { background-color: var(--color-entsorger); }
+
+        /* Search input */
+        .search-box {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 10px 16px;
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 13px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 8px var(--accent-glow);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .contacts-meta {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            text-align: right;
+        }
+
+        /* Contact cards / items */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 350px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .contact-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .contact-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: transparent;
+            transition: all 0.2s;
+        }
+
+        .contact-item.behörde::before { background-color: var(--color-behorde); }
+        .contact-item.einzelakteure::before { background-color: var(--color-einzelakteure); }
+        .contact-item.forschung::before { background-color: var(--color-forschung); }
+        .contact-item.gebietskörperschaft::before { background-color: var(--color-gebietskorperschaft); }
+        .contact-item.gewerbe/_industrie::before { background-color: var(--color-gewerbe); }
+        .contact-item.landwirtschaft::before { background-color: var(--color-landwirtschaft); }
+        .contact-item.netzwerk/_multiplikator::before { background-color: var(--color-netzwerk); }
+        .contact-item.sonstige::before { background-color: var(--color-sonstige); }
+        .contact-item.ver-/_entsorger::before { background-color: var(--color-entsorger); }
+
+        .contact-item:hover {
+            background: var(--bg-surface-hover);
+            transform: translateX(4px);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-name {
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-name span:first-child {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 250px;
+        }
+
+        .contact-group-badge {
+            font-size: 9px;
+            padding: 1px 5px;
+            border-radius: 10px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .badge-behörde { background: rgba(244, 63, 94, 0.15); color: var(--color-behorde); }
+        .badge-einzelakteure { background: rgba(0, 245, 212, 0.15); color: var(--color-einzelakteure); }
+        .badge-forschung { background: rgba(59, 130, 246, 0.15); color: var(--color-forschung); }
+        .badge-gebietskörperschaft { background: rgba(251, 191, 36, 0.15); color: var(--color-gebietskorperschaft); }
+        .badge-gewerbe { background: rgba(217, 70, 239, 0.15); color: var(--color-gewerbe); }
+        .badge-landwirtschaft { background: rgba(16, 185, 129, 0.15); color: var(--color-landwirtschaft); }
+        .badge-netzwerk { background: rgba(255, 0, 127, 0.15); color: var(--color-netzwerk); }
+        .badge-sonstige { background: rgba(139, 92, 246, 0.15); color: var(--color-sonstige); }
+        .badge-entsorger { background: rgba(255, 115, 0, 0.15); color: var(--color-entsorger); }
+
+        .contact-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .contact-coords {
+            font-size: 10px;
+            color: var(--text-secondary);
+            font-family: monospace;
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Form styling */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .form-title {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-row {
+            margin-bottom: 10px;
+        }
+
+        .form-row label {
+            display: block;
+            font-size: 10px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .form-row input, .form-row select, .form-row textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            padding: 8px 10px;
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 13px;
+            outline: none;
+        }
+
+        .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+            border-color: var(--accent-primary);
+        }
+
+        .coord-inputs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .coord-inputs > div {
+            flex: 1;
+        }
+
+        .btn {
+            background: var(--accent-primary);
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: #4f46e5;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            margin-top: 6px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            margin-top: 6px;
+        }
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        /* Map Controls Popup Styling */
+        .leaflet-popup-content-wrapper {
+            background: rgba(15, 23, 42, 0.9) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            border: 1px solid var(--border-color) !important;
+            color: var(--text-primary) !important;
+            border-radius: 12px !important;
+            padding: 6px;
+        }
+
+        .leaflet-popup-tip {
+            background: rgba(15, 23, 42, 0.9) !important;
+            border: 1px solid var(--border-color) !important;
+        }
+
+        .popup-card {
+            min-width: 220px;
+        }
+
+        .popup-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .popup-group {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .popup-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .popup-detail {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .popup-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .popup-btn {
+            flex: 1;
+            padding: 4px 8px;
+            font-size: 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .popup-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .info-msg {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            border: 1px dashed var(--border-color);
+        }
+
+        /* QGIS WMS Layer attribution style */
+        .leaflet-control-layers {
+            background: rgba(15, 23, 42, 0.85) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid var(--border-color) !important;
+            color: var(--text-primary) !important;
+            border-radius: 8px !important;
+            padding: 8px !important;
+        }
+        .leaflet-control-layers-toggle {
+            filter: invert(1);
+        }
+    </style>
+</head>
+<body>
+    <div id="app-container">
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="sidebar-header">
+                <div>
+                    <h1>ADB AquaRevier Map</h1>
+                    <p>Visualisiere und verwalte die regionalen Akteure</p>
+                </div>
+                <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln">
+                    ☀️
+                </button>
+            </div>
+            
+            <div class="sidebar-content">
+                <!-- Group Filters -->
+                <div>
+                    <div class="section-title">Gruppen-Filter</div>
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-group="all">Alle</button>
+                        <button class="filter-btn active" data-group="Behörde">
+                            <span class="dot dot-behorde"></span> Behörde
+                        </button>
+                        <button class="filter-btn active" data-group="Einzelakteure">
+                            <span class="dot dot-einzelakteure"></span> Einzelakteure
+                        </button>
+                        <button class="filter-btn active" data-group="Forschung">
+                            <span class="dot dot-forschung"></span> Forschung
+                        </button>
+                        <button class="filter-btn active" data-group="Gebietskörperschaft">
+                            <span class="dot dot-gebietskorperschaft"></span> Gebietskörperschaft
+                        </button>
+                        <button class="filter-btn active" data-group="Gewerbe/ Industrie">
+                            <span class="dot dot-gewerbe"></span> Gewerbe/ Industrie
+                        </button>
+                        <button class="filter-btn active" data-group="Landwirtschaft">
+                            <span class="dot dot-landwirtschaft"></span> Landwirtschaft
+                        </button>
+                        <button class="filter-btn active" data-group="Netzwerk/ Multiplikator">
+                            <span class="dot dot-netzwerk"></span> Netzwerk/ Mult.
+                        </button>
+                        <button class="filter-btn active" data-group="Ver-/ Entsorger">
+                            <span class="dot dot-entsorger"></span> Ver-/ Entsorger
+                        </button>
+                        <button class="filter-btn active" data-group="Sonstige">
+                            <span class="dot dot-sonstige"></span> Sonstige
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search -->
+                <div>
+                    <div class="section-title">Akteure Suchen</div>
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Nach Akteur, Ort oder Kommentar suchen...">
+                    </div>
+                    <div class="contacts-meta" id="contacts-count">0 von 0 Kontakten angezeigt</div>
+                    <div class="contact-list" id="contact-list-container">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <!-- Form Panel -->
+                <div class="glass-panel" id="editor-panel">
+                    <div class="form-title">
+                        <span id="form-action-title">Neuen Kontakt erstellen</span>
+                        <button class="filter-btn" id="btn-cancel-edit" style="display:none; padding: 2px 8px;">Abbrechen</button>
+                    </div>
+                    
+                    <input type="hidden" id="contact-id">
+                    
+                    <div class="form-row">
+                        <label for="contact-name">Name / Institution</label>
+                        <input type="text" id="contact-name" placeholder="z. B. LANUV NRW" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <label for="contact-group">Gruppe</label>
+                        <select id="contact-group">
+                            <option value="Behörde">Behörde</option>
+                            <option value="Einzelakteure">Einzelakteure</option>
+                            <option value="Forschung">Forschung</option>
+                            <option value="Gebietskörperschaft">Gebietskörperschaft</option>
+                            <option value="Gewerbe/ Industrie">Gewerbe/ Industrie</option>
+                            <option value="Landwirtschaft">Landwirtschaft</option>
+                            <option value="Netzwerk/ Multiplikator">Netzwerk/ Multiplikator</option>
+                            <option value="Ver-/ Entsorger">Ver-/ Entsorger</option>
+                            <option value="Sonstige" selected>Sonstige</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label>Koordinaten (Klicke auf die Karte)</label>
+                        <div class="coord-inputs">
+                            <div>
+                                <label style="font-size:9px; color:var(--text-secondary);">Breitengrad (Lat)</label>
+                                <input type="number" step="any" id="contact-lat" placeholder="51.0" required>
+                            </div>
+                            <div>
+                                <label style="font-size:9px; color:var(--text-secondary);">Längengrad (Lng)</label>
+                                <input type="number" step="any" id="contact-lng" placeholder="6.5" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="contact-desc">Kommentar / Beschreibung</label>
+                        <textarea id="contact-desc" rows="2" placeholder="Notizen..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="contact-phone">Telefon</label>
+                        <input type="text" id="contact-phone" placeholder="Telefonnummer...">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="contact-email">E-Mail</label>
+                        <input type="email" id="contact-email" placeholder="E-Mail-Adresse...">
+                    </div>
+
+                    <button class="btn" id="btn-save-contact">Speichern</button>
+                    <button class="btn btn-danger" id="btn-delete-contact" style="display:none;">Kontakt löschen</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map -->
+        <div id="map"></div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <script>
+        // Group Color Map
+        const groupColors = {
+            'Behörde': '#f43f5e',
+            'Einzelakteure': '#00f5d4',
+            'Forschung': '#3b82f6',
+            'Gebietskörperschaft': '#fbbf24',
+            'Gewerbe/ Industrie': '#d946ef',
+            'Landwirtschaft': '#10b981',
+            'Netzwerk/ Multiplikator': '#ff007f',
+            'Ver-/ Entsorger': '#ff7300',
+            'Sonstige': '#8b5cf6'
+        };
+
+        // Initialize Map centered on NRW (Düsseldorf / Aachen area)
+        const map = L.map('map', {
+            zoomControl: false
+        }).setView([51.15, 6.75], 9);
+
+        // Position Zoom Control
+        L.control.zoom({
+            position: 'bottomright'
+        }).addTo(map);
+
+        // 1. Base Map: CartoDB Dark Matter
+        const baseDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(map);
+
+        // 2. Base Map: OpenStreetMap Standard
+        const baseOsm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+
+        // 3. Base Map: WebAtlasDE NRW (Official Base Map from Geobasis NRW)
+        const baseWebAtlas = L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_webatlasde", {
+            layers: 'webatlasde',
+            format: 'image/png',
+            transparent: false,
+            attribution: "Geobasis NRW"
+        });
+
+        // 4. Overlays: NRW Administrative Boundaries (Landkreisgrenzen & Landesgrenze)
+        const wmsBorders = L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_dvg", {
+            layers: 'nw_dvg_la,nw_dvg_k', // Landesgrenze (la) und Kreisgrenzen (k)
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.6,
+            attribution: "Geobasis NRW"
+        }).addTo(map); // default enabled
+
+        // 5. Overlays: NRW Rivers and Lakes (Gewässernetz)
+        const wmsRivers = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
+            layers: 'gsk3e_hauptgewaesser_seen,gsk3e_hauptgewaesser_linien',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.8,
+            attribution: "LANUV NRW"
+        }).addTo(map); // default enabled
+
+        // 6. Overlays: Tagebaue / Bergbauberechtigungen Gewinnung (GD NRW)
+        const wmsMining = L.tileLayer.wms("https://www.wms.nrw.de/gd/wms_nw_bergbauberechtigungen", {
+            layers: 'nw_bergbauberechtigungen_gewinnend',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.5,
+            attribution: "GD NRW"
+        }).addTo(map); // default enabled
+
+        // 7. Overlays: Wasserschutzgebiete gesamt (LANUV NRW)
+        const wmsWSG = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/wsg", {
+            layers: 'wsg_festgesetzt_gesamt',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.45,
+            attribution: "LANUV NRW"
+        }); // default disabled (can be enabled via controller)
+
+        // Map layer controller
+        const baseMaps = {
+            "Dunkles Design (Standard)": baseDark,
+            "OpenStreetMap": baseOsm,
+            "WebAtlasDE NRW (Offiziell)": baseWebAtlas
+        };
+
+        const overlayMaps = {
+            "NRW Landkreise & Grenzen": wmsBorders,
+            "Flüsse & Gewässer (LANUV)": wmsRivers,
+            "Tagebaue & Bergbaufelder (GD)": wmsMining,
+            "Wasserschutzgebiete (LANUV)": wmsWSG
+        };
+
+        L.control.layers(baseMaps, overlayMaps, { position: 'topright' }).addTo(map);
+
+        // Contacts State
+        let geojsonData = { type: "FeatureCollection", features: [] };
+        let activeFilters = new Set(Object.keys(groupColors));
+        let markersLayer = L.layerGroup().addTo(map);
+        let selectedCoordsMarker = null;
+
+        // Fetch contacts
+        async function loadContacts() {
+            try {
+                const res = await fetch('/contacts.geojson');
+                if (res.ok) {
+                    geojsonData = await res.json();
+                    renderMapAndSidebar();
+                }
+            } catch (err) {
+                console.error("Error loading contacts:", err);
+            }
+        }
+
+        // Save contacts
+        async function saveContacts() {
+            try {
+                const res = await fetch('/api/contacts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(geojsonData)
+                });
+                if (res.ok) {
+                    resetForm();
+                    await loadContacts();
+                } else {
+                    alert("Fehler beim Speichern der Kontakte.");
+                }
+            } catch (err) {
+                console.error("Error saving contacts:", err);
+            }
+        }
+
+        // Custom marker generator
+        function createCustomMarker(lat, lng, color, name) {
+            const size = 14;
+            const border = 2.5;
+            const html = `
+                <div style="
+                    width: ${size}px;
+                    height: ${size}px;
+                    background-color: ${color};
+                    border: ${border}px solid #ffffff;
+                    border-radius: 50%;
+                    box-shadow: 0 0 8px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                "></div>
+            `;
+            const icon = L.divIcon({
+                html: html,
+                className: 'custom-map-marker',
+                iconSize: [size, size],
+                iconAnchor: [size / 2, size / 2]
+            });
+
+            return L.marker([lat, lng], { icon: icon });
+        }
+
+        // Render Sidebar and Markers
+        function renderMapAndSidebar() {
+            markersLayer.clearLayers();
+            const listContainer = document.getElementById('contact-list-container');
+            listContainer.innerHTML = '';
+
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+
+            // Filter features
+            const filteredFeatures = geojsonData.features.filter(feature => {
+                const props = feature.properties;
+                const matchesFilter = activeFilters.has(props.group);
+                
+                const matchesSearch = !searchQuery || 
+                    props.name.toLowerCase().includes(searchQuery) ||
+                    (props.description && props.description.toLowerCase().includes(searchQuery)) ||
+                    (props.email && props.email.toLowerCase().includes(searchQuery)) ||
+                    props.group.toLowerCase().includes(searchQuery);
+                    
+                return matchesFilter && matchesSearch;
+            });
+
+            // Update Counter
+            document.getElementById('contacts-count').innerText = 
+                `${filteredFeatures.length} von ${geojsonData.features.length} Kontakten angezeigt`;
+
+            if (filteredFeatures.length === 0) {
+                listContainer.innerHTML = `<div class="info-msg">Keine Kontakte entsprechen den Kriterien</div>`;
+            }
+
+            filteredFeatures.forEach(feature => {
+                const [lng, lat] = feature.geometry.coordinates;
+                const props = feature.properties;
+                const color = groupColors[props.group] || '#8b5cf6';
+
+                // Add Marker to Map
+                const marker = createCustomMarker(lat, lng, color, props.name);
+                
+                const popupContent = `
+                    <div class="popup-card">
+                        <div class="popup-group" style="color: ${color}">${props.group}</div>
+                        <div class="popup-title">${props.name}</div>
+                        ${props.description ? `<div class="popup-desc">${props.description}</div>` : ''}
+                        ${props.phone ? `<div class="popup-detail">📞 ${props.phone}</div>` : ''}
+                        ${props.email ? `<div class="popup-detail">✉️ ${props.email}</div>` : ''}
+                        <div class="popup-detail" style="font-family: monospace; font-size:10px; margin-top: 6px;">
+                            📍 ${lat.toFixed(6)}, ${lng.toFixed(6)}
+                        </div>
+                        <div class="popup-actions">
+                            <button class="popup-btn" onclick="editContact('${feature.id}')">Bearbeiten</button>
+                            <button class="popup-btn" onclick="focusContact(${lat}, ${lng}, true)">Zentrieren</button>
+                        </div>
+                    </div>
+                `;
+                marker.bindPopup(popupContent);
+                markersLayer.addLayer(marker);
+
+                // Add Item to Sidebar
+                const item = document.createElement('div');
+                // replace spaces and slashes for css class name matching
+                const safeGroupClass = props.group.toLowerCase().replace(/[\s\/]/g, '_');
+                item.className = `contact-item ${safeGroupClass}`;
+                item.innerHTML = `
+                    <div class="contact-name">
+                        <span>${props.name}</span>
+                        <span class="contact-group-badge badge-${props.group.toLowerCase().split('/')[0].trim().replace(/\s/g, '')}">${props.group}</span>
+                    </div>
+                    ${props.description ? `<div class="contact-desc">${props.description}</div>` : '<div class="contact-desc" style="font-style:italic;">Keine Notiz</div>'}
+                    <div class="contact-coords">
+                        <span>Lat: ${lat.toFixed(4)}</span>
+                        <span>Lng: ${lng.toFixed(4)}</span>
+                    </div>
+                `;
+
+                item.addEventListener('click', () => {
+                    focusContact(lat, lng);
+                    marker.openPopup();
+                });
+
+                listContainer.appendChild(item);
+            });
+        }
+
+        // Map Click handler to select coordinates
+        map.on('click', function(e) {
+            const lat = e.latlng.lat;
+            const lng = e.latlng.lng;
+
+            document.getElementById('contact-lat').value = lat.toFixed(6);
+            document.getElementById('contact-lng').value = lng.toFixed(6);
+
+            // Add marker helper
+            if (selectedCoordsMarker) {
+                map.removeLayer(selectedCoordsMarker);
+            }
+            selectedCoordsMarker = L.circleMarker([lat, lng], {
+                radius: 10,
+                color: '#6366f1',
+                fillColor: '#6366f1',
+                fillOpacity: 0.4,
+                weight: 2
+            }).addTo(map);
+        });
+
+        // Focus contact
+        function focusContact(lat, lng, zoomIn = false) {
+            map.panTo([lat, lng]);
+            if (zoomIn) {
+                map.setZoom(14);
+            }
+        }
+
+        // Edit contact launcher
+        window.editContact = function(id) {
+            const feature = geojsonData.features.find(f => f.id === id);
+            if (!feature) return;
+
+            document.getElementById('contact-id').value = feature.id;
+            document.getElementById('contact-name').value = feature.properties.name;
+            document.getElementById('contact-group').value = feature.properties.group;
+            document.getElementById('contact-lat').value = feature.geometry.coordinates[1];
+            document.getElementById('contact-lng').value = feature.geometry.coordinates[0];
+            document.getElementById('contact-desc').value = feature.properties.description || '';
+            document.getElementById('contact-phone').value = feature.properties.phone || '';
+            document.getElementById('contact-email').value = feature.properties.email || '';
+
+            document.getElementById('form-action-title').innerText = "Kontakt bearbeiten";
+            document.getElementById('btn-cancel-edit').style.display = "block";
+            document.getElementById('btn-delete-contact').style.display = "block";
+
+            if (selectedCoordsMarker) map.removeLayer(selectedCoordsMarker);
+            selectedCoordsMarker = L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], {
+                radius: 10,
+                color: '#fbbf24',
+                fillColor: '#fbbf24',
+                fillOpacity: 0.4,
+                weight: 2
+            }).addTo(map);
+
+            map.closePopup();
+        };
+
+        // Reset form
+        function resetForm() {
+            document.getElementById('contact-id').value = '';
+            document.getElementById('contact-name').value = '';
+            document.getElementById('contact-group').value = 'Sonstige';
+            document.getElementById('contact-lat').value = '';
+            document.getElementById('contact-lng').value = '';
+            document.getElementById('contact-desc').value = '';
+            document.getElementById('contact-phone').value = '';
+            document.getElementById('contact-email').value = '';
+
+            document.getElementById('form-action-title').innerText = "Neuen Kontakt erstellen";
+            document.getElementById('btn-cancel-edit').style.display = "none";
+            document.getElementById('btn-delete-contact').style.display = "none";
+
+            if (selectedCoordsMarker) {
+                map.removeLayer(selectedCoordsMarker);
+                selectedCoordsMarker = null;
+            }
+        }
+
+        // Save
+        document.getElementById('btn-save-contact').addEventListener('click', () => {
+            const name = document.getElementById('contact-name').value.trim();
+            const group = document.getElementById('contact-group').value;
+            const latStr = document.getElementById('contact-lat').value;
+            const lngStr = document.getElementById('contact-lng').value;
+            const desc = document.getElementById('contact-desc').value.trim();
+            const phone = document.getElementById('contact-phone').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const id = document.getElementById('contact-id').value;
+
+            if (!name || !latStr || !lngStr) {
+                alert("Bitte Name, Breitengrad und Längengrad ausfüllen!");
+                return;
+            }
+
+            const lat = parseFloat(latStr);
+            const lng = parseFloat(lngStr);
+
+            if (id) {
+                const feature = geojsonData.features.find(f => f.id === id);
+                if (feature) {
+                    feature.geometry.coordinates = [lng, lat];
+                    feature.properties = {
+                        name,
+                        group,
+                        description: desc,
+                        phone,
+                        email,
+                        color: groupColors[group] || '#8b5cf6'
+                    };
+                }
+            } else {
+                const newFeature = {
+                    type: "Feature",
+                    id: Date.now().toString(),
+                    geometry: {
+                        type: "Point",
+                        coordinates: [lng, lat]
+                    },
+                    properties: {
+                        name,
+                        group,
+                        description: desc,
+                        phone,
+                        email,
+                        color: groupColors[group] || '#8b5cf6'
+                    }
+                };
+                geojsonData.features.push(newFeature);
+            }
+
+            saveContacts();
+        });
+
+        // Delete
+        document.getElementById('btn-delete-contact').addEventListener('click', () => {
+            const id = document.getElementById('contact-id').value;
+            if (!id) return;
+
+            if (confirm("Möchtest du diesen Kontakt wirklich löschen?")) {
+                geojsonData.features = geojsonData.features.filter(f => f.id !== id);
+                saveContacts();
+            }
+        });
+
+        // Cancel
+        document.getElementById('btn-cancel-edit').addEventListener('click', resetForm);
+
+        // Filter button toggle logic
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const group = btn.getAttribute('data-group');
+                if (!group) return;
+
+                if (group === 'all') {
+                    const isAnyInactive = activeFilters.size < Object.keys(groupColors).length;
+                    document.querySelectorAll('.filter-btn[data-group]').forEach(b => {
+                        const bg = b.getAttribute('data-group');
+                        if (bg === 'all') return;
+                        if (isAnyInactive) {
+                            b.classList.add('active');
+                            activeFilters.add(bg);
+                        } else {
+                            b.classList.remove('active');
+                            activeFilters.delete(bg);
+                        }
+                    });
+                } else {
+                    if (activeFilters.has(group)) {
+                        activeFilters.delete(group);
+                        btn.classList.remove('active');
+                    } else {
+                        activeFilters.add(group);
+                        btn.classList.add('active');
+                    }
+                }
+                
+                // Update All btn active state
+                const allBtn = document.querySelector('.filter-btn[data-group="all"]');
+                if (activeFilters.size === Object.keys(groupColors).length) {
+                    allBtn.classList.add('active');
+                } else {
+                    allBtn.classList.remove('active');
+                }
+
+                renderMapAndSidebar();
+            });
+        });
+
+        // Search trigger
+        document.getElementById('search-input').addEventListener('input', renderMapAndSidebar);
+
+        // Theme Toggle Logic
+        // 1. Base Map: CartoDB Light/Positron (For Light Mode)
+        const baseLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        });
+
+        // Add Positron to map layers list
+        baseMaps["Helles Design"] = baseLight;
+
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        // Load initial theme state (default is dark mode)
+        let isDarkMode = true;
+
+        themeToggle.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            if (isDarkMode) {
+                document.body.classList.remove('light-theme');
+                themeToggle.innerText = '☀️';
+                
+                // Swap Leaflet layer
+                if (map.hasLayer(baseLight)) {
+                    map.removeLayer(baseLight);
+                }
+                baseDark.addTo(map);
+            } else {
+                document.body.classList.add('light-theme');
+                themeToggle.innerText = '🌙';
+                
+                // Swap Leaflet layer
+                if (map.hasLayer(baseDark)) {
+                    map.removeLayer(baseDark);
+                }
+                baseLight.addTo(map);
+            }
+        });
+
+        // Initial Load
+        loadContacts();
+    </script>
+</body>
+</html>
