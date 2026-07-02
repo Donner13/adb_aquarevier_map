@@ -563,6 +563,69 @@
         .leaflet-control-layers-toggle {
             filter: invert(1);
         }
+
+        /* Password Screen Overlay */
+        #password-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #090d16;
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .password-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 30px 40px;
+            border-radius: 16px;
+            width: 420px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+        .password-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #a5b4fc, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .password-card p {
+            color: #9ca3af;
+            font-size: 13px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .password-card input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            text-align: center;
+            outline: none;
+            margin-bottom: 12px;
+            transition: all 0.2s;
+        }
+        .password-card input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+        }
+        .password-error {
+            color: #f43f5e;
+            font-size: 12px;
+            margin-bottom: 12px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -688,11 +751,31 @@
                     <button class="btn" id="btn-save-contact">Speichern</button>
                     <button class="btn btn-danger" id="btn-delete-contact" style="display:none;">Kontakt löschen</button>
                 </div>
+
+                <!-- Export Panel -->
+                <div class="glass-panel" style="margin-top: 10px;">
+                    <div class="section-title">Daten verwalten (Backup)</div>
+                    <button class="btn btn-secondary" id="btn-export-geojson">💾 Kontakte Exportieren (.geojson)</button>
+                    <div style="font-size: 10px; color: var(--text-secondary); margin-top: 8px; line-height: 1.4;">
+                        Exportiere deine bearbeiteten Kontakte als GeoJSON-Datei, um sie lokal in QGIS zu öffnen oder das Deployment zu aktualisieren.
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Map -->
         <div id="map"></div>
+    </div>
+
+    <!-- Password Overlay -->
+    <div id="password-screen">
+        <div class="password-card">
+            <h2>ADB AquaRevier Map</h2>
+            <p>Diese Karte enthält sensible personenbezogene Daten und ist gemäß DSGVO passwortgeschützt.</p>
+            <input type="password" id="map-password" placeholder="Passwort eingeben..." autofocus>
+            <div class="password-error" id="password-error-msg">Ungültiges Passwort! Bitte versuche es erneut.</div>
+            <button class="btn" id="btn-decrypt-map">Karte entschlüsseln</button>
+        </div>
     </div>
 
     <!-- Leaflet JS -->
@@ -799,36 +882,169 @@
         let activeFilters = new Set(Object.keys(groupColors));
         let markersLayer = L.layerGroup().addTo(map);
         let selectedCoordsMarker = null;
+        let derivedKey = null;
+        let currentPassword = "";
 
-        // Fetch contacts
-        async function loadContacts() {
+        // Helper to convert base64 to Uint8Array
+        function base64ToBytes(base64) {
+            const binString = atob(base64.trim());
+            return Uint8Array.from(binString, m => m.charCodeAt(0));
+        }
+
+        // Helper to convert Uint8Array to base64
+        function bytesToBase64(bytes) {
+            const binString = Array.from(bytes, byte => String.fromCharCode(byte)).join("");
+            return btoa(binString);
+        }
+
+        // Decrypt AES-256-GCM data using PBKDF2 derived key
+        async function decryptAESGCM(base64Data, password) {
+            const bytes = base64ToBytes(base64Data);
+            const salt = bytes.slice(0, 16);
+            const iv = bytes.slice(16, 28);
+            const authTag = bytes.slice(28, 44);
+            const ciphertext = bytes.slice(44);
+
+            const encryptedData = new Uint8Array(ciphertext.length + authTag.length);
+            encryptedData.set(ciphertext, 0);
+            encryptedData.set(authTag, ciphertext.length);
+
+            const enc = new TextEncoder();
+            const keyMaterial = await window.crypto.subtle.importKey(
+                "raw",
+                enc.encode(password),
+                { name: "PBKDF2" },
+                false,
+                ["deriveKey"]
+            );
+
+            const key = await window.crypto.subtle.deriveKey(
+                {
+                    name: "PBKDF2",
+                    salt: salt,
+                    iterations: 100000,
+                    hash: "SHA-256"
+                },
+                keyMaterial,
+                { name: "AES-GCM", length: 256 },
+                false,
+                ["decrypt"]
+            );
+
+            derivedKey = key;
+
+            const decrypted = await window.crypto.subtle.decrypt(
+                { name: "AES-GCM", iv: iv, tagLength: 128 },
+                key,
+                encryptedData
+            );
+
+            const dec = new TextDecoder();
+            return JSON.parse(dec.decode(decrypted));
+        }
+
+        // Encrypt plainText (JSON string) using password (for localStorage persistence)
+        async function encryptAESGCM(plainText, password) {
+            const salt = window.crypto.getRandomValues(new Uint8Array(16));
+            const iv = window.crypto.getRandomValues(new Uint8Array(12));
+
+            const enc = new TextEncoder();
+            const keyMaterial = await window.crypto.subtle.importKey(
+                "raw",
+                enc.encode(password),
+                { name: "PBKDF2" },
+                false,
+                ["deriveKey"]
+            );
+
+            const key = await window.crypto.subtle.deriveKey(
+                {
+                    name: "PBKDF2",
+                    salt: salt,
+                    iterations: 100000,
+                    hash: "SHA-256"
+                },
+                keyMaterial,
+                { name: "AES-GCM", length: 256 },
+                false,
+                ["encrypt"]
+            );
+
+            const encrypted = await window.crypto.subtle.encrypt(
+                { name: "AES-GCM", iv: iv, tagLength: 128 },
+                key,
+                enc.encode(plainText)
+            );
+
+            const encryptedBytes = new Uint8Array(encrypted);
+            const tagLength = 16;
+            const ciphertextBytes = encryptedBytes.slice(0, encryptedBytes.length - tagLength);
+            const authTagBytes = encryptedBytes.slice(encryptedBytes.length - tagLength);
+
+            const combined = new Uint8Array(salt.length + iv.length + authTagBytes.length + ciphertextBytes.length);
+            combined.set(salt, 0);
+            combined.set(iv, salt.length);
+            combined.set(authTagBytes, salt.length + iv.length);
+            combined.set(ciphertextBytes, salt.length + iv.length + authTagBytes.length);
+
+            return bytesToBase64(combined);
+        }
+
+        // Fetch & decrypt contacts
+        async function loadContacts(password) {
             try {
-                const res = await fetch('contacts.geojson');
-                if (res.ok) {
-                    geojsonData = await res.json();
-                    renderMapAndSidebar();
+                // Check if there is an encrypted database in local storage
+                const localEncrypted = localStorage.getItem('contacts_local_enc');
+                if (localEncrypted) {
+                    try {
+                        geojsonData = await decryptAESGCM(localEncrypted, password);
+                        currentPassword = password;
+                        document.getElementById('password-screen').style.opacity = '0';
+                        setTimeout(() => {
+                            document.getElementById('password-screen').style.visibility = 'hidden';
+                        }, 500);
+                        renderMapAndSidebar();
+                        return true;
+                    } catch (err) {
+                        console.warn("Local storage decryption failed. Falling back to server database...", err);
+                    }
                 }
+
+                // Fetch remote encrypted database
+                const res = await fetch('contacts.enc');
+                if (!res.ok) {
+                    throw new Error("contacts.enc not found on server.");
+                }
+                const encryptedBase64 = await res.text();
+                geojsonData = await decryptAESGCM(encryptedBase64, password);
+                currentPassword = password;
+                
+                // Hide overlay
+                document.getElementById('password-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('password-screen').style.visibility = 'hidden';
+                }, 500);
+
+                renderMapAndSidebar();
+                return true;
             } catch (err) {
-                console.error("Error loading contacts:", err);
+                console.error("Decryption failed:", err);
+                document.getElementById('password-error-msg').style.display = 'block';
+                return false;
             }
         }
 
-        // Save contacts
+        // Save contacts to LocalStorage (encrypted)
         async function saveContacts() {
             try {
-                const res = await fetch('/api/contacts', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(geojsonData)
-                });
-                if (res.ok) {
-                    resetForm();
-                    await loadContacts();
-                } else {
-                    alert("Fehler beim Speichern der Kontakte.");
-                }
+                const plainText = JSON.stringify(geojsonData);
+                const encryptedBase64 = await encryptAESGCM(plainText, currentPassword);
+                localStorage.setItem('contacts_local_enc', encryptedBase64);
+                resetForm();
+                renderMapAndSidebar();
             } catch (err) {
-                console.error("Error saving contacts:", err);
+                console.error("Error saving contacts locally:", err);
+                alert("Fehler beim lokalen Speichern der Daten.");
             }
         }
 
@@ -1171,8 +1387,37 @@
             }
         });
 
-        // Initial Load
-        loadContacts();
+        // Decrypt Trigger
+        document.getElementById('btn-decrypt-map').addEventListener('click', async () => {
+            const pass = document.getElementById('map-password').value;
+            if (!pass) return;
+            const success = await loadContacts(pass);
+            if (success) {
+                document.getElementById('map-password').value = "";
+            }
+        });
+
+        document.getElementById('map-password').addEventListener('keypress', async (e) => {
+            if (e.key === 'Enter') {
+                const pass = document.getElementById('map-password').value;
+                if (!pass) return;
+                const success = await loadContacts(pass);
+                if (success) {
+                    document.getElementById('map-password').value = "";
+                }
+            }
+        });
+
+        // Export Trigger
+        document.getElementById('btn-export-geojson').addEventListener('click', () => {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(geojsonData, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "contacts.geojson");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        });
     </script>
 </body>
 </html>
