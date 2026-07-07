@@ -1,83 +1,149 @@
-# ADB AquaRevier Contact Map Visualizer & QGIS Integration
+# AquaRevier Akteurskarte — Dev Version
 
-Dieses Tool visualisiert die **281 regionalen Akteure** aus dem Excel-Datensatz `ADB_AquaRevier` in **9 spezifischen Akteursgruppen** auf einer interaktiven Karte sowie in **QGIS**. Es beinhaltet zusätzlich amtliche Geodaten des Landes NRW (Grenzen, Landkreise, Flüsse und Gewässer).
+> 🔵 **Dev-Preview**: https://adb-aquarevier-dev.surge.sh (auto-deployed bei jedem Push)
+> 🟢 **Produktion**: https://adb-aquarevier-secure.surge.sh
+> 📦 **Prod-Repo**: https://github.com/Dtunder/adb_aquarevier_map
 
 ---
 
-## 🚀 Schnellstart
+## Über das Projekt
 
-### 1. Server starten
-Falls der Server nicht bereits im Hintergrund läuft, starte den Webserver im Projektverzeichnis:
+Interaktive Karte der Akteure im Aachener Wassereinzugsgebiet (AquaRevier / ADB-Projekt).
+Zeigt Forschungseinrichtungen, Behörden und Partner auf einer Leaflet.js-Karte mit Filterfunktion.
 
-```powershell
-python C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\server.py
+**Hauptdatei**: `index.html` — alle Karten-Logik, Filter, Marker-Rendering in einer Datei (Vanilla JS + Leaflet.js).
+
+---
+
+## 📋 Offene Feature-Aufgaben für Jules
+
+### TASK-01 — Verbesserte Detailansicht / Popup für Akteure
+
+**Ziel**: Beim Klick auf einen Marker erscheint ein moderneres, informationsreiches Popup.
+
+**Anforderungen:**
+- Größeres, scrollbares Popup mit strukturiertem Layout (kein reines `<b>Name</b><br>`)
+- Zeige alle verfügbaren Felder: Name, Organisation, Rolle/Gruppe, E-Mail, Telefon, Institution, Bereich
+- Felder, die leer/null sind: **nicht anzeigen** (kein leeres `E-Mail: —`)
+- `"Zur Website"` Button, wenn URL-Feld vorhanden
+- Popup bleibt beim Öffnen kartenzentriert auf dem Marker
+- Mobile-freundliches Popup-Design (max-width, scrollbar)
+
+**Wo in index.html suchen**: `bindPopup`, `L.popup()`, `popupContent`
+
+---
+
+### TASK-02 — Kombinierte Filterlogik + URL-Parameter
+
+**Ziel**: Aktiven Filterzustand in der URL speichern, mehrere Filter kombinierbar machen.
+
+**Anforderungen:**
+- Mehrere Filter gleichzeitig anwendbar (z.B. Gruppe **und** Freitext-Suche)
+- Filterzustand in URL-Parameter schreiben: `?gruppe=Wissenschaft&q=Aachen`
+- Beim Seitenaufruf mit URL-Parametern → Filter automatisch wiederherstellen
+- Filter-Reset-Button: `×` oder `Alle zurücksetzen`
+- Counter in der Sidebar: `3 von 47 Akteuren`
+
+**Wo in index.html suchen**: `filterContacts`, `applyFilter`, Sidebar-HTML
+
+---
+
+### TASK-03 — Export-Funktion (CSV + PDF)
+
+**Ziel**: Nutzer können die aktuell **sichtbaren (gefilterten)** Akteure exportieren.
+
+**Anforderungen:**
+- **CSV Export**:
+  - Button `⬇ CSV` in der Sidebar
+  - Spalten: Name, Organisation, Gruppe, E-Mail, Telefon, Ort
+  - Dateiname: `Akteure_YYYY-MM-DD.csv` (Datum auto)
+  - Nur die aktuell sichtbaren/gefilterten Marker exportieren
+- **PDF Export**:
+  - Button `⬇ PDF` in der Sidebar
+  - Bibliothek: [`jsPDF`](https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js) via CDN
+  - Liste der Akteure als druckbares PDF (Name + Organisation + Gruppe + E-Mail)
+  - Dateiname: `AquaRevier_Akteure_YYYY-MM-DD.pdf`
+
+**Wo in index.html suchen**: Sidebar-HTML, `filterContacts`, `visibleMarkers` oder ähnliche Variable
+
+---
+
+## 🔄 Auto-Deploy Workflow
+
+```
+git commit + git push origin main
+        ↓
+GitHub Actions (.github/workflows/deploy-dev.yml)
+        ↓
+surge deploy → https://adb-aquarevier-dev.surge.sh
+        ↓ (~30 Sekunden)
+Live-Preview aktualisiert ✅
 ```
 
-Öffne anschließend deinen Browser unter:
-👉 **[http://localhost:8000](http://localhost:8000)**
+## 🚀 Lokale Entwicklung
 
----
+```bash
+# Python-Server (einfachste Option)
+python tools/server.py
+# → http://localhost:8000
 
-## 🗺️ Kartenfunktionen im Web-Interface
+# Oder mit Node.js
+npx serve .
+# → http://localhost:3000
+```
 
-- **9 Akteursgruppen**: Farblich codiert nach den Gruppen im Excel-Datensatz:
-  - 🔴 **Behörde**
-  - 🟢 **Einzelakteure**
-  - 🔵 **Forschung**
-  - 🟡 **Gebietskörperschaft**
-  - 🟣 **Gewerbe/ Industrie**
-  - 🟢 **Landwirtschaft**
-  - 💗 **Netzwerk/ Multiplikator**
-  - 🟠 **Ver-/ Entsorger**
-  - 🟣 **Sonstige**
-- **Suchen & Filtern**: Durchsuche alle 281 Kontakte live nach Namen, E-Mail, Notizen oder filtere Gruppen über die Klick-Buttons.
-- **NRW Geodaten-Layer**: Oben rechts auf der Karte kannst du über das Layer-Symbol folgende Dienste ein- und ausblenden:
-  - **Landkreisgrenzen & Landesgrenze NRW** (Geobasis NRW WMS)
-  - **Flüsse & Gewässernetz** (LANUV NRW WMS)
-  - **Tagebaue & Bergbaufelder** (Geologischer Dienst NRW WMS - zeigt Bergbauberechtigungen wie Garzweiler, Hambach, Inden)
-  - **Wasserschutzgebiete** (LANUV NRW WMS - zeigt festgesetzte Wasserschutzzonen)
-  - **Umschaltbare Basiskarten** (Dunkel, OSM-Standard, Offizielle NRW-Karte)
+## 📁 Projektstruktur
 
----
+```
+adb_aquarevier_map_dev/
+├── index.html                      ← ⭐ Haupt-App (Leaflet-Karte, alle Logik)
+├── internal.html                   ← Interne Version mit vollständigen Kontakten
+├── JULES_TASKS.md                  ← Aufgabenliste (detailliert)
+├── README.md                       ← Diese Datei
+│
+├── contacts.enc                    ← Verschlüsselte Kontaktdaten (AES)
+├── contacts.geojson                ← Vollständige Kontaktdaten (intern)
+├── contacts_anonymized.geojson     ← Öffentliche Version (ohne E-Mail etc.)
+├── contacts_2025_anonymized.geojson
+│
+├── gewaesser.geojson               ← Gewässernetz
+├── rur_einzugsgebiet.geojson       ← Rur-Einzugsgebiet (Polygon)
+├── rur_einzugsgebiet_outline.geojson
+├── untersuchungsgebiet.geojson     ← Untersuchungsgebiet
+├── tg_natuerlich.geojson           ← Natürliche Teilgebiete
+├── tg_kanalisiert.geojson          ← Kanalisierte Teilgebiete
+│
+├── logos/                          ← Institutslogos (PNG/SVG)
+│   ├── rwth_isa.svg
+│   └── ...
+│
+├── tools/                          ← Hilfsskripte (nicht für Produktion)
+│   ├── server.py                   ← Lokaler Dev-Server
+│   ├── import_contacts.py
+│   └── ...
+│
+└── .github/
+    └── workflows/
+        └── deploy-dev.yml          ← Auto-Deploy zu Surge.sh
+```
 
-## 🗺️ QGIS Integration & Geodaten hinzufügen
+## Technologie-Stack
 
-In QGIS kannst du sowohl deine Kontakte-Punkte als auch dieselben hochauflösenden NRW-Geodaten direkt einbinden:
+| Technologie | Verwendung |
+|---|---|
+| **Leaflet.js** | Interaktive Karte |
+| **OpenStreetMap** | Kartentiles |
+| **GeoJSON** | Geodaten (Akteure, Gewässer, Grenzen) |
+| **Vanilla JS / HTML / CSS** | Keine Build-Tools nötig |
+| **Surge.sh** | Hosting (statisch) |
+| **GitHub Actions** | CI/CD Auto-Deploy |
 
-### 1. Kontakte-Layer laden
-1. Ziehe die Datei `contacts.geojson` per Drag-and-drop aus dem Explorer in dein QGIS-Projekt.
-   *(Pfad: `C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\contacts.geojson`)*
-2. Um den Layer automatisch alle 2 Sekunden zu aktualisieren, mache einen Rechtsklick auf den Layer -> **Eigenschaften** -> **Rendering** -> **Interval-basiertes Laden** aktivieren und auf **2,0 Sekunden** einstellen.
+## 🌐 URLs
 
-### 2. Styling nach Akteursgruppen in QGIS
-1. Mache einen Rechtsklick auf den `contacts`-Layer -> **Eigenschaften** -> **Symbolisierung**.
-2. Ändere die Dropdown-Auswahl ganz oben von *Einzelsymbol* auf **Kategorisiert**.
-3. Wähle als Spalte/Wert das Feld `group` aus und klicke unten auf **Klassifizieren**.
-
----
-
-### 3. NRW-Grenzen, Gewässer, Tagebaue und Wasserschutzgebiete (WMS) in QGIS einbinden
-
-Du kannst die offiziellen NRW-Karten-Feeds direkt in QGIS als Hintergrundlayer hinzufügen:
-
-#### A. Landkreisgrenzen & Verwaltungsgrenzen NRW (WMS):
-- **Name**: `Geobasis NRW Verwaltungsgrenzen`
-- **URL**: `https://www.wms.nrw.de/geobasis/wms_nw_dvg`
-- **Empfohlene Layer**: `nw_dvg_la` (Landesgrenze), `nw_dvg_k` (Kreisgrenzen)
-
-#### B. Flüsse & Gewässer NRW (WMS):
-- **Name**: `LANUV NRW Gewässernetz`
-- **URL**: `https://www.wms.nrw.de/umwelt/gsk3e`
-- **Empfohlene Layer**: `gsk3e_hauptgewaesser_seen` (Seen), `gsk3e_hauptgewaesser_linien` (Flüsse)
-
-#### C. Tagebaue & Bergbau-Berechtigungen (WMS):
-- **Name**: `GD NRW Bergbauberechtigungen`
-- **URL**: `https://www.wms.nrw.de/gd/wms_nw_bergbauberechtigungen`
-- **Empfohlener Layer**: `nw_bergbauberechtigungen_gewinnend` (Aktive Bergbauberechtigungen / Tagebaufelder)
-
-#### D. Wasserschutzgebiete (WMS):
-- **Name**: `LANUV NRW Wasserschutzgebiete`
-- **URL**: `https://www.wms.nrw.de/umwelt/wsg`
-- **Empfohlener Layer**: `wsg_festgesetzt_gesamt` (Festgesetzte Wasserschutzzonen)
-
-*Anleitung zur Einbindung:* In QGIS im Menü **Layer -> Layer hinzufügen -> WMS/WMTS-Layer hinzufügen...** wählen, auf **Neu** klicken, Namen und URL eintragen, mit **OK** speichern, **Verbinden** klicken, den gewünschten Layer auswählen und auf **Hinzufügen** klicken.
+| | URL |
+|---|---|
+| **Dev-Preview** | https://adb-aquarevier-dev.surge.sh |
+| **Produktion** | https://adb-aquarevier-secure.surge.sh |
+| **Dev-Repo** | https://github.com/Dtunder/adb_aquarevier_map_dev |
+| **Prod-Repo** | https://github.com/Dtunder/adb_aquarevier_map |
+| **Actions** | https://github.com/Dtunder/adb_aquarevier_map_dev/actions |

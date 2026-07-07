@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Map Visualizer - ADB AquaRevier</title>
+    <title>Akteurskarte - AquaRevier</title>
     
     <!-- Google Fonts: Inter & Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,29 +16,28 @@
     <style>
         :root {
             --bg-base: #0b0f19;
-            --bg-surface: rgba(17, 24, 39, 0.75);
-            --bg-surface-hover: rgba(31, 41, 55, 0.85);
+            --bg-surface: rgba(17, 24, 39, 0.8);
+            --bg-surface-hover: rgba(31, 41, 55, 0.9);
             --border-color: rgba(255, 255, 255, 0.08);
             --text-primary: #f3f4f6;
             --text-secondary: #9ca3af;
             --accent-primary: #6366f1;
             --accent-glow: rgba(99, 102, 241, 0.4);
             
-            /* Group Colors (9 Groups from Excel/Screenshot) */
+            /* Group Colors (Excluding Einzelakteure as they are filtered) */
             --color-behorde: #f43f5e;
-            --color-einzelakteure: #00f5d4;
             --color-forschung: #3b82f6;
             --color-gebietskorperschaft: #fbbf24;
-            --color-gewerbe: #d946ef;
+            --color-gewerbe: #a855f7;
             --color-landwirtschaft: #10b981;
             --color-netzwerk: #ff007f;
-            --color-sonstige: #8b5cf6;
             --color-entsorger: #ff7300;
+            --color-sonstige: #8b5cf6;
         }
 
         body.light-theme {
             --bg-base: #f1f5f9;
-            --bg-surface: rgba(255, 255, 255, 0.85);
+            --bg-surface: rgba(255, 255, 255, 0.9);
             --bg-surface-hover: rgba(226, 232, 240, 0.95);
             --border-color: rgba(0, 0, 0, 0.08);
             --text-primary: #0f172a;
@@ -47,9 +46,6 @@
             --accent-glow: rgba(79, 70, 229, 0.2);
         }
 
-        body.light-theme .form-row input,
-        body.light-theme .form-row select,
-        body.light-theme .form-row textarea,
         body.light-theme .search-box input {
             background: #ffffff;
             color: #0f172a;
@@ -57,14 +53,14 @@
         }
 
         body.light-theme .leaflet-popup-content-wrapper {
-            background: rgba(255, 255, 255, 0.95) !important;
+            background: rgba(255, 255, 255, 0.98) !important;
             color: #0f172a !important;
             border: 1px solid rgba(0, 0, 0, 0.1) !important;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
         }
 
         body.light-theme .leaflet-popup-tip {
-            background: rgba(255, 255, 255, 0.95) !important;
+            background: rgba(255, 255, 255, 0.98) !important;
             border: 1px solid rgba(0, 0, 0, 0.1) !important;
         }
 
@@ -73,7 +69,7 @@
         }
 
         body.light-theme .leaflet-control-layers {
-            background: rgba(255, 255, 255, 0.9) !important;
+            background: rgba(255, 255, 255, 0.95) !important;
             color: #0f172a !important;
             border: 1px solid rgba(0, 0, 0, 0.1) !important;
         }
@@ -84,6 +80,41 @@
 
         body.light-theme .contact-item:hover {
             background: var(--bg-surface-hover);
+        }
+
+        .river-label {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            color: #60a5fa;
+            font-weight: 700;
+            font-size: 11px;
+            text-shadow: 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000;
+            white-space: nowrap;
+        }
+
+        body.light-theme .river-label {
+            color: #1e3a8a;
+            text-shadow: 1px 1px 2px #fff, -1px -1px 2px #fff, 1px -1px 2px #fff, -1px 1px 2px #fff;
+        }
+
+        .main-partner-label {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            color: #ffffff !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: 13px !important;
+            letter-spacing: 0.05em !important;
+            text-transform: uppercase !important;
+            text-shadow: 2px 2px 4px #000, -2px -2px 4px #000, 2px -2px 4px #000, -2px 2px 4px #000 !important;
+            white-space: nowrap;
+        }
+
+        body.light-theme .main-partner-label {
+            color: #1e3a8a !important;
+            text-shadow: 2px 2px 4px #fff, -2px -2px 4px #fff, 2px -2px 4px #fff, -2px 2px 4px #fff !important;
         }
 
         * {
@@ -198,347 +229,259 @@
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
             padding: 5px 10px;
-            border-radius: 20px;
-            color: var(--text-primary);
+            border-radius: 6px;
+            color: var(--text-secondary);
             font-size: 11px;
+            font-weight: 500;
             cursor: pointer;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 5px;
-            transition: all 0.2s ease;
+            gap: 6px;
         }
 
         .filter-btn:hover {
             background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
         }
 
         .filter-btn.active {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--accent-primary);
+            color: #fff;
             border-color: var(--accent-primary);
-            box-shadow: 0 0 8px var(--accent-glow);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
         .dot {
-            width: 7px;
-            height: 7px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             display: inline-block;
         }
 
         .dot-behorde { background-color: var(--color-behorde); }
-        .dot-einzelakteure { background-color: var(--color-einzelakteure); }
         .dot-forschung { background-color: var(--color-forschung); }
         .dot-gebietskorperschaft { background-color: var(--color-gebietskorperschaft); }
         .dot-gewerbe { background-color: var(--color-gewerbe); }
         .dot-landwirtschaft { background-color: var(--color-landwirtschaft); }
         .dot-netzwerk { background-color: var(--color-netzwerk); }
-        .dot-sonstige { background-color: var(--color-sonstige); }
         .dot-entsorger { background-color: var(--color-entsorger); }
+        .dot-sonstige { background-color: var(--color-sonstige); }
 
-        /* Search input */
+        /* Search Box */
         .search-box {
             position: relative;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .search-box input {
             width: 100%;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
-            padding: 10px 16px;
+            padding: 10px 14px;
             border-radius: 8px;
             color: var(--text-primary);
             font-size: 13px;
             outline: none;
-            transition: all 0.2s;
+            transition: border-color 0.2s;
         }
 
         .search-box input:focus {
             border-color: var(--accent-primary);
-            box-shadow: 0 0 8px var(--accent-glow);
-            background: rgba(255, 255, 255, 0.05);
         }
 
         .contacts-meta {
             font-size: 11px;
             color: var(--text-secondary);
-            margin-bottom: 10px;
-            text-align: right;
+            margin-bottom: 12px;
         }
 
-        /* Contact cards / items */
+        /* List Scroll Area */
         .contact-list {
             display: flex;
             flex-direction: column;
             gap: 8px;
-            max-height: 350px;
+            max-height: 48vh;
             overflow-y: auto;
-            padding-right: 4px;
         }
 
         .contact-list::-webkit-scrollbar {
             width: 4px;
         }
         .contact-list::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 2px;
         }
 
         .contact-item {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.01);
             border: 1px solid var(--border-color);
+            padding: 12px 16px;
             border-radius: 8px;
-            padding: 10px 12px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background-color: transparent;
             transition: all 0.2s;
         }
 
-        .contact-item.behörde::before { background-color: var(--color-behorde); }
-        .contact-item.einzelakteure::before { background-color: var(--color-einzelakteure); }
-        .contact-item.forschung::before { background-color: var(--color-forschung); }
-        .contact-item.gebietskörperschaft::before { background-color: var(--color-gebietskorperschaft); }
-        .contact-item.gewerbe/_industrie::before { background-color: var(--color-gewerbe); }
-        .contact-item.landwirtschaft::before { background-color: var(--color-landwirtschaft); }
-        .contact-item.netzwerk/_multiplikator::before { background-color: var(--color-netzwerk); }
-        .contact-item.sonstige::before { background-color: var(--color-sonstige); }
-        .contact-item.ver-/_entsorger::before { background-color: var(--color-entsorger); }
-
         .contact-item:hover {
-            background: var(--bg-surface-hover);
-            transform: translateX(4px);
+            background: rgba(255, 255, 255, 0.03);
             border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
         }
 
         .contact-name {
             font-weight: 600;
             font-size: 13px;
-            margin-bottom: 4px;
+            color: var(--text-primary);
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .contact-name span:first-child {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 250px;
+            align-items: flex-start;
+            gap: 10px;
         }
 
         .contact-group-badge {
             font-size: 9px;
-            padding: 1px 5px;
-            border-radius: 10px;
-            font-weight: 600;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
             white-space: nowrap;
         }
 
         .badge-behörde { background: rgba(244, 63, 94, 0.15); color: var(--color-behorde); }
-        .badge-einzelakteure { background: rgba(0, 245, 212, 0.15); color: var(--color-einzelakteure); }
         .badge-forschung { background: rgba(59, 130, 246, 0.15); color: var(--color-forschung); }
         .badge-gebietskörperschaft { background: rgba(251, 191, 36, 0.15); color: var(--color-gebietskorperschaft); }
-        .badge-gewerbe { background: rgba(217, 70, 239, 0.15); color: var(--color-gewerbe); }
+        .badge-gewerbe { background: rgba(168, 85, 247, 0.15); color: var(--color-gewerbe); }
         .badge-landwirtschaft { background: rgba(16, 185, 129, 0.15); color: var(--color-landwirtschaft); }
         .badge-netzwerk { background: rgba(255, 0, 127, 0.15); color: var(--color-netzwerk); }
+        .badge-ver { background: rgba(255, 115, 0, 0.15); color: var(--color-entsorger); }
         .badge-sonstige { background: rgba(139, 92, 246, 0.15); color: var(--color-sonstige); }
-        .badge-entsorger { background: rgba(255, 115, 0, 0.15); color: var(--color-entsorger); }
-
-        .contact-desc {
-            font-size: 11px;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
 
         .contact-coords {
             font-size: 10px;
             color: var(--text-secondary);
-            font-family: monospace;
-            display: flex;
-            gap: 10px;
-        }
-
-        /* Form styling */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px;
-        }
-
-        .form-title {
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .form-row {
-            margin-bottom: 10px;
-        }
-
-        .form-row label {
-            display: block;
-            font-size: 10px;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-
-        .form-row input, .form-row select, .form-row textarea {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border-color);
-            padding: 8px 10px;
-            border-radius: 6px;
-            color: var(--text-primary);
-            font-size: 13px;
-            outline: none;
-        }
-
-        .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
-            border-color: var(--accent-primary);
-        }
-
-        .coord-inputs {
-            display: flex;
-            gap: 8px;
-        }
-
-        .coord-inputs > div {
-            flex: 1;
-        }
-
-        .btn {
-            background: var(--accent-primary);
-            color: #fff;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.2s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn:hover {
-            background: #4f46e5;
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
             margin-top: 6px;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-danger {
-            background: #ef4444;
-            margin-top: 6px;
-        }
-        .btn-danger:hover {
-            background: #dc2626;
+            display: flex;
+            gap: 12px;
         }
 
         /* Map Controls Popup Styling */
         .leaflet-popup-content-wrapper {
-            background: rgba(15, 23, 42, 0.9) !important;
+            background: rgba(15, 23, 42, 0.95) !important;
             backdrop-filter: blur(10px) !important;
             -webkit-backdrop-filter: blur(10px) !important;
             border: 1px solid var(--border-color) !important;
             color: var(--text-primary) !important;
             border-radius: 12px !important;
-            padding: 6px;
+            padding: 8px;
         }
 
         .leaflet-popup-tip {
-            background: rgba(15, 23, 42, 0.9) !important;
+            background: rgba(15, 23, 42, 0.95) !important;
             border: 1px solid var(--border-color) !important;
         }
 
         .popup-card {
             min-width: 220px;
+            max-width: 320px;
         }
 
         .popup-title {
             font-weight: 700;
             font-size: 14px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             color: #fff;
+            line-height: 1.3;
         }
 
         .popup-group {
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 6px;
         }
 
-        .popup-desc {
-            font-size: 11px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
         .popup-detail {
             font-size: 11px;
             color: var(--text-secondary);
-            margin-bottom: 4px;
+            margin-top: 8px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        .popup-actions {
+
+        /* Extended Popup Styles */
+        .extended-popup {
+            max-height: 350px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .extended-popup::-webkit-scrollbar {
+            width: 4px;
+        }
+        .extended-popup::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+        body.light-theme .extended-popup::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-body {
             margin-top: 10px;
             display: flex;
+            flex-direction: column;
             gap: 6px;
         }
 
-        .popup-btn {
-            flex: 1;
-            padding: 4px 8px;
-            font-size: 10px;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-            background: rgba(255, 255, 255, 0.05);
+        .popup-detail strong {
             color: var(--text-primary);
-            cursor: pointer;
-            text-align: center;
+            font-weight: 600;
+            margin-right: 4px;
         }
 
-        .popup-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
+        .popup-detail a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+        .popup-detail a:hover {
+            text-decoration: underline;
+        }
+
+        .coords-detail {
+            font-family: monospace;
+            font-size: 10px;
+            margin-top: 6px;
+            color: var(--text-secondary);
+        }
+
+        .popup-footer {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .website-btn {
+            display: block;
+            text-align: center;
+            background: var(--accent-primary);
+            color: #ffffff;
+            padding: 8px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .website-btn:hover {
+            background: #4f46e5;
+            transform: translateY(-1px);
+            color: #ffffff;
+        }
+        body.light-theme .website-btn {
+            color: #ffffff !important;
         }
 
         .info-msg {
@@ -551,9 +494,8 @@
             border: 1px dashed var(--border-color);
         }
 
-        /* QGIS WMS Layer attribution style */
         .leaflet-control-layers {
-            background: rgba(15, 23, 42, 0.85) !important;
+            background: rgba(15, 23, 42, 0.9) !important;
             backdrop-filter: blur(10px) !important;
             border: 1px solid var(--border-color) !important;
             color: var(--text-primary) !important;
@@ -564,81 +506,147 @@
             filter: invert(1);
         }
 
-        /* Password Screen Overlay */
-        #password-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #090d16;
-            z-index: 99999;
+        /* Custom Logo Callout Styles */
+        .logo-callout-container {
+            position: relative;
+            width: 0;
+            height: 0;
+            overflow: visible;
+        }
+
+        .logo-box {
+            position: absolute;
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 6px 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
-            justify-content: center;
             align-items: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            gap: 8px;
+            white-space: nowrap;
+            z-index: 10;
+            pointer-events: auto;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .password-card {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 30px 40px;
-            border-radius: 16px;
-            width: 420px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-            text-align: center;
+
+        .logo-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
         }
-        .password-card h2 {
+
+        body.light-theme .logo-box {
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+        }
+
+        .logo-box img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Specific logo designs */
+        .logo-wver-box {
             font-family: 'Outfit', sans-serif;
-            font-size: 24px;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #a5b4fc, #6366f1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .password-card p {
-            color: #9ca3af;
-            font-size: 13px;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        .password-card input {
-            width: 100%;
-            padding: 12px 16px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: #fff;
+            font-weight: 800;
             font-size: 15px;
-            text-align: center;
-            outline: none;
-            margin-bottom: 12px;
-            transition: all 0.2s;
+            color: #0067b1;
         }
-        .password-card input:focus {
-            border-color: #6366f1;
-            box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+        .logo-wver-box span.green {
+            color: #008b46;
         }
-        .password-error {
-            color: #f43f5e;
+
+        .logo-schoellershammer-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .logo-schoellershammer-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            color: #1e293b;
+        }
+        .logo-schoellershammer-sub {
+            font-size: 8px;
+            color: #64748b;
+            margin-top: -1px;
+        }
+
+        .logo-smurfit-box {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
             font-size: 12px;
-            margin-bottom: 12px;
-            display: none;
+            color: #1e3a8a;
+        }
+
+        .logo-tillmann-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo-tillmann-p {
+            font-size: 7px;
+            letter-spacing: 0.1em;
+            color: #475569;
+            text-transform: uppercase;
+        }
+        .logo-tillmann-t {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            color: #1e3a8a;
+            margin-top: -2px;
+        }
+
+        .logo-rlv-box {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            color: #15803d;
+        }
+
+        .logo-eschweiler-box {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 11px;
+            color: #0f172a;
+            letter-spacing: 0.05em;
+        }
+
+        .logo-combined-box {
+            background: #ffffff;
+            border: 1.5px solid #94a3b8;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .logo-combined-row {
+            display: flex;
+            gap: 6px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 11px;
         }
     </style>
 </head>
-<body>
+<body class="light-theme">
     <div id="app-container">
         <!-- Sidebar -->
         <div id="sidebar">
             <div class="sidebar-header">
                 <div>
-                    <h1>ADB AquaRevier Map</h1>
-                    <p>Visualisiere und verwalte die regionalen Akteure</p>
+                    <h1>Akteure - AquaRevier</h1>
+                    <p>Regionale Institutionen im Untersuchungsgebiet</p>
                 </div>
                 <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln">
-                    ☀️
+                    🌙
                 </button>
             </div>
             
@@ -650,9 +658,6 @@
                         <button class="filter-btn active" data-group="all">Alle</button>
                         <button class="filter-btn active" data-group="Behörde">
                             <span class="dot dot-behorde"></span> Behörde
-                        </button>
-                        <button class="filter-btn active" data-group="Einzelakteure">
-                            <span class="dot dot-einzelakteure"></span> Einzelakteure
                         </button>
                         <button class="filter-btn active" data-group="Forschung">
                             <span class="dot dot-forschung"></span> Forschung
@@ -680,85 +685,24 @@
 
                 <!-- Search -->
                 <div>
-                    <div class="section-title">Akteure Suchen</div>
+                    <div class="section-title">Institutionen Suchen</div>
                     <div class="search-box">
-                        <input type="text" id="search-input" placeholder="Nach Akteur, Ort oder Kommentar suchen...">
+                        <input type="text" id="search-input" placeholder="Nach Name oder Ort suchen...">
                     </div>
-                    <div class="contacts-meta" id="contacts-count">0 von 0 Kontakten angezeigt</div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div class="contacts-meta" id="contacts-count" style="margin-bottom: 0;">0 von 0 Kontakten angezeigt</div>
+                        <button id="reset-filters-btn" class="filter-btn" style="padding: 4px 8px; font-size: 10px;">Filter zurücksetzen</button>
+                    </div>
                     <div class="contact-list" id="contact-list-container">
                         <!-- Filled by JS -->
                     </div>
                 </div>
 
-                <!-- Form Panel -->
-                <div class="glass-panel" id="editor-panel">
-                    <div class="form-title">
-                        <span id="form-action-title">Neuen Kontakt erstellen</span>
-                        <button class="filter-btn" id="btn-cancel-edit" style="display:none; padding: 2px 8px;">Abbrechen</button>
-                    </div>
-                    
-                    <input type="hidden" id="contact-id">
-                    
-                    <div class="form-row">
-                        <label for="contact-name">Name / Institution</label>
-                        <input type="text" id="contact-name" placeholder="z. B. LANUV NRW" required>
-                    </div>
-                    
-                    <div class="form-row">
-                        <label for="contact-group">Gruppe</label>
-                        <select id="contact-group">
-                            <option value="Behörde">Behörde</option>
-                            <option value="Einzelakteure">Einzelakteure</option>
-                            <option value="Forschung">Forschung</option>
-                            <option value="Gebietskörperschaft">Gebietskörperschaft</option>
-                            <option value="Gewerbe/ Industrie">Gewerbe/ Industrie</option>
-                            <option value="Landwirtschaft">Landwirtschaft</option>
-                            <option value="Netzwerk/ Multiplikator">Netzwerk/ Multiplikator</option>
-                            <option value="Ver-/ Entsorger">Ver-/ Entsorger</option>
-                            <option value="Sonstige" selected>Sonstige</option>
-                        </select>
-                    </div>
-
-                    <div class="form-row">
-                        <label>Koordinaten (Klicke auf die Karte)</label>
-                        <div class="coord-inputs">
-                            <div>
-                                <label style="font-size:9px; color:var(--text-secondary);">Breitengrad (Lat)</label>
-                                <input type="number" step="any" id="contact-lat" placeholder="51.0" required>
-                            </div>
-                            <div>
-                                <label style="font-size:9px; color:var(--text-secondary);">Längengrad (Lng)</label>
-                                <input type="number" step="any" id="contact-lng" placeholder="6.5" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <label for="contact-desc">Kommentar / Beschreibung</label>
-                        <textarea id="contact-desc" rows="2" placeholder="Notizen..."></textarea>
-                    </div>
-
-                    <div class="form-row">
-                        <label for="contact-phone">Telefon</label>
-                        <input type="text" id="contact-phone" placeholder="Telefonnummer...">
-                    </div>
-
-                    <div class="form-row">
-                        <label for="contact-email">E-Mail</label>
-                        <input type="email" id="contact-email" placeholder="E-Mail-Adresse...">
-                    </div>
-
-                    <button class="btn" id="btn-save-contact">Speichern</button>
-                    <button class="btn btn-danger" id="btn-delete-contact" style="display:none;">Kontakt löschen</button>
-                </div>
-
-                <!-- Export Panel -->
-                <div class="glass-panel" style="margin-top: 10px;">
-                    <div class="section-title">Daten verwalten (Backup)</div>
-                    <button class="btn btn-secondary" id="btn-export-geojson">💾 Kontakte Exportieren (.geojson)</button>
-                    <div style="font-size: 10px; color: var(--text-secondary); margin-top: 8px; line-height: 1.4;">
-                        Exportiere deine bearbeiteten Kontakte als GeoJSON-Datei, um sie lokal in QGIS zu öffnen oder das Deployment zu aktualisieren.
-                    </div>
+                <!-- Export Section -->
+                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; gap: 8px;">
+                    <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;">📄 CSV Export</button>
+                    <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;">📑 PDF Export</button>
                 </div>
             </div>
         </div>
@@ -767,32 +711,25 @@
         <div id="map"></div>
     </div>
 
-    <!-- Password Overlay -->
-    <div id="password-screen">
-        <div class="password-card">
-            <h2>ADB AquaRevier Map</h2>
-            <p>Diese Karte enthält sensible personenbezogene Daten und ist gemäß DSGVO passwortgeschützt.</p>
-            <input type="password" id="map-password" placeholder="Passwort eingeben..." autofocus>
-            <div class="password-error" id="password-error-msg">Ungültiges Passwort! Bitte versuche es erneut.</div>
-            <button class="btn" id="btn-decrypt-map">Karte entschlüsseln</button>
-        </div>
-    </div>
-
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
+    <!-- jsPDF for PDF Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
     <script>
         // Group Color Map
         const groupColors = {
             'Behörde': '#f43f5e',
-            'Einzelakteure': '#00f5d4',
             'Forschung': '#3b82f6',
             'Gebietskörperschaft': '#fbbf24',
-            'Gewerbe/ Industrie': '#d946ef',
+            'Gewerbe/ Industrie': '#a855f7',
             'Landwirtschaft': '#10b981',
             'Netzwerk/ Multiplikator': '#ff007f',
             'Ver-/ Entsorger': '#ff7300',
-            'Sonstige': '#8b5cf6'
+            'Sonstige': '#8b5cf6',
+            'Konsortium': '#1d4ed8'
         };
 
         // Initialize Map centered on NRW (Düsseldorf / Aachen area)
@@ -805,12 +742,18 @@
             position: 'bottomright'
         }).addTo(map);
 
-        // 1. Base Map: CartoDB Dark Matter
-        const baseDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        // Base Maps
+        const baseLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
             maxZoom: 20
         }).addTo(map);
+
+        const baseDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        });
 
         // 2. Base Map: OpenStreetMap Standard
         const baseOsm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -832,7 +775,7 @@
             transparent: true,
             opacity: 0.6,
             attribution: "Geobasis NRW"
-        }).addTo(map); // default enabled
+        }).addTo(map);
 
         // 5. Overlays: NRW Rivers and Lakes (Gewässernetz)
         const wmsRivers = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
@@ -841,7 +784,25 @@
             transparent: true,
             opacity: 0.8,
             attribution: "LANUV NRW"
-        }).addTo(map); // default enabled
+        }); // Disabled by default
+
+        // 5b. Overlays: Detailed Rivers (LANUV WMS showing minor/piped streams)
+        const wmsDetailedRivers = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
+            layers: '2,3,4,5,6,8,9,10',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.8,
+            attribution: "LANUV NRW"
+        }); // Disabled by default
+
+        // 5c. Overlays: Hydrological Catchments (LANUV WMS showing exact watersheds)
+        const wmsCatchments = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
+            layers: '0,11',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.4,
+            attribution: "LANUV NRW"
+        }); // Disabled by default
 
         // 6. Overlays: Tagebaue / Bergbauberechtigungen Gewinnung (GD NRW)
         const wmsMining = L.tileLayer.wms("https://www.wms.nrw.de/gd/wms_nw_bergbauberechtigungen", {
@@ -850,7 +811,7 @@
             transparent: true,
             opacity: 0.5,
             attribution: "GD NRW"
-        }).addTo(map); // default enabled
+        });
 
         // 7. Overlays: Wasserschutzgebiete gesamt (LANUV NRW)
         const wmsWSG = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/wsg", {
@@ -859,7 +820,259 @@
             transparent: true,
             opacity: 0.45,
             attribution: "LANUV NRW"
-        }); // default disabled (can be enabled via controller)
+        });
+
+        // 8. Custom Boundary: Untersuchungsgebiet (Landkreise als Hintergrund)
+        const boundaryLayer = L.layerGroup().addTo(map);
+        fetch('untersuchungsgebiet.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: {
+                        color: "#000000", // Black border for clear Kreis separation
+                        weight: 1.8,
+                        opacity: 0.85,
+                        fillColor: "#818cf8",
+                        fillOpacity: 0.04 // Lighter fill
+                    }
+                }).addTo(boundaryLayer);
+            })
+            .catch(err => console.log("Landkreis layer not loaded:", err));
+
+        // 8b. Rur Hydrological Catchment Boundary (Echtes Einzugsgebiet)
+        const catchmentLayer = L.layerGroup().addTo(map);
+        fetch('rur_einzugsgebiet_outline.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                // Remove interior rings (holes) from the polygons
+                if (data && data.features) {
+                    data.features.forEach(feature => {
+                        if (feature.geometry) {
+                            if (feature.geometry.type === 'Polygon') {
+                                // Only keep the outer boundary (first ring)
+                                feature.geometry.coordinates = [feature.geometry.coordinates[0]];
+                            } else if (feature.geometry.type === 'MultiPolygon') {
+                                // For MultiPolygons, keep only the outer boundary of each polygon
+                                feature.geometry.coordinates = feature.geometry.coordinates.map(poly => [poly[0]]);
+                            }
+                        }
+                    });
+                }
+                L.geoJSON(data, {
+                    style: {
+                        color: "#1e3a8a", // Darker blue border
+                        weight: 1.2,      // Thinner border
+                        opacity: 0.6,     // More transparent border
+                        fillColor: "#3b82f6", // Medium blue fill matching image
+                        fillOpacity: 0.12 // Lighter fill
+                    }
+                }).addTo(catchmentLayer);
+            })
+            .catch(err => console.log("Catchment layer not loaded:", err));
+
+        // 9. Custom Rivers: Offizielle Gewässer mit Namen (GeoJSON) - Dynamically rendered based on zoom
+        let riverGeoJson = null;
+        const riverLayer = L.layerGroup().addTo(map);
+
+        function drawRivers() {
+            if (!riverGeoJson) return;
+            riverLayer.clearLayers();
+            const labeledRivers = new Set();
+            const sortedFeatures = [...riverGeoJson.features].sort((a, b) => {
+                const lenA = a.geometry && a.geometry.coordinates ? a.geometry.coordinates.length : 0;
+                const lenB = b.geometry && b.geometry.coordinates ? b.geometry.coordinates.length : 0;
+                return lenB - lenA;
+            });
+
+            L.geoJSON({ type: "FeatureCollection", features: sortedFeatures }, {
+                filter: function(feature) {
+                    const name = feature.properties ? (feature.properties.name || "") : "";
+                    const nameLower = name.toLowerCase().trim();
+                    const isMainRiver = nameLower === 'rur' || nameLower === 'roer' ||
+                                        nameLower === 'inde' ||
+                                        nameLower === 'wurm' ||
+                                        nameLower === 'erft' ||
+                                        nameLower === 'maas' ||
+                                        nameLower === 'rhein';
+
+                    const isZoomedOut = map.getZoom() < 11;
+                    if (isZoomedOut) {
+                        return isMainRiver; // Only show main rivers in overview mode
+                    }
+                    return true; // Show all when zoomed in
+                },
+                style: function(feature) {
+                    const isZoomedOut = map.getZoom() < 11;
+                    return {
+                        color: "#2563eb", // Blue for all rivers, overview and detail mode
+                        weight: isZoomedOut ? 3.0 : 2.5,
+                        opacity: 0.85
+                    };
+                },
+                onEachFeature: function (feature, layer) {
+                    let name = "";
+                    if (feature.properties) {
+                        name = feature.properties.name || "";
+                    }
+                    if (name && name !== "None" && name !== "undefined") {
+                        if (!labeledRivers.has(name)) {
+                            layer.bindTooltip(name, {
+                                permanent: true,
+                                direction: "center",
+                                className: "river-label"
+                            });
+                            labeledRivers.add(name);
+                        }
+                    }
+                }
+            }).addTo(riverLayer);
+        }
+
+        fetch('gewaesser_rur_official.geojson')
+            .then(res => {
+                if (res.ok) return res.json();
+                throw new Error("Could not load official rivers");
+            })
+            .then(data => {
+                riverGeoJson = data;
+                drawRivers();
+            })
+            .catch(err => console.log("Official river layer not loaded:", err));
+
+        // 9b. Teilgewässer (Kanalisiert) Layer - Loaded from Shapefiles in Blue
+        const tgKanalisiertLayer = L.layerGroup();
+        fetch('tg_kanalisiert.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: {
+                        color: "#2563eb", // Blue border
+                        weight: 2,
+                        fillColor: "#2563eb",
+                        fillOpacity: 0.25 // Blue semi-transparent fill
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties && feature.properties.TG_ID) {
+                            layer.bindTooltip(`Kanalisiertes Teilgewässer: ${feature.properties.TG_ID}<br>Höhe: ${feature.properties.HOEHE}m`, {
+                                sticky: true
+                            });
+                        }
+                    }
+                }).addTo(tgKanalisiertLayer);
+            })
+            .catch(err => console.log("tg_kanalisiert layer not loaded:", err));
+
+        // 9c. Teilgewässer (Natürlich) Layer - Loaded from Shapefiles in Green
+        const tgNatuerlichLayer = L.layerGroup();
+        fetch('tg_natuerlich.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: {
+                        color: "#10b981", // Green border
+                        weight: 2,
+                        fillColor: "#10b981",
+                        fillOpacity: 0.2 // Green semi-transparent fill
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties && feature.properties.TG_ID) {
+                            layer.bindTooltip(`Natürliches Teilgewässer: ${feature.properties.TG_ID}<br>Höhe: ${feature.properties.HOEHE}m`, {
+                                sticky: true
+                            });
+                        }
+                    }
+                }).addTo(tgNatuerlichLayer);
+            })
+            .catch(err => console.log("tg_natuerlich layer not loaded:", err));
+
+        // 9d. Stakeholder 2025 Archiv Layer - Loaded from Shapefiles
+        const stakeholder2025Layer = L.layerGroup();
+        fetch('contacts_2025_anonymized.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    pointToLayer: function (feature, latlng) {
+                        const color = '#94a3b8'; // Slate grey for 2025 archive
+                        const size = 10;
+                        const border = 1.5;
+                        const html = `
+                            <div style="
+                                width: ${size}px;
+                                height: ${size}px;
+                                background-color: ${color};
+                                border: ${border}px solid #ffffff;
+                                border-radius: 50%;
+                                box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                            "></div>
+                        `;
+                        const icon = L.divIcon({
+                            html: html,
+                            className: 'custom-map-marker-2025',
+                            iconSize: [size, size],
+                            iconAnchor: [size / 2, size / 2]
+                        });
+                        return L.marker(latlng, { icon: icon });
+                    },
+                    onEachFeature: function(feature, layer) {
+                        const props = feature.properties;
+                        let popupContent = `
+                            <div class="popup-card">
+                                <div class="popup-group" style="color: #94a3b8">Akteur (Stand 2025)</div>
+                                <div class="popup-title">${props.name}</div>
+                        `;
+                        if (props.abbreviation) popupContent += `<div style="font-size: 11px; margin-top:-4px; margin-bottom:6px; color:#cbd5e1">${props.abbreviation}</div>`;
+                        popupContent += `<div class="popup-detail">💼 Gruppe: ${props.group}</div>`;
+                        if (props.sector) popupContent += `<div class="popup-detail">🏢 Branche: ${props.sector}</div>`;
+                        if (props.address) popupContent += `<div class="popup-detail">📍 Adresse: ${props.address}</div>`;
+                        if (props.common_projects) popupContent += `<div class="popup-detail">🤝 Projekte: ${props.common_projects}</div>`;
+                        popupContent += `</div>`;
+                        layer.bindPopup(popupContent);
+                    }
+                }).addTo(stakeholder2025Layer);
+            })
+            .catch(err => console.log("2025 stakeholder layer not loaded:", err));
+
+        // 9e. GSK3C Gewässerflächen (Seen & breite Flüsse) - standardmäßig aktiv
+        const gewFlaecheLayer = L.layerGroup().addTo(map);
+        fetch('gsk3c_gew_flaeche.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: {
+                        color: "#2563eb",
+                        weight: 1,
+                        fillColor: "#3b82f6",
+                        fillOpacity: 0.7
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties && feature.properties.NAME) {
+                            layer.bindTooltip(feature.properties.NAME, { sticky: true });
+                        }
+                    }
+                }).addTo(gewFlaecheLayer);
+            })
+            .catch(err => console.log("gsk3c_gew_flaeche layer not loaded:", err));
+
+        // 9f. GSK3C Gewässerkanäle (Kanäle & Gräben) - optional zuschaltbar
+        const gewKanalLayer = L.layerGroup();
+        fetch('gsk3c_gew_kanal_plm.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: {
+                        color: "#06b6d4", // Cyan
+                        weight: 1.5,
+                        dashArray: "3, 3",
+                        opacity: 0.8
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties && feature.properties.NAME) {
+                            layer.bindTooltip(`Kanal: ${feature.properties.NAME}`, { sticky: true });
+                        }
+                    }
+                }).addTo(gewKanalLayer);
+            })
+            .catch(err => console.log("gsk3c_gew_kanal_plm layer not loaded:", err));
 
         // Map layer controller
         const baseMaps = {
@@ -869,8 +1082,18 @@
         };
 
         const overlayMaps = {
+            "Rur Einzugsgebiet (Hydrologisch)": catchmentLayer,
+            "Gewässerflächen (Seen & Talsperren) [Blau]": gewFlaecheLayer,
+            "Gewässerkanäle (Kanäle & Gräben) [Cyan]": gewKanalLayer,
+            "Teilgewässer (Kanalisiert) [Blau]": tgKanalisiertLayer,
+            "Teilgewässer (Natürlich) [Grün]": tgNatuerlichLayer,
+            "Akteure (Stand 2025, Archiv)": stakeholder2025Layer,
+            "Landkreisgrenzen (Rheinisches Revier)": boundaryLayer,
+            "Eigene Gewässer mit Namen": riverLayer,
             "NRW Landkreise & Grenzen": wmsBorders,
             "Flüsse & Gewässer (LANUV)": wmsRivers,
+            "Gewässernetz Detailliert (LANUV)": wmsDetailedRivers,
+            "Einzugsgebiete Hydrologisch (LANUV)": wmsCatchments,
             "Tagebaue & Bergbaufelder (GD)": wmsMining,
             "Wasserschutzgebiete (LANUV)": wmsWSG
         };
@@ -881,257 +1104,385 @@
         let geojsonData = { type: "FeatureCollection", features: [] };
         let activeFilters = new Set(Object.keys(groupColors));
         let markersLayer = L.layerGroup().addTo(map);
-        let selectedCoordsMarker = null;
-        let derivedKey = null;
-        let currentPassword = "";
 
-        // Helper to convert base64 to Uint8Array
-        function base64ToBytes(base64) {
-            const binString = atob(base64.trim());
-            return Uint8Array.from(binString, m => m.charCodeAt(0));
-        }
-
-        // Helper to convert Uint8Array to base64
-        function bytesToBase64(bytes) {
-            const binString = Array.from(bytes, byte => String.fromCharCode(byte)).join("");
-            return btoa(binString);
-        }
-
-        // Decrypt AES-256-GCM data using PBKDF2 derived key
-        async function decryptAESGCM(base64Data, password) {
-            const bytes = base64ToBytes(base64Data);
-            const salt = bytes.slice(0, 16);
-            const iv = bytes.slice(16, 28);
-            const authTag = bytes.slice(28, 44);
-            const ciphertext = bytes.slice(44);
-
-            const encryptedData = new Uint8Array(ciphertext.length + authTag.length);
-            encryptedData.set(ciphertext, 0);
-            encryptedData.set(authTag, ciphertext.length);
-
-            const enc = new TextEncoder();
-            const keyMaterial = await window.crypto.subtle.importKey(
-                "raw",
-                enc.encode(password),
-                { name: "PBKDF2" },
-                false,
-                ["deriveKey"]
-            );
-
-            const key = await window.crypto.subtle.deriveKey(
-                {
-                    name: "PBKDF2",
-                    salt: salt,
-                    iterations: 100000,
-                    hash: "SHA-256"
-                },
-                keyMaterial,
-                { name: "AES-GCM", length: 256 },
-                false,
-                ["decrypt"]
-            );
-
-            derivedKey = key;
-
-            const decrypted = await window.crypto.subtle.decrypt(
-                { name: "AES-GCM", iv: iv, tagLength: 128 },
-                key,
-                encryptedData
-            );
-
-            const dec = new TextDecoder();
-            return JSON.parse(dec.decode(decrypted));
-        }
-
-        // Encrypt plainText (JSON string) using password (for localStorage persistence)
-        async function encryptAESGCM(plainText, password) {
-            const salt = window.crypto.getRandomValues(new Uint8Array(16));
-            const iv = window.crypto.getRandomValues(new Uint8Array(12));
-
-            const enc = new TextEncoder();
-            const keyMaterial = await window.crypto.subtle.importKey(
-                "raw",
-                enc.encode(password),
-                { name: "PBKDF2" },
-                false,
-                ["deriveKey"]
-            );
-
-            const key = await window.crypto.subtle.deriveKey(
-                {
-                    name: "PBKDF2",
-                    salt: salt,
-                    iterations: 100000,
-                    hash: "SHA-256"
-                },
-                keyMaterial,
-                { name: "AES-GCM", length: 256 },
-                false,
-                ["encrypt"]
-            );
-
-            const encrypted = await window.crypto.subtle.encrypt(
-                { name: "AES-GCM", iv: iv, tagLength: 128 },
-                key,
-                enc.encode(plainText)
-            );
-
-            const encryptedBytes = new Uint8Array(encrypted);
-            const tagLength = 16;
-            const ciphertextBytes = encryptedBytes.slice(0, encryptedBytes.length - tagLength);
-            const authTagBytes = encryptedBytes.slice(encryptedBytes.length - tagLength);
-
-            const combined = new Uint8Array(salt.length + iv.length + authTagBytes.length + ciphertextBytes.length);
-            combined.set(salt, 0);
-            combined.set(iv, salt.length);
-            combined.set(authTagBytes, salt.length + iv.length);
-            combined.set(ciphertextBytes, salt.length + iv.length + authTagBytes.length);
-
-            return bytesToBase64(combined);
-        }
-
-        // Fetch & decrypt contacts
-        async function loadContacts(password) {
+        // Fetch anonymized contacts
+        async function loadContacts() {
             try {
-                // Check if there is an encrypted database in local storage
-                const localEncrypted = localStorage.getItem('contacts_local_enc');
-                if (localEncrypted) {
-                    try {
-                        geojsonData = await decryptAESGCM(localEncrypted, password);
-                        currentPassword = password;
-                        document.getElementById('password-screen').style.opacity = '0';
-                        setTimeout(() => {
-                            document.getElementById('password-screen').style.visibility = 'hidden';
-                        }, 500);
-                        renderMapAndSidebar();
-                        return true;
-                    } catch (err) {
-                        console.warn("Local storage decryption failed. Falling back to server database...", err);
-                    }
+                const res = await fetch('contacts_anonymized.geojson');
+                if (res.ok) {
+                    geojsonData = await res.json();
+                    renderMapAndSidebar();
                 }
-
-                // Fetch remote encrypted database
-                const res = await fetch('contacts.enc');
-                if (!res.ok) {
-                    throw new Error("contacts.enc not found on server.");
-                }
-                const encryptedBase64 = await res.text();
-                geojsonData = await decryptAESGCM(encryptedBase64, password);
-                currentPassword = password;
-                
-                // Hide overlay
-                document.getElementById('password-screen').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('password-screen').style.visibility = 'hidden';
-                }, 500);
-
-                renderMapAndSidebar();
-                return true;
             } catch (err) {
-                console.error("Decryption failed:", err);
-                document.getElementById('password-error-msg').style.display = 'block';
-                return false;
-            }
-        }
-
-        // Save contacts to LocalStorage (encrypted)
-        async function saveContacts() {
-            try {
-                const plainText = JSON.stringify(geojsonData);
-                const encryptedBase64 = await encryptAESGCM(plainText, currentPassword);
-                localStorage.setItem('contacts_local_enc', encryptedBase64);
-                resetForm();
-                renderMapAndSidebar();
-            } catch (err) {
-                console.error("Error saving contacts locally:", err);
-                alert("Fehler beim lokalen Speichern der Daten.");
+                console.error("Error loading anonymized contacts:", err);
             }
         }
 
         // Custom marker generator
-        function createCustomMarker(lat, lng, color, name) {
+        function createCustomMarker(lat, lng, color, name, group) {
             const size = 14;
-            const border = 2.5;
-            const html = `
-                <div style="
-                    width: ${size}px;
-                    height: ${size}px;
-                    background-color: ${color};
-                    border: ${border}px solid #ffffff;
-                    border-radius: 50%;
-                    box-shadow: 0 0 8px ${color}, 0 0 2px rgba(0,0,0,0.5);
-                "></div>
-            `;
+            const border = 2.0;
+
+            let html = '';
+            if (group === 'Landwirtschaft') {
+                // Diamond (Raute) styled using CSS transform
+                html = `
+                    <div style="
+                        width: ${size - 2}px;
+                        height: ${size - 2}px;
+                        background-color: ${color};
+                        border: ${border}px solid #ffffff;
+                        transform: rotate(45deg);
+                        box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                        margin: 2px;
+                    "></div>
+                `;
+            } else if (group === 'Forschung' || group === 'Netzwerk/ Multiplikator' || group === 'Ver-/ Entsorger') {
+                // Pentagon (Fünfeck) using clip-path with nested div to simulate border
+                html = `
+                    <div style="
+                        width: ${size + 2}px;
+                        height: ${size + 2}px;
+                        background-color: #ffffff;
+                        clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        box-shadow: 0 0 6px ${color};
+                    ">
+                        <div style="
+                            width: ${size - 2}px;
+                            height: ${size - 2}px;
+                            background-color: ${color};
+                            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+                        "></div>
+                    </div>
+                `;
+            } else {
+                // Circle
+                html = `
+                    <div style="
+                        width: ${size}px;
+                        height: ${size}px;
+                        background-color: ${color};
+                        border: ${border}px solid #ffffff;
+                        border-radius: 50%;
+                        box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                    "></div>
+                `;
+            }
+
             const icon = L.divIcon({
                 html: html,
                 className: 'custom-map-marker',
-                iconSize: [size, size],
-                iconAnchor: [size / 2, size / 2]
+                iconSize: [size + 4, size + 4],
+                iconAnchor: [(size + 4) / 2, (size + 4) / 2]
             });
 
             return L.marker([lat, lng], { icon: icon });
         }
 
+        // Custom Logo Callout Marker generator
+        function createLogoCalloutMarker(lat, lng, name, color) {
+            const nameLower = name.toLowerCase();
+            let logoHtml = '';
+            let svgContent = '';
+            let dx = 0, dy = 0; // Logo box offset from actual point
+            let sizeX = 350, sizeY = 250; // Leaflet DivIcon bounding box
+            let ax = 175, ay = 125;
+            if (nameLower.includes('wver') || nameLower.includes('eifel-rur')) {
+                // CENTRAL: WVER (waves writing)
+                dx = -75; dy = -50;
+                logoHtml = `
+                    <div class="logo-box logo-wver-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="https://wver.de/wp-content/uploads/2025/08/wver-logo.png" alt="WVER">
+                    </div>
+                `;
+                const targetX = ax + dx + 55;
+                const targetY = ay + dy + 19;
+                svgContent = `
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
+                `;
+            } else if (nameLower.includes('schoellershammer')) {
+                // CENTRAL RIGHT: SCHOELLERSHAMMER (Official logo)
+                dx = 30; dy = -50;
+                logoHtml = `
+                    <div class="logo-box logo-schoellershammer-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 130px; height: 42px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="https://www.schoellershammer.de/wp-content/themes/schoellershammer/assets/images/logo.png" alt="SCHOELLERSHAMMER">
+                    </div>
+                `;
+                const targetX = ax + dx;
+                const targetY = ay + dy + 21;
+                svgContent = `
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
+                `;
+            } else if (nameLower.includes('smurfit')) {
+                // EAST: Smurfit Westrock (Official logo)
+                dx = 30; dy = -20;
+                logoHtml = `
+                    <div class="logo-box logo-smurfit-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 130px; height: 40px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="logos/smurfit_westrock.svg" alt="Smurfit Westrock">
+                    </div>
+                `;
+                const targetX = ax + dx;
+                const targetY = ay + dy + 20;
+                svgContent = `
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
+                `;
+            } else if (nameLower.includes('tillmann') || nameLower.includes('tillman')) {
+                // EAST BELOW: Papierfabrik Tillmann PNG logo
+                dx = 20; dy = 20;
+                logoHtml = `
+                    <div class="logo-box logo-tillmann-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 3px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 90px; height: 36px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="logos/papierfabrik_tillmann.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Papierfabrik Tillmann">
+                    </div>
+                `;
+                const targetX = ax + dx;
+                const targetY = ay + dy + 18;
+                svgContent = `
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
+                `;
+            } else if (nameLower.includes('rlv') || nameLower.includes('landwirtschafts-verband')) {
+                // NORTH: RLV (Official logo)
+                dx = -120; dy = -20;
+                logoHtml = `
+                    <div class="logo-box logo-rlv-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="https://www.rlv.de/wp-content/themes/rlv_template_final/assets/img/logo_rlv.png" alt="RLV">
+                    </div>
+                `;
+                const targetX = ax + dx + 110;
+                const targetY = ay + dy + 19;
+                svgContent = `
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
+                `;
+            } else if (nameLower.includes('eschweiler')) {
+                // WEST ABOVE: Stadt Eschweiler (only logo image)
+                dx = -80; dy = -30;
+                logoHtml = `
+                    <div class="logo-box logo-eschweiler-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 60px; height: 50px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="logos/stadt_eschweiler.jpg" alt="Stadt Eschweiler">
+                    </div>
+                `;
+                const targetX = ax + dx + 60;
+                const targetY = ay + dy + 25;
+                svgContent = `
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
+                `;
+            } else if (nameLower.includes('isa') || nameLower.includes('iww')) {
+                // SOUTH-WEST: RWTH ISA/IWW Institute (same campus, one combined point)
+                dx = -120; dy = 20;
+                logoHtml = `
+                    <div class="logo-box logo-combined-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 2px; border: 1.2px solid #000000; border-radius: 4px; display: flex; align-items: center; justify-content: center; width: 110px; height: 52px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); background: #ffffff;">
+                        <img src="isa_iww_fiw.png" style="width: 100%; height: 100%; object-fit: contain;" alt="ISA / IWW">
+                    </div>
+                `;
+                const startX = ax + dx + 90;
+                const startY = ay + dy + 12;
+                svgContent = `
+                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${startX}" y1="${startY}" x2="${ax + (startX - ax)*0.25}" y2="${ay + (startY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax - 6},${ay + 3} ${ax - 3},${ay + 6}" fill="${color}" />
+                `;
+            } else if (nameLower.includes('fiw')) {
+                // SOUTH-EAST: FiW e.V. an der RWTH Aachen (own point, own logo)
+                dx = 30; dy = 40;
+                logoHtml = `
+                    <div class="logo-box logo-fiw-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 3px 6px; background: #ffffff; border: 1.2px solid #0067b1; display: flex; align-items: center; justify-content: center; width: 110px; height: 32px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,103,177,0.15); border-radius: 4px;">
+                        <img src="https://www.fiw.rwth-aachen.de/_assets/d2d15ab76e88d41662e2ec8fa5eb4956/Images/FiW_RGB_2022.svg" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="FiW">
+                    </div>
+                `;
+                const targetX = ax + dx + 10;
+                const targetY = ay + dy;
+                svgContent = `
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
+                `;
+            } else {
+                return null;
+            }
+
+            const html = `
+                <div class="logo-callout-container">
+                    <svg width="${sizeX}" height="${sizeY}" style="position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible;">
+                        ${svgContent}
+                    </svg>
+                    ${logoHtml}
+                </div>
+            `;
+
+            const icon = L.divIcon({
+                html: html,
+                className: 'logo-callout-marker',
+                iconSize: [sizeX, sizeY],
+                iconAnchor: [ax, ay]
+            });
+
+            return L.marker([lat, lng], { icon: icon });
+        }
+
+
+        // Update URL Parameters based on current filters
+        function updateUrlParams() {
+            const url = new URL(window.location);
+            const searchQuery = document.getElementById('search-input').value.trim();
+
+            if (searchQuery) {
+                url.searchParams.set('q', searchQuery);
+            } else {
+                url.searchParams.delete('q');
+            }
+
+            if (activeFilters.size < Object.keys(groupColors).length) {
+                url.searchParams.set('gruppe', Array.from(activeFilters).join(','));
+            } else {
+                url.searchParams.delete('gruppe');
+            }
+
+            window.history.replaceState({}, '', url);
+        }
+
         // Render Sidebar and Markers
         function renderMapAndSidebar() {
+            updateUrlParams();
+
             markersLayer.clearLayers();
             const listContainer = document.getElementById('contact-list-container');
             listContainer.innerHTML = '';
 
             const searchQuery = document.getElementById('search-input').value.toLowerCase();
 
+            const mainPartners = [
+                'wver',
+                'schoellershammer',
+                'smurfit',
+                'tillmann',
+                'rlv',
+                'eschweiler',
+                'fiw',
+                'isa',
+                'iww'
+            ];
+
+            const isMainPartner = (name) => {
+                const nameLower = name.toLowerCase();
+                return mainPartners.some(p => nameLower.includes(p));
+            };
+
             // Filter features
             const filteredFeatures = geojsonData.features.filter(feature => {
                 const props = feature.properties;
-                const matchesFilter = activeFilters.has(props.group);
+                const matchesFilter = activeFilters.has(props.group) || isMainPartner(props.name);
                 
                 const matchesSearch = !searchQuery || 
                     props.name.toLowerCase().includes(searchQuery) ||
-                    (props.description && props.description.toLowerCase().includes(searchQuery)) ||
-                    (props.email && props.email.toLowerCase().includes(searchQuery)) ||
                     props.group.toLowerCase().includes(searchQuery);
-                    
                 return matchesFilter && matchesSearch;
             });
 
             // Update Counter
             document.getElementById('contacts-count').innerText = 
-                `${filteredFeatures.length} von ${geojsonData.features.length} Kontakten angezeigt`;
+                `${filteredFeatures.length} von ${geojsonData.features.length} Institutionen angezeigt`;
 
             if (filteredFeatures.length === 0) {
-                listContainer.innerHTML = `<div class="info-msg">Keine Kontakte entsprechen den Kriterien</div>`;
+                listContainer.innerHTML = `<div class="info-msg">Keine Institutionen entsprechen den Kriterien</div>`;
             }
+
+            const getCleanPartnerLabel = (name) => {
+                const nameLower = name.toLowerCase();
+                if (nameLower.includes('wver') || nameLower.includes('eifel-rur')) return 'WVER';
+                if (nameLower.includes('schoellershammer')) return 'SCHOELLERSHAMMER';
+                if (nameLower.includes('smurfit')) return 'Smurfit Westrock';
+                if (nameLower.includes('tillmann') || nameLower.includes('tillman')) return 'PAPIERFABRIK TILLMANN';
+                if (nameLower.includes('rlv') || nameLower.includes('landwirtschafts-verband')) return 'RLV';
+                if (nameLower.includes('eschweiler')) return 'STADT ESCHWEILER';
+                if (nameLower.includes('fiw')) return 'FiW';
+                if (nameLower.includes('isa') || nameLower.includes('iww')) return 'ISA / IWW';
+                return name;
+            };
+
+            const renderedPartnerLabels = new Set();
 
             filteredFeatures.forEach(feature => {
                 const [lng, lat] = feature.geometry.coordinates;
                 const props = feature.properties;
                 const color = groupColors[props.group] || '#8b5cf6';
 
-                // Add Marker to Map
-                const marker = createCustomMarker(lat, lng, color, props.name);
+                // Render the normal custom marker (colored by group, e.g. purple for Tillmann)
+                let marker = createCustomMarker(lat, lng, color, props.name, props.group);
                 
-                const popupContent = `
-                    <div class="popup-card">
-                        <div class="popup-group" style="color: ${color}">${props.group}</div>
-                        <div class="popup-title">${props.name}</div>
-                        ${props.description ? `<div class="popup-desc">${props.description}</div>` : ''}
-                        ${props.phone ? `<div class="popup-detail">📞 ${props.phone}</div>` : ''}
-                        ${props.email ? `<div class="popup-detail">✉️ ${props.email}</div>` : ''}
-                        <div class="popup-detail" style="font-family: monospace; font-size:10px; margin-top: 6px;">
-                            📍 ${lat.toFixed(6)}, ${lng.toFixed(6)}
-                        </div>
-                        <div class="popup-actions">
-                            <button class="popup-btn" onclick="editContact('${feature.id}')">Bearbeiten</button>
-                            <button class="popup-btn" onclick="focusContact(${lat}, ${lng}, true)">Zentrieren</button>
-                        </div>
-                    </div>
+                let popupContent = `
+                    <div class="popup-card extended-popup">
+                        <div class="popup-group" style="color: ${color}">${props.group || ''}</div>
+                        <div class="popup-title">${props.name || ''}</div>
+                        <div class="popup-body">
                 `;
+
+                if (props.organisation) popupContent += `<div class="popup-detail"><strong>Organisation:</strong> ${props.organisation}</div>`;
+                if (props.institution) popupContent += `<div class="popup-detail"><strong>Institution:</strong> ${props.institution}</div>`;
+                if (props.bereich) popupContent += `<div class="popup-detail"><strong>Bereich:</strong> ${props.bereich}</div>`;
+                if (props.email) popupContent += `<div class="popup-detail"><strong>E-Mail:</strong> <a href="mailto:${props.email}">${props.email}</a></div>`;
+                if (props.phone || props.telefon) popupContent += `<div class="popup-detail"><strong>Telefon:</strong> ${props.phone || props.telefon}</div>`;
+
+                popupContent += `
+                            <div class="popup-detail coords-detail">
+                                📍 ${lat.toFixed(6)}, ${lng.toFixed(6)}
+                            </div>
+                        </div>
+                `;
+
+                const websiteUrl = props.website || props.url;
+                if (websiteUrl) {
+                    popupContent += `
+                        <div class="popup-footer">
+                            <a href="${websiteUrl.startsWith('http') ? websiteUrl : 'http://' + websiteUrl}" target="_blank" class="website-btn">Zur Website</a>
+                        </div>
+                    `;
+                }
+
+                popupContent += `</div>`;
+
                 marker.bindPopup(popupContent);
+
+                // Optional: Karte bleibt zentriert auf dem Marker beim Öffnen
+                marker.on('click', function(e) {
+                    map.setView(e.target.getLatLng());
+                });
                 markersLayer.addLayer(marker);
+
+                // Render the logo callout next to it pointing exactly to the custom marker
+                if (isMainPartner(props.name)) {
+                    const partnerLabel = getCleanPartnerLabel(props.name);
+                    const partnerKey = `${partnerLabel}|${lat.toFixed(5)}|${lng.toFixed(5)}`;
+                    if (!renderedPartnerLabels.has(partnerKey)) {
+                        renderedPartnerLabels.add(partnerKey);
+                        let calloutMarker = createLogoCalloutMarker(lat, lng, props.name, color);
+                        markersLayer.addLayer(calloutMarker);
+                    }
+                }
 
                 // Add Item to Sidebar
                 const item = document.createElement('div');
-                // replace spaces and slashes for css class name matching
                 const safeGroupClass = props.group.toLowerCase().replace(/[\s\/]/g, '_');
                 item.className = `contact-item ${safeGroupClass}`;
                 item.innerHTML = `
@@ -1139,7 +1490,6 @@
                         <span>${props.name}</span>
                         <span class="contact-group-badge badge-${props.group.toLowerCase().split('/')[0].trim().replace(/\s/g, '')}">${props.group}</span>
                     </div>
-                    ${props.description ? `<div class="contact-desc">${props.description}</div>` : '<div class="contact-desc" style="font-style:italic;">Keine Notiz</div>'}
                     <div class="contact-coords">
                         <span>Lat: ${lat.toFixed(4)}</span>
                         <span>Lng: ${lng.toFixed(4)}</span>
@@ -1147,162 +1497,13 @@
                 `;
 
                 item.addEventListener('click', () => {
-                    focusContact(lat, lng);
+                    map.panTo([lat, lng]);
                     marker.openPopup();
                 });
 
                 listContainer.appendChild(item);
             });
         }
-
-        // Map Click handler to select coordinates
-        map.on('click', function(e) {
-            const lat = e.latlng.lat;
-            const lng = e.latlng.lng;
-
-            document.getElementById('contact-lat').value = lat.toFixed(6);
-            document.getElementById('contact-lng').value = lng.toFixed(6);
-
-            // Add marker helper
-            if (selectedCoordsMarker) {
-                map.removeLayer(selectedCoordsMarker);
-            }
-            selectedCoordsMarker = L.circleMarker([lat, lng], {
-                radius: 10,
-                color: '#6366f1',
-                fillColor: '#6366f1',
-                fillOpacity: 0.4,
-                weight: 2
-            }).addTo(map);
-        });
-
-        // Focus contact
-        function focusContact(lat, lng, zoomIn = false) {
-            map.panTo([lat, lng]);
-            if (zoomIn) {
-                map.setZoom(14);
-            }
-        }
-
-        // Edit contact launcher
-        window.editContact = function(id) {
-            const feature = geojsonData.features.find(f => f.id === id);
-            if (!feature) return;
-
-            document.getElementById('contact-id').value = feature.id;
-            document.getElementById('contact-name').value = feature.properties.name;
-            document.getElementById('contact-group').value = feature.properties.group;
-            document.getElementById('contact-lat').value = feature.geometry.coordinates[1];
-            document.getElementById('contact-lng').value = feature.geometry.coordinates[0];
-            document.getElementById('contact-desc').value = feature.properties.description || '';
-            document.getElementById('contact-phone').value = feature.properties.phone || '';
-            document.getElementById('contact-email').value = feature.properties.email || '';
-
-            document.getElementById('form-action-title').innerText = "Kontakt bearbeiten";
-            document.getElementById('btn-cancel-edit').style.display = "block";
-            document.getElementById('btn-delete-contact').style.display = "block";
-
-            if (selectedCoordsMarker) map.removeLayer(selectedCoordsMarker);
-            selectedCoordsMarker = L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], {
-                radius: 10,
-                color: '#fbbf24',
-                fillColor: '#fbbf24',
-                fillOpacity: 0.4,
-                weight: 2
-            }).addTo(map);
-
-            map.closePopup();
-        };
-
-        // Reset form
-        function resetForm() {
-            document.getElementById('contact-id').value = '';
-            document.getElementById('contact-name').value = '';
-            document.getElementById('contact-group').value = 'Sonstige';
-            document.getElementById('contact-lat').value = '';
-            document.getElementById('contact-lng').value = '';
-            document.getElementById('contact-desc').value = '';
-            document.getElementById('contact-phone').value = '';
-            document.getElementById('contact-email').value = '';
-
-            document.getElementById('form-action-title').innerText = "Neuen Kontakt erstellen";
-            document.getElementById('btn-cancel-edit').style.display = "none";
-            document.getElementById('btn-delete-contact').style.display = "none";
-
-            if (selectedCoordsMarker) {
-                map.removeLayer(selectedCoordsMarker);
-                selectedCoordsMarker = null;
-            }
-        }
-
-        // Save
-        document.getElementById('btn-save-contact').addEventListener('click', () => {
-            const name = document.getElementById('contact-name').value.trim();
-            const group = document.getElementById('contact-group').value;
-            const latStr = document.getElementById('contact-lat').value;
-            const lngStr = document.getElementById('contact-lng').value;
-            const desc = document.getElementById('contact-desc').value.trim();
-            const phone = document.getElementById('contact-phone').value.trim();
-            const email = document.getElementById('contact-email').value.trim();
-            const id = document.getElementById('contact-id').value;
-
-            if (!name || !latStr || !lngStr) {
-                alert("Bitte Name, Breitengrad und Längengrad ausfüllen!");
-                return;
-            }
-
-            const lat = parseFloat(latStr);
-            const lng = parseFloat(lngStr);
-
-            if (id) {
-                const feature = geojsonData.features.find(f => f.id === id);
-                if (feature) {
-                    feature.geometry.coordinates = [lng, lat];
-                    feature.properties = {
-                        name,
-                        group,
-                        description: desc,
-                        phone,
-                        email,
-                        color: groupColors[group] || '#8b5cf6'
-                    };
-                }
-            } else {
-                const newFeature = {
-                    type: "Feature",
-                    id: Date.now().toString(),
-                    geometry: {
-                        type: "Point",
-                        coordinates: [lng, lat]
-                    },
-                    properties: {
-                        name,
-                        group,
-                        description: desc,
-                        phone,
-                        email,
-                        color: groupColors[group] || '#8b5cf6'
-                    }
-                };
-                geojsonData.features.push(newFeature);
-            }
-
-            saveContacts();
-        });
-
-        // Delete
-        document.getElementById('btn-delete-contact').addEventListener('click', () => {
-            const id = document.getElementById('contact-id').value;
-            if (!id) return;
-
-            if (confirm("Möchtest du diesen Kontakt wirklich löschen?")) {
-                geojsonData.features = geojsonData.features.filter(f => f.id !== id);
-                saveContacts();
-            }
-        });
-
-        // Cancel
-        document.getElementById('btn-cancel-edit').addEventListener('click', resetForm);
 
         // Filter button toggle logic
         document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1348,76 +1549,178 @@
         // Search trigger
         document.getElementById('search-input').addEventListener('input', renderMapAndSidebar);
 
-        // Theme Toggle Logic
-        // 1. Base Map: CartoDB Light/Positron (For Light Mode)
-        const baseLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 20
-        });
-
-        // Add Positron to map layers list
         baseMaps["Helles Design"] = baseLight;
 
         const themeToggle = document.getElementById('theme-toggle');
-        
-        // Load initial theme state (default is dark mode)
-        let isDarkMode = true;
+        let isDarkMode = false;
 
         themeToggle.addEventListener('click', () => {
             isDarkMode = !isDarkMode;
             if (isDarkMode) {
                 document.body.classList.remove('light-theme');
                 themeToggle.innerText = '☀️';
-                
-                // Swap Leaflet layer
-                if (map.hasLayer(baseLight)) {
-                    map.removeLayer(baseLight);
-                }
+                if (map.hasLayer(baseLight)) map.removeLayer(baseLight);
                 baseDark.addTo(map);
             } else {
                 document.body.classList.add('light-theme');
                 themeToggle.innerText = '🌙';
-                
-                // Swap Leaflet layer
-                if (map.hasLayer(baseDark)) {
-                    map.removeLayer(baseDark);
-                }
+                if (map.hasLayer(baseDark)) map.removeLayer(baseDark);
                 baseLight.addTo(map);
             }
         });
 
-        // Decrypt Trigger
-        document.getElementById('btn-decrypt-map').addEventListener('click', async () => {
-            const pass = document.getElementById('map-password').value;
-            if (!pass) return;
-            const success = await loadContacts(pass);
-            if (success) {
-                document.getElementById('map-password').value = "";
-            }
+        // Rerender when zoom changes to show/hide details dynamically
+        map.on('zoomend', () => {
+            renderMapAndSidebar();
+            drawRivers();
         });
 
-        document.getElementById('map-password').addEventListener('keypress', async (e) => {
-            if (e.key === 'Enter') {
-                const pass = document.getElementById('map-password').value;
-                if (!pass) return;
-                const success = await loadContacts(pass);
-                if (success) {
-                    document.getElementById('map-password').value = "";
-                }
+        // Export Logic
+        function getFilteredDataForExport() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const mainPartners = [
+                'wver', 'schoellershammer', 'smurfit', 'tillmann',
+                'rlv', 'eschweiler', 'fiw', 'isa', 'iww'
+            ];
+            const isMainPartner = (name) => {
+                const nameLower = name.toLowerCase();
+                return mainPartners.some(p => nameLower.includes(p));
+            };
+
+            return geojsonData.features.filter(feature => {
+                const props = feature.properties;
+                const matchesFilter = activeFilters.has(props.group) || isMainPartner(props.name);
+                const matchesSearch = !searchQuery ||
+                    props.name.toLowerCase().includes(searchQuery) ||
+                    props.group.toLowerCase().includes(searchQuery);
+                return matchesFilter && matchesSearch;
+            }).map(f => f.properties);
+        }
+
+        document.getElementById('export-csv-btn').addEventListener('click', () => {
+            const data = getFilteredDataForExport();
+            if (data.length === 0) {
+                alert("Keine Daten zum Exportieren vorhanden.");
+                return;
             }
+
+            const headers = ['Name', 'Organisation', 'Gruppe', 'E-Mail'];
+            const csvRows = [headers.join(';')];
+
+            data.forEach(props => {
+                const row = [
+                    props.name || '',
+                    props.organisation || '',
+                    props.group || '',
+                    props.email || ''
+                ].map(val => `"${val.toString().replace(/"/g, '""')}"`);
+                csvRows.push(row.join(';'));
+            });
+
+            const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + csvRows.join("\n");
+            const encodedUri = encodeURI(csvContent);
+
+            const today = new Date().toISOString().split('T')[0];
+            const filename = `Akteure_${today}.csv`;
+
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         });
 
-        // Export Trigger
-        document.getElementById('btn-export-geojson').addEventListener('click', () => {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(geojsonData, null, 2));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", "contacts.geojson");
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
+        document.getElementById('export-pdf-btn').addEventListener('click', () => {
+            const data = getFilteredDataForExport();
+            if (data.length === 0) {
+                alert("Keine Daten zum Exportieren vorhanden.");
+                return;
+            }
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFontSize(18);
+            doc.text("AquaRevier Akteursliste", 14, 22);
+            doc.setFontSize(11);
+            doc.text(`Gefilterte Ergebnisse: ${data.length} Akteure`, 14, 30);
+
+            const tableData = data.map(props => [
+                props.name || '',
+                props.organisation || '',
+                props.group || '',
+                props.email || ''
+            ]);
+
+            doc.autoTable({
+                startY: 36,
+                head: [['Name', 'Organisation', 'Gruppe', 'E-Mail']],
+                body: tableData,
+                theme: 'striped',
+                headStyles: { fillColor: [79, 70, 229] },
+                styles: { fontSize: 9 }
+            });
+
+            const today = new Date().toISOString().split('T')[0];
+            doc.save(`Akteure_${today}.pdf`);
         });
+
+        // Initial Load parsing URL
+        function parseUrlParamsAndLoad() {
+            const url = new URL(window.location);
+            const q = url.searchParams.get('q');
+            const gruppe = url.searchParams.get('gruppe');
+
+            if (q) {
+                document.getElementById('search-input').value = q;
+            }
+
+            if (gruppe) {
+                activeFilters.clear();
+                const groups = gruppe.split(',');
+                groups.forEach(g => {
+                    if (groupColors[g]) {
+                        activeFilters.add(g);
+                    }
+                });
+
+                // Update UI buttons based on loaded params
+                document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
+                    const bg = btn.getAttribute('data-group');
+                    if (bg === 'all') {
+                        if (activeFilters.size === Object.keys(groupColors).length) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    } else {
+                        if (activeFilters.has(bg)) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    }
+                });
+            }
+
+            loadContacts();
+        }
+
+        // Filter Reset Logic
+        document.getElementById('reset-filters-btn').addEventListener('click', () => {
+            document.getElementById('search-input').value = '';
+
+            activeFilters = new Set(Object.keys(groupColors));
+            document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
+                btn.classList.add('active');
+            });
+
+            renderMapAndSidebar();
+        });
+
+        // Initial Load
+        parseUrlParamsAndLoad();
     </script>
 </body>
 </html>

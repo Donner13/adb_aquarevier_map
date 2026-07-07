@@ -1,0 +1,20 @@
+# .gitignore für AquaRevier Dev Map
+
+# Backup-Dateien
+*.bak
+
+# Temporäre JS-Dateien
+temp_script.js
+test_render.js
+_extracted.js
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
