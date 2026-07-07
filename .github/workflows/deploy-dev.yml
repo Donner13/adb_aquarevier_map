@@ -25,6 +25,7 @@ jobs:
           SURGE_LOGIN: dtunder-x2a8v@surge.sh
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
+          sed -i '/internal.html/d' .surgeignore
           surge . adb-aquarevier-dev.surge.sh --token $SURGE_TOKEN
 
       - name: Deployment Summary

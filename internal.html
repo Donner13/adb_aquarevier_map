@@ -1759,8 +1759,16 @@
                     geojsonData = JSON.parse(localRaw);
                     document.getElementById('save-status').innerText = 'Lokale Änderungen geladen (nicht exportiert).';
                 } else {
-                    const res = await fetch('contacts.geojson');
-                    if (res.ok) geojsonData = await res.json();
+                    let res = await fetch('contacts.geojson');
+                    if (res.ok) {
+                        geojsonData = await res.json();
+                    } else {
+                        res = await fetch('contacts_anonymized.geojson');
+                        if (res.ok) {
+                            geojsonData = await res.json();
+                            document.getElementById('save-status').innerText = 'Anonymisierte Daten geladen (Vorschau-Modus).';
+                        }
+                    }
                 }
 
                 if (geojsonData.styleSettings) {
