@@ -1325,7 +1325,7 @@
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
                 `;
-            } else if (nameLower.includes('isa') || nameLower.includes('iww')) {
+            } else if (nameLower.includes('iww') || nameLower.includes('wasserbau und wasserwirtschaft')) {
                 // SOUTH-WEST: RWTH ISA/IWW Institute (same campus, one combined point)
                 dx = -120; dy = 20;
                 logoHtml = `
@@ -1419,7 +1419,6 @@
                 'rlv',
                 'eschweiler',
                 'fiw',
-                'isa',
                 'iww'
             ];
 
@@ -1456,7 +1455,7 @@
                 if (nameLower.includes('rlv') || nameLower.includes('landwirtschafts-verband')) return 'RLV';
                 if (nameLower.includes('eschweiler')) return 'STADT ESCHWEILER';
                 if (nameLower.includes('fiw')) return 'FiW';
-                if (nameLower.includes('isa') || nameLower.includes('iww')) return 'ISA / IWW';
+                if (nameLower.includes('iww') || nameLower.includes('wasserbau und wasserwirtschaft')) return 'ISA / IWW';
                 return name;
             };
 
@@ -1619,7 +1618,7 @@
             const searchQuery = document.getElementById('search-input').value.toLowerCase();
             const mainPartners = [
                 'wver', 'schoellershammer', 'smurfit', 'tillmann',
-                'rlv', 'eschweiler', 'fiw', 'isa', 'iww'
+                'rlv', 'eschweiler', 'fiw', 'iww'
             ];
             const isMainPartner = (name) => {
                 const nameLower = name.toLowerCase();
