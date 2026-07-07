@@ -672,8 +672,105 @@
                     </div>
                     <button class="filter-btn active" id="btn-new-contact" style="width:100%; justify-content:center; margin-bottom:6px;">➕ Neuer Akteur</button>
                     <button class="filter-btn" id="btn-export-geojson" style="width:100%; justify-content:center; margin-bottom:6px;">💾 Als .geojson exportieren</button>
+                    <button class="filter-btn" id="btn-save-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #059669; border-color: #059669; color: white;">💾 Auf Server speichern</button>
+                    <button class="filter-btn" id="btn-deploy-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #2563eb; border-color: #2563eb; color: white;">🚀 Karte veröffentlichen (Deploy)</button>
                     <button class="filter-btn" id="btn-reset-local" style="width:100%; justify-content:center; font-size:10px; color:#ef4444;">↺ Lokale Änderungen verwerfen</button>
                     <div id="save-status" style="font-size:10px; color: var(--text-secondary); margin-top:6px; min-height:14px;"></div>
+                </div>
+
+                <!-- GIS & Design Customizer -->
+                <div>
+                    <div class="section-title" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="toggleCustomizerPanel()">
+                        <span>🎨 GIS & Design Customizer</span>
+                        <span id="customizer-toggle-icon">▼</span>
+                    </div>
+                    <div class="glass-panel" id="customizer-panel" style="padding: 10px; border-radius: 8px; margin-bottom: 10px; background: var(--bg-surface); border: 1px solid var(--border-color); display: none;">
+                        
+                        <!-- Marker Options -->
+                        <div style="margin-bottom: 10px;">
+                            <strong style="font-size: 11px; display: block; margin-bottom: 4px;">Akteur-Marker</strong>
+                            <div class="form-row" style="margin-bottom: 6px;">
+                                <label style="font-size: 10px; display: flex; justify-content: space-between; width:100%;">
+                                    <span>Größe (px)</span>
+                                    <span id="val-marker-size">14</span>
+                                </label>
+                                <input type="range" id="cfg-marker-size" min="8" max="32" value="14" style="width: 100%;" oninput="updateMarkerStyles()">
+                            </div>
+                            <div class="form-row" style="margin-bottom: 6px;">
+                                <label style="font-size: 10px; display: flex; justify-content: space-between; width:100%;">
+                                    <span>Randstärke (px)</span>
+                                    <span id="val-marker-border">2</span>
+                                </label>
+                                <input type="range" id="cfg-marker-border" min="0" max="8" value="2" style="width: 100%;" oninput="updateMarkerStyles()">
+                            </div>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+
+                        <!-- Boundaries styling -->
+                        <div style="margin-bottom: 10px;">
+                            <strong style="font-size: 11px; display: block; margin-bottom: 4px;">Grenzen & Layer</strong>
+                            
+                            <!-- Untersuchungsgebiet -->
+                            <div style="margin-bottom: 8px; border-bottom: 1px dashed var(--border-color); padding-bottom: 6px;">
+                                <span style="font-size: 10px; font-weight: bold; color: var(--text-primary);">Untersuchungsgebiet:</span>
+                                <div style="display: flex; gap: 6px; align-items: center; margin-top: 4px;">
+                                    <input type="color" id="cfg-ug-color" value="#000000" onchange="updateBoundaryStyles()">
+                                    <input type="color" id="cfg-ug-fill" value="#818cf8" onchange="updateBoundaryStyles()">
+                                    <input type="range" id="cfg-ug-weight" min="0" max="6" step="0.5" value="1.8" style="width:50px;" oninput="updateBoundaryStyles()">
+                                    <input type="range" id="cfg-ug-opacity" min="0" max="1" step="0.05" value="0.04" style="width:50px;" oninput="updateBoundaryStyles()">
+                                </div>
+                            </div>
+
+                            <!-- Kreise -->
+                            <div style="margin-bottom: 8px; border-bottom: 1px dashed var(--border-color); padding-bottom: 6px;">
+                                <span style="font-size: 10px; font-weight: bold; color: var(--text-primary);">Kreise:</span>
+                                <div style="display: flex; gap: 6px; align-items: center; margin-top: 4px;">
+                                    <input type="color" id="cfg-kr-color" value="#000000" onchange="updateBoundaryStyles()">
+                                    <input type="range" id="cfg-kr-weight" min="0" max="6" step="0.5" value="2" style="width:60px;" oninput="updateBoundaryStyles()">
+                                    <input type="text" id="cfg-kr-dash" value="6, 4" placeholder="Strichung" style="width:50px; font-size:10px; padding:2px;" onchange="updateBoundaryStyles()">
+                                </div>
+                            </div>
+
+                            <!-- Catchment (Rur) -->
+                            <div style="margin-bottom: 4px;">
+                                <span style="font-size: 10px; font-weight: bold; color: var(--text-primary);">Rur-Einzugsgebiet:</span>
+                                <div style="display: flex; gap: 6px; align-items: center; margin-top: 4px;">
+                                    <input type="color" id="cfg-ca-color" value="#1e3a8a" onchange="updateBoundaryStyles()">
+                                    <input type="color" id="cfg-ca-fill" value="#3b82f6" onchange="updateBoundaryStyles()">
+                                    <input type="range" id="cfg-ca-weight" min="0" max="6" step="0.5" value="1.2" style="width:50px;" oninput="updateBoundaryStyles()">
+                                    <input type="range" id="cfg-ca-opacity" min="0" max="1" step="0.05" value="0.12" style="width:50px;" oninput="updateBoundaryStyles()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+
+                        <!-- Group Colors & Names Customizer -->
+                        <div style="margin-bottom: 10px;">
+                            <strong style="font-size: 11px; display: block; margin-bottom: 4px;">Akteursgruppen & Farben</strong>
+                            <div id="group-customizer-container" style="max-height: 180px; overflow-y: auto; padding-right: 4px; display: flex; flex-direction: column; gap: 6px;">
+                                <!-- Dynamically populated -->
+                            </div>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+
+                        <!-- GeoJSON Layer Importer -->
+                        <div>
+                            <strong style="font-size: 11px; display: block; margin-bottom: 4px;">GeoJSON importieren (Shape / GIS)</strong>
+                            <div class="form-row" style="margin-bottom: 6px;">
+                                <input type="file" id="import-geojson-file" accept=".geojson,.json" style="font-size: 10px; width: 100%;">
+                            </div>
+                            <div class="form-row" style="margin-bottom: 6px; display: flex; gap: 4px;">
+                                <input type="text" id="import-layer-name" placeholder="Layer Name" style="font-size: 10px; width: 60%; padding: 2px;">
+                                <input type="color" id="import-layer-color" value="#10b981" style="width: 30px; height: 20px;">
+                            </div>
+                            <button class="filter-btn active" id="btn-import-layer" style="width: 100%; justify-content: center; font-size: 10px; padding: 4px;">📥 Layer laden</button>
+                            <div id="import-status" style="font-size: 9px; color: var(--text-secondary); margin-top: 4px;"></div>
+                        </div>
+
+                    </div>
                 </div>
 
                 <!-- Search -->
@@ -803,11 +900,15 @@
         });
 
         // 8. Custom Boundary: Untersuchungsgebiet (Landkreise als Hintergrund)
+        let leafletUG = null;
+        let leafletKR = null;
+        let leafletCA = null;
+
         const boundaryLayer = L.layerGroup().addTo(map);
         fetch('untersuchungsgebiet.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
-                L.geoJSON(data, {
+                leafletUG = L.geoJSON(data, {
                     style: {
                         color: "#000000", // Black border for clear Kreis separation
                         weight: 1.8,
@@ -824,7 +925,7 @@
         fetch('kreise_rr.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
-                L.geoJSON(data, {
+                leafletKR = L.geoJSON(data, {
                     style: {
                         color: "#000000",
                         weight: 2,
@@ -855,7 +956,7 @@
                         }
                     });
                 }
-                L.geoJSON(data, {
+                leafletCA = L.geoJSON(data, {
                     style: {
                         color: "#1e3a8a", // Darker blue border
                         weight: 1.2,      // Thinner border
@@ -1096,7 +1197,7 @@
             "Wasserschutzgebiete (LANUV)": wmsWSG
         };
 
-        L.control.layers(baseMaps, overlayMaps, { position: 'topright' }).addTo(map);
+        const layerControl = L.control.layers(baseMaps, overlayMaps, { position: 'topright' }).addTo(map);
 
         // Legend: Grenzen & Gebiete
         const boundaryLegend = L.control({ position: 'bottomleft' });
@@ -1127,6 +1228,141 @@
         // Load FULL contacts, preferring local edits (localStorage) over the base file
         const LOCAL_STORAGE_KEY = 'contacts_local_full';
 
+        // GIS & Customizer State
+        let styleSettings = {
+            markerSize: 14,
+            markerBorder: 2,
+            groupColors: Object.assign({}, groupColors),
+            groupNames: {
+                'Behörde': 'Behörde', 'Einzelakteure': 'Einzelakteure', 'Forschung': 'Forschung',
+                'Gebietskörperschaft': 'Gebietskörperschaft', 'Gewerbe/ Industrie': 'Gewerbe/ Industrie',
+                'Landwirtschaft': 'Landwirtschaft', 'Netzwerk/ Multiplikator': 'Netzwerk/ Multiplikator',
+                'Ver-/ Entsorger': 'Ver-/ Entsorger', 'Sonstige': 'Sonstige', 'Konsortium': 'Konsortium'
+            },
+            boundaries: {
+                ugColor: '#000000', ugFill: '#818cf8', ugWeight: 1.8, ugOpacity: 0.04,
+                krColor: '#000000', krWeight: 2.0, krDash: '6, 4',
+                caColor: '#1e3a8a', caFill: '#3b82f6', caWeight: 1.2, caOpacity: 0.12
+            }
+        };
+
+        function toggleCustomizerPanel() {
+            const panel = document.getElementById('customizer-panel');
+            const icon = document.getElementById('customizer-toggle-icon');
+            if (panel.style.display === 'none') {
+                panel.style.display = 'block';
+                icon.innerText = '▲';
+            } else {
+                panel.style.display = 'none';
+                icon.innerText = '▼';
+            }
+        }
+
+        function renderGroupCustomizer() {
+            const container = document.getElementById('group-customizer-container');
+            container.innerHTML = '';
+            Object.keys(styleSettings.groupColors).forEach(group => {
+                const color = styleSettings.groupColors[group];
+                const name = styleSettings.groupNames[group] || group;
+                const row = document.createElement('div');
+                row.style.display = 'flex';
+                row.style.alignItems = 'center';
+                row.style.gap = '6px';
+                row.innerHTML = `
+                    <input type="color" value="${color}" style="width: 24px; height: 18px; border:none; padding:0; cursor:pointer;" onchange="updateGroupColor('${group}', this.value)">
+                    <input type="text" value="${name}" style="font-size: 10px; flex-grow: 1; padding: 2px 4px; box-sizing: border-box;" onchange="updateGroupName('${group}', this.value)">
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function updateGroupColor(group, val) {
+            styleSettings.groupColors[group] = val;
+            const cssVarMap = {
+                'Behörde': '--color-behorde',
+                'Forschung': '--color-forschung',
+                'Gebietskörperschaft': '--color-gebietskorperschaft',
+                'Gewerbe/ Industrie': '--color-gewerbe',
+                'Landwirtschaft': '--color-landwirtschaft',
+                'Netzwerk/ Multiplikator': '--color-netzwerk',
+                'Ver-/ Entsorger': '--color-entsorger',
+                'Sonstige': '--color-sonstige',
+                'Einzelakteure': '--color-einzelakteure',
+                'Konsortium': '--color-konsortium'
+            };
+            const cssVar = cssVarMap[group];
+            if (cssVar) {
+                document.documentElement.style.setProperty(cssVar, val);
+            }
+            renderMapAndSidebar();
+            persistLocal();
+        }
+
+        function updateGroupName(group, val) {
+            styleSettings.groupNames[group] = val;
+            updateFilterButtonNames();
+            renderMapAndSidebar();
+            persistLocal();
+        }
+
+        function updateFilterButtonNames() {
+            document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
+                const group = btn.getAttribute('data-group');
+                if (group && group !== 'all') {
+                    const name = styleSettings.groupNames[group] || group;
+                    const dot = btn.querySelector('.dot');
+                    if (dot) {
+                        btn.innerHTML = '';
+                        btn.appendChild(dot);
+                        btn.appendChild(document.createTextNode(' ' + name));
+                    }
+                }
+            });
+        }
+
+        function applyStyleSettingsToUI() {
+            document.getElementById('cfg-marker-size').value = styleSettings.markerSize;
+            document.getElementById('val-marker-size').innerText = styleSettings.markerSize;
+            document.getElementById('cfg-marker-border').value = styleSettings.markerBorder;
+            document.getElementById('val-marker-border').innerText = styleSettings.markerBorder;
+
+            const b = styleSettings.boundaries;
+            document.getElementById('cfg-ug-color').value = b.ugColor;
+            document.getElementById('cfg-ug-fill').value = b.ugFill;
+            document.getElementById('cfg-ug-weight').value = b.ugWeight;
+            document.getElementById('cfg-ug-opacity').value = b.ugOpacity;
+            document.getElementById('cfg-kr-color').value = b.krColor;
+            document.getElementById('cfg-kr-weight').value = b.krWeight;
+            document.getElementById('cfg-kr-dash').value = b.krDash;
+            document.getElementById('cfg-ca-color').value = b.caColor;
+            document.getElementById('cfg-ca-fill').value = b.caFill;
+            document.getElementById('cfg-ca-weight').value = b.caWeight;
+            document.getElementById('cfg-ca-opacity').value = b.caOpacity;
+
+            Object.keys(styleSettings.groupColors).forEach(group => {
+                const color = styleSettings.groupColors[group];
+                const cssVarMap = {
+                    'Behörde': '--color-behorde',
+                    'Forschung': '--color-forschung',
+                    'Gebietskörperschaft': '--color-gebietskorperschaft',
+                    'Gewerbe/ Industrie': '--color-gewerbe',
+                    'Landwirtschaft': '--color-landwirtschaft',
+                    'Netzwerk/ Multiplikator': '--color-netzwerk',
+                    'Ver-/ Entsorger': '--color-entsorger',
+                    'Sonstige': '--color-sonstige',
+                    'Einzelakteure': '--color-einzelakteure',
+                    'Konsortium': '--color-konsortium'
+                };
+                const cssVar = cssVarMap[group];
+                if (cssVar) {
+                    document.documentElement.style.setProperty(cssVar, color);
+                }
+            });
+
+            updateFilterButtonNames();
+            updateBoundaryStyles(true);
+        }
+
         async function loadContacts() {
             try {
                 const localRaw = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -1137,10 +1373,27 @@
                     const res = await fetch('contacts.geojson');
                     if (res.ok) geojsonData = await res.json();
                 }
+
+                if (geojsonData.styleSettings) {
+                    styleSettings = Object.assign(styleSettings, geojsonData.styleSettings);
+                    if (geojsonData.styleSettings.boundaries) {
+                        styleSettings.boundaries = Object.assign(styleSettings.boundaries, geojsonData.styleSettings.boundaries);
+                    }
+                    if (geojsonData.styleSettings.groupColors) {
+                        styleSettings.groupColors = Object.assign(styleSettings.groupColors, geojsonData.styleSettings.groupColors);
+                    }
+                    if (geojsonData.styleSettings.groupNames) {
+                        styleSettings.groupNames = Object.assign(styleSettings.groupNames, geojsonData.styleSettings.groupNames);
+                    }
+                }
+
                 // Assign a stable id to every feature that lacks one
                 geojsonData.features.forEach((f, i) => {
                     if (!f.properties.id) f.properties.id = 'a' + i + '_' + Date.now().toString(36);
                 });
+
+                renderGroupCustomizer();
+                applyStyleSettingsToUI();
                 renderMapAndSidebar();
             } catch (err) {
                 console.error("Error loading contacts:", err);
@@ -1148,9 +1401,92 @@
         }
 
         function persistLocal() {
+            geojsonData.styleSettings = styleSettings;
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(geojsonData));
             const status = document.getElementById('save-status');
             status.innerText = 'Gespeichert (lokal, ' + new Date().toLocaleTimeString('de-DE') + ')';
+            saveToServer();
+        }
+
+        function updateMarkerStyles() {
+            styleSettings.markerSize = parseInt(document.getElementById('cfg-marker-size').value);
+            document.getElementById('val-marker-size').innerText = styleSettings.markerSize;
+            styleSettings.markerBorder = parseInt(document.getElementById('cfg-marker-border').value);
+            document.getElementById('val-marker-border').innerText = styleSettings.markerBorder;
+            renderMapAndSidebar();
+            persistLocal();
+        }
+
+        function updateBoundaryStyles(skipPersist = false) {
+            const ugColor = document.getElementById('cfg-ug-color').value;
+            const ugFill = document.getElementById('cfg-ug-fill').value;
+            const ugWeight = parseFloat(document.getElementById('cfg-ug-weight').value);
+            const ugOpacity = parseFloat(document.getElementById('cfg-ug-opacity').value);
+
+            const krColor = document.getElementById('cfg-kr-color').value;
+            const krWeight = parseFloat(document.getElementById('cfg-kr-weight').value);
+            const krDash = document.getElementById('cfg-kr-dash').value;
+
+            const caColor = document.getElementById('cfg-ca-color').value;
+            const caFill = document.getElementById('cfg-ca-fill').value;
+            const caWeight = parseFloat(document.getElementById('cfg-ca-weight').value);
+            const caOpacity = parseFloat(document.getElementById('cfg-ca-opacity').value);
+
+            styleSettings.boundaries = {
+                ugColor, ugFill, ugWeight, ugOpacity,
+                krColor, krWeight, krDash,
+                caColor, caFill, caWeight, caOpacity
+            };
+
+            if (leafletUG) {
+                leafletUG.setStyle({
+                    color: ugColor,
+                    weight: ugWeight,
+                    fillColor: ugFill,
+                    fillOpacity: ugOpacity
+                });
+            }
+            if (leafletKR) {
+                leafletKR.setStyle({
+                    color: krColor,
+                    weight: krWeight,
+                    dashArray: krDash
+                });
+            }
+            if (leafletCA) {
+                leafletCA.setStyle({
+                    color: caColor,
+                    weight: caWeight,
+                    fillColor: caFill,
+                    fillOpacity: caOpacity
+                });
+            }
+
+            if (!skipPersist) {
+                persistLocal();
+            }
+        }
+
+        async function saveToServer() {
+            const status = document.getElementById('save-status');
+            const oldText = status.innerText;
+            status.innerText = 'Speichere auf Server...';
+            try {
+                const response = await fetch('/api/contacts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(geojsonData)
+                });
+                const result = await response.json();
+                if (response.ok && result.status === 'success') {
+                    status.innerText = 'Auf Server gespeichert (' + new Date().toLocaleTimeString('de-DE') + ')';
+                } else {
+                    status.innerText = 'Server-Fehler: ' + (result.message || response.statusText);
+                }
+            } catch (err) {
+                console.error(err);
+                status.innerText = 'Lokale Änderung gesichert (Verbindungsfehler zum Server)';
+            }
         }
 
         // --- Editor state & helpers ---
@@ -1226,7 +1562,7 @@
                 description: document.getElementById('contact-desc').value,
                 phone: document.getElementById('contact-phone').value,
                 email: document.getElementById('contact-email').value,
-                color: groupColors[group] || '#8b5cf6'
+                color: styleSettings.groupColors[group] || groupColors[group] || '#8b5cf6'
             };
             const feature = {
                 type: 'Feature',
@@ -1269,10 +1605,84 @@
             location.reload();
         });
 
+        document.getElementById('btn-save-server').addEventListener('click', saveToServer);
+
+        document.getElementById('btn-deploy-server').addEventListener('click', async () => {
+            const status = document.getElementById('save-status');
+            status.innerText = 'Veröffentlichung läuft (Surge Deploy)...';
+            try {
+                const response = await fetch('/api/deploy', { method: 'POST' });
+                const result = await response.json();
+                if (response.ok && result.status === 'success') {
+                    status.innerText = 'Erfolgreich veröffentlicht!';
+                    alert('Veröffentlichung abgeschlossen:\n' + result.output);
+                } else {
+                    status.innerText = 'Veröffentlichung fehlgeschlagen!';
+                    alert('Fehler:\n' + result.output);
+                }
+            } catch (err) {
+                console.error(err);
+                status.innerText = 'Verbindungsfehler bei Veröffentlichung.';
+            }
+        });
+
+        // GeoJSON Layer Import feature
+        document.getElementById('btn-import-layer').addEventListener('click', () => {
+            const fileInput = document.getElementById('import-geojson-file');
+            const file = fileInput.files[0];
+            const layerName = document.getElementById('import-layer-name').value.trim() || (file ? file.name : "Custom GIS Layer");
+            const color = document.getElementById('import-layer-color').value;
+            const status = document.getElementById('import-status');
+
+            if (!file) {
+                status.innerText = "Bitte wählen Sie eine GeoJSON-Datei aus.";
+                return;
+            }
+
+            status.innerText = "Lese Datei...";
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    status.innerText = "Lade Geometrien...";
+                    
+                    const newLayer = L.geoJSON(data, {
+                        style: {
+                            color: color,
+                            weight: 2,
+                            fillColor: color,
+                            fillOpacity: 0.2
+                        },
+                        onEachFeature: function(feature, layer) {
+                            if (feature.properties) {
+                                let popupHtml = '<div style="font-size:11px; max-height: 200px; overflow-y: auto;">';
+                                Object.keys(feature.properties).forEach(k => {
+                                    popupHtml += `<strong>${k}:</strong> ${feature.properties[k]}<br>`;
+                                });
+                                popupHtml += '</div>';
+                                layer.bindPopup(popupHtml);
+                            }
+                        }
+                    });
+
+                    newLayer.addTo(map);
+                    layerControl.addOverlay(newLayer, "📥 " + layerName);
+                    
+                    status.innerText = `Erfolgreich geladen: ${layerName}`;
+                    fileInput.value = '';
+                    document.getElementById('import-layer-name').value = '';
+                } catch (err) {
+                    console.error(err);
+                    status.innerText = "Fehler beim Parsen der GeoJSON-Datei: " + err.message;
+                }
+            };
+            reader.readAsText(file);
+        });
+
         // Custom marker generator
         function createCustomMarker(lat, lng, color, name, group) {
-            const size = 14;
-            const border = 2.0;
+            const size = styleSettings.markerSize || 14;
+            const border = styleSettings.markerBorder !== undefined ? styleSettings.markerBorder : 2.0;
             
             let html = '';
             if (group === 'Landwirtschaft') {
@@ -1573,7 +1983,7 @@
             const clusterMarkers = new Map();
             clusters.forEach((cluster, key) => {
                 const { institution, lat, lng, group, people } = cluster;
-                const color = groupColors[group] || '#8b5cf6';
+                const color = styleSettings.groupColors[group] || groupColors[group] || '#8b5cf6';
 
                 let marker = createCustomMarker(lat, lng, color, institution, group);
                 clusterMarkers.set(key, marker);

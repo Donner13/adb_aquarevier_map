@@ -43,6 +43,10 @@ def _clean_branch(branche):
 def build_anonymized_geojson(data):
     """Transform a full contacts FeatureCollection into the public-safe anonymized layer."""
     features = data.get('features', []) if isinstance(data, dict) else []
+    style_settings = data.get('styleSettings', {})
+    custom_colors = style_settings.get('groupColors', {})
+    custom_names = style_settings.get('groupNames', {})
+    
     gewerbe_mapping = {}
     gewerbe_counter = 1
     out_features = []
@@ -63,7 +67,8 @@ def build_anonymized_geojson(data):
                     gewerbe_counter += 1
                 display_name = gewerbe_mapping[name]
 
-        color = GROUP_COLORS.get(group, '#8b5cf6')
+        color = custom_colors.get(group, GROUP_COLORS.get(group, '#8b5cf6'))
+        display_group = custom_names.get(group, group)
 
         out_features.append({
             "type": "Feature",
@@ -71,12 +76,16 @@ def build_anonymized_geojson(data):
             "geometry": feature.get('geometry'),
             "properties": {
                 "name": display_name,
-                "group": group,
+                "group": display_group,
                 "color": color
             }
         })
 
-    return {"type": "FeatureCollection", "features": out_features}
+    return {
+        "type": "FeatureCollection",
+        "styleSettings": style_settings,
+        "features": out_features
+    }
 
 
 def encrypt_geojson_file(src_path, dest_path):
