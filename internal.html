@@ -662,9 +662,13 @@
                             <label style="font-size:10px;">Telefon</label>
                             <input type="text" id="contact-phone" style="width:100%; box-sizing:border-box;">
                         </div>
-                        <div class="form-row" style="margin-bottom:8px;">
+                        <div class="form-row" style="margin-bottom:6px;">
                             <label style="font-size:10px;">E-Mail</label>
                             <input type="email" id="contact-email" style="width:100%; box-sizing:border-box;">
+                        </div>
+                        <div class="form-row" style="margin-bottom:8px;">
+                            <label style="font-size:10px;">Logo (Bild-URL)</label>
+                            <input type="text" id="contact-logo" placeholder="https://..." style="width:100%; box-sizing:border-box;">
                         </div>
                         <button class="filter-btn active" id="btn-save-contact" style="width:100%; margin-bottom:6px; justify-content:center;">💾 Speichern</button>
                         <button class="filter-btn" id="btn-delete-contact" style="display:none; width:100%; margin-bottom:6px; justify-content:center; color:#ef4444;">🗑️ Löschen</button>
@@ -815,9 +819,42 @@
 
                         <!-- Group Colors & Names Customizer -->
                         <div style="margin-bottom: 10px;">
-                            <strong style="font-size: 11px; display: block; margin-bottom: 4px;">Akteursgruppen & Farben</strong>
+                            <strong style="font-size: 11px; display: block; margin-bottom: 4px;">Gruppen, Aliase & Logos</strong>
                             <div id="group-customizer-container" style="max-height: 180px; overflow-y: auto; padding-right: 4px; display: flex; flex-direction: column; gap: 6px;">
                                 <!-- Dynamically populated -->
+                            </div>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+
+                        <!-- UI Theme Configurator -->
+                        <div style="margin-bottom: 10px;">
+                            <strong style="font-size: 11px; display: block; margin-bottom: 4px;">Sidebar UI Theme (Farben)</strong>
+                            <div class="form-row" style="margin-bottom: 6px; display: flex; gap: 4px; font-size:10px; align-items:center;">
+                                <span>Hintergrund</span>
+                                <input type="color" id="cfg-theme-bgBase" value="#0b0f19" onchange="updateTheme('bgBase', this.value)" style="width: 30px; height: 20px;">
+                            </div>
+                            <div class="form-row" style="margin-bottom: 6px; display: flex; gap: 4px; font-size:10px; align-items:center;">
+                                <span>Textfarbe</span>
+                                <input type="color" id="cfg-theme-textPrimary" value="#f3f4f6" onchange="updateTheme('textPrimary', this.value)" style="width: 30px; height: 20px;">
+                            </div>
+                            <div class="form-row" style="margin-bottom: 6px; display: flex; gap: 4px; font-size:10px; align-items:center;">
+                                <span>Akzentfarbe</span>
+                                <input type="color" id="cfg-theme-accentPrimary" value="#6366f1" onchange="updateTheme('accentPrimary', this.value)" style="width: 30px; height: 20px;">
+                            </div>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+
+                        <!-- Search Index Configurator -->
+                        <div style="margin-bottom: 10px;">
+                            <strong style="font-size: 11px; display: block; margin-bottom: 4px;">Such-Index Felder</strong>
+                            <div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 10px;">
+                                <label><input type="checkbox" id="cfg-search-name" onchange="updateSearchFields()"> Name</label>
+                                <label><input type="checkbox" id="cfg-search-group" onchange="updateSearchFields()"> Gruppe</label>
+                                <label><input type="checkbox" id="cfg-search-description" onchange="updateSearchFields()"> Beschreibung</label>
+                                <label><input type="checkbox" id="cfg-search-phone" onchange="updateSearchFields()"> Telefon</label>
+                                <label><input type="checkbox" id="cfg-search-email" onchange="updateSearchFields()"> E-Mail</label>
                             </div>
                         </div>
 
@@ -1349,6 +1386,7 @@
                 'Landwirtschaft': 'Landwirtschaft', 'Netzwerk/ Multiplikator': 'Netzwerk/ Multiplikator',
                 'Ver-/ Entsorger': 'Ver-/ Entsorger', 'Sonstige': 'Sonstige', 'Konsortium': 'Konsortium'
             },
+            groupLogos: {},
             boundaries: {
                 ugColor: '#000000', ugFill: '#818cf8', ugWeight: 1.8, ugOpacity: 0.04,
                 krColor: '#000000', krWeight: 2.0, krDash: '6, 4',
@@ -1367,7 +1405,15 @@
                 'Tagebaue & Bergbaufelder (GD)': { opacity: 0.5, zIndex: 5 },
                 'Wasserschutzgebiete (LANUV)': { opacity: 0.45, zIndex: 5 }
             },
-            customWMS: []
+            customWMS: [],
+            searchFields: ['name', 'group'],
+            theme: {
+                bgBase: '#0b0f19',
+                bgSurface: 'rgba(17, 24, 39, 0.8)',
+                borderColor: 'rgba(255, 255, 255, 0.08)',
+                textPrimary: '#f3f4f6',
+                accentPrimary: '#6366f1'
+            }
         };
 
         function toggleCustomizerPanel() {
@@ -1388,13 +1434,22 @@
             Object.keys(styleSettings.groupColors).forEach(group => {
                 const color = styleSettings.groupColors[group];
                 const name = styleSettings.groupNames[group] || group;
+                const logo = (styleSettings.groupLogos && styleSettings.groupLogos[group]) ? styleSettings.groupLogos[group] : '';
                 const row = document.createElement('div');
                 row.style.display = 'flex';
-                row.style.alignItems = 'center';
-                row.style.gap = '6px';
+                row.style.flexDirection = 'column';
+                row.style.gap = '4px';
+                row.style.borderBottom = '1px solid var(--border-color)';
+                row.style.paddingBottom = '6px';
                 row.innerHTML = `
-                    <input type="color" value="${color}" style="width: 24px; height: 18px; border:none; padding:0; cursor:pointer;" onchange="updateGroupColor('${group}', this.value)">
-                    <input type="text" value="${name}" style="font-size: 10px; flex-grow: 1; padding: 2px 4px; box-sizing: border-box;" onchange="updateGroupName('${group}', this.value)">
+                    <div style="display:flex; align-items:center; gap:6px;">
+                        <input type="color" value="${color}" style="width: 24px; height: 18px; border:none; padding:0; cursor:pointer;" onchange="updateGroupColor('${group}', this.value)">
+                        <input type="text" value="${name}" placeholder="Alias Name" style="font-size: 10px; flex-grow: 1; padding: 2px 4px; box-sizing: border-box;" onchange="updateGroupName('${group}', this.value)">
+                    </div>
+                    <div style="display:flex; align-items:center; gap:6px;">
+                        <span style="font-size:9px; color:var(--text-secondary); width:24px; text-align:center;">Logo</span>
+                        <input type="text" value="${logo}" placeholder="Bild-URL für Gruppe" style="font-size: 10px; flex-grow: 1; padding: 2px 4px; box-sizing: border-box;" onchange="updateGroupLogo('${group}', this.value)">
+                    </div>
                 `;
                 container.appendChild(row);
             });
@@ -1573,6 +1628,41 @@
             persistLocal();
         }
 
+        function updateGroupLogo(group, val) {
+            if (!styleSettings.groupLogos) styleSettings.groupLogos = {};
+            styleSettings.groupLogos[group] = val;
+            renderMapAndSidebar();
+            persistLocal();
+        }
+
+        function applyTheme() {
+            const root = document.documentElement;
+            if (styleSettings.theme) {
+                root.style.setProperty('--bg-base', styleSettings.theme.bgBase);
+                root.style.setProperty('--bg-surface', styleSettings.theme.bgSurface);
+                root.style.setProperty('--border-color', styleSettings.theme.borderColor);
+                root.style.setProperty('--text-primary', styleSettings.theme.textPrimary);
+                root.style.setProperty('--accent-primary', styleSettings.theme.accentPrimary);
+            }
+        }
+
+        function updateTheme(key, val) {
+            if (!styleSettings.theme) styleSettings.theme = {};
+            styleSettings.theme[key] = val;
+            applyTheme();
+            persistLocal();
+        }
+
+        function updateSearchFields() {
+            const fields = [];
+            ['name', 'group', 'description', 'phone', 'email'].forEach(f => {
+                if (document.getElementById('cfg-search-' + f).checked) fields.push(f);
+            });
+            styleSettings.searchFields = fields;
+            renderMapAndSidebar();
+            persistLocal();
+        }
+
         function updateFilterButtonNames() {
             document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
                 const group = btn.getAttribute('data-group');
@@ -1596,6 +1686,17 @@
 
             if (styleSettings.markerTooltip !== undefined) {
                 document.getElementById('cfg-marker-tooltip').value = styleSettings.markerTooltip;
+            }
+
+            ['name', 'group', 'description', 'phone', 'email'].forEach(f => {
+                const el = document.getElementById('cfg-search-' + f);
+                if (el) el.checked = (styleSettings.searchFields || []).includes(f);
+            });
+
+            if (styleSettings.theme) {
+                document.getElementById('cfg-theme-bgBase').value = styleSettings.theme.bgBase;
+                document.getElementById('cfg-theme-textPrimary').value = styleSettings.theme.textPrimary;
+                document.getElementById('cfg-theme-accentPrimary').value = styleSettings.theme.accentPrimary;
             }
 
             const b = styleSettings.boundaries;
@@ -1685,6 +1786,15 @@
                     if (geojsonData.styleSettings.customWMS) {
                         styleSettings.customWMS = geojsonData.styleSettings.customWMS.slice();
                     }
+                    if (geojsonData.styleSettings.groupLogos) {
+                        styleSettings.groupLogos = Object.assign(styleSettings.groupLogos || {}, geojsonData.styleSettings.groupLogos);
+                    }
+                    if (geojsonData.styleSettings.searchFields) {
+                        styleSettings.searchFields = geojsonData.styleSettings.searchFields;
+                    }
+                    if (geojsonData.styleSettings.theme) {
+                        styleSettings.theme = Object.assign(styleSettings.theme, geojsonData.styleSettings.theme);
+                    }
                 }
 
                 // Assign a stable id to every feature that lacks one
@@ -1694,6 +1804,7 @@
 
                 renderGroupCustomizer();
                 renderWmsCustomizer();
+                applyTheme();
                 applyStyleSettingsToUI();
                 applyWmsSettingsToLayers();
 
@@ -1815,6 +1926,7 @@
             document.getElementById('contact-desc').value = '';
             document.getElementById('contact-phone').value = '';
             document.getElementById('contact-email').value = '';
+            document.getElementById('contact-logo').value = '';
             document.getElementById('form-action-title').innerText = 'Neuen Akteur erstellen';
             document.getElementById('btn-cancel-edit').style.display = 'none';
             document.getElementById('btn-delete-contact').style.display = 'none';
@@ -1832,6 +1944,7 @@
             document.getElementById('contact-desc').value = props.description || '';
             document.getElementById('contact-phone').value = props.phone || '';
             document.getElementById('contact-email').value = props.email || '';
+            document.getElementById('contact-logo').value = props.logo || '';
             document.getElementById('form-action-title').innerText = 'Akteur bearbeiten';
             document.getElementById('btn-cancel-edit').style.display = 'inline-flex';
             document.getElementById('btn-delete-contact').style.display = 'flex';
@@ -1874,6 +1987,7 @@
                 description: document.getElementById('contact-desc').value,
                 phone: document.getElementById('contact-phone').value,
                 email: document.getElementById('contact-email').value,
+                logo: document.getElementById('contact-logo').value,
                 color: styleSettings.groupColors[group] || groupColors[group] || '#8b5cf6'
             };
             const feature = {
@@ -2056,7 +2170,7 @@
         }
 
         // Custom Logo Callout Marker generator
-        function createLogoCalloutMarker(lat, lng, name, color) {
+        function createLogoCalloutMarker(lat, lng, name, color, customLogoUrl = null) {
             const nameLower = name.toLowerCase();
             const hasIsaWord = /\bisa\b/.test(nameLower);
             let logoHtml = '';
@@ -2064,7 +2178,23 @@
             let dx = 0, dy = 0; // Logo box offset from actual point
             let sizeX = 350, sizeY = 250; // Leaflet DivIcon bounding box
             let ax = 175, ay = 125;
-            if (nameLower.includes('wver') || nameLower.includes('eifel-rur')) {
+
+            if (customLogoUrl) {
+                dx = 0; dy = -50;
+                logoHtml = `
+                    <div class="logo-box" style="left: ${ax + dx - 50}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 100px; height: 40px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="${customLogoUrl}" alt="${name}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                `;
+                const targetX = ax + dx;
+                const targetY = ay + dy + 20;
+                svgContent = `
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
+                `;
+            } else if (nameLower.includes('wver') || nameLower.includes('eifel-rur')) {
                 // CENTRAL: WVER (waves writing)
                 dx = -75; dy = -50;
                 logoHtml = `
@@ -2245,9 +2375,14 @@
                 const props = feature.properties;
                 const matchesFilter = activeFilters.has(props.group) || isMainPartner(props.name);
                 
-                const matchesSearch = !searchQuery || 
-                    props.name.toLowerCase().includes(searchQuery) ||
-                    props.group.toLowerCase().includes(searchQuery);
+                let matchesSearch = true;
+                if (searchQuery) {
+                    const fields = styleSettings.searchFields || ['name', 'group'];
+                    matchesSearch = fields.some(f => {
+                        const val = props[f];
+                        return val && String(val).toLowerCase().includes(searchQuery);
+                    });
+                }
                 return matchesFilter && matchesSearch;
             });
 
@@ -2284,7 +2419,8 @@
                 const institution = extractInstitution(props.name);
                 const key = `${institution}|${lat.toFixed(4)}|${lng.toFixed(4)}`;
                 if (!clusters.has(key)) {
-                    clusters.set(key, { institution, lat, lng, group: props.group, people: [] });
+                    const displayGroup = styleSettings.groupNames[props.group] || props.group;
+                    clusters.set(key, { institution, lat, lng, group: displayGroup, rawGroup: props.group, people: [] });
                 }
                 clusters.get(key).people.push(props);
             });
@@ -2348,13 +2484,21 @@
 
                 markersLayer.addLayer(marker);
 
-                if (isMainPartner(institution)) {
-                    const partnerLabel = getCleanPartnerLabel(institution);
+                // Check for individual contact logo first, then group logo
+                let customLogo = people.find(p => p.logo)?.logo;
+                if (!customLogo && styleSettings.groupLogos) {
+                    customLogo = styleSettings.groupLogos[props.group];
+                }
+
+                if (isMainPartner(institution) || customLogo) {
+                    const partnerLabel = isMainPartner(institution) ? getCleanPartnerLabel(institution) : institution;
                     const partnerKey = `${partnerLabel}|${lat.toFixed(5)}|${lng.toFixed(5)}`;
                     if (!renderedPartnerLabels.has(partnerKey)) {
                         renderedPartnerLabels.add(partnerKey);
-                        let calloutMarker = createLogoCalloutMarker(lat, lng, institution, color);
-                        markersLayer.addLayer(calloutMarker);
+                        let calloutMarker = createLogoCalloutMarker(lat, lng, institution, color, customLogo);
+                        if (calloutMarker) {
+                            markersLayer.addLayer(calloutMarker);
+                        }
                     }
                 }
             });
@@ -2368,11 +2512,12 @@
                 // Add Item to Sidebar
                 const item = document.createElement('div');
                 const safeGroupClass = props.group.toLowerCase().replace(/[\s\/]/g, '_');
+                const displayGroup = styleSettings.groupNames[props.group] || props.group;
                 item.className = `contact-item ${safeGroupClass}`;
                 item.innerHTML = `
                     <div class="contact-name">
                         <span>${props.name}</span>
-                        <span class="contact-group-badge badge-${props.group.toLowerCase().split('/')[0].trim().replace(/\s/g, '')}">${props.group}</span>
+                        <span class="contact-group-badge badge-${props.group.toLowerCase().split('/')[0].trim().replace(/\s/g, '')}">${displayGroup}</span>
                     </div>
                     <div class="contact-coords">
                         <span>Lat: ${lat.toFixed(4)}</span>
