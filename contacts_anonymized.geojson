@@ -1,5 +1,47 @@
 {
   "type": "FeatureCollection",
+  "styleSettings": {
+    "markerSize": 14,
+    "markerBorder": 2,
+    "markerTooltip": "all",
+    "groupColors": {
+      "Behörde": "#f43f5e",
+      "Forschung": "#3b82f6",
+      "Gebietskörperschaft": "#fbbf24",
+      "Gewerbe/ Industrie": "#a855f7",
+      "Landwirtschaft": "#10b981",
+      "Netzwerk/ Multiplikator": "#ff007f",
+      "Ver-/ Entsorger": "#ff7300",
+      "Sonstige": "#8b5cf6",
+      "Konsortium": "#1d4ed8",
+      "Einzelakteure": "#00f5d4"
+    },
+    "groupNames": {
+      "Behörde": "Behörde",
+      "Einzelakteure": "Einzelakteure",
+      "Forschung": "Forschung",
+      "Gebietskörperschaft": "Gebietskörperschaft",
+      "Gewerbe/ Industrie": "Gewerbe/ Industrie",
+      "Landwirtschaft": "Landwirtschaft",
+      "Netzwerk/ Multiplikator": "Netzwerk/ Multiplikator",
+      "Ver-/ Entsorger": "Ver-/ Entsorger",
+      "Sonstige": "Sonstige",
+      "Konsortium": "Konsortium"
+    },
+    "boundaries": {
+      "ugColor": "#000000",
+      "ugFill": "#818cf8",
+      "ugWeight": 2,
+      "ugOpacity": 0.8,
+      "krColor": "#000000",
+      "krWeight": 2,
+      "krDash": "20, 10",
+      "caColor": "#1e3a8a",
+      "caFill": "#3b82f6",
+      "caWeight": 5,
+      "caOpacity": 0.1
+    }
+  },
   "features": [
     {
       "type": "Feature",
@@ -270,7 +312,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 1 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -622,7 +664,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 2 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -1502,7 +1544,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 3 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -1598,7 +1640,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 4 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -1614,7 +1656,7 @@
       "properties": {
         "name": "Mark Braun (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -1630,7 +1672,7 @@
       "properties": {
         "name": "Nina Ott (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -1646,7 +1688,7 @@
       "properties": {
         "name": "René Kremer (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -1662,7 +1704,7 @@
       "properties": {
         "name": "Zoe Boller (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -1678,7 +1720,7 @@
       "properties": {
         "name": "Annika Görtz (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -1694,7 +1736,7 @@
       "properties": {
         "name": "Michael Durst (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -1710,7 +1752,7 @@
       "properties": {
         "name": "Jutta Niederste-Hollenberg (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -1726,7 +1768,7 @@
       "properties": {
         "name": "Henry Riße (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -1934,7 +1976,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 5 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -2030,7 +2072,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 6 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -2366,7 +2408,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 7 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -2382,7 +2424,7 @@
       "properties": {
         "name": "Thomas Wintgens (RWTH Aachen University - Institut für Siedlungswasserwirtschaft)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -2398,7 +2440,7 @@
       "properties": {
         "name": "Florian Achten (RWTH Aachen University - Institut für Siedlungswasserwirtschaft)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -2414,7 +2456,7 @@
       "properties": {
         "name": "Maximilian Born (RWTH Aachen University - Institut für Siedlungswasserwirtschaft)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -2430,7 +2472,7 @@
       "properties": {
         "name": "Shubham Jayswal (RWTH Aachen University - Institut für Siedlungswasserwirtschaft)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -2446,7 +2488,7 @@
       "properties": {
         "name": "Laurence Palmowski (RWTH Aachen University - Institut für Siedlungswasserwirtschaft)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -2494,7 +2536,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 8 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -2510,7 +2552,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 9 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -2526,7 +2568,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 10 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -2542,7 +2584,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 11 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -2558,7 +2600,7 @@
       "properties": {
         "name": "Juliane Reiser (RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW))",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -2574,7 +2616,7 @@
       "properties": {
         "name": "Catrina Brüll (RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW))",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -2590,7 +2632,7 @@
       "properties": {
         "name": "Holger Schüttrumpf (RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW))",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -2606,7 +2648,7 @@
       "properties": {
         "name": "Whelinta Sherin Anandharaj (RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW))",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -2622,7 +2664,7 @@
       "properties": {
         "name": "Paul Schick (RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW))",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -3310,7 +3352,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 12 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -3326,7 +3368,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 13 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -3806,7 +3848,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 14 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -3902,7 +3944,7 @@
       "properties": {
         "name": "Hans-Josef Hellwich (Fa. Katharina Tillmann Papier- und Wellpappenfabrik e.K.)",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -3918,7 +3960,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 15 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -3934,7 +3976,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 16 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -3950,7 +3992,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 17 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -3966,7 +4008,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 18 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -3982,7 +4024,7 @@
       "properties": {
         "name": "Erik Richter (RWTH Aachen University - Lehr- und Forschungsgebiet Physische Geographie und Klimatologie (PGK))",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -3998,7 +4040,7 @@
       "properties": {
         "name": "Michael Leuchner (RWTH Aachen University - Lehr- und Forschungsgebiet Physische Geographie und Klimatologie (PGK))",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -4046,7 +4088,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 19 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -4062,7 +4104,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 20 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -4302,7 +4344,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 21 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -4382,7 +4424,7 @@
       "properties": {
         "name": "Christoph Nahrath (SCHOELLERSHAMMER GmbH)",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -4398,7 +4440,7 @@
       "properties": {
         "name": "Armin Vetter (SCHOELLERSHAMMER GmbH)",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -4414,7 +4456,7 @@
       "properties": {
         "name": "Maren Wolf (SCHOELLERSHAMMER GmbH)",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -4430,7 +4472,7 @@
       "properties": {
         "name": "Michael Mathar (Stadt Eschweiler)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -4446,7 +4488,7 @@
       "properties": {
         "name": "jens Daub (Stadt Eschweiler)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -4462,7 +4504,7 @@
       "properties": {
         "name": "Christoph Guth (Stadt Eschweiler)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -4478,7 +4520,7 @@
       "properties": {
         "name": "Achim Vogelheim (Stadt Eschweiler)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -4494,7 +4536,7 @@
       "properties": {
         "name": "Ute Bennerscheidt (Stadt Eschweiler)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -4510,7 +4552,7 @@
       "properties": {
         "name": "Nikolas Bongard (Stadt Eschweiler)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -4526,7 +4568,7 @@
       "properties": {
         "name": "Kristina Jacquorie (Stadt Eschweiler)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -4542,7 +4584,7 @@
       "properties": {
         "name": "Raphael Kamp (Stadt Eschweiler)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -4574,7 +4616,7 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 22 – Branche Unbekannt",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -4606,7 +4648,7 @@
       "properties": {
         "name": "Jürgen Groth (Smurfit Westrock Zülpich Paper GmbH)",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -4622,7 +4664,7 @@
       "properties": {
         "name": "Patrick Offer (Smurfit Westrock Zülpich Paper GmbH)",
         "group": "Gewerbe/ Industrie",
-        "color": "#d946ef"
+        "color": "#a855f7"
       }
     },
     {
@@ -5086,7 +5128,7 @@
       "properties": {
         "name": "Martin Kaleß (Wasserverband Eifel-Rur)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -5102,7 +5144,7 @@
       "properties": {
         "name": "Christof Homann (Wasserverband Eifel-Rur)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -5118,7 +5160,7 @@
       "properties": {
         "name": "Felix Steudtner (Wasserverband Eifel-Rur)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -5134,7 +5176,7 @@
       "properties": {
         "name": "Gerd Demny (Wasserverband Eifel-Rur)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -5150,7 +5192,7 @@
       "properties": {
         "name": "Susanne Kozerke (Wasserverband Eifel-Rur)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -5166,7 +5208,7 @@
       "properties": {
         "name": "Frank Jörrens (Wasserverband Eifel-Rur)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -5182,7 +5224,7 @@
       "properties": {
         "name": "Torsten Rose (Wasserverband Eifel-Rur)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
@@ -5198,7 +5240,7 @@
       "properties": {
         "name": "Andreas Wolf (Wasserverband Eifel-Rur)",
         "group": "Konsortium",
-        "color": "#8b5cf6"
+        "color": "#1d4ed8"
       }
     },
     {
