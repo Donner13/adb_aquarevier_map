@@ -829,15 +829,32 @@
             .then(data => {
                 L.geoJSON(data, {
                     style: {
-                        color: "#000000", // Black border for clear Kreis separation
+                        color: "#000000",
                         weight: 1.8,
                         opacity: 0.85,
                         fillColor: "#818cf8",
-                        fillOpacity: 0.04 // Lighter fill
+                        fillOpacity: 0.04
                     }
                 }).addTo(boundaryLayer);
             })
             .catch(err => console.log("Landkreis layer not loaded:", err));
+
+        // 8a2. Kreisgrenzen (7 Kreise des Rheinischen Reviers) - schwarz gestrichelt (Standardmäßig aktiv)
+        const kreiseLayer = L.layerGroup().addTo(map);
+        fetch('kreise_rr.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: {
+                        color: "#000000",
+                        weight: 2,
+                        opacity: 0.9,
+                        dashArray: "6, 4",
+                        fill: false
+                    }
+                }).addTo(kreiseLayer);
+            })
+            .catch(err => console.log("Kreise layer not loaded:", err));
 
         // 8b. Rur Hydrological Catchment Boundary (Echtes Einzugsgebiet)
         const catchmentLayer = L.layerGroup().addTo(map);
@@ -1088,6 +1105,7 @@
             "Teilgewässer (Kanalisiert) [Blau]": tgKanalisiertLayer,
             "Teilgewässer (Natürlich) [Grün]": tgNatuerlichLayer,
             "Akteure (Stand 2025, Archiv)": stakeholder2025Layer,
+            "Kreisgrenzen (Schwarz gestrichelt)": kreiseLayer,
             "Landkreisgrenzen (Rheinisches Revier)": boundaryLayer,
             "Eigene Gewässer mit Namen": riverLayer,
             "NRW Landkreise & Grenzen": wmsBorders,
