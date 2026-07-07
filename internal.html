@@ -703,6 +703,17 @@
                                 </label>
                                 <input type="range" id="cfg-marker-border" min="0" max="8" value="2" style="width: 100%;" oninput="updateMarkerStyles()">
                             </div>
+                            <div class="form-row" style="margin-bottom: 6px;">
+                                <label style="font-size: 10px; display: flex; justify-content: space-between; width:100%;">
+                                    <span>Hover-Tooltip Info</span>
+                                </label>
+                                <select id="cfg-marker-tooltip" style="width: 100%; font-size: 10px; padding: 2px;" onchange="updateMarkerStyles()">
+                                    <option value="none">Kein Tooltip</option>
+                                    <option value="name">Nur Name</option>
+                                    <option value="name_group" selected>Name & Gruppe</option>
+                                    <option value="all">Alle Details</option>
+                                </select>
+                            </div>
                         </div>
 
                         <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
@@ -964,13 +975,14 @@
         fetch('untersuchungsgebiet.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
+                const b = styleSettings.boundaries;
                 leafletUG = L.geoJSON(data, {
                     style: {
-                        color: "#000000", // Black border for clear Kreis separation
-                        weight: 1.8,
+                        color: b.ugColor || "#000000",
+                        weight: b.ugWeight !== undefined ? b.ugWeight : 1.8,
                         opacity: 0.85,
-                        fillColor: "#818cf8",
-                        fillOpacity: 0.04 // Lighter fill
+                        fillColor: b.ugFill || "#818cf8",
+                        fillOpacity: b.ugOpacity !== undefined ? b.ugOpacity : 0.04
                     }
                 }).addTo(boundaryLayer);
             })
@@ -981,12 +993,13 @@
         fetch('kreise_rr.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
+                const b = styleSettings.boundaries;
                 leafletKR = L.geoJSON(data, {
                     style: {
-                        color: "#000000",
-                        weight: 2,
+                        color: b.krColor || "#000000",
+                        weight: b.krWeight !== undefined ? b.krWeight : 2,
                         opacity: 0.9,
-                        dashArray: "6, 4",
+                        dashArray: b.krDash || "6, 4",
                         fill: false
                     }
                 }).addTo(kreiseLayer);
@@ -1012,13 +1025,14 @@
                         }
                     });
                 }
+                const b = styleSettings.boundaries;
                 leafletCA = L.geoJSON(data, {
                     style: {
-                        color: "#1e3a8a", // Darker blue border
-                        weight: 1.2,      // Thinner border
+                        color: b.caColor || "#1e3a8a",
+                        weight: b.caWeight !== undefined ? b.caWeight : 1.2,
                         opacity: 0.6,     // More transparent border
-                        fillColor: "#3b82f6", // Medium blue fill matching image
-                        fillOpacity: 0.12 // Lighter fill
+                        fillColor: b.caFill || "#3b82f6",
+                        fillOpacity: b.caOpacity !== undefined ? b.caOpacity : 0.12
                     }
                 }).addTo(catchmentLayer);
             })
@@ -1327,6 +1341,7 @@
         let styleSettings = {
             markerSize: 14,
             markerBorder: 2,
+            markerTooltip: 'name_group',
             groupColors: Object.assign({}, groupColors),
             groupNames: {
                 'Behörde': 'Behörde', 'Einzelakteure': 'Einzelakteure', 'Forschung': 'Forschung',
@@ -1579,6 +1594,10 @@
             document.getElementById('cfg-marker-border').value = styleSettings.markerBorder;
             document.getElementById('val-marker-border').innerText = styleSettings.markerBorder;
 
+            if (styleSettings.markerTooltip !== undefined) {
+                document.getElementById('cfg-marker-tooltip').value = styleSettings.markerTooltip;
+            }
+
             const b = styleSettings.boundaries;
             document.getElementById('cfg-ug-color').value = b.ugColor;
             document.getElementById('cfg-ug-fill').value = b.ugFill;
@@ -1686,6 +1705,7 @@
                 }
 
                 renderMapAndSidebar();
+                updateBoundaryStyles(true);
             } catch (err) {
                 console.error("Error loading contacts:", err);
             }
@@ -1704,6 +1724,7 @@
             document.getElementById('val-marker-size').innerText = styleSettings.markerSize;
             styleSettings.markerBorder = parseInt(document.getElementById('cfg-marker-border').value);
             document.getElementById('val-marker-border').innerText = styleSettings.markerBorder;
+            styleSettings.markerTooltip = document.getElementById('cfg-marker-tooltip').value;
             renderMapAndSidebar();
             persistLocal();
         }
@@ -2303,6 +2324,28 @@
                     </div>
                 `;
                 marker.bindPopup(popupContent);
+
+                // Add Marker Tooltip based on styleSettings
+                const tooltipPref = styleSettings.markerTooltip || 'name_group';
+                if (tooltipPref !== 'none') {
+                    let tooltipHtml = '';
+                    if (tooltipPref === 'name') {
+                        tooltipHtml = `<b>${institution}</b>`;
+                    } else if (tooltipPref === 'name_group') {
+                        tooltipHtml = `<b>${institution}</b><br><span style="font-size:10px;color:${color}">${group}</span>`;
+                    } else if (tooltipPref === 'all') {
+                        tooltipHtml = `<b>${institution}</b><br><span style="font-size:10px;color:${color}">${group}</span>`;
+                        const pNames = people.map(p => {
+                            let n = p.name.split('(')[0].trim() || p.name;
+                            return n;
+                        });
+                        if (pNames.length > 0) {
+                             tooltipHtml += `<br><span style="font-size:10px;">👤 ${pNames.join(', ')}</span>`;
+                        }
+                    }
+                    marker.bindTooltip(tooltipHtml, { sticky: true });
+                }
+
                 markersLayer.addLayer(marker);
 
                 if (isMainPartner(institution)) {

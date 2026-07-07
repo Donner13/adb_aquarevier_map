@@ -6900,5 +6900,47 @@
         "id": "a344_mravpp3j"
       }
     }
-  ]
+  ],
+  "styleSettings": {
+    "markerSize": 14,
+    "markerBorder": 2,
+    "markerTooltip": "all",
+    "groupColors": {
+      "Behörde": "#f43f5e",
+      "Forschung": "#3b82f6",
+      "Gebietskörperschaft": "#fbbf24",
+      "Gewerbe/ Industrie": "#a855f7",
+      "Landwirtschaft": "#10b981",
+      "Netzwerk/ Multiplikator": "#ff007f",
+      "Ver-/ Entsorger": "#ff7300",
+      "Sonstige": "#8b5cf6",
+      "Konsortium": "#1d4ed8",
+      "Einzelakteure": "#00f5d4"
+    },
+    "groupNames": {
+      "Behörde": "Behörde",
+      "Einzelakteure": "Einzelakteure",
+      "Forschung": "Forschung",
+      "Gebietskörperschaft": "Gebietskörperschaft",
+      "Gewerbe/ Industrie": "Gewerbe/ Industrie",
+      "Landwirtschaft": "Landwirtschaft",
+      "Netzwerk/ Multiplikator": "Netzwerk/ Multiplikator",
+      "Ver-/ Entsorger": "Ver-/ Entsorger",
+      "Sonstige": "Sonstige",
+      "Konsortium": "Konsortium"
+    },
+    "boundaries": {
+      "ugColor": "#000000",
+      "ugFill": "#818cf8",
+      "ugWeight": 2,
+      "ugOpacity": 0.8,
+      "krColor": "#000000",
+      "krWeight": 2,
+      "krDash": "20, 10",
+      "caColor": "#1e3a8a",
+      "caFill": "#3b82f6",
+      "caWeight": 5,
+      "caOpacity": 0.1
+    }
+  }
 }
