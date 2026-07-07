@@ -92,7 +92,7 @@
             text-shadow: 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000;
             white-space: nowrap;
         }
-        
+
         body.light-theme .river-label {
             color: #1e3a8a;
             text-shadow: 1px 1px 2px #fff, -1px -1px 2px #fff, 1px -1px 2px #fff, -1px 1px 2px #fff;
@@ -111,7 +111,7 @@
             text-shadow: 2px 2px 4px #000, -2px -2px 4px #000, 2px -2px 4px #000, -2px 2px 4px #000 !important;
             white-space: nowrap;
         }
-        
+
         body.light-theme .main-partner-label {
             color: #1e3a8a !important;
             text-shadow: 2px 2px 4px #fff, -2px -2px 4px #fff, 2px -2px 4px #fff, -2px 2px 4px #fff !important;
@@ -410,6 +410,80 @@
             gap: 6px;
         }
 
+
+        /* Extended Popup Styles */
+        .extended-popup {
+            max-height: 350px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .extended-popup::-webkit-scrollbar {
+            width: 4px;
+        }
+        .extended-popup::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+        body.light-theme .extended-popup::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-body {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .popup-detail strong {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .popup-detail a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+        .popup-detail a:hover {
+            text-decoration: underline;
+        }
+
+        .coords-detail {
+            font-family: monospace;
+            font-size: 10px;
+            margin-top: 6px;
+            color: var(--text-secondary);
+        }
+
+        .popup-footer {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .website-btn {
+            display: block;
+            text-align: center;
+            background: var(--accent-primary);
+            color: #ffffff;
+            padding: 8px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .website-btn:hover {
+            background: #4f46e5;
+            transform: translateY(-1px);
+            color: #ffffff;
+        }
+        body.light-theme .website-btn {
+            color: #ffffff !important;
+        }
+
         .info-msg {
             font-size: 12px;
             color: var(--text-secondary);
@@ -615,10 +689,20 @@
                     <div class="search-box">
                         <input type="text" id="search-input" placeholder="Nach Name oder Ort suchen...">
                     </div>
-                    <div class="contacts-meta" id="contacts-count">0 von 0 Kontakten angezeigt</div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div class="contacts-meta" id="contacts-count" style="margin-bottom: 0;">0 von 0 Kontakten angezeigt</div>
+                        <button id="reset-filters-btn" class="filter-btn" style="padding: 4px 8px; font-size: 10px;">Filter zurücksetzen</button>
+                    </div>
                     <div class="contact-list" id="contact-list-container">
                         <!-- Filled by JS -->
                     </div>
+                </div>
+
+                <!-- Export Section -->
+                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; gap: 8px;">
+                    <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;">📄 CSV Export</button>
+                    <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;">📑 PDF Export</button>
                 </div>
             </div>
         </div>
@@ -630,6 +714,10 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
+    <!-- jsPDF for PDF Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
     <script>
         // Group Color Map
         const groupColors = {
@@ -751,23 +839,6 @@
             })
             .catch(err => console.log("Landkreis layer not loaded:", err));
 
-        // 8a2. Kreisgrenzen (7 Kreise des Rheinischen Reviers) - schwarz gestrichelt
-        const kreiseLayer = L.layerGroup();
-        fetch('kreise_rr.geojson')
-            .then(res => res.ok ? res.json() : Promise.reject())
-            .then(data => {
-                L.geoJSON(data, {
-                    style: {
-                        color: "#000000",
-                        weight: 2,
-                        opacity: 0.9,
-                        dashArray: "6, 4",
-                        fill: false
-                    }
-                }).addTo(kreiseLayer);
-            })
-            .catch(err => console.log("Kreise layer not loaded:", err));
-
         // 8b. Rur Hydrological Catchment Boundary (Echtes Einzugsgebiet)
         const catchmentLayer = L.layerGroup().addTo(map);
         fetch('rur_einzugsgebiet_outline.geojson')
@@ -817,13 +888,13 @@
                 filter: function(feature) {
                     const name = feature.properties ? (feature.properties.name || "") : "";
                     const nameLower = name.toLowerCase().trim();
-                    const isMainRiver = nameLower === 'rur' || nameLower === 'roer' || 
-                                        nameLower === 'inde' || 
-                                        nameLower === 'wurm' || 
-                                        nameLower === 'erft' || 
-                                        nameLower === 'maas' || 
+                    const isMainRiver = nameLower === 'rur' || nameLower === 'roer' ||
+                                        nameLower === 'inde' ||
+                                        nameLower === 'wurm' ||
+                                        nameLower === 'erft' ||
+                                        nameLower === 'maas' ||
                                         nameLower === 'rhein';
-                    
+
                     const isZoomedOut = map.getZoom() < 11;
                     if (isZoomedOut) {
                         return isMainRiver; // Only show main rivers in overview mode
@@ -1018,7 +1089,6 @@
             "Teilgewässer (Natürlich) [Grün]": tgNatuerlichLayer,
             "Akteure (Stand 2025, Archiv)": stakeholder2025Layer,
             "Landkreisgrenzen (Rheinisches Revier)": boundaryLayer,
-            "Kreisgrenzen (7 Kreise, gestrichelt)": kreiseLayer,
             "Eigene Gewässer mit Namen": riverLayer,
             "NRW Landkreise & Grenzen": wmsBorders,
             "Flüsse & Gewässer (LANUV)": wmsRivers,
@@ -1029,27 +1099,6 @@
         };
 
         L.control.layers(baseMaps, overlayMaps, { position: 'topright' }).addTo(map);
-
-        // Legend: Grenzen & Gebiete
-        const boundaryLegend = L.control({ position: 'bottomleft' });
-        boundaryLegend.onAdd = function () {
-            const div = L.DomUtil.create('div', 'info-legend');
-            div.style.background = '#ffffff';
-            div.style.padding = '8px 12px';
-            div.style.borderRadius = '6px';
-            div.style.boxShadow = '0 1.5px 5px rgba(0,0,0,0.25)';
-            div.style.fontSize = '12px';
-            div.style.lineHeight = '1.7';
-            div.style.color = '#1e293b';
-            div.innerHTML = `
-                <div style="font-weight:700; margin-bottom:4px; font-size:12.5px;">Grenzen & Gebiete</div>
-                <div><span style="display:inline-block; width:22px; border-top:2.4px solid #000000; vertical-align:middle; margin-right:6px;"></span>Landkreisgrenzen (Rheinisches Revier)</div>
-                <div><span style="display:inline-block; width:22px; border-top:2.4px dashed #000000; vertical-align:middle; margin-right:6px;"></span>Kreisgrenzen (7 Kreise)</div>
-                <div><span style="display:inline-block; width:14px; height:14px; background:#3b82f6; opacity:0.5; vertical-align:middle; margin-right:6px; border:1px solid #1e3a8a;"></span>Rur Einzugsgebiet (Hydrologisch)</div>
-            `;
-            return div;
-        };
-        boundaryLegend.addTo(map);
 
         // Contacts State
         let geojsonData = { type: "FeatureCollection", features: [] };
@@ -1073,7 +1122,7 @@
         function createCustomMarker(lat, lng, color, name, group) {
             const size = 14;
             const border = 2.0;
-            
+
             let html = '';
             if (group === 'Landwirtschaft') {
                 // Diamond (Raute) styled using CSS transform
@@ -1136,7 +1185,6 @@
         // Custom Logo Callout Marker generator
         function createLogoCalloutMarker(lat, lng, name, color) {
             const nameLower = name.toLowerCase();
-            const hasIsaWord = /\bisa\b/.test(nameLower);
             let logoHtml = '';
             let svgContent = '';
             let dx = 0, dy = 0; // Logo box offset from actual point
@@ -1238,7 +1286,7 @@
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
                 `;
-            } else if (hasIsaWord || nameLower.includes('iww')) {
+            } else if (nameLower.includes('isa') || nameLower.includes('iww')) {
                 // SOUTH-WEST: RWTH ISA/IWW Institute (same campus, one combined point)
                 dx = -120; dy = 20;
                 logoHtml = `
@@ -1293,8 +1341,31 @@
             return L.marker([lat, lng], { icon: icon });
         }
 
+
+        // Update URL Parameters based on current filters
+        function updateUrlParams() {
+            const url = new URL(window.location);
+            const searchQuery = document.getElementById('search-input').value.trim();
+
+            if (searchQuery) {
+                url.searchParams.set('q', searchQuery);
+            } else {
+                url.searchParams.delete('q');
+            }
+
+            if (activeFilters.size < Object.keys(groupColors).length) {
+                url.searchParams.set('gruppe', Array.from(activeFilters).join(','));
+            } else {
+                url.searchParams.delete('gruppe');
+            }
+
+            window.history.replaceState({}, '', url);
+        }
+
         // Render Sidebar and Markers
         function renderMapAndSidebar() {
+            updateUrlParams();
+
             markersLayer.clearLayers();
             const listContainer = document.getElementById('contact-list-container');
             listContainer.innerHTML = '';
@@ -1315,7 +1386,7 @@
 
             const isMainPartner = (name) => {
                 const nameLower = name.toLowerCase();
-                return mainPartners.some(p => p === 'isa' ? /\bisa\b/.test(nameLower) : nameLower.includes(p));
+                return mainPartners.some(p => nameLower.includes(p));
             };
 
             // Filter features
@@ -1328,6 +1399,10 @@
                     props.group.toLowerCase().includes(searchQuery);
                 return matchesFilter && matchesSearch;
             });
+
+            // Update Counter
+            document.getElementById('contacts-count').innerText = 
+                `${filteredFeatures.length} von ${geojsonData.features.length} Institutionen angezeigt`;
 
             if (filteredFeatures.length === 0) {
                 listContainer.innerHTML = `<div class="info-msg">Keine Institutionen entsprechen den Kriterien</div>`;
@@ -1342,37 +1417,57 @@
                 if (nameLower.includes('rlv') || nameLower.includes('landwirtschafts-verband')) return 'RLV';
                 if (nameLower.includes('eschweiler')) return 'STADT ESCHWEILER';
                 if (nameLower.includes('fiw')) return 'FiW';
-                if (/\bisa\b/.test(nameLower) || nameLower.includes('iww')) return 'ISA / IWW';
+                if (nameLower.includes('isa') || nameLower.includes('iww')) return 'ISA / IWW';
                 return name;
             };
 
             const renderedPartnerLabels = new Set();
 
-            // Update Counter
-            document.getElementById('contacts-count').innerText =
-                `${filteredFeatures.length} von ${geojsonData.features.length} Institutionen angezeigt`;
-
-            const clusterMarkers = new Map();
-            filteredFeatures.forEach((feature, i) => {
+            filteredFeatures.forEach(feature => {
                 const [lng, lat] = feature.geometry.coordinates;
                 const props = feature.properties;
                 const color = groupColors[props.group] || '#8b5cf6';
-                const key = `f${i}`;
 
                 // Render the normal custom marker (colored by group, e.g. purple for Tillmann)
                 let marker = createCustomMarker(lat, lng, color, props.name, props.group);
-                clusterMarkers.set(key, marker);
-
-                const popupContent = `
-                    <div class="popup-card">
-                        <div class="popup-group" style="color: ${color}">${props.group}</div>
-                        <div class="popup-title">${props.name}</div>
-                        <div class="popup-detail" style="font-family: monospace; font-size:10px; margin-top: 6px;">
-                            📍 ${lat.toFixed(6)}, ${lng.toFixed(6)}
-                        </div>
-                    </div>
+                
+                let popupContent = `
+                    <div class="popup-card extended-popup">
+                        <div class="popup-group" style="color: ${color}">${props.group || ''}</div>
+                        <div class="popup-title">${props.name || ''}</div>
+                        <div class="popup-body">
                 `;
+
+                if (props.organisation) popupContent += `<div class="popup-detail"><strong>Organisation:</strong> ${props.organisation}</div>`;
+                if (props.institution) popupContent += `<div class="popup-detail"><strong>Institution:</strong> ${props.institution}</div>`;
+                if (props.bereich) popupContent += `<div class="popup-detail"><strong>Bereich:</strong> ${props.bereich}</div>`;
+                if (props.email) popupContent += `<div class="popup-detail"><strong>E-Mail:</strong> <a href="mailto:${props.email}">${props.email}</a></div>`;
+                if (props.phone || props.telefon) popupContent += `<div class="popup-detail"><strong>Telefon:</strong> ${props.phone || props.telefon}</div>`;
+
+                popupContent += `
+                            <div class="popup-detail coords-detail">
+                                📍 ${lat.toFixed(6)}, ${lng.toFixed(6)}
+                            </div>
+                        </div>
+                `;
+
+                const websiteUrl = props.website || props.url;
+                if (websiteUrl) {
+                    popupContent += `
+                        <div class="popup-footer">
+                            <a href="${websiteUrl.startsWith('http') ? websiteUrl : 'http://' + websiteUrl}" target="_blank" class="website-btn">Zur Website</a>
+                        </div>
+                    `;
+                }
+
+                popupContent += `</div>`;
+
                 marker.bindPopup(popupContent);
+
+                // Optional: Karte bleibt zentriert auf dem Marker beim Öffnen
+                marker.on('click', function(e) {
+                    map.setView(e.target.getLatLng());
+                });
                 markersLayer.addLayer(marker);
 
                 // Render the logo callout next to it pointing exactly to the custom marker
@@ -1385,12 +1480,6 @@
                         markersLayer.addLayer(calloutMarker);
                     }
                 }
-            });
-
-            filteredFeatures.forEach((feature, i) => {
-                const [lng, lat] = feature.geometry.coordinates;
-                const props = feature.properties;
-                const key = `f${i}`;
 
                 // Add Item to Sidebar
                 const item = document.createElement('div');
@@ -1409,8 +1498,7 @@
 
                 item.addEventListener('click', () => {
                     map.panTo([lat, lng]);
-                    const marker = clusterMarkers.get(key);
-                    if (marker) marker.openPopup();
+                    marker.openPopup();
                 });
 
                 listContainer.appendChild(item);
@@ -1487,9 +1575,152 @@
             drawRivers();
         });
 
+        // Export Logic
+        function getFilteredDataForExport() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const mainPartners = [
+                'wver', 'schoellershammer', 'smurfit', 'tillmann',
+                'rlv', 'eschweiler', 'fiw', 'isa', 'iww'
+            ];
+            const isMainPartner = (name) => {
+                const nameLower = name.toLowerCase();
+                return mainPartners.some(p => nameLower.includes(p));
+            };
+
+            return geojsonData.features.filter(feature => {
+                const props = feature.properties;
+                const matchesFilter = activeFilters.has(props.group) || isMainPartner(props.name);
+                const matchesSearch = !searchQuery ||
+                    props.name.toLowerCase().includes(searchQuery) ||
+                    props.group.toLowerCase().includes(searchQuery);
+                return matchesFilter && matchesSearch;
+            }).map(f => f.properties);
+        }
+
+        document.getElementById('export-csv-btn').addEventListener('click', () => {
+            const data = getFilteredDataForExport();
+            if (data.length === 0) {
+                alert("Keine Daten zum Exportieren vorhanden.");
+                return;
+            }
+
+            const headers = ['Name', 'Organisation', 'Gruppe', 'E-Mail'];
+            const csvRows = [headers.join(';')];
+
+            data.forEach(props => {
+                const row = [
+                    props.name || '',
+                    props.organisation || '',
+                    props.group || '',
+                    props.email || ''
+                ].map(val => `"${val.toString().replace(/"/g, '""')}"`);
+                csvRows.push(row.join(';'));
+            });
+
+            const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + csvRows.join("\n");
+            const encodedUri = encodeURI(csvContent);
+
+            const today = new Date().toISOString().split('T')[0];
+            const filename = `Akteure_${today}.csv`;
+
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        document.getElementById('export-pdf-btn').addEventListener('click', () => {
+            const data = getFilteredDataForExport();
+            if (data.length === 0) {
+                alert("Keine Daten zum Exportieren vorhanden.");
+                return;
+            }
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFontSize(18);
+            doc.text("AquaRevier Akteursliste", 14, 22);
+            doc.setFontSize(11);
+            doc.text(`Gefilterte Ergebnisse: ${data.length} Akteure`, 14, 30);
+
+            const tableData = data.map(props => [
+                props.name || '',
+                props.organisation || '',
+                props.group || '',
+                props.email || ''
+            ]);
+
+            doc.autoTable({
+                startY: 36,
+                head: [['Name', 'Organisation', 'Gruppe', 'E-Mail']],
+                body: tableData,
+                theme: 'striped',
+                headStyles: { fillColor: [79, 70, 229] },
+                styles: { fontSize: 9 }
+            });
+
+            const today = new Date().toISOString().split('T')[0];
+            doc.save(`Akteure_${today}.pdf`);
+        });
+
+        // Initial Load parsing URL
+        function parseUrlParamsAndLoad() {
+            const url = new URL(window.location);
+            const q = url.searchParams.get('q');
+            const gruppe = url.searchParams.get('gruppe');
+
+            if (q) {
+                document.getElementById('search-input').value = q;
+            }
+
+            if (gruppe) {
+                activeFilters.clear();
+                const groups = gruppe.split(',');
+                groups.forEach(g => {
+                    if (groupColors[g]) {
+                        activeFilters.add(g);
+                    }
+                });
+
+                // Update UI buttons based on loaded params
+                document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
+                    const bg = btn.getAttribute('data-group');
+                    if (bg === 'all') {
+                        if (activeFilters.size === Object.keys(groupColors).length) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    } else {
+                        if (activeFilters.has(bg)) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    }
+                });
+            }
+
+            loadContacts();
+        }
+
+        // Filter Reset Logic
+        document.getElementById('reset-filters-btn').addEventListener('click', () => {
+            document.getElementById('search-input').value = '';
+
+            activeFilters = new Set(Object.keys(groupColors));
+            document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
+                btn.classList.add('active');
+            });
+
+            renderMapAndSidebar();
+        });
+
         // Initial Load
-        loadContacts();
+        parseUrlParamsAndLoad();
     </script>
 </body>
 </html>
-
