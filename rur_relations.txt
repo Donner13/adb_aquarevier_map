@@ -1,0 +1,3 @@
+ID: 384594, Tags: {"destination": "Maas", "distance": "171.1", "from": "Roermonde", "name": "Rur", "name:br": "Roer", "name:cs": "Rour", "name:fr": "Roer", "name:it": "Roer", "name:lb": "Roer", "name:li": "Roer", "name:lt": "Rūras", "name:nl": "Roer", "name:nn": "Roer", "name:ru": "Рур", "name:ta": "ரூர் ஆறு", "name:uk": "Рур", "ref:fgkz": "282", "roundtrip": "no", "type": "waterway", "waterway": "river", "wikidata": "Q152331", "wikipedia": "de:Rur"}
+ID: 16460794, Tags: {"admin_level": "9", "boundary": "administrative", "name": "Rur", "type": "boundary"}
+ID: 16462168, Tags: {"admin_level": "9", "boundary": "administrative", "name": "Rur", "type": "boundary"}

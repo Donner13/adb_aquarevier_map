@@ -3,7 +3,7 @@ import pyproj
 import json
 import os
 
-EXCEL_PATH = r"C:\Users\user\Downloads\ADB_AquaRevier_260701_172800.xlsx"
+EXCEL_PATH = r"C:\Users\user\Downloads\ADB_260706.xlsx"
 OUTPUT_PATH = r"C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\contacts.geojson"
 
 # Group Color Map
@@ -19,6 +19,29 @@ GROUP_COLORS = {
     'Sonstige': '#8b5cf6'
 }
 
+def parse_coordinate(val):
+    if pd.isna(val):
+        return None, None
+    s = str(val).strip()
+    epsg = 25832 # Default UTM 32N
+    if "(31" in s or "31U" in s or "31N" in s:
+        epsg = 25831 # UTM 31N
+    
+    cleaned = ""
+    for char in s:
+        if char.isdigit() or char in ['-', '.', ',']:
+            cleaned += char
+            
+    cleaned = cleaned.replace(',', '.')
+    try:
+        f_val = float(cleaned)
+        # Auto-detect UTM 31N: Easting in our area is ~300k in UTM 32N, but ~700k in UTM 31N.
+        if 500000 < f_val < 900000:
+            epsg = 25831
+        return f_val, epsg
+    except ValueError:
+        return None, None
+
 def main():
     print(f"Reading Excel: {EXCEL_PATH}")
     if not os.path.exists(EXCEL_PATH):
@@ -32,9 +55,9 @@ def main():
     
     print("Columns found:", list(df.columns))
 
-    # Set up UTM 32N to WGS84 transformer
-    # EPSG:25832 is UTM zone 32N (used in NRW / Germany)
-    transformer = pyproj.Transformer.from_crs("epsg:25832", "epsg:4326", always_xy=True)
+    # Set up UTM to WGS84 transformers
+    transformer_32 = pyproj.Transformer.from_crs("epsg:25832", "epsg:4326", always_xy=True)
+    transformer_31 = pyproj.Transformer.from_crs("epsg:25831", "epsg:4326", always_xy=True)
 
     features = []
     
@@ -52,21 +75,21 @@ def main():
                 if 'Hochwert' in col:
                     north_col = col
         
-        x = row.get(east_col)
-        y = row.get(north_col)
+        x_val = row.get(east_col)
+        y_val = row.get(north_col)
         
-        if pd.isna(x) or pd.isna(y):
+        x, epsg_x = parse_coordinate(x_val)
+        y, epsg_y = parse_coordinate(y_val)
+        
+        if x is None or y is None:
             # Skip rows without coordinates
             continue
-            
-        try:
-            x = float(x)
-            y = float(y)
-        except ValueError:
-            continue
 
-        # Convert UTM 32N to WGS84
-        lon, lat = transformer.transform(x, y)
+        # Convert UTM to WGS84 depending on UTM Zone (31N or 32N)
+        if epsg_x == 25831 or epsg_y == 25831:
+            lon, lat = transformer_31.transform(x, y)
+        else:
+            lon, lat = transformer_32.transform(x, y)
         
         # Extract metadata
         inst = row.get('Voller Akteursname (Institution/Organisation)', '')

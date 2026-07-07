@@ -1,6 +1,10 @@
 # ADB AquaRevier Contact Map Visualizer & QGIS Integration
 
-Dieses Tool visualisiert die **281 regionalen Akteure** aus dem Excel-Datensatz `ADB_AquaRevier` in **9 spezifischen Akteursgruppen** auf einer interaktiven Karte sowie in **QGIS**. Es beinhaltet zusätzlich amtliche Geodaten des Landes NRW (Grenzen, Landkreise, Flüsse und Gewässer).
+Dieses Tool visualisiert die Akteure aus dem Excel-Datensatz `ADB_AquaRevier` auf einer interaktiven Karte sowie in **QGIS**. Es beinhaltet zusätzlich amtliche Geodaten des Landes NRW (Grenzen, Landkreise, Flüsse und Gewässer).
+
+Es gibt nun zwei Versionen der Web-Karte:
+1. 🌐 **Öffentliche Version (Anonymisiert)**: `index.html` (lädt `contacts_anonymized.geojson`, zeigt nur Institutionen ohne persönliche Details, fasst geografische Überschneidungen zusammen).
+2. 🔒 **Interne Version (Vollzugriff & Editor)**: `internal.html` (lädt `contacts.geojson`, zeigt alle Kontaktdetails und ermöglicht das Hinzufügen, Bearbeiten und Löschen von Akteuren).
 
 ---
 
@@ -14,7 +18,8 @@ python C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\server.py
 ```
 
 Öffne anschließend deinen Browser unter:
-👉 **[http://localhost:8000](http://localhost:8000)**
+👉 Öffentliche Karte: **[http://localhost:8000](http://localhost:8000)**
+👉 Interne Verwaltungskarte: **[http://localhost:8000/internal.html](http://localhost:8000/internal.html)**
 
 ---
 

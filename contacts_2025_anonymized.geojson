@@ -1,0 +1,2065 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wasserverband Eifel-Rur",
+        "abbreviation": "WVER",
+        "group": "Ver- & Entsorgung",
+        "sector": "Vorstand",
+        "address": "Eisenbahnstraße 5, 52353 Düren",
+        "know_how": "",
+        "common_projects": "KAHR, JCAR Stresstest Rur, JCAR PhD Talsperren, INFRAH, HüPROS",
+        "case_study": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480195086116828,
+          50.80980775030352
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wasserverband Eifel-Rur",
+        "abbreviation": "WVER",
+        "group": "Ver- & Entsorgung",
+        "sector": "Dezernent Gewässer",
+        "address": "Eisenbahnstraße 5, 52353 Düren",
+        "know_how": "",
+        "common_projects": "KAHR, JCAR Stresstest Rur, JCAR PhD Talsperren, INFRAH, HüPROS",
+        "case_study": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480226131618125,
+          50.809814136297575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wasserverband Eifel-Rur",
+        "abbreviation": "WVER",
+        "group": "Ver- & Entsorgung",
+        "sector": "Gebietshydrologin",
+        "address": "Eisenbahnstraße 5, 52353 Düren",
+        "know_how": "",
+        "common_projects": "KAHR, JCAR Stresstest Rur, JCAR PhD Talsperren, INFRAH, HüPROS",
+        "case_study": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480247951026615,
+          50.80982087242546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wasserverband Eifel-Rur",
+        "abbreviation": "WVER",
+        "group": "Ver- & Entsorgung",
+        "sector": "\"Stellv. Unternehmensbereichsleiter Wasserwirtschaftliche Grundlagen\nUnternehmensbereichsleiter Wasserwirtschaftliche Fachinformationen \"",
+        "address": "Eisenbahnstraße 5, 52353 Düren",
+        "know_how": "",
+        "common_projects": "KAHR, JCAR Stresstest Rur, JCAR PhD Talsperren, INFRAH, HüPROS",
+        "case_study": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480271522654468,
+          50.80982898766124
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wasserverband Eifel-Rur",
+        "abbreviation": "WVER",
+        "group": "Ver- & Entsorgung",
+        "sector": "stellv. Dezernent Gewässer und Wasserwirtschaft",
+        "address": "Eisenbahnstraße 5, 52353 Düren",
+        "know_how": "",
+        "common_projects": "KAHR, JCAR Stresstest Rur, JCAR PhD Talsperren, INFRAH, HüPROS",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480286660189303,
+          50.80983768121699
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wasserverband Eifel-Rur",
+        "abbreviation": "WVER",
+        "group": "Ver- & Entsorgung",
+        "sector": "Sachgebietsleiter Flussgebietshydrologie",
+        "address": "Eisenbahnstraße 5, 52353 Düren",
+        "know_how": "",
+        "common_projects": "KAHR, JCAR Stresstest Rur, JCAR PhD Talsperren, INFRAH, HüPROS",
+        "case_study": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480304154894427,
+          50.80984718629356
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "StädteRegion Aachen",
+        "abbreviation": "StR AC",
+        "group": "Kreis/StaedteRegion",
+        "sector": "Dezernat IV - Koordinator Hochwasserrisikomanagement",
+        "address": "Zollernstraße 16, 52070 Aachen, Raum E 378",
+        "know_how": "",
+        "common_projects": "INFRAH",
+        "case_study": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.097291029859773,
+          50.76874081125421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Stolberg",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "Abteilung für Stadtentwicklung und Umwelt Kupferstadt Stolberg (Rhld.)",
+        "address": "Zweifaller Straße 277, 52224 Stolberg",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.257161011008224,
+          50.75050236111033
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Stolberg",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "\"Amt für Immobilienmanagement\nund technische Infrastruktur\nAmtsleiter\"",
+        "address": "Zweifaller Straße 277, 52224 Stolberg",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.257193335699646,
+          50.750405804600945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kreis Düren",
+        "abbreviation": "",
+        "group": "Kreis/StaedteRegion",
+        "sector": "Umweltamt",
+        "address": "Bismarckstraße 16, 52351 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487610493464284,
+          50.805641674159176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Aachen",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "Klima und Umwelt",
+        "address": "Maria-Theresia-Allee 38, 52058 Aachen",
+        "know_how": "",
+        "common_projects": "KAHR",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.077990440894443,
+          50.7589601913359
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Aachen",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Maria-Theresia-Allee 38, 52058 Aachen",
+        "know_how": "",
+        "common_projects": "KAHR",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.078152641606208,
+          50.75894236321778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kreis Heinsberg",
+        "abbreviation": "",
+        "group": "Kreis/StaedteRegion",
+        "sector": "UWB Kreis Heinsberg",
+        "address": "Valkenburger Straße 45, 52525 Heinsberg",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.107535719813824,
+          51.06068310815759
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kreis Euskirchen",
+        "abbreviation": "",
+        "group": "Kreis/StaedteRegion",
+        "sector": "UWB Kreis Euskrichen",
+        "address": "Jülicher Ring 32, 53879 Euskirchen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.783772977121049,
+          50.66984303937374
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "StädteRegion Aachen",
+        "abbreviation": "",
+        "group": "Wasserbehörde",
+        "sector": "UWB",
+        "address": "Zollernstraße 20, 52070 Aachen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.098747822967733,
+          50.76904881391829
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "\"WAG, Wassergewinnungs- und\n -aufbereitungsgesellschaft Nordeifel mbH\"",
+        "abbreviation": "WAG",
+        "group": "Ver- & Entsorgung",
+        "sector": "Trinkwasser",
+        "address": "Filterwerk, 52159 Roetgen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.204726975097902,
+          50.66073968493303
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Düren",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Kaiserplatz 2 52349 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.482225115665997,
+          50.803146403352294
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Aachen",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rathaus, Markt 52062 Aachen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.083770908872616,
+          50.776139418766505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Nideggen",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Zülpicher Str. 1 52385 Nideggen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.482002776024084,
+          50.68973370330848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Anker Gebr. Schoeller GmbH & Co. KG",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Zollhausstr. 112 52353 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.462046424518897,
+          50.817093031892846
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Voith Paper Fabric & Roll Systms GmbH & Co. KG",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Veldener Str. 71-75 52349 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.471263117101203,
+          50.808871533432075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metsä Graeseproof Papers GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Veldener Str. 121-131 52349 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.468726426049894,
+          50.815844340845054
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "StädteRegion Aachen",
+        "abbreviation": "",
+        "group": "Kreis/StaedteRegion",
+        "sector": "",
+        "address": "Zollernstr. 10 52070 Aachen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.097225507075453,
+          50.76868156752848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bezirksregierung Köln",
+        "abbreviation": "",
+        "group": "Politik",
+        "sector": "",
+        "address": "Zeughausstraße 2-8 50667 Köln",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.950265947694084,
+          50.94165336983407
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Papierfabrik Niederauer Mühle GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Windener Weg 1 52372 Kreuzau",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.486140897277753,
+          50.743435626391104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metsä Tissue GmbH - Werk Kreuzau",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Theo-Strepp-Str. 2-6 52372 Kreuzau",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.472870387567685,
+          50.725874387382724
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "W. Valder Kunststoffverarbeitungs-GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Uedinger Weg 46 52372 Kreuzau",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.49020157057845,
+          50.74127538577633
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mariano Graf von Spee",
+        "abbreviation": "",
+        "group": "Sonstige",
+        "sector": "",
+        "address": "Untermaubach \nBurg Maubach 52372 Kreuzau",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.454914242683243,
+          50.72613675860928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HOESCH Design GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Schneidhausen 52372 Kreuzau",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.481678530722785,
+          50.75151843373877
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wassergewinnungs- u. -aufbereitungsgesellschaft Nordeifel mbH",
+        "abbreviation": "WAG",
+        "group": "Ver- & Entsorgung",
+        "sector": "",
+        "address": "Am Filterwerk Roetgen 52159 Roetgen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.204828595395844,
+          50.660816931943735
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Charly's Erdbeerhof GmbH & Co. KG",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Am Friedhof 1 52428 Jülich",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.343062712993009,
+          50.9472013058887
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Selfkant",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Am Rathaus 13 52538 Selfkant",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.9021024242312885,
+          51.015728435059806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "J. u. W. Stollenwerk oHG",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Am Roßpfad 2 52399 Merzenich-Girbelsrath",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.543546533206816,
+          50.818085804565484
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Heimbach GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "An Gut Nazareth 73 52353 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.454033687013027,
+          50.81271021230547
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadtwerke Düren GmbH",
+        "abbreviation": "",
+        "group": "Ver- & Entsorgung",
+        "sector": "",
+        "address": "Arnoldsweilerstr. 60 52351 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487762434383311,
+          50.810858352247884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kreis Düren",
+        "abbreviation": "",
+        "group": "Kreis/StaedteRegion",
+        "sector": "",
+        "address": "Bismarckstr. 15 52351 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.486450871413532,
+          50.805520896791265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RUR-WASSERTECHNIK GESELLSCHAFT mbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Eisenbahnstr. 5 52353 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.48006327906819,
+          50.80974531737674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Isola GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Isolastraße 2 52353 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4553679319032415,
+          50.827601466919965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CWS Lackfabrik GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Katharinenstr. 61 52353 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.432091019383896,
+          50.84462439033954
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SCHOELLERSHAMMER GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Kreuzauer Str. 18 52355 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.486577753972002,
+          50.77609496023318
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sihl GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Kreuzauer Str. 33 52355 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.491649824607243,
+          50.777240508880396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Quickpack Haushalt & Hygiene GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Mühlhovener Straße 19 52353 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4442795548882605,
+          50.82640295526605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "KANZAN Spezialpapiere GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Nippesstr. 4 52349 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487539861636957,
+          50.79314164970186
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CMC Technologies GmbH & Co. KG",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Nordstraße 125 52353 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.456240681827874,
+          50.83162886186571
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gebr. Hoffsümmer Spezialpapier GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Papiermühle 52-58 52349 Düren",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.459055251443406,
+          50.80129091205975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Julius Hoesch GmbH & Co. KG",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Hoven \nBirkesdorfer Str. 5 52353 Düren\"",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4433437599436925,
+          50.83077029462132
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Forellenzucht Mohnen GbR Gebr. Elmar und Udo Mohnen",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Elle 19 52224 Stolberg",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.302917834403412,
+          50.7686055911616
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Stolberg",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rathausstr. 11-13 52222 Stolberg",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.229190994693214,
+          50.77005476275334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Heinsberg",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Apfelstr. 60 52525 Heinsberg",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.093998974004069,
+          51.061945587691454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Veolia Industriepark Deutschland GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Boos-Fremery-Straße 62 52525 Heinsberg",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.141235172329053,
+          51.05835300134486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kreis Heinsberg",
+        "abbreviation": "",
+        "group": "Kreis/StaedteRegion",
+        "sector": "",
+        "address": "Valkenburger Str. 45 52525 Heinsberg",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.107355305643857,
+          51.060784690140274
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Hürtgenwald",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "August-Scholl-Str. 5 52393 Hürtgenwald-Kleinhau",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.395456962341829,
+          50.722035327519094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Kreuzau",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Bahnhofstr. 7 52372 Kreuzau",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.486728522870971,
+          50.75135399638062
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Kall",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Bahnhofstr. 9 53925 Kall",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.556887788908788,
+          50.53969104440892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Gangelt",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Burgstr. 10 52538 Gangelt",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.997884607448885,
+          50.99100023796759
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Aldenhoven",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Dietrich-Mülfahrt-Str. 11-13 52457 Aldenhoven",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.283570456400944,
+          50.89354922024063
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pfeifer & Langen GmbH & Co. KG",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Dürener Str. 20 52428 Jülich",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.373073895622642,
+          50.91659859776119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Angelsportverein 1976 Schophoven e. V.",
+        "abbreviation": "",
+        "group": "Sonstige",
+        "sector": "",
+        "address": "Fliederweg 13 52445 Titz",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.466519911348707,
+          50.95662409395787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Vettweiß",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Gereonstr. 14 52391 Vettweiß",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.601270977944555,
+          50.74262568728803
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Jülich",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Große Rurstr. 17 52428 Jülich",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.362723892235075,
+          50.92121913591341
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Roetgen",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Hauptstr. 55 52159 Roetgen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.195088518537976,
+          50.647598296702846
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Heimbach",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Hengebachstr. 14 52396 Heimbach",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4779167349200115,
+          50.6336068335667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Merzenich",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Valdersweg 1 52399 Merzenich",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.5279708666197225,
+          50.82536665790394
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RWE Power AG",
+        "abbreviation": "",
+        "group": "Ver- & Entsorgung",
+        "sector": "",
+        "address": "Stüttgenweg 2 50935 Köln",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.876993379266279,
+          50.92289934239628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Langerwehe",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Schönthaler Str. 4 52379 Langerwehe",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.361865484942761,
+          50.81495997840531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RWE Generation Hydro GmbH",
+        "abbreviation": "",
+        "group": "Ver- & Entsorgung",
+        "sector": "",
+        "address": "RWE Platz 3 45141 Essen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.012736616149812,
+          51.467627540877224
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Alsdorf",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Hubertusstr. 17 52477 Alsdorf",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.166521881510156,
+          50.87537031099911
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wasserversorgungszweckverband Perlenbach",
+        "abbreviation": "",
+        "group": "Ver- & Entsorgung",
+        "sector": "",
+        "address": "Imgenbroich\nAm Handwerkerzentrum 31 52156 Monschau",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.267853760460976,
+          50.582085382386516
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Eschweiler",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Johannes-Rau-Platz 1 52249 Eschweiler",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.27146277836857,
+          50.81780561830832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hubert Verbeek",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Johannesstr. 28 52525 Waldfeucht",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.033170185167959,
+          51.08893287562816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Waldfeucht",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Lambertusstr. 13 52525 Waldfeucht",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.9889205571962165,
+          51.06814650470362
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Erkelenz",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Johannismarkt 17 41812 Erkelenz",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.314040314752103,
+          51.080154540579684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kreis Euskirchen",
+        "abbreviation": "",
+        "group": "Kreis/StaedteRegion",
+        "sector": "",
+        "address": "Jülicher Ring 32 53879 Euskirchen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.7839860081487515,
+          50.66973146903494
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Nettersheim",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Krausstr. 2 53947 Netterheim-Zingsheim",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.655831707147936,
+          50.50913054283284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Titz",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Landstr. 4 52445 Titz",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.424892364233183,
+          51.00300715056272
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Monschau",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Laufenstr. 84 52156 Monschau",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.237594652227609,
+          50.56000791049562
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Niederkrüchten",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Laurentiusstr. 19 41372 Niederkrüchten",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.165300874536098,
+          51.212551845275236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Land NW; Forschungszentrum Jülich",
+        "abbreviation": "",
+        "group": "Sonstige",
+        "sector": "",
+        "address": "Leo-Brandt-Straße 52428 Jülich",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.386577508434652,
+          50.90260529754935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pappenfabrik Nierfeld Josef Piront GmbH & Co. KG",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Luxemburger Str. 16 53937 Schleiden-Gemünd",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.495611343395252,
+          50.559290324378516
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Baesweiler",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Mariastr. 2 52499 Baesweiler",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.1825500969308065,
+          50.90223897887725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Geilenkirchen",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Markt 9 52511 Geilenkirchen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.1211528396492785,
+          50.96451147551356
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Übach-Palenberg",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rathausplatz 4 52531 Übach-Palenberg",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.118715094460222,
+          50.91912053661683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Würselen",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Morlaixplatz 1 52146 Würselen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.13003794869657,
+          50.819525200806545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wasserverband Oleftal",
+        "abbreviation": "",
+        "group": "Ver- & Entsorgung",
+        "sector": "",
+        "address": "Oleftalstr. 31 53940 Hellenthal",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4232479372097995,
+          50.49298292422623
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "STOCKO Contact GmbH & Co. KG",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Oleftalstraße 26 53940 Hellenthal",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.429429392259739,
+          50.49334227214732
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dürener Deponie GmbH",
+        "abbreviation": "",
+        "group": "Ver- & Entsorgung",
+        "sector": "",
+        "address": "Pfarrer-Pleus-Straße 46 52393 Hürtgenwald",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.446901463292582,
+          50.749838839681935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Astrid Vogelheim",
+        "abbreviation": "",
+        "group": "Politik",
+        "sector": "Politikerin, Bauingenieurin",
+        "address": "Postfach 101143, Platz des Landtags 1, 40002 Düsseldorf",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.763750177478789,
+          51.218738944539666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Simmerath",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rathaus 52152 Simmerath",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.3038303169710606,
+          50.60651869831734
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Nörvenich",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Bahnhofstr. 25 52388 Nörvenich",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.6420504076491484,
+          50.80883079702627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Mechernich",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rathaus\nBergstraße 1 53894 Mechernich\"",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.652306678587515,
+          50.59105645462351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Schleiden",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Blankenheimer Str. 2-4 53937 Schleiden",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.479539236758526,
+          50.52903200055557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Dahlem",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Hauptstr. 12 53949 Dahlem",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.557723646317625,
+          50.420523077968845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kreis Viersen",
+        "abbreviation": "",
+        "group": "Kreis/StaedteRegion",
+        "sector": "",
+        "address": "Rathausmarkt 3 41747 Viersen",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.3902800182490225,
+          51.25855291430965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Hückelhoven",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rathausplatz 1 41836 Hückelhoven",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.223627808431757,
+          51.05499669305285
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Herzogenrath",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rathausplatz 1 52134 Herzogenrath",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.101297356682679,
+          50.87060827344525
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Blankenheim",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rathausplatz 16 53945 Blankenheim",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.650891295311404,
+          50.43666457664439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Wegberg",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rathausplatz 25 41844 Wegberg",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.27724718090972,
+          51.1414956273569
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Inden",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rathausstr. 1 52459 Inden",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.358279448748125,
+          50.84631210096044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Helenthal",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rathausstr. 2 53940 Hellenthal",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.442492707845705,
+          50.489625286876375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeinde Niederzier",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rathausstr. 8 52382 Niederzier",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.461595779086656,
+          50.88498437779386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Wassenberg",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Roermonder Str. 25-27 41849 Wassenberg",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.154986039977484,
+          51.10196952837783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stadt Linnich",
+        "abbreviation": "",
+        "group": "Gemeinde",
+        "sector": "",
+        "address": "Rurdorfer Str. 64 52441 Linnich",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.268336263197568,
+          50.97588791158628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SIG Combibloc GmbH",
+        "abbreviation": "",
+        "group": "Industrie & Gewerbe",
+        "sector": "",
+        "address": "Rurstraße 58 52441 Linnich",
+        "know_how": "",
+        "common_projects": "",
+        "case_study": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.27560319078984,
+          50.981336887410286
+        ]
+      }
+    }
+  ]
+}

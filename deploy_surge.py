@@ -22,6 +22,8 @@ try:
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         text=True,
+        encoding='utf-8',
+        errors='ignore',
         bufsize=0, # unbuffered
         shell=True
     )
@@ -40,8 +42,15 @@ while time.time() - start_time < 90:
     char = p.stdout.read(1)
     if not char:
         break
-    sys.stdout.write(char)
-    sys.stdout.flush()
+    try:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+    except UnicodeEncodeError:
+        try:
+            sys.stdout.write(char.encode('ascii', errors='replace').decode('ascii'))
+            sys.stdout.flush()
+        except Exception:
+            pass
     buffer += char
     
     # Check for prompts in the accumulated buffer
@@ -66,9 +75,9 @@ p.terminate()
 
 if deployed:
     print("\n==============================================")
-    print("🎉 DEPLOYMENT ERFOLGREICH!")
+    print("DEPLOYMENT ERFOLGREICH!")
     print(f"Deine Webseite ist jetzt live unter:")
-    print(f"👉 http://{domain}")
+    print(f"-> http://{domain}")
     print("==============================================")
 else:
     print("\nDeployment failed or timed out.")
