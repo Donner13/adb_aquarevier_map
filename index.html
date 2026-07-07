@@ -1348,53 +1348,25 @@
 
             const renderedPartnerLabels = new Set();
 
-            // Extract the institution name from "Person (Institution)" strings;
-            // falls back to the raw name for entries that already ARE the institution
-            // (e.g. anonymized "Gewerbe-/ Industriebetrieb Nr. X").
-            const extractInstitution = (name) => {
-                const open = name.indexOf('(');
-                const close = name.lastIndexOf(')');
-                if (open !== -1 && close > open) return name.slice(open + 1, close).trim();
-                return name;
-            };
-
-            // Group person-level features into one marker per institution/location
-            const clusters = new Map();
-            filteredFeatures.forEach(feature => {
-                const [lng, lat] = feature.geometry.coordinates;
-                const props = feature.properties;
-                const institution = extractInstitution(props.name);
-                const key = `${institution}|${lat.toFixed(4)}|${lng.toFixed(4)}`;
-                if (!clusters.has(key)) {
-                    clusters.set(key, { institution, lat, lng, group: props.group, people: [] });
-                }
-                clusters.get(key).people.push(props);
-            });
-
             // Update Counter
             document.getElementById('contacts-count').innerText =
-                `${clusters.size} Standorte / ${filteredFeatures.length} Personen angezeigt`;
+                `${filteredFeatures.length} von ${geojsonData.features.length} Institutionen angezeigt`;
 
             const clusterMarkers = new Map();
-            clusters.forEach((cluster, key) => {
-                const { institution, lat, lng, group, people } = cluster;
-                const color = groupColors[group] || '#8b5cf6';
+            filteredFeatures.forEach((feature, i) => {
+                const [lng, lat] = feature.geometry.coordinates;
+                const props = feature.properties;
+                const color = groupColors[props.group] || '#8b5cf6';
+                const key = `f${i}`;
 
                 // Render the normal custom marker (colored by group, e.g. purple for Tillmann)
-                let marker = createCustomMarker(lat, lng, color, institution, group);
+                let marker = createCustomMarker(lat, lng, color, props.name, props.group);
                 clusterMarkers.set(key, marker);
-
-                const peopleRows = people.map(p => {
-                    const personName = p.name.split('(')[0].trim() || p.name;
-                    const extras = [p.sector, p.address].filter(Boolean).join(' · ');
-                    return `<div class="popup-detail" style="margin-top:4px;">${personName}${extras ? ' — ' + extras : ''}</div>`;
-                }).join('');
 
                 const popupContent = `
                     <div class="popup-card">
-                        <div class="popup-group" style="color: ${color}">${group}</div>
-                        <div class="popup-title">${institution}</div>
-                        ${people.length > 1 ? `<div class="popup-detail" style="font-size:10px; opacity:0.8;">${people.length} Personen</div>${peopleRows}` : ''}
+                        <div class="popup-group" style="color: ${color}">${props.group}</div>
+                        <div class="popup-title">${props.name}</div>
                         <div class="popup-detail" style="font-family: monospace; font-size:10px; margin-top: 6px;">
                             📍 ${lat.toFixed(6)}, ${lng.toFixed(6)}
                         </div>
@@ -1404,22 +1376,21 @@
                 markersLayer.addLayer(marker);
 
                 // Render the logo callout next to it pointing exactly to the custom marker
-                if (isMainPartner(institution)) {
-                    const partnerLabel = getCleanPartnerLabel(institution);
+                if (isMainPartner(props.name)) {
+                    const partnerLabel = getCleanPartnerLabel(props.name);
                     const partnerKey = `${partnerLabel}|${lat.toFixed(5)}|${lng.toFixed(5)}`;
                     if (!renderedPartnerLabels.has(partnerKey)) {
                         renderedPartnerLabels.add(partnerKey);
-                        let calloutMarker = createLogoCalloutMarker(lat, lng, institution, color);
+                        let calloutMarker = createLogoCalloutMarker(lat, lng, props.name, color);
                         markersLayer.addLayer(calloutMarker);
                     }
                 }
             });
 
-            filteredFeatures.forEach(feature => {
+            filteredFeatures.forEach((feature, i) => {
                 const [lng, lat] = feature.geometry.coordinates;
                 const props = feature.properties;
-                const institution = extractInstitution(props.name);
-                const key = `${institution}|${lat.toFixed(4)}|${lng.toFixed(4)}`;
+                const key = `f${i}`;
 
                 // Add Item to Sidebar
                 const item = document.createElement('div');

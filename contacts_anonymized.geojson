@@ -1,1 +1,2277 @@
-{"type": "FeatureCollection", "features": [{"type": "Feature", "id": "excel_0", "geometry": {"type": "Point", "coordinates": [6.763386005809698, 51.21870800270761]}, "properties": {"name": "Astrid Vogelheim (Astrid Vogelheim)", "group": "Einzelakteure", "color": "#00f5d4"}}, {"type": "Feature", "id": "excel_1", "geometry": {"type": "Point", "coordinates": [6.0773820056721455, 50.758800003672576]}, "properties": {"name": "Svenja Borgmann (Stadt Aachen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_2", "geometry": {"type": "Point", "coordinates": [6.0773820056721455, 50.758800003672576]}, "properties": {"name": "Jens Hasse (Stadt Aachen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_3", "geometry": {"type": "Point", "coordinates": [6.0773820056721455, 50.758800003672576]}, "properties": {"name": "Klaus Meiners (Stadt Aachen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_4", "geometry": {"type": "Point", "coordinates": [6.0773820056721455, 50.758800003672576]}, "properties": {"name": "Rena Stehn (Stadt Aachen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_5", "geometry": {"type": "Point", "coordinates": [6.0773820056721455, 50.758800003672576]}, "properties": {"name": "Karl-Heinz Stolz (Stadt Aachen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_6", "geometry": {"type": "Point", "coordinates": [6.09781700610447, 50.76879400497947]}, "properties": {"name": "Sander Lutterbach (StädteRegion Aachen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_7", "geometry": {"type": "Point", "coordinates": [6.098880996297133, 50.768892997477025]}, "properties": {"name": "Verena Olesch (StädteRegion Aachen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_8", "geometry": {"type": "Point", "coordinates": [6.098880996297133, 50.768892997477025]}, "properties": {"name": "Barbara Schilling (StädteRegion Aachen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_9", "geometry": {"type": "Point", "coordinates": [6.097285999646101, 50.76869799771627]}, "properties": {"name": "Frederic Wentz (StädteRegion Aachen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_10", "geometry": {"type": "Point", "coordinates": [6.098880996297133, 50.768892997477025]}, "properties": {"name": "Sebastian Albring (StädteRegion Aachen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_11", "geometry": {"type": "Point", "coordinates": [6.283033993164288, 50.8938940025143]}, "properties": {"name": "Bastian Breuer (Gemeinde Aldenhoven)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_12", "geometry": {"type": "Point", "coordinates": [6.283033993164288, 50.8938940025143]}, "properties": {"name": "Marcel Dederichs (Gemeinde Aldenhoven)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_13", "geometry": {"type": "Point", "coordinates": [6.283033993164288, 50.8938940025143]}, "properties": {"name": "Christina Breuer (Gemeinde Aldenhoven)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_14", "geometry": {"type": "Point", "coordinates": [6.166521881509866, 50.875370311002975]}, "properties": {"name": "Dominika Wirtz (Stadt Alsdorf)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_15", "geometry": {"type": "Point", "coordinates": [6.078552993371811, 50.77926600283405]}, "properties": {"name": "Clausen Elisabeth (RWTH Aachen University - Institut für Advanced Mining Technologies (AMT))", "group": "Forschung", "color": "#3b82f6"}}, {"type": "Feature", "id": "excel_16", "geometry": {"type": "Point", "coordinates": [6.465282047481766, 50.81678307291724]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 1 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_17", "geometry": {"type": "Point", "coordinates": [8.571160002477338, 50.13458200123828]}, "properties": {"name": "Jan Bösche (Bundesamt für Wirtschaft und Ausfuhrkontrolle)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_18", "geometry": {"type": "Point", "coordinates": [8.571160002477338, 50.13458200123828]}, "properties": {"name": "Buu-An Nguyen (Bundesamt für Wirtschaft und Ausfuhrkontrolle)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_19", "geometry": {"type": "Point", "coordinates": [8.571160002477338, 50.13458200123828]}, "properties": {"name": "Charlotte Steffen (Bundesamt für Wirtschaft und Ausfuhrkontrolle)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_20", "geometry": {"type": "Point", "coordinates": [6.551017995930067, 51.00674100413568]}, "properties": {"name": "Anke Pötter (Stadt Bedburg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_21", "geometry": {"type": "Point", "coordinates": [6.551017995930067, 51.00674100413568]}, "properties": {"name": "Sarah-Kristin Röder (Stadt Bedburg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_22", "geometry": {"type": "Point", "coordinates": [6.551017995930067, 51.00674100413568]}, "properties": {"name": "Lucas Scheer (Stadt Bedburg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_23", "geometry": {"type": "Point", "coordinates": [6.541941004983921, 51.00091799646982]}, "properties": {"name": "Josef Hamm (Bewässerungsverband Pütz)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_24", "geometry": {"type": "Point", "coordinates": [6.642214999154687, 50.95492100080168]}, "properties": {"name": "Kristian Fetz (Kreisstadt Bergheim)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_25", "geometry": {"type": "Point", "coordinates": [6.642214999154687, 50.95492100080168]}, "properties": {"name": "Frederik Stappen (Kreisstadt Bergheim)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_26", "geometry": {"type": "Point", "coordinates": [6.642214999154687, 50.95492100080168]}, "properties": {"name": "Katarina Vuleta (Kreisstadt Bergheim)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_27", "geometry": {"type": "Point", "coordinates": [6.955884006056397, 50.76774500505751]}, "properties": {"name": "Orhan Güven (Bio Bursch GmbH & Co. KG)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_28", "geometry": {"type": "Point", "coordinates": [6.466865995105866, 50.68966200219804]}, "properties": {"name": "Heidrun Düssel (Biologische Station im Kreis Düren e.V.)", "group": "Sonstige", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_29", "geometry": {"type": "Point", "coordinates": [6.65088500077043, 50.43663499969177]}, "properties": {"name": "Jennifer Meuren (Gemeinde Blankenheim)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_30", "geometry": {"type": "Point", "coordinates": [6.631574005557042, 50.951577998213295]}, "properties": {"name": "Christine Bernt (Rhein-Erft-Kreis)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_31", "geometry": {"type": "Point", "coordinates": [6.631574005557042, 50.951577998213295]}, "properties": {"name": "Claudia Siegers (Rhein-Erft-Kreis)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_32", "geometry": {"type": "Point", "coordinates": [6.631574005557042, 50.951577998213295]}, "properties": {"name": "Alexander Schewe (Rhein-Erft-Kreis)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_33", "geometry": {"type": "Point", "coordinates": [6.631574005557042, 50.951577998213295]}, "properties": {"name": "Julia Schneider (Rhein-Erft-Kreis)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_34", "geometry": {"type": "Point", "coordinates": [6.631574005557042, 50.951577998213295]}, "properties": {"name": "Vanessa Dederichs (Rhein-Erft-Kreis)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_35", "geometry": {"type": "Point", "coordinates": [6.631574005557042, 50.951577998213295]}, "properties": {"name": "Philipp Glasenapp (Rhein-Erft-Kreis)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_36", "geometry": {"type": "Point", "coordinates": [6.631574005557042, 50.951577998213295]}, "properties": {"name": "Uwe Ulbrich (Rhein-Erft-Kreis)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_37", "geometry": {"type": "Point", "coordinates": [13.3785823, 52.5080337]}, "properties": {"name": "Alexander Schülke (Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit und Verbraucherschutz)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_38", "geometry": {"type": "Point", "coordinates": [6.432572488022284, 51.11936804847443]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 2 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_39", "geometry": {"type": "Point", "coordinates": [6.4846119941441325, 50.80499500338719]}, "properties": {"name": "Maximilian Jeglorz (Bezirksregierung Arnsberg)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_40", "geometry": {"type": "Point", "coordinates": [6.772462995935434, 51.2379440034258]}, "properties": {"name": "Guido Gohres (Bezirksregierung Düsseldorf)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_41", "geometry": {"type": "Point", "coordinates": [6.772462995935434, 51.2379440034258]}, "properties": {"name": "Petra Korp (Bezirksregierung Düsseldorf)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_42", "geometry": {"type": "Point", "coordinates": [6.772462995935434, 51.2379440034258]}, "properties": {"name": "Britta Wöllecke (Bezirksregierung Düsseldorf)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_43", "geometry": {"type": "Point", "coordinates": [6.772462995935434, 51.2379440034258]}, "properties": {"name": "Steffen Richter (Bezirksregierung Düsseldorf)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_44", "geometry": {"type": "Point", "coordinates": [6.949756000650613, 50.94140600452596]}, "properties": {"name": "Gero Babin (Bezirksregierung Köln)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_45", "geometry": {"type": "Point", "coordinates": [6.949756000650613, 50.94140600452596]}, "properties": {"name": "Michael Mohren (Bezirksregierung Köln)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_46", "geometry": {"type": "Point", "coordinates": [6.949756000650613, 50.94140600452596]}, "properties": {"name": "Nicole Grevenstein (Bezirksregierung Köln)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_47", "geometry": {"type": "Point", "coordinates": [6.949756000650613, 50.94140600452596]}, "properties": {"name": "Viktor Stremel (Bezirksregierung Köln)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_48", "geometry": {"type": "Point", "coordinates": [6.949756000650613, 50.94140600452596]}, "properties": {"name": "Fabian Jungmann (Bezirksregierung Köln)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_49", "geometry": {"type": "Point", "coordinates": [6.949756000650613, 50.94140600452596]}, "properties": {"name": "Kristina Krüger (Bezirksregierung Köln)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_50", "geometry": {"type": "Point", "coordinates": [6.949756000650613, 50.94140600452596]}, "properties": {"name": "Carolin Stollwerk (Bezirksregierung Köln)", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_51", "geometry": {"type": "Point", "coordinates": [6.046161996815083, 50.78312299824592]}, "properties": {"name": "Gabriel Heineke (Center Smart Industrial Agriculture GmbH;\nWerkzeugmaschinenlabor WZL der RWTH Aachen)", "group": "Forschung", "color": "#3b82f6"}}, {"type": "Feature", "id": "excel_52", "geometry": {"type": "Point", "coordinates": [6.046161996815083, 50.78312299824592]}, "properties": {"name": "Esben Schukat (Center Smart Industrial Agriculture GmbH;\nWerkzeugmaschinenlabor WZL der RWTH Aachen)", "group": "Forschung", "color": "#3b82f6"}}, {"type": "Feature", "id": "excel_53", "geometry": {"type": "Point", "coordinates": [6.55775799916853, 50.42058799924306]}, "properties": {"name": "Nima Haghighatian (Gemeinde Dahlem)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_54", "geometry": {"type": "Point", "coordinates": [6.55775799916853, 50.42058799924306]}, "properties": {"name": "Jana Lembach (Gemeinde Dahlem)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_55", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Natascha Bücken (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_56", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Susanne Dettlaff (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_57", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Kathrin Hamacher (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_58", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Ralf Kreischer (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_59", "geometry": {"type": "Point", "coordinates": [6.487291993499523, 50.80658599848388]}, "properties": {"name": "Anne Schüssler (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_60", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Susanne Schepers (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_61", "geometry": {"type": "Point", "coordinates": [6.487291993499523, 50.80658599848388]}, "properties": {"name": "Kevin Langenbach (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_62", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Jill Destrée-Teusch (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_63", "geometry": {"type": "Point", "coordinates": [6.487291993499523, 50.80658599848388]}, "properties": {"name": "Hanna Hage (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_64", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Martin Baumann (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_65", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Kim Katharina Ruland (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_66", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Christian Schemp (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_67", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Lothar Gerhards (Kreis Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_68", "geometry": {"type": "Point", "coordinates": [6.820876002321518, 51.09273700224804]}, "properties": {"name": "Janis Hackbarth (Stadt Dormagen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_69", "geometry": {"type": "Point", "coordinates": [6.482060995704271, 50.80328900127496]}, "properties": {"name": "Benjamin Raßmanns (Stadt Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_70", "geometry": {"type": "Point", "coordinates": [6.482060995704271, 50.80328900127496]}, "properties": {"name": "Steffen Rosier (Stadt Düren)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_71", "geometry": {"type": "Point", "coordinates": [6.562243998179771, 50.93819400464263]}, "properties": {"name": "Chiara Dick (Stadt Elsdorf)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_72", "geometry": {"type": "Point", "coordinates": [6.562243998179771, 50.93819400464263]}, "properties": {"name": "Sabine Kirchbach-Niesel (Stadt Elsdorf)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_73", "geometry": {"type": "Point", "coordinates": [6.562243998179771, 50.93819400464263]}, "properties": {"name": "Jan Leonhardt (Stadt Elsdorf)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_74", "geometry": {"type": "Point", "coordinates": [6.562243998179771, 50.93819400464263]}, "properties": {"name": "Caroline Metzen (Stadt Elsdorf)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_75", "geometry": {"type": "Point", "coordinates": [6.562243998179771, 50.93819400464263]}, "properties": {"name": "Katharina Piront (Stadt Elsdorf)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_76", "geometry": {"type": "Point", "coordinates": [6.562243998179771, 50.93819400464263]}, "properties": {"name": "Eleonore Witschass (Stadt Elsdorf)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_77", "geometry": {"type": "Point", "coordinates": [6.790890996277695, 51.290269000003974]}, "properties": {"name": "Shayan Alizadeh (NRW.Energy4Climate GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_78", "geometry": {"type": "Point", "coordinates": [6.790890996277695, 51.290269000003974]}, "properties": {"name": "Regina Dietrich (NRW.Energy4Climate GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_79", "geometry": {"type": "Point", "coordinates": [6.790890996277695, 51.290269000003974]}, "properties": {"name": "Elisa Kügler (NRW.Energy4Climate GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_80", "geometry": {"type": "Point", "coordinates": [6.790890996277695, 51.290269000003974]}, "properties": {"name": "Jonathan Lieder (NRW.Energy4Climate GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_81", "geometry": {"type": "Point", "coordinates": [6.790890996277695, 51.290269000003974]}, "properties": {"name": "Verena Busse (NRW.Energy4Climate GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_82", "geometry": {"type": "Point", "coordinates": [6.815100000451524, 50.8022950021455]}, "properties": {"name": "Bärbel Ackermann (Stadt Erftstadt)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_83", "geometry": {"type": "Point", "coordinates": [6.630731001425003, 50.96050800238247]}, "properties": {"name": "Nils Cremer (Erftverband)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_84", "geometry": {"type": "Point", "coordinates": [6.630731001425003, 50.96050800238247]}, "properties": {"name": "Dietmar Jansen (Erftverband)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_85", "geometry": {"type": "Point", "coordinates": [6.630731001425003, 50.96050800238247]}, "properties": {"name": "Tobias Küppers (Erftverband)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_86", "geometry": {"type": "Point", "coordinates": [6.630731001425003, 50.96050800238247]}, "properties": {"name": "Petra von Zehmen (Erftverband)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_87", "geometry": {"type": "Point", "coordinates": [6.314079000354718, 51.08019100254338]}, "properties": {"name": "Sandra Schürger (Stadt Erkelenz)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_88", "geometry": {"type": "Point", "coordinates": [6.314079000354718, 51.08019100254338]}, "properties": {"name": "Benedikt Wouters (Stadt Erkelenz)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_89", "geometry": {"type": "Point", "coordinates": [6.314079000354718, 51.08019100254338]}, "properties": {"name": "Jana Fricke (Stadt Erkelenz)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_90", "geometry": {"type": "Point", "coordinates": [6.314079000354718, 51.08019100254338]}, "properties": {"name": "Eric Kappes (Stadt Erkelenz)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_91", "geometry": {"type": "Point", "coordinates": [6.314079000354718, 51.08019100254338]}, "properties": {"name": "Svetlana Saraev (Stadt Erkelenz)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_92", "geometry": {"type": "Point", "coordinates": [6.922688012453882, 50.94550503252443]}, "properties": {"name": "Bernadette Gehlen (erlebnisplan Deutschland GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_93", "geometry": {"type": "Point", "coordinates": [6.715854820976373, 51.20765738905613]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 3 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_94", "geometry": {"type": "Point", "coordinates": [6.783701003338692, 50.66979799813469]}, "properties": {"name": "Achim Blindert (Kreis Euskirchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_95", "geometry": {"type": "Point", "coordinates": [6.783701003338692, 50.66979799813469]}, "properties": {"name": "Marcel Schneider (Kreis Euskirchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_96", "geometry": {"type": "Point", "coordinates": [6.783701003338692, 50.66979799813469]}, "properties": {"name": "Saskia Gall-Röhrig (Kreis Euskirchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_97", "geometry": {"type": "Point", "coordinates": [6.783701003338692, 50.66979799813469]}, "properties": {"name": "Sarah Komp (Kreis Euskirchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_98", "geometry": {"type": "Point", "coordinates": [6.792006992789286, 50.65583600368933]}, "properties": {"name": "Pia Rehburg (Stadt Euskirchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_99", "geometry": {"type": "Point", "coordinates": [6.973935923315187, 50.837215954874175]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 4 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_100", "geometry": {"type": "Point", "coordinates": [6.051410002362722, 50.794084999355285]}, "properties": {"name": "Mark Braun (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_101", "geometry": {"type": "Point", "coordinates": [6.051410002362722, 50.794084999355285]}, "properties": {"name": "Nina Ott (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_102", "geometry": {"type": "Point", "coordinates": [6.051410002362722, 50.794084999355285]}, "properties": {"name": "René Kremer (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_103", "geometry": {"type": "Point", "coordinates": [6.051410002362722, 50.794084999355285]}, "properties": {"name": "Zoe Boller (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_104", "geometry": {"type": "Point", "coordinates": [6.051410002362722, 50.794084999355285]}, "properties": {"name": "Annika Görtz (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_105", "geometry": {"type": "Point", "coordinates": [6.051410002362722, 50.794084999355285]}, "properties": {"name": "Michael Durst (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_106", "geometry": {"type": "Point", "coordinates": [6.051410002362722, 50.794084999355285]}, "properties": {"name": "Jutta Niederste-Hollenberg (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_107", "geometry": {"type": "Point", "coordinates": [6.051410002362722, 50.794084999355285]}, "properties": {"name": "Henry Riße (Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_108", "geometry": {"type": "Point", "coordinates": [6.447741997349302, 50.689314998428905]}, "properties": {"name": "Sven Leygraf (FaserInnovationsZentrum Zerkall e.V.)", "group": "Forschung", "color": "#3b82f6"}}, {"type": "Feature", "id": "excel_109", "geometry": {"type": "Point", "coordinates": [6.808373996823214, 50.90803200494908]}, "properties": {"name": "Charlotte Königstein (Stadt Frechen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_110", "geometry": {"type": "Point", "coordinates": [6.808373996823214, 50.90803200494908]}, "properties": {"name": "Philipp Schlenkert (Stadt Frechen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_111", "geometry": {"type": "Point", "coordinates": [6.404387960907907, 50.902699947286756]}, "properties": {"name": "Frank Herrmann (Forschungszentrum Jülich GmbH)", "group": "Forschung", "color": "#3b82f6"}}, {"type": "Feature", "id": "excel_112", "geometry": {"type": "Point", "coordinates": [5.997856009693226, 50.990969004426226]}, "properties": {"name": "Guido Willems (Gemeinde Gangelt)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_113", "geometry": {"type": "Point", "coordinates": [6.121082007184799, 50.964522996453]}, "properties": {"name": "Maurice Gottschalk (Stadt Geilenkirchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_114", "geometry": {"type": "Point", "coordinates": [6.958546995967418, 50.74910700339347]}, "properties": {"name": "Norbert Pesch (Pesch Gemüse GmbH & Co. KG)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_115", "geometry": {"type": "Point", "coordinates": [6.589592001748118, 51.08922100030158]}, "properties": {"name": "Tobias Eßer (Stadt Grevenbroich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_116", "geometry": {"type": "Point", "coordinates": [6.589592001748118, 51.08922100030158]}, "properties": {"name": "Sven Nussbaum (Stadt Grevenbroich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_117", "geometry": {"type": "Point", "coordinates": [6.589592001748118, 51.08922100030158]}, "properties": {"name": "Christian Eßer (Stadt Grevenbroich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_118", "geometry": {"type": "Point", "coordinates": [6.589592001748118, 51.08922100030158]}, "properties": {"name": "Christian Moede (Stadt Grevenbroich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_119", "geometry": {"type": "Point", "coordinates": [6.590582994561119, 51.10350500163835]}, "properties": {"name": "Torsten Küpper (Gesellschaft für Wirtschaftsdienste Grevenbroich mbH)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_120", "geometry": {"type": "Point", "coordinates": [6.033170185165486, 51.08893287563091]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 5 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_121", "geometry": {"type": "Point", "coordinates": [6.477943002701191, 50.633650998482665]}, "properties": {"name": "Frank Pick (Stadt Heimbach)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_122", "geometry": {"type": "Point", "coordinates": [6.442452995514315, 50.489583997689]}, "properties": {"name": "Werner Wamser (Gemeinde Hellenthal)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_123", "geometry": {"type": "Point", "coordinates": [6.09367900003882, 50.866411003019685]}, "properties": {"name": "Eva Klee (Stadt Herzogenrath)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_124", "geometry": {"type": "Point", "coordinates": [6.09367900003882, 50.866411003019685]}, "properties": {"name": "Matthias Brück (Stadt Herzogenrath)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_125", "geometry": {"type": "Point", "coordinates": [6.09367900003882, 50.866411003019685]}, "properties": {"name": "Julia Siebert-Thaden (Stadt Herzogenrath)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_126", "geometry": {"type": "Point", "coordinates": [6.690930807467659, 50.6427245211491]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 6 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_127", "geometry": {"type": "Point", "coordinates": [6.107434997194719, 51.060543996345515]}, "properties": {"name": "Alexander Küsters (Kreis Heinsberg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_128", "geometry": {"type": "Point", "coordinates": [6.107434997194719, 51.060543996345515]}, "properties": {"name": "Stefan Habetz (Kreis Heinsberg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_129", "geometry": {"type": "Point", "coordinates": [6.224518998529188, 51.05509000000724]}, "properties": {"name": "Christoph Breuer (Stadt Hückelhoven)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_130", "geometry": {"type": "Point", "coordinates": [6.395581994491171, 50.72209299707408]}, "properties": {"name": "Ulf Breuer (Gemeinde Hürtgenwald)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_131", "geometry": {"type": "Point", "coordinates": [6.878769994172183, 50.879705998199064]}, "properties": {"name": "Julia Baltin (Stadt Hürth)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_132", "geometry": {"type": "Point", "coordinates": [6.878769994172183, 50.879705998199064]}, "properties": {"name": "Henriette Conzen (Stadt Hürth)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_133", "geometry": {"type": "Point", "coordinates": [6.878769994172183, 50.879705998199064]}, "properties": {"name": "Max Hochstein (Stadt Hürth)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_134", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Daniela Eskelson (Entwicklungsgesellschaft indeland GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_135", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Tom Guse (Entwicklungsgesellschaft indeland GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_136", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Maren Krätzschmar (Entwicklungsgesellschaft indeland GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_137", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Silvia Proff (Entwicklungsgesellschaft indeland GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_138", "geometry": {"type": "Point", "coordinates": [6.487668002989559, 50.80553700013155]}, "properties": {"name": "Svenja Zeimetz (Entwicklungsgesellschaft indeland GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_139", "geometry": {"type": "Point", "coordinates": [6.358255994541316, 50.84638899692941]}, "properties": {"name": "Christiane Wüst (Gemeinde Inden)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_140", "geometry": {"type": "Point", "coordinates": [6.358255994541316, 50.84638899692941]}, "properties": {"name": "Regina Dechering (Gemeinde Inden)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_141", "geometry": {"type": "Point", "coordinates": [6.358255994541316, 50.84638899692941]}, "properties": {"name": "Alexandra Casuccio (Gemeinde Inden)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_142", "geometry": {"type": "Point", "coordinates": [6.358255994541316, 50.84638899692941]}, "properties": {"name": "Eva-Maria Zingel (Gemeinde Inden)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_143", "geometry": {"type": "Point", "coordinates": [6.358255994541316, 50.84638899692941]}, "properties": {"name": "Alina Behrens (Gemeinde Inden)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_144", "geometry": {"type": "Point", "coordinates": [6.358255994541316, 50.84638899692941]}, "properties": {"name": "Janika Ketzler (Gemeinde Inden)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_145", "geometry": {"type": "Point", "coordinates": [6.358255994541316, 50.84638899692941]}, "properties": {"name": "Stefanie Schander (Gemeinde Inden)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_146", "geometry": {"type": "Point", "coordinates": [6.358255994541316, 50.84638899692941]}, "properties": {"name": "Steffen Krüger (Gemeinde Inden)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_147", "geometry": {"type": "Point", "coordinates": [6.605771999704849, 51.09387600361366]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 7 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_148", "geometry": {"type": "Point", "coordinates": [6.067663002870716, 50.77953300420479]}, "properties": {"name": "Thomas Wintgens (RWTH Aachen University - Institut für Siedlungswasserwirtschaft)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_149", "geometry": {"type": "Point", "coordinates": [6.067663002870716, 50.77953300420479]}, "properties": {"name": "Florian Achten (RWTH Aachen University - Institut für Siedlungswasserwirtschaft)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_150", "geometry": {"type": "Point", "coordinates": [6.067663002870716, 50.77953300420479]}, "properties": {"name": "Maximilian Born (RWTH Aachen University - Institut für Siedlungswasserwirtschaft)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_151", "geometry": {"type": "Point", "coordinates": [6.067663002870716, 50.77953300420479]}, "properties": {"name": "Shubham Jayswal (RWTH Aachen University - Institut für Siedlungswasserwirtschaft)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_152", "geometry": {"type": "Point", "coordinates": [6.067663002870716, 50.77953300420479]}, "properties": {"name": "Laurence Palmowski (RWTH Aachen University - Institut für Siedlungswasserwirtschaft)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_153", "geometry": {"type": "Point", "coordinates": [6.04995600554365, 50.78382699865158]}, "properties": {"name": "Rosario Othen (RWTH Aachen University - Institut für Textiltechnik)", "group": "Forschung", "color": "#3b82f6"}}, {"type": "Feature", "id": "excel_154", "geometry": {"type": "Point", "coordinates": [6.04995600554365, 50.78382699865158]}, "properties": {"name": "Bendix Brüggenjürgen (RWTH Aachen University - Institut für Textiltechnik)", "group": "Forschung", "color": "#3b82f6"}}, {"type": "Feature", "id": "excel_155", "geometry": {"type": "Point", "coordinates": [6.474050998891298, 50.801852997577484]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 8 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_156", "geometry": {"type": "Point", "coordinates": [6.474050998891298, 50.801852997577484]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 9 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_157", "geometry": {"type": "Point", "coordinates": [6.474050998891298, 50.801852997577484]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 10 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_158", "geometry": {"type": "Point", "coordinates": [6.474050998891298, 50.801852997577484]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 11 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_159", "geometry": {"type": "Point", "coordinates": [6.065069996512569, 50.77858300291208]}, "properties": {"name": "Juliane Reiser (RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW))", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_160", "geometry": {"type": "Point", "coordinates": [6.065069996512569, 50.77858300291208]}, "properties": {"name": "Catrina Brüll (RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW))", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_161", "geometry": {"type": "Point", "coordinates": [6.065069996512569, 50.77858300291208]}, "properties": {"name": "Holger Schüttrumpf (RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW))", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_162", "geometry": {"type": "Point", "coordinates": [6.065069996512569, 50.77858300291208]}, "properties": {"name": "Whelinta Sherin Anandharaj (RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW))", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_163", "geometry": {"type": "Point", "coordinates": [6.065069996512569, 50.77858300291208]}, "properties": {"name": "Paul Schick (RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW))", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_164", "geometry": {"type": "Point", "coordinates": [6.501080002718897, 51.100223000421444]}, "properties": {"name": "Carolin Voigt (Stadt Jüchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_165", "geometry": {"type": "Point", "coordinates": [6.501080002718897, 51.100223000421444]}, "properties": {"name": "Jan Martin von der Heide (Stadt Jüchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_166", "geometry": {"type": "Point", "coordinates": [6.362850993371082, 50.92107000002269]}, "properties": {"name": "Petra Dören-Delahaye (Stadt Jülich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_167", "geometry": {"type": "Point", "coordinates": [6.362850993371082, 50.92107000002269]}, "properties": {"name": "Karen Steffens (Stadt Jülich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_168", "geometry": {"type": "Point", "coordinates": [6.362850993371082, 50.92107000002269]}, "properties": {"name": "Eva Strehl (Stadt Jülich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_169", "geometry": {"type": "Point", "coordinates": [6.618526997261625, 51.22631900316577]}, "properties": {"name": "Sabine Zierz (Stadt Kaarst)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_170", "geometry": {"type": "Point", "coordinates": [6.556840002645612, 50.53969800284889]}, "properties": {"name": "Emmanuel Kunz (Gemeinde Kall)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_171", "geometry": {"type": "Point", "coordinates": [6.502904005056201, 51.2078590042881]}, "properties": {"name": "Eberhard Hirscht (KAM Consult)", "group": "Einzelakteure", "color": "#00f5d4"}}, {"type": "Feature", "id": "excel_172", "geometry": {"type": "Point", "coordinates": [6.363702005568335, 50.943833003267194]}, "properties": {"name": "Paul-Heinz Müller (Kreisbauernschaft Aachen)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_173", "geometry": {"type": "Point", "coordinates": [6.363702005568335, 50.943833003267194]}, "properties": {"name": "Michael Niesen (Kreisbauernschaft Düren)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_174", "geometry": {"type": "Point", "coordinates": [6.798856002611889, 50.66448799770508]}, "properties": {"name": "Martin Spiegelhalter (Kreisbauernschaft  Euskirchen)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_175", "geometry": {"type": "Point", "coordinates": [6.363702005568335, 50.943833003267194]}, "properties": {"name": "Katharina Schmitz (Kreisbauernschaft Heinsberg)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_176", "geometry": {"type": "Point", "coordinates": [6.677750995165886, 51.038704000907664]}, "properties": {"name": "Peter Herzogenrath (Kreisbauernschaft Köln/Rhein-Erft-Kreis)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_177", "geometry": {"type": "Point", "coordinates": [6.677750995165886, 51.038704000907664]}, "properties": {"name": "Peter Herzogenrath (Kreisbauernschaft Neuss-Mönchengladbach e.V.)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_178", "geometry": {"type": "Point", "coordinates": [6.691647999170792, 50.87278500268475]}, "properties": {"name": "Julian Bleckmann (Stadt Kerpen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_179", "geometry": {"type": "Point", "coordinates": [6.691647999170792, 50.87278500268475]}, "properties": {"name": "Ina Breuer (Stadt Kerpen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_180", "geometry": {"type": "Point", "coordinates": [6.691647999170792, 50.87278500268475]}, "properties": {"name": "Eva Klarenbach (Stadt Kerpen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_181", "geometry": {"type": "Point", "coordinates": [6.691647999170792, 50.87278500268475]}, "properties": {"name": "Rüdiger Wagner (Stadt Kerpen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_182", "geometry": {"type": "Point", "coordinates": [6.514092997234924, 51.18883700268726]}, "properties": {"name": "Melda Gümüsbas (Stadt Korschenbroich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_183", "geometry": {"type": "Point", "coordinates": [6.486848003836921, 50.75130000303114]}, "properties": {"name": "Lisa Claß (Gemeinde Kreuzau)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_184", "geometry": {"type": "Point", "coordinates": [6.082009996768572, 50.77580300169914]}, "properties": {"name": "Ayça Sancar (RWTH Aachen University - Institut für Landschaftsarchitektur (LA);\nRWTH Aachen University - Profilbereich Built and Lived Environment (BLE))", "group": "Forschung", "color": "#3b82f6"}}, {"type": "Feature", "id": "excel_185", "geometry": {"type": "Point", "coordinates": [6.082009996768572, 50.77580300169914]}, "properties": {"name": "Frank Lohrberg (RWTH Aachen University - Institut für Landschaftsarchitektur (LA);\nRWTH Aachen University - Profilbereich Built and Lived Environment (BLE))", "group": "Forschung", "color": "#3b82f6"}}, {"type": "Feature", "id": "excel_186", "geometry": {"type": "Point", "coordinates": [6.381162003901893, 50.90966000359491]}, "properties": {"name": "Karin Piesch (LAG Rheinisches Revier an Inde und Rur e.V.)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_187", "geometry": {"type": "Point", "coordinates": [6.361810005218879, 50.81492300104932]}, "properties": {"name": "Gabriele Cremer (Gemeinde Langerwehe)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_188", "geometry": {"type": "Point", "coordinates": [6.361810005218879, 50.81492300104932]}, "properties": {"name": "Myrjam Passing (Gemeinde Langerwehe)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_189", "geometry": {"type": "Point", "coordinates": [6.770524999538103, 51.24619699625452]}, "properties": {"name": "Anna Lith (Provinz Limburg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_190", "geometry": {"type": "Point", "coordinates": [6.770524999538103, 51.24619699625452]}, "properties": {"name": "Benjamin Rebenich (Provinz Limburg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_191", "geometry": {"type": "Point", "coordinates": [6.2681890052613936, 50.97588600495055]}, "properties": {"name": "Christina Rausch (Stadt Linnich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_192", "geometry": {"type": "Point", "coordinates": [6.850030004058255, 51.00195599835699]}, "properties": {"name": "Natascha Bellinghausen (Landwirtschaftskammer NRW)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_193", "geometry": {"type": "Point", "coordinates": [6.480183001239305, 50.79613200076388]}, "properties": {"name": "Marco Breuer (Landwirtschaftskammer NRW)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_194", "geometry": {"type": "Point", "coordinates": [6.850030004058255, 51.00195599835699]}, "properties": {"name": "Tobias Heggemann (Landwirtschaftskammer NRW)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_195", "geometry": {"type": "Point", "coordinates": [6.850030004058255, 51.00195599835699]}, "properties": {"name": "Simon Keutmann (Landwirtschaftskammer NRW)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_196", "geometry": {"type": "Point", "coordinates": [6.3997100020100115, 51.25123399619098]}, "properties": {"name": "Michael Rütten (Landwirtschaftskammer NRW)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_197", "geometry": {"type": "Point", "coordinates": [6.850030004058255, 51.00195599835699]}, "properties": {"name": "Josef Schmitz (Landwirtschaftskammer NRW)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_198", "geometry": {"type": "Point", "coordinates": [6.850030004058255, 51.00195599835699]}, "properties": {"name": "Kristina Humpesch (Landwirtschaftskammer NRW)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_199", "geometry": {"type": "Point", "coordinates": [6.480183001239305, 50.79613200076388]}, "properties": {"name": "Marvin Serve (Landwirtschaftskammer NRW)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_200", "geometry": {"type": "Point", "coordinates": [6.689048995768911, 51.307748001299046]}, "properties": {"name": "Dana Frey (Stadt Meerbusch)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_201", "geometry": {"type": "Point", "coordinates": [6.527835005884107, 50.825489996429035]}, "properties": {"name": "Anna Hecker (Gemeinde Merzenich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_202", "geometry": {"type": "Point", "coordinates": [6.527835005884107, 50.825489996429035]}, "properties": {"name": "Dominik Ortseifen (Gemeinde Merzenich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_203", "geometry": {"type": "Point", "coordinates": [6.527835005884107, 50.825489996429035]}, "properties": {"name": "Lennart Schminnes (Gemeinde Merzenich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_204", "geometry": {"type": "Point", "coordinates": [6.527835005884107, 50.825489996429035]}, "properties": {"name": "Maximilian Schmitz (Gemeinde Merzenich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_205", "geometry": {"type": "Point", "coordinates": [6.527835005884107, 50.825489996429035]}, "properties": {"name": "Karina Vonhögen (Gemeinde Merzenich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_206", "geometry": {"type": "Point", "coordinates": [6.468726426053332, 50.81584434084138]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 12 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_207", "geometry": {"type": "Point", "coordinates": [6.4728703875733755, 50.725874387384245]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 13 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_208", "geometry": {"type": "Point", "coordinates": [6.445895996692886, 51.167405001419425]}, "properties": {"name": "Olaf Holtrup (Stadt Mönchengladbach)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_209", "geometry": {"type": "Point", "coordinates": [6.445169996205545, 51.16736900072223]}, "properties": {"name": "Martina Delbos (Stadt Mönchengladbach)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_210", "geometry": {"type": "Point", "coordinates": [6.445169996205545, 51.16736900072223]}, "properties": {"name": "Anette Harings (Stadt Mönchengladbach)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_211", "geometry": {"type": "Point", "coordinates": [6.392272993091082, 51.17576700183264]}, "properties": {"name": "Kajetan Lis (Stadt Mönchengladbach)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_212", "geometry": {"type": "Point", "coordinates": [6.445895996692886, 51.167405001419425]}, "properties": {"name": "Marcus Klancicar (Stadt Mönchengladbach)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_213", "geometry": {"type": "Point", "coordinates": [6.054215005758713, 50.75295700432372]}, "properties": {"name": "Manfred Aletsee (NABU-Naturschutzstation Aachen e.V.)", "group": "Sonstige", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_214", "geometry": {"type": "Point", "coordinates": [6.595272999095041, 51.08441399869182]}, "properties": {"name": "Gabriele Bemba (Rhein-Kreis Neuss)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_215", "geometry": {"type": "Point", "coordinates": [6.595272999095041, 51.08441399869182]}, "properties": {"name": "Ines Willner (Rhein-Kreis Neuss)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_216", "geometry": {"type": "Point", "coordinates": [6.595272999095041, 51.08441399869182]}, "properties": {"name": "Michael Albrecht (Rhein-Kreis Neuss)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_217", "geometry": {"type": "Point", "coordinates": [6.594629006769339, 51.086550002750705]}, "properties": {"name": "Volker Ganse (Rhein-Kreis Neuss)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_218", "geometry": {"type": "Point", "coordinates": [6.594463000698894, 51.0868980001667]}, "properties": {"name": "Regina Krings (Rhein-Kreis Neuss)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_219", "geometry": {"type": "Point", "coordinates": [6.594463000698894, 51.0868980001667]}, "properties": {"name": "Sven Schumacher (Rhein-Kreis Neuss)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_220", "geometry": {"type": "Point", "coordinates": [6.6562669943886545, 50.50900999898168]}, "properties": {"name": "Norbert Crump (Gemeinde Nettersheim)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_221", "geometry": {"type": "Point", "coordinates": [6.63317700322339, 50.91448600179361]}, "properties": {"name": "Monika Arns (NEULAND HAMBACH GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_222", "geometry": {"type": "Point", "coordinates": [6.63317700322339, 50.91448600179361]}, "properties": {"name": "Christina Brincker (NEULAND HAMBACH GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_223", "geometry": {"type": "Point", "coordinates": [6.63317700322339, 50.91448600179361]}, "properties": {"name": "Sophie Graß (NEULAND HAMBACH GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_224", "geometry": {"type": "Point", "coordinates": [6.63317700322339, 50.91448600179361]}, "properties": {"name": "Johanna Janning (NEULAND HAMBACH GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_225", "geometry": {"type": "Point", "coordinates": [6.63317700322339, 50.91448600179361]}, "properties": {"name": "Marie Schuler (NEULAND HAMBACH GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_226", "geometry": {"type": "Point", "coordinates": [6.63317700322339, 50.91448600179361]}, "properties": {"name": "Claudia Stacker (NEULAND HAMBACH GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_227", "geometry": {"type": "Point", "coordinates": [6.63317700322339, 50.91448600179361]}, "properties": {"name": "Jana Weber (NEULAND HAMBACH GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_228", "geometry": {"type": "Point", "coordinates": [6.63317700322339, 50.91448600179361]}, "properties": {"name": "Matti Wirth (NEULAND HAMBACH GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_229", "geometry": {"type": "Point", "coordinates": [6.693821003374508, 51.197065996525254]}, "properties": {"name": "Joshua Bühler (Stadt Neuss)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_230", "geometry": {"type": "Point", "coordinates": [6.390173993404847, 51.26058200050656]}, "properties": {"name": "Katharina Greven (NEW NiederrheinWasser GmbH)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_231", "geometry": {"type": "Point", "coordinates": [6.390173993404847, 51.26058200050656]}, "properties": {"name": "Detlef Schumacher (NEW NiederrheinWasser GmbH)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_232", "geometry": {"type": "Point", "coordinates": [6.481903003796331, 50.68967100474714]}, "properties": {"name": "Wiebke Ehrlich (Stadt Nideggen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_233", "geometry": {"type": "Point", "coordinates": [6.165451994165743, 51.21248599764797]}, "properties": {"name": "Thomas Ricker (Gemeinde Niederkrüchten)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_234", "geometry": {"type": "Point", "coordinates": [6.46165999620356, 50.885029004182925]}, "properties": {"name": "Jonas Hamacher (Gemeinde Niederzier)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_235", "geometry": {"type": "Point", "coordinates": [6.46165999620356, 50.885029004182925]}, "properties": {"name": "Cornelia Neunzig (Gemeinde Niederzier)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_236", "geometry": {"type": "Point", "coordinates": [6.46165999620356, 50.885029004182925]}, "properties": {"name": "José Schroeder (Gemeinde Niederzier)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_237", "geometry": {"type": "Point", "coordinates": [6.495611343391177, 50.55929032437896]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 14 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_238", "geometry": {"type": "Point", "coordinates": [6.642038993688657, 50.808964997111616]}, "properties": {"name": "Judith Rohde (Gemeinde Nörvenich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_239", "geometry": {"type": "Point", "coordinates": [6.642038993688657, 50.808964997111616]}, "properties": {"name": "Samara Gomes Gnech (Gemeinde Nörvenich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_240", "geometry": {"type": "Point", "coordinates": [6.642038993688657, 50.808964997111616]}, "properties": {"name": "Judith Krieger (Gemeinde Nörvenich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_241", "geometry": {"type": "Point", "coordinates": [6.642038993688657, 50.808964997111616]}, "properties": {"name": "Lars Richter (Gemeinde Nörvenich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_242", "geometry": {"type": "Point", "coordinates": [6.762565996394015, 51.212903997402556]}, "properties": {"name": "Lena Mählen (NRW.Global Business GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_243", "geometry": {"type": "Point", "coordinates": [6.645743653440136, 50.65815396011936]}, "properties": {"name": "Hans-Josef Hellwich (Fa. Katharina Tillmann Papier- und Wellpappenfabrik e.K.)", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_244", "geometry": {"type": "Point", "coordinates": [6.4861408972778, 50.74343562638902]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 15 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_245", "geometry": {"type": "Point", "coordinates": [6.307440005833304, 50.902710002234016]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 16 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_246", "geometry": {"type": "Point", "coordinates": [6.447741997349302, 50.689314998428905]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 17 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_247", "geometry": {"type": "Point", "coordinates": [6.373073895626992, 50.91659859776186]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 18 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_248", "geometry": {"type": "Point", "coordinates": [6.07659100562632, 50.77930399639156]}, "properties": {"name": "Erik Richter (RWTH Aachen University - Lehr- und Forschungsgebiet Physische Geographie und Klimatologie (PGK))", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_249", "geometry": {"type": "Point", "coordinates": [6.07659100562632, 50.77930399639156]}, "properties": {"name": "Michael Leuchner (RWTH Aachen University - Lehr- und Forschungsgebiet Physische Geographie und Klimatologie (PGK))", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_250", "geometry": {"type": "Point", "coordinates": [6.800351001919644, 50.99764000464636]}, "properties": {"name": "Elisa Haefele (Stadt Pulheim)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_251", "geometry": {"type": "Point", "coordinates": [6.127031993688151, 50.779147000451694]}, "properties": {"name": "Nico Hermanns (Region Aachen Zweckverband)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_252", "geometry": {"type": "Point", "coordinates": [6.468844004321795, 50.81600900513741]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 19 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_253", "geometry": {"type": "Point", "coordinates": [6.468844004321795, 50.81600900513741]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 20 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_254", "geometry": {"type": "Point", "coordinates": [6.9610019961502445, 50.93456199746558]}, "properties": {"name": "Rebecca Grunert (Region Köln/Bonn e.V.)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_255", "geometry": {"type": "Point", "coordinates": [6.9610019961502445, 50.93456199746558]}, "properties": {"name": "Marlon Müller (Region Köln/Bonn e.V.)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_256", "geometry": {"type": "Point", "coordinates": [6.9610019961502445, 50.93456199746558]}, "properties": {"name": "Jana Peters (Region Köln/Bonn e.V.)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_257", "geometry": {"type": "Point", "coordinates": [7.0598280029215195, 50.72117800411567]}, "properties": {"name": "Bernd Lüttgens (Rheinischer Landwirtschafts-Verband e.V.)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_258", "geometry": {"type": "Point", "coordinates": [7.0598280029215195, 50.72117800411567]}, "properties": {"name": "Wolfgang Patzlaff (Rheinischer Landwirtschafts-Verband e.V.)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_259", "geometry": {"type": "Point", "coordinates": [7.0598280029215195, 50.72117800411567]}, "properties": {"name": "Petra Casper (Rheinischer Landwirtschafts-Verband e.V.)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_260", "geometry": {"type": "Point", "coordinates": [7.0598280029215195, 50.72117800411567]}, "properties": {"name": "Heinz-Jürgen Zens (Rheinischer Landwirtschafts-Verband e.V.)", "group": "Landwirtschaft", "color": "#10b981"}}, {"type": "Feature", "id": "excel_261", "geometry": {"type": "Point", "coordinates": [6.195044005462653, 50.64761000458117]}, "properties": {"name": "Rainer Nießen (Gemeinde Roetgen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_262", "geometry": {"type": "Point", "coordinates": [6.695884006084197, 51.03600399854141]}, "properties": {"name": "Pauline Backes (Gemeinde Rommerskirchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_263", "geometry": {"type": "Point", "coordinates": [6.695884006084197, 51.03600399854141]}, "properties": {"name": "Karolin Gathen (Gemeinde Rommerskirchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_264", "geometry": {"type": "Point", "coordinates": [6.695884006084197, 51.03600399854141]}, "properties": {"name": "Felix Hemmer (Gemeinde Rommerskirchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_265", "geometry": {"type": "Point", "coordinates": [6.695884006084197, 51.03600399854141]}, "properties": {"name": "Ulrike Neumann (Gemeinde Rommerskirchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_266", "geometry": {"type": "Point", "coordinates": [6.695884006084197, 51.03600399854141]}, "properties": {"name": "Florian Plück (Gemeinde Rommerskirchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_267", "geometry": {"type": "Point", "coordinates": [6.695884006084197, 51.03600399854141]}, "properties": {"name": "Joachim Tiefenthal (Gemeinde Rommerskirchen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_268", "geometry": {"type": "Point", "coordinates": [6.123006997244525, 50.79781200459343]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 21 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_269", "geometry": {"type": "Point", "coordinates": [6.874167995406817, 51.42627700197096]}, "properties": {"name": "Leif Frederik Blum (RWW Rheinisch-Westfälische Wasserwerksgesellschaft mbH)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_270", "geometry": {"type": "Point", "coordinates": [6.874167995406817, 51.42627700197096]}, "properties": {"name": "Jennifer Budgereit (RWW Rheinisch-Westfälische Wasserwerksgesellschaft mbH)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_271", "geometry": {"type": "Point", "coordinates": [6.874167995406817, 51.42627700197096]}, "properties": {"name": "Sabine Killmann (RWW Rheinisch-Westfälische Wasserwerksgesellschaft mbH)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_272", "geometry": {"type": "Point", "coordinates": [6.4795580000750395, 50.528956002401095]}, "properties": {"name": "Frederik Link (Stadt Schleiden)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_273", "geometry": {"type": "Point", "coordinates": [6.487426998603715, 50.77701599992516]}, "properties": {"name": "Christoph Nahrath (SCHOELLERSHAMMER GmbH)", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_274", "geometry": {"type": "Point", "coordinates": [6.487426998603715, 50.77701599992516]}, "properties": {"name": "Armin Vetter (SCHOELLERSHAMMER GmbH)", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_275", "geometry": {"type": "Point", "coordinates": [6.487426998603715, 50.77701599992516]}, "properties": {"name": "Maren Wolf (SCHOELLERSHAMMER GmbH)", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_276", "geometry": {"type": "Point", "coordinates": [6.271954998565629, 50.81796900385408]}, "properties": {"name": "Michael Mathar (Stadt Eschweiler)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_277", "geometry": {"type": "Point", "coordinates": [6.271954998565629, 50.81796900385408]}, "properties": {"name": "jens Daub (Stadt Eschweiler)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_278", "geometry": {"type": "Point", "coordinates": [6.271954998565629, 50.81796900385408]}, "properties": {"name": "Christoph Guth (Stadt Eschweiler)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_279", "geometry": {"type": "Point", "coordinates": [6.271954998565629, 50.81796900385408]}, "properties": {"name": "Achim Vogelheim (Stadt Eschweiler)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_280", "geometry": {"type": "Point", "coordinates": [6.271954998565629, 50.81796900385408]}, "properties": {"name": "Ute Bennerscheidt (Stadt Eschweiler)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_281", "geometry": {"type": "Point", "coordinates": [6.271954998565629, 50.81796900385408]}, "properties": {"name": "Nikolas Bongard (Stadt Eschweiler)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_282", "geometry": {"type": "Point", "coordinates": [6.271954998565629, 50.81796900385408]}, "properties": {"name": "Kristina Jacquorie (Stadt Eschweiler)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_283", "geometry": {"type": "Point", "coordinates": [6.271954998565629, 50.81796900385408]}, "properties": {"name": "Raphael Kamp (Stadt Eschweiler)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_284", "geometry": {"type": "Point", "coordinates": [5.902081000240392, 51.0157030064224]}, "properties": {"name": "Gerard Küsters (Gemeinde Selfkant)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_285", "geometry": {"type": "Point", "coordinates": [6.275603190783867, 50.981336887409256]}, "properties": {"name": "Gewerbe-/ Industriebetrieb Nr. 22 – Branche Unbekannt", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_286", "geometry": {"type": "Point", "coordinates": [6.303847994927506, 50.606602998018374]}, "properties": {"name": "Bernd\nSander Goffart\nLutterbach (Gemeinde Simmerath)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_287", "geometry": {"type": "Point", "coordinates": [6.652299994739826, 50.705773001400665]}, "properties": {"name": "Jürgen Groth (Smurfit Westrock Zülpich Paper GmbH)", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_288", "geometry": {"type": "Point", "coordinates": [6.652299994739826, 50.705773001400665]}, "properties": {"name": "Patrick Offer (Smurfit Westrock Zülpich Paper GmbH)", "group": "Gewerbe/ Industrie", "color": "#d946ef"}}, {"type": "Feature", "id": "excel_289", "geometry": {"type": "Point", "coordinates": [6.25539899857828, 50.75203699927471]}, "properties": {"name": "Arndt Bleimann (Stadt Stolberg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_290", "geometry": {"type": "Point", "coordinates": [6.25539899857828, 50.75203699927471]}, "properties": {"name": "Sophie Große-Oetringhaus (Stadt Stolberg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_291", "geometry": {"type": "Point", "coordinates": [6.25539899857828, 50.75203699927471]}, "properties": {"name": "Anette Kliems (Stadt Stolberg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_292", "geometry": {"type": "Point", "coordinates": [6.25539899857828, 50.75203699927471]}, "properties": {"name": "Jörg Veltrup (Stadt Stolberg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_293", "geometry": {"type": "Point", "coordinates": [6.25539899857828, 50.75203699927471]}, "properties": {"name": "Yannik Zohren (Stadt Stolberg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_294", "geometry": {"type": "Point", "coordinates": [6.4249719960304486, 51.00299400124807]}, "properties": {"name": "Hans-Peter Luksch (Gemeinde Titz)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_295", "geometry": {"type": "Point", "coordinates": [6.4249719960304486, 51.00299400124807]}, "properties": {"name": "Lucia Blender (Gemeinde Titz)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_296", "geometry": {"type": "Point", "coordinates": [6.4249719960304486, 51.00299400124807]}, "properties": {"name": "Jens Simon (Gemeinde Titz)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_297", "geometry": {"type": "Point", "coordinates": [6.4249719960304486, 51.00299400124807]}, "properties": {"name": "Yasmin Hucko (Gemeinde Titz)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_298", "geometry": {"type": "Point", "coordinates": [8.658797001420176, 49.8752769976867]}, "properties": {"name": "Antje Kersten (TU Darmstadt - Papierfabrikation und Mechanische Verfahrenstechnik)", "group": "Forschung", "color": "#3b82f6"}}, {"type": "Feature", "id": "excel_299", "geometry": {"type": "Point", "coordinates": [6.118750996918522, 50.91913899704941]}, "properties": {"name": "R. Mittelstaedt (Stadt Übach-Palenberg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_300", "geometry": {"type": "Point", "coordinates": [6.132031471214872, 51.05999297723656]}, "properties": {"name": "Dirk Cichy (Veolia Industriepark Deutschland GmbH)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_301", "geometry": {"type": "Point", "coordinates": [6.132031471214872, 51.05999297723656]}, "properties": {"name": "Anna Garipova (Veolia Industriepark Deutschland GmbH)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_302", "geometry": {"type": "Point", "coordinates": [6.132031471214872, 51.05999297723656]}, "properties": {"name": "Stefan Langer (Veolia Industriepark Deutschland GmbH)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_303", "geometry": {"type": "Point", "coordinates": [6.60121700442202, 50.74250400481001]}, "properties": {"name": "Joachim Kunth (Gemeinde Vettweiß)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_304", "geometry": {"type": "Point", "coordinates": [6.206135992885357, 50.66072700129587]}, "properties": {"name": "Walter Dautzenberg (Wassergewinnungs- u. -aufbereitungsgesellschaft Nordeifel mbH)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_305", "geometry": {"type": "Point", "coordinates": [5.988712002979444, 51.06823300761833]}, "properties": {"name": "Marcell Breuer (Gemeinde Waldfeucht)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_306", "geometry": {"type": "Point", "coordinates": [6.102748993108804, 50.778876004942724]}, "properties": {"name": "Janine Möller (Wasserhub Aachen)", "group": "Forschung", "color": "#3b82f6"}}, {"type": "Feature", "id": "excel_307", "geometry": {"type": "Point", "coordinates": [5.99562200040498, 51.191179002049445]}, "properties": {"name": "Jens Reuber (Wasserbehörde Limburg (Waterschap Limburg))", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_308", "geometry": {"type": "Point", "coordinates": [5.99562200040498, 51.191179002049445]}, "properties": {"name": "Sophie Verstraelen (Wasserbehörde Limburg (Waterschap Limburg))", "group": "Behörde", "color": "#f43f5e"}}, {"type": "Feature", "id": "excel_309", "geometry": {"type": "Point", "coordinates": [6.277196003850308, 51.14148500123546]}, "properties": {"name": "Jörg Krapoll (Stadt Wegberg)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_310", "geometry": {"type": "Point", "coordinates": [6.845121993726548, 50.75249599772255]}, "properties": {"name": "Anna-Katharina Horst (Gemeinde Weilerswist)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_311", "geometry": {"type": "Point", "coordinates": [6.981757003048151, 50.82781499652073]}, "properties": {"name": "A. Bedronka (Stadt Wesseling)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_312", "geometry": {"type": "Point", "coordinates": [6.981757003048151, 50.82781499652073]}, "properties": {"name": "J. Forstner (Stadt Wesseling)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_313", "geometry": {"type": "Point", "coordinates": [6.094212996370038, 51.0629089982431]}, "properties": {"name": "Matthias Pusch (Wirtschaftsfördergesellschaft für den Kreis Heinsberg mbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_314", "geometry": {"type": "Point", "coordinates": [6.470921005233685, 50.83133699707422]}, "properties": {"name": "Hannah Ruyters (WIN.DN GmbH - Wirtschafts- und Innovationsnetzwerk Düren)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_315", "geometry": {"type": "Point", "coordinates": [6.470921005233685, 50.83133699707422]}, "properties": {"name": "Julia Simons (WIN.DN GmbH - Wirtschafts- und Innovationsnetzwerk Düren)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_316", "geometry": {"type": "Point", "coordinates": [6.12998500695204, 50.81958099907437]}, "properties": {"name": "Heike Ohlmann (Stadt Würselen)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_317", "geometry": {"type": "Point", "coordinates": [6.480183994931681, 50.80981099764889]}, "properties": {"name": "Martin Kaleß (Wasserverband Eifel-Rur)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_318", "geometry": {"type": "Point", "coordinates": [6.480183994931681, 50.80981099764889]}, "properties": {"name": "Christof Homann (Wasserverband Eifel-Rur)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_319", "geometry": {"type": "Point", "coordinates": [6.480183994931681, 50.80981099764889]}, "properties": {"name": "Felix Steudtner (Wasserverband Eifel-Rur)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_320", "geometry": {"type": "Point", "coordinates": [6.480183994931681, 50.80981099764889]}, "properties": {"name": "Gerd Demny (Wasserverband Eifel-Rur)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_321", "geometry": {"type": "Point", "coordinates": [6.480183994931681, 50.80981099764889]}, "properties": {"name": "Susanne Kozerke (Wasserverband Eifel-Rur)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_322", "geometry": {"type": "Point", "coordinates": [6.480183994931681, 50.80981099764889]}, "properties": {"name": "Frank Jörrens (Wasserverband Eifel-Rur)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_323", "geometry": {"type": "Point", "coordinates": [6.480183994931681, 50.80981099764889]}, "properties": {"name": "Torsten Rose (Wasserverband Eifel-Rur)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_324", "geometry": {"type": "Point", "coordinates": [6.480183994931681, 50.80981099764889]}, "properties": {"name": "Andreas Wolf (Wasserverband Eifel-Rur)", "group": "Konsortium", "color": "#8b5cf6"}}, {"type": "Feature", "id": "excel_325", "geometry": {"type": "Point", "coordinates": [6.267913998040347, 50.582056000308775]}, "properties": {"name": "Gerhard Schmitz (Wasserversorgungszweckverband Perlenbach)", "group": "Ver-/ Entsorger", "color": "#ff7300"}}, {"type": "Feature", "id": "excel_326", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Ruth Hausmann (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_327", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Michelle Belkarim (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_328", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Annekatrin Dretzke (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_329", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Carola Gather (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_330", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Susanne Hartig (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_331", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Pascal Pierre Janssen (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_332", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Julia Jungbluth (Zukunftsagentur Rheinisches Revier)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_333", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Thomas Kirschmeier (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_334", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Nicole Krüttgen (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_335", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Diane Lieken (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_336", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Ulrich Lingenberg (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_337", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Vera Petzold (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_338", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Nora Robertz-Peters (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_339", "geometry": {"type": "Point", "coordinates": [6.367215000063611, 50.94337800227374]}, "properties": {"name": "Tobias Sannig (Zukunftsagentur Rheinisches Revier GmbH)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_340", "geometry": {"type": "Point", "coordinates": [6.647691997856808, 50.69245699743169]}, "properties": {"name": "Jürgen Kremer (Stadt Zülpich)", "group": "Gebietskörperschaft", "color": "#fbbf24"}}, {"type": "Feature", "id": "excel_341", "geometry": {"type": "Point", "coordinates": [6.390703994510381, 51.083150002770715]}, "properties": {"name": "Andreas Bräuer (Zweckverband LANDFOLGE Garzweiler)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_342", "geometry": {"type": "Point", "coordinates": [6.390703994510381, 51.083150002770715]}, "properties": {"name": "Bianca Linden (Zweckverband LANDFOLGE Garzweiler)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_343", "geometry": {"type": "Point", "coordinates": [6.390703994510381, 51.083150002770715]}, "properties": {"name": "Jörg Meyer zu Altenschildesche (Zweckverband LANDFOLGE Garzweiler)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}, {"type": "Feature", "id": "excel_344", "geometry": {"type": "Point", "coordinates": [6.390703994510381, 51.083150002770715]}, "properties": {"name": "Nicole Weber (Zweckverband LANDFOLGE Garzweiler)", "group": "Netzwerk/ Multiplikator", "color": "#ff007f"}}]}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "anon_0",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.0773820056721455,
+          50.758800003672576
+        ]
+      },
+      "properties": {
+        "name": "Stadt Aachen (Aachen)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.09781700610447,
+          50.76879400497947
+        ]
+      },
+      "properties": {
+        "name": "StädteRegion Aachen (AC)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.098880996297133,
+          50.768892997477025
+        ]
+      },
+      "properties": {
+        "name": "StädteRegion Aachen (AC)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_3",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.097285999646101,
+          50.76869799771627
+        ]
+      },
+      "properties": {
+        "name": "StädteRegion Aachen (AC)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_4",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.283033993164288,
+          50.8938940025143
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Aldenhoven (Aldenhoven)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_5",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.166521881509866,
+          50.875370311002975
+        ]
+      },
+      "properties": {
+        "name": "Stadt Alsdorf (Alsdorf)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_6",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.078552993371811,
+          50.77926600283405
+        ]
+      },
+      "properties": {
+        "name": "RWTH Aachen University - Institut für Advanced Mining Technologies (AMT) (AMT)",
+        "group": "Forschung",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_7",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.465282047481766,
+          50.81678307291724
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 1 – Branche Textil",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_8",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.571160002477338,
+          50.13458200123828
+        ]
+      },
+      "properties": {
+        "name": "Bundesamt für Wirtschaft und Ausfuhrkontrolle (BAFA)",
+        "group": "Behörde",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_9",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.551017995930067,
+          51.00674100413568
+        ]
+      },
+      "properties": {
+        "name": "Stadt Bedburg (Bedburg)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_10",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.541941004983921,
+          51.00091799646982
+        ]
+      },
+      "properties": {
+        "name": "Bewässerungsverband Pütz (Beregnungsverband Pütz)",
+        "group": "Landwirtschaft",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_11",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.642214999154687,
+          50.95492100080168
+        ]
+      },
+      "properties": {
+        "name": "Kreisstadt Bergheim (Bergheim)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_12",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.955884006056397,
+          50.76774500505751
+        ]
+      },
+      "properties": {
+        "name": "Bio Bursch GmbH & Co. KG (Biohof Bursch)",
+        "group": "Landwirtschaft",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_13",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.466865995105866,
+          50.68966200219804
+        ]
+      },
+      "properties": {
+        "name": "Biologische Station im Kreis Düren e.V. (Biostation Düren)",
+        "group": "Sonstige",
+        "color": "#8b5cf6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_14",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.65088500077043,
+          50.43663499969177
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Blankenheim (Blankenheim)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_15",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.631574005557042,
+          50.951577998213295
+        ]
+      },
+      "properties": {
+        "name": "Rhein-Erft-Kreis (BM)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_16",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.3785823,
+          52.5080337
+        ]
+      },
+      "properties": {
+        "name": "Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit und Verbraucherschutz (BMUKN)",
+        "group": "Behörde",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_17",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.432572488022284,
+          51.11936804847443
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 2 – Branche Ernährung",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_18",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4846119941441325,
+          50.80499500338719
+        ]
+      },
+      "properties": {
+        "name": "Bezirksregierung Arnsberg (BR Arnsberg)",
+        "group": "Behörde",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_19",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.772462995935434,
+          51.2379440034258
+        ]
+      },
+      "properties": {
+        "name": "Bezirksregierung Düsseldorf (BR Düsseldorf)",
+        "group": "Behörde",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_20",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.949756000650613,
+          50.94140600452596
+        ]
+      },
+      "properties": {
+        "name": "Bezirksregierung Köln (BR Köln)",
+        "group": "Behörde",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_21",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.046161996815083,
+          50.78312299824592
+        ]
+      },
+      "properties": {
+        "name": "Center Smart Industrial Agriculture GmbH;\nWerkzeugmaschinenlabor WZL der RWTH Aachen (CSIA)",
+        "group": "Forschung",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_22",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.55775799916853,
+          50.42058799924306
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Dahlem (Dahlem)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_23",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487668002989559,
+          50.80553700013155
+        ]
+      },
+      "properties": {
+        "name": "Entwicklungsgesellschaft indeland GmbH (indeland) / Kreis Düren (DN)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_24",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487291993499523,
+          50.80658599848388
+        ]
+      },
+      "properties": {
+        "name": "Kreis Düren (DN)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_25",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.820876002321518,
+          51.09273700224804
+        ]
+      },
+      "properties": {
+        "name": "Stadt Dormagen (Dormagen)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_26",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.482060995704271,
+          50.80328900127496
+        ]
+      },
+      "properties": {
+        "name": "Stadt Düren (Düren)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_27",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.562243998179771,
+          50.93819400464263
+        ]
+      },
+      "properties": {
+        "name": "Stadt Elsdorf (Elsdorf)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_28",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.790890996277695,
+          51.290269000003974
+        ]
+      },
+      "properties": {
+        "name": "NRW.Energy4Climate GmbH (energy4climate)",
+        "group": "Netzwerk/ Multiplikator",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_29",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.815100000451524,
+          50.8022950021455
+        ]
+      },
+      "properties": {
+        "name": "Stadt Erftstadt (Erftstadt)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_30",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.630731001425003,
+          50.96050800238247
+        ]
+      },
+      "properties": {
+        "name": "Erftverband (Erftverband)",
+        "group": "Ver-/ Entsorger",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_31",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.314079000354718,
+          51.08019100254338
+        ]
+      },
+      "properties": {
+        "name": "Stadt Erkelenz (Erkelenz)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_32",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.922688012453882,
+          50.94550503252443
+        ]
+      },
+      "properties": {
+        "name": "erlebnisplan Deutschland GmbH (erlebnisplan Deutschland)",
+        "group": "Netzwerk/ Multiplikator",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_33",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.715854820976373,
+          51.20765738905613
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 3 – Branche Papier",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_34",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.783701003338692,
+          50.66979799813469
+        ]
+      },
+      "properties": {
+        "name": "Kreis Euskirchen (EU)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_35",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.792006992789286,
+          50.65583600368933
+        ]
+      },
+      "properties": {
+        "name": "Stadt Euskirchen (Euskirchen)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_36",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.973935923315187,
+          50.837215954874175
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 4 – Branche Chemie",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_37",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.051410002362722,
+          50.794084999355285
+        ]
+      },
+      "properties": {
+        "name": "Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V. (FiW)",
+        "group": "Konsortium",
+        "color": "#8b5cf6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_38",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.447741997349302,
+          50.689314998428905
+        ]
+      },
+      "properties": {
+        "name": "FaserInnovationsZentrum Zerkall e.V. (FIZZ) / Gewerbe-/ Industriebetrieb Nr. 14 – Branche Papier",
+        "group": "Forschung",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_39",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.808373996823214,
+          50.90803200494908
+        ]
+      },
+      "properties": {
+        "name": "Stadt Frechen (Frechen)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_40",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.404387960907907,
+          50.902699947286756
+        ]
+      },
+      "properties": {
+        "name": "Forschungszentrum Jülich GmbH (FZ Jülich)",
+        "group": "Forschung",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_41",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.997856009693226,
+          50.990969004426226
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Gangelt (Gangelt)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_42",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.121082007184799,
+          50.964522996453
+        ]
+      },
+      "properties": {
+        "name": "Stadt Geilenkirchen (Geilenkirchen)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_43",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.958546995967418,
+          50.74910700339347
+        ]
+      },
+      "properties": {
+        "name": "Pesch Gemüse GmbH & Co. KG (Gemüsebau Pesch)",
+        "group": "Landwirtschaft",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_44",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.589592001748118,
+          51.08922100030158
+        ]
+      },
+      "properties": {
+        "name": "Stadt Grevenbroich (Grevenbroich)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_45",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.590582994561119,
+          51.10350500163835
+        ]
+      },
+      "properties": {
+        "name": "Gesellschaft für Wirtschaftsdienste Grevenbroich mbH (GWD)",
+        "group": "Ver-/ Entsorger",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_46",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.033170185165486,
+          51.08893287563091
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 5 – Branche Energie",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_47",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.477943002701191,
+          50.633650998482665
+        ]
+      },
+      "properties": {
+        "name": "Stadt Heimbach (Heimbach)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_48",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.442452995514315,
+          50.489583997689
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Hellenthal (Hellenthal)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_49",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.09367900003882,
+          50.866411003019685
+        ]
+      },
+      "properties": {
+        "name": "Stadt Herzogenrath (Herzogenrath)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_50",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.690930807467659,
+          50.6427245211491
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 6 – Branche Ernährung",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_51",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.107434997194719,
+          51.060543996345515
+        ]
+      },
+      "properties": {
+        "name": "Kreis Heinsberg (HS)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_52",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.224518998529188,
+          51.05509000000724
+        ]
+      },
+      "properties": {
+        "name": "Stadt Hückelhoven (Hückelhoven)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_53",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.395581994491171,
+          50.72209299707408
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Hürtgenwald (Hürtgenwald)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_54",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.878769994172183,
+          50.879705998199064
+        ]
+      },
+      "properties": {
+        "name": "Stadt Hürth (Hürth)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_55",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.358255994541316,
+          50.84638899692941
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Inden (Inden)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_56",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.605771999704849,
+          51.09387600361366
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 7 – Branche Ernährung",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_57",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.067663002870716,
+          50.77953300420479
+        ]
+      },
+      "properties": {
+        "name": "RWTH Aachen University - Institut für Siedlungswasserwirtschaft (ISA)",
+        "group": "Konsortium",
+        "color": "#8b5cf6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_58",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.04995600554365,
+          50.78382699865158
+        ]
+      },
+      "properties": {
+        "name": "RWTH Aachen University - Institut für Textiltechnik (ITA)",
+        "group": "Forschung",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_59",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.474050998891298,
+          50.801852997577484
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 8 – Branche Wirtschaftsverband",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_60",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.065069996512569,
+          50.77858300291208
+        ]
+      },
+      "properties": {
+        "name": "RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW) (IWW)",
+        "group": "Konsortium",
+        "color": "#8b5cf6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_61",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.501080002718897,
+          51.100223000421444
+        ]
+      },
+      "properties": {
+        "name": "Stadt Jüchen (Jüchen)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_62",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.362850993371082,
+          50.92107000002269
+        ]
+      },
+      "properties": {
+        "name": "Stadt Jülich (Jülich)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_63",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.618526997261625,
+          51.22631900316577
+        ]
+      },
+      "properties": {
+        "name": "Stadt Kaarst (Kaarst)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_64",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.556840002645612,
+          50.53969800284889
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Kall (Kall)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_65",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.363702005568335,
+          50.943833003267194
+        ]
+      },
+      "properties": {
+        "name": "Kreisbauernschaft Aachen (KB AC) / Kreisbauernschaft Düren (KB DN) / Kreisbauernschaft Heinsberg (KB HS)",
+        "group": "Landwirtschaft",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_66",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.798856002611889,
+          50.66448799770508
+        ]
+      },
+      "properties": {
+        "name": "Kreisbauernschaft  Euskirchen (KB EU)",
+        "group": "Landwirtschaft",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_67",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.677750995165886,
+          51.038704000907664
+        ]
+      },
+      "properties": {
+        "name": "Kreisbauernschaft Köln/Rhein-Erft-Kreis (KB K/BM) / Kreisbauernschaft Neuss-Mönchengladbach e.V. (KB NE-MG)",
+        "group": "Landwirtschaft",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_68",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.691647999170792,
+          50.87278500268475
+        ]
+      },
+      "properties": {
+        "name": "Stadt Kerpen (Kerpen)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_69",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.514092997234924,
+          51.18883700268726
+        ]
+      },
+      "properties": {
+        "name": "Stadt Korschenbroich (Korschenbroich)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_70",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.486848003836921,
+          50.75130000303114
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Kreuzau (Kreuzau)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_71",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.082009996768572,
+          50.77580300169914
+        ]
+      },
+      "properties": {
+        "name": "RWTH Aachen University - Institut für Landschaftsarchitektur (LA);\nRWTH Aachen University - Profilbereich Built and Lived Environment (BLE) (LA)",
+        "group": "Forschung",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_72",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.381162003901893,
+          50.90966000359491
+        ]
+      },
+      "properties": {
+        "name": "LAG Rheinisches Revier an Inde und Rur e.V. (LAG RR Inde & Rur)",
+        "group": "Netzwerk/ Multiplikator",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_73",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.361810005218879,
+          50.81492300104932
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Langerwehe (Langerwehe)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_74",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.770524999538103,
+          51.24619699625452
+        ]
+      },
+      "properties": {
+        "name": "Provinz Limburg (Limburg)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_75",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.2681890052613936,
+          50.97588600495055
+        ]
+      },
+      "properties": {
+        "name": "Stadt Linnich (Linnich)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_76",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.850030004058255,
+          51.00195599835699
+        ]
+      },
+      "properties": {
+        "name": "Landwirtschaftskammer NRW (LWK NRW)",
+        "group": "Landwirtschaft",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_77",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480183001239305,
+          50.79613200076388
+        ]
+      },
+      "properties": {
+        "name": "Landwirtschaftskammer NRW (LWK NRW)",
+        "group": "Landwirtschaft",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_78",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.3997100020100115,
+          51.25123399619098
+        ]
+      },
+      "properties": {
+        "name": "Landwirtschaftskammer NRW (LWK NRW)",
+        "group": "Landwirtschaft",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_79",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.689048995768911,
+          51.307748001299046
+        ]
+      },
+      "properties": {
+        "name": "Stadt Meerbusch (Meerbusch)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_80",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.527835005884107,
+          50.825489996429035
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Merzenich (Merzenich)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_81",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.468726426053332,
+          50.81584434084138
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 9 – Branche Papier",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_82",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4728703875733755,
+          50.725874387384245
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 10 – Branche Papier",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_83",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.445895996692886,
+          51.167405001419425
+        ]
+      },
+      "properties": {
+        "name": "Stadt Mönchengladbach (Mönchengladbach)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_84",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.445169996205545,
+          51.16736900072223
+        ]
+      },
+      "properties": {
+        "name": "Stadt Mönchengladbach (Mönchengladbach)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_85",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.392272993091082,
+          51.17576700183264
+        ]
+      },
+      "properties": {
+        "name": "Stadt Mönchengladbach (Mönchengladbach)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_86",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.054215005758713,
+          50.75295700432372
+        ]
+      },
+      "properties": {
+        "name": "NABU-Naturschutzstation Aachen e.V. (NABU Aachen)",
+        "group": "Sonstige",
+        "color": "#8b5cf6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_87",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.595272999095041,
+          51.08441399869182
+        ]
+      },
+      "properties": {
+        "name": "Rhein-Kreis Neuss (NE)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_88",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.594629006769339,
+          51.086550002750705
+        ]
+      },
+      "properties": {
+        "name": "Rhein-Kreis Neuss (NE)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_89",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.594463000698894,
+          51.0868980001667
+        ]
+      },
+      "properties": {
+        "name": "Rhein-Kreis Neuss (NE)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_90",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.6562669943886545,
+          50.50900999898168
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Nettersheim (Nettersheim)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_91",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.63317700322339,
+          50.91448600179361
+        ]
+      },
+      "properties": {
+        "name": "NEULAND HAMBACH GmbH (NEULAND HAMBACH)",
+        "group": "Netzwerk/ Multiplikator",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_92",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.693821003374508,
+          51.197065996525254
+        ]
+      },
+      "properties": {
+        "name": "Stadt Neuss (Neuss)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_93",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.390173993404847,
+          51.26058200050656
+        ]
+      },
+      "properties": {
+        "name": "NEW NiederrheinWasser GmbH (NEW)",
+        "group": "Ver-/ Entsorger",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_94",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.481903003796331,
+          50.68967100474714
+        ]
+      },
+      "properties": {
+        "name": "Stadt Nideggen (Nideggen)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_95",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.165451994165743,
+          51.21248599764797
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Niederkrüchten (Niederkrüchten)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_96",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.46165999620356,
+          50.885029004182925
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Niederzier (Niederzier)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_97",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.495611343391177,
+          50.55929032437896
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 11 – Branche Papier",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_98",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.642038993688657,
+          50.808964997111616
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Nörvenich (Nörvenich)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_99",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.762565996394015,
+          51.212903997402556
+        ]
+      },
+      "properties": {
+        "name": "NRW.Global Business GmbH (NRW Global Business)",
+        "group": "Netzwerk/ Multiplikator",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_100",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.645743653440136,
+          50.65815396011936
+        ]
+      },
+      "properties": {
+        "name": "Fa. Katharina Tillmann Papier- und Wellpappenfabrik e.K. (Papierfabrik Tillmann)",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_101",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4861408972778,
+          50.74343562638902
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 12 – Branche Papier",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_102",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.307440005833304,
+          50.902710002234016
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 13 – Branche Papier",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_103",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.373073895626992,
+          50.91659859776186
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 15 – Branche Ernährung",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_104",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.07659100562632,
+          50.77930399639156
+        ]
+      },
+      "properties": {
+        "name": "RWTH Aachen University - Lehr- und Forschungsgebiet Physische Geographie und Klimatologie (PGK) (PGK)",
+        "group": "Konsortium",
+        "color": "#8b5cf6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_105",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.800351001919644,
+          50.99764000464636
+        ]
+      },
+      "properties": {
+        "name": "Stadt Pulheim (Pulheim)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_106",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.127031993688151,
+          50.779147000451694
+        ]
+      },
+      "properties": {
+        "name": "Region Aachen Zweckverband (RAZV)",
+        "group": "Netzwerk/ Multiplikator",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_107",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.468844004321795,
+          50.81600900513741
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 16 – Branche Papier",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_108",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9610019961502445,
+          50.93456199746558
+        ]
+      },
+      "properties": {
+        "name": "Region Köln/Bonn e.V. (Region Köln/Bonn)",
+        "group": "Netzwerk/ Multiplikator",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_109",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0598280029215195,
+          50.72117800411567
+        ]
+      },
+      "properties": {
+        "name": "Rheinischer Landwirtschafts-Verband e.V. (RLV)",
+        "group": "Landwirtschaft",
+        "color": "#10b981"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_110",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.195044005462653,
+          50.64761000458117
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Roetgen (Roetgen)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_111",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.695884006084197,
+          51.03600399854141
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Rommerskirchen (Rommerskirchen)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_112",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.123006997244525,
+          50.79781200459343
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 17 – Branche Anlagen der Schüttguttechnik",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_113",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.874167995406817,
+          51.42627700197096
+        ]
+      },
+      "properties": {
+        "name": "RWW Rheinisch-Westfälische Wasserwerksgesellschaft mbH (RWW)",
+        "group": "Ver-/ Entsorger",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_114",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4795580000750395,
+          50.528956002401095
+        ]
+      },
+      "properties": {
+        "name": "Stadt Schleiden (Schleiden)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_115",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.487426998603715,
+          50.77701599992516
+        ]
+      },
+      "properties": {
+        "name": "SCHOELLERSHAMMER GmbH (Schoellershammer)",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_116",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.271954998565629,
+          50.81796900385408
+        ]
+      },
+      "properties": {
+        "name": "Stadt Eschweiler (SE)",
+        "group": "Konsortium",
+        "color": "#8b5cf6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_117",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.902081000240392,
+          51.0157030064224
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Selfkant (Selfkant)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_118",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.275603190783867,
+          50.981336887409256
+        ]
+      },
+      "properties": {
+        "name": "Gewerbe-/ Industriebetrieb Nr. 18 – Branche Papier",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_119",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.303847994927506,
+          50.606602998018374
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Simmerath (Simmerath)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_120",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.652299994739826,
+          50.705773001400665
+        ]
+      },
+      "properties": {
+        "name": "Smurfit Westrock Zülpich Paper GmbH (Smurfit Westrock Zülpich Paper)",
+        "group": "Gewerbe/ Industrie",
+        "color": "#d946ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_121",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.25539899857828,
+          50.75203699927471
+        ]
+      },
+      "properties": {
+        "name": "Stadt Stolberg (Stolberg)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_122",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4249719960304486,
+          51.00299400124807
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Titz (Titz)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_123",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.658797001420176,
+          49.8752769976867
+        ]
+      },
+      "properties": {
+        "name": "TU Darmstadt - Papierfabrikation und Mechanische Verfahrenstechnik (TU Darmstadt - PMV)",
+        "group": "Forschung",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_124",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.118750996918522,
+          50.91913899704941
+        ]
+      },
+      "properties": {
+        "name": "Stadt Übach-Palenberg (Übach-Palenberg)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_125",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.132031471214872,
+          51.05999297723656
+        ]
+      },
+      "properties": {
+        "name": "Veolia Industriepark Deutschland GmbH (Veolia IP Deutschland)",
+        "group": "Ver-/ Entsorger",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_126",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.60121700442202,
+          50.74250400481001
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Vettweiß (Vettweiß)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_127",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.206135992885357,
+          50.66072700129587
+        ]
+      },
+      "properties": {
+        "name": "Wassergewinnungs- u. -aufbereitungsgesellschaft Nordeifel mbH (WAG Nordeifel)",
+        "group": "Ver-/ Entsorger",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_128",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.988712002979444,
+          51.06823300761833
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Waldfeucht (Waldfeucht)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_129",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.102748993108804,
+          50.778876004942724
+        ]
+      },
+      "properties": {
+        "name": "Wasserhub Aachen (Wasserhub Aachen)",
+        "group": "Forschung",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_130",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.99562200040498,
+          51.191179002049445
+        ]
+      },
+      "properties": {
+        "name": "Wasserbehörde Limburg (Waterschap Limburg) (Waterschap Limburg)",
+        "group": "Behörde",
+        "color": "#f43f5e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_131",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.277196003850308,
+          51.14148500123546
+        ]
+      },
+      "properties": {
+        "name": "Stadt Wegberg (Wegberg)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_132",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.845121993726548,
+          50.75249599772255
+        ]
+      },
+      "properties": {
+        "name": "Gemeinde Weilerswist (Weilerswist)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_133",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.981757003048151,
+          50.82781499652073
+        ]
+      },
+      "properties": {
+        "name": "Stadt Wesseling (Wesseling)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_134",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.094212996370038,
+          51.0629089982431
+        ]
+      },
+      "properties": {
+        "name": "Wirtschaftsfördergesellschaft für den Kreis Heinsberg mbH (WFG HS)",
+        "group": "Netzwerk/ Multiplikator",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_135",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.470921005233685,
+          50.83133699707422
+        ]
+      },
+      "properties": {
+        "name": "WIN.DN GmbH - Wirtschafts- und Innovationsnetzwerk Düren (WIN.DN)",
+        "group": "Netzwerk/ Multiplikator",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_136",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.12998500695204,
+          50.81958099907437
+        ]
+      },
+      "properties": {
+        "name": "Stadt Würselen (Würselen)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_137",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.480183994931681,
+          50.80981099764889
+        ]
+      },
+      "properties": {
+        "name": "Wasserverband Eifel-Rur (WVER)",
+        "group": "Konsortium",
+        "color": "#8b5cf6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_138",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.267913998040347,
+          50.582056000308775
+        ]
+      },
+      "properties": {
+        "name": "Wasserversorgungszweckverband Perlenbach (WVZV Perlenbach)",
+        "group": "Ver-/ Entsorger",
+        "color": "#ff7300"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_139",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.367215000063611,
+          50.94337800227374
+        ]
+      },
+      "properties": {
+        "name": "Zukunftsagentur Rheinisches Revier (ZRR) / Zukunftsagentur Rheinisches Revier GmbH (ZRR)",
+        "group": "Netzwerk/ Multiplikator",
+        "color": "#ff007f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_140",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.647691997856808,
+          50.69245699743169
+        ]
+      },
+      "properties": {
+        "name": "Stadt Zülpich (Zülpich)",
+        "group": "Gebietskörperschaft",
+        "color": "#fbbf24"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anon_141",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.390703994510381,
+          51.083150002770715
+        ]
+      },
+      "properties": {
+        "name": "Zweckverband LANDFOLGE Garzweiler (ZV LANDFOLGE)",
+        "group": "Netzwerk/ Multiplikator",
+        "color": "#ff007f"
+      }
+    }
+  ]
+}
