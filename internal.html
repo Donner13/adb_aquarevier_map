@@ -733,7 +733,7 @@
                             </div>
 
                             <!-- Catchment (Rur) -->
-                            <div style="margin-bottom: 4px;">
+                            <div style="margin-bottom: 8px; border-bottom: 1px dashed var(--border-color); padding-bottom: 6px;">
                                 <span style="font-size: 10px; font-weight: bold; color: var(--text-primary);">Rur-Einzugsgebiet:</span>
                                 <div style="display: flex; gap: 6px; align-items: center; margin-top: 4px;">
                                     <input type="color" id="cfg-ca-color" value="#1e3a8a" onchange="updateBoundaryStyles()">
@@ -741,6 +741,62 @@
                                     <input type="range" id="cfg-ca-weight" min="0" max="6" step="0.5" value="1.2" style="width:50px;" oninput="updateBoundaryStyles()">
                                     <input type="range" id="cfg-ca-opacity" min="0" max="1" step="0.05" value="0.12" style="width:50px;" oninput="updateBoundaryStyles()">
                                 </div>
+                            </div>
+
+                            <!-- Rivers & River Labels -->
+                            <div style="margin-bottom: 4px;">
+                                <span style="font-size: 10px; font-weight: bold; color: var(--text-primary);">Gewässer & Beschriftung:</span>
+                                <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 4px; font-size: 9px;">
+                                    <div style="display: flex; gap: 4px; align-items: center;">
+                                        <span>Flüsse:</span>
+                                        <input type="color" id="cfg-riv-color" value="#2563eb" onchange="updateRiverStyles()">
+                                        <input type="range" id="cfg-riv-weight-det" min="0.5" max="6" step="0.5" value="2.5" title="Dicke (Detail)" style="width:40px;" oninput="updateRiverStyles()">
+                                        <input type="range" id="cfg-riv-opacity" min="0" max="1" step="0.05" value="0.85" title="Transparenz" style="width:40px;" oninput="updateRiverStyles()">
+                                    </div>
+                                    <div style="display: flex; gap: 4px; align-items: center;">
+                                        <span>Labels (Dark):</span>
+                                        <input type="color" id="cfg-rivl-color" value="#60a5fa" onchange="updateRiverStyles()">
+                                        <input type="color" id="cfg-rivl-shadow" value="#000000" title="Schatten" onchange="updateRiverStyles()">
+                                        <span>(Light):</span>
+                                        <input type="color" id="cfg-rivl-color-light" value="#1e3a8a" onchange="updateRiverStyles()">
+                                        <input type="color" id="cfg-rivl-shadow-light" value="#ffffff" title="Schatten" onchange="updateRiverStyles()">
+                                    </div>
+                                    <div style="display: flex; gap: 4px; align-items: center;">
+                                        <span>Schriftgröße:</span>
+                                        <input type="number" id="cfg-rivl-size" min="8" max="24" value="11" style="width:40px;" onchange="updateRiverStyles()">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+
+                        <!-- WMS Overlay Adjustments -->
+                        <div style="margin-bottom: 10px;">
+                            <strong style="font-size: 11px; display: block; margin-bottom: 4px;">WMS Overlays anpassen</strong>
+                            <div id="wms-customizer-container" style="display: flex; flex-direction: column; gap: 6px;">
+                                <!-- Dynamically populated via JS -->
+                            </div>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+
+                        <!-- Custom WMS Servers -->
+                        <div style="margin-bottom: 10px;">
+                            <strong style="font-size: 11px; display: block; margin-bottom: 4px;">Eigener WMS-Feed</strong>
+                            <div class="form-row" style="margin-bottom: 6px;">
+                                <input type="text" id="custom-wms-name" placeholder="Anzeigename (z.B. NRW Höhe)" style="font-size: 10px; width: 100%; box-sizing: border-box;">
+                            </div>
+                            <div class="form-row" style="margin-bottom: 6px;">
+                                <input type="text" id="custom-wms-url" placeholder="WMS Server URL" style="font-size: 10px; width: 100%; box-sizing: border-box;">
+                            </div>
+                            <div class="form-row" style="margin-bottom: 6px;">
+                                <input type="text" id="custom-wms-layers" placeholder="Layer-Namen (kommagetrennt)" style="font-size: 10px; width: 100%; box-sizing: border-box;">
+                            </div>
+                            <button class="filter-btn active" id="btn-add-custom-wms" style="width: 100%; justify-content: center; font-size: 10px; padding: 4px;" onclick="addCustomWMS()">➕ WMS hinzufügen</button>
+
+                            <div id="custom-wms-list" style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px; max-height: 100px; overflow-y: auto;">
+                                <!-- Custom WMS listed here -->
                             </div>
                         </div>
 
@@ -972,6 +1028,35 @@
         let riverGeoJson = null;
         const riverLayer = L.layerGroup().addTo(map);
 
+        function updateRiverStyles() {
+            const r = styleSettings.rivers;
+            const rl = styleSettings.riverLabels;
+
+            r.color = document.getElementById('cfg-riv-color').value;
+            r.weightDetail = parseFloat(document.getElementById('cfg-riv-weight-det').value);
+            r.opacity = parseFloat(document.getElementById('cfg-riv-opacity').value);
+            r.weightOverview = r.weightDetail + 0.5; // Overview is slightly thicker
+
+            rl.size = document.getElementById('cfg-rivl-size').value;
+            rl.color = document.getElementById('cfg-rivl-color').value;
+            rl.shadow = document.getElementById('cfg-rivl-shadow').value;
+            rl.colorLight = document.getElementById('cfg-rivl-color-light').value;
+            rl.shadowLight = document.getElementById('cfg-rivl-shadow-light').value;
+
+            applyRiverSettingsToCSS();
+            drawRivers();
+            persistLocal();
+        }
+
+        function applyRiverSettingsToCSS() {
+            const rl = styleSettings.riverLabels;
+            document.documentElement.style.setProperty('--river-label-size', rl.size + 'px');
+            document.documentElement.style.setProperty('--river-label-color', rl.color);
+            document.documentElement.style.setProperty('--river-shadow-color', rl.shadow);
+            document.documentElement.style.setProperty('--river-label-color-light', rl.colorLight);
+            document.documentElement.style.setProperty('--river-shadow-color-light', rl.shadowLight);
+        }
+
         function drawRivers() {
             if (!riverGeoJson) return;
             riverLayer.clearLayers();
@@ -981,6 +1066,8 @@
                 const lenB = b.geometry && b.geometry.coordinates ? b.geometry.coordinates.length : 0;
                 return lenB - lenA;
             });
+
+            const r = styleSettings.rivers || { color: '#2563eb', weightOverview: 3.0, weightDetail: 2.5, opacity: 0.85 };
 
             L.geoJSON({ type: "FeatureCollection", features: sortedFeatures }, {
                 filter: function(feature) {
@@ -1002,9 +1089,9 @@
                 style: function(feature) {
                     const isZoomedOut = map.getZoom() < 11;
                     return {
-                        color: "#2563eb", // Blue for all rivers, overview and detail mode
-                        weight: isZoomedOut ? 3.0 : 2.5,
-                        opacity: 0.85
+                        color: r.color,
+                        weight: isZoomedOut ? r.weightOverview : r.weightDetail,
+                        opacity: r.opacity
                     };
                 },
                 onEachFeature: function (feature, layer) {
@@ -1199,6 +1286,14 @@
 
         const layerControl = L.control.layers(baseMaps, overlayMaps, { position: 'topright' }).addTo(map);
 
+        const wmsLayersMap = {
+            'Flüsse & Gewässer (LANUV)': wmsRivers,
+            'Gewässernetz Detailliert (LANUV)': wmsDetailedRivers,
+            'Einzugsgebiete Hydrologisch (LANUV)': wmsCatchments,
+            'Tagebaue & Bergbaufelder (GD)': wmsMining,
+            'Wasserschutzgebiete (LANUV)': wmsWSG
+        };
+
         // Legend: Grenzen & Gebiete
         const boundaryLegend = L.control({ position: 'bottomleft' });
         boundaryLegend.onAdd = function () {
@@ -1243,7 +1338,21 @@
                 ugColor: '#000000', ugFill: '#818cf8', ugWeight: 1.8, ugOpacity: 0.04,
                 krColor: '#000000', krWeight: 2.0, krDash: '6, 4',
                 caColor: '#1e3a8a', caFill: '#3b82f6', caWeight: 1.2, caOpacity: 0.12
-            }
+            },
+            rivers: {
+                color: '#2563eb', weightOverview: 3.0, weightDetail: 2.5, opacity: 0.85
+            },
+            riverLabels: {
+                size: 11, color: '#60a5fa', shadow: '#000000', colorLight: '#1e3a8a', shadowLight: '#ffffff'
+            },
+            wmsSettings: {
+                'Flüsse & Gewässer (LANUV)': { opacity: 0.8, zIndex: 10 },
+                'Gewässernetz Detailliert (LANUV)': { opacity: 0.8, zIndex: 10 },
+                'Einzugsgebiete Hydrologisch (LANUV)': { opacity: 0.4, zIndex: 5 },
+                'Tagebaue & Bergbaufelder (GD)': { opacity: 0.5, zIndex: 5 },
+                'Wasserschutzgebiete (LANUV)': { opacity: 0.45, zIndex: 5 }
+            },
+            customWMS: []
         };
 
         function toggleCustomizerPanel() {
@@ -1298,6 +1407,150 @@
             persistLocal();
         }
 
+        function renderWmsCustomizer() {
+            const container = document.getElementById('wms-customizer-container');
+            container.innerHTML = '';
+
+            Object.keys(wmsLayersMap).forEach(wmsName => {
+                const settings = styleSettings.wmsSettings[wmsName] || { opacity: 0.5, zIndex: 5 };
+
+                const row = document.createElement('div');
+                row.style.borderBottom = '1px dashed var(--border-color)';
+                row.style.paddingBottom = '4px';
+
+                row.innerHTML = `
+                    <div style="font-size: 10px; color: var(--text-primary); margin-bottom: 2px;">${wmsName}</div>
+                    <div style="display: flex; gap: 6px; align-items: center; font-size: 9px;">
+                        <span>Deckkraft:</span>
+                        <input type="range" min="0" max="1" step="0.05" value="${settings.opacity}" style="width: 50px;" oninput="updateWmsSetting('${wmsName}', 'opacity', this.value)">
+                        <span>Z-Index:</span>
+                        <input type="number" min="1" max="20" value="${settings.zIndex}" style="width: 40px;" onchange="updateWmsSetting('${wmsName}', 'zIndex', this.value)">
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function updateWmsSetting(name, prop, val) {
+            if (!styleSettings.wmsSettings[name]) styleSettings.wmsSettings[name] = {};
+            styleSettings.wmsSettings[name][prop] = parseFloat(val);
+            applyWmsSettingsToLayers();
+            persistLocal();
+        }
+
+        function applyWmsSettingsToLayers() {
+            Object.keys(wmsLayersMap).forEach(wmsName => {
+                const layer = wmsLayersMap[wmsName];
+                const settings = styleSettings.wmsSettings[wmsName];
+                if (settings && layer) {
+                    layer.setOpacity(settings.opacity);
+                    layer.setZIndex(settings.zIndex);
+                }
+            });
+        }
+
+        const customWMSLayers = {};
+
+        function addCustomWMS() {
+            const name = document.getElementById('custom-wms-name').value.trim();
+            const url = document.getElementById('custom-wms-url').value.trim();
+            const layers = document.getElementById('custom-wms-layers').value.trim();
+
+            if (!name || !url || !layers) {
+                alert("Bitte füllen Sie alle Felder aus (Name, URL, Layers).");
+                return;
+            }
+
+            const wmsConfig = { id: Date.now().toString(), name, url, layers, opacity: 0.8, zIndex: 5 };
+
+            if (!styleSettings.customWMS) styleSettings.customWMS = [];
+            styleSettings.customWMS.push(wmsConfig);
+
+            document.getElementById('custom-wms-name').value = '';
+            document.getElementById('custom-wms-url').value = '';
+            document.getElementById('custom-wms-layers').value = '';
+
+            loadCustomWMSLayer(wmsConfig);
+            renderCustomWMSList();
+            persistLocal();
+        }
+
+        function removeCustomWMS(id) {
+            if (!styleSettings.customWMS) return;
+            const idx = styleSettings.customWMS.findIndex(w => w.id === id);
+            if (idx > -1) {
+                const wmsConfig = styleSettings.customWMS[idx];
+                const layer = customWMSLayers[wmsConfig.name];
+                if (layer) {
+                    map.removeLayer(layer);
+                    layerControl.removeLayer(layer);
+                    delete customWMSLayers[wmsConfig.name];
+                }
+                styleSettings.customWMS.splice(idx, 1);
+                renderCustomWMSList();
+                persistLocal();
+            }
+        }
+
+        function updateCustomWMSSetting(id, opacity) {
+            const wmsConfig = styleSettings.customWMS.find(w => w.id === id);
+            if (wmsConfig) {
+                wmsConfig.opacity = parseFloat(opacity);
+                const layer = customWMSLayers[wmsConfig.name];
+                if (layer) {
+                    layer.setOpacity(wmsConfig.opacity);
+                }
+                persistLocal();
+            }
+        }
+
+        function loadCustomWMSLayer(wmsConfig) {
+            if (customWMSLayers[wmsConfig.name]) return; // already loaded
+
+            const layer = L.tileLayer.wms(wmsConfig.url, {
+                layers: wmsConfig.layers,
+                format: 'image/png',
+                transparent: true,
+                opacity: wmsConfig.opacity,
+                zIndex: wmsConfig.zIndex || 5
+            });
+
+            customWMSLayers[wmsConfig.name] = layer;
+            layerControl.addOverlay(layer, "🌐 " + wmsConfig.name);
+        }
+
+        function renderCustomWMSList() {
+            const list = document.getElementById('custom-wms-list');
+            list.innerHTML = '';
+
+            if (!styleSettings.customWMS) return;
+
+            styleSettings.customWMS.forEach(w => {
+                const div = document.createElement('div');
+                div.style.background = 'rgba(255,255,255,0.03)';
+                div.style.border = '1px solid var(--border-color)';
+                div.style.padding = '4px';
+                div.style.borderRadius = '4px';
+                div.style.fontSize = '9px';
+                div.style.display = 'flex';
+                div.style.flexDirection = 'column';
+                div.style.gap = '4px';
+
+                div.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <strong style="color: var(--accent-primary)">${w.name}</strong>
+                        <button onclick="removeCustomWMS('${w.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer;" title="Löschen">🗑️</button>
+                    </div>
+                    <div style="color: var(--text-secondary); word-break: break-all;">${w.layers}</div>
+                    <div style="display: flex; align-items: center; gap: 4px;">
+                        <span>Opacity:</span>
+                        <input type="range" min="0" max="1" step="0.05" value="${w.opacity}" style="width: 100%;" oninput="updateCustomWMSSetting('${w.id}', this.value)">
+                    </div>
+                `;
+                list.appendChild(div);
+            });
+        }
+
         function updateGroupName(group, val) {
             styleSettings.groupNames[group] = val;
             updateFilterButtonNames();
@@ -1338,6 +1591,22 @@
             document.getElementById('cfg-ca-fill').value = b.caFill;
             document.getElementById('cfg-ca-weight').value = b.caWeight;
             document.getElementById('cfg-ca-opacity').value = b.caOpacity;
+
+            const r = styleSettings.rivers;
+            const rl = styleSettings.riverLabels;
+            if (r) {
+                document.getElementById('cfg-riv-color').value = r.color;
+                document.getElementById('cfg-riv-weight-det').value = r.weightDetail;
+                document.getElementById('cfg-riv-opacity').value = r.opacity;
+            }
+            if (rl) {
+                document.getElementById('cfg-rivl-size').value = rl.size;
+                document.getElementById('cfg-rivl-color').value = rl.color;
+                document.getElementById('cfg-rivl-shadow').value = rl.shadow;
+                document.getElementById('cfg-rivl-color-light').value = rl.colorLight;
+                document.getElementById('cfg-rivl-shadow-light').value = rl.shadowLight;
+                applyRiverSettingsToCSS();
+            }
 
             Object.keys(styleSettings.groupColors).forEach(group => {
                 const color = styleSettings.groupColors[group];
@@ -1385,6 +1654,18 @@
                     if (geojsonData.styleSettings.groupNames) {
                         styleSettings.groupNames = Object.assign(styleSettings.groupNames, geojsonData.styleSettings.groupNames);
                     }
+                    if (geojsonData.styleSettings.rivers) {
+                        styleSettings.rivers = Object.assign(styleSettings.rivers, geojsonData.styleSettings.rivers);
+                    }
+                    if (geojsonData.styleSettings.riverLabels) {
+                        styleSettings.riverLabels = Object.assign(styleSettings.riverLabels, geojsonData.styleSettings.riverLabels);
+                    }
+                    if (geojsonData.styleSettings.wmsSettings) {
+                        styleSettings.wmsSettings = Object.assign(styleSettings.wmsSettings, geojsonData.styleSettings.wmsSettings);
+                    }
+                    if (geojsonData.styleSettings.customWMS) {
+                        styleSettings.customWMS = geojsonData.styleSettings.customWMS.slice();
+                    }
                 }
 
                 // Assign a stable id to every feature that lacks one
@@ -1393,7 +1674,17 @@
                 });
 
                 renderGroupCustomizer();
+                renderWmsCustomizer();
                 applyStyleSettingsToUI();
+                applyWmsSettingsToLayers();
+
+                if (styleSettings.customWMS) {
+                    styleSettings.customWMS.forEach(wmsConfig => {
+                        loadCustomWMSLayer(wmsConfig);
+                    });
+                    renderCustomWMSList();
+                }
+
                 renderMapAndSidebar();
             } catch (err) {
                 console.error("Error loading contacts:", err);

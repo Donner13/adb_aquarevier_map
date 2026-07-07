@@ -4,7 +4,7 @@
             'Behörde': '#f43f5e',
             'Forschung': '#3b82f6',
             'Gebietskörperschaft': '#fbbf24',
-            'Gewerbe/ Industrie': '#d946ef',
+            'Gewerbe/ Industrie': '#a855f7',
             'Landwirtschaft': '#10b981',
             'Netzwerk/ Multiplikator': '#ff007f',
             'Ver-/ Entsorger': '#ff7300',
@@ -109,11 +109,11 @@
             .then(data => {
                 L.geoJSON(data, {
                     style: {
-                        color: "#4f46e5", // Contrasting dark indigo border
-                        weight: 2,
-                        dashArray: "5, 5",
+                        color: "#000000", // Black border for clear Kreis separation
+                        weight: 1.8,
+                        opacity: 0.85,
                         fillColor: "#818cf8",
-                        fillOpacity: 0.08 // Semi-transparent indigo fill
+                        fillOpacity: 0.04 // Lighter fill
                     }
                 }).addTo(boundaryLayer);
             })
@@ -124,12 +124,27 @@
         fetch('rur_einzugsgebiet_outline.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
+                // Remove interior rings (holes) from the polygons
+                if (data && data.features) {
+                    data.features.forEach(feature => {
+                        if (feature.geometry) {
+                            if (feature.geometry.type === 'Polygon') {
+                                // Only keep the outer boundary (first ring)
+                                feature.geometry.coordinates = [feature.geometry.coordinates[0]];
+                            } else if (feature.geometry.type === 'MultiPolygon') {
+                                // For MultiPolygons, keep only the outer boundary of each polygon
+                                feature.geometry.coordinates = feature.geometry.coordinates.map(poly => [poly[0]]);
+                            }
+                        }
+                    });
+                }
                 L.geoJSON(data, {
                     style: {
                         color: "#1e3a8a", // Darker blue border
-                        weight: 2.5,
+                        weight: 1.2,      // Thinner border
+                        opacity: 0.6,     // More transparent border
                         fillColor: "#3b82f6", // Medium blue fill matching image
-                        fillOpacity: 0.2 // 20% opacity
+                        fillOpacity: 0.12 // Lighter fill
                     }
                 }).addTo(catchmentLayer);
             })
@@ -153,13 +168,13 @@
                 filter: function(feature) {
                     const name = feature.properties ? (feature.properties.name || "") : "";
                     const nameLower = name.toLowerCase().trim();
-                    const isMainRiver = nameLower === 'rur' || nameLower === 'roer' || 
-                                        nameLower === 'inde' || 
-                                        nameLower === 'wurm' || 
-                                        nameLower === 'erft' || 
-                                        nameLower === 'maas' || 
+                    const isMainRiver = nameLower === 'rur' || nameLower === 'roer' ||
+                                        nameLower === 'inde' ||
+                                        nameLower === 'wurm' ||
+                                        nameLower === 'erft' ||
+                                        nameLower === 'maas' ||
                                         nameLower === 'rhein';
-                    
+
                     const isZoomedOut = map.getZoom() < 11;
                     if (isZoomedOut) {
                         return isMainRiver; // Only show main rivers in overview mode
@@ -169,7 +184,7 @@
                 style: function(feature) {
                     const isZoomedOut = map.getZoom() < 11;
                     return {
-                        color: isZoomedOut ? "#2563eb" : "#ff7300", // Blue for main rivers in overview, Orange in detail mode
+                        color: "#2563eb", // Blue for all rivers, overview and detail mode
                         weight: isZoomedOut ? 3.0 : 2.5,
                         opacity: 0.85
                     };
@@ -204,17 +219,17 @@
             })
             .catch(err => console.log("Official river layer not loaded:", err));
 
-        // 9b. Teilgewässer (Kanalisiert) Layer - Loaded from Shapefiles in Orange
+        // 9b. Teilgewässer (Kanalisiert) Layer - Loaded from Shapefiles in Blue
         const tgKanalisiertLayer = L.layerGroup();
         fetch('tg_kanalisiert.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
                 L.geoJSON(data, {
                     style: {
-                        color: "#ff7300", // Orange border
+                        color: "#2563eb", // Blue border
                         weight: 2,
-                        fillColor: "#ff7300",
-                        fillOpacity: 0.25 // Orange semi-transparent fill
+                        fillColor: "#2563eb",
+                        fillOpacity: 0.25 // Blue semi-transparent fill
                     },
                     onEachFeature: function(feature, layer) {
                         if (feature.properties && feature.properties.TG_ID) {
@@ -297,6 +312,48 @@
             })
             .catch(err => console.log("2025 stakeholder layer not loaded:", err));
 
+        // 9e. GSK3C Gewässerflächen (Seen & breite Flüsse) - standardmäßig aktiv
+        const gewFlaecheLayer = L.layerGroup().addTo(map);
+        fetch('gsk3c_gew_flaeche.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: {
+                        color: "#2563eb",
+                        weight: 1,
+                        fillColor: "#3b82f6",
+                        fillOpacity: 0.7
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties && feature.properties.NAME) {
+                            layer.bindTooltip(feature.properties.NAME, { sticky: true });
+                        }
+                    }
+                }).addTo(gewFlaecheLayer);
+            })
+            .catch(err => console.log("gsk3c_gew_flaeche layer not loaded:", err));
+
+        // 9f. GSK3C Gewässerkanäle (Kanäle & Gräben) - optional zuschaltbar
+        const gewKanalLayer = L.layerGroup();
+        fetch('gsk3c_gew_kanal_plm.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: {
+                        color: "#06b6d4", // Cyan
+                        weight: 1.5,
+                        dashArray: "3, 3",
+                        opacity: 0.8
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties && feature.properties.NAME) {
+                            layer.bindTooltip(`Kanal: ${feature.properties.NAME}`, { sticky: true });
+                        }
+                    }
+                }).addTo(gewKanalLayer);
+            })
+            .catch(err => console.log("gsk3c_gew_kanal_plm layer not loaded:", err));
+
         // Map layer controller
         const baseMaps = {
             "Dunkles Design (Standard)": baseDark,
@@ -306,7 +363,9 @@
 
         const overlayMaps = {
             "Rur Einzugsgebiet (Hydrologisch)": catchmentLayer,
-            "Teilgewässer (Kanalisiert) [Orange]": tgKanalisiertLayer,
+            "Gewässerflächen (Seen & Talsperren) [Blau]": gewFlaecheLayer,
+            "Gewässerkanäle (Kanäle & Gräben) [Cyan]": gewKanalLayer,
+            "Teilgewässer (Kanalisiert) [Blau]": tgKanalisiertLayer,
             "Teilgewässer (Natürlich) [Grün]": tgNatuerlichLayer,
             "Akteure (Stand 2025, Archiv)": stakeholder2025Layer,
             "Landkreisgrenzen (Rheinisches Revier)": boundaryLayer,
@@ -343,9 +402,9 @@
         function createCustomMarker(lat, lng, color, name, group) {
             const size = 14;
             const border = 2.0;
-            
+
             let html = '';
-            if (group === 'Gewerbe/ Industrie' || group === 'Landwirtschaft') {
+            if (group === 'Landwirtschaft') {
                 // Diamond (Raute) styled using CSS transform
                 html = `
                     <div style="
@@ -404,7 +463,7 @@
         }
 
         // Custom Logo Callout Marker generator
-        function createLogoCalloutMarker(lat, lng, name) {
+        function createLogoCalloutMarker(lat, lng, name, color) {
             const nameLower = name.toLowerCase();
             let logoHtml = '';
             let svgContent = '';
@@ -415,127 +474,129 @@
                 // CENTRAL: WVER (waves writing)
                 dx = -75; dy = -50;
                 logoHtml = `
-                    <div class="logo-box logo-wver-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 3px 6px; background: #ffffff; border: 1.2px solid #0067b1; display: flex; align-items: center; justify-content: center; width: 100px; height: 32px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,103,177,0.15); border-radius: 4px;">
-                        <img src="https://wver.de/wp-content/uploads/2025/08/wver-logo.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="WVER">
+                    <div class="logo-box logo-wver-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="https://wver.de/wp-content/uploads/2025/08/wver-logo.png" alt="WVER">
                     </div>
                 `;
-                const targetX = ax + dx + 50;
-                const targetY = ay + dy + 16;
+                const targetX = ax + dx + 55;
+                const targetY = ay + dy + 19;
                 svgContent = `
                     <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
-                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="#0067b1" stroke-width="2" />
-                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="#0067b1" stroke="#ffffff" stroke-width="1.2" />
-                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="#0067b1" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
                 `;
             } else if (nameLower.includes('schoellershammer')) {
                 // CENTRAL RIGHT: SCHOELLERSHAMMER (Official logo)
                 dx = 30; dy = -50;
                 logoHtml = `
-                    <div class="logo-box logo-schoellershammer-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 3px 6px; background: #ffffff; border: 1.2px solid #000000; display: flex; align-items: center; justify-content: center; width: 130px; height: 32px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.1); border-radius: 4px;">
-                        <img src="https://www.schoellershammer.de/wp-content/themes/schoellershammer/assets/images/logo.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="SCHOELLERSHAMMER">
+                    <div class="logo-box logo-schoellershammer-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 130px; height: 42px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="https://www.schoellershammer.de/wp-content/themes/schoellershammer/assets/images/logo.png" alt="SCHOELLERSHAMMER">
                     </div>
                 `;
-                const targetX = ax + dx + 10;
-                const targetY = ay + dy + 16;
+                const targetX = ax + dx;
+                const targetY = ay + dy + 21;
                 svgContent = `
                     <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
-                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="#000000" stroke-width="2" />
-                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="#000000" stroke="#ffffff" stroke-width="1.2" />
-                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="#000000" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
                 `;
             } else if (nameLower.includes('smurfit')) {
                 // EAST: Smurfit Westrock (Official logo)
                 dx = 30; dy = -20;
                 logoHtml = `
-                    <div class="logo-box logo-smurfit-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 3px 6px; background: #ffffff; border: 1.2px solid #005a9c; display: flex; align-items: center; justify-content: center; width: 120px; height: 32px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,90,156,0.1); border-radius: 4px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Smurfit_Westrock_%28logo%29.svg" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Smurfit Westrock">
+                    <div class="logo-box logo-smurfit-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 130px; height: 40px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="logos/smurfit_westrock.svg" alt="Smurfit Westrock">
                     </div>
                 `;
-                const targetX = ax + dx + 10;
-                const targetY = ay + dy + 16;
+                const targetX = ax + dx;
+                const targetY = ay + dy + 20;
                 svgContent = `
                     <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
-                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="#005a9c" stroke-width="2" />
-                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="#005a9c" stroke="#ffffff" stroke-width="1.2" />
-                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="#005a9c" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
                 `;
             } else if (nameLower.includes('tillmann') || nameLower.includes('tillman')) {
-                // EAST BELOW: Papierfabrik Tillmann (pure blue sans-serif text)
+                // EAST BELOW: Papierfabrik Tillmann PNG logo
                 dx = 20; dy = 20;
                 logoHtml = `
-                    <div class="logo-box logo-tillmann-box" style="left: ${ax + dx}px; top: ${ay + dy}px; border: 1.2px solid #1d4ed8; display: flex; flex-direction: column; align-items: center; padding: 3px 8px; background: #ffffff; border-radius: 4px; box-shadow: 0 1.5px 5px rgba(29,78,216,0.1); width: 110px; height: 32px; box-sizing: border-box; justify-content: center; gap: 0px;">
-                        <div style="font-family:'Outfit',sans-serif; font-weight:900; font-size:7px; letter-spacing:0.07em; color:#1d4ed8; text-transform:uppercase; border-bottom: 1.5px solid #1d4ed8; line-height: 1.0; margin-bottom: 2px; padding-bottom: 1px;">PAPIERFABRIK</div>
-                        <div style="font-family:'Outfit',sans-serif; font-weight:900; font-size:12px; letter-spacing:0.04em; color:#1d4ed8; text-transform:uppercase; line-height: 1.0;">TILLMANN</div>
+                    <div class="logo-box logo-tillmann-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 3px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 90px; height: 36px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="logos/papierfabrik_tillmann.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Papierfabrik Tillmann">
                     </div>
                 `;
-                const targetX = ax + dx + 10;
-                const targetY = ay + dy + 16;
-                svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
-                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="#1d4ed8" stroke-width="2" />
-                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.2" />
-                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="#1d4ed8" />
-                `;
-            } else if (nameLower.includes('rlv') || nameLower.includes('landwirtschafts-verband')) {
-                // NORTH: RLV (Official logo)
-                dx = -60; dy = -70;
-                logoHtml = `
-                    <div class="logo-box logo-rlv-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 3px 6px; background: #ffffff; border: 1.2px solid #15803d; display: flex; align-items: center; justify-content: center; width: 90px; height: 32px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(21,128,61,0.15); border-radius: 4px;">
-                        <img src="https://www.rlv.de/wp-content/themes/rlv_template_final/assets/img/logo_rlv.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="RLV">
-                    </div>
-                `;
-                const targetX = ax + dx + 45;
-                const targetY = ay + dy + 16;
-                svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
-                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="#15803d" stroke-width="2" />
-                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="#15803d" stroke="#ffffff" stroke-width="1.2" />
-                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="#15803d" />
-                `;
-            } else if (nameLower.includes('eschweiler')) {
-                // WEST: Stadt Eschweiler (Official Wappen)
-                dx = -140; dy = -20;
-                logoHtml = `
-                    <div class="logo-box logo-eschweiler-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 3px 6px; background: #ffffff; border: 1.2px solid #1d4ed8; display: flex; align-items: center; justify-content: center; width: 140px; height: 36px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(29,78,216,0.15); border-radius: 4px; gap: 6px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/DEU_Eschweiler_COA.svg" style="max-width: 24px; max-height: 100%; object-fit: contain;" alt="Stadt Eschweiler">
-                        <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:10px; color:#1d4ed8; letter-spacing:0.02em; line-height: 1.1; text-align: left;">STADT<br>ESCHWEILER</span>
-                    </div>
-                `;
-                const targetX = ax + dx + 110;
+                const targetX = ax + dx;
                 const targetY = ay + dy + 18;
                 svgContent = `
                     <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
-                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="#1d4ed8" stroke-width="2" />
-                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.2" />
-                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="#1d4ed8" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
                 `;
-            } else if (nameLower.includes('fiw') || nameLower.includes('isa') || nameLower.includes('iww')) {
-                // SOUTH-WEST: RWTH Institute (Combined logo box using the uploaded crop)
+            } else if (nameLower.includes('rlv') || nameLower.includes('landwirtschafts-verband')) {
+                // NORTH: RLV (Official logo)
+                dx = -120; dy = -20;
+                logoHtml = `
+                    <div class="logo-box logo-rlv-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="https://www.rlv.de/wp-content/themes/rlv_template_final/assets/img/logo_rlv.png" alt="RLV">
+                    </div>
+                `;
+                const targetX = ax + dx + 110;
+                const targetY = ay + dy + 19;
+                svgContent = `
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
+                `;
+            } else if (nameLower.includes('eschweiler')) {
+                // WEST ABOVE: Stadt Eschweiler (only logo image)
+                dx = -80; dy = -30;
+                logoHtml = `
+                    <div class="logo-box logo-eschweiler-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 60px; height: 50px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                        <img src="logos/stadt_eschweiler.jpg" alt="Stadt Eschweiler">
+                    </div>
+                `;
+                const targetX = ax + dx + 60;
+                const targetY = ay + dy + 25;
+                svgContent = `
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
+                `;
+            } else if (nameLower.includes('isa') || nameLower.includes('iww')) {
+                // SOUTH-WEST: RWTH ISA/IWW Institute (same campus, one combined point)
                 dx = -120; dy = 20;
                 logoHtml = `
                     <div class="logo-box logo-combined-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 2px; border: 1.2px solid #000000; border-radius: 4px; display: flex; align-items: center; justify-content: center; width: 110px; height: 52px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); background: #ffffff;">
-                        <img src="isa_iww_fiw.png" style="width: 100%; height: 100%; object-fit: contain;" alt="ISA / IWW / FiW">
+                        <img src="isa_iww_fiw.png" style="width: 100%; height: 100%; object-fit: contain;" alt="ISA / IWW">
                     </div>
                 `;
-                // Double arrow pointers pointing up-right from box (dx + 90, dy + 12)
                 const startX = ax + dx + 90;
                 const startY = ay + dy + 12;
-                // Target 1: actual point (ax, ay)
-                // Target 2: neighboring point (ax + 25, ay - 18)
-                const t2x = ax + 25;
-                const t2y = ay - 18;
                 svgContent = `
-                    <!-- Arrow 1 (to Aachen Center) -->
-                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="#475569" stroke-width="1.2" stroke-dasharray="2,2" />
-                    <line x1="${startX}" y1="${startY}" x2="${startX + (ax - startX)*0.3}" y2="${startY + (ay - startY)*0.3}" stroke="#1d4ed8" stroke-width="1.8" />
-                    <circle cx="${ax}" cy="${ay}" r="3" fill="#1d4ed8" stroke="#ffffff" stroke-width="1" />
-                    <polygon points="${ax},${ay} ${ax - 6},${ay + 3} ${ax - 3},${ay + 6}" fill="#1d4ed8" />
-
-                    <!-- Arrow 2 (to Städteregion Aachen area) -->
-                    <line x1="${startX}" y1="${startY}" x2="${t2x}" y2="${t2y}" stroke="#475569" stroke-width="1.2" stroke-dasharray="2,2" />
-                    <line x1="${startX}" y1="${startY}" x2="${startX + (t2x - startX)*0.3}" y2="${startY + (t2y - startY)*0.3}" stroke="#16a34a" stroke-width="1.8" />
-                    <circle cx="${t2x}" cy="${t2y}" r="3" fill="#16a34a" stroke="#ffffff" stroke-width="1" />
-                    <polygon points="${t2x},${t2y} ${t2x - 6},${t2y + 3} ${t2x - 3},${t2y + 6}" fill="#16a34a" />
+                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${startX}" y1="${startY}" x2="${ax + (startX - ax)*0.25}" y2="${ay + (startY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax - 6},${ay + 3} ${ax - 3},${ay + 6}" fill="${color}" />
+                `;
+            } else if (nameLower.includes('fiw')) {
+                // SOUTH-EAST: FiW e.V. an der RWTH Aachen (own point, own logo)
+                dx = 30; dy = 40;
+                logoHtml = `
+                    <div class="logo-box logo-fiw-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 3px 6px; background: #ffffff; border: 1.2px solid #0067b1; display: flex; align-items: center; justify-content: center; width: 110px; height: 32px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,103,177,0.15); border-radius: 4px;">
+                        <img src="https://www.fiw.rwth-aachen.de/_assets/d2d15ab76e88d41662e2ec8fa5eb4956/Images/FiW_RGB_2022.svg" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="FiW">
+                    </div>
+                `;
+                const targetX = ax + dx + 10;
+                const targetY = ay + dy;
+                svgContent = `
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
                 `;
             } else {
                 return null;
@@ -560,8 +621,31 @@
             return L.marker([lat, lng], { icon: icon });
         }
 
+
+        // Update URL Parameters based on current filters
+        function updateUrlParams() {
+            const url = new URL(window.location);
+            const searchQuery = document.getElementById('search-input').value.trim();
+
+            if (searchQuery) {
+                url.searchParams.set('q', searchQuery);
+            } else {
+                url.searchParams.delete('q');
+            }
+
+            if (activeFilters.size < Object.keys(groupColors).length) {
+                url.searchParams.set('gruppe', Array.from(activeFilters).join(','));
+            } else {
+                url.searchParams.delete('gruppe');
+            }
+
+            window.history.replaceState({}, '', url);
+        }
+
         // Render Sidebar and Markers
         function renderMapAndSidebar() {
+            updateUrlParams();
+
             markersLayer.clearLayers();
             const listContainer = document.getElementById('contact-list-container');
             listContainer.innerHTML = '';
@@ -612,34 +696,70 @@
                 if (nameLower.includes('tillmann') || nameLower.includes('tillman')) return 'PAPIERFABRIK TILLMANN';
                 if (nameLower.includes('rlv') || nameLower.includes('landwirtschafts-verband')) return 'RLV';
                 if (nameLower.includes('eschweiler')) return 'STADT ESCHWEILER';
-                if (nameLower.includes('fiw') || nameLower.includes('isa') || nameLower.includes('iww')) return 'ISA / IWW / FiW';
+                if (nameLower.includes('fiw')) return 'FiW';
+                if (nameLower.includes('isa') || nameLower.includes('iww')) return 'ISA / IWW';
                 return name;
             };
+
+            const renderedPartnerLabels = new Set();
 
             filteredFeatures.forEach(feature => {
                 const [lng, lat] = feature.geometry.coordinates;
                 const props = feature.properties;
                 const color = groupColors[props.group] || '#8b5cf6';
 
-                // Add Marker to Map
-                let marker;
-                if (isMainPartner(props.name)) {
-                    marker = createLogoCalloutMarker(lat, lng, props.name);
-                } else {
-                    marker = createCustomMarker(lat, lng, color, props.name, props.group);
-                }
+                // Render the normal custom marker (colored by group, e.g. purple for Tillmann)
+                let marker = createCustomMarker(lat, lng, color, props.name, props.group);
                 
-                const popupContent = `
-                    <div class="popup-card">
-                        <div class="popup-group" style="color: ${color}">${props.group}</div>
-                        <div class="popup-title">${props.name}</div>
-                        <div class="popup-detail" style="font-family: monospace; font-size:10px; margin-top: 6px;">
-                            📍 ${lat.toFixed(6)}, ${lng.toFixed(6)}
-                        </div>
-                    </div>
+                let popupContent = `
+                    <div class="popup-card extended-popup">
+                        <div class="popup-group" style="color: ${color}">${props.group || ''}</div>
+                        <div class="popup-title">${props.name || ''}</div>
+                        <div class="popup-body">
                 `;
+
+                if (props.organisation) popupContent += `<div class="popup-detail"><strong>Organisation:</strong> ${props.organisation}</div>`;
+                if (props.institution) popupContent += `<div class="popup-detail"><strong>Institution:</strong> ${props.institution}</div>`;
+                if (props.bereich) popupContent += `<div class="popup-detail"><strong>Bereich:</strong> ${props.bereich}</div>`;
+                if (props.email) popupContent += `<div class="popup-detail"><strong>E-Mail:</strong> <a href="mailto:${props.email}">${props.email}</a></div>`;
+                if (props.phone || props.telefon) popupContent += `<div class="popup-detail"><strong>Telefon:</strong> ${props.phone || props.telefon}</div>`;
+
+                popupContent += `
+                            <div class="popup-detail coords-detail">
+                                📍 ${lat.toFixed(6)}, ${lng.toFixed(6)}
+                            </div>
+                        </div>
+                `;
+
+                const websiteUrl = props.website || props.url;
+                if (websiteUrl) {
+                    popupContent += `
+                        <div class="popup-footer">
+                            <a href="${websiteUrl.startsWith('http') ? websiteUrl : 'http://' + websiteUrl}" target="_blank" class="website-btn">Zur Website</a>
+                        </div>
+                    `;
+                }
+
+                popupContent += `</div>`;
+
                 marker.bindPopup(popupContent);
+
+                // Optional: Karte bleibt zentriert auf dem Marker beim Öffnen
+                marker.on('click', function(e) {
+                    map.setView(e.target.getLatLng());
+                });
                 markersLayer.addLayer(marker);
+
+                // Render the logo callout next to it pointing exactly to the custom marker
+                if (isMainPartner(props.name)) {
+                    const partnerLabel = getCleanPartnerLabel(props.name);
+                    const partnerKey = `${partnerLabel}|${lat.toFixed(5)}|${lng.toFixed(5)}`;
+                    if (!renderedPartnerLabels.has(partnerKey)) {
+                        renderedPartnerLabels.add(partnerKey);
+                        let calloutMarker = createLogoCalloutMarker(lat, lng, props.name, color);
+                        markersLayer.addLayer(calloutMarker);
+                    }
+                }
 
                 // Add Item to Sidebar
                 const item = document.createElement('div');
@@ -735,6 +855,150 @@
             drawRivers();
         });
 
+        // Export Logic
+        function getFilteredDataForExport() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const mainPartners = [
+                'wver', 'schoellershammer', 'smurfit', 'tillmann',
+                'rlv', 'eschweiler', 'fiw', 'isa', 'iww'
+            ];
+            const isMainPartner = (name) => {
+                const nameLower = name.toLowerCase();
+                return mainPartners.some(p => nameLower.includes(p));
+            };
+
+            return geojsonData.features.filter(feature => {
+                const props = feature.properties;
+                const matchesFilter = activeFilters.has(props.group) || isMainPartner(props.name);
+                const matchesSearch = !searchQuery ||
+                    props.name.toLowerCase().includes(searchQuery) ||
+                    props.group.toLowerCase().includes(searchQuery);
+                return matchesFilter && matchesSearch;
+            }).map(f => f.properties);
+        }
+
+        document.getElementById('export-csv-btn').addEventListener('click', () => {
+            const data = getFilteredDataForExport();
+            if (data.length === 0) {
+                alert("Keine Daten zum Exportieren vorhanden.");
+                return;
+            }
+
+            const headers = ['Name', 'Organisation', 'Gruppe', 'E-Mail'];
+            const csvRows = [headers.join(';')];
+
+            data.forEach(props => {
+                const row = [
+                    props.name || '',
+                    props.organisation || '',
+                    props.group || '',
+                    props.email || ''
+                ].map(val => `"${val.toString().replace(/"/g, '""')}"`);
+                csvRows.push(row.join(';'));
+            });
+
+            const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + csvRows.join("\n");
+            const encodedUri = encodeURI(csvContent);
+
+            const today = new Date().toISOString().split('T')[0];
+            const filename = `Akteure_${today}.csv`;
+
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        document.getElementById('export-pdf-btn').addEventListener('click', () => {
+            const data = getFilteredDataForExport();
+            if (data.length === 0) {
+                alert("Keine Daten zum Exportieren vorhanden.");
+                return;
+            }
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFontSize(18);
+            doc.text("AquaRevier Akteursliste", 14, 22);
+            doc.setFontSize(11);
+            doc.text(`Gefilterte Ergebnisse: ${data.length} Akteure`, 14, 30);
+
+            const tableData = data.map(props => [
+                props.name || '',
+                props.organisation || '',
+                props.group || '',
+                props.email || ''
+            ]);
+
+            doc.autoTable({
+                startY: 36,
+                head: [['Name', 'Organisation', 'Gruppe', 'E-Mail']],
+                body: tableData,
+                theme: 'striped',
+                headStyles: { fillColor: [79, 70, 229] },
+                styles: { fontSize: 9 }
+            });
+
+            const today = new Date().toISOString().split('T')[0];
+            doc.save(`Akteure_${today}.pdf`);
+        });
+
+        // Initial Load parsing URL
+        function parseUrlParamsAndLoad() {
+            const url = new URL(window.location);
+            const q = url.searchParams.get('q');
+            const gruppe = url.searchParams.get('gruppe');
+
+            if (q) {
+                document.getElementById('search-input').value = q;
+            }
+
+            if (gruppe) {
+                activeFilters.clear();
+                const groups = gruppe.split(',');
+                groups.forEach(g => {
+                    if (groupColors[g]) {
+                        activeFilters.add(g);
+                    }
+                });
+
+                // Update UI buttons based on loaded params
+                document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
+                    const bg = btn.getAttribute('data-group');
+                    if (bg === 'all') {
+                        if (activeFilters.size === Object.keys(groupColors).length) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    } else {
+                        if (activeFilters.has(bg)) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    }
+                });
+            }
+
+            loadContacts();
+        }
+
+        // Filter Reset Logic
+        document.getElementById('reset-filters-btn').addEventListener('click', () => {
+            document.getElementById('search-input').value = '';
+
+            activeFilters = new Set(Object.keys(groupColors));
+            document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
+                btn.classList.add('active');
+            });
+
+            renderMapAndSidebar();
+        });
+
         // Initial Load
-        loadContacts();
+        parseUrlParamsAndLoad();
     
