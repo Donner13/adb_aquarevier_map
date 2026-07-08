@@ -6932,8 +6932,8 @@
     "boundaries": {
       "ugColor": "#000000",
       "ugFill": "#818cf8",
-      "ugWeight": 2,
-      "ugOpacity": 0.8,
+      "ugWeight": 1.8,
+      "ugOpacity": 0.04,
       "krColor": "#000000",
       "krWeight": 2,
       "krDash": "20, 10",

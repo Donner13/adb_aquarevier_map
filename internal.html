@@ -2495,7 +2495,7 @@
                 // Check for individual contact logo first, then group logo
                 let customLogo = people.find(p => p.logo)?.logo;
                 if (!customLogo && styleSettings.groupLogos) {
-                    customLogo = styleSettings.groupLogos[props.group];
+                    customLogo = styleSettings.groupLogos[group];
                 }
 
                 if (isMainPartner(institution) || customLogo) {
