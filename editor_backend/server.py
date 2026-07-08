@@ -2,6 +2,7 @@ import http.server
 import socketserver
 import json
 import os
+import re
 import base64
 import subprocess
 import urllib.parse
@@ -40,8 +41,19 @@ def _clean_branch(branche):
         return "Wirtschaftsverband"
     return b
 
+def _extract_institution(name):
+    """'Vorname Nachname (Institution X)' -> 'Institution X'. No parens -> return as-is."""
+    m = re.match(r'^.*?\((.+)\)\s*$', name)
+    return m.group(1).strip() if m else name
+
+
 def build_anonymized_geojson(data):
-    """Transform a full contacts FeatureCollection into the public-safe anonymized layer."""
+    """Transform a full contacts FeatureCollection into the public-safe anonymized layer.
+
+    Personal names must never appear in the public output: Einzelakteure (bare person
+    names, no institution) are dropped entirely, and every other group's combined
+    "Person (Institution)" name is reduced to just the institution part.
+    """
     features = data.get('features', []) if isinstance(data, dict) else []
     style_settings = data.get('styleSettings', {})
     custom_colors = style_settings.get('groupColors', {})
@@ -55,17 +67,23 @@ def build_anonymized_geojson(data):
         props = feature.get('properties', {}) or {}
         name = str(props.get('name', '')).strip()
         group = str(props.get('group', 'Sonstige')).strip()
-        display_name = name
+
+        if group == 'Einzelakteure':
+            continue
 
         if group == 'Gewerbe/ Industrie':
             is_partner = any(p in name.lower() for p in ["tillman", "smurfit", "schoellershammer"])
-            if not is_partner:
+            if is_partner:
+                display_name = name
+            else:
                 if name not in gewerbe_mapping:
                     branche = props.get('branche') or props.get('Branche')
                     clean_branch = _clean_branch(branche)
                     gewerbe_mapping[name] = f"Gewerbe-/ Industriebetrieb Nr. {gewerbe_counter} – Branche {clean_branch}"
                     gewerbe_counter += 1
                 display_name = gewerbe_mapping[name]
+        else:
+            display_name = _extract_institution(name)
 
         color = custom_colors.get(group, GROUP_COLORS.get(group, '#8b5cf6'))
         display_group = custom_names.get(group, group)
