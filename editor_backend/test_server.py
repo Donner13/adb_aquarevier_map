@@ -61,7 +61,7 @@ class TestEditorBackend(unittest.TestCase):
             ]
         }
 
-        response = requests.post(url, json=payload)
+        response = requests.post(url, json=payload, auth=(server.EDITOR_USER, server.EDITOR_PASSWORD))
         self.assertEqual(response.status_code, 200)
         data = response.json()
         self.assertEqual(data["status"], "success")
@@ -81,11 +81,16 @@ class TestEditorBackend(unittest.TestCase):
         os.environ["DRY_RUN"] = "true"
         url = f"http://127.0.0.1:{server.PORT}/api/deploy"
 
-        response = requests.post(url)
+        response = requests.post(url, auth=(server.EDITOR_USER, server.EDITOR_PASSWORD))
         self.assertEqual(response.status_code, 200)
         data = response.json()
         self.assertEqual(data["status"], "success")
         self.assertIn("DRY RUN", data["output"])
+
+    def test_requires_auth(self):
+        url = f"http://127.0.0.1:{server.PORT}/api/deploy"
+        response = requests.post(url)  # no credentials
+        self.assertEqual(response.status_code, 401)
 
 if __name__ == "__main__":
     unittest.main()

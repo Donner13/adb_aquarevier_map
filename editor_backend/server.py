@@ -4,6 +4,7 @@ import json
 import os
 import re
 import base64
+import hmac
 import subprocess
 import urllib.parse
 from urllib.request import urlopen
@@ -13,6 +14,12 @@ PORT = int(os.environ.get("PORT", 8000))
 DIRECTORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ENC_PASSWORD = 'AquaRevier2026'
+
+# HTTP Basic Auth for the whole editor (this server publicly exposes contacts.geojson,
+# which contains names/emails/phone numbers - must never be reachable without login).
+# Override via env vars when deploying (Render secret), local default kept for dev.
+EDITOR_USER = os.environ.get("EDITOR_USER", "florian")
+EDITOR_PASSWORD = os.environ.get("EDITOR_PASSWORD", "AquaRevier2026")
 
 GROUP_COLORS = {
     'Behörde': '#f43f5e', 'Einzelakteure': '#00f5d4', 'Forschung': '#3b82f6',
@@ -156,10 +163,36 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         super().end_headers()
 
     def do_OPTIONS(self):
+        # No auth on preflight requests - browsers never send credentials with OPTIONS
         self.send_response(200, "OK")
         self.end_headers()
 
+    def _check_auth(self):
+        """HTTP Basic Auth gate. Returns True if authorized, else sends 401 and returns False."""
+        expected = 'Basic ' + base64.b64encode(f'{EDITOR_USER}:{EDITOR_PASSWORD}'.encode('utf-8')).decode('ascii')
+        provided = self.headers.get('Authorization', '')
+        if hmac.compare_digest(provided, expected):
+            return True
+        self.send_response(401)
+        self.send_header('WWW-Authenticate', 'Basic realm="AquaRevier Editor"')
+        self.send_header('Content-Type', 'text/plain; charset=utf-8')
+        self.end_headers()
+        self.wfile.write("401 - Zugriff nur mit Login.".encode('utf-8'))
+        return False
+
+    def do_GET(self):
+        if not self._check_auth():
+            return
+        super().do_GET()
+
+    def do_HEAD(self):
+        if not self._check_auth():
+            return
+        super().do_HEAD()
+
     def do_POST(self):
+        if not self._check_auth():
+            return
         parsed_path = urllib.parse.urlparse(self.path)
         if parsed_path.path == '/api/contacts':
             content_length = int(self.headers['Content-Length'])

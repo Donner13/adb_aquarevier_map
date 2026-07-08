@@ -9,3 +9,7 @@ services:
         value: 8000
       - key: GIT_PUSH_TOKEN
         sync: false
+      - key: EDITOR_USER
+        sync: false
+      - key: EDITOR_PASSWORD
+        sync: false

@@ -1079,6 +1079,11 @@
             .catch(err => console.log("Catchment layer not loaded:", err));
 
         // 9. Custom Rivers: Offizielle Gewässer mit Namen (GeoJSON) - Dynamically rendered based on zoom
+        // Own pane below markerPane (600) so river-name labels never cover logos/markers
+        // (Leaflet's default tooltipPane is 650, i.e. above all markers)
+        map.createPane('riverLabelPane');
+        map.getPane('riverLabelPane').style.zIndex = 550;
+        map.getPane('riverLabelPane').style.pointerEvents = 'none';
         let riverGeoJson = null;
         const riverLayer = L.layerGroup().addTo(map);
 
@@ -1158,7 +1163,8 @@
                             layer.bindTooltip(name, {
                                 permanent: true,
                                 direction: "center",
-                                className: "river-label"
+                                className: "river-label",
+                                pane: "riverLabelPane"
                             });
                             labeledRivers.add(name);
                         }
@@ -1271,47 +1277,62 @@
             })
             .catch(err => console.log("2025 stakeholder layer not loaded:", err));
 
-        // 9e. GSK3C Gewässerflächen (Seen & breite Flüsse) - standardmäßig aktiv
-        const gewFlaecheLayer = L.layerGroup().addTo(map);
-        fetch('gsk3c_gew_flaeche.geojson')
-            .then(res => res.ok ? res.json() : Promise.reject())
-            .then(data => {
-                L.geoJSON(data, {
-                    style: {
-                        color: "#2563eb",
-                        weight: 1,
-                        fillColor: "#3b82f6",
-                        fillOpacity: 0.7
-                    },
-                    onEachFeature: function(feature, layer) {
-                        if (feature.properties && feature.properties.NAME) {
-                            layer.bindTooltip(feature.properties.NAME, { sticky: true });
+        // 9e. GSK3C Gewässerflächen (Seen & breite Flüsse) - lazy-geladen (nur bei Aktivierung, ~3.2MB)
+        const gewFlaecheLayer = L.layerGroup();
+        let gewFlaecheLoaded = false;
+        function loadGewFlaeche() {
+            if (gewFlaecheLoaded) return;
+            gewFlaecheLoaded = true;
+            fetch('gsk3c_gew_flaeche.geojson')
+                .then(res => res.ok ? res.json() : Promise.reject())
+                .then(data => {
+                    L.geoJSON(data, {
+                        style: {
+                            color: "#2563eb",
+                            weight: 1,
+                            fillColor: "#3b82f6",
+                            fillOpacity: 0.7
+                        },
+                        onEachFeature: function(feature, layer) {
+                            if (feature.properties && feature.properties.NAME) {
+                                layer.bindTooltip(feature.properties.NAME, { sticky: true });
+                            }
                         }
-                    }
-                }).addTo(gewFlaecheLayer);
-            })
-            .catch(err => console.log("gsk3c_gew_flaeche layer not loaded:", err));
+                    }).addTo(gewFlaecheLayer);
+                })
+                .catch(err => console.log("gsk3c_gew_flaeche layer not loaded:", err));
+        }
 
-        // 9f. GSK3C Gewässerkanäle (Kanäle & Gräben) - optional zuschaltbar
-        const gewKanalLayer = L.layerGroup().addTo(map);
-        fetch('gsk3c_gew_kanal_plm.geojson')
-            .then(res => res.ok ? res.json() : Promise.reject())
-            .then(data => {
-                L.geoJSON(data, {
-                    style: {
-                        color: "#06b6d4", // Cyan
-                        weight: 1.5,
-                        dashArray: "3, 3",
-                        opacity: 0.8
-                    },
-                    onEachFeature: function(feature, layer) {
-                        if (feature.properties && feature.properties.NAME) {
-                            layer.bindTooltip(`Kanal: ${feature.properties.NAME}`, { sticky: true });
+        // 9f. GSK3C Gewässerkanäle (Kanäle & Gräben) - lazy-geladen (nur bei Aktivierung, ~6MB)
+        const gewKanalLayer = L.layerGroup();
+        let gewKanalLoaded = false;
+        function loadGewKanal() {
+            if (gewKanalLoaded) return;
+            gewKanalLoaded = true;
+            fetch('gsk3c_gew_kanal_plm.geojson')
+                .then(res => res.ok ? res.json() : Promise.reject())
+                .then(data => {
+                    L.geoJSON(data, {
+                        style: {
+                            color: "#06b6d4", // Cyan
+                            weight: 1.5,
+                            dashArray: "3, 3",
+                            opacity: 0.8
+                        },
+                        onEachFeature: function(feature, layer) {
+                            if (feature.properties && feature.properties.NAME) {
+                                layer.bindTooltip(`Kanal: ${feature.properties.NAME}`, { sticky: true });
+                            }
                         }
-                    }
-                }).addTo(gewKanalLayer);
-            })
-            .catch(err => console.log("gsk3c_gew_kanal_plm layer not loaded:", err));
+                    }).addTo(gewKanalLayer);
+                })
+                .catch(err => console.log("gsk3c_gew_kanal_plm layer not loaded:", err));
+        }
+
+        map.on('overlayadd', function(e) {
+            if (e.layer === gewFlaecheLayer) loadGewFlaeche();
+            if (e.layer === gewKanalLayer) loadGewKanal();
+        });
 
         // Map layer controller
         const baseMaps = {
@@ -2301,16 +2322,48 @@
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
                 `;
-            } else if (hasIsaWord || nameLower.includes('iww')) {
-                // SOUTH-WEST: RWTH ISA/IWW Institute (same campus, one combined point)
-                dx = -120; dy = 20;
+            } else if (nameLower.includes('siedlungswasserwirtschaft')) {
+                // SOUTH-WEST (upper): RWTH ISA (own logo, own box)
+                dx = -140; dy = -10;
                 logoHtml = `
-                    <div class="logo-box logo-combined-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 2px; border: 1.2px solid #000000; border-radius: 4px; display: flex; align-items: center; justify-content: center; width: 110px; height: 52px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); background: #ffffff;">
-                        <img src="isa_iww_fiw.png" style="width: 100%; height: 100%; object-fit: contain;" alt="ISA / IWW">
+                    <div class="logo-box logo-isa-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 3px; border: 1.2px solid #000000; border-radius: 4px; display: flex; align-items: center; justify-content: center; width: 100px; height: 40px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); background: #ffffff;">
+                        <img src="logos/rwth_isa.svg" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="RWTH ISA">
                     </div>
                 `;
-                const startX = ax + dx + 90;
-                const startY = ay + dy + 12;
+                const startX = ax + dx + 85;
+                const startY = ay + dy + 10;
+                svgContent = `
+                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${startX}" y1="${startY}" x2="${ax + (startX - ax)*0.25}" y2="${ay + (startY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax - 6},${ay + 3} ${ax - 3},${ay + 6}" fill="${color}" />
+                `;
+            } else if (hasIsaWord || nameLower.includes('iww') || nameLower.includes('wasserbau und wasserwirtschaft')) {
+                // SOUTH-WEST (middle): RWTH IWW (own logo, own box)
+                dx = -140; dy = 38;
+                logoHtml = `
+                    <div class="logo-box logo-iww-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 3px; border: 1.2px solid #000000; border-radius: 4px; display: flex; align-items: center; justify-content: center; width: 100px; height: 40px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); background: #ffffff;">
+                        <img src="logos/rwth_iww.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="RWTH IWW">
+                    </div>
+                `;
+                const startX = ax + dx + 85;
+                const startY = ay + dy + 10;
+                svgContent = `
+                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${startX}" y1="${startY}" x2="${ax + (startX - ax)*0.25}" y2="${ay + (startY - ay)*0.25}" stroke="${color}" stroke-width="2" />
+                    <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
+                    <polygon points="${ax},${ay} ${ax - 6},${ay + 3} ${ax - 3},${ay + 6}" fill="${color}" />
+                `;
+            } else if (nameLower.includes('physische geographie') || nameLower.includes('klimatologie')) {
+                // SOUTH-WEST (lower): RWTH GI/PGK (own logo, own box)
+                dx = -140; dy = 86;
+                logoHtml = `
+                    <div class="logo-box logo-pgk-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 3px; border: 1.2px solid #000000; border-radius: 4px; display: flex; align-items: center; justify-content: center; width: 100px; height: 40px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); background: #ffffff;">
+                        <img src="logos/rwth_geographie_de_rgb.svg" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="RWTH GI/PGK">
+                    </div>
+                `;
+                const startX = ax + dx + 85;
+                const startY = ay + dy + 10;
                 svgContent = `
                     <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${startX}" y1="${startY}" x2="${ax + (startX - ax)*0.25}" y2="${ay + (startY - ay)*0.25}" stroke="${color}" stroke-width="2" />
@@ -2373,7 +2426,10 @@
                 'eschweiler',
                 'fiw',
                 'isa',
-                'iww'
+                'iww',
+                'siedlungswasserwirtschaft',
+                'physische geographie',
+                'klimatologie'
             ];
 
             const isMainPartner = (name) => {
@@ -2410,7 +2466,9 @@
                 if (nameLower.includes('rlv') || nameLower.includes('landwirtschafts-verband')) return 'RLV';
                 if (nameLower.includes('eschweiler')) return 'STADT ESCHWEILER';
                 if (nameLower.includes('fiw')) return 'FiW';
-                if (/\bisa\b/.test(nameLower) || nameLower.includes('iww')) return 'ISA / IWW';
+                if (nameLower.includes('siedlungswasserwirtschaft')) return 'RWTH ISA';
+                if (/\bisa\b/.test(nameLower) || nameLower.includes('iww') || nameLower.includes('wasserbau und wasserwirtschaft')) return 'RWTH IWW';
+                if (nameLower.includes('physische geographie') || nameLower.includes('klimatologie')) return 'RWTH GI';
                 return name;
             };
 

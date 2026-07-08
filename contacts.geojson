@@ -778,7 +778,8 @@
         "phone": "",
         "email": "h.steins@kartoffel-boehmer.de",
         "color": "#d946ef",
-        "id": "a38_mravpp3j"
+        "id": "a38_mravpp3j",
+        "branche": "Nahrungsmittelindustrie"
       }
     },
     {
@@ -5397,7 +5398,8 @@
         "phone": "",
         "email": "meike.jungbluth@roskopf-gmbH.com",
         "color": "#d946ef",
-        "id": "a268_mravpp3j"
+        "id": "a268_mravpp3j",
+        "branche": "Anlagen der Schüttguttechnik"
       }
     },
     {
