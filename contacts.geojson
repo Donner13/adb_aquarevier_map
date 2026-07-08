@@ -6927,6 +6927,26 @@
         "color": "#ff007f",
         "id": "a344_mravpp3j"
       }
+    },
+    {
+      "type": "Feature",
+      "id": "test_deploy_check",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.5,
+          50.8
+        ]
+      },
+      "properties": {
+        "name": "TESTEINTRAG DEPLOY CHECK (bitte ignorieren)",
+        "group": "Sonstige",
+        "description": "Automatischer End-to-End-Test, wird gleich wieder geloescht.",
+        "phone": "",
+        "email": "",
+        "color": "#8b5cf6",
+        "id": "test_deploy_check"
+      }
     }
   ],
   "styleSettings": {
