@@ -5530,22 +5530,6 @@
         "group": "Netzwerk/ Multiplikator",
         "color": "#ff007f"
       }
-    },
-    {
-      "type": "Feature",
-      "id": "test_deploy_check",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.5,
-          50.8
-        ]
-      },
-      "properties": {
-        "name": "bitte ignorieren",
-        "group": "Sonstige",
-        "color": "#8b5cf6"
-      }
     }
   ]
 }
