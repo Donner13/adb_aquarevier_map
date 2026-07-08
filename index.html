@@ -775,7 +775,10 @@
             transparent: true,
             opacity: 0.6,
             attribution: "Geobasis NRW"
-        }).addTo(map);
+        });
+        // Standardmäßig aus: die eigenen Vektor-Kreisgrenzen (kreiseLayer, schwarz gestrichelt,
+        // s.u.) übernehmen das schon farblich kontrollierbar; dieses WMS-Raster liefert nur
+        // das feste graue NRW-Rendering und lässt sich nicht umfärben.
 
         // 5. Overlays: NRW Rivers and Lakes (Gewässernetz)
         const wmsRivers = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
@@ -1071,7 +1074,7 @@
             .catch(err => console.log("gsk3c_gew_flaeche layer not loaded:", err));
 
         // 9f. GSK3C Gewässerkanäle (Kanäle & Gräben) - optional zuschaltbar
-        const gewKanalLayer = L.layerGroup();
+        const gewKanalLayer = L.layerGroup().addTo(map);
         fetch('gsk3c_gew_kanal_plm.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
