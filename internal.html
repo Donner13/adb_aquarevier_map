@@ -437,6 +437,13 @@
         }
 
         /* Custom Logo Callout Styles */
+        .logo-callout-marker {
+            /* Belt-and-suspenders alongside marker option interactive:false: the
+               350x250 Leaflet divIcon bounding box is mostly invisible padding and
+               must never swallow clicks meant for the real markers underneath it. */
+            pointer-events: none;
+        }
+
         .logo-callout-container {
             position: relative;
             width: 0;
@@ -2406,7 +2413,10 @@
                 iconAnchor: [ax, ay]
             });
 
-            return L.marker([lat, lng], { icon: icon });
+            // interactive: false - this divIcon's bounding box (350x250px) is mostly
+            // invisible padding around a small logo image. Without this, that invisible
+            // area swallows clicks meant for real contact markers underneath it.
+            return L.marker([lat, lng], { icon: icon, interactive: false, keyboard: false });
         }
 
         // Render Sidebar and Markers
