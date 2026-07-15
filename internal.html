@@ -1381,7 +1381,7 @@
         };
         let elwasGeoData = null;
         let elwasActiveBranchen = new Set(Object.keys(elwasBranchColors));
-        const elwasLayer = L.layerGroup();
+        const elwasLayer = L.layerGroup().addTo(map);
 
         function renderElwasLayer() {
             elwasLayer.clearLayers();
