@@ -690,6 +690,29 @@
                     </div>
                 </div>
 
+                <!-- ELWAS Industrieeinleiter Filter -->
+                <div>
+                    <div class="section-title">🏭 Industrieeinleiter (ELWAS)</div>
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-branche="all">Alle</button>
+                        <button class="filter-btn active" data-branche="Papierindustrie">
+                            <span class="dot" style="background:#a16207"></span> Papier
+                        </button>
+                        <button class="filter-btn active" data-branche="Textilindustrie">
+                            <span class="dot" style="background:#db2777"></span> Textil
+                        </button>
+                        <button class="filter-btn active" data-branche="Chemieindustrie">
+                            <span class="dot" style="background:#dc2626"></span> Chemie
+                        </button>
+                        <button class="filter-btn active" data-branche="Metallindustrie">
+                            <span class="dot" style="background:#64748b"></span> Metall
+                        </button>
+                        <button class="filter-btn active" data-branche="Lebensmittelindustrie">
+                            <span class="dot" style="background:#16a34a"></span> Lebensmittel
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Search -->
                 <div>
                     <div class="section-title">Institutionen Suchen</div>
@@ -1122,6 +1145,129 @@
             if (e.layer === gewKanalLayer) loadGewKanal();
         });
 
+        // ELWAS Industrieeinleiter (Direkt-/Indirekteinleiter Rheinisches Revier)
+        const elwasBranchColors = {
+            "Papierindustrie": "#a16207",
+            "Textilindustrie": "#db2777",
+            "Chemieindustrie": "#dc2626",
+            "Metallindustrie": "#64748b",
+            "Lebensmittelindustrie": "#16a34a"
+        };
+        const elwasBranchIcons = {
+            "Papierindustrie": "📄",
+            "Textilindustrie": "🧵",
+            "Chemieindustrie": "⚗️",
+            "Metallindustrie": "⚙️",
+            "Lebensmittelindustrie": "🌾"
+        };
+        let elwasGeoData = null;
+        let elwasActiveBranchen = new Set(Object.keys(elwasBranchColors));
+        const elwasLayer = L.layerGroup();
+
+        function renderElwasLayer() {
+            elwasLayer.clearLayers();
+            if (!elwasGeoData) return;
+            L.geoJSON(elwasGeoData, {
+                filter: function(feature) {
+                    const branchen = feature.properties.branchen || [];
+                    return branchen.some(b => elwasActiveBranchen.has(b));
+                },
+                pointToLayer: function(feature, latlng) {
+                    const branchen = feature.properties.branchen || [];
+                    const primary = branchen[0] || "Sonstige";
+                    const color = elwasBranchColors[primary] || "#475569";
+                    const emoji = elwasBranchIcons[primary] || "🏭";
+                    const size = 26;
+                    const html = `
+                        <div style="
+                            width: ${size}px;
+                            height: ${size}px;
+                            background-color: ${color};
+                            border: 2px solid #ffffff;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 13px;
+                            box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                        ">${emoji}</div>
+                    `;
+                    const icon = L.divIcon({
+                        html: html,
+                        className: 'elwas-marker',
+                        iconSize: [size, size],
+                        iconAnchor: [size / 2, size / 2]
+                    });
+                    return L.marker(latlng, { icon: icon });
+                },
+                onEachFeature: function(feature, layer) {
+                    const p = feature.properties;
+                    const branchen = p.branchen || [];
+                    const primaryColor = elwasBranchColors[branchen[0]] || "#475569";
+                    let html = `
+                        <div class="popup-card">
+                            <div class="popup-group" style="color: ${primaryColor}">Industrieeinleiter</div>
+                            <div class="popup-title">${p.name || 'Unbekannt'}</div>
+                            <div class="popup-detail">🏭 Branche: ${branchen.join(', ') || '–'}</div>
+                            <div class="popup-detail">💧 Einleitungsart: ${p.einleitungsart || '–'}</div>
+                            <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
+                    `;
+                    if (p.mengen_text) {
+                        html += `<div class="popup-detail">📊 Abwassermenge: ${p.mengen_text}</div>`;
+                    }
+                    html += `
+                            <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
+                        </div>
+                    `;
+                    layer.bindPopup(html);
+                }
+            }).addTo(elwasLayer);
+        }
+
+        fetch('elwas_einleiter.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                elwasGeoData = data;
+                renderElwasLayer();
+            })
+            .catch(err => console.log("elwas_einleiter layer not loaded:", err));
+
+        document.querySelectorAll('.filter-btn[data-branche]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const branche = btn.getAttribute('data-branche');
+                const allBranchen = Object.keys(elwasBranchColors);
+                if (branche === 'all') {
+                    const isAnyInactive = elwasActiveBranchen.size < allBranchen.length;
+                    document.querySelectorAll('.filter-btn[data-branche]').forEach(b => {
+                        const bb = b.getAttribute('data-branche');
+                        if (bb === 'all') return;
+                        if (isAnyInactive) {
+                            b.classList.add('active');
+                            elwasActiveBranchen.add(bb);
+                        } else {
+                            b.classList.remove('active');
+                            elwasActiveBranchen.delete(bb);
+                        }
+                    });
+                } else {
+                    if (elwasActiveBranchen.has(branche)) {
+                        elwasActiveBranchen.delete(branche);
+                        btn.classList.remove('active');
+                    } else {
+                        elwasActiveBranchen.add(branche);
+                        btn.classList.add('active');
+                    }
+                }
+                const allBtn = document.querySelector('.filter-btn[data-branche="all"]');
+                if (elwasActiveBranchen.size === allBranchen.length) {
+                    allBtn.classList.add('active');
+                } else {
+                    allBtn.classList.remove('active');
+                }
+                renderElwasLayer();
+            });
+        });
+
         // Map layer controller
         const baseMaps = {
             "Dunkles Design (Standard)": baseDark,
@@ -1144,7 +1290,8 @@
             "Gewässernetz Detailliert (LANUV)": wmsDetailedRivers,
             "Einzugsgebiete Hydrologisch (LANUV)": wmsCatchments,
             "Tagebaue & Bergbaufelder (GD)": wmsMining,
-            "Wasserschutzgebiete (LANUV)": wmsWSG
+            "Wasserschutzgebiete (LANUV)": wmsWSG,
+            "🏭 Industrieeinleiter (ELWAS)": elwasLayer
         };
 
         L.control.layers(baseMaps, overlayMaps, { position: 'topright' }).addTo(map);

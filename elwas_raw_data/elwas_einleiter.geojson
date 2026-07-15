@@ -1,0 +1,3448 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.493362035528933,
+          50.773901472607726
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "358540",
+        "name": "976. Wasserschneideanlage",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Düren",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "unbekannt": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.465282047481766,
+          50.81678307291724
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22225",
+        "name": "Anker Gebr. Schoeller GmbH & Co KG",
+        "einleitungsart": "Direkteinleitung + Indirekteinleitung",
+        "gemeinde": "Düren",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          38,
+          31
+        ],
+        "branchen": [
+          "Textilindustrie"
+        ],
+        "mengen_je_typ": {
+          "Niederschlagswasser ohne Sonderbauwerk": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "4850"
+          },
+          "Kühlwasser": {
+            "max_d": null,
+            "max_h": "240",
+            "max_a": null
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 4850 m³/a; Kühlwasser: 240 m³/h",
+        "anzahl_anfallstellen": 26,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.251579327638475,
+          50.94989456053979
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "358154",
+        "name": "Autolackiererei",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Linnich",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.5175961727009435,
+          50.813681100025306
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "358203",
+        "name": "Autolackiererei",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Düren",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4567964044112935,
+          50.8313223950476
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2225874",
+        "name": "Consumer Medical Care GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Düren",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          38,
+          31
+        ],
+        "branchen": [
+          "Textilindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 3,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.370380811550078,
+          50.919037126094594
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "358196",
+        "name": "Eloxal u. Hartanodisation",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Jülich",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.490009647596082,
+          50.772929879560785
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2222532",
+        "name": "Enaspol GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Düren",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          22
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "24217"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 24217 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.362934127758795,
+          50.90855228638799
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "358418",
+        "name": "Entfettung von Metallteilen",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Jülich",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.517271586191385,
+          50.76411439994705
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "358480",
+        "name": "Gleitschleiferei",
+        "einleitungsart": "Direkteinleitung",
+        "gemeinde": "Kreuzau",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.434730772655113,
+          50.86591786668697
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "35859",
+        "name": "Kfz-Lackierung",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Niederzier",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.45959613547531,
+          50.84462337496557
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "358424",
+        "name": "Oberflächenbehandlung v. Metallen",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Düren",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.479377190241152,
+          50.765693664609344
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2222989",
+        "name": "OTEC Oberflächentechnik GmbH & Co. KG",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Düren",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "5600"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 5600 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.44790960498507,
+          50.68924665847107
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22211",
+        "name": "Papierfabrik Zerkall / Renker & Söhne GmbH & Co KG",
+        "einleitungsart": "Direkteinleitung",
+        "gemeinde": "Hürtgenwald",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          28
+        ],
+        "branchen": [
+          "Papierindustrie"
+        ],
+        "mengen_je_typ": {
+          "Niederschlagswasser ohne Sonderbauwerk": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 4,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.452226262209547,
+          50.826311610151066
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22232251",
+        "name": "Sumteq GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Düren",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          22,
+          31
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 2,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.272819227598871,
+          50.98790051769469
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "358481",
+        "name": "Teilereinigung",
+        "einleitungsart": "Direkteinleitung",
+        "gemeinde": "Linnich",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.373371211560392,
+          50.91849284843782
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "358558",
+        "name": "Teppichreinigung",
+        "einleitungsart": null,
+        "gemeinde": "Jülich",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.45421949876325,
+          50.812908265703186
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22228",
+        "name": "Thomas Josef Heimbach GmbH & Co. KG",
+        "einleitungsart": "Direkteinleitung + Indirekteinleitung",
+        "gemeinde": "Düren",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          38,
+          31,
+          49
+        ],
+        "branchen": [
+          "Textilindustrie"
+        ],
+        "mengen_je_typ": {
+          "Niederschlagswasser ohne Sonderbauwerk": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "9000"
+          },
+          "Kühlwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "400000"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 9000 m³/a; Kühlwasser: 400000 m³/a",
+        "anzahl_anfallstellen": 14,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.45590004650981,
+          50.8365736474536
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "358587",
+        "name": "Waschplatz f. Teppiche und Matten",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Düren",
+        "kreis": "Kreis Düren",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.852890089464075,
+          50.753096570512376
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2222170",
+        "name": "Arcus Edelstahl GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Weilerswist",
+        "kreis": "Kreis Euskirchen",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "14",
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 14 m³/d",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.644757654056052,
+          50.59044996284812
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22223774",
+        "name": "Deutsche Mechatronics GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mechernich",
+        "kreis": "Kreis Euskirchen",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.515895959022844,
+          50.5703128616042
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22232182",
+        "name": "Moog e.K. - Wäscherei",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Schleiden",
+        "kreis": "Kreis Euskirchen",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "90",
+            "max_h": null,
+            "max_a": "23400"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 90 m³/d, 23400 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.455030895662111,
+          50.49072417436608
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22223752",
+        "name": "Schöller Werk GmbH & Co.KG",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Hellenthal",
+        "kreis": "Kreis Euskirchen",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "2",
+            "max_h": null,
+            "max_a": "500"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 2 m³/d, 500 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.263080290946691,
+          51.02987535010405
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22229883",
+        "name": "Chukyo Europe",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Hückelhoven",
+        "kreis": "Kreis Heinsberg",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.142080227793621,
+          51.05906098463598
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230014",
+        "name": "E & K Leiterplatten GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Heinsberg",
+        "kreis": "Kreis Heinsberg",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.111353771051161,
+          51.06290141410298
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22229978",
+        "name": "HAZET-Werk",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Heinsberg",
+        "kreis": "Kreis Heinsberg",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.139286366602012,
+          51.10295883947101
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22229843",
+        "name": "Jansen Edelstahl GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Wassenberg",
+        "kreis": "Kreis Heinsberg",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.100900480725873,
+          50.9832357556051
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22229888",
+        "name": "KSK Industrielackierung",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Geilenkirchen",
+        "kreis": "Kreis Heinsberg",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.0966137790057235,
+          50.97452106802371
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22231403",
+        "name": "LBBZ - NRW GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Geilenkirchen",
+        "kreis": "Kreis Heinsberg",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "45",
+            "max_h": null,
+            "max_a": "14040"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 45 m³/d, 14040 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.109198102063345,
+          50.92628777290271
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22229929",
+        "name": "Metallverarbeitung Schlafhorst-Saurer",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Übach-Palenberg",
+        "kreis": "Kreis Heinsberg",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.266143163186546,
+          51.030909515805995
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2222002",
+        "name": "Niro Technik GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Hückelhoven",
+        "kreis": "Kreis Heinsberg",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.234176738976669,
+          51.01151986065255
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2221986",
+        "name": "Over Eloxal GmbH / Over Beschichtung GmbH",
+        "einleitungsart": "Direkteinleitung + Indirekteinleitung",
+        "gemeinde": "Hückelhoven",
+        "kreis": "Kreis Heinsberg",
+        "anhang_codes": [
+          40,
+          31
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "Kühlwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 3,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.413778086923327,
+          51.19481978198368
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2224656",
+        "name": "AUNDE Achter & Ebels GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          38
+        ],
+        "branchen": [
+          "Textilindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4648469733399665,
+          51.2141870626521
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230496",
+        "name": "Bommes",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "5",
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 5 m³/d",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.495364245437118,
+          51.16060147706515
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230493",
+        "name": "FSP Frischsaft Produktionsges.",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          3
+        ],
+        "branchen": [
+          "Lebensmittelindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.456520043463794,
+          51.20547988370345
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230460",
+        "name": "Gesellschaft für Metallveredlung",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4104239720496885,
+          51.13950317797887
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230494",
+        "name": "Hahn",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "1",
+            "max_h": null,
+            "max_a": "300"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 1 m³/d, 300 m³/a",
+        "anzahl_anfallstellen": 2,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.459887646152634,
+          51.16795773584023
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2224861",
+        "name": "Heinz Gothe GmbH & Co. KG",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.427888235142893,
+          51.16482069128321
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22223723",
+        "name": "Junkers  Müllers GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          38
+        ],
+        "branchen": [
+          "Textilindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 4,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.413924461325571,
+          51.139544702118535
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230318",
+        "name": "Klip-Comet",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.485084649434292,
+          51.22200807963814
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230291",
+        "name": "Lindström GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "4",
+            "max_h": null,
+            "max_a": "880"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 4 m³/d, 880 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4607409830521565,
+          51.21411597604246
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230299",
+        "name": "Lorenz & Lihn Obst-Edel-Erzeugnisse",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          3
+        ],
+        "branchen": [
+          "Lebensmittelindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.434394196248289,
+          51.12156666791075
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230499",
+        "name": "Niederrheinische Getränke Industrie",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          3
+        ],
+        "branchen": [
+          "Lebensmittelindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "140",
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 140 m³/d",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.428590137218554,
+          51.184083640615356
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230312",
+        "name": "QMP Metal Powders GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4469781037667,
+          51.14863591479019
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230287",
+        "name": "Reimann u. Carl",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.425015847037218,
+          51.18838513359755
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230489",
+        "name": "Reiners & Fürst",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "10",
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 10 m³/d",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.422040283400408,
+          51.187591041995404
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230319",
+        "name": "Rheinische Formblech",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 3,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.352957483923388,
+          51.14784876478368
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2224727",
+        "name": "Rhenus Lub GmbH & Co. KG",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40,
+          31
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "Kühlwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "Produktionsabwasser": {
+            "max_d": "0,5",
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 0,5 m³/d",
+        "anzahl_anfallstellen": 5,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.44738316142695,
+          51.122381746030115
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230314",
+        "name": "Troost",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.449591657275994,
+          51.14013951199422
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230316",
+        "name": "Trützschler",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4774873266849715,
+          51.23102737685886
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230491",
+        "name": "TSB - Tiefdruck - Schwann-Bagel",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40,
+          53
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 2,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.44450193807592,
+          51.20920226851693
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2227806",
+        "name": "Tuchfabrik Willy Schmitz GmbH & Co.KG",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          38
+        ],
+        "branchen": [
+          "Textilindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "1.300",
+            "max_h": null,
+            "max_a": "299000"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 1.300 m³/d, 299000 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.41235028146177,
+          51.19066886711064
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22230320",
+        "name": "Ungricht",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.41227808932155,
+          51.19170159870129
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22223667",
+        "name": "UNGRICHT GMBH + CO KG",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Stadt Mönchengladbach",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "25",
+            "max_h": null,
+            "max_a": "7500"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 25 m³/d, 7500 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.679370848435123,
+          50.88063787390046
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2222082",
+        "name": "Aalberts Surface Treatment GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Kerpen",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "14000"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 14000 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.820472455857477,
+          50.919047092397605
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "362641",
+        "name": "Anlage 1.1: Betankung+NFZ-Waschhalle",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Frechen",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40,
+          49
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 7,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.925895868112848,
+          50.83186568760036
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2222320",
+        "name": "DOM Sicherheitstechnik GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Brühl",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "4200"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 4200 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.923347757484161,
+          50.8387187067294
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "362846",
+        "name": "Elektromotorenreinigung",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Brühl",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.617996023772839,
+          50.94719939842018
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "362403",
+        "name": "Emaillierung",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Bergheim",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40,
+          31,
+          49
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 4,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.600889294839824,
+          50.96779651659801
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "36256",
+        "name": "Emaillierwerk",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Bergheim",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.676409987826891,
+          50.89728113124546
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "362103",
+        "name": "Fällungsanlage",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Kerpen",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.927196627131055,
+          50.831996737369124
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "362597",
+        "name": "Galvanik",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Brühl",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.671682583813967,
+          50.88142908909895
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "362634",
+        "name": "Indutec Umwelttechnik",
+        "einleitungsart": null,
+        "gemeinde": "Kerpen",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 2,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.853070621057545,
+          50.857503039257764
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2222400",
+        "name": "PARKMO Metalle & Edelmetalle GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Hürth",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "1974"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 1974 m³/a",
+        "anzahl_anfallstellen": 2,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.673344611973237,
+          50.88088661659574
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "36234",
+        "name": "Reinigung Hydraulikaggregate",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Kerpen",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.750646080481685,
+          50.90649763938275
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2227609",
+        "name": "RWE Power AG - Technikzentrum Tagebaue - Hauptwerkstatt",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Frechen",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40,
+          49
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "4",
+            "max_h": "36",
+            "max_a": "3800"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 4 m³/d, 36 m³/h, 3800 m³/a",
+        "anzahl_anfallstellen": 7,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.752257174686096,
+          50.908192582510694
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "362839",
+        "name": "Technikzentrum Tagebau",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Frechen",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          40,
+          49
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 7,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.573926214339488,
+          50.99264790479864
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "362676",
+        "name": "Textilpflege",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Bedburg",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.568987944792568,
+          50.93578264434212
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "36264",
+        "name": "Textilreinigung",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Elsdorf",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.724669643666581,
+          50.91674198090489
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "362504",
+        "name": "Wäscherei",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Kerpen",
+        "kreis": "Rhein-Erft-Kreis",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.509920061747512,
+          51.19467603138748
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2227027",
+        "name": "ALU Oberfläche GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Korschenbroich",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "22500"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 22500 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.508056785606623,
+          51.1939258130171
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22222513",
+        "name": "Dohmen GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Korschenbroich",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          38
+        ],
+        "branchen": [
+          "Textilindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "2520"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 2520 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.715854820976373,
+          51.20765738905613
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "222819",
+        "name": "essity Operations Neuss GmbH",
+        "einleitungsart": "Direkteinleitung",
+        "gemeinde": "Neuss",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          28
+        ],
+        "branchen": [
+          "Papierindustrie"
+        ],
+        "mengen_je_typ": {
+          "Niederschlagswasser ohne Sonderbauwerk": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 3,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.708626855285027,
+          51.18568821722515
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22222213",
+        "name": "Eternit AG",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Neuss",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "73"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 73 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.77127234003094,
+          51.160025759400405
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22222613",
+        "name": "Hager & Meisinger GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Neuss",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "477"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 477 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.60355889155495,
+          51.09317502894344
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "222808",
+        "name": "Intersnack Knabber-Gebäck",
+        "einleitungsart": "Direkteinleitung",
+        "gemeinde": "Grevenbroich",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          3
+        ],
+        "branchen": [
+          "Lebensmittelindustrie"
+        ],
+        "mengen_je_typ": {
+          "Niederschlagswasser mit Sonderbauwerk": {
+            "max_d": null,
+            "max_h": "252",
+            "max_a": null
+          },
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "Niederschlagswasser ohne Sonderbauwerk": {
+            "max_d": null,
+            "max_h": "260,5",
+            "max_a": null
+          }
+        },
+        "mengen_text": "Niederschlagswasser mit Sonderbauwerk: 252 m³/h; Niederschlagswasser ohne Sonderbauwerk: 260,5 m³/h",
+        "anzahl_anfallstellen": 6,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.749439096729283,
+          51.16986938275687
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22222768",
+        "name": "Khan",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Neuss",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "1",
+            "max_h": null,
+            "max_a": "220"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 1 m³/d, 220 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.622384952567709,
+          51.12375233976855
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22222452",
+        "name": "KHT Fahrzeugteile GmbH & Co KG",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Grevenbroich",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "1400"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 1400 m³/a",
+        "anzahl_anfallstellen": 2,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.737590828557522,
+          51.15853347163676
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22222494",
+        "name": "NGT Neusser Galvanotechnik GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Neuss",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.45338704902769,
+          10.032557916244835
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22222647",
+        "name": "Novar GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Neuss",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "6"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 6 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.735203233050881,
+          51.15530345913852
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22222648",
+        "name": "Novar GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Neuss",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.471976863804887,
+          51.200886285344986
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22223659",
+        "name": "Pierburg GmbH - Werk Niederrhein",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Neuss",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          40,
+          31
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Kühlwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 4,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.6311510820735275,
+          51.214354766366895
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22222650",
+        "name": "SAFE-TEC GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Kaarst",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "14,3",
+            "max_h": null,
+            "max_a": "2845"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 14,3 m³/d, 2845 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.694294488139077,
+          51.24457626624819
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22222393",
+        "name": "Teepack GmbH & Co. KG",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Meerbusch",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": "2"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 2 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.687354425032866,
+          51.03474795616386
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22222748",
+        "name": "Terkes",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Rommerskirchen",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "0,5",
+            "max_h": null,
+            "max_a": "110"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 0,5 m³/d, 110 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.6820130591796465,
+          51.20527379378534
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "22222178",
+        "name": "Textron Verbindungstechnik GmbH & Co. OH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Neuss",
+        "kreis": "Rhein-Kreis Neuss",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "144",
+            "max_h": null,
+            "max_a": "42000"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 144 m³/d, 42000 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.45338704902769,
+          10.032557916244835
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2224684",
+        "name": "AC Chem. Werke",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          22
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.45338704902769,
+          10.032557916244835
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2225457",
+        "name": "Behinderten Einrichtung",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.45338704902769,
+          10.032557916244835
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2223355",
+        "name": "Colorex",
+        "einleitungsart": null,
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.45338704902769,
+          10.032557916244835
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2223509",
+        "name": "Flamm",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.45338704902769,
+          10.032557916244835
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2226257",
+        "name": "Fleuster",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.45338704902769,
+          10.032557916244835
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2223108",
+        "name": "Grenzland GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.148987448298283,
+          50.767272931931934
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2221935",
+        "name": "Grünenthal GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          22,
+          31
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "144",
+            "max_h": null,
+            "max_a": "30000"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 144 m³/d, 30000 m³/a",
+        "anzahl_anfallstellen": 3,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.45338704902769,
+          10.032557916244835
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2224721",
+        "name": "Haugg, A.  Kühlerfabrik",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.225525416202692,
+          50.778016129768886
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2222680",
+        "name": "KME Stolberg GmbH",
+        "einleitungsart": "Direkteinleitung + Indirekteinleitung",
+        "gemeinde": "Stolberg (Rhld.)",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          40,
+          31,
+          49
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Niederschlagswasser ohne Sonderbauwerk": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "Produktionsabwasser": {
+            "max_d": "48",
+            "max_h": null,
+            "max_a": "17520"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 48 m³/d, 17520 m³/a",
+        "anzahl_anfallstellen": 4,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.45338704902769,
+          10.032557916244835
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2222332",
+        "name": "Lejeune Dienste GmbH",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          55
+        ],
+        "branchen": [
+          "Chemieindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.27561001111866,
+          50.63749094246654
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2223",
+        "name": "Otto Junker GmbH",
+        "einleitungsart": "Direkteinleitung + Indirekteinleitung",
+        "gemeinde": "Simmerath",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          40,
+          99,
+          31
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "sonstiges Abwasser (verändertes Wasser)": {
+            "max_d": null,
+            "max_h": "0,14",
+            "max_a": null
+          },
+          "Produktionsabwasser": {
+            "max_d": "1,5",
+            "max_h": null,
+            "max_a": null
+          },
+          "Niederschlagswasser mit Sonderbauwerk": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          },
+          "Niederschlagswasser ohne Sonderbauwerk": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "sonstiges Abwasser (verändertes Wasser): 0,14 m³/h; Produktionsabwasser: 1,5 m³/d",
+        "anzahl_anfallstellen": 6,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.45338704902769,
+          10.032557916244835
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2225298",
+        "name": "Pallas",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.15244070606223,
+          50.8056762928159
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2223023",
+        "name": "Pallas GmbH & Co. KG",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Würselen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "10,64",
+            "max_h": "1,33",
+            "max_a": "2341"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 10,64 m³/d, 1,33 m³/h, 2341 m³/a",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.231824806295866,
+          50.75927650543765
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2225212",
+        "name": "PRYM FASHION",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Stolberg (Rhld.)",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          40,
+          31
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": "36",
+            "max_h": null,
+            "max_a": "175000"
+          }
+        },
+        "mengen_text": "Produktionsabwasser: 36 m³/d, 175000 m³/a",
+        "anzahl_anfallstellen": 4,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.45338704902769,
+          10.032557916244835
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2224704",
+        "name": "Rhein-Nadel",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.45338704902769,
+          10.032557916244835
+        ]
+      },
+      "properties": {
+        "betriebs_nr": "2224169",
+        "name": "Schumag",
+        "einleitungsart": "Indirekteinleitung",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "anhang_codes": [
+          40
+        ],
+        "branchen": [
+          "Metallindustrie"
+        ],
+        "mengen_je_typ": {
+          "Produktionsabwasser": {
+            "max_d": null,
+            "max_h": null,
+            "max_a": null
+          }
+        },
+        "mengen_text": "",
+        "anzahl_anfallstellen": 1,
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    }
+  ]
+}
