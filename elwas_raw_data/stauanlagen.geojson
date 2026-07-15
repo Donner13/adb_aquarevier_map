@@ -703,6 +703,367 @@
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.727610857209124,
+          51.005534260013135
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "56",
+        "name": "HRB Ingendorf",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.748655130027573,
+          51.018704221878565
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "65",
+        "name": "HRB Kirchtal",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.772638386400773,
+          50.97497696198068
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "122",
+        "name": "HRB Sinthern",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.7022999899533575,
+          50.98326398806309
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "225",
+        "name": "Diebenhöhle II",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.777420774284733,
+          51.02605452609449
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "226",
+        "name": "Büsdorf/Sportplatz",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.777424803340753,
+          51.02604721879449
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "227",
+        "name": "Büsdorf/Kaulsgasse",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.777424803340753,
+          51.02604721879449
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "228",
+        "name": "Büsdorf/Kasterstraße",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.75133669340637,
+          51.01461807752428
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "229",
+        "name": "Stommeln/Sportplatz",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.72686777109174,
+          51.005047210877926
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "231",
+        "name": "Stommeln/B 59 alt I/II",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.781284031122316,
+          50.52695128660917
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "29",
+        "name": "HRB Eicherscheid",
+        "kreis": "Euskirchen",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.821113202219848,
+          50.727697426825536
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "53",
+        "name": "HRB Horchheim",
+        "kreis": "Euskirchen",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.8865207961414034,
+          50.58749002239869
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "83",
+        "name": "Madbachtalsperre",
+        "kreis": "Euskirchen",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Talsperre",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.421747263020639,
+          50.49522260487688
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "97",
+        "name": "Oleftalsperre",
+        "kreis": "Euskirchen",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Talsperre",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.471975101698792,
+          50.35996400243877
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "138",
+        "name": "Stauanlage Kronenburg",
+        "kreis": "Euskirchen",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Talsperre",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.839038055525627,
+          50.593437762823214
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "148",
+        "name": "Steinbachtalsperre",
+        "kreis": "Euskirchen",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Talsperre",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.418804337206176,
+          50.602174938135136
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "157",
+        "name": "Urfttalsperre",
+        "kreis": "Euskirchen",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Talsperre",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.64117918219984,
+          50.572999912152916
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "173",
+        "name": "Sedimentationsanlage Buchholzweiher",
+        "kreis": "Euskirchen",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Sedimentationsbecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.631940464498941,
+          50.70097865367111
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "233",
+        "name": "Neffelsee",
+        "kreis": "Euskirchen",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.585717327006248,
+          50.64942056148382
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "234",
+        "name": "Zülpich/Bürvenich",
+        "kreis": "Euskirchen",
+        "betreiber": "Absperrbauwerk",
+        "gewaesser": "stationierungskarte",
+        "typ": "Hochwasserrückhaltebecken",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
     }
   ]
 }

@@ -1,0 +1,632 @@
+{
+  "unknown_Städteregion Aachen_0": {
+    "name": "e",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "304993,919",
+    "utm_north": "5603861,702",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Städteregion Aachen_1": {
+    "name": "e",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "304924,795",
+    "utm_north": "5603667,094",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Städteregion Aachen_2": {
+    "name": "e",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "296418,393",
+    "utm_north": "5638887,555",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28284 / Broicher Bach / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t28284 / Broicher Bach / 3E"
+  },
+  "unknown_Städteregion Aachen_3": {
+    "name": "e",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "310293,604",
+    "utm_north": "5633134,13",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2824 / Inde / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2824 / Inde / 3E"
+  },
+  "unknown_Städteregion Aachen_4": {
+    "name": "e",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "310095,352",
+    "utm_north": "5633027,98",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2824 / Inde / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2824 / Inde / 3E"
+  },
+  "unknown_Städteregion Aachen_5": {
+    "name": "e",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "305394,982",
+    "utm_north": "5600408,863",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28214 / Perlenbach / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t28214 / Perlenbach / 3E"
+  },
+  "unknown_Städteregion Aachen_6": {
+    "name": "e",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "304130,378",
+    "utm_north": "5603702,145",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Städteregion Aachen_7": {
+    "name": "e",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "304514,398",
+    "utm_north": "5605762,924",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282152 / Laufenbach / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282152 / Laufenbach / 3E"
+  },
+  "unknown_Städteregion Aachen_8": {
+    "name": "e",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "313424",
+    "utm_north": "5606588",
+    "bauwerksart": "Schwelle unterhalb ehem. Wehr Dedenborn",
+    "typ": "Sohlschwelle",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Städteregion Aachen_9": {
+    "name": "e",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "312715",
+    "utm_north": "5607224",
+    "bauwerksart": "Wehr Rauchenauel",
+    "typ": "Rampe",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Heinsberg_0": {
+    "name": "e",
+    "kreis": "Heinsberg",
+    "utm_east": "297708,157",
+    "utm_north": "5664646,256",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Heinsberg_1": {
+    "name": "e",
+    "kreis": "Heinsberg",
+    "utm_east": "297753,928",
+    "utm_north": "5669098,511",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28298 / Afslagtak Rode Beek Vlodrop / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t28298 / Afslagtak Rode Beek Vlodrop / 3E"
+  },
+  "unknown_Heinsberg_2": {
+    "name": "e",
+    "kreis": "Heinsberg",
+    "utm_east": "310438,178",
+    "utm_north": "5657588,263",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28256 / Baaler Bach / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t28256 / Baaler Bach / 3E"
+  },
+  "unknown_Heinsberg_3": {
+    "name": "e",
+    "kreis": "Heinsberg",
+    "utm_east": "309396",
+    "utm_north": "5671312,2",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2844 / Mühlenbach / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2844 / Mühlenbach / 3E"
+  },
+  "unknown_Heinsberg_4": {
+    "name": "e",
+    "kreis": "Heinsberg",
+    "utm_east": "296492",
+    "utm_north": "5665355",
+    "bauwerksart": "Karkener Wehr",
+    "typ": "Absturz",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Heinsberg_5": {
+    "name": "e",
+    "kreis": "Heinsberg",
+    "utm_east": "297708",
+    "utm_north": "5664647",
+    "bauwerksart": "Klappenwehr Kempen-Hochbrück",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Heinsberg_6": {
+    "name": "e",
+    "kreis": "Heinsberg",
+    "utm_east": "298895",
+    "utm_north": "5663647",
+    "bauwerksart": "Raue Rampe Brehm",
+    "typ": "Rampe",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Heinsberg_7": {
+    "name": "e",
+    "kreis": "Heinsberg",
+    "utm_east": "299894",
+    "utm_north": "5663201",
+    "bauwerksart": "Wehr Orsbeck",
+    "typ": "Absturz",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Heinsberg_8": {
+    "name": "e",
+    "kreis": "Heinsberg",
+    "utm_east": "300741",
+    "utm_north": "5662366",
+    "bauwerksart": "Grundschwelle Luchtenberg",
+    "typ": "Gleite",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Heinsberg_9": {
+    "name": "e",
+    "kreis": "Heinsberg",
+    "utm_east": "300873",
+    "utm_north": "5660956",
+    "bauwerksart": "Sohlgleite Ratheim-Oberbruch",
+    "typ": "Gleite",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Mönchengladbach_0": {
+    "name": "e",
+    "kreis": "Mönchengladbach",
+    "utm_east": "322755",
+    "utm_north": "5671260",
+    "bauwerksart": "Bresgespark",
+    "typ": "Absturz",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+  },
+  "unknown_Mönchengladbach_1": {
+    "name": "e",
+    "kreis": "Mönchengladbach",
+    "utm_east": "322298",
+    "utm_north": "5670602",
+    "bauwerksart": "Eickesmühle",
+    "typ": "Absturz",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3C"
+  },
+  "unknown_Mönchengladbach_2": {
+    "name": "e",
+    "kreis": "Mönchengladbach",
+    "utm_east": "321849",
+    "utm_north": "5668914",
+    "bauwerksart": "Wehr Bellermühle",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+  },
+  "unknown_Mönchengladbach_3": {
+    "name": "e",
+    "kreis": "Mönchengladbach",
+    "utm_east": "321606",
+    "utm_north": "5667955",
+    "bauwerksart": "Wehr Henkenmühle",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+  },
+  "unknown_Mönchengladbach_4": {
+    "name": "e",
+    "kreis": "Mönchengladbach",
+    "utm_east": "320822",
+    "utm_north": "5667483",
+    "bauwerksart": "Ehem. Güdderather Mühle",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3C"
+  },
+  "unknown_Mönchengladbach_5": {
+    "name": "e",
+    "kreis": "Mönchengladbach",
+    "utm_east": "318764",
+    "utm_north": "5665630",
+    "bauwerksart": "Oelmühle",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3C"
+  },
+  "unknown_Mönchengladbach_6": {
+    "name": "e",
+    "kreis": "Mönchengladbach",
+    "utm_east": "318595",
+    "utm_north": "5663655",
+    "bauwerksart": "Hoher Absturz",
+    "typ": "Absturz",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+  },
+  "unknown_Mönchengladbach_7": {
+    "name": "e",
+    "kreis": "Mönchengladbach",
+    "utm_east": "318601",
+    "utm_north": "5663549",
+    "bauwerksart": "Kleiner Absturz",
+    "typ": "Absturz",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+  },
+  "unknown_Mönchengladbach_8": {
+    "name": "e",
+    "kreis": "Mönchengladbach",
+    "utm_east": "318612",
+    "utm_north": "5663452",
+    "bauwerksart": "Kleiner Absturz",
+    "typ": "Absturz",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+  },
+  "unknown_Mönchengladbach_9": {
+    "name": "e",
+    "kreis": "Mönchengladbach",
+    "utm_east": "324728",
+    "utm_north": "5678414",
+    "bauwerksart": "Absturz",
+    "typ": "Absturz",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+  },
+  "unknown_Rhein-Kreis Neuss_0": {
+    "name": "e",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "339254,791",
+    "utm_north": "5670810,773",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+  },
+  "unknown_Rhein-Kreis Neuss_1": {
+    "name": "e",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "341440,747",
+    "utm_north": "5672033,8",
+    "bauwerksart": "Fischaufstieg Gnadenthal",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+  },
+  "unknown_Rhein-Kreis Neuss_2": {
+    "name": "e",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "340336,2",
+    "utm_north": "5671472,9",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+  },
+  "unknown_Rhein-Kreis Neuss_3": {
+    "name": "e",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "338381",
+    "utm_north": "5670215",
+    "bauwerksart": "Erprather Muehle, W3",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+  },
+  "unknown_Rhein-Kreis Neuss_4": {
+    "name": "e",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "334887",
+    "utm_north": "5667174",
+    "bauwerksart": "Neubruecker Muehle, W5",
+    "typ": "Absturz",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+  },
+  "unknown_Rhein-Kreis Neuss_5": {
+    "name": "e",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "339255",
+    "utm_north": "5670811",
+    "bauwerksart": "Wehr Selikum, W2",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+  },
+  "unknown_Rhein-Kreis Neuss_6": {
+    "name": "e",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "333747",
+    "utm_north": "5664841",
+    "bauwerksart": "Untermühle Wevelinghoven, Vitus, Drees, W7",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2747934 / Vituskanal / 3E"
+  },
+  "unknown_Rhein-Kreis Neuss_7": {
+    "name": "e",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "332558",
+    "utm_north": "5663705",
+    "bauwerksart": "Muehle Kottmann, W8",
+    "typ": "Absturz",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+  },
+  "unknown_Rhein-Kreis Neuss_8": {
+    "name": "e",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "331107",
+    "utm_north": "5662277",
+    "bauwerksart": "Wehr Grevenbroich, Kamper, W9",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274792 / Mühlenerft Grevenbroich / 3E"
+  },
+  "unknown_Rhein-Kreis Neuss_9": {
+    "name": "e",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "340046",
+    "utm_north": "5659609",
+    "bauwerksart": "Überleitung an der Kläranlage",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2748 / Gillbach / 3E"
+  },
+  "unknown_Düren_0": {
+    "name": "e",
+    "kreis": "Düren",
+    "utm_east": "308924,987",
+    "utm_north": "5650030,002",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Düren_1": {
+    "name": "e",
+    "kreis": "Düren",
+    "utm_east": "319544,675",
+    "utm_north": "5636481,633",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Düren_2": {
+    "name": "e",
+    "kreis": "Düren",
+    "utm_east": "319928,998",
+    "utm_north": "5634865,474",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Düren_3": {
+    "name": "e",
+    "kreis": "Düren",
+    "utm_east": "322772,479",
+    "utm_north": "5626992,11",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Düren_4": {
+    "name": "e",
+    "kreis": "Düren",
+    "utm_east": "322372,466",
+    "utm_north": "5624710,69",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Düren_5": {
+    "name": "e",
+    "kreis": "Düren",
+    "utm_east": "321279,321",
+    "utm_north": "5622517,447",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Düren_6": {
+    "name": "e",
+    "kreis": "Düren",
+    "utm_east": "310339,551",
+    "utm_north": "5628960,357",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28246 / Omerbach / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t28246 / Omerbach / 3E"
+  },
+  "unknown_Düren_7": {
+    "name": "e",
+    "kreis": "Düren",
+    "utm_east": "322397,34",
+    "utm_north": "5622942,999",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Düren_8": {
+    "name": "e",
+    "kreis": "Düren",
+    "utm_east": "314767,639",
+    "utm_north": "5641194,892",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2824 / Inde / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2824 / Inde / 3E"
+  },
+  "unknown_Düren_9": {
+    "name": "e",
+    "kreis": "Düren",
+    "utm_east": "322820,942",
+    "utm_north": "5623361,001",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+  },
+  "unknown_Rhein-Erft-Kreis_0": {
+    "name": "e",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "339223,998",
+    "utm_north": "5639917,6",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+  },
+  "unknown_Rhein-Erft-Kreis_1": {
+    "name": "e",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "347362,937",
+    "utm_north": "5626966,461",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2742 / Swistbach / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2742 / Swistbach / 3E"
+  },
+  "unknown_Rhein-Erft-Kreis_2": {
+    "name": "e",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "329008,036",
+    "utm_north": "5653598,454",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274754 / Kasterer Mühlenerft / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274754 / Kasterer Mühlenerft / 3E"
+  },
+  "unknown_Rhein-Erft-Kreis_3": {
+    "name": "e",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "333246,805",
+    "utm_north": "5647549,158",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+  },
+  "unknown_Rhein-Erft-Kreis_4": {
+    "name": "e",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "347355,704",
+    "utm_north": "5626971,098",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2742 / Swistbach / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2742 / Swistbach / 3E"
+  },
+  "unknown_Rhein-Erft-Kreis_5": {
+    "name": "e",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "339222,6",
+    "utm_north": "5639920,2",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+  },
+  "unknown_Rhein-Erft-Kreis_6": {
+    "name": "e",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "345039",
+    "utm_north": "5631722",
+    "bauwerksart": "Wehr Blessem",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t27454 / Liblarer Mühlengraben / 3E"
+  },
+  "unknown_Rhein-Erft-Kreis_7": {
+    "name": "e",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "338492",
+    "utm_north": "5642777",
+    "bauwerksart": "Standort WKA-2 Horremer Muehle",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274732 / Kleine Erft / 3E"
+  },
+  "unknown_Rhein-Erft-Kreis_8": {
+    "name": "e",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "328775",
+    "utm_north": "5653847",
+    "bauwerksart": "Muehle Kaster",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274754 / Kasterer Mühlenerft / 3E"
+  },
+  "unknown_Rhein-Erft-Kreis_9": {
+    "name": "e",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "337352",
+    "utm_north": "5644490",
+    "bauwerksart": "Standort WKA-3 Pliesmuehle",
+    "typ": "Bewegliches Wehr",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t274732 / Kleine Erft / 3E"
+  },
+  "unknown_Euskirchen_0": {
+    "name": "e",
+    "kreis": "Euskirchen",
+    "utm_east": "322989,413",
+    "utm_north": "5605393,082",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2822 / Urft / 3E"
+  },
+  "unknown_Euskirchen_1": {
+    "name": "e",
+    "kreis": "Euskirchen",
+    "utm_east": "325053,251",
+    "utm_north": "5604380,716",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2822 / Urft / 3E"
+  },
+  "unknown_Euskirchen_2": {
+    "name": "e",
+    "kreis": "Euskirchen",
+    "utm_east": "320208,056",
+    "utm_north": "5598925,991",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t28228 / Olef / 3E"
+  },
+  "unknown_Euskirchen_3": {
+    "name": "e",
+    "kreis": "Euskirchen",
+    "utm_east": "319135,921",
+    "utm_north": "5596240,347",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t28228 / Olef / 3E"
+  },
+  "unknown_Euskirchen_4": {
+    "name": "e",
+    "kreis": "Euskirchen",
+    "utm_east": "321144,816",
+    "utm_north": "5600379,495",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t28228 / Olef / 3E"
+  },
+  "unknown_Euskirchen_5": {
+    "name": "e",
+    "kreis": "Euskirchen",
+    "utm_east": "322263,221",
+    "utm_north": "5603010,869",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t28228 / Olef / 3E"
+  },
+  "unknown_Euskirchen_6": {
+    "name": "e",
+    "kreis": "Euskirchen",
+    "utm_east": "333351,626",
+    "utm_north": "5619385,574",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2746 / Neffelbach / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2746 / Neffelbach / 3E"
+  },
+  "unknown_Euskirchen_7": {
+    "name": "e",
+    "kreis": "Euskirchen",
+    "utm_east": "340007,314",
+    "utm_north": "5620010,479",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2744 / Rotbach / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2744 / Rotbach / 3E"
+  },
+  "unknown_Euskirchen_8": {
+    "name": "e",
+    "kreis": "Euskirchen",
+    "utm_east": "325048,356",
+    "utm_north": "5604381,433",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2822 / Urft / 3E"
+  },
+  "unknown_Euskirchen_9": {
+    "name": "e",
+    "kreis": "Euskirchen",
+    "utm_east": "329060,884",
+    "utm_north": "5598334,757",
+    "bauwerksart": "",
+    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
+    "gewaesser": "kennzahl / Gewässername / Auflage\t2822 / Urft / 3E"
+  }
+}

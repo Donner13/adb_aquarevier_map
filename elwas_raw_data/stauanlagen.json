@@ -340,5 +340,203 @@
     "betreiber": "Absperrbauwerk",
     "gewaesser": "stationierungskarte",
     "typ": "Hochwasserrückhaltebecken"
+  },
+  "error_Städteregion Aachen_0": {
+    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
+    "kreis": "Städteregion Aachen"
+  },
+  "error_Städteregion Aachen_1": {
+    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
+    "kreis": "Städteregion Aachen"
+  },
+  "error_Städteregion Aachen_2": {
+    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
+    "kreis": "Städteregion Aachen"
+  },
+  "error_Städteregion Aachen_3": {
+    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
+    "kreis": "Städteregion Aachen"
+  },
+  "error_Städteregion Aachen_4": {
+    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
+    "kreis": "Städteregion Aachen"
+  },
+  "error_Städteregion Aachen_5": {
+    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
+    "kreis": "Städteregion Aachen"
+  },
+  "error_Städteregion Aachen_6": {
+    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
+    "kreis": "Städteregion Aachen"
+  },
+  "error_Städteregion Aachen_7": {
+    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
+    "kreis": "Städteregion Aachen"
+  },
+  "error_Städteregion Aachen_8": {
+    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
+    "kreis": "Städteregion Aachen"
+  },
+  "65": {
+    "name": "HRB Kirchtal",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "342096",
+    "utm_north": "5654317",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "122": {
+    "name": "HRB Sinthern",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "343631",
+    "utm_north": "5649404",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "225": {
+    "name": "Diebenhöhle II",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "338722,246",
+    "utm_north": "5650476,941",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "226": {
+    "name": "Büsdorf/Sportplatz",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "344138",
+    "utm_north": "5655073",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "227": {
+    "name": "Büsdorf/Kaulsgasse",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "344138,258",
+    "utm_north": "5655072,179",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "228": {
+    "name": "Büsdorf/Kasterstraße",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "344138,258",
+    "utm_north": "5655072,179",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "229": {
+    "name": "Stommeln/Sportplatz",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "342270,191",
+    "utm_north": "5653856,933",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "231": {
+    "name": "Stommeln/B 59 alt I/II",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "340521,202",
+    "utm_north": "5652845,455",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "29": {
+    "name": "HRB Eicherscheid",
+    "kreis": "Euskirchen",
+    "utm_east": "342743,372",
+    "utm_north": "5599573,111",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "53": {
+    "name": "HRB Horchheim",
+    "kreis": "Euskirchen",
+    "utm_east": "346222,541",
+    "utm_north": "5621808,607",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "83": {
+    "name": "Madbachtalsperre",
+    "kreis": "Euskirchen",
+    "utm_east": "350393,431",
+    "utm_north": "5606086,096",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "97": {
+    "name": "Oleftalsperre",
+    "kreis": "Euskirchen",
+    "utm_east": "317140,85",
+    "utm_north": "5596869,58",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "138": {
+    "name": "Stauanlage Kronenburg",
+    "kreis": "Euskirchen",
+    "utm_east": "320191",
+    "utm_north": "5581710",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "148": {
+    "name": "Steinbachtalsperre",
+    "kreis": "Euskirchen",
+    "utm_east": "347051,86",
+    "utm_north": "5606844,271",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "157": {
+    "name": "Urfttalsperre",
+    "kreis": "Euskirchen",
+    "utm_east": "317346,053",
+    "utm_north": "5608767,097",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "173": {
+    "name": "Sedimentationsanlage Buchholzweiher",
+    "kreis": "Euskirchen",
+    "utm_east": "332977",
+    "utm_north": "5604999",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Sedimentationsbecken"
+  },
+  "233": {
+    "name": "Neffelsee",
+    "kreis": "Euskirchen",
+    "utm_east": "332777,819",
+    "utm_north": "5619248,314",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "234": {
+    "name": "Zülpich/Bürvenich",
+    "kreis": "Euskirchen",
+    "utm_east": "329327,162",
+    "utm_north": "5613621,644",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
   }
 }

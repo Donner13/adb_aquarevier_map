@@ -1,0 +1,702 @@
+{
+  "222870": {
+    "name": "/-entlastungsanlagen: Betriebswerkstatt Weisweiler - RKB",
+    "kreis": "Städteregion Aachen",
+    "gemeinde": "05334012 / Eschweiler",
+    "utm_east": "310582",
+    "utm_north": "5634535",
+    "betreiber": "Zustellanschrift\tRWE Power AG - Tagebau Inden",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "222871": {
+    "name": "/-entlastungsanlagen: Betriebswerkstatt Weisweiler - RRB",
+    "kreis": "Städteregion Aachen",
+    "gemeinde": "05334012 / Eschweiler",
+    "utm_east": "310597",
+    "utm_north": "5634566",
+    "betreiber": "Zustellanschrift\tRWE Power AG - Tagebau Inden",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "2221420": {
+    "name": "/-entlastungsanlagen: RKB I",
+    "kreis": "Städteregion Aachen",
+    "gemeinde": "05334032 / Stolberg (Rhld.)",
+    "utm_east": "306491",
+    "utm_north": "5625813",
+    "betreiber": "Zustellanschrift\tKERPEN DATACOM GmbH",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221421": {
+    "name": "/-entlastungsanlagen: RKB II",
+    "kreis": "Städteregion Aachen",
+    "gemeinde": "05334032 / Stolberg (Rhld.)",
+    "utm_east": "306576",
+    "utm_north": "5625793",
+    "betreiber": "Zustellanschrift\tKERPEN DATACOM GmbH",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221504": {
+    "name": "/-entlastungsanlagen: RKB Otto-Lilienthal-Straße",
+    "kreis": "Städteregion Aachen",
+    "gemeinde": "05334004 / Alsdorf",
+    "utm_east": "304615",
+    "utm_north": "5639581",
+    "betreiber": "Zustellanschrift\tEigenbetrieb Abwasser der Stadt Alsdorf",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221505": {
+    "name": "/-entlastungsanlagen: Höfen-Alzen",
+    "kreis": "Städteregion Aachen",
+    "gemeinde": "05334020 / Monschau",
+    "utm_east": "305998",
+    "utm_north": "5600928",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221508": {
+    "name": "/-entlastungsanlagen: Duffesheide",
+    "kreis": "Städteregion Aachen",
+    "gemeinde": "05334004 / Alsdorf",
+    "utm_east": "298526",
+    "utm_north": "5638556",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "SK (Stauraumkanal)",
+    "abwasserbereich": "SK (Stauraumkanal)"
+  },
+  "2221509": {
+    "name": "/-entlastungsanlagen: Neu Ofden",
+    "kreis": "Städteregion Aachen",
+    "gemeinde": "05334004 / Alsdorf",
+    "utm_east": "299455",
+    "utm_north": "5638433",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "SK (Stauraumkanal)",
+    "abwasserbereich": "SK (Stauraumkanal)"
+  },
+  "2221510": {
+    "name": "/-entlastungsanlagen: IGA-Süd",
+    "kreis": "Städteregion Aachen",
+    "gemeinde": "05334004 / Alsdorf",
+    "utm_east": "304636",
+    "utm_north": "5639766",
+    "betreiber": "Zustellanschrift\tEigenbetrieb Abwasser der Stadt Alsdorf",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221586": {
+    "name": "/-entlastungsanlagen: RÜB Rödgener Straße",
+    "kreis": "Städteregion Aachen",
+    "gemeinde": "05334002 / Aachen",
+    "utm_east": "298639",
+    "utm_north": "5629459",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "222886": {
+    "name": "/-entlastungsanlagen: RBF NATO-Flugplatz",
+    "kreis": "Heinsberg",
+    "gemeinde": "05370008 / Gangelt",
+    "utm_east": "292122",
+    "utm_north": "5650391",
+    "betreiber": "Zustellanschrift\tBundeswehr-Dienstleistungszentrum Aachen TGM Geilenkirchen",
+    "typ": "RBF (Retentionsbodenfilter)",
+    "abwasserbereich": "RBF (Retentionsbodenfilter)"
+  },
+  "2221448": {
+    "name": "/-entlastungsanlagen: RKB NATO-Flugplatz",
+    "kreis": "Heinsberg",
+    "gemeinde": "05370008 / Gangelt",
+    "utm_east": "292003",
+    "utm_north": "5650271",
+    "betreiber": "Zustellanschrift\tBundeswehr-Dienstleistungszentrum Aachen TGM Geilenkirchen",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221503": {
+    "name": "/-entlastungsanlagen: Industriegebiet Dremmen",
+    "kreis": "Heinsberg",
+    "gemeinde": "05370016 / Heinsberg",
+    "utm_east": "300874",
+    "utm_north": "5659255",
+    "betreiber": "Zustellanschrift\tBürgermeister Heinsberg",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221512": {
+    "name": "/-entlastungsanlagen: Uetterath",
+    "kreis": "Heinsberg",
+    "gemeinde": "05370016 / Heinsberg",
+    "utm_east": "299352",
+    "utm_north": "5656461",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2221513": {
+    "name": "/-entlastungsanlagen: Horst",
+    "kreis": "Heinsberg",
+    "gemeinde": "05370016 / Heinsberg",
+    "utm_east": "302460",
+    "utm_north": "5656833",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "SK (Stauraumkanal)",
+    "abwasserbereich": "SK (Stauraumkanal)"
+  },
+  "2221514": {
+    "name": "/-entlastungsanlagen: Randerath",
+    "kreis": "Heinsberg",
+    "gemeinde": "05370016 / Heinsberg",
+    "utm_east": "302246",
+    "utm_north": "5655809",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2221517": {
+    "name": "/-entlastungsanlagen: Flahstraß",
+    "kreis": "Heinsberg",
+    "gemeinde": "05370012 / Geilenkirchen",
+    "utm_east": "301791",
+    "utm_north": "5654036",
+    "betreiber": "Zustellanschrift\tWVER",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2221518": {
+    "name": "/-entlastungsanlagen: Honsdorf",
+    "kreis": "Heinsberg",
+    "gemeinde": "05370012 / Geilenkirchen",
+    "utm_east": "302379",
+    "utm_north": "5654107",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2221519": {
+    "name": "/-entlastungsanlagen: Lindern",
+    "kreis": "Heinsberg",
+    "gemeinde": "05370012 / Geilenkirchen",
+    "utm_east": "303599",
+    "utm_north": "5653014",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "SK (Stauraumkanal)",
+    "abwasserbereich": "SK (Stauraumkanal)"
+  },
+  "2221520": {
+    "name": "/-entlastungsanlagen: Beeck",
+    "kreis": "Heinsberg",
+    "gemeinde": "05370012 / Geilenkirchen",
+    "utm_east": "302539",
+    "utm_north": "5652205",
+    "betreiber": "Zustellanschrift\tStadt Geilenkirchen",
+    "typ": "SK (Stauraumkanal)",
+    "abwasserbereich": "SK (Stauraumkanal)"
+  },
+  "2221277": {
+    "name": "/-entlastungsanlagen: Regenklärbecken",
+    "kreis": "Mönchengladbach",
+    "gemeinde": "05116000 / Mönchengladbach",
+    "utm_east": "324884",
+    "utm_north": "5678420",
+    "betreiber": "Zustellanschrift\tFlughafen Düsseldorf-Mönchengladbach GmbH",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221278": {
+    "name": "/-entlastungsanlagen: Regenrückhaltebecken 2",
+    "kreis": "Mönchengladbach",
+    "gemeinde": "05116000 / Mönchengladbach",
+    "utm_east": "325328",
+    "utm_north": "5678594",
+    "betreiber": "Zustellanschrift\tFlughafen Düsseldorf-Mönchengladbach GmbH",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "2221279": {
+    "name": "/-entlastungsanlagen: Regenrückhaltebecken 1",
+    "kreis": "Mönchengladbach",
+    "gemeinde": "05116000 / Mönchengladbach",
+    "utm_east": "325078",
+    "utm_north": "5678531",
+    "betreiber": "Zustellanschrift\tFlughafen Düsseldorf-Mönchengladbach GmbH",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "2226440": {
+    "name": "/-entlastungsanlagen: Heinrich-Pesch-Straße",
+    "kreis": "Mönchengladbach",
+    "gemeinde": "05116000 / Mönchengladbach",
+    "utm_east": "320751",
+    "utm_north": "5672286",
+    "betreiber": "Zustellanschrift\tNiersverband",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2226441": {
+    "name": "/-entlastungsanlagen: RÜB An der Wey",
+    "kreis": "Mönchengladbach",
+    "gemeinde": "05116000 / Mönchengladbach",
+    "utm_east": "317904",
+    "utm_north": "5665117",
+    "betreiber": "Zustellanschrift\tNiersverband",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2226443": {
+    "name": "/-entlastungsanlagen: Laurentiusstraße",
+    "kreis": "Mönchengladbach",
+    "gemeinde": "05116000 / Mönchengladbach",
+    "utm_east": "315335",
+    "utm_north": "5666400",
+    "betreiber": "Zustellanschrift\tNEW AG Mönchengladbach -",
+    "typ": "SK (Stauraumkanal)",
+    "abwasserbereich": "SK (Stauraumkanal)"
+  },
+  "2226444": {
+    "name": "/-entlastungsanlagen: Beckrather Straße",
+    "kreis": "Mönchengladbach",
+    "gemeinde": "05116000 / Mönchengladbach",
+    "utm_east": "318452",
+    "utm_north": "5666605",
+    "betreiber": "Zustellanschrift\tOberbürgermeister Mönchengladbach",
+    "typ": "SK (Stauraumkanal)",
+    "abwasserbereich": "SK (Stauraumkanal)"
+  },
+  "2226445": {
+    "name": "/-entlastungsanlagen: Grunewaldstraße",
+    "kreis": "Mönchengladbach",
+    "gemeinde": "05116000 / Mönchengladbach",
+    "utm_east": "323941",
+    "utm_north": "5678707",
+    "betreiber": "Zustellanschrift\tNEW AG Mönchengladbach -",
+    "typ": "SK (Stauraumkanal)",
+    "abwasserbereich": "SK (Stauraumkanal)"
+  },
+  "2226446": {
+    "name": "/-entlastungsanlagen: Krefelder Straße",
+    "kreis": "Mönchengladbach",
+    "gemeinde": "05116000 / Mönchengladbach",
+    "utm_east": "324693",
+    "utm_north": "5677765",
+    "betreiber": "Zustellanschrift\tNVV AG Mönchengladbach -",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2226447": {
+    "name": "/-entlastungsanlagen: Maria-Juchacz-Str./Güdderath W",
+    "kreis": "Mönchengladbach",
+    "gemeinde": "05116000 / Mönchengladbach",
+    "utm_east": "320425",
+    "utm_north": "5667115",
+    "betreiber": "Zustellanschrift\tNVV AG Mönchengladbach -",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221261": {
+    "name": "/-entlastungsanlagen: Regenklärbecken",
+    "kreis": "Rhein-Kreis Neuss",
+    "gemeinde": "05162024 / Neuss",
+    "utm_east": "345121",
+    "utm_north": "5668916",
+    "betreiber": "Zustellanschrift\tAluminium Norf GmbH",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221262": {
+    "name": "/-entlastungsanlagen: RKB O.&L. Sels",
+    "kreis": "Rhein-Kreis Neuss",
+    "gemeinde": "05162024 / Neuss",
+    "utm_east": "339073",
+    "utm_north": "5676442",
+    "betreiber": "Zustellanschrift\tO. & L. Sels GmbH & Co. KG",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221263": {
+    "name": "/-entlastungsanlagen: Hydro Neuss",
+    "kreis": "Rhein-Kreis Neuss",
+    "gemeinde": "05162024 / Neuss",
+    "utm_east": "345104",
+    "utm_north": "5668921",
+    "betreiber": "Zustellanschrift\tHYDRO Aluminium Rolled Products GmbH Werk Neuss",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221264": {
+    "name": "/-entlastungsanlagen: RKB Stürzelberg II",
+    "kreis": "Rhein-Kreis Neuss",
+    "gemeinde": "05162004 / Dormagen",
+    "utm_east": "346077",
+    "utm_north": "5667920",
+    "betreiber": "Zustellanschrift\tStürzelberg II, Dormagen Sabine Beyer-Schewe",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221265": {
+    "name": "/-entlastungsanlagen: RRB-Intersnack",
+    "kreis": "Rhein-Kreis Neuss",
+    "gemeinde": "05162008 / Grevenbroich",
+    "utm_east": "332153",
+    "utm_north": "5663425",
+    "betreiber": "Zustellanschrift\tIntersnack Knabber-Gebäck GmbH & Co. KG Wevelinghoven",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "2221267": {
+    "name": "/-entlastungsanlagen: Intersnack/Pfeifer&Langen",
+    "kreis": "Rhein-Kreis Neuss",
+    "gemeinde": "05162008 / Grevenbroich",
+    "utm_east": "332191",
+    "utm_north": "5663169",
+    "betreiber": "Zustellanschrift\tPfeifer & Langen KG Werk Wevelinghoven",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2221270": {
+    "name": "/-entlastungsanlagen: Absetzteiche (6Stk.)",
+    "kreis": "Rhein-Kreis Neuss",
+    "gemeinde": "05162008 / Grevenbroich",
+    "utm_east": "328894",
+    "utm_north": "5659136",
+    "betreiber": "Zustellanschrift\tWW Waldhütte/Lodshof NVV AG",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2221274": {
+    "name": "/-entlastungsanlagen: Regenklär-/Regenrückhaltebecken",
+    "kreis": "Rhein-Kreis Neuss",
+    "gemeinde": "05162008 / Grevenbroich",
+    "utm_east": "332935",
+    "utm_north": "5661458",
+    "betreiber": "Zustellanschrift\tSpeira GmbH Werk Grevenbroich",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "2221480": {
+    "name": "/-entlastungsanlagen: RKB Dachser",
+    "kreis": "Rhein-Kreis Neuss",
+    "gemeinde": "05162024 / Neuss",
+    "utm_east": "340303",
+    "utm_north": "5677088",
+    "betreiber": "Zustellanschrift\tDachser GmbH & Co. KG Niederlassung Neuss",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "2226460": {
+    "name": "/-entlastungsanlagen: SKO Langwaden",
+    "kreis": "Rhein-Kreis Neuss",
+    "gemeinde": "05162008 / Grevenbroich",
+    "utm_east": "335440",
+    "utm_north": "5665534",
+    "betreiber": "Zustellanschrift\tErftverband",
+    "typ": "SK (Stauraumkanal)",
+    "abwasserbereich": "SK (Stauraumkanal)"
+  },
+  "222874": {
+    "name": "/-entlastungsanlagen: RKB",
+    "kreis": "Düren",
+    "gemeinde": "05358040 / Merzenich",
+    "utm_east": "326731",
+    "utm_north": "5632451",
+    "betreiber": "Zustellanschrift\tJ. & W. Stollenwerk OHG",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "222875": {
+    "name": "/-entlastungsanlagen: RRB",
+    "kreis": "Düren",
+    "gemeinde": "05358040 / Merzenich",
+    "utm_east": "326737",
+    "utm_north": "5632474",
+    "betreiber": "Zustellanschrift\tJ. & W. Stollenwerk OHG",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "222876": {
+    "name": "/-entlastungsanlagen: RKB/Stauraumkanal DN 1400",
+    "kreis": "Düren",
+    "gemeinde": "05358036 / Linnich",
+    "utm_east": "308852",
+    "utm_north": "5651020",
+    "betreiber": "Zustellanschrift\tSIG Combibloc GmbH",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "222877": {
+    "name": "/-entlastungsanlagen: Tagebau Hambach - Tagesanlagen - RRB",
+    "kreis": "Düren",
+    "gemeinde": "05358048 / Niederzier",
+    "utm_east": "323479",
+    "utm_north": "5639053",
+    "betreiber": "Zustellanschrift\tRWE Power AG - Tagebau Hambach",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "222879": {
+    "name": "/-entlastungsanlagen: EBV Regenrückhaltebecken",
+    "kreis": "Düren",
+    "gemeinde": "05358004 / Aldenhoven",
+    "utm_east": "305895",
+    "utm_north": "5645121",
+    "betreiber": "Zustellanschrift\tEBV Aktiengesellschaft Berghalde Emil Mayrisch (Freialdenhoven)",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "222883": {
+    "name": "/-entlastungsanlagen: 4 Kaskaden-RKB",
+    "kreis": "Düren",
+    "gemeinde": "05358052 / Nörvenich",
+    "utm_east": "333936",
+    "utm_north": "5632611",
+    "betreiber": "Zustellanschrift\tStandortverwaltung Düren",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "222884": {
+    "name": "/-entlastungsanlagen: RKB->E1",
+    "kreis": "Düren",
+    "gemeinde": "05358028 / Kreuzau",
+    "utm_east": "322336",
+    "utm_north": "5625064",
+    "betreiber": "Zustellanschrift\tMetsä Tissue GmbH Werk Kreuzau",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "222885": {
+    "name": "/-entlastungsanlagen: RKB->E3",
+    "kreis": "Düren",
+    "gemeinde": "05358028 / Kreuzau",
+    "utm_east": "322332",
+    "utm_north": "5625201",
+    "betreiber": "Zustellanschrift\tMetsä Tissue GmbH Werk Kreuzau",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "222889": {
+    "name": "/-entlastungsanlagen: Regenrückhaltebecken",
+    "kreis": "Düren",
+    "gemeinde": "05358024 / Jülich",
+    "utm_east": "313726",
+    "utm_north": "5644930",
+    "betreiber": "Zustellanschrift\tPfeifer & Langen GmbH & Co.KG Zuckerfabrik Jülich",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "2221506": {
+    "name": "/-entlastungsanlagen: Linnich/Erkelenzer Str.",
+    "kreis": "Düren",
+    "gemeinde": "05358036 / Linnich",
+    "utm_east": "308588",
+    "utm_north": "5651972",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "SK (Stauraumkanal)",
+    "abwasserbereich": "SK (Stauraumkanal)"
+  },
+  "3622": {
+    "name": "/-entlastungsanlagen: Anschlussstelle Hürth-Gleuel",
+    "kreis": "Rhein-Erft-Kreis",
+    "gemeinde": "05362028 / Hürth",
+    "utm_east": "346474",
+    "utm_north": "5639702",
+    "betreiber": "Zustellanschrift\tLandesbetrieb Straßenbau NRW",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "3623": {
+    "name": "/-entlastungsanlagen: BP 215, Kleinfeldchen",
+    "kreis": "Rhein-Erft-Kreis",
+    "gemeinde": "05362008 / Bergheim",
+    "utm_east": "335894",
+    "utm_north": "5644086",
+    "betreiber": "Zustellanschrift\tStadtwerke Bergheim GmbH",
+    "typ": "SK (Stauraumkanal)",
+    "abwasserbereich": "SK (Stauraumkanal)"
+  },
+  "3628": {
+    "name": "/-entlastungsanlagen: RRB 32; Mühlenweg BP 63",
+    "kreis": "Rhein-Erft-Kreis",
+    "gemeinde": "05362036 / Pulheim",
+    "utm_east": "347306",
+    "utm_north": "5650328",
+    "betreiber": "Zustellanschrift\tStadt Pulheim Der Bürgermeister",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "36215": {
+    "name": "/-entlastungsanlagen: Lindenstraße-Süd RRB3.22",
+    "kreis": "Rhein-Erft-Kreis",
+    "gemeinde": "05362024 / Frechen",
+    "utm_east": "345667",
+    "utm_north": "5642616",
+    "betreiber": "Zustellanschrift\tStadt Frechen",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "36216": {
+    "name": "/-entlastungsanlagen: Lamellenklärer",
+    "kreis": "Rhein-Erft-Kreis",
+    "gemeinde": "05362028 / Hürth",
+    "utm_east": "352344",
+    "utm_north": "5635775",
+    "betreiber": "Zustellanschrift\tAldi GmbH & Co. KG",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "36217": {
+    "name": "/-entlastungsanlagen: Sedipipe XL",
+    "kreis": "Rhein-Erft-Kreis",
+    "gemeinde": "05362012 / Brühl",
+    "utm_east": "352000",
+    "utm_north": "5630391",
+    "betreiber": "Zustellanschrift\tStadt Brühl",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "36221": {
+    "name": "/-entlastungsanlagen: Brühler Straße",
+    "kreis": "Rhein-Erft-Kreis",
+    "gemeinde": "05362040 / Wesseling",
+    "utm_east": "356356",
+    "utm_north": "5632974",
+    "betreiber": "Zustellanschrift\tHeitkamp Immobilien GbR",
+    "typ": "SK (Stauraumkanal)",
+    "abwasserbereich": "SK (Stauraumkanal)"
+  },
+  "36227": {
+    "name": "/-entlastungsanlagen: RRB 2 Roggendorfer Straße",
+    "kreis": "Rhein-Erft-Kreis",
+    "gemeinde": "05362036 / Pulheim",
+    "utm_east": "347165",
+    "utm_north": "5655082",
+    "betreiber": "Zustellanschrift\tStadt Pulheim Der Bürgermeister",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "36232": {
+    "name": "/-entlastungsanlagen: BP 218.x Ahe \"An der Kapelle\"",
+    "kreis": "Rhein-Erft-Kreis",
+    "gemeinde": "05362008 / Bergheim",
+    "utm_east": "335540",
+    "utm_north": "5643905",
+    "betreiber": "Zustellanschrift\tStadtwerke Bergheim GmbH",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "36233": {
+    "name": "/-entlastungsanlagen: BP 218.1 Ahe",
+    "kreis": "Rhein-Erft-Kreis",
+    "gemeinde": "05362008 / Bergheim",
+    "utm_east": "335472",
+    "utm_north": "5643970",
+    "betreiber": "Zustellanschrift\tStadtwerke Bergheim GmbH",
+    "typ": "RKB (Regenklärbecken)",
+    "abwasserbereich": "RKB (Regenklärbecken)"
+  },
+  "222873": {
+    "name": "/-entlastungsanlagen: Rückhaltefilterbecken",
+    "kreis": "Euskirchen",
+    "gemeinde": "05366028 / Mechernich",
+    "utm_east": "330439",
+    "utm_north": "5605319",
+    "betreiber": "Zustellanschrift\tAbfallwirtschaftszentrum Mechernich",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "2221502": {
+    "name": "/-entlastungsanlagen: Zehnstelle / Wittscheid",
+    "kreis": "Euskirchen",
+    "gemeinde": "05366020 / Hellenthal",
+    "utm_east": "319778",
+    "utm_north": "5590870",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "RRB (Regenrückhaltebecken)",
+    "abwasserbereich": "RRB (Regenrückhaltebecken)"
+  },
+  "2221515": {
+    "name": "/-entlastungsanlagen: Alte KA Sistig",
+    "kreis": "Euskirchen",
+    "gemeinde": "05366024 / Kall",
+    "utm_east": "324964",
+    "utm_north": "5597295",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2221516": {
+    "name": "/-entlastungsanlagen: alte KA Broich",
+    "kreis": "Euskirchen",
+    "gemeinde": "05366036 / Schleiden",
+    "utm_east": "323505",
+    "utm_north": "5599652",
+    "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2221811": {
+    "name": "/-entlastungsanlagen: Kronenburg",
+    "kreis": "Euskirchen",
+    "gemeinde": "05366012 / Dahlem",
+    "utm_east": "320967",
+    "utm_north": "5581824",
+    "betreiber": "Zustellanschrift\tAbwasserwerk der Gemeinde Dahlem",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2221812": {
+    "name": "/-entlastungsanlagen: Kronenburg Ortsmitte Brigida Kapelle",
+    "kreis": "Euskirchen",
+    "gemeinde": "05366012 / Dahlem",
+    "utm_east": "320567",
+    "utm_north": "5581840",
+    "betreiber": "Zustellanschrift\tGemeinde Dahlem",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2221813": {
+    "name": "/-entlastungsanlagen: Baasem",
+    "kreis": "Euskirchen",
+    "gemeinde": "05366012 / Dahlem",
+    "utm_east": "322626",
+    "utm_north": "5583258",
+    "betreiber": "Zustellanschrift\tAbwasserwerk der Gemeinde Dahlem",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2221814": {
+    "name": "/-entlastungsanlagen: Frauenkron",
+    "kreis": "Euskirchen",
+    "gemeinde": "05366012 / Dahlem",
+    "utm_east": "318559",
+    "utm_north": "5583042",
+    "betreiber": "Zustellanschrift\tAbwasserwerk der Gemeinde Dahlem",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2221815": {
+    "name": "/-entlastungsanlagen: KA",
+    "kreis": "Euskirchen",
+    "gemeinde": "05366012 / Dahlem",
+    "utm_east": "325784",
+    "utm_north": "5583509",
+    "betreiber": "Zustellanschrift\tAbwasserwerk der Gemeinde Dahlem",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  },
+  "2221816": {
+    "name": "/-entlastungsanlagen: Berk",
+    "kreis": "Euskirchen",
+    "gemeinde": "05366012 / Dahlem",
+    "utm_east": "319207",
+    "utm_north": "5584105",
+    "betreiber": "Zustellanschrift\tAbwasserwerk der Gemeinde Dahlem",
+    "typ": "RÜB (Regenüberlaufbecken)",
+    "abwasserbereich": "RÜB (Regenüberlaufbecken)"
+  }
+}
