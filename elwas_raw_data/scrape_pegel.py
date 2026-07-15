@@ -65,6 +65,11 @@ async def main():
             n = await ec.get_result_row_count(frame)
             print(f"  {n} Pegel gefunden", flush=True)
 
+            if kreis == KREISE[0]:
+                header_cells = frame.locator("thead.ui-datatable-thead th")
+                headers = [(await header_cells.nth(c).inner_text()).strip() for c in range(await header_cells.count())]
+                print(f"  Spalten-Header: {headers}", flush=True)
+
             row_info = []
             for r in range(n):
                 cells = frame.locator("tbody.ui-datatable-data tr").nth(r).locator("td")
@@ -84,7 +89,7 @@ async def main():
                     name, pegel_nr = extract_name_nr(header_text)
                     if not pegel_nr:
                         pegel_nr = f"unknown_{kreis}_{idx}"
-                    if pegel_nr in results and "error" not in results[pegel_nr]:
+                    if pegel_nr in results and "error" not in results[pegel_nr] and "nq_m3s" in results[pegel_nr]:
                         await frame.click("text=Ergebnisse")
                         await page.wait_for_timeout(1200)
                         links = frame.locator("tbody.ui-datatable-data tr td input[type='submit'], tbody.ui-datatable-data tr td a, input.buttonLink")
@@ -107,6 +112,7 @@ async def main():
                         "gewaesser": meta[3] if len(meta) > 3 else None,
                         "betreiber": meta[4] if len(meta) > 4 else None,
                         "einzugsgebiet_km2": meta[6] if len(meta) > 6 else None,
+                        "nq_m3s": meta[9] if len(meta) > 9 else None,
                         "mq_m3s": meta[11] if len(meta) > 11 else None,
                         "hq_m3s": meta[13] if len(meta) > 13 else None,
                     }

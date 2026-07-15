@@ -17,6 +17,7 @@
         "gewaesser": "Inde",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "232,15",
+        "nq_m3s": "0,2",
         "mq_m3s": "2,78",
         "hq_m3s": "330",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -38,6 +39,7 @@
         "gewaesser": "Haarbach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "15,32",
+        "nq_m3s": "0,02",
         "mq_m3s": "0,29",
         "hq_m3s": "14,7",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -59,6 +61,7 @@
         "gewaesser": "Wurm",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "96,29",
+        "nq_m3s": "0,19",
         "mq_m3s": "1,91",
         "hq_m3s": "46,1",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -80,6 +83,7 @@
         "gewaesser": "Broicher Bach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "41,39",
+        "nq_m3s": "0,11",
         "mq_m3s": "0,32",
         "hq_m3s": "9,86",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -101,6 +105,7 @@
         "gewaesser": "Wurm",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "33,63",
+        "nq_m3s": "0",
         "mq_m3s": "0,28",
         "hq_m3s": "39,1",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -122,6 +127,7 @@
         "gewaesser": "Inde",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "65,02",
+        "nq_m3s": "0,03",
         "mq_m3s": "0,72",
         "hq_m3s": "96,4",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -143,6 +149,7 @@
         "gewaesser": "Rur",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "143,63",
+        "nq_m3s": "0",
         "mq_m3s": "3,77",
         "hq_m3s": "110",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -164,6 +171,7 @@
         "gewaesser": "Vichtbach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "45,6",
+        "nq_m3s": "0,04",
         "mq_m3s": "0,57",
         "hq_m3s": "139",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -185,6 +193,7 @@
         "gewaesser": "Vichtbach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "6,74",
+        "nq_m3s": "",
         "mq_m3s": "",
         "hq_m3s": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -206,6 +215,7 @@
         "gewaesser": "Weidenbach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "3,51",
+        "nq_m3s": "0",
         "mq_m3s": "0,05",
         "hq_m3s": "1,66",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -227,6 +237,7 @@
         "gewaesser": "Beeckbach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "19,65",
+        "nq_m3s": "0,02",
         "mq_m3s": "0,1",
         "hq_m3s": "2,02",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -248,6 +259,7 @@
         "gewaesser": "Beeckfließ",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "56,55",
+        "nq_m3s": "0",
         "mq_m3s": "0,09",
         "hq_m3s": "5",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -269,6 +281,7 @@
         "gewaesser": "Schwalm",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "52,93",
+        "nq_m3s": "0,17",
         "mq_m3s": "0,41",
         "hq_m3s": "5,62",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -290,6 +303,7 @@
         "gewaesser": "Wurm",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "310,52",
+        "nq_m3s": "1,05",
         "mq_m3s": "3,34",
         "hq_m3s": "35,7",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -311,6 +325,7 @@
         "gewaesser": "Rur",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "2.135,15",
+        "nq_m3s": "5,71",
         "mq_m3s": "21,4",
         "hq_m3s": "356",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -332,6 +347,7 @@
         "gewaesser": "",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "68,75",
+        "nq_m3s": "",
         "mq_m3s": "",
         "hq_m3s": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -353,6 +369,7 @@
         "gewaesser": "Jüchener Bach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "81,31",
+        "nq_m3s": "0,02",
         "mq_m3s": "0,09",
         "hq_m3s": "1,23",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -374,6 +391,7 @@
         "gewaesser": "Nordkanal",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "105,98",
+        "nq_m3s": "0,05",
         "mq_m3s": "0,32",
         "hq_m3s": "3,71",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -395,6 +413,7 @@
         "gewaesser": "Erft",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "1.595,43",
+        "nq_m3s": "4,83",
         "mq_m3s": "16,6",
         "hq_m3s": "46,6",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -416,6 +435,7 @@
         "gewaesser": "Gillbach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "95,39",
+        "nq_m3s": "0,02",
         "mq_m3s": "0,46",
         "hq_m3s": "4,28",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -437,6 +457,7 @@
         "gewaesser": "Rur",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "958,76",
+        "nq_m3s": "2,36",
         "mq_m3s": "12,3",
         "hq_m3s": "161",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -458,6 +479,7 @@
         "gewaesser": "Rur",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "1.334,57",
+        "nq_m3s": "3,96",
         "mq_m3s": "16,2",
         "hq_m3s": "375",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -479,6 +501,7 @@
         "gewaesser": "Inde",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "",
+        "nq_m3s": "",
         "mq_m3s": "",
         "hq_m3s": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -500,6 +523,7 @@
         "gewaesser": "Inde",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "",
+        "nq_m3s": "",
         "mq_m3s": "",
         "hq_m3s": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -521,6 +545,7 @@
         "gewaesser": "Rur",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "1.471,75",
+        "nq_m3s": "2,69",
         "mq_m3s": "16,5",
         "hq_m3s": "277",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -542,6 +567,7 @@
         "gewaesser": "Wehebach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "62,47",
+        "nq_m3s": "0,01",
         "mq_m3s": "0,26",
         "hq_m3s": "7,82",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -563,6 +589,7 @@
         "gewaesser": "Rur",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "934,75",
+        "nq_m3s": "3,51",
         "mq_m3s": "12",
         "hq_m3s": "154",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -584,6 +611,7 @@
         "gewaesser": "Merzbach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "98,16",
+        "nq_m3s": "0,01",
         "mq_m3s": "0,32",
         "hq_m3s": "23,8",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -605,6 +633,7 @@
         "gewaesser": "Rur",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "787",
+        "nq_m3s": "0,98",
         "mq_m3s": "11,8",
         "hq_m3s": "171",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -626,6 +655,7 @@
         "gewaesser": "Kall",
         "betreiber": "Enwor",
         "einzugsgebiet_km2": "74,53",
+        "nq_m3s": "",
         "mq_m3s": "",
         "hq_m3s": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -647,6 +677,7 @@
         "gewaesser": "Erft",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "604",
+        "nq_m3s": "0,09",
         "mq_m3s": "2,47",
         "hq_m3s": "55,8",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -668,6 +699,7 @@
         "gewaesser": "Liblarer Mühlengraben",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "0",
+        "nq_m3s": "",
         "mq_m3s": "",
         "hq_m3s": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -689,6 +721,7 @@
         "gewaesser": "Rotbach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "191",
+        "nq_m3s": "0,01",
         "mq_m3s": "0,54",
         "hq_m3s": "53,7",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -710,6 +743,7 @@
         "gewaesser": "Erft",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "1.323",
+        "nq_m3s": "1,75",
         "mq_m3s": "13,2",
         "hq_m3s": "35,3",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -731,6 +765,7 @@
         "gewaesser": "Dickopsbach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "25,2",
+        "nq_m3s": "",
         "mq_m3s": "",
         "hq_m3s": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -752,6 +787,7 @@
         "gewaesser": "Neffelbach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "194,2",
+        "nq_m3s": "0,04",
         "mq_m3s": "0,39",
         "hq_m3s": "8,73",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -773,6 +809,7 @@
         "gewaesser": "Ahr",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "124",
+        "nq_m3s": "0,02",
         "mq_m3s": "1,27",
         "hq_m3s": "74,5",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -794,6 +831,7 @@
         "gewaesser": "Erft",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "114,39",
+        "nq_m3s": "0,02",
         "mq_m3s": "0,77",
         "hq_m3s": "40,9",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -815,6 +853,7 @@
         "gewaesser": "Neffelbach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "47,4",
+        "nq_m3s": "0,02",
         "mq_m3s": "0,25",
         "hq_m3s": "6,98",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -836,6 +875,7 @@
         "gewaesser": "Veybach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "62,46",
+        "nq_m3s": "0,24",
         "mq_m3s": "0,6",
         "hq_m3s": "16,6",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -857,6 +897,7 @@
         "gewaesser": "Urft",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "344,55",
+        "nq_m3s": "0,19",
         "mq_m3s": "4,66",
         "hq_m3s": "143",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -878,6 +919,7 @@
         "gewaesser": "Platißbach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "36,4",
+        "nq_m3s": "0",
         "mq_m3s": "0,7",
         "hq_m3s": "36,6",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -899,6 +941,7 @@
         "gewaesser": "Urft",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "131,11",
+        "nq_m3s": "0,09",
         "mq_m3s": "1,35",
         "hq_m3s": "76,5",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -920,6 +963,7 @@
         "gewaesser": "Eschweiler Bach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "32,01",
+        "nq_m3s": "0,01",
         "mq_m3s": "0,18",
         "hq_m3s": "27,5",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -941,6 +985,7 @@
         "gewaesser": "Reifferscheider Bach",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "48,95",
+        "nq_m3s": "0",
         "mq_m3s": "0,76",
         "hq_m3s": "37,9",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
@@ -962,6 +1007,7 @@
         "gewaesser": "Olef",
         "betreiber": "LANUV, NRW",
         "einzugsgebiet_km2": "159,41",
+        "nq_m3s": "0,1",
         "mq_m3s": "2,68",
         "hq_m3s": "89,7",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"

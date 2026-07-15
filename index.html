@@ -1410,7 +1410,7 @@
                         `;
                         if (p.gewaesser) html += `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>`;
                         if (p.einzugsgebiet_km2) html += `<div class="popup-detail">📐 Einzugsgebiet: ${p.einzugsgebiet_km2} km²</div>`;
-                        if (p.mq_m3s) html += `<div class="popup-detail">📊 MQ: ${p.mq_m3s} m³/s, HQ: ${p.hq_m3s || '–'} m³/s</div>`;
+                        if (p.mq_m3s) html += `<div class="popup-detail">📊 NQ: ${p.nq_m3s || '–'}, MQ: ${p.mq_m3s}, HQ: ${p.hq_m3s || '–'} m³/s</div>`;
                         html += `
                                 <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
                             </div>
@@ -1420,6 +1420,68 @@
                 }).addTo(pegelLayer);
             })
             .catch(err => console.log("pegel layer not loaded:", err));
+
+        // Einzugsgebiet-Statistik: Spatial Join (Point-in-Polygon) zwischen
+        // elwas_einleiter.geojson und rur_einzugsgebiet.geojson, vorberechnet
+        // in build_catchment_stats.py. Zeigt Anzahl Betriebe + summierte
+        // Abwassermenge pro Teileinzugsgebiet als Choroplethenkarte.
+        const catchmentStatsLayer = L.layerGroup();
+        let catchmentStatsLoaded = false;
+        function catchmentStatsColor(v) {
+            if (!v || v <= 0) return '#94a3b8';
+            if (v < 5000) return '#fed7aa';
+            if (v < 20000) return '#fb923c';
+            if (v < 100000) return '#ea580c';
+            return '#991b1b';
+        }
+        function loadCatchmentStatsLayer() {
+            if (catchmentStatsLoaded) return;
+            catchmentStatsLoaded = true;
+            fetch('rur_einzugsgebiet_stats.geojson')
+                .then(res => res.ok ? res.json() : Promise.reject())
+                .then(data => {
+                    L.geoJSON(data, {
+                        style: function(feature) {
+                            const v = feature.properties.gesamtabwasser_a;
+                            return {
+                                color: '#7f1d1d',
+                                weight: 0.8,
+                                opacity: 0.5,
+                                fillColor: catchmentStatsColor(v),
+                                fillOpacity: v > 0 ? 0.55 : 0.08
+                            };
+                        },
+                        onEachFeature: function(feature, layer) {
+                            const p = feature.properties;
+                            const title = p.abschnitt && p.abschnitt !== p.gewaesser ? `${p.gewaesser} (${p.abschnitt})` : (p.gewaesser || 'Unbenanntes Teilgebiet');
+                            const tooltipHtml = `<b>${title}</b><br>🏭 ${p.anzahl_betriebe} Betrieb(e)` + (p.gesamtabwasser_text ? `<br>💧 ${p.gesamtabwasser_text}` : '');
+                            layer.bindTooltip(tooltipHtml, { sticky: true, direction: 'top' });
+
+                            let html = `
+                                <div class="popup-card">
+                                    <div class="popup-group" style="color: #991b1b">Einzugsgebiet-Statistik</div>
+                                    <div class="popup-title">${title}</div>
+                            `;
+                            if (p.teilgebiet_flaeche_km2) html += `<div class="popup-detail">📐 Teilgebiet-Fläche: ${p.teilgebiet_flaeche_km2} km²</div>`;
+                            html += `<div class="popup-detail">🏭 Anzahl Industriebetriebe: ${p.anzahl_betriebe}</div>`;
+                            html += p.gesamtabwasser_text
+                                ? `<div class="popup-detail">💧 Summierte Abwassermenge: ${p.gesamtabwasser_text}</div>`
+                                : (p.anzahl_betriebe > 0
+                                    ? `<div class="popup-detail">💧 Keine Mengenangabe für die Betriebe hier verfügbar</div>`
+                                    : '');
+                            html += `
+                                    <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Spatial Join: ELWAS-WEB Industrieeinleiter × LANUV Teileinzugsgebiete (Rur)</div>
+                                </div>
+                            `;
+                            layer.bindPopup(html);
+                        }
+                    }).addTo(catchmentStatsLayer);
+                })
+                .catch(err => console.log("catchment stats layer not loaded:", err));
+        }
+        map.on('overlayadd', function(e) {
+            if (e.layer === catchmentStatsLayer) loadCatchmentStatsLayer();
+        });
 
         // Map layer controller
         const baseMaps = {
@@ -1447,7 +1509,8 @@
             "🏭 Industrieeinleiter (ELWAS)": elwasLayer,
             "🚰 Kläranlagen (ELWAS)": klaeranlagenLayer,
             "💧 Grundwassermessstellen (ELWAS, 4400+)": gwmLayer,
-            "📏 Pegel (ELWAS)": pegelLayer
+            "📏 Pegel (ELWAS)": pegelLayer,
+            "🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)": catchmentStatsLayer
         };
 
         L.control.layers(baseMaps, overlayMaps, { position: 'topright' }).addTo(map);

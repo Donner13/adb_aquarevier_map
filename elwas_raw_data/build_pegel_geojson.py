@@ -45,6 +45,7 @@ def main():
                 "gewaesser": v.get("gewaesser"),
                 "betreiber": v.get("betreiber"),
                 "einzugsgebiet_km2": v.get("einzugsgebiet_km2"),
+                "nq_m3s": v.get("nq_m3s"),
                 "mq_m3s": v.get("mq_m3s"),
                 "hq_m3s": v.get("hq_m3s"),
                 "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
