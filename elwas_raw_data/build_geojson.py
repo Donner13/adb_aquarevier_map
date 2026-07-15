@@ -13,6 +13,7 @@ from pyproj import Transformer
 BASE = os.path.dirname(os.path.abspath(__file__))
 CSV_PATH = os.path.join(BASE, "matching_companies.csv")
 PROGRESS_PATH = os.path.join(BASE, "scrape_progress.json")
+EINLEITUNGSSTELLEN_PATH = os.path.join(BASE, "scrape_progress_einleitungsstellen.json")
 OUT_PATH = os.path.join(BASE, "elwas_einleiter.geojson")
 
 BRANCHE_MAP = {
@@ -118,10 +119,39 @@ def format_mengen_text(by_type):
     return "; ".join(parts)
 
 
+def unique_gewaesser_connections(einleitungsstellen):
+    """Dedupe by receiving water body name, keep one representative WGS84
+    point per unique Gewaesser so we can draw one connecting line each
+    (instead of one line per individual Einleitungsstelle, which for some
+    companies would mean 20+ overlapping lines)."""
+    seen = {}
+    for e in einleitungsstellen or []:
+        if "error" in e:
+            continue
+        name = e.get("gewaesser_name")
+        ost = e.get("utm_east")
+        nord = e.get("utm_north")
+        if not name or not ost or not nord:
+            continue
+        if name in seen:
+            continue
+        try:
+            lon, lat = transformer.transform(float(ost), float(nord))
+        except (ValueError, TypeError):
+            continue
+        seen[name] = {"gewaesser": name, "lat": round(lat, 6), "lon": round(lon, 6)}
+    return list(seen.values())
+
+
 def main():
     df = pd.read_csv(CSV_PATH)
     with open(PROGRESS_PATH, encoding="utf-8") as f:
         progress = json.load(f)
+
+    einleitungsstellen_progress = {}
+    if os.path.exists(EINLEITUNGSSTELLEN_PATH):
+        with open(EINLEITUNGSSTELLEN_PATH, encoding="utf-8") as f:
+            einleitungsstellen_progress = json.load(f)
 
     features = []
     skipped_no_coords = []
@@ -160,6 +190,10 @@ def main():
         district = row.get("District", "")
         kreis = DISTRICT_TO_KREIS.get(district, district)
 
+        es_data = einleitungsstellen_progress.get(bet_nr, {})
+        einleitungen = unique_gewaesser_connections(es_data.get("einleitungsstellen", []))
+        gewaesser_liste = ", ".join(e["gewaesser"] for e in einleitungen)
+
         feature = {
             "type": "Feature",
             "geometry": {"type": "Point", "coordinates": [lon, lat]},
@@ -174,6 +208,8 @@ def main():
                 "mengen_je_typ": by_type,
                 "mengen_text": mengen_text,
                 "anzahl_anfallstellen": len(anfallstellen),
+                "einleitungen": einleitungen,
+                "gewaesser_liste": gewaesser_liste,
                 "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
             },
         }
@@ -189,6 +225,8 @@ def main():
     print(f"Skipped (no coordinates): {len(skipped_no_coords)} {skipped_no_coords}")
     with_mengen = sum(1 for ft in features if ft["properties"]["mengen_text"])
     print(f"Features with at least one quantified Anfallstelle: {with_mengen}")
+    with_gewaesser = sum(1 for ft in features if ft["properties"]["einleitungen"])
+    print(f"Features with at least one Gewaesser-connection: {with_gewaesser}")
     print(f"Output: {OUT_PATH}")
 
 

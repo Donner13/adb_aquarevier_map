@@ -80,35 +80,60 @@ async def discover_search_fields(frame):
     return result
 
 
-async def fill_regional_search(frame, kreis_or_gemeinde_text):
+async def fill_regional_search(page, frame, kreis_or_gemeinde_text):
     """The 'BR/Kreis/Gemeinde' field used across almost every ELWAS search
-    form (Regionale-Suche). It's a free-text field - typing a Kreis name
-    (e.g. 'Rhein-Erft-Kreis') is enough, no need to pick an autocomplete
-    suggestion for the plain text version of this component.
+    form (Regionale-Suche). This is NOT a simple autocomplete: typing
+    triggers an AJAX request that renders a small results table (Name /
+    Kennzahl) directly below the field. You must click the "Uebernehmen"
+    link in the matching row - typing alone and submitting leaves the
+    search unfiltered and shows "Bitte uebernehmen Sie einen Treffer aus
+    der Tabelle" instead of running the search. Confirmed on Klaeranlagen,
+    Grundwassermessstellen and (via the original antigravity CSV exports)
+    Einleitende Betriebe - this is the shared regional-search widget used
+    almost everywhere in ELWAS-WEB.
+
+    `page` must be passed explicitly for the keyboard.type() call (typing
+    goes through the OS-level keyboard API, not the frame).
     """
     field = frame.locator("input[id$='gemeindeName_idCommon2']")
     if await field.count() == 0:
         raise RuntimeError("Regional search field not found on this page")
-    await field.first.fill("")
-    await field.first.fill(kreis_or_gemeinde_text)
-    await frame.page.wait_for_timeout(300)
+    await field.first.click()
+    await page.keyboard.type(kreis_or_gemeinde_text, delay=120)
+
+    # The AJAX result table's render time is variable (server load, cold
+    # first-request-of-session, etc.) - poll for up to 8s instead of a
+    # fixed sleep, which was flaky (~1 in 3 runs missed the table).
+    accept_link = frame.locator("text=Übernehmen")
+    try:
+        await accept_link.first.wait_for(state="visible", timeout=8000)
+    except Exception:
+        accept_link = frame.locator("text=bernehmen")
+        try:
+            await accept_link.first.wait_for(state="visible", timeout=3000)
+        except Exception:
+            raise RuntimeError(f"No 'Übernehmen' match found in region picker table for '{kreis_or_gemeinde_text}'")
+    await accept_link.first.click()
+    await page.wait_for_timeout(1000)
 
 
 async def submit_search(frame, wait_ms=3000):
     btn = frame.locator("input[value='Suchen']")
     await btn.first.click()
-    await frame.page.wait_for_timeout(wait_ms)
+    await frame.wait_for_timeout(wait_ms)
 
 
 async def has_excel_export(frame):
     return await frame.locator("input[value*='Excel Export'], button:has-text('Excel Export')").count() > 0
 
 
-async def click_excel_export(frame, download_dir):
+async def click_excel_export(frame, page, download_dir):
     """Triggers the built-in Excel export and saves the file. Prefer this
     over row-by-row scraping whenever it's available - it returns the FULL
-    result set in one shot regardless of on-screen pagination."""
-    page = frame.page
+    result set in one shot regardless of on-screen pagination. `page` must
+    be passed explicitly (downloads are tracked at the Page level, and
+    `frame` may itself already be the top-level Page for deep-linked
+    datasets without an iframe)."""
     btn = frame.locator("input[value*='Excel Export'], button:has-text('Excel Export')").first
     async with page.expect_download() as dl_info:
         await btn.click()
@@ -130,7 +155,7 @@ async def open_detail_row(frame, index=0, wait_ms=2200):
     '<a>' link style used by e.g. Grundwassermessstellen)."""
     links = frame.locator("tbody.ui-datatable-data tr td input[type='submit'], tbody.ui-datatable-data tr td a, input.buttonLink")
     await links.nth(index).click()
-    await frame.page.wait_for_timeout(wait_ms)
+    await frame.wait_for_timeout(wait_ms)
 
 
 async def get_detail_tab_options(frame):
@@ -146,7 +171,7 @@ async def get_detail_tab_options(frame):
 async def switch_detail_tab(frame, label, wait_ms=1800):
     dd = frame.locator("select").first
     await dd.select_option(label=label)
-    await frame.page.wait_for_timeout(wait_ms)
+    await frame.wait_for_timeout(wait_ms)
 
 
 def extract_field(label, text):

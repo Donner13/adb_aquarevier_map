@@ -1,0 +1,971 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.288645326649166,
+          50.81470861818389
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2824590000400",
+        "name": "Eschweiler",
+        "kreis": "Städteregion Aachen",
+        "gewaesser": "Inde",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "232,15",
+        "mq_m3s": "2,78",
+        "hq_m3s": "330",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.129232554749707,
+          50.794679355108286
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2828200000200",
+        "name": "Haaren",
+        "kreis": "Städteregion Aachen",
+        "gewaesser": "Haarbach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "15,32",
+        "mq_m3s": "0,29",
+        "hq_m3s": "14,7",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.0948434150951245,
+          50.86651804724778
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2828300000200",
+        "name": "Herzogenrath 1",
+        "kreis": "Städteregion Aachen",
+        "gewaesser": "Wurm",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "96,29",
+        "mq_m3s": "1,91",
+        "hq_m3s": "46,1",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.097840714958121,
+          50.86659645114176
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2828400000200",
+        "name": "Herzogenrath 2",
+        "kreis": "Städteregion Aachen",
+        "gewaesser": "Broicher Bach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "41,39",
+        "mq_m3s": "0,32",
+        "hq_m3s": "9,86",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.111800925961391,
+          50.78257100876761
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2828100000100",
+        "name": "Kalkofen",
+        "kreis": "Städteregion Aachen",
+        "gewaesser": "Wurm",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "33,63",
+        "mq_m3s": "0,28",
+        "hq_m3s": "39,1",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.183334902574804,
+          50.728157847310776
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2824300000100",
+        "name": "Kornelimünster",
+        "kreis": "Städteregion Aachen",
+        "gewaesser": "Inde",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "65,02",
+        "mq_m3s": "0,72",
+        "hq_m3s": "96,4",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.245620641589594,
+          50.55454627539517
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2821530000200",
+        "name": "Monschau",
+        "kreis": "Städteregion Aachen",
+        "gewaesser": "Rur",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "143,63",
+        "mq_m3s": "3,77",
+        "hq_m3s": "110",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.210062773982838,
+          50.69081578516785
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2824450000100",
+        "name": "Mulartshütte",
+        "kreis": "Städteregion Aachen",
+        "gewaesser": "Vichtbach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "45,6",
+        "mq_m3s": "0,57",
+        "hq_m3s": "139",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.1910178016971,
+          50.64990187618415
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2824410000100",
+        "name": "Roetgen",
+        "kreis": "Städteregion Aachen",
+        "gewaesser": "Vichtbach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "6,74",
+        "mq_m3s": "",
+        "hq_m3s": "",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.35396730764704,
+          50.61518904934171
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2823100000100",
+        "name": "Rurberg",
+        "kreis": "Städteregion Aachen",
+        "gewaesser": "Weidenbach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "3,51",
+        "mq_m3s": "0,05",
+        "hq_m3s": "1,66",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.291717867964706,
+          51.135760497031214
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2842000000100",
+        "name": "Baltes",
+        "kreis": "Heinsberg",
+        "gewaesser": "Beeckbach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "19,65",
+        "mq_m3s": "0,1",
+        "hq_m3s": "2,02",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.181705691551939,
+          51.00477343934391
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2828890000200",
+        "name": "Honsdorf",
+        "kreis": "Heinsberg",
+        "gewaesser": "Beeckfließ",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "56,55",
+        "mq_m3s": "0,09",
+        "hq_m3s": "5",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.273294358410934,
+          51.161874695826754
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2843000000100",
+        "name": "Molzmühle",
+        "kreis": "Heinsberg",
+        "gewaesser": "Schwalm",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "52,93",
+        "mq_m3s": "0,41",
+        "hq_m3s": "5,62",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.179431271021075,
+          51.01494140678465
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2828900000200",
+        "name": "Randerath",
+        "kreis": "Heinsberg",
+        "gewaesser": "Wurm",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "310,52",
+        "mq_m3s": "3,34",
+        "hq_m3s": "35,7",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.104512672584068,
+          51.09789364491077
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2829100000100",
+        "name": "Stah",
+        "kreis": "Heinsberg",
+        "gewaesser": "Rur",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "2.135,15",
+        "mq_m3s": "21,4",
+        "hq_m3s": "356",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.930297765897721,
+          50.99296575546363
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2818100000200",
+        "name": "Süsterseel",
+        "kreis": "Heinsberg",
+        "gewaesser": "",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "68,75",
+        "mq_m3s": "",
+        "hq_m3s": "",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.559935034433481,
+          51.220094868551826
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2751250000100",
+        "name": "Büttger-Wald",
+        "kreis": "Rhein-Kreis Neuss",
+        "gewaesser": "Jüchener Bach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "81,31",
+        "mq_m3s": "0,09",
+        "hq_m3s": "1,23",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.638262925025722,
+          51.216693072148104
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2751270000100",
+        "name": "Kaarst",
+        "kreis": "Rhein-Kreis Neuss",
+        "gewaesser": "Nordkanal",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "105,98",
+        "mq_m3s": "0,32",
+        "hq_m3s": "3,71",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.648951776315505,
+          51.13218638454036
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2747900000200",
+        "name": "Neubrück",
+        "kreis": "Rhein-Kreis Neuss",
+        "gewaesser": "Erft",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "1.595,43",
+        "mq_m3s": "16,6",
+        "hq_m3s": "46,6",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.689027258589129,
+          51.15409406575572
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2748900000100",
+        "name": "Weckhoven",
+        "kreis": "Rhein-Kreis Neuss",
+        "gewaesser": "Gillbach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "95,39",
+        "mq_m3s": "0,46",
+        "hq_m3s": "4,28",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.373546600600496,
+          50.89733832222743
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2823900000200",
+        "name": "Altenburg 1",
+        "kreis": "Düren",
+        "gewaesser": "Rur",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "958,76",
+        "mq_m3s": "12,3",
+        "hq_m3s": "161",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.349347261306827,
+          50.92488396919894
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2825190000200",
+        "name": "Jülich Stadion",
+        "kreis": "Düren",
+        "gewaesser": "Rur",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "1.334,57",
+        "mq_m3s": "16,2",
+        "hq_m3s": "375",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.358637818660608,
+          50.89205099663896
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2824900000200",
+        "name": "Kirchberg 1",
+        "kreis": "Düren",
+        "gewaesser": "Inde",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "",
+        "mq_m3s": "",
+        "hq_m3s": "",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.35463984895882,
+          50.8522503750322
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2824900000300",
+        "name": "Lamersdorf",
+        "kreis": "Düren",
+        "gewaesser": "Inde",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "",
+        "mq_m3s": "",
+        "hq_m3s": "",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.274923531459659,
+          50.980725170926
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2825330000100",
+        "name": "Linnich 1",
+        "kreis": "Düren",
+        "gewaesser": "Rur",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "1.471,75",
+        "mq_m3s": "16,5",
+        "hq_m3s": "277",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.3716748815757285,
+          50.830150447776894
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2824890000300",
+        "name": "Luchem",
+        "kreis": "Düren",
+        "gewaesser": "Wehebach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "62,47",
+        "mq_m3s": "0,26",
+        "hq_m3s": "7,82",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.43356377256305,
+          50.859645846589665
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2823900000100",
+        "name": "Selhausen",
+        "kreis": "Düren",
+        "gewaesser": "Rur",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "934,75",
+        "mq_m3s": "12",
+        "hq_m3s": "154",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.257332270895842,
+          50.961771659554785
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2825349000100",
+        "name": "Welz",
+        "kreis": "Düren",
+        "gewaesser": "Merzbach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "98,16",
+        "mq_m3s": "0,32",
+        "hq_m3s": "23,8",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.452315276824991,
+          50.692715214177575
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2823500000100",
+        "name": "Zerkall 1",
+        "kreis": "Düren",
+        "gewaesser": "Rur",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "787",
+        "mq_m3s": "11,8",
+        "hq_m3s": "171",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.444108031645477,
+          50.68384724035857
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2823490000100",
+        "name": "Zerkall 2",
+        "kreis": "Düren",
+        "gewaesser": "Kall",
+        "betreiber": "Enwor",
+        "einzugsgebiet_km2": "74,53",
+        "mq_m3s": "",
+        "hq_m3s": "",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.825710026674856,
+          50.77910754022721
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2743000000100",
+        "name": "Bliesheim",
+        "kreis": "Rhein-Erft-Kreis",
+        "gewaesser": "Erft",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "604",
+        "mq_m3s": "2,47",
+        "hq_m3s": "55,8",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.835300953421223,
+          50.77447414427846
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2745400000100",
+        "name": "Bliesheim2",
+        "kreis": "Rhein-Erft-Kreis",
+        "gewaesser": "Liblarer Mühlengraben",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "0",
+        "mq_m3s": "",
+        "hq_m3s": "",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.7729126192743765,
+          50.75515773625508
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2744910000100",
+        "name": "Friesheim",
+        "kreis": "Rhein-Erft-Kreis",
+        "gewaesser": "Rotbach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "191",
+        "mq_m3s": "0,54",
+        "hq_m3s": "53,7",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.595790206392693,
+          50.97441026856028
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2747390000100",
+        "name": "Glesch",
+        "kreis": "Rhein-Erft-Kreis",
+        "gewaesser": "Erft",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "1.323",
+        "mq_m3s": "13,2",
+        "hq_m3s": "35,3",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.963324214799205,
+          50.81104904934136
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2731450500099",
+        "name": "Keldenich",
+        "kreis": "Rhein-Erft-Kreis",
+        "gewaesser": "Dickopsbach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "25,2",
+        "mq_m3s": "",
+        "hq_m3s": "",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.672949671365439,
+          50.864275441392365
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2746790000100",
+        "name": "Langenich",
+        "kreis": "Rhein-Erft-Kreis",
+        "gewaesser": "Neffelbach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "194,2",
+        "mq_m3s": "0,39",
+        "hq_m3s": "8,73",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.748528531675364,
+          50.38310876634081
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2718193000100",
+        "name": "Ahrhütte-Neuhof",
+        "kreis": "Euskirchen",
+        "gewaesser": "Ahr",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "124",
+        "mq_m3s": "1,27",
+        "hq_m3s": "74,5",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.792258977066158,
+          50.59548103375964
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2741500000100",
+        "name": "Arloff",
+        "kreis": "Euskirchen",
+        "gewaesser": "Erft",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "114,39",
+        "mq_m3s": "0,77",
+        "hq_m3s": "40,9",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.655303708419468,
+          50.71788114790887
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2746310000100",
+        "name": "Bessenich",
+        "kreis": "Euskirchen",
+        "gewaesser": "Neffelbach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "47,4",
+        "mq_m3s": "0,25",
+        "hq_m3s": "6,98",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.718260273044765,
+          50.63802835212547
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2741870000100",
+        "name": "Burg Veynau",
+        "kreis": "Euskirchen",
+        "gewaesser": "Veybach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "62,46",
+        "mq_m3s": "0,6",
+        "hq_m3s": "16,6",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.491249524286928,
+          50.577716182209876
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2822900000200",
+        "name": "Gemünd",
+        "kreis": "Euskirchen",
+        "gewaesser": "Urft",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "344,55",
+        "mq_m3s": "4,66",
+        "hq_m3s": "143",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4330303548049095,
+          50.482621037613114
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2822849000100",
+        "name": "Hellenthal",
+        "kreis": "Euskirchen",
+        "gewaesser": "Platißbach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "36,4",
+        "mq_m3s": "0,7",
+        "hq_m3s": "36,6",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.553717289164214,
+          50.54492900978096
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2822700000200",
+        "name": "Kall-Sportpl.",
+        "kreis": "Euskirchen",
+        "gewaesser": "Urft",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "131,11",
+        "mq_m3s": "1,35",
+        "hq_m3s": "76,5",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.759701935874402,
+          50.57166233955152
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2741490000200",
+        "name": "Möschemer Mühle",
+        "kreis": "Euskirchen",
+        "gewaesser": "Eschweiler Bach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "32,01",
+        "mq_m3s": "0,18",
+        "hq_m3s": "27,5",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.474375599532298,
+          50.47487387223258
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2822869000100",
+        "name": "Reifferscheid",
+        "kreis": "Euskirchen",
+        "gewaesser": "Reifferscheider Bach",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "48,95",
+        "mq_m3s": "0,76",
+        "hq_m3s": "37,9",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.46839004599511,
+          50.52482554995859
+        ]
+      },
+      "properties": {
+        "pegel_nr": "2822870000100",
+        "name": "Schleiden",
+        "kreis": "Euskirchen",
+        "gewaesser": "Olef",
+        "betreiber": "LANUV, NRW",
+        "einzugsgebiet_km2": "159,41",
+        "mq_m3s": "2,68",
+        "hq_m3s": "89,7",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    }
+  ]
+}

@@ -1,0 +1,602 @@
+{
+  "222137": {
+    "name": "Erkelenz-Mitte",
+    "gemeinde": "Erkelenz",
+    "kreis": "Heinsberg",
+    "utm_east": "311599",
+    "utm_north": "5663858",
+    "betreiber": "Stadt Erkelenz",
+    "gewaesser": "Beeckbach",
+    "ausbaugroesse_ew": "48.000"
+  },
+  "222144": {
+    "name": "Flahstrass",
+    "gemeinde": "Geilenkirchen",
+    "kreis": "Heinsberg",
+    "utm_east": "301886",
+    "utm_north": "5654230",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Wurm",
+    "ausbaugroesse_ew": "70.000"
+  },
+  "222146": {
+    "name": "Kirchhoven",
+    "gemeinde": "Heinsberg",
+    "kreis": "Heinsberg",
+    "utm_east": "294401",
+    "utm_north": "5663360",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Flutgraben",
+    "ausbaugroesse_ew": "52.000"
+  },
+  "222148": {
+    "name": "Dremmen",
+    "gemeinde": "Heinsberg",
+    "kreis": "Heinsberg",
+    "utm_east": "300874",
+    "utm_north": "5659207",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Wurm",
+    "ausbaugroesse_ew": "11.000"
+  },
+  "222149": {
+    "name": "Hückelhoven-Ratheim",
+    "gemeinde": "Hückelhoven",
+    "kreis": "Heinsberg",
+    "utm_east": "301617",
+    "utm_north": "5660868",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Mühlenbach",
+    "ausbaugroesse_ew": "75.000"
+  },
+  "222153": {
+    "name": "Frelenberg",
+    "gemeinde": "Übach-Palenberg",
+    "kreis": "Heinsberg",
+    "utm_east": "296568",
+    "utm_north": "5648163",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Wurm",
+    "ausbaugroesse_ew": "65.500"
+  },
+  "222154": {
+    "name": "Waldfeucht Haaren",
+    "gemeinde": "Waldfeucht",
+    "kreis": "Heinsberg",
+    "utm_east": "292943",
+    "utm_north": "5664718",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Kitschbach",
+    "ausbaugroesse_ew": "17.500"
+  },
+  "222155": {
+    "name": "Wassenberg",
+    "gemeinde": "Wassenberg",
+    "kreis": "Heinsberg",
+    "utm_east": "299855",
+    "utm_north": "5664521",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Myhler Bach",
+    "ausbaugroesse_ew": "25.000"
+  },
+  "222156": {
+    "name": "Wegberg-Mitte",
+    "gemeinde": "Wegberg",
+    "kreis": "Heinsberg",
+    "utm_east": "309418",
+    "utm_north": "5670308",
+    "betreiber": "Stadt Wegberg",
+    "gewaesser": "Schwalm",
+    "ausbaugroesse_ew": "46.790"
+  },
+  "222159": {
+    "name": "Wegberg-Arsbeck/Dalheim",
+    "gemeinde": "Wegberg",
+    "kreis": "Heinsberg",
+    "utm_east": "302881",
+    "utm_north": "5670082",
+    "betreiber": "Stadt Wegberg",
+    "gewaesser": "Afslagtak Rode Beek Vlodrop",
+    "ausbaugroesse_ew": "20.000"
+  },
+  "222598": {
+    "name": "Mönchengladbach GWK I",
+    "gemeinde": "Mönchengladbach",
+    "kreis": "Mönchengladbach",
+    "utm_east": "323015",
+    "utm_north": "5679916",
+    "betreiber": "Niersverband",
+    "gewaesser": "Niers",
+    "ausbaugroesse_ew": "632.500"
+  },
+  "222595": {
+    "name": "Düsseldorf-Nord",
+    "gemeinde": "Meerbusch",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "338929",
+    "utm_north": "5683290",
+    "betreiber": "Stadt Düsseldorf",
+    "gewaesser": "Rhein",
+    "ausbaugroesse_ew": "600.000"
+  },
+  "222626": {
+    "name": "Dormagen-Rheinfeld",
+    "gemeinde": "Dormagen",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "349731",
+    "utm_north": "5662307",
+    "betreiber": "Stadt Dormagen",
+    "gewaesser": "Rhein",
+    "ausbaugroesse_ew": "95.000"
+  },
+  "222627": {
+    "name": "Grevenbroich",
+    "gemeinde": "Grevenbroich",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "331906",
+    "utm_north": "5664680",
+    "betreiber": "Erftverband",
+    "gewaesser": "Wevelinghovener Entwässerungsgraben",
+    "ausbaugroesse_ew": "97.000"
+  },
+  "222628": {
+    "name": "Wevelinghoven",
+    "gemeinde": "Grevenbroich",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "334298",
+    "utm_north": "5666199",
+    "betreiber": "Erftverband",
+    "gewaesser": "Erft",
+    "ausbaugroesse_ew": "27.000"
+  },
+  "222631": {
+    "name": "Glehn",
+    "gemeinde": "Korschenbroich",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "330143",
+    "utm_north": "5672033",
+    "betreiber": "Erftverband",
+    "gewaesser": "Jüchener Bach",
+    "ausbaugroesse_ew": "34.000"
+  },
+  "222632": {
+    "name": "Neuss-Ost",
+    "gemeinde": "Neuss",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "340743",
+    "utm_north": "5675013",
+    "betreiber": "InfraStruktur Neuss AöR",
+    "gewaesser": "Rhein",
+    "ausbaugroesse_ew": "420.000"
+  },
+  "222633": {
+    "name": "Neuss-Süd",
+    "gemeinde": "Neuss",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "339635",
+    "utm_north": "5670915",
+    "betreiber": "InfraStruktur Neuss AöR",
+    "gewaesser": "Erft",
+    "ausbaugroesse_ew": "121.200"
+  },
+  "222634": {
+    "name": "Anstel",
+    "gemeinde": "Rommerskirchen",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "339967",
+    "utm_north": "5659641",
+    "betreiber": "Erftverband",
+    "gewaesser": "Gillbach",
+    "ausbaugroesse_ew": "12.000"
+  },
+  "222644": {
+    "name": "Kaarst- Nordkanal",
+    "gemeinde": "Kaarst",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "329810",
+    "utm_north": "5677841",
+    "betreiber": "Erftverband",
+    "gewaesser": "Nordkanal",
+    "ausbaugroesse_ew": "80.000"
+  },
+  "22235": {
+    "name": "Düren",
+    "gemeinde": "Düren",
+    "kreis": "Düren",
+    "utm_east": "319884",
+    "utm_north": "5635237",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Rur",
+    "ausbaugroesse_ew": "310.000"
+  },
+  "22236": {
+    "name": "Heimbach",
+    "gemeinde": "Heimbach",
+    "kreis": "Düren",
+    "utm_east": "321021",
+    "utm_north": "5613043",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Rur",
+    "ausbaugroesse_ew": "11.000"
+  },
+  "22237": {
+    "name": "Hausen-Blens",
+    "gemeinde": "Heimbach",
+    "kreis": "Düren",
+    "utm_east": "321155",
+    "utm_north": "5614961",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Rur",
+    "ausbaugroesse_ew": "2.500"
+  },
+  "22241": {
+    "name": "Hürtgenwald-Gey",
+    "gemeinde": "Hürtgenwald",
+    "kreis": "Düren",
+    "utm_east": "318021",
+    "utm_north": "5625932",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Birgeler Bach",
+    "ausbaugroesse_ew": "4.500"
+  },
+  "22244": {
+    "name": "Schophoven",
+    "gemeinde": "Inden",
+    "kreis": "Düren",
+    "utm_east": "316511",
+    "utm_north": "5640106",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Rur",
+    "ausbaugroesse_ew": "2.200"
+  },
+  "22245": {
+    "name": "Jülich",
+    "gemeinde": "Jülich",
+    "kreis": "Düren",
+    "utm_east": "313347",
+    "utm_north": "5645701",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Rur",
+    "ausbaugroesse_ew": "90.000"
+  },
+  "22254": {
+    "name": "Langerwehe",
+    "gemeinde": "Langerwehe",
+    "kreis": "Düren",
+    "utm_east": "314664",
+    "utm_north": "5633434",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Wehebach",
+    "ausbaugroesse_ew": "11.620"
+  },
+  "22258": {
+    "name": "Linnich",
+    "gemeinde": "Linnich",
+    "kreis": "Düren",
+    "utm_east": "308355",
+    "utm_north": "5652218",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Rur",
+    "ausbaugroesse_ew": "30.000"
+  },
+  "22263": {
+    "name": "Schmidt",
+    "gemeinde": "Nideggen",
+    "kreis": "Düren",
+    "utm_east": "318160",
+    "utm_north": "5616651",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Sollerbach",
+    "ausbaugroesse_ew": "6.000"
+  },
+  "22264": {
+    "name": "Nideggen-Embken",
+    "gemeinde": "Nideggen",
+    "kreis": "Düren",
+    "utm_east": "329651",
+    "utm_north": "5617460",
+    "betreiber": "Erftverband",
+    "gewaesser": "Neffelbach",
+    "ausbaugroesse_ew": "6.500"
+  },
+  "22279": {
+    "name": "Kläranlage Kirspenich",
+    "gemeinde": "Bad Münstereifel",
+    "kreis": "Euskirchen",
+    "utm_east": "343924",
+    "utm_north": "5608360",
+    "betreiber": "Erftverband",
+    "gewaesser": "Erft",
+    "ausbaugroesse_ew": "27.000"
+  },
+  "22295": {
+    "name": "Wald",
+    "gemeinde": "Bad Münstereifel",
+    "kreis": "Euskirchen",
+    "utm_east": "349217",
+    "utm_north": "5600010",
+    "betreiber": "Stadt Bad Muenstereifel",
+    "gewaesser": "Effelsberger Bach",
+    "ausbaugroesse_ew": "1.500"
+  },
+  "22296": {
+    "name": "Blankenheim",
+    "gemeinde": "Blankenheim",
+    "kreis": "Euskirchen",
+    "utm_east": "333771",
+    "utm_north": "5589306",
+    "betreiber": "Gemeinde Blankenheim",
+    "gewaesser": "Ahr",
+    "ausbaugroesse_ew": "4.500"
+  },
+  "22297": {
+    "name": "Freilingen",
+    "gemeinde": "Blankenheim",
+    "kreis": "Euskirchen",
+    "utm_east": "338977",
+    "utm_north": "5585978",
+    "betreiber": "Gemeinde Blankenheim",
+    "gewaesser": "Mühlenbach",
+    "ausbaugroesse_ew": "2.300"
+  },
+  "22298": {
+    "name": "Ahrdorf",
+    "gemeinde": "Blankenheim",
+    "kreis": "Euskirchen",
+    "utm_east": "342528",
+    "utm_north": "5581939",
+    "betreiber": "Gemeinde Blankenheim",
+    "gewaesser": "Ahbach",
+    "ausbaugroesse_ew": "1.500"
+  },
+  "22299": {
+    "name": "Ahrhuette",
+    "gemeinde": "Blankenheim",
+    "kreis": "Euskirchen",
+    "utm_east": "339398",
+    "utm_north": "5583922",
+    "betreiber": "Gemeinde Blankenheim",
+    "gewaesser": "Ahr",
+    "ausbaugroesse_ew": "1.500"
+  },
+  "222100": {
+    "name": "Reetz",
+    "gemeinde": "Blankenheim",
+    "kreis": "Euskirchen",
+    "utm_east": "336422",
+    "utm_north": "5588067",
+    "betreiber": "Gemeinde Blankenheim",
+    "gewaesser": "Reetzer Bach",
+    "ausbaugroesse_ew": "800"
+  },
+  "222101": {
+    "name": "Huengersdorf",
+    "gemeinde": "Blankenheim",
+    "kreis": "Euskirchen",
+    "utm_east": "335336",
+    "utm_north": "5586072",
+    "betreiber": "Gemeinde Blankenheim",
+    "gewaesser": "Borbach",
+    "ausbaugroesse_ew": "1.500"
+  },
+  "222102": {
+    "name": "Nonnenbach",
+    "gemeinde": "Blankenheim",
+    "kreis": "Euskirchen",
+    "utm_east": "331954",
+    "utm_north": "5587574",
+    "betreiber": "Gemeinde Blankenheim",
+    "gewaesser": "Nonnenbach",
+    "ausbaugroesse_ew": "300"
+  },
+  "222103": {
+    "name": "Rohr",
+    "gemeinde": "Blankenheim",
+    "kreis": "Euskirchen",
+    "utm_east": "340589",
+    "utm_north": "5591484",
+    "betreiber": "Gemeinde Blankenheim",
+    "gewaesser": "Armuthsbach",
+    "ausbaugroesse_ew": "1.000"
+  },
+  "2221": {
+    "name": "Aachen-Soers",
+    "gemeinde": "Aachen",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "295983",
+    "utm_north": "5632531",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Wurm",
+    "ausbaugroesse_ew": "458.000"
+  },
+  "2222": {
+    "name": "Eilendorf",
+    "gemeinde": "Aachen",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "299074",
+    "utm_north": "5630659",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Haarbach",
+    "ausbaugroesse_ew": "87.000"
+  },
+  "2223": {
+    "name": "Aachen-Horbach",
+    "gemeinde": "Aachen",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "292963",
+    "utm_north": "5636200",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Amstelbach",
+    "ausbaugroesse_ew": "34.000"
+  },
+  "2226": {
+    "name": "Aachen-Brand",
+    "gemeinde": "Aachen",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "301510",
+    "utm_north": "5625766",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Inde",
+    "ausbaugroesse_ew": "41.910"
+  },
+  "2227": {
+    "name": "Alsdorf-Broichtal",
+    "gemeinde": "Alsdorf",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "298271",
+    "utm_north": "5638769",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Broicher Bach",
+    "ausbaugroesse_ew": "30.000"
+  },
+  "2228": {
+    "name": "Bettendorf",
+    "gemeinde": "Alsdorf",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "303902",
+    "utm_north": "5641160",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Freialdenhovener Fließ",
+    "ausbaugroesse_ew": "50.000"
+  },
+  "2229": {
+    "name": "Setterich",
+    "gemeinde": "Baesweiler",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "304252",
+    "utm_north": "5645857",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Gereonsweiler Fließ",
+    "ausbaugroesse_ew": "50.000"
+  },
+  "22212": {
+    "name": "Eschweiler-Weisweiler-ZKA",
+    "gemeinde": "Eschweiler",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "312358",
+    "utm_north": "5634551",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Inde",
+    "ausbaugroesse_ew": "157.700"
+  },
+  "22213": {
+    "name": "Herzogenrath-Worm",
+    "gemeinde": "Herzogenrath",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "294725",
+    "utm_north": "5640924",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Wurm",
+    "ausbaugroesse_ew": "50.000"
+  },
+  "22214": {
+    "name": "Steinbusch",
+    "gemeinde": "Herzogenrath",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "294955",
+    "utm_north": "5637270",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Wurm",
+    "ausbaugroesse_ew": "32.000"
+  },
+  "222475": {
+    "name": "Bedburg Kaster",
+    "gemeinde": "Bedburg",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "330101",
+    "utm_north": "5653696",
+    "betreiber": "Erftverband",
+    "gewaesser": "Erft",
+    "ausbaugroesse_ew": "66.000"
+  },
+  "222477": {
+    "name": "Bergheim Auenheim",
+    "gemeinde": "Bergheim",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "336027",
+    "utm_north": "5652425",
+    "betreiber": "Erftverband",
+    "gewaesser": "Gillbach",
+    "ausbaugroesse_ew": "23.000"
+  },
+  "222480": {
+    "name": "Bergheim Glessen",
+    "gemeinde": "Bergheim",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "342751",
+    "utm_north": "5649194",
+    "betreiber": "Erftverband",
+    "gewaesser": "Pulheimer Bach",
+    "ausbaugroesse_ew": "9.000"
+  },
+  "222482": {
+    "name": "Bergheim Kenten",
+    "gemeinde": "Bergheim",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "335204",
+    "utm_north": "5645755",
+    "betreiber": "Erftverband",
+    "gewaesser": "Erft",
+    "ausbaugroesse_ew": "120.000"
+  },
+  "222483": {
+    "name": "Brühl",
+    "gemeinde": "Brühl",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "355271",
+    "utm_north": "5633919",
+    "betreiber": "Stadt Brühl",
+    "gewaesser": "Palmersdorfer Bach",
+    "ausbaugroesse_ew": "70.000"
+  },
+  "222485": {
+    "name": "Elsdorf",
+    "gemeinde": "Elsdorf",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "330333",
+    "utm_north": "5647382",
+    "betreiber": "Erftverband",
+    "gewaesser": "Elsdorfer Fließ",
+    "ausbaugroesse_ew": "20.400"
+  },
+  "222486": {
+    "name": "Erftstadt",
+    "gemeinde": "Erftstadt",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "344531",
+    "utm_north": "5633507",
+    "betreiber": "Erftverband",
+    "gewaesser": "Erft",
+    "ausbaugroesse_ew": "70.000"
+  },
+  "222487": {
+    "name": "Frechen",
+    "gemeinde": "Frechen",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "347778",
+    "utm_north": "5642251",
+    "betreiber": "Erftverband",
+    "gewaesser": "Frechener Bach",
+    "ausbaugroesse_ew": "56.100"
+  },
+  "222489": {
+    "name": "KA Hürth Stotzheim",
+    "gemeinde": "Hürth",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "349851",
+    "utm_north": "5641483",
+    "betreiber": "Stadtwerke Hürth AöR",
+    "gewaesser": "Südlicher Randkanal",
+    "ausbaugroesse_ew": "92.750"
+  },
+  "222490": {
+    "name": "Pulheim",
+    "gemeinde": "Pulheim",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "346976",
+    "utm_north": "5653753",
+    "betreiber": "Pulheim",
+    "gewaesser": "Kölner Randkanal",
+    "ausbaugroesse_ew": "80.000"
+  }
+}

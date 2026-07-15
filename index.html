@@ -1215,11 +1215,24 @@
                     if (p.mengen_text) {
                         html += `<div class="popup-detail">📊 Abwassermenge: ${p.mengen_text}</div>`;
                     }
+                    if (p.gewaesser_liste) {
+                        html += `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>`;
+                    }
                     html += `
                             <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
                         </div>
                     `;
                     layer.bindPopup(html);
+
+                    // Verbindungslinie(n) zum Gewaesser, in das eingeleitet wird
+                    (p.einleitungen || []).forEach(function(e) {
+                        L.polyline([layer.getLatLng(), [e.lat, e.lon]], {
+                            color: primaryColor,
+                            weight: 1.5,
+                            dashArray: '4,4',
+                            opacity: 0.7
+                        }).bindTooltip('🌊 ' + e.gewaesser, { sticky: true }).addTo(elwasLayer);
+                    });
                 }
             }).addTo(elwasLayer);
         }
@@ -1268,6 +1281,146 @@
             });
         });
 
+        // Kläranlagen (kommunales Abwasser, ELWAS)
+        const klaeranlagenLayer = L.layerGroup().addTo(map);
+        fetch('klaeranlagen.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    pointToLayer: function(feature, latlng) {
+                        const size = 22;
+                        const color = "#0891b2";
+                        const html = `
+                            <div style="
+                                width: ${size}px;
+                                height: ${size}px;
+                                background-color: ${color};
+                                border: 2px solid #ffffff;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 12px;
+                                box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                            ">🚰</div>
+                        `;
+                        return L.marker(latlng, {
+                            icon: L.divIcon({ html, className: 'klaeranlage-marker', iconSize: [size, size], iconAnchor: [size / 2, size / 2] })
+                        });
+                    },
+                    onEachFeature: function(feature, layer) {
+                        const p = feature.properties;
+                        let html = `
+                            <div class="popup-card">
+                                <div class="popup-group" style="color: #0891b2">Kläranlage</div>
+                                <div class="popup-title">${p.name || 'Unbekannt'}</div>
+                                <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
+                        `;
+                        if (p.betreiber) html += `<div class="popup-detail">🏢 Betreiber: ${p.betreiber}</div>`;
+                        if (p.gewaesser) html += `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser}</div>`;
+                        if (p.ausbaugroesse_ew) html += `<div class="popup-detail">📊 Ausbaugröße: ${p.ausbaugroesse_ew} EW</div>`;
+                        html += `
+                                <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
+                            </div>
+                        `;
+                        layer.bindPopup(html);
+                    }
+                }).addTo(klaeranlagenLayer);
+            })
+            .catch(err => console.log("klaeranlagen layer not loaded:", err));
+
+        // Grundwassermessstellen (ELWAS) - 4000+ Punkte, daher geclustert und
+        // standardmaessig AUS (Volumen wuerde die Karte sonst zukleistern)
+        const gwmLayer = L.layerGroup();
+        let gwmLoaded = false;
+        function loadGwmLayer() {
+            if (gwmLoaded) return;
+            gwmLoaded = true;
+            fetch('grundwassermessstellen.geojson')
+                .then(res => res.ok ? res.json() : Promise.reject())
+                .then(data => {
+                    L.geoJSON(data, {
+                        pointToLayer: function(feature, latlng) {
+                            // Muss ein echter L.marker sein (kein circleMarker/Path) -
+                            // Leaflet.markercluster rendert Vektor-Layer nicht.
+                            const icon = L.divIcon({
+                                html: '<div style="width:10px;height:10px;background:#0ea5e9;border:1px solid #fff;border-radius:50%;box-shadow:0 0 3px rgba(0,0,0,0.5);"></div>',
+                                className: 'gwm-marker',
+                                iconSize: [10, 10],
+                                iconAnchor: [5, 5]
+                            });
+                            return L.marker(latlng, { icon: icon });
+                        },
+                        onEachFeature: function(feature, layer) {
+                            const p = feature.properties;
+                            const html = `
+                                <div class="popup-card">
+                                    <div class="popup-group" style="color: #0ea5e9">Grundwassermessstelle</div>
+                                    <div class="popup-title">${p.name || 'Unbekannt'}</div>
+                                    <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
+                                    ${p.eigentuemer ? `<div class="popup-detail">🏢 Eigentümer: ${p.eigentuemer}</div>` : ''}
+                                    ${p.messstellenart ? `<div class="popup-detail">🔧 Art: ${p.messstellenart}</div>` : ''}
+                                    <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Koordinaten ${p.genauigkeit}. Quelle: ELWAS-WEB (Land NRW)</div>
+                                </div>
+                            `;
+                            layer.bindPopup(html);
+                        }
+                    }).addTo(gwmLayer);
+                })
+                .catch(err => console.log("grundwassermessstellen layer not loaded:", err));
+        }
+        map.on('overlayadd', function(e) {
+            if (e.layer === gwmLayer) loadGwmLayer();
+        });
+
+        // Pegel (Flusspegel Rur/Erft etc., ELWAS)
+        const pegelLayer = L.layerGroup().addTo(map);
+        fetch('pegel.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    pointToLayer: function(feature, latlng) {
+                        const size = 22;
+                        const color = "#2563eb";
+                        const html = `
+                            <div style="
+                                width: ${size}px;
+                                height: ${size}px;
+                                background-color: ${color};
+                                border: 2px solid #ffffff;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 12px;
+                                box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                            ">📏</div>
+                        `;
+                        return L.marker(latlng, {
+                            icon: L.divIcon({ html, className: 'pegel-marker', iconSize: [size, size], iconAnchor: [size / 2, size / 2] })
+                        });
+                    },
+                    onEachFeature: function(feature, layer) {
+                        const p = feature.properties;
+                        let html = `
+                            <div class="popup-card">
+                                <div class="popup-group" style="color: #2563eb">Pegel</div>
+                                <div class="popup-title">${p.name || 'Unbekannt'}</div>
+                                <div class="popup-detail">📍 ${p.kreis || ''}</div>
+                        `;
+                        if (p.gewaesser) html += `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>`;
+                        if (p.einzugsgebiet_km2) html += `<div class="popup-detail">📐 Einzugsgebiet: ${p.einzugsgebiet_km2} km²</div>`;
+                        if (p.mq_m3s) html += `<div class="popup-detail">📊 MQ: ${p.mq_m3s} m³/s, HQ: ${p.hq_m3s || '–'} m³/s</div>`;
+                        html += `
+                                <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
+                            </div>
+                        `;
+                        layer.bindPopup(html);
+                    }
+                }).addTo(pegelLayer);
+            })
+            .catch(err => console.log("pegel layer not loaded:", err));
+
         // Map layer controller
         const baseMaps = {
             "Dunkles Design (Standard)": baseDark,
@@ -1291,7 +1444,10 @@
             "Einzugsgebiete Hydrologisch (LANUV)": wmsCatchments,
             "Tagebaue & Bergbaufelder (GD)": wmsMining,
             "Wasserschutzgebiete (LANUV)": wmsWSG,
-            "🏭 Industrieeinleiter (ELWAS)": elwasLayer
+            "🏭 Industrieeinleiter (ELWAS)": elwasLayer,
+            "🚰 Kläranlagen (ELWAS)": klaeranlagenLayer,
+            "💧 Grundwassermessstellen (ELWAS, 4400+)": gwmLayer,
+            "📏 Pegel (ELWAS)": pegelLayer
         };
 
         L.control.layers(baseMaps, overlayMaps, { position: 'topright' }).addTo(map);

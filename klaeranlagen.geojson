@@ -1,0 +1,1205 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.309343278731306,
+          51.09522500542794
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222137",
+        "name": "Erkelenz-Mitte",
+        "gemeinde": "Erkelenz",
+        "kreis": "Heinsberg",
+        "betreiber": "Stadt Erkelenz",
+        "gewaesser": "Beeckbach",
+        "ausbaugroesse_ew": "48.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.176070832445611,
+          51.005478649284534
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222144",
+        "name": "Flahstrass",
+        "gemeinde": "Geilenkirchen",
+        "kreis": "Heinsberg",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Wurm",
+        "ausbaugroesse_ew": "70.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.064343583761883,
+          51.084846065319816
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222146",
+        "name": "Kirchhoven",
+        "gemeinde": "Heinsberg",
+        "kreis": "Heinsberg",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Flutgraben",
+        "ausbaugroesse_ew": "52.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.158931109171913,
+          51.04982974895969
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222148",
+        "name": "Dremmen",
+        "gemeinde": "Heinsberg",
+        "kreis": "Heinsberg",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Wurm",
+        "ausbaugroesse_ew": "11.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.168607706297068,
+          51.06500496404554
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222149",
+        "name": "Hückelhoven-Ratheim",
+        "gemeinde": "Hückelhoven",
+        "kreis": "Heinsberg",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Mühlenbach",
+        "ausbaugroesse_ew": "75.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.103764480026786,
+          50.94913513648078
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222153",
+        "name": "Frelenberg",
+        "gemeinde": "Übach-Palenberg",
+        "kreis": "Heinsberg",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Wurm",
+        "ausbaugroesse_ew": "65.500",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.042776691758152,
+          51.096517116556285
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222154",
+        "name": "Waldfeucht Haaren",
+        "gemeinde": "Waldfeucht",
+        "kreis": "Heinsberg",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Kitschbach",
+        "ausbaugroesse_ew": "17.500",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.141470388301471,
+          51.097201714992174
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222155",
+        "name": "Wassenberg",
+        "gemeinde": "Wassenberg",
+        "kreis": "Heinsberg",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Myhler Bach",
+        "ausbaugroesse_ew": "25.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.274823383996923,
+          51.152439224956936
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222156",
+        "name": "Wegberg-Mitte",
+        "gemeinde": "Wegberg",
+        "kreis": "Heinsberg",
+        "betreiber": "Stadt Wegberg",
+        "gewaesser": "Schwalm",
+        "ausbaugroesse_ew": "46.790",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.181592211902917,
+          51.148195545386294
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222159",
+        "name": "Wegberg-Arsbeck/Dalheim",
+        "gemeinde": "Wegberg",
+        "kreis": "Heinsberg",
+        "betreiber": "Stadt Wegberg",
+        "gewaesser": "Afslagtak Rode Beek Vlodrop",
+        "ausbaugroesse_ew": "20.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.464301906228778,
+          51.24311807382606
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222598",
+        "name": "Mönchengladbach GWK I",
+        "gemeinde": "Mönchengladbach",
+        "kreis": "Mönchengladbach",
+        "betreiber": "Niersverband",
+        "gewaesser": "Niers",
+        "ausbaugroesse_ew": "632.500",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.690577165860264,
+          51.27814828938008
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222595",
+        "name": "Düsseldorf-Nord",
+        "gemeinde": "Meerbusch",
+        "kreis": "Rhein-Kreis Neuss",
+        "betreiber": "Stadt Düsseldorf",
+        "gewaesser": "Rhein",
+        "ausbaugroesse_ew": "600.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.854111400998682,
+          51.09254923366005
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222626",
+        "name": "Dormagen-Rheinfeld",
+        "gemeinde": "Dormagen",
+        "kreis": "Rhein-Kreis Neuss",
+        "betreiber": "Stadt Dormagen",
+        "gewaesser": "Rhein",
+        "ausbaugroesse_ew": "95.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.598686544066708,
+          51.10892244892378
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222627",
+        "name": "Grevenbroich",
+        "gemeinde": "Grevenbroich",
+        "kreis": "Rhein-Kreis Neuss",
+        "betreiber": "Erftverband",
+        "gewaesser": "Wevelinghovener Entwässerungsgraben",
+        "ausbaugroesse_ew": "97.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.632128240513129,
+          51.12326659127858
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222628",
+        "name": "Wevelinghoven",
+        "gemeinde": "Grevenbroich",
+        "kreis": "Rhein-Kreis Neuss",
+        "betreiber": "Erftverband",
+        "gewaesser": "Erft",
+        "ausbaugroesse_ew": "27.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.5700575035564155,
+          51.17446355354255
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222631",
+        "name": "Glehn",
+        "gemeinde": "Korschenbroich",
+        "kreis": "Rhein-Kreis Neuss",
+        "betreiber": "Erftverband",
+        "gewaesser": "Jüchener Bach",
+        "ausbaugroesse_ew": "34.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.720244878852523,
+          51.20428945485872
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222632",
+        "name": "Neuss-Ost",
+        "gemeinde": "Neuss",
+        "kreis": "Rhein-Kreis Neuss",
+        "betreiber": "InfraStruktur Neuss AöR",
+        "gewaesser": "Rhein",
+        "ausbaugroesse_ew": "420.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.70622682003961,
+          51.16715897985785
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222633",
+        "name": "Neuss-Süd",
+        "gemeinde": "Neuss",
+        "kreis": "Rhein-Kreis Neuss",
+        "betreiber": "InfraStruktur Neuss AöR",
+        "gewaesser": "Erft",
+        "ausbaugroesse_ew": "121.200",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.71597386822621,
+          51.06595334893636
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222634",
+        "name": "Anstel",
+        "gemeinde": "Rommerskirchen",
+        "kreis": "Rhein-Kreis Neuss",
+        "betreiber": "Erftverband",
+        "gewaesser": "Gillbach",
+        "ausbaugroesse_ew": "12.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.56254453598293,
+          51.22654394296185
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222644",
+        "name": "Kaarst- Nordkanal",
+        "gemeinde": "Kaarst",
+        "kreis": "Rhein-Kreis Neuss",
+        "betreiber": "Erftverband",
+        "gewaesser": "Nordkanal",
+        "ausbaugroesse_ew": "80.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.441707770234258,
+          50.840769450961574
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22235",
+        "name": "Düren",
+        "gemeinde": "Düren",
+        "kreis": "Düren",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Rur",
+        "ausbaugroesse_ew": "310.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.468619977262434,
+          50.64172957878742
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22236",
+        "name": "Heimbach",
+        "gemeinde": "Heimbach",
+        "kreis": "Düren",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Rur",
+        "ausbaugroesse_ew": "11.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.469587151105091,
+          50.65900253975913
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22237",
+        "name": "Hausen-Blens",
+        "gemeinde": "Heimbach",
+        "kreis": "Düren",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Rur",
+        "ausbaugroesse_ew": "2.500",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.4198852104289665,
+          50.756593565959506
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22241",
+        "name": "Hürtgenwald-Gey",
+        "gemeinde": "Hürtgenwald",
+        "kreis": "Düren",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Birgeler Bach",
+        "ausbaugroesse_ew": "4.500",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.391410453008148,
+          50.88344997540527
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22244",
+        "name": "Schophoven",
+        "gemeinde": "Inden",
+        "kreis": "Düren",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Rur",
+        "ausbaugroesse_ew": "2.200",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.343619342639216,
+          50.932696391900336
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22245",
+        "name": "Jülich",
+        "gemeinde": "Jülich",
+        "kreis": "Düren",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Rur",
+        "ausbaugroesse_ew": "90.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.368558920727631,
+          50.82292445638223
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22254",
+        "name": "Langerwehe",
+        "gemeinde": "Langerwehe",
+        "kreis": "Düren",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Wehebach",
+        "ausbaugroesse_ew": "11.620",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.269228128294305,
+          50.989597507923364
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22258",
+        "name": "Linnich",
+        "gemeinde": "Linnich",
+        "kreis": "Düren",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Rur",
+        "ausbaugroesse_ew": "30.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.426426780818866,
+          50.673258058211665
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22263",
+        "name": "Schmidt",
+        "gemeinde": "Nideggen",
+        "kreis": "Düren",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Sollerbach",
+        "ausbaugroesse_ew": "6.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.588526972434637,
+          50.68400315752021
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22264",
+        "name": "Nideggen-Embken",
+        "gemeinde": "Nideggen",
+        "kreis": "Düren",
+        "betreiber": "Erftverband",
+        "gewaesser": "Neffelbach",
+        "ausbaugroesse_ew": "6.500",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.7942430342568265,
+          50.60623088701176
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22279",
+        "name": "Kläranlage Kirspenich",
+        "gemeinde": "Bad Münstereifel",
+        "kreis": "Euskirchen",
+        "betreiber": "Erftverband",
+        "gewaesser": "Erft",
+        "ausbaugroesse_ew": "27.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.872374594076733,
+          50.53258170995459
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22295",
+        "name": "Wald",
+        "gemeinde": "Bad Münstereifel",
+        "kreis": "Euskirchen",
+        "betreiber": "Stadt Bad Muenstereifel",
+        "gewaesser": "Effelsberger Bach",
+        "ausbaugroesse_ew": "1.500",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.659366776618471,
+          50.43221320551684
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22296",
+        "name": "Blankenheim",
+        "gemeinde": "Blankenheim",
+        "kreis": "Euskirchen",
+        "betreiber": "Gemeinde Blankenheim",
+        "gewaesser": "Ahr",
+        "ausbaugroesse_ew": "4.500",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.734037221871498,
+          50.4037575805937
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22297",
+        "name": "Freilingen",
+        "gemeinde": "Blankenheim",
+        "kreis": "Euskirchen",
+        "betreiber": "Gemeinde Blankenheim",
+        "gewaesser": "Mühlenbach",
+        "ausbaugroesse_ew": "2.300",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.785659499199446,
+          50.36842246035311
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22298",
+        "name": "Ahrdorf",
+        "gemeinde": "Blankenheim",
+        "kreis": "Euskirchen",
+        "betreiber": "Gemeinde Blankenheim",
+        "gewaesser": "Ahbach",
+        "ausbaugroesse_ew": "1.500",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.740835423905607,
+          50.38539666511083
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22299",
+        "name": "Ahrhuette",
+        "gemeinde": "Blankenheim",
+        "kreis": "Euskirchen",
+        "betreiber": "Gemeinde Blankenheim",
+        "gewaesser": "Ahr",
+        "ausbaugroesse_ew": "1.500",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.697202894142499,
+          50.42182402908239
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222100",
+        "name": "Reetz",
+        "gemeinde": "Blankenheim",
+        "kreis": "Euskirchen",
+        "betreiber": "Gemeinde Blankenheim",
+        "gewaesser": "Reetzer Bach",
+        "ausbaugroesse_ew": "800",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.682802850264652,
+          50.40359339075735
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222101",
+        "name": "Huengersdorf",
+        "gemeinde": "Blankenheim",
+        "kreis": "Euskirchen",
+        "betreiber": "Gemeinde Blankenheim",
+        "gewaesser": "Borbach",
+        "ausbaugroesse_ew": "1.500",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.634580866245673,
+          50.416132674898826
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222102",
+        "name": "Nonnenbach",
+        "gemeinde": "Blankenheim",
+        "kreis": "Euskirchen",
+        "betreiber": "Gemeinde Blankenheim",
+        "gewaesser": "Nonnenbach",
+        "ausbaugroesse_ew": "300",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.754362986988166,
+          50.45367661000634
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222103",
+        "name": "Rohr",
+        "gemeinde": "Blankenheim",
+        "kreis": "Euskirchen",
+        "betreiber": "Gemeinde Blankenheim",
+        "gewaesser": "Armuthsbach",
+        "ausbaugroesse_ew": "1.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.104169253328469,
+          50.808534958347366
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "2221",
+        "name": "Aachen-Soers",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Wurm",
+        "ausbaugroesse_ew": "458.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.149008769400947,
+          50.792801456239204
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "2222",
+        "name": "Eilendorf",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Haarbach",
+        "ausbaugroesse_ew": "87.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.059292002715149,
+          50.840414746246495
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "2223",
+        "name": "Aachen-Horbach",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Amstelbach",
+        "ausbaugroesse_ew": "34.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.186168950634148,
+          50.74969177334801
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "2226",
+        "name": "Aachen-Brand",
+        "gemeinde": "Aachen",
+        "kreis": "Städteregion Aachen",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Inde",
+        "ausbaugroesse_ew": "41.910",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.133168343583837,
+          50.86536268470474
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "2227",
+        "name": "Alsdorf-Broichtal",
+        "gemeinde": "Alsdorf",
+        "kreis": "Städteregion Aachen",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Broicher Bach",
+        "ausbaugroesse_ew": "30.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.211807337550218,
+          50.88877588820972
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "2228",
+        "name": "Bettendorf",
+        "gemeinde": "Alsdorf",
+        "kreis": "Städteregion Aachen",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Freialdenhovener Fließ",
+        "ausbaugroesse_ew": "50.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.214258455738925,
+          50.93108308499432
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "2229",
+        "name": "Setterich",
+        "gemeinde": "Baesweiler",
+        "kreis": "Städteregion Aachen",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Gereonsweiler Fließ",
+        "ausbaugroesse_ew": "50.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.335283834367577,
+          50.832215880954834
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22212",
+        "name": "Eschweiler-Weisweiler-ZKA",
+        "gemeinde": "Eschweiler",
+        "kreis": "Städteregion Aachen",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Inde",
+        "ausbaugroesse_ew": "157.700",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.081634791304181,
+          50.88346886340201
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22213",
+        "name": "Herzogenrath-Worm",
+        "gemeinde": "Herzogenrath",
+        "kreis": "Städteregion Aachen",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Wurm",
+        "ausbaugroesse_ew": "50.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.0869478089598,
+          50.85073370788777
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "22214",
+        "name": "Steinbusch",
+        "gemeinde": "Herzogenrath",
+        "kreis": "Städteregion Aachen",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Wurm",
+        "ausbaugroesse_ew": "32.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.578082800879263,
+          51.00970618384605
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222475",
+        "name": "Bedburg Kaster",
+        "gemeinde": "Bedburg",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Erftverband",
+        "gewaesser": "Erft",
+        "ausbaugroesse_ew": "66.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.663055769699413,
+          51.000006082012696
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222477",
+        "name": "Bergheim Auenheim",
+        "gemeinde": "Bergheim",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Erftverband",
+        "gewaesser": "Gillbach",
+        "ausbaugroesse_ew": "23.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.7602044629909654,
+          50.97285037043081
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222480",
+        "name": "Bergheim Glessen",
+        "gemeinde": "Bergheim",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Erftverband",
+        "gewaesser": "Pulheimer Bach",
+        "ausbaugroesse_ew": "9.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.654358992630766,
+          50.93984105637056
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222482",
+        "name": "Bergheim Kenten",
+        "gemeinde": "Bergheim",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Erftverband",
+        "gewaesser": "Erft",
+        "ausbaugroesse_ew": "120.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.944462751435425,
+          50.838858854445434
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222483",
+        "name": "Brühl",
+        "gemeinde": "Brühl",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Stadt Brühl",
+        "gewaesser": "Palmersdorfer Bach",
+        "ausbaugroesse_ew": "70.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.584334094501134,
+          50.95304640387224
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222485",
+        "name": "Elsdorf",
+        "gemeinde": "Elsdorf",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Erftverband",
+        "gewaesser": "Elsdorfer Fließ",
+        "ausbaugroesse_ew": "20.400",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.7922176999194255,
+          50.83237103263678
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222486",
+        "name": "Erftstadt",
+        "gemeinde": "Erftstadt",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Erftverband",
+        "gewaesser": "Erft",
+        "ausbaugroesse_ew": "70.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.834652840014018,
+          50.91181009020551
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222487",
+        "name": "Frechen",
+        "gemeinde": "Frechen",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Erftverband",
+        "gewaesser": "Frechener Bach",
+        "ausbaugroesse_ew": "56.100",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.864435022294773,
+          50.90545152775807
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222489",
+        "name": "KA Hürth Stotzheim",
+        "gemeinde": "Hürth",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Stadtwerke Hürth AöR",
+        "gewaesser": "Südlicher Randkanal",
+        "ausbaugroesse_ew": "92.750",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.8184157114019275,
+          51.014955539075046
+        ]
+      },
+      "properties": {
+        "anlagen_nr": "222490",
+        "name": "Pulheim",
+        "gemeinde": "Pulheim",
+        "kreis": "Rhein-Erft-Kreis",
+        "betreiber": "Pulheim",
+        "gewaesser": "Kölner Randkanal",
+        "ausbaugroesse_ew": "80.000",
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
+      }
+    }
+  ]
+}

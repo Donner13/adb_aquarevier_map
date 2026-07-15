@@ -31,6 +31,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -75,6 +77,14 @@
         },
         "mengen_text": "Produktionsabwasser: 4850 m³/a; Kühlwasser: 240 m³/h",
         "anzahl_anfallstellen": 26,
+        "einleitungen": [
+          {
+            "gewaesser": "Mühlenteich",
+            "lat": 50.817244,
+            "lon": 6.463312
+          }
+        ],
+        "gewaesser_liste": "Mühlenteich",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -108,6 +118,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -141,6 +153,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -175,6 +189,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 3,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -208,6 +224,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -241,6 +259,8 @@
         },
         "mengen_text": "Produktionsabwasser: 24217 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -274,6 +294,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -307,6 +329,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -340,6 +364,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -373,6 +399,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -406,6 +434,8 @@
         },
         "mengen_text": "Produktionsabwasser: 5600 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -444,6 +474,14 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 4,
+        "einleitungen": [
+          {
+            "gewaesser": "Kall",
+            "lat": 50.687543,
+            "lon": 6.444448
+          }
+        ],
+        "gewaesser_liste": "Kall",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -478,6 +516,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 2,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -511,6 +551,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -544,6 +586,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -589,6 +633,19 @@
         },
         "mengen_text": "Produktionsabwasser: 9000 m³/a; Kühlwasser: 400000 m³/a",
         "anzahl_anfallstellen": 14,
+        "einleitungen": [
+          {
+            "gewaesser": "Rur",
+            "lat": 50.814551,
+            "lon": 6.456941
+          },
+          {
+            "gewaesser": "Lendersdorfer Mühlenteich",
+            "lat": 50.814364,
+            "lon": 6.452096
+          }
+        ],
+        "gewaesser_liste": "Rur, Lendersdorfer Mühlenteich",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -622,6 +679,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -655,6 +714,8 @@
         },
         "mengen_text": "Produktionsabwasser: 14 m³/d",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -688,6 +749,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -721,6 +784,8 @@
         },
         "mengen_text": "Produktionsabwasser: 90 m³/d, 23400 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -754,6 +819,8 @@
         },
         "mengen_text": "Produktionsabwasser: 2 m³/d, 500 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -787,6 +854,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -820,6 +889,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -853,6 +924,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -886,6 +959,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -919,6 +994,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -952,6 +1029,8 @@
         },
         "mengen_text": "Produktionsabwasser: 45 m³/d, 14040 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -985,6 +1064,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1018,6 +1099,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1057,6 +1140,14 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 3,
+        "einleitungen": [
+          {
+            "gewaesser": "Linnicher Mühlenteich",
+            "lat": 51.011407,
+            "lon": 6.2332
+          }
+        ],
+        "gewaesser_liste": "Linnicher Mühlenteich",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1090,6 +1181,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1123,6 +1216,8 @@
         },
         "mengen_text": "Produktionsabwasser: 5 m³/d",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1156,6 +1251,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1189,6 +1286,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1222,6 +1321,8 @@
         },
         "mengen_text": "Produktionsabwasser: 1 m³/d, 300 m³/a",
         "anzahl_anfallstellen": 2,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1255,6 +1356,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1288,6 +1391,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 4,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1321,6 +1426,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1354,6 +1461,8 @@
         },
         "mengen_text": "Produktionsabwasser: 4 m³/d, 880 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1387,6 +1496,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1420,6 +1531,8 @@
         },
         "mengen_text": "Produktionsabwasser: 140 m³/d",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1453,6 +1566,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1486,6 +1601,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1519,6 +1636,8 @@
         },
         "mengen_text": "Produktionsabwasser: 10 m³/d",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1552,6 +1671,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 3,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1596,6 +1717,8 @@
         },
         "mengen_text": "Produktionsabwasser: 0,5 m³/d",
         "anzahl_anfallstellen": 5,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1629,6 +1752,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1662,6 +1787,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1696,6 +1823,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 2,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1729,6 +1858,8 @@
         },
         "mengen_text": "Produktionsabwasser: 1.300 m³/d, 299000 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1762,6 +1893,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1795,6 +1928,8 @@
         },
         "mengen_text": "Produktionsabwasser: 25 m³/d, 7500 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1828,6 +1963,8 @@
         },
         "mengen_text": "Produktionsabwasser: 14000 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1867,6 +2004,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 7,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1900,6 +2039,8 @@
         },
         "mengen_text": "Produktionsabwasser: 4200 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1933,6 +2074,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1968,6 +2111,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 4,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2001,6 +2146,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2034,6 +2181,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2067,6 +2216,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2100,6 +2251,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 2,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2133,6 +2286,8 @@
         },
         "mengen_text": "Produktionsabwasser: 1974 m³/a",
         "anzahl_anfallstellen": 2,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2166,6 +2321,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2200,6 +2357,8 @@
         },
         "mengen_text": "Produktionsabwasser: 4 m³/d, 36 m³/h, 3800 m³/a",
         "anzahl_anfallstellen": 7,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2234,6 +2393,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 7,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2267,6 +2428,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2300,6 +2463,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2333,6 +2498,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2366,6 +2533,8 @@
         },
         "mengen_text": "Produktionsabwasser: 22500 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2399,6 +2568,8 @@
         },
         "mengen_text": "Produktionsabwasser: 2520 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2437,6 +2608,19 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 3,
+        "einleitungen": [
+          {
+            "gewaesser": "Rhein",
+            "lat": 51.215268,
+            "lon": 6.722867
+          },
+          {
+            "gewaesser": "Hafen Neuss, Hafenbecken V",
+            "lat": 51.210826,
+            "lon": 6.713249
+          }
+        ],
+        "gewaesser_liste": "Rhein, Hafen Neuss, Hafenbecken V",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2470,6 +2654,8 @@
         },
         "mengen_text": "Produktionsabwasser: 73 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2503,6 +2689,8 @@
         },
         "mengen_text": "Produktionsabwasser: 477 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2546,6 +2734,14 @@
         },
         "mengen_text": "Niederschlagswasser mit Sonderbauwerk: 252 m³/h; Niederschlagswasser ohne Sonderbauwerk: 260,5 m³/h",
         "anzahl_anfallstellen": 6,
+        "einleitungen": [
+          {
+            "gewaesser": "Erft",
+            "lat": 51.100118,
+            "lon": 6.607942
+          }
+        ],
+        "gewaesser_liste": "Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2579,6 +2775,8 @@
         },
         "mengen_text": "Produktionsabwasser: 1 m³/d, 220 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2612,6 +2810,8 @@
         },
         "mengen_text": "Produktionsabwasser: 1400 m³/a",
         "anzahl_anfallstellen": 2,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2645,6 +2845,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2678,6 +2880,8 @@
         },
         "mengen_text": "Produktionsabwasser: 6 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2711,6 +2915,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2755,6 +2961,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 4,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2788,6 +2996,8 @@
         },
         "mengen_text": "Produktionsabwasser: 14,3 m³/d, 2845 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2821,6 +3031,8 @@
         },
         "mengen_text": "Produktionsabwasser: 2 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2854,6 +3066,8 @@
         },
         "mengen_text": "Produktionsabwasser: 0,5 m³/d, 110 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2887,6 +3101,8 @@
         },
         "mengen_text": "Produktionsabwasser: 144 m³/d, 42000 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2920,6 +3136,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2953,6 +3171,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -2986,6 +3206,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3019,6 +3241,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3052,6 +3276,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3085,6 +3311,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3119,6 +3347,8 @@
         },
         "mengen_text": "Produktionsabwasser: 144 m³/d, 30000 m³/a",
         "anzahl_anfallstellen": 3,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3152,6 +3382,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3192,6 +3424,14 @@
         },
         "mengen_text": "Produktionsabwasser: 48 m³/d, 17520 m³/a",
         "anzahl_anfallstellen": 4,
+        "einleitungen": [
+          {
+            "gewaesser": "Vichtbach",
+            "lat": 50.777676,
+            "lon": 6.22407
+          }
+        ],
+        "gewaesser_liste": "Vichtbach",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3225,6 +3465,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3275,6 +3517,19 @@
         },
         "mengen_text": "sonstiges Abwasser (verändertes Wasser): 0,14 m³/h; Produktionsabwasser: 1,5 m³/d",
         "anzahl_anfallstellen": 6,
+        "einleitungen": [
+          {
+            "gewaesser": "Kelzer Bach",
+            "lat": 50.639421,
+            "lon": 6.274678
+          },
+          {
+            "gewaesser": "NN",
+            "lat": 50.638777,
+            "lon": 6.279072
+          }
+        ],
+        "gewaesser_liste": "Kelzer Bach, NN",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3308,6 +3563,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3341,6 +3598,8 @@
         },
         "mengen_text": "Produktionsabwasser: 10,64 m³/d, 1,33 m³/h, 2341 m³/a",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3375,6 +3634,8 @@
         },
         "mengen_text": "Produktionsabwasser: 36 m³/d, 175000 m³/a",
         "anzahl_anfallstellen": 4,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3408,6 +3669,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -3441,6 +3704,8 @@
         },
         "mengen_text": "",
         "anzahl_anfallstellen": 1,
+        "einleitungen": [],
+        "gewaesser_liste": "",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     }
