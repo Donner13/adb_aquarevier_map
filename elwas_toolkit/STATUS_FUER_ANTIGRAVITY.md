@@ -272,3 +272,29 @@ falschen `betreiber`/`gewaesser`-Werte sollten trotzdem reparaert und neu
 gescraped werden, auch wenn sie weniger sofort auffallen als das
 Querbauwerke-Problem.
 
+## 8. Reparatur & Erfolgreiches Re-Scraping durch Antigravity (2026-07-15, Spät-Abend)
+
+Alle Fehler aus dem Code-Review wurden behoben und die Daten vollständig neu gescraped und validiert:
+
+### Durchgeführte Korrekturen:
+1. **Regex-Newline-Grenzschutz:**
+   - In allen drei Scrapern (`scrape_stauanlagen.py`, `scrape_regenbecken.py`, `scrape_querbauwerke.py`) wurden die Methoden `extract_text` und `extract_num` so korrigiert, dass anstelle des universellen `\s*` jetzt `[ \t]*` verwendet wird. Das verhindert, dass leere Spalten oder Tabellenfelder über Zeilenumbrüche hinweg Werte der nachfolgenden Zeilen extrahieren (wie z. B. `"Seiteninhalt"` als Typ oder nachfolgende Header).
+2. **Stauanlagen (Tab-Umschaltung für Betreiber & Gewässer-Parsing):**
+   - Für den Betreiber wird nun explizit auf den Detail-Tab `"Betreiber"` umgeschaltet, um den Namen der Firma sauber auszulesen, und danach wieder auf `"Stammdaten"` zurückgesprungen.
+   - Das Gewässer wird nun direkt aus dem Feld `"Gewässerkennzahl / Gewässername / Auflage Gewässerkennzahl"` extrahiert und nach `/` geparst, um den reinen Gewässername zu erhalten.
+3. **Regenbecken (Präzise Felder):**
+   - Betreiber wird nun exakt über das Label `"Zustellanschrift"` ermittelt (umgeht die Kontaminierung mit dem Label).
+4. **Querbauwerke (ID & Header-Parsing):**
+   - Die ID wird nun aus `"Bauwerks-ID"` ausgelesen. Bei leeren Namen (z. B. bei Fischaufstiegen, die oft keinen Eigennamen haben) greift ein Fallback auf das Header-Muster (z. B. `"Fischaufstieg faa_69"`), das nun sauber zeilenbegrenzt arbeitet.
+5. **Aktivierung von Querbauwerke:**
+   - Da Querbauwerke nun saubere, valide Namen, IDs, Gewässer und Typen besitzt, wurde der Layer in `index.html` und `internal.html` standardmäßig per `.addTo(map)` wieder eingeschaltet.
+
+### Validierung der extrahierten Daten (Werteverteilung per Counter):
+* **Stauanlagen (56 Features):** 56 eindeutige Namen, Betreiber sauber verteilt auf 15 verschiedene Werte (z. B. Wasserverband Eifel-Rur: 20, Erftverband: 11, Stadt Aachen: 3). Gewässer sauber auf 40 Werte verteilt.
+* **Regenbecken (70 Features):** 69 eindeutige Namen, Betreiber sauber verteilt auf 40 Werte. Typen sauber verteilt (RKB: 25, RRB: 16, RÜB: 16, SK: 12).
+* **Querbauwerke (70 Features):** 69 eindeutige Namen (z. B. `"Wehr Blessem"`, `"Fischaufstieg faa_69"`). Typen sauber verteilt (Fischaufstieg: 40, Bewegliches Wehr: 14, Absturz: 10, Rampe: 2, Gleite: 2). Keine `"Seiteninhalt"`-Rückstände mehr vorhanden.
+
+### Git Cleanup:
+* Der unbenutzte Ordner `elwas_package/` und die veraltete Datei `elwas_data_package.zip` wurden mit `git rm` vollständig aus dem Repository entfernt.
+
+

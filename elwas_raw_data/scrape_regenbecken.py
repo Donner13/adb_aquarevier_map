@@ -1,6 +1,5 @@
 """
-Scrapt Regenbecken/-entlastungsanlagen fuer die 7 Kreise des Rheinischen Reviers.
-Koordinaten stehen direkt auf der Detailseite (Stammdaten-Default-Tab).
+Scrapt Regenbecken/-entlastungsanlagen fuer die 7 Kreise des Revier.
 """
 import asyncio
 import json
@@ -26,9 +25,9 @@ KREISE = [
 ]
 
 def extract_num(label, text):
-    m = re.search(rf"{re.escape(label)}[\t:]\s*([^\n\r]*)", text)
+    m = re.search(rf"{re.escape(label)}[\t:][ \t]*([^\n\r]*)", text)
     if not m:
-        m = re.search(rf"{re.escape(label)}\s*([^\n\r]*)", text)
+        m = re.search(rf"{re.escape(label)}[ \t]*([^\n\r]*)", text)
     if m:
         val = m.group(1).strip()
         val = re.sub(r'[^\d\.,\s\-]', '', val).strip()
@@ -37,25 +36,18 @@ def extract_num(label, text):
     return None
 
 def extract_text(label, text):
-    m = re.search(rf"{re.escape(label)}[\t:]\s*([^\n\r]*)", text)
+    m = re.search(rf"{re.escape(label)}[\t:][ \t]*([^\n\r]*)", text)
     if not m:
-        m = re.search(rf"{re.escape(label)}\s*([^\n\r]*)", text)
+        m = re.search(rf"{re.escape(label)}[ \t]*([^\n\r]*)", text)
     if m:
         val = m.group(1).strip()
         return val if val else None
     return None
 
 def extract_name_nr(text):
-    m = re.search(r"Regenbecken.*?:?\s*(.+?)\s*\((\d+)\)", text, re.IGNORECASE)
-    if m:
-        return m.group(1).strip(), m.group(2).strip()
-    m = re.search(r"Sonderbauwerk.*?:?\s*(.+?)\s*\((\d+)\)", text, re.IGNORECASE)
-    if m:
-        return m.group(1).strip(), m.group(2).strip()
-    m = re.search(r"Regenbecken.*?:?\s*([^\n\(]+)", text, re.IGNORECASE)
-    if m:
-        return m.group(1).strip(), None
-    return None, None
+    name = extract_text("Name des Sonderbauwerks", text)
+    nr = extract_text("Sonderbauwerk-Nr.", text)
+    return name, nr
 
 async def main():
     results = {}
@@ -75,8 +67,7 @@ async def main():
             print(f"\n=== Kreis: {kreis} ===", flush=True)
             await ec.open_dataset(page, match["href"])
             frame = await ec.get_frame(page)
-
-            # Cold-session form rendering wait
+            
             try:
                 await frame.wait_for_selector("input[value='Suchen'], select", state="attached", timeout=8000)
             except Exception:
@@ -114,13 +105,8 @@ async def main():
                     detail_text = await frame.locator("body").inner_text()
                     name, anlagen_nr = extract_name_nr(detail_text)
                     if not anlagen_nr:
-                        # Try Sonderbauwerk-Nr.
-                        anlagen_nr_match = re.search(r"Sonderbauwerk-Nr\.\s*([^\n\r]*)", detail_text)
-                        if anlagen_nr_match:
-                            anlagen_nr = anlagen_nr_match.group(1).strip()
-                        else:
-                            anlagen_nr = f"unknown_{kreis}_{idx}"
-
+                        anlagen_nr = f"unknown_{kreis}_{idx}"
+                    
                     if anlagen_nr in results and "error" not in results[anlagen_nr]:
                         print(f"  {anlagen_nr} bereits geladen.", flush=True)
                         await frame.click("text=Ergebnisse")
@@ -130,26 +116,17 @@ async def main():
 
                     ost = extract_num("Ostwert in UTM (Zone 32N)", detail_text)
                     nord = extract_num("Nordwert in UTM (Zone 32N)", detail_text)
-                    # fallback to general label
-                    if not ost:
-                        ost = extract_num("Ostwert in UTM", detail_text)
-                    if not nord:
-                        nord = extract_num("Nordwert in UTM", detail_text)
-
-                    betreiber = extract_text("Betreiber", detail_text) or (meta[7] if len(meta) > 7 else None)
-                    typ = extract_text("Typ", detail_text) or (meta[2] if len(meta) > 2 else None)
-                    abwasserbereich = extract_text("Abwasserbereich", detail_text) or (meta[3] if len(meta) > 3 else None)
-                    gemeinde = extract_text("Gemeinde", detail_text) or (meta[5] if len(meta) > 5 else None)
+                    betreiber = extract_text("Zustellanschrift", detail_text)
+                    typ = extract_text("Typ", detail_text)
 
                     results[anlagen_nr] = {
                         "name": name or (meta[1] if len(meta) > 1 else None),
                         "kreis": kreis,
-                        "gemeinde": gemeinde,
                         "utm_east": ost,
                         "utm_north": nord,
                         "betreiber": betreiber,
-                        "typ": typ,
-                        "abwasserbereich": abwasserbereich
+                        "gewaesser": None,
+                        "typ": typ
                     }
                     print(f"  {anlagen_nr}: {name} Ost={ost} Nord={nord} Betreiber={betreiber}", flush=True)
 

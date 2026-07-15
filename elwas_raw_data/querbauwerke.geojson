@@ -11,12 +11,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Städteregion Aachen_0",
-        "name": "e",
+        "anlagen_nr": "faa_199",
+        "name": "Fischaufstieg faa_199",
         "kreis": "Städteregion Aachen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -30,12 +30,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Städteregion Aachen_1",
-        "name": "e",
+        "anlagen_nr": "faa_200",
+        "name": "Fischaufstieg faa_200",
         "kreis": "Städteregion Aachen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -49,12 +49,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Städteregion Aachen_2",
-        "name": "e",
+        "anlagen_nr": "faa_272",
+        "name": "Fischaufstieg faa_272",
         "kreis": "Städteregion Aachen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t28284 / Broicher Bach / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t28284 / Broicher Bach / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Broicher Bach",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -68,12 +68,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Städteregion Aachen_3",
-        "name": "e",
+        "anlagen_nr": "faa_295",
+        "name": "Fischaufstieg faa_295",
         "kreis": "Städteregion Aachen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t2824 / Inde / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2824 / Inde / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Inde",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -87,12 +87,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Städteregion Aachen_4",
-        "name": "e",
+        "anlagen_nr": "faa_296",
+        "name": "Fischaufstieg faa_296",
         "kreis": "Städteregion Aachen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t2824 / Inde / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2824 / Inde / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Inde",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -106,12 +106,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Städteregion Aachen_5",
-        "name": "e",
+        "anlagen_nr": "faa_369",
+        "name": "Fischaufstieg faa_369",
         "kreis": "Städteregion Aachen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t28214 / Perlenbach / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t28214 / Perlenbach / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Perlenbach",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -125,12 +125,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Städteregion Aachen_6",
-        "name": "e",
+        "anlagen_nr": "faa_451",
+        "name": "Fischaufstieg faa_451",
         "kreis": "Städteregion Aachen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -144,12 +144,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Städteregion Aachen_7",
-        "name": "e",
+        "anlagen_nr": "faa_485",
+        "name": "Fischaufstieg faa_485",
         "kreis": "Städteregion Aachen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282152 / Laufenbach / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282152 / Laufenbach / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Laufenbach",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -163,12 +163,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Städteregion Aachen_8",
-        "name": "e",
+        "anlagen_nr": "qbw_1276",
+        "name": "Schwelle unterhalb ehem. Wehr Dedenborn",
         "kreis": "Städteregion Aachen",
-        "bauwerksart": "Schwelle unterhalb ehem. Wehr Dedenborn",
+        "bauwerksart": null,
         "typ": "Sohlschwelle",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -182,12 +182,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Städteregion Aachen_9",
-        "name": "e",
+        "anlagen_nr": "qbw_1277",
+        "name": "Wehr Rauchenauel",
         "kreis": "Städteregion Aachen",
-        "bauwerksart": "Wehr Rauchenauel",
+        "bauwerksart": null,
         "typ": "Rampe",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -201,12 +201,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Heinsberg_0",
-        "name": "e",
+        "anlagen_nr": "faa_104",
+        "name": "Fischaufstieg faa_104",
         "kreis": "Heinsberg",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -220,12 +220,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Heinsberg_1",
-        "name": "e",
+        "anlagen_nr": "faa_277",
+        "name": "Fischaufstieg faa_277",
         "kreis": "Heinsberg",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t28298 / Afslagtak Rode Beek Vlodrop / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t28298 / Afslagtak Rode Beek Vlodrop / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Afslagtak Rode Beek Vlodrop",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -239,12 +239,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Heinsberg_2",
-        "name": "e",
+        "anlagen_nr": "faa_469",
+        "name": "Fischaufstieg faa_469",
         "kreis": "Heinsberg",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t28256 / Baaler Bach / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t28256 / Baaler Bach / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Baaler Bach",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -258,12 +258,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Heinsberg_3",
-        "name": "e",
+        "anlagen_nr": "faa_568",
+        "name": "Fischaufstieg faa_568",
         "kreis": "Heinsberg",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t2844 / Mühlenbach / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2844 / Mühlenbach / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Mühlenbach",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -277,12 +277,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Heinsberg_4",
-        "name": "e",
+        "anlagen_nr": "qbw_1166",
+        "name": "Karkener Wehr",
         "kreis": "Heinsberg",
-        "bauwerksart": "Karkener Wehr",
+        "bauwerksart": null,
         "typ": "Absturz",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -296,12 +296,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Heinsberg_5",
-        "name": "e",
+        "anlagen_nr": "qbw_1167",
+        "name": "Klappenwehr Kempen-Hochbrück",
         "kreis": "Heinsberg",
-        "bauwerksart": "Klappenwehr Kempen-Hochbrück",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -315,12 +315,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Heinsberg_6",
-        "name": "e",
+        "anlagen_nr": "qbw_1168",
+        "name": "Raue Rampe Brehm",
         "kreis": "Heinsberg",
-        "bauwerksart": "Raue Rampe Brehm",
+        "bauwerksart": null,
         "typ": "Rampe",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -334,12 +334,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Heinsberg_7",
-        "name": "e",
+        "anlagen_nr": "qbw_1169",
+        "name": "Wehr Orsbeck",
         "kreis": "Heinsberg",
-        "bauwerksart": "Wehr Orsbeck",
+        "bauwerksart": null,
         "typ": "Absturz",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -353,12 +353,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Heinsberg_8",
-        "name": "e",
+        "anlagen_nr": "qbw_1170",
+        "name": "Grundschwelle Luchtenberg",
         "kreis": "Heinsberg",
-        "bauwerksart": "Grundschwelle Luchtenberg",
+        "bauwerksart": null,
         "typ": "Gleite",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -372,12 +372,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Heinsberg_9",
-        "name": "e",
+        "anlagen_nr": "qbw_1171",
+        "name": "Sohlgleite Ratheim-Oberbruch",
         "kreis": "Heinsberg",
-        "bauwerksart": "Sohlgleite Ratheim-Oberbruch",
+        "bauwerksart": null,
         "typ": "Gleite",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -391,12 +391,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Mönchengladbach_0",
-        "name": "e",
+        "anlagen_nr": "qbw_2761",
+        "name": "Bresgespark",
         "kreis": "Mönchengladbach",
-        "bauwerksart": "Bresgespark",
+        "bauwerksart": null,
         "typ": "Absturz",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E",
+        "gewaesser": "Niers",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -410,12 +410,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Mönchengladbach_1",
-        "name": "e",
+        "anlagen_nr": "qbw_2762",
+        "name": "Eickesmühle",
         "kreis": "Mönchengladbach",
-        "bauwerksart": "Eickesmühle",
+        "bauwerksart": null,
         "typ": "Absturz",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3C",
+        "gewaesser": "Niers",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -429,12 +429,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Mönchengladbach_2",
-        "name": "e",
+        "anlagen_nr": "qbw_2763",
+        "name": "Wehr Bellermühle",
         "kreis": "Mönchengladbach",
-        "bauwerksart": "Wehr Bellermühle",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E",
+        "gewaesser": "Niers",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -448,12 +448,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Mönchengladbach_3",
-        "name": "e",
+        "anlagen_nr": "qbw_2764",
+        "name": "Wehr Henkenmühle",
         "kreis": "Mönchengladbach",
-        "bauwerksart": "Wehr Henkenmühle",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E",
+        "gewaesser": "Niers",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -467,12 +467,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Mönchengladbach_4",
-        "name": "e",
+        "anlagen_nr": "qbw_2765",
+        "name": "Ehem. Güdderather Mühle",
         "kreis": "Mönchengladbach",
-        "bauwerksart": "Ehem. Güdderather Mühle",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3C",
+        "gewaesser": "Niers",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -486,12 +486,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Mönchengladbach_5",
-        "name": "e",
+        "anlagen_nr": "qbw_2767",
+        "name": "Oelmühle",
         "kreis": "Mönchengladbach",
-        "bauwerksart": "Oelmühle",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3C",
+        "gewaesser": "Niers",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -505,12 +505,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Mönchengladbach_6",
-        "name": "e",
+        "anlagen_nr": "qbw_6043",
+        "name": "Hoher Absturz",
         "kreis": "Mönchengladbach",
-        "bauwerksart": "Hoher Absturz",
+        "bauwerksart": null,
         "typ": "Absturz",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E",
+        "gewaesser": "Niers",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -524,12 +524,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Mönchengladbach_7",
-        "name": "e",
+        "anlagen_nr": "qbw_6045",
+        "name": "Kleiner Absturz",
         "kreis": "Mönchengladbach",
-        "bauwerksart": "Kleiner Absturz",
+        "bauwerksart": null,
         "typ": "Absturz",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E",
+        "gewaesser": "Niers",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -543,12 +543,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Mönchengladbach_8",
-        "name": "e",
+        "anlagen_nr": "qbw_6046",
+        "name": "Kleiner Absturz",
         "kreis": "Mönchengladbach",
-        "bauwerksart": "Kleiner Absturz",
+        "bauwerksart": null,
         "typ": "Absturz",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E",
+        "gewaesser": "Niers",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -562,12 +562,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Mönchengladbach_9",
-        "name": "e",
+        "anlagen_nr": "qbw_6052",
+        "name": "Absturz",
         "kreis": "Mönchengladbach",
-        "bauwerksart": "Absturz",
+        "bauwerksart": null,
         "typ": "Absturz",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E",
+        "gewaesser": "Niers",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -581,12 +581,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Kreis Neuss_0",
-        "name": "e",
+        "anlagen_nr": "faa_114",
+        "name": "Fischaufstieg faa_114",
         "kreis": "Rhein-Kreis Neuss",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -600,12 +600,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Kreis Neuss_1",
-        "name": "e",
+        "anlagen_nr": "faa_602",
+        "name": "Fischaufstieg Gnadenthal",
         "kreis": "Rhein-Kreis Neuss",
-        "bauwerksart": "Fischaufstieg Gnadenthal",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg Gnadenthal",
+        "gewaesser": "Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -619,12 +619,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Kreis Neuss_2",
-        "name": "e",
+        "anlagen_nr": "faa_627",
+        "name": "Fischaufstieg faa_627",
         "kreis": "Rhein-Kreis Neuss",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -638,12 +638,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Kreis Neuss_3",
-        "name": "e",
+        "anlagen_nr": "qbw_238",
+        "name": "Erprather Muehle, W3",
         "kreis": "Rhein-Kreis Neuss",
-        "bauwerksart": "Erprather Muehle, W3",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+        "gewaesser": "Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -657,12 +657,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Kreis Neuss_4",
-        "name": "e",
+        "anlagen_nr": "qbw_274",
+        "name": "Neubruecker Muehle, W5",
         "kreis": "Rhein-Kreis Neuss",
-        "bauwerksart": "Neubruecker Muehle, W5",
+        "bauwerksart": null,
         "typ": "Absturz",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+        "gewaesser": "Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -676,12 +676,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Kreis Neuss_5",
-        "name": "e",
+        "anlagen_nr": "qbw_276",
+        "name": "Wehr Selikum, W2",
         "kreis": "Rhein-Kreis Neuss",
-        "bauwerksart": "Wehr Selikum, W2",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+        "gewaesser": "Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -695,12 +695,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Kreis Neuss_6",
-        "name": "e",
+        "anlagen_nr": "qbw_281",
+        "name": "Untermühle Wevelinghoven, Vitus, Drees, W7",
         "kreis": "Rhein-Kreis Neuss",
-        "bauwerksart": "Untermühle Wevelinghoven, Vitus, Drees, W7",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2747934 / Vituskanal / 3E",
+        "gewaesser": "Vituskanal",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -714,12 +714,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Kreis Neuss_7",
-        "name": "e",
+        "anlagen_nr": "qbw_282",
+        "name": "Muehle Kottmann, W8",
         "kreis": "Rhein-Kreis Neuss",
-        "bauwerksart": "Muehle Kottmann, W8",
+        "bauwerksart": null,
         "typ": "Absturz",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+        "gewaesser": "Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -733,12 +733,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Kreis Neuss_8",
-        "name": "e",
+        "anlagen_nr": "qbw_283",
+        "name": "Wehr Grevenbroich, Kamper, W9",
         "kreis": "Rhein-Kreis Neuss",
-        "bauwerksart": "Wehr Grevenbroich, Kamper, W9",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274792 / Mühlenerft Grevenbroich / 3E",
+        "gewaesser": "Mühlenerft Grevenbroich",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -752,12 +752,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Kreis Neuss_9",
-        "name": "e",
+        "anlagen_nr": "qbw_310",
+        "name": "Überleitung an der Kläranlage",
         "kreis": "Rhein-Kreis Neuss",
-        "bauwerksart": "Überleitung an der Kläranlage",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2748 / Gillbach / 3E",
+        "gewaesser": "Gillbach",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -771,12 +771,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Düren_0",
-        "name": "e",
+        "anlagen_nr": "faa_69",
+        "name": "Fischaufstieg faa_69",
         "kreis": "Düren",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -790,12 +790,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Düren_1",
-        "name": "e",
+        "anlagen_nr": "faa_70",
+        "name": "Fischaufstieg faa_70",
         "kreis": "Düren",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -809,12 +809,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Düren_2",
-        "name": "e",
+        "anlagen_nr": "faa_71",
+        "name": "Fischaufstieg faa_71",
         "kreis": "Düren",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -828,12 +828,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Düren_3",
-        "name": "e",
+        "anlagen_nr": "faa_72",
+        "name": "Fischaufstieg faa_72",
         "kreis": "Düren",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -847,12 +847,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Düren_4",
-        "name": "e",
+        "anlagen_nr": "faa_106",
+        "name": "Fischaufstieg faa_106",
         "kreis": "Düren",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -866,12 +866,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Düren_5",
-        "name": "e",
+        "anlagen_nr": "faa_107",
+        "name": "Fischaufstieg faa_107",
         "kreis": "Düren",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -885,12 +885,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Düren_6",
-        "name": "e",
+        "anlagen_nr": "faa_216",
+        "name": "Fischaufstieg faa_216",
         "kreis": "Düren",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t28246 / Omerbach / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t28246 / Omerbach / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Omerbach",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -904,12 +904,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Düren_7",
-        "name": "e",
+        "anlagen_nr": "faa_235",
+        "name": "Fischaufstieg faa_235",
         "kreis": "Düren",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -923,12 +923,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Düren_8",
-        "name": "e",
+        "anlagen_nr": "faa_251",
+        "name": "Fischaufstieg faa_251",
         "kreis": "Düren",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t2824 / Inde / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2824 / Inde / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Inde",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -942,12 +942,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Düren_9",
-        "name": "e",
+        "anlagen_nr": "faa_339",
+        "name": "Fischaufstieg faa_339",
         "kreis": "Düren",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rur",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -961,12 +961,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Erft-Kreis_0",
-        "name": "e",
+        "anlagen_nr": "faa_120",
+        "name": "Fischaufstieg faa_120",
         "kreis": "Rhein-Erft-Kreis",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -980,12 +980,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Erft-Kreis_1",
-        "name": "e",
+        "anlagen_nr": "faa_161",
+        "name": "Fischaufstieg faa_161",
         "kreis": "Rhein-Erft-Kreis",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t2742 / Swistbach / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2742 / Swistbach / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Swistbach",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -999,12 +999,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Erft-Kreis_2",
-        "name": "e",
+        "anlagen_nr": "faa_311",
+        "name": "Fischaufstieg faa_311",
         "kreis": "Rhein-Erft-Kreis",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t274754 / Kasterer Mühlenerft / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274754 / Kasterer Mühlenerft / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Kasterer Mühlenerft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1018,12 +1018,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Erft-Kreis_3",
-        "name": "e",
+        "anlagen_nr": "faa_324",
+        "name": "Fischaufstieg faa_324",
         "kreis": "Rhein-Erft-Kreis",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1037,12 +1037,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Erft-Kreis_4",
-        "name": "e",
+        "anlagen_nr": "faa_453",
+        "name": "Fischaufstieg faa_453",
         "kreis": "Rhein-Erft-Kreis",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t2742 / Swistbach / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2742 / Swistbach / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Swistbach",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1056,12 +1056,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Erft-Kreis_5",
-        "name": "e",
+        "anlagen_nr": "faa_623",
+        "name": "Fischaufstieg faa_623",
         "kreis": "Rhein-Erft-Kreis",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1075,12 +1075,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Erft-Kreis_6",
-        "name": "e",
+        "anlagen_nr": "qbw_232",
+        "name": "Wehr Blessem",
         "kreis": "Rhein-Erft-Kreis",
-        "bauwerksart": "Wehr Blessem",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t27454 / Liblarer Mühlengraben / 3E",
+        "gewaesser": "Liblarer Mühlengraben",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1094,12 +1094,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Erft-Kreis_7",
-        "name": "e",
+        "anlagen_nr": "qbw_234",
+        "name": "Standort WKA-2 Horremer Muehle",
         "kreis": "Rhein-Erft-Kreis",
-        "bauwerksart": "Standort WKA-2 Horremer Muehle",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274732 / Kleine Erft / 3E",
+        "gewaesser": "Kleine Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1113,12 +1113,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Erft-Kreis_8",
-        "name": "e",
+        "anlagen_nr": "qbw_254",
+        "name": "Muehle Kaster",
         "kreis": "Rhein-Erft-Kreis",
-        "bauwerksart": "Muehle Kaster",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274754 / Kasterer Mühlenerft / 3E",
+        "gewaesser": "Kasterer Mühlenerft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1132,12 +1132,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Rhein-Erft-Kreis_9",
-        "name": "e",
+        "anlagen_nr": "qbw_255",
+        "name": "Standort WKA-3 Pliesmuehle",
         "kreis": "Rhein-Erft-Kreis",
-        "bauwerksart": "Standort WKA-3 Pliesmuehle",
+        "bauwerksart": null,
         "typ": "Bewegliches Wehr",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t274732 / Kleine Erft / 3E",
+        "gewaesser": "Kleine Erft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1151,12 +1151,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Euskirchen_0",
-        "name": "e",
+        "anlagen_nr": "faa_203",
+        "name": "Fischaufstieg faa_203",
         "kreis": "Euskirchen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Urft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1170,12 +1170,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Euskirchen_1",
-        "name": "e",
+        "anlagen_nr": "faa_226",
+        "name": "Fischaufstieg faa_226",
         "kreis": "Euskirchen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Urft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1189,12 +1189,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Euskirchen_2",
-        "name": "e",
+        "anlagen_nr": "faa_227",
+        "name": "Fischaufstieg faa_227",
         "kreis": "Euskirchen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Olef",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1208,12 +1208,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Euskirchen_3",
-        "name": "e",
+        "anlagen_nr": "faa_228",
+        "name": "Fischaufstieg faa_228",
         "kreis": "Euskirchen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Olef",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1227,12 +1227,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Euskirchen_4",
-        "name": "e",
+        "anlagen_nr": "faa_260",
+        "name": "Fischaufstieg faa_260",
         "kreis": "Euskirchen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Olef",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1246,12 +1246,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Euskirchen_5",
-        "name": "e",
+        "anlagen_nr": "faa_261",
+        "name": "Fischaufstieg faa_261",
         "kreis": "Euskirchen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Olef",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1265,12 +1265,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Euskirchen_6",
-        "name": "e",
+        "anlagen_nr": "faa_325",
+        "name": "Fischaufstieg faa_325",
         "kreis": "Euskirchen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t2746 / Neffelbach / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2746 / Neffelbach / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Neffelbach",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1284,12 +1284,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Euskirchen_7",
-        "name": "e",
+        "anlagen_nr": "faa_356",
+        "name": "Fischaufstieg faa_356",
         "kreis": "Euskirchen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t2744 / Rotbach / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2744 / Rotbach / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Rotbach",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1303,12 +1303,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Euskirchen_8",
-        "name": "e",
+        "anlagen_nr": "faa_433",
+        "name": "Fischaufstieg faa_433",
         "kreis": "Euskirchen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Urft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1322,12 +1322,12 @@
         ]
       },
       "properties": {
-        "anlagen_nr": "unknown_Euskirchen_9",
-        "name": "e",
+        "anlagen_nr": "faa_446",
+        "name": "Fischaufstieg faa_446",
         "kreis": "Euskirchen",
-        "bauwerksart": "",
-        "typ": "Gewässerkennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
-        "gewaesser": "kennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
+        "bauwerksart": null,
+        "typ": "Fischaufstieg",
+        "gewaesser": "Urft",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     }

@@ -12,12 +12,12 @@
       },
       "properties": {
         "anlagen_nr": "222870",
-        "name": "/-entlastungsanlagen: Betriebswerkstatt Weisweiler - RKB",
+        "name": "Betriebswerkstatt Weisweiler - RKB",
         "kreis": "Städteregion Aachen",
-        "gemeinde": "05334012 / Eschweiler",
-        "betreiber": "Zustellanschrift\tRWE Power AG - Tagebau Inden",
+        "gemeinde": null,
+        "betreiber": "RWE Power AG - Tagebau Inden",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -32,12 +32,12 @@
       },
       "properties": {
         "anlagen_nr": "222871",
-        "name": "/-entlastungsanlagen: Betriebswerkstatt Weisweiler - RRB",
+        "name": "Betriebswerkstatt Weisweiler - RRB",
         "kreis": "Städteregion Aachen",
-        "gemeinde": "05334012 / Eschweiler",
-        "betreiber": "Zustellanschrift\tRWE Power AG - Tagebau Inden",
+        "gemeinde": null,
+        "betreiber": "RWE Power AG - Tagebau Inden",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -52,12 +52,12 @@
       },
       "properties": {
         "anlagen_nr": "2221420",
-        "name": "/-entlastungsanlagen: RKB I",
+        "name": "RKB I",
         "kreis": "Städteregion Aachen",
-        "gemeinde": "05334032 / Stolberg (Rhld.)",
-        "betreiber": "Zustellanschrift\tKERPEN DATACOM GmbH",
+        "gemeinde": null,
+        "betreiber": "KERPEN DATACOM GmbH",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -72,12 +72,12 @@
       },
       "properties": {
         "anlagen_nr": "2221421",
-        "name": "/-entlastungsanlagen: RKB II",
+        "name": "RKB II",
         "kreis": "Städteregion Aachen",
-        "gemeinde": "05334032 / Stolberg (Rhld.)",
-        "betreiber": "Zustellanschrift\tKERPEN DATACOM GmbH",
+        "gemeinde": null,
+        "betreiber": "KERPEN DATACOM GmbH",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -92,12 +92,12 @@
       },
       "properties": {
         "anlagen_nr": "2221504",
-        "name": "/-entlastungsanlagen: RKB Otto-Lilienthal-Straße",
+        "name": "RKB Otto-Lilienthal-Straße",
         "kreis": "Städteregion Aachen",
-        "gemeinde": "05334004 / Alsdorf",
-        "betreiber": "Zustellanschrift\tEigenbetrieb Abwasser der Stadt Alsdorf",
+        "gemeinde": null,
+        "betreiber": "Eigenbetrieb Abwasser der Stadt Alsdorf",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -112,12 +112,12 @@
       },
       "properties": {
         "anlagen_nr": "2221505",
-        "name": "/-entlastungsanlagen: Höfen-Alzen",
+        "name": "Höfen-Alzen",
         "kreis": "Städteregion Aachen",
-        "gemeinde": "05334020 / Monschau",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -132,12 +132,12 @@
       },
       "properties": {
         "anlagen_nr": "2221508",
-        "name": "/-entlastungsanlagen: Duffesheide",
+        "name": "Duffesheide",
         "kreis": "Städteregion Aachen",
-        "gemeinde": "05334004 / Alsdorf",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "SK (Stauraumkanal)",
-        "abwasserbereich": "SK (Stauraumkanal)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -152,12 +152,12 @@
       },
       "properties": {
         "anlagen_nr": "2221509",
-        "name": "/-entlastungsanlagen: Neu Ofden",
+        "name": "Neu Ofden",
         "kreis": "Städteregion Aachen",
-        "gemeinde": "05334004 / Alsdorf",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "SK (Stauraumkanal)",
-        "abwasserbereich": "SK (Stauraumkanal)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -172,12 +172,12 @@
       },
       "properties": {
         "anlagen_nr": "2221510",
-        "name": "/-entlastungsanlagen: IGA-Süd",
+        "name": "IGA-Süd",
         "kreis": "Städteregion Aachen",
-        "gemeinde": "05334004 / Alsdorf",
-        "betreiber": "Zustellanschrift\tEigenbetrieb Abwasser der Stadt Alsdorf",
+        "gemeinde": null,
+        "betreiber": "Eigenbetrieb Abwasser der Stadt Alsdorf",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -192,12 +192,12 @@
       },
       "properties": {
         "anlagen_nr": "2221586",
-        "name": "/-entlastungsanlagen: RÜB Rödgener Straße",
+        "name": "RÜB Rödgener Straße",
         "kreis": "Städteregion Aachen",
-        "gemeinde": "05334002 / Aachen",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -212,12 +212,12 @@
       },
       "properties": {
         "anlagen_nr": "222886",
-        "name": "/-entlastungsanlagen: RBF NATO-Flugplatz",
+        "name": "RBF NATO-Flugplatz",
         "kreis": "Heinsberg",
-        "gemeinde": "05370008 / Gangelt",
-        "betreiber": "Zustellanschrift\tBundeswehr-Dienstleistungszentrum Aachen TGM Geilenkirchen",
+        "gemeinde": null,
+        "betreiber": "Bundeswehr-Dienstleistungszentrum Aachen TGM Geilenkirchen",
         "typ": "RBF (Retentionsbodenfilter)",
-        "abwasserbereich": "RBF (Retentionsbodenfilter)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -232,12 +232,12 @@
       },
       "properties": {
         "anlagen_nr": "2221448",
-        "name": "/-entlastungsanlagen: RKB NATO-Flugplatz",
+        "name": "RKB NATO-Flugplatz",
         "kreis": "Heinsberg",
-        "gemeinde": "05370008 / Gangelt",
-        "betreiber": "Zustellanschrift\tBundeswehr-Dienstleistungszentrum Aachen TGM Geilenkirchen",
+        "gemeinde": null,
+        "betreiber": "Bundeswehr-Dienstleistungszentrum Aachen TGM Geilenkirchen",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -252,12 +252,12 @@
       },
       "properties": {
         "anlagen_nr": "2221503",
-        "name": "/-entlastungsanlagen: Industriegebiet Dremmen",
+        "name": "Industriegebiet Dremmen",
         "kreis": "Heinsberg",
-        "gemeinde": "05370016 / Heinsberg",
-        "betreiber": "Zustellanschrift\tBürgermeister Heinsberg",
+        "gemeinde": null,
+        "betreiber": "Bürgermeister Heinsberg",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -272,12 +272,12 @@
       },
       "properties": {
         "anlagen_nr": "2221512",
-        "name": "/-entlastungsanlagen: Uetterath",
+        "name": "Uetterath",
         "kreis": "Heinsberg",
-        "gemeinde": "05370016 / Heinsberg",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -292,12 +292,12 @@
       },
       "properties": {
         "anlagen_nr": "2221513",
-        "name": "/-entlastungsanlagen: Horst",
+        "name": "Horst",
         "kreis": "Heinsberg",
-        "gemeinde": "05370016 / Heinsberg",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "SK (Stauraumkanal)",
-        "abwasserbereich": "SK (Stauraumkanal)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -312,12 +312,12 @@
       },
       "properties": {
         "anlagen_nr": "2221514",
-        "name": "/-entlastungsanlagen: Randerath",
+        "name": "Randerath",
         "kreis": "Heinsberg",
-        "gemeinde": "05370016 / Heinsberg",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -332,12 +332,12 @@
       },
       "properties": {
         "anlagen_nr": "2221517",
-        "name": "/-entlastungsanlagen: Flahstraß",
+        "name": "Flahstraß",
         "kreis": "Heinsberg",
-        "gemeinde": "05370012 / Geilenkirchen",
-        "betreiber": "Zustellanschrift\tWVER",
+        "gemeinde": null,
+        "betreiber": "WVER",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -352,12 +352,12 @@
       },
       "properties": {
         "anlagen_nr": "2221518",
-        "name": "/-entlastungsanlagen: Honsdorf",
+        "name": "Honsdorf",
         "kreis": "Heinsberg",
-        "gemeinde": "05370012 / Geilenkirchen",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -372,12 +372,12 @@
       },
       "properties": {
         "anlagen_nr": "2221519",
-        "name": "/-entlastungsanlagen: Lindern",
+        "name": "Lindern",
         "kreis": "Heinsberg",
-        "gemeinde": "05370012 / Geilenkirchen",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "SK (Stauraumkanal)",
-        "abwasserbereich": "SK (Stauraumkanal)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -392,12 +392,12 @@
       },
       "properties": {
         "anlagen_nr": "2221520",
-        "name": "/-entlastungsanlagen: Beeck",
+        "name": "Beeck",
         "kreis": "Heinsberg",
-        "gemeinde": "05370012 / Geilenkirchen",
-        "betreiber": "Zustellanschrift\tStadt Geilenkirchen",
+        "gemeinde": null,
+        "betreiber": "Stadt Geilenkirchen",
         "typ": "SK (Stauraumkanal)",
-        "abwasserbereich": "SK (Stauraumkanal)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -412,12 +412,12 @@
       },
       "properties": {
         "anlagen_nr": "2221277",
-        "name": "/-entlastungsanlagen: Regenklärbecken",
+        "name": "Regenklärbecken",
         "kreis": "Mönchengladbach",
-        "gemeinde": "05116000 / Mönchengladbach",
-        "betreiber": "Zustellanschrift\tFlughafen Düsseldorf-Mönchengladbach GmbH",
+        "gemeinde": null,
+        "betreiber": "Flughafen Düsseldorf-Mönchengladbach GmbH",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -432,12 +432,12 @@
       },
       "properties": {
         "anlagen_nr": "2221278",
-        "name": "/-entlastungsanlagen: Regenrückhaltebecken 2",
+        "name": "Regenrückhaltebecken 2",
         "kreis": "Mönchengladbach",
-        "gemeinde": "05116000 / Mönchengladbach",
-        "betreiber": "Zustellanschrift\tFlughafen Düsseldorf-Mönchengladbach GmbH",
+        "gemeinde": null,
+        "betreiber": "Flughafen Düsseldorf-Mönchengladbach GmbH",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -452,12 +452,12 @@
       },
       "properties": {
         "anlagen_nr": "2221279",
-        "name": "/-entlastungsanlagen: Regenrückhaltebecken 1",
+        "name": "Regenrückhaltebecken 1",
         "kreis": "Mönchengladbach",
-        "gemeinde": "05116000 / Mönchengladbach",
-        "betreiber": "Zustellanschrift\tFlughafen Düsseldorf-Mönchengladbach GmbH",
+        "gemeinde": null,
+        "betreiber": "Flughafen Düsseldorf-Mönchengladbach GmbH",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -472,12 +472,12 @@
       },
       "properties": {
         "anlagen_nr": "2226440",
-        "name": "/-entlastungsanlagen: Heinrich-Pesch-Straße",
+        "name": "Heinrich-Pesch-Straße",
         "kreis": "Mönchengladbach",
-        "gemeinde": "05116000 / Mönchengladbach",
-        "betreiber": "Zustellanschrift\tNiersverband",
+        "gemeinde": null,
+        "betreiber": "Niersverband",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -492,12 +492,12 @@
       },
       "properties": {
         "anlagen_nr": "2226441",
-        "name": "/-entlastungsanlagen: RÜB An der Wey",
+        "name": "RÜB An der Wey",
         "kreis": "Mönchengladbach",
-        "gemeinde": "05116000 / Mönchengladbach",
-        "betreiber": "Zustellanschrift\tNiersverband",
+        "gemeinde": null,
+        "betreiber": "Niersverband",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -512,12 +512,12 @@
       },
       "properties": {
         "anlagen_nr": "2226443",
-        "name": "/-entlastungsanlagen: Laurentiusstraße",
+        "name": "Laurentiusstraße",
         "kreis": "Mönchengladbach",
-        "gemeinde": "05116000 / Mönchengladbach",
-        "betreiber": "Zustellanschrift\tNEW AG Mönchengladbach -",
+        "gemeinde": null,
+        "betreiber": "NEW AG Mönchengladbach -",
         "typ": "SK (Stauraumkanal)",
-        "abwasserbereich": "SK (Stauraumkanal)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -532,12 +532,12 @@
       },
       "properties": {
         "anlagen_nr": "2226444",
-        "name": "/-entlastungsanlagen: Beckrather Straße",
+        "name": "Beckrather Straße",
         "kreis": "Mönchengladbach",
-        "gemeinde": "05116000 / Mönchengladbach",
-        "betreiber": "Zustellanschrift\tOberbürgermeister Mönchengladbach",
+        "gemeinde": null,
+        "betreiber": "Oberbürgermeister Mönchengladbach",
         "typ": "SK (Stauraumkanal)",
-        "abwasserbereich": "SK (Stauraumkanal)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -552,12 +552,12 @@
       },
       "properties": {
         "anlagen_nr": "2226445",
-        "name": "/-entlastungsanlagen: Grunewaldstraße",
+        "name": "Grunewaldstraße",
         "kreis": "Mönchengladbach",
-        "gemeinde": "05116000 / Mönchengladbach",
-        "betreiber": "Zustellanschrift\tNEW AG Mönchengladbach -",
+        "gemeinde": null,
+        "betreiber": "NEW AG Mönchengladbach -",
         "typ": "SK (Stauraumkanal)",
-        "abwasserbereich": "SK (Stauraumkanal)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -572,12 +572,12 @@
       },
       "properties": {
         "anlagen_nr": "2226446",
-        "name": "/-entlastungsanlagen: Krefelder Straße",
+        "name": "Krefelder Straße",
         "kreis": "Mönchengladbach",
-        "gemeinde": "05116000 / Mönchengladbach",
-        "betreiber": "Zustellanschrift\tNVV AG Mönchengladbach -",
+        "gemeinde": null,
+        "betreiber": "NVV AG Mönchengladbach -",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -592,12 +592,12 @@
       },
       "properties": {
         "anlagen_nr": "2226447",
-        "name": "/-entlastungsanlagen: Maria-Juchacz-Str./Güdderath W",
+        "name": "Maria-Juchacz-Str./Güdderath W",
         "kreis": "Mönchengladbach",
-        "gemeinde": "05116000 / Mönchengladbach",
-        "betreiber": "Zustellanschrift\tNVV AG Mönchengladbach -",
+        "gemeinde": null,
+        "betreiber": "NVV AG Mönchengladbach -",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -612,12 +612,12 @@
       },
       "properties": {
         "anlagen_nr": "2221261",
-        "name": "/-entlastungsanlagen: Regenklärbecken",
+        "name": "Regenklärbecken",
         "kreis": "Rhein-Kreis Neuss",
-        "gemeinde": "05162024 / Neuss",
-        "betreiber": "Zustellanschrift\tAluminium Norf GmbH",
+        "gemeinde": null,
+        "betreiber": "Aluminium Norf GmbH",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -632,12 +632,12 @@
       },
       "properties": {
         "anlagen_nr": "2221262",
-        "name": "/-entlastungsanlagen: RKB O.&L. Sels",
+        "name": "RKB O.&L. Sels",
         "kreis": "Rhein-Kreis Neuss",
-        "gemeinde": "05162024 / Neuss",
-        "betreiber": "Zustellanschrift\tO. & L. Sels GmbH & Co. KG",
+        "gemeinde": null,
+        "betreiber": "O. & L. Sels GmbH & Co. KG",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -652,12 +652,12 @@
       },
       "properties": {
         "anlagen_nr": "2221263",
-        "name": "/-entlastungsanlagen: Hydro Neuss",
+        "name": "Hydro Neuss",
         "kreis": "Rhein-Kreis Neuss",
-        "gemeinde": "05162024 / Neuss",
-        "betreiber": "Zustellanschrift\tHYDRO Aluminium Rolled Products GmbH Werk Neuss",
+        "gemeinde": null,
+        "betreiber": "HYDRO Aluminium Rolled Products GmbH Werk Neuss",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -672,12 +672,12 @@
       },
       "properties": {
         "anlagen_nr": "2221264",
-        "name": "/-entlastungsanlagen: RKB Stürzelberg II",
+        "name": "RKB Stürzelberg II",
         "kreis": "Rhein-Kreis Neuss",
-        "gemeinde": "05162004 / Dormagen",
-        "betreiber": "Zustellanschrift\tStürzelberg II, Dormagen Sabine Beyer-Schewe",
+        "gemeinde": null,
+        "betreiber": "Stürzelberg II, Dormagen Sabine Beyer-Schewe",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -692,12 +692,12 @@
       },
       "properties": {
         "anlagen_nr": "2221265",
-        "name": "/-entlastungsanlagen: RRB-Intersnack",
+        "name": "RRB-Intersnack",
         "kreis": "Rhein-Kreis Neuss",
-        "gemeinde": "05162008 / Grevenbroich",
-        "betreiber": "Zustellanschrift\tIntersnack Knabber-Gebäck GmbH & Co. KG Wevelinghoven",
+        "gemeinde": null,
+        "betreiber": "Intersnack Knabber-Gebäck GmbH & Co. KG Wevelinghoven",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -712,12 +712,12 @@
       },
       "properties": {
         "anlagen_nr": "2221267",
-        "name": "/-entlastungsanlagen: Intersnack/Pfeifer&Langen",
+        "name": "Intersnack/Pfeifer&Langen",
         "kreis": "Rhein-Kreis Neuss",
-        "gemeinde": "05162008 / Grevenbroich",
-        "betreiber": "Zustellanschrift\tPfeifer & Langen KG Werk Wevelinghoven",
+        "gemeinde": null,
+        "betreiber": "Pfeifer & Langen KG Werk Wevelinghoven",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -732,12 +732,12 @@
       },
       "properties": {
         "anlagen_nr": "2221270",
-        "name": "/-entlastungsanlagen: Absetzteiche (6Stk.)",
+        "name": "Absetzteiche (6Stk.)",
         "kreis": "Rhein-Kreis Neuss",
-        "gemeinde": "05162008 / Grevenbroich",
-        "betreiber": "Zustellanschrift\tWW Waldhütte/Lodshof NVV AG",
+        "gemeinde": null,
+        "betreiber": "WW Waldhütte/Lodshof NVV AG",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -752,12 +752,12 @@
       },
       "properties": {
         "anlagen_nr": "2221274",
-        "name": "/-entlastungsanlagen: Regenklär-/Regenrückhaltebecken",
+        "name": "Regenklär-/Regenrückhaltebecken",
         "kreis": "Rhein-Kreis Neuss",
-        "gemeinde": "05162008 / Grevenbroich",
-        "betreiber": "Zustellanschrift\tSpeira GmbH Werk Grevenbroich",
+        "gemeinde": null,
+        "betreiber": "Speira GmbH Werk Grevenbroich",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -772,12 +772,12 @@
       },
       "properties": {
         "anlagen_nr": "2221480",
-        "name": "/-entlastungsanlagen: RKB Dachser",
+        "name": "RKB Dachser",
         "kreis": "Rhein-Kreis Neuss",
-        "gemeinde": "05162024 / Neuss",
-        "betreiber": "Zustellanschrift\tDachser GmbH & Co. KG Niederlassung Neuss",
+        "gemeinde": null,
+        "betreiber": "Dachser GmbH & Co. KG Niederlassung Neuss",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -792,12 +792,12 @@
       },
       "properties": {
         "anlagen_nr": "2226460",
-        "name": "/-entlastungsanlagen: SKO Langwaden",
+        "name": "SKO Langwaden",
         "kreis": "Rhein-Kreis Neuss",
-        "gemeinde": "05162008 / Grevenbroich",
-        "betreiber": "Zustellanschrift\tErftverband",
+        "gemeinde": null,
+        "betreiber": "Erftverband",
         "typ": "SK (Stauraumkanal)",
-        "abwasserbereich": "SK (Stauraumkanal)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -812,12 +812,12 @@
       },
       "properties": {
         "anlagen_nr": "222874",
-        "name": "/-entlastungsanlagen: RKB",
+        "name": "RKB",
         "kreis": "Düren",
-        "gemeinde": "05358040 / Merzenich",
-        "betreiber": "Zustellanschrift\tJ. & W. Stollenwerk OHG",
+        "gemeinde": null,
+        "betreiber": "J. & W. Stollenwerk OHG",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -832,12 +832,12 @@
       },
       "properties": {
         "anlagen_nr": "222875",
-        "name": "/-entlastungsanlagen: RRB",
+        "name": "RRB",
         "kreis": "Düren",
-        "gemeinde": "05358040 / Merzenich",
-        "betreiber": "Zustellanschrift\tJ. & W. Stollenwerk OHG",
+        "gemeinde": null,
+        "betreiber": "J. & W. Stollenwerk OHG",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -852,12 +852,12 @@
       },
       "properties": {
         "anlagen_nr": "222876",
-        "name": "/-entlastungsanlagen: RKB/Stauraumkanal DN 1400",
+        "name": "RKB/Stauraumkanal DN 1400",
         "kreis": "Düren",
-        "gemeinde": "05358036 / Linnich",
-        "betreiber": "Zustellanschrift\tSIG Combibloc GmbH",
+        "gemeinde": null,
+        "betreiber": "SIG Combibloc GmbH",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -872,12 +872,12 @@
       },
       "properties": {
         "anlagen_nr": "222877",
-        "name": "/-entlastungsanlagen: Tagebau Hambach - Tagesanlagen - RRB",
+        "name": "Tagebau Hambach - Tagesanlagen - RRB",
         "kreis": "Düren",
-        "gemeinde": "05358048 / Niederzier",
-        "betreiber": "Zustellanschrift\tRWE Power AG - Tagebau Hambach",
+        "gemeinde": null,
+        "betreiber": "RWE Power AG - Tagebau Hambach",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -892,12 +892,12 @@
       },
       "properties": {
         "anlagen_nr": "222879",
-        "name": "/-entlastungsanlagen: EBV Regenrückhaltebecken",
+        "name": "EBV Regenrückhaltebecken",
         "kreis": "Düren",
-        "gemeinde": "05358004 / Aldenhoven",
-        "betreiber": "Zustellanschrift\tEBV Aktiengesellschaft Berghalde Emil Mayrisch (Freialdenhoven)",
+        "gemeinde": null,
+        "betreiber": "EBV Aktiengesellschaft Berghalde Emil Mayrisch (Freialdenhoven)",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -912,12 +912,12 @@
       },
       "properties": {
         "anlagen_nr": "222883",
-        "name": "/-entlastungsanlagen: 4 Kaskaden-RKB",
+        "name": "4 Kaskaden-RKB",
         "kreis": "Düren",
-        "gemeinde": "05358052 / Nörvenich",
-        "betreiber": "Zustellanschrift\tStandortverwaltung Düren",
+        "gemeinde": null,
+        "betreiber": "Standortverwaltung Düren",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -932,12 +932,12 @@
       },
       "properties": {
         "anlagen_nr": "222884",
-        "name": "/-entlastungsanlagen: RKB->E1",
+        "name": "RKB->E1",
         "kreis": "Düren",
-        "gemeinde": "05358028 / Kreuzau",
-        "betreiber": "Zustellanschrift\tMetsä Tissue GmbH Werk Kreuzau",
+        "gemeinde": null,
+        "betreiber": "Metsä Tissue GmbH Werk Kreuzau",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -952,12 +952,12 @@
       },
       "properties": {
         "anlagen_nr": "222885",
-        "name": "/-entlastungsanlagen: RKB->E3",
+        "name": "RKB->E3",
         "kreis": "Düren",
-        "gemeinde": "05358028 / Kreuzau",
-        "betreiber": "Zustellanschrift\tMetsä Tissue GmbH Werk Kreuzau",
+        "gemeinde": null,
+        "betreiber": "Metsä Tissue GmbH Werk Kreuzau",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -972,12 +972,12 @@
       },
       "properties": {
         "anlagen_nr": "222889",
-        "name": "/-entlastungsanlagen: Regenrückhaltebecken",
+        "name": "Regenrückhaltebecken",
         "kreis": "Düren",
-        "gemeinde": "05358024 / Jülich",
-        "betreiber": "Zustellanschrift\tPfeifer & Langen GmbH & Co.KG Zuckerfabrik Jülich",
+        "gemeinde": null,
+        "betreiber": "Pfeifer & Langen GmbH & Co.KG Zuckerfabrik Jülich",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -992,12 +992,12 @@
       },
       "properties": {
         "anlagen_nr": "2221506",
-        "name": "/-entlastungsanlagen: Linnich/Erkelenzer Str.",
+        "name": "Linnich/Erkelenzer Str.",
         "kreis": "Düren",
-        "gemeinde": "05358036 / Linnich",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "SK (Stauraumkanal)",
-        "abwasserbereich": "SK (Stauraumkanal)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1012,12 +1012,12 @@
       },
       "properties": {
         "anlagen_nr": "3622",
-        "name": "/-entlastungsanlagen: Anschlussstelle Hürth-Gleuel",
+        "name": "Anschlussstelle Hürth-Gleuel",
         "kreis": "Rhein-Erft-Kreis",
-        "gemeinde": "05362028 / Hürth",
-        "betreiber": "Zustellanschrift\tLandesbetrieb Straßenbau NRW",
+        "gemeinde": null,
+        "betreiber": "Landesbetrieb Straßenbau NRW",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1032,12 +1032,12 @@
       },
       "properties": {
         "anlagen_nr": "3623",
-        "name": "/-entlastungsanlagen: BP 215, Kleinfeldchen",
+        "name": "BP 215, Kleinfeldchen",
         "kreis": "Rhein-Erft-Kreis",
-        "gemeinde": "05362008 / Bergheim",
-        "betreiber": "Zustellanschrift\tStadtwerke Bergheim GmbH",
+        "gemeinde": null,
+        "betreiber": "Stadtwerke Bergheim GmbH",
         "typ": "SK (Stauraumkanal)",
-        "abwasserbereich": "SK (Stauraumkanal)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1052,12 +1052,12 @@
       },
       "properties": {
         "anlagen_nr": "3628",
-        "name": "/-entlastungsanlagen: RRB 32; Mühlenweg BP 63",
+        "name": "RRB 32; Mühlenweg BP 63",
         "kreis": "Rhein-Erft-Kreis",
-        "gemeinde": "05362036 / Pulheim",
-        "betreiber": "Zustellanschrift\tStadt Pulheim Der Bürgermeister",
+        "gemeinde": null,
+        "betreiber": "Stadt Pulheim Der Bürgermeister",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1072,12 +1072,12 @@
       },
       "properties": {
         "anlagen_nr": "36215",
-        "name": "/-entlastungsanlagen: Lindenstraße-Süd RRB3.22",
+        "name": "Lindenstraße-Süd RRB3.22",
         "kreis": "Rhein-Erft-Kreis",
-        "gemeinde": "05362024 / Frechen",
-        "betreiber": "Zustellanschrift\tStadt Frechen",
+        "gemeinde": null,
+        "betreiber": "Stadt Frechen",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1092,12 +1092,12 @@
       },
       "properties": {
         "anlagen_nr": "36216",
-        "name": "/-entlastungsanlagen: Lamellenklärer",
+        "name": "Lamellenklärer",
         "kreis": "Rhein-Erft-Kreis",
-        "gemeinde": "05362028 / Hürth",
-        "betreiber": "Zustellanschrift\tAldi GmbH & Co. KG",
+        "gemeinde": null,
+        "betreiber": "Aldi GmbH & Co. KG",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1112,12 +1112,12 @@
       },
       "properties": {
         "anlagen_nr": "36217",
-        "name": "/-entlastungsanlagen: Sedipipe XL",
+        "name": "Sedipipe XL",
         "kreis": "Rhein-Erft-Kreis",
-        "gemeinde": "05362012 / Brühl",
-        "betreiber": "Zustellanschrift\tStadt Brühl",
+        "gemeinde": null,
+        "betreiber": "Stadt Brühl",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1132,12 +1132,12 @@
       },
       "properties": {
         "anlagen_nr": "36221",
-        "name": "/-entlastungsanlagen: Brühler Straße",
+        "name": "Brühler Straße",
         "kreis": "Rhein-Erft-Kreis",
-        "gemeinde": "05362040 / Wesseling",
-        "betreiber": "Zustellanschrift\tHeitkamp Immobilien GbR",
+        "gemeinde": null,
+        "betreiber": "Heitkamp Immobilien GbR",
         "typ": "SK (Stauraumkanal)",
-        "abwasserbereich": "SK (Stauraumkanal)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1152,12 +1152,12 @@
       },
       "properties": {
         "anlagen_nr": "36227",
-        "name": "/-entlastungsanlagen: RRB 2 Roggendorfer Straße",
+        "name": "RRB 2 Roggendorfer Straße",
         "kreis": "Rhein-Erft-Kreis",
-        "gemeinde": "05362036 / Pulheim",
-        "betreiber": "Zustellanschrift\tStadt Pulheim Der Bürgermeister",
+        "gemeinde": null,
+        "betreiber": "Stadt Pulheim Der Bürgermeister",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1172,12 +1172,12 @@
       },
       "properties": {
         "anlagen_nr": "36232",
-        "name": "/-entlastungsanlagen: BP 218.x Ahe \"An der Kapelle\"",
+        "name": "BP 218.x Ahe \"An der Kapelle\"",
         "kreis": "Rhein-Erft-Kreis",
-        "gemeinde": "05362008 / Bergheim",
-        "betreiber": "Zustellanschrift\tStadtwerke Bergheim GmbH",
+        "gemeinde": null,
+        "betreiber": "Stadtwerke Bergheim GmbH",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1192,12 +1192,12 @@
       },
       "properties": {
         "anlagen_nr": "36233",
-        "name": "/-entlastungsanlagen: BP 218.1 Ahe",
+        "name": "BP 218.1 Ahe",
         "kreis": "Rhein-Erft-Kreis",
-        "gemeinde": "05362008 / Bergheim",
-        "betreiber": "Zustellanschrift\tStadtwerke Bergheim GmbH",
+        "gemeinde": null,
+        "betreiber": "Stadtwerke Bergheim GmbH",
         "typ": "RKB (Regenklärbecken)",
-        "abwasserbereich": "RKB (Regenklärbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1212,12 +1212,12 @@
       },
       "properties": {
         "anlagen_nr": "222873",
-        "name": "/-entlastungsanlagen: Rückhaltefilterbecken",
+        "name": "Rückhaltefilterbecken",
         "kreis": "Euskirchen",
-        "gemeinde": "05366028 / Mechernich",
-        "betreiber": "Zustellanschrift\tAbfallwirtschaftszentrum Mechernich",
+        "gemeinde": null,
+        "betreiber": "Abfallwirtschaftszentrum Mechernich",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1232,12 +1232,12 @@
       },
       "properties": {
         "anlagen_nr": "2221502",
-        "name": "/-entlastungsanlagen: Zehnstelle / Wittscheid",
+        "name": "Zehnstelle / Wittscheid",
         "kreis": "Euskirchen",
-        "gemeinde": "05366020 / Hellenthal",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RRB (Regenrückhaltebecken)",
-        "abwasserbereich": "RRB (Regenrückhaltebecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1252,12 +1252,12 @@
       },
       "properties": {
         "anlagen_nr": "2221515",
-        "name": "/-entlastungsanlagen: Alte KA Sistig",
+        "name": "Alte KA Sistig",
         "kreis": "Euskirchen",
-        "gemeinde": "05366024 / Kall",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1272,12 +1272,12 @@
       },
       "properties": {
         "anlagen_nr": "2221516",
-        "name": "/-entlastungsanlagen: alte KA Broich",
+        "name": "alte KA Broich",
         "kreis": "Euskirchen",
-        "gemeinde": "05366036 / Schleiden",
-        "betreiber": "Zustellanschrift\tWasserverband Eifel-Rur",
+        "gemeinde": null,
+        "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1292,12 +1292,12 @@
       },
       "properties": {
         "anlagen_nr": "2221811",
-        "name": "/-entlastungsanlagen: Kronenburg",
+        "name": "Kronenburg",
         "kreis": "Euskirchen",
-        "gemeinde": "05366012 / Dahlem",
-        "betreiber": "Zustellanschrift\tAbwasserwerk der Gemeinde Dahlem",
+        "gemeinde": null,
+        "betreiber": "Abwasserwerk der Gemeinde Dahlem",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1312,12 +1312,12 @@
       },
       "properties": {
         "anlagen_nr": "2221812",
-        "name": "/-entlastungsanlagen: Kronenburg Ortsmitte Brigida Kapelle",
+        "name": "Kronenburg Ortsmitte Brigida Kapelle",
         "kreis": "Euskirchen",
-        "gemeinde": "05366012 / Dahlem",
-        "betreiber": "Zustellanschrift\tGemeinde Dahlem",
+        "gemeinde": null,
+        "betreiber": "Gemeinde Dahlem",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1332,12 +1332,12 @@
       },
       "properties": {
         "anlagen_nr": "2221813",
-        "name": "/-entlastungsanlagen: Baasem",
+        "name": "Baasem",
         "kreis": "Euskirchen",
-        "gemeinde": "05366012 / Dahlem",
-        "betreiber": "Zustellanschrift\tAbwasserwerk der Gemeinde Dahlem",
+        "gemeinde": null,
+        "betreiber": "Abwasserwerk der Gemeinde Dahlem",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1352,12 +1352,12 @@
       },
       "properties": {
         "anlagen_nr": "2221814",
-        "name": "/-entlastungsanlagen: Frauenkron",
+        "name": "Frauenkron",
         "kreis": "Euskirchen",
-        "gemeinde": "05366012 / Dahlem",
-        "betreiber": "Zustellanschrift\tAbwasserwerk der Gemeinde Dahlem",
+        "gemeinde": null,
+        "betreiber": "Abwasserwerk der Gemeinde Dahlem",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1372,12 +1372,12 @@
       },
       "properties": {
         "anlagen_nr": "2221815",
-        "name": "/-entlastungsanlagen: KA",
+        "name": "KA",
         "kreis": "Euskirchen",
-        "gemeinde": "05366012 / Dahlem",
-        "betreiber": "Zustellanschrift\tAbwasserwerk der Gemeinde Dahlem",
+        "gemeinde": null,
+        "betreiber": "Abwasserwerk der Gemeinde Dahlem",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
@@ -1392,12 +1392,12 @@
       },
       "properties": {
         "anlagen_nr": "2221816",
-        "name": "/-entlastungsanlagen: Berk",
+        "name": "Berk",
         "kreis": "Euskirchen",
-        "gemeinde": "05366012 / Dahlem",
-        "betreiber": "Zustellanschrift\tAbwasserwerk der Gemeinde Dahlem",
+        "gemeinde": null,
+        "betreiber": "Abwasserwerk der Gemeinde Dahlem",
         "typ": "RÜB (Regenüberlaufbecken)",
-        "abwasserbereich": "RÜB (Regenüberlaufbecken)",
+        "abwasserbereich": null,
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     }

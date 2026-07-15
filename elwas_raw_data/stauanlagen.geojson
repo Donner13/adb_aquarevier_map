@@ -14,8 +14,8 @@
         "anlagen_nr": "27",
         "name": "Dreilägerbachtalsperre",
         "kreis": "Städteregion Aachen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "WAG Nordeifel",
+        "gewaesser": "Dreilägerbach",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -33,8 +33,8 @@
         "anlagen_nr": "35",
         "name": "HRB Euchen",
         "kreis": "Städteregion Aachen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Euchener Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -52,8 +52,8 @@
         "anlagen_nr": "48",
         "name": "HRB Herzogenrath",
         "kreis": "Städteregion Aachen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Broicher Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -71,8 +71,8 @@
         "anlagen_nr": "61",
         "name": "Kalltalsperre",
         "kreis": "Städteregion Aachen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "WAG Nordeifel",
+        "gewaesser": "Kall",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -90,8 +90,8 @@
         "anlagen_nr": "101",
         "name": "Perlenbachtalsperre",
         "kreis": "Städteregion Aachen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserversorgungsverband Perlenbach",
+        "gewaesser": "Perlenbach",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -109,8 +109,8 @@
         "anlagen_nr": "105",
         "name": "HRB Rahe",
         "kreis": "Städteregion Aachen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Wildbach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -128,8 +128,8 @@
         "anlagen_nr": "164",
         "name": "Wehebachtalsperre",
         "kreis": "Städteregion Aachen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Wehebach",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -147,8 +147,8 @@
         "anlagen_nr": "171",
         "name": "Vorsperre Eiserbach",
         "kreis": "Städteregion Aachen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Eiserbach",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -166,8 +166,8 @@
         "anlagen_nr": "174",
         "name": "Stauanlage Diepenbenden",
         "kreis": "Städteregion Aachen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Stadt Aachen",
+        "gewaesser": "Wurm (Arm Luttitz)",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -185,8 +185,8 @@
         "anlagen_nr": "175",
         "name": "Stauanlage Kupferbach",
         "kreis": "Städteregion Aachen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Stadt Aachen",
+        "gewaesser": "Kupferbach",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -204,8 +204,8 @@
         "anlagen_nr": "235",
         "name": "Beeckbach III Erkelenz",
         "kreis": "Heinsberg",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Schwalm V",
+        "gewaesser": "Beeckbach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -223,8 +223,8 @@
         "anlagen_nr": "236",
         "name": "Beeckbach II Grenzlandring",
         "kreis": "Heinsberg",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Schwalm V",
+        "gewaesser": "Beeckbach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -242,8 +242,8 @@
         "anlagen_nr": "237",
         "name": "Beeckbach I Ophover Mühle",
         "kreis": "Heinsberg",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Schwalm V",
+        "gewaesser": "Beeckbach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -261,8 +261,8 @@
         "anlagen_nr": "238",
         "name": "Dahlheimer Mühle",
         "kreis": "Heinsberg",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Dahlheimer Mühle",
+        "gewaesser": "Afslagtak Rode Beek Vlodrop",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -280,8 +280,8 @@
         "anlagen_nr": "239",
         "name": "Nierstraß",
         "kreis": "Heinsberg",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Rodebach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -299,8 +299,8 @@
         "anlagen_nr": "240",
         "name": "HRB Siepenbusch",
         "kreis": "Heinsberg",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Rodebach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -318,8 +318,8 @@
         "anlagen_nr": "241",
         "name": "In der Schroiff",
         "kreis": "Heinsberg",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Übach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -337,8 +337,8 @@
         "anlagen_nr": "242",
         "name": "Beeck",
         "kreis": "Heinsberg",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Beeckfließ",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -356,8 +356,8 @@
         "anlagen_nr": "243",
         "name": "Uetterath",
         "kreis": "Heinsberg",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Kötteler Schar",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -375,8 +375,8 @@
         "anlagen_nr": "244",
         "name": "Herb",
         "kreis": "Heinsberg",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Wurm",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -394,8 +394,8 @@
         "anlagen_nr": "94",
         "name": "HRB Odenkirchen",
         "kreis": "Mönchengladbach",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Niersverband",
+        "gewaesser": "Niers",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -413,8 +413,8 @@
         "anlagen_nr": "516",
         "name": "HRB Hochneukirch",
         "kreis": "Mönchengladbach",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Niersverband",
+        "gewaesser": "Hochneukircher Fließ",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -432,8 +432,8 @@
         "anlagen_nr": "751",
         "name": "HRB Geneicken",
         "kreis": "Mönchengladbach",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Niersverband",
+        "gewaesser": "Niers",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -451,8 +451,8 @@
         "anlagen_nr": "315",
         "name": "HRB Gill",
         "kreis": "Rhein-Kreis Neuss",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Eftverband",
+        "gewaesser": "Gillbach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -470,8 +470,8 @@
         "anlagen_nr": "316",
         "name": "HRB Damm",
         "kreis": "Rhein-Kreis Neuss",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Eftverband",
+        "gewaesser": "Jüchener Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -489,8 +489,8 @@
         "anlagen_nr": "317",
         "name": "HRB Herberath",
         "kreis": "Rhein-Kreis Neuss",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Eftverband",
+        "gewaesser": "Scheulenbendgraben",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -508,8 +508,8 @@
         "anlagen_nr": "102",
         "name": "Polder 1-3, Zuckerfabrik Jülich (keine Anlage gem. §105 LWG)",
         "kreis": "Düren",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Zuckerfabrik Jülich AG",
+        "gewaesser": "Rur",
         "typ": "Sedimentationsbecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -527,8 +527,8 @@
         "anlagen_nr": "106",
         "name": "Rurtalsperre Schwammenauel",
         "kreis": "Düren",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Rur",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -546,8 +546,8 @@
         "anlagen_nr": "134",
         "name": "Stauanlage Heimbach",
         "kreis": "Düren",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Rur",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -565,8 +565,8 @@
         "anlagen_nr": "140",
         "name": "Stauanlage Lucherberger See",
         "kreis": "Düren",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Rheinisch Westfälische",
+        "gewaesser": "Mühlengraben (Waagmühle)",
         "typ": "Pumpspeicherbecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -584,8 +584,8 @@
         "anlagen_nr": "141",
         "name": "Stauanlage Obermaubach",
         "kreis": "Düren",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Rur",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -603,8 +603,8 @@
         "anlagen_nr": "170",
         "name": "Vorsperre Obersee",
         "kreis": "Düren",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Rur",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -622,8 +622,8 @@
         "anlagen_nr": "180",
         "name": "Schlangengraben",
         "kreis": "Düren",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Stadt Aachen",
+        "gewaesser": "Schlangengraben",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -641,8 +641,8 @@
         "anlagen_nr": "193",
         "name": "Oberzier",
         "kreis": "Düren",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Ellebach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -660,8 +660,8 @@
         "anlagen_nr": "195",
         "name": "Drove",
         "kreis": "Düren",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Boicher Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -679,8 +679,8 @@
         "anlagen_nr": "196",
         "name": "Thum",
         "kreis": "Düren",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Drover Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -698,8 +698,8 @@
         "anlagen_nr": "24",
         "name": "HRB Diebenhöhle I",
         "kreis": "Rhein-Erft-Kreis",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Erftverband",
+        "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -717,8 +717,8 @@
         "anlagen_nr": "56",
         "name": "HRB Ingendorf",
         "kreis": "Rhein-Erft-Kreis",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Erftverband",
+        "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -736,8 +736,8 @@
         "anlagen_nr": "65",
         "name": "HRB Kirchtal",
         "kreis": "Rhein-Erft-Kreis",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Erftverband",
+        "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -755,8 +755,8 @@
         "anlagen_nr": "122",
         "name": "HRB Sinthern",
         "kreis": "Rhein-Erft-Kreis",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Unterhaltungsverband Pullheimer Bach",
+        "gewaesser": "Pulheimer Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -774,8 +774,8 @@
         "anlagen_nr": "225",
         "name": "Diebenhöhle II",
         "kreis": "Rhein-Erft-Kreis",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Erftverband",
+        "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -793,8 +793,8 @@
         "anlagen_nr": "226",
         "name": "Büsdorf/Sportplatz",
         "kreis": "Rhein-Erft-Kreis",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Erftverband",
+        "gewaesser": "Norfbach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -812,8 +812,8 @@
         "anlagen_nr": "227",
         "name": "Büsdorf/Kaulsgasse",
         "kreis": "Rhein-Erft-Kreis",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Erftverband",
+        "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -831,8 +831,8 @@
         "anlagen_nr": "228",
         "name": "Büsdorf/Kasterstraße",
         "kreis": "Rhein-Erft-Kreis",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Erftverband",
+        "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -850,8 +850,8 @@
         "anlagen_nr": "229",
         "name": "Stommeln/Sportplatz",
         "kreis": "Rhein-Erft-Kreis",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Erftverband",
+        "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -869,8 +869,8 @@
         "anlagen_nr": "231",
         "name": "Stommeln/B 59 alt I/II",
         "kreis": "Rhein-Erft-Kreis",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Erftverband",
+        "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -888,8 +888,8 @@
         "anlagen_nr": "29",
         "name": "HRB Eicherscheid",
         "kreis": "Euskirchen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Erftverband",
+        "gewaesser": "Erft",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -907,8 +907,8 @@
         "anlagen_nr": "53",
         "name": "HRB Horchheim",
         "kreis": "Euskirchen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Erftverband",
+        "gewaesser": "Erft",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -926,8 +926,8 @@
         "anlagen_nr": "83",
         "name": "Madbachtalsperre",
         "kreis": "Euskirchen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserversorgungsverband",
+        "gewaesser": "Rauscheidsiefen (Madbach)",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -945,8 +945,8 @@
         "anlagen_nr": "97",
         "name": "Oleftalsperre",
         "kreis": "Euskirchen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Olef",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -964,8 +964,8 @@
         "anlagen_nr": "138",
         "name": "Stauanlage Kronenburg",
         "kreis": "Euskirchen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Zweckverband Kronenburger See",
+        "gewaesser": "Kyll",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -983,8 +983,8 @@
         "anlagen_nr": "148",
         "name": "Steinbachtalsperre",
         "kreis": "Euskirchen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserversorgungsverband",
+        "gewaesser": "Steinbach",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -1002,8 +1002,8 @@
         "anlagen_nr": "157",
         "name": "Urfttalsperre",
         "kreis": "Euskirchen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Wasserverband Eifel-Rur",
+        "gewaesser": "Urft",
         "typ": "Talsperre",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -1021,8 +1021,8 @@
         "anlagen_nr": "173",
         "name": "Sedimentationsanlage Buchholzweiher",
         "kreis": "Euskirchen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Bundeswehr Wehrbereichsverwaltung West",
+        "gewaesser": "Bergheimer Bach",
         "typ": "Sedimentationsbecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -1040,8 +1040,8 @@
         "anlagen_nr": "233",
         "name": "Neffelsee",
         "kreis": "Euskirchen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Eftverband",
+        "gewaesser": "Neffelbach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
@@ -1059,8 +1059,8 @@
         "anlagen_nr": "234",
         "name": "Zülpich/Bürvenich",
         "kreis": "Euskirchen",
-        "betreiber": "Absperrbauwerk",
-        "gewaesser": "stationierungskarte",
+        "betreiber": "Eftverband",
+        "gewaesser": "Bürvenicher Bach",
         "typ": "Hochwasserrückhaltebecken",
         "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }

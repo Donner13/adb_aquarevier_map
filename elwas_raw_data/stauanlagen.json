@@ -4,8 +4,8 @@
     "kreis": "Städteregion Aachen",
     "utm_east": "302721",
     "utm_north": "5615728",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "WAG Nordeifel",
+    "gewaesser": "Dreilägerbach",
     "typ": "Talsperre"
   },
   "35": {
@@ -13,8 +13,8 @@
     "kreis": "Städteregion Aachen",
     "utm_east": "300381,256",
     "utm_north": "5637398,128",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Euchener Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "48": {
@@ -22,8 +22,8 @@
     "kreis": "Städteregion Aachen",
     "utm_east": "296114",
     "utm_north": "5638938",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Broicher Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "61": {
@@ -31,8 +31,8 @@
     "kreis": "Städteregion Aachen",
     "utm_east": "309873",
     "utm_north": "5613784",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "WAG Nordeifel",
+    "gewaesser": "Kall",
     "typ": "Talsperre"
   },
   "101": {
@@ -40,8 +40,8 @@
     "kreis": "Städteregion Aachen",
     "utm_east": "304419",
     "utm_north": "5602216",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserversorgungsverband Perlenbach",
+    "gewaesser": "Perlenbach",
     "typ": "Talsperre"
   },
   "105": {
@@ -49,8 +49,8 @@
     "kreis": "Städteregion Aachen",
     "utm_east": "293815",
     "utm_north": "5631386",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Wildbach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "164": {
@@ -58,8 +58,8 @@
     "kreis": "Städteregion Aachen",
     "utm_east": "312519,588",
     "utm_north": "5626061,666",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Wehebach",
     "typ": "Talsperre"
   },
   "171": {
@@ -67,8 +67,8 @@
     "kreis": "Städteregion Aachen",
     "utm_east": "314924,902",
     "utm_north": "5609301,107",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Eiserbach",
     "typ": "Talsperre"
   },
   "174": {
@@ -76,8 +76,8 @@
     "kreis": "Städteregion Aachen",
     "utm_east": "294121,601",
     "utm_north": "5625348,38",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Stadt Aachen",
+    "gewaesser": "Wurm (Arm Luttitz)",
     "typ": "Talsperre"
   },
   "175": {
@@ -85,8 +85,8 @@
     "kreis": "Städteregion Aachen",
     "utm_east": "294998",
     "utm_north": "5625429",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Stadt Aachen",
+    "gewaesser": "Kupferbach",
     "typ": "Talsperre"
   },
   "235": {
@@ -94,8 +94,8 @@
     "kreis": "Heinsberg",
     "utm_east": "312433,484",
     "utm_north": "5664757,968",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Schwalm V",
+    "gewaesser": "Beeckbach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "236": {
@@ -103,8 +103,8 @@
     "kreis": "Heinsberg",
     "utm_east": "311830,904",
     "utm_north": "5667677,879",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Schwalm V",
+    "gewaesser": "Beeckbach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "237": {
@@ -112,8 +112,8 @@
     "kreis": "Heinsberg",
     "utm_east": "310036,42",
     "utm_north": "5668499,202",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Schwalm V",
+    "gewaesser": "Beeckbach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "238": {
@@ -121,8 +121,8 @@
     "kreis": "Heinsberg",
     "utm_east": "301637,893",
     "utm_north": "5670175,157",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Dahlheimer Mühle",
+    "gewaesser": "Afslagtak Rode Beek Vlodrop",
     "typ": "Hochwasserrückhaltebecken"
   },
   "239": {
@@ -130,8 +130,8 @@
     "kreis": "Heinsberg",
     "utm_east": "294802,707",
     "utm_north": "5650519,51",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Rodebach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "240": {
@@ -139,8 +139,8 @@
     "kreis": "Heinsberg",
     "utm_east": "294621,077",
     "utm_north": "5647125,161",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Rodebach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "241": {
@@ -148,8 +148,8 @@
     "kreis": "Heinsberg",
     "utm_east": "296397,017",
     "utm_north": "5645921,435",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Übach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "242": {
@@ -157,8 +157,8 @@
     "kreis": "Heinsberg",
     "utm_east": "303095,399",
     "utm_north": "5651335,206",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Beeckfließ",
     "typ": "Hochwasserrückhaltebecken"
   },
   "243": {
@@ -166,8 +166,8 @@
     "kreis": "Heinsberg",
     "utm_east": "298355,889",
     "utm_north": "5656046,429",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Kötteler Schar",
     "typ": "Hochwasserrückhaltebecken"
   },
   "244": {
@@ -175,8 +175,8 @@
     "kreis": "Heinsberg",
     "utm_east": "299342,568",
     "utm_north": "5651063,004",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Wurm",
     "typ": "Hochwasserrückhaltebecken"
   },
   "94": {
@@ -184,8 +184,8 @@
     "kreis": "Mönchengladbach",
     "utm_east": "320690,276",
     "utm_north": "5667512,732",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Niersverband",
+    "gewaesser": "Niers",
     "typ": "Hochwasserrückhaltebecken"
   },
   "516": {
@@ -193,8 +193,8 @@
     "kreis": "Mönchengladbach",
     "utm_east": "320062,085",
     "utm_north": "5664319,282",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Niersverband",
+    "gewaesser": "Hochneukircher Fließ",
     "typ": "Hochwasserrückhaltebecken"
   },
   "751": {
@@ -202,8 +202,8 @@
     "kreis": "Mönchengladbach",
     "utm_east": "323694",
     "utm_north": "5672222",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Niersverband",
+    "gewaesser": "Niers",
     "typ": "Hochwasserrückhaltebecken"
   },
   "315": {
@@ -211,8 +211,8 @@
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "337847,981",
     "utm_north": "5655227,019",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Eftverband",
+    "gewaesser": "Gillbach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "316": {
@@ -220,8 +220,8 @@
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "330316,852",
     "utm_north": "5668423,153",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Eftverband",
+    "gewaesser": "Jüchener Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "317": {
@@ -229,8 +229,8 @@
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "326423,251",
     "utm_north": "5664748,299",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Eftverband",
+    "gewaesser": "Scheulenbendgraben",
     "typ": "Hochwasserrückhaltebecken"
   },
   "102": {
@@ -238,8 +238,8 @@
     "kreis": "Düren",
     "utm_east": "314268,553",
     "utm_north": "5642423,701",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Zuckerfabrik Jülich AG",
+    "gewaesser": "Rur",
     "typ": "Sedimentationsbecken"
   },
   "106": {
@@ -247,8 +247,8 @@
     "kreis": "Düren",
     "utm_east": "319225,58",
     "utm_north": "5612510,451",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Rur",
     "typ": "Talsperre"
   },
   "134": {
@@ -256,8 +256,8 @@
     "kreis": "Düren",
     "utm_east": "321713,198",
     "utm_north": "5611541,794",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Rur",
     "typ": "Talsperre"
   },
   "140": {
@@ -265,8 +265,8 @@
     "kreis": "Düren",
     "utm_east": "315081,718",
     "utm_north": "5635172,222",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Rheinisch Westfälische",
+    "gewaesser": "Mühlengraben (Waagmühle)",
     "typ": "Pumpspeicherbecken"
   },
   "141": {
@@ -274,8 +274,8 @@
     "kreis": "Düren",
     "utm_east": "319737,983",
     "utm_north": "5621335,026",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Rur",
     "typ": "Talsperre"
   },
   "170": {
@@ -283,8 +283,8 @@
     "kreis": "Düren",
     "utm_east": "315214,697",
     "utm_north": "5609403,848",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Rur",
     "typ": "Talsperre"
   },
   "180": {
@@ -292,8 +292,8 @@
     "kreis": "Düren",
     "utm_east": "307254,79",
     "utm_north": "5639809,348",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Stadt Aachen",
+    "gewaesser": "Schlangengraben",
     "typ": "Hochwasserrückhaltebecken"
   },
   "193": {
@@ -301,8 +301,8 @@
     "kreis": "Düren",
     "utm_east": "322155,866",
     "utm_north": "5637597,835",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Ellebach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "195": {
@@ -310,8 +310,8 @@
     "kreis": "Düren",
     "utm_east": "324421,402",
     "utm_north": "5621897,944",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Boicher Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "196": {
@@ -319,8 +319,8 @@
     "kreis": "Düren",
     "utm_east": "325305,763",
     "utm_north": "5620890,914",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Drover Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "24": {
@@ -328,8 +328,8 @@
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "338902",
     "utm_north": "5650670",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Erftverband",
+    "gewaesser": "Stommelner Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "56": {
@@ -337,53 +337,17 @@
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "340575",
     "utm_north": "5652898",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Erftverband",
+    "gewaesser": "Stommelner Bach",
     "typ": "Hochwasserrückhaltebecken"
-  },
-  "error_Städteregion Aachen_0": {
-    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
-    "kreis": "Städteregion Aachen"
-  },
-  "error_Städteregion Aachen_1": {
-    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
-    "kreis": "Städteregion Aachen"
-  },
-  "error_Städteregion Aachen_2": {
-    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
-    "kreis": "Städteregion Aachen"
-  },
-  "error_Städteregion Aachen_3": {
-    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
-    "kreis": "Städteregion Aachen"
-  },
-  "error_Städteregion Aachen_4": {
-    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
-    "kreis": "Städteregion Aachen"
-  },
-  "error_Städteregion Aachen_5": {
-    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
-    "kreis": "Städteregion Aachen"
-  },
-  "error_Städteregion Aachen_6": {
-    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
-    "kreis": "Städteregion Aachen"
-  },
-  "error_Städteregion Aachen_7": {
-    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
-    "kreis": "Städteregion Aachen"
-  },
-  "error_Städteregion Aachen_8": {
-    "error": "Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"text=Stauanlagen-Nr\") to be visible\n",
-    "kreis": "Städteregion Aachen"
   },
   "65": {
     "name": "HRB Kirchtal",
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "342096",
     "utm_north": "5654317",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Erftverband",
+    "gewaesser": "Stommelner Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "122": {
@@ -391,8 +355,8 @@
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "343631",
     "utm_north": "5649404",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Unterhaltungsverband Pullheimer Bach",
+    "gewaesser": "Pulheimer Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "225": {
@@ -400,8 +364,8 @@
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "338722,246",
     "utm_north": "5650476,941",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Erftverband",
+    "gewaesser": "Stommelner Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "226": {
@@ -409,8 +373,8 @@
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "344138",
     "utm_north": "5655073",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Erftverband",
+    "gewaesser": "Norfbach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "227": {
@@ -418,8 +382,8 @@
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "344138,258",
     "utm_north": "5655072,179",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Erftverband",
+    "gewaesser": "Stommelner Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "228": {
@@ -427,8 +391,8 @@
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "344138,258",
     "utm_north": "5655072,179",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Erftverband",
+    "gewaesser": "Stommelner Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "229": {
@@ -436,8 +400,8 @@
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "342270,191",
     "utm_north": "5653856,933",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Erftverband",
+    "gewaesser": "Stommelner Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "231": {
@@ -445,8 +409,8 @@
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "340521,202",
     "utm_north": "5652845,455",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Erftverband",
+    "gewaesser": "Stommelner Bach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "29": {
@@ -454,8 +418,8 @@
     "kreis": "Euskirchen",
     "utm_east": "342743,372",
     "utm_north": "5599573,111",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Erftverband",
+    "gewaesser": "Erft",
     "typ": "Hochwasserrückhaltebecken"
   },
   "53": {
@@ -463,8 +427,8 @@
     "kreis": "Euskirchen",
     "utm_east": "346222,541",
     "utm_north": "5621808,607",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Erftverband",
+    "gewaesser": "Erft",
     "typ": "Hochwasserrückhaltebecken"
   },
   "83": {
@@ -472,8 +436,8 @@
     "kreis": "Euskirchen",
     "utm_east": "350393,431",
     "utm_north": "5606086,096",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserversorgungsverband",
+    "gewaesser": "Rauscheidsiefen (Madbach)",
     "typ": "Talsperre"
   },
   "97": {
@@ -481,8 +445,8 @@
     "kreis": "Euskirchen",
     "utm_east": "317140,85",
     "utm_north": "5596869,58",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Olef",
     "typ": "Talsperre"
   },
   "138": {
@@ -490,8 +454,8 @@
     "kreis": "Euskirchen",
     "utm_east": "320191",
     "utm_north": "5581710",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Zweckverband Kronenburger See",
+    "gewaesser": "Kyll",
     "typ": "Talsperre"
   },
   "148": {
@@ -499,8 +463,8 @@
     "kreis": "Euskirchen",
     "utm_east": "347051,86",
     "utm_north": "5606844,271",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserversorgungsverband",
+    "gewaesser": "Steinbach",
     "typ": "Talsperre"
   },
   "157": {
@@ -508,8 +472,8 @@
     "kreis": "Euskirchen",
     "utm_east": "317346,053",
     "utm_north": "5608767,097",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Wasserverband Eifel-Rur",
+    "gewaesser": "Urft",
     "typ": "Talsperre"
   },
   "173": {
@@ -517,8 +481,8 @@
     "kreis": "Euskirchen",
     "utm_east": "332977",
     "utm_north": "5604999",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Bundeswehr Wehrbereichsverwaltung West",
+    "gewaesser": "Bergheimer Bach",
     "typ": "Sedimentationsbecken"
   },
   "233": {
@@ -526,8 +490,8 @@
     "kreis": "Euskirchen",
     "utm_east": "332777,819",
     "utm_north": "5619248,314",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Eftverband",
+    "gewaesser": "Neffelbach",
     "typ": "Hochwasserrückhaltebecken"
   },
   "234": {
@@ -535,8 +499,8 @@
     "kreis": "Euskirchen",
     "utm_east": "329327,162",
     "utm_north": "5613621,644",
-    "betreiber": "Absperrbauwerk",
-    "gewaesser": "stationierungskarte",
+    "betreiber": "Eftverband",
+    "gewaesser": "Bürvenicher Bach",
     "typ": "Hochwasserrückhaltebecken"
   }
 }

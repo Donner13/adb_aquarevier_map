@@ -1737,8 +1737,7 @@
             .catch(err => console.log("regenbecken layer not loaded:", err));
 
         // Querbauwerke (ELWAS)
-        // Standardmaessig AUS: Scraping-Bug macht Name/ID aktuell unbrauchbar ("e"/unknown_*), siehe STATUS_FUER_ANTIGRAVITY.md
-        const querbauwerkeLayer = L.layerGroup();
+        const querbauwerkeLayer = L.layerGroup().addTo(map);
         fetch('querbauwerke.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {

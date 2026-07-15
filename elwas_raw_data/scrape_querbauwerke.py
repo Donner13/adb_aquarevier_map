@@ -1,6 +1,5 @@
 """
-Scrapt Bauwerke (Querbauwerke) fuer die 7 Kreise des Rheinischen Reviers.
-Koordinaten stehen direkt auf der Detailseite (Stammdaten-Default-Tab, kein Sub-Tab-Dropdown).
+Scrapt Bauwerke (Querbauwerke) fuer die 7 Kreise des Revier.
 """
 import asyncio
 import json
@@ -26,9 +25,9 @@ KREISE = [
 ]
 
 def extract_num(label, text):
-    m = re.search(rf"{re.escape(label)}[\t:]\s*([^\n\r]*)", text)
+    m = re.search(rf"{re.escape(label)}[\t:][ \t]*([^\n\r]*)", text)
     if not m:
-        m = re.search(rf"{re.escape(label)}\s*([^\n\r]*)", text)
+        m = re.search(rf"{re.escape(label)}[ \t]*([^\n\r]*)", text)
     if m:
         val = m.group(1).strip()
         val = re.sub(r'[^\d\.,\s\-]', '', val).strip()
@@ -37,22 +36,18 @@ def extract_num(label, text):
     return None
 
 def extract_text(label, text):
-    m = re.search(rf"{re.escape(label)}[\t:]\s*([^\n\r]*)", text)
+    m = re.search(rf"{re.escape(label)}[\t:][ \t]*([^\n\r]*)", text)
     if not m:
-        m = re.search(rf"{re.escape(label)}\s*([^\n\r]*)", text)
+        m = re.search(rf"{re.escape(label)}[ \t]*([^\n\r]*)", text)
     if m:
         val = m.group(1).strip()
         return val if val else None
     return None
 
 def extract_name_nr(text):
-    m = re.search(r"Bauwerk.*?:?\s*(.+?)\s*\((\d+)\)", text, re.IGNORECASE)
-    if m:
-        return m.group(1).strip(), m.group(2).strip()
-    m = re.search(r"Bauwerk.*?:?\s*([^\n\(]+)", text, re.IGNORECASE)
-    if m:
-        return m.group(1).strip(), None
-    return None, None
+    name = extract_text("Name des Bauwerks", text)
+    nr = extract_text("Bauwerks-ID", text)
+    return name, nr
 
 async def main():
     results = {}
@@ -72,12 +67,11 @@ async def main():
             print(f"\n=== Kreis: {kreis} ===", flush=True)
             await ec.open_dataset(page, match["href"])
             frame = await ec.get_frame(page)
-
-            # Cold-session form rendering wait (explicit wait for Bauwerke)
+            
             try:
                 await frame.wait_for_selector("input[value='Suchen'], select", state="attached", timeout=8000)
-            except Exception as e:
-                print(f"  Warning: waiting for search fields timed out: {e}", flush=True)
+            except Exception:
+                pass
 
             try:
                 await ec.fill_regional_search(page, frame, kreis)
@@ -111,13 +105,15 @@ async def main():
                     detail_text = await frame.locator("body").inner_text()
                     name, anlagen_nr = extract_name_nr(detail_text)
                     if not anlagen_nr:
-                        # Try Bauwerks-Nr.
-                        anlagen_nr_match = re.search(r"Bauwerks-Nr\.\s*([^\n\r]*)", detail_text)
-                        if anlagen_nr_match:
-                            anlagen_nr = anlagen_nr_match.group(1).strip()
+                        # Fallback to header format like "Fischaufstieg: (faa_69)"
+                        m = re.search(r"([A-Za-zäöüß\- \t]+?):\s*\(([^)]+)\)", detail_text)
+                        if m:
+                            anlagen_nr = m.group(2).strip()
+                            if not name:
+                                name = m.group(1).strip()
                         else:
                             anlagen_nr = f"unknown_{kreis}_{idx}"
-
+                    
                     if anlagen_nr in results and "error" not in results[anlagen_nr]:
                         print(f"  {anlagen_nr} bereits geladen.", flush=True)
                         await frame.click("text=Ergebnisse")
@@ -125,27 +121,39 @@ async def main():
                         links = frame.locator("tbody.ui-datatable-data tr td input[type='submit'], tbody.ui-datatable-data tr td a, input.buttonLink")
                         continue
 
-                    ost = extract_num("Ostwert in UTM", detail_text)
-                    nord = extract_num("Nordwert in UTM", detail_text)
-                    if not ost:
-                        ost = extract_num("Ostwert", detail_text)
-                    if not nord:
-                        nord = extract_num("Nordwert", detail_text)
+                    ost = extract_num("Ostwert", detail_text)
+                    nord = extract_num("Nordwert", detail_text)
+                    
+                    # Extract gewaesser from "Gewässerkennzahl / Gewässername / Auflage"
+                    gewaesser = None
+                    gewaesser_line = extract_text("Gewässerkennzahl / Gewässername / Auflage", detail_text)
+                    if gewaesser_line:
+                        parts = [x.strip() for x in gewaesser_line.split("/")]
+                        if len(parts) >= 2:
+                            gewaesser = parts[1]
+                    if not gewaesser:
+                        gewaesser = meta[3] if len(meta) > 3 else None
 
-                    bauwerksart = extract_text("Bauwerksart", detail_text) or (meta[2] if len(meta) > 2 else None)
-                    typ = extract_text("Bauwerkstyp", detail_text) or (meta[3] if len(meta) > 3 else None)
-                    gewaesser = extract_text("Gewässer", detail_text) or (meta[4] if len(meta) > 4 else None)
+                    # Extract Bauwerkstyp/Art
+                    typ = extract_text("Bauwerkstyp", detail_text)
+                    if not typ:
+                        # Extract from header format like "Fischaufstieg: (faa_69)"
+                        m = re.search(r"\n([A-Za-zäöüß\- \t]+?):\s*\(", detail_text)
+                        if m:
+                            typ = m.group(1).strip()
+                    if not typ:
+                        typ = meta[2] if len(meta) > 2 else None
 
                     results[anlagen_nr] = {
-                        "name": name or (meta[1] if len(meta) > 1 else None),
+                        "name": name or f"{typ} {anlagen_nr}",
                         "kreis": kreis,
                         "utm_east": ost,
                         "utm_north": nord,
-                        "bauwerksart": bauwerksart,
-                        "typ": typ,
-                        "gewaesser": gewaesser
+                        "betreiber": None,
+                        "gewaesser": gewaesser,
+                        "typ": typ
                     }
-                    print(f"  {anlagen_nr}: {name} Ost={ost} Nord={nord} Gewaesser={gewaesser}", flush=True)
+                    print(f"  {anlagen_nr}: {name} Ost={ost} Nord={nord} Gewaesser={gewaesser} Typ={typ}", flush=True)
 
                     await frame.click("text=Ergebnisse")
                     await page.wait_for_timeout(1500)

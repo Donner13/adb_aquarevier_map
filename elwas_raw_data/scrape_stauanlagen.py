@@ -26,9 +26,9 @@ KREISE = [
 ]
 
 def extract_num(label, text):
-    m = re.search(rf"{re.escape(label)}[\t:]\s*([^\n\r]*)", text)
+    m = re.search(rf"{re.escape(label)}[\t:][ \t]*([^\n\r]*)", text)
     if not m:
-        m = re.search(rf"{re.escape(label)}\s*([^\n\r]*)", text)
+        m = re.search(rf"{re.escape(label)}[ \t]*([^\n\r]*)", text)
     if m:
         val = m.group(1).strip()
         val = re.sub(r'[^\d\.,\s\-]', '', val).strip()
@@ -37,9 +37,9 @@ def extract_num(label, text):
     return None
 
 def extract_text(label, text):
-    m = re.search(rf"{re.escape(label)}[\t:]\s*([^\n\r]*)", text)
+    m = re.search(rf"{re.escape(label)}[\t:][ \t]*([^\n\r]*)", text)
     if not m:
-        m = re.search(rf"{re.escape(label)}\s*([^\n\r]*)", text)
+        m = re.search(rf"{re.escape(label)}[ \t]*([^\n\r]*)", text)
     if m:
         val = m.group(1).strip()
         return val if val else None
@@ -48,7 +48,7 @@ def extract_text(label, text):
 def extract_name_nr(text):
     name = extract_text("Name der Stauanlage", text)
     # e.g., "Talsperre: Rurtalsperre Schwammenauel (12)"
-    m = re.search(r"\n[A-Za-zäöüß\-\s/]+?:\s*(.+?)\s*\((\d+)\)", text)
+    m = re.search(r"\n[A-Za-zäöüß\- \t/]+?:\s*(.+?)\s*\((\d+)\)", text)
     if m:
         return name or m.group(1).strip(), m.group(2).strip()
     return name, None
@@ -110,19 +110,42 @@ async def main():
                     detail_text = await frame.locator("body").inner_text()
                     name, anlagen_nr = extract_name_nr(detail_text)
                     if not anlagen_nr:
-                        # Try to find ID from detail text
-                        anlagen_nr_match = re.search(r"Stauanlagen-Nr\.\s*([^\n\r]*)", detail_text)
-                        if anlagen_nr_match:
-                            anlagen_nr = anlagen_nr_match.group(1).strip()
-                        else:
-                            anlagen_nr = f"unknown_{kreis}_{idx}"
+                        anlagen_nr = f"unknown_{kreis}_{idx}"
                     
-                    # Force overwrite/reload to make sure coordinates are parsed correctly this time
+                    if anlagen_nr in results and "error" not in results[anlagen_nr]:
+                        print(f"  {anlagen_nr} bereits geladen.", flush=True)
+                        await frame.click("text=Ergebnisse")
+                        await page.wait_for_timeout(1200)
+                        links = frame.locator("tbody.ui-datatable-data tr td input[type='submit'], tbody.ui-datatable-data tr td a, input.buttonLink")
+                        continue
+
                     ost = extract_num("Ostwert", detail_text)
                     nord = extract_num("Nordwert", detail_text)
-                    betreiber = extract_text("Betreiber", detail_text) or (meta[3] if len(meta) > 3 else None)
-                    gewaesser = extract_text("Gewässer", detail_text) or (meta[2] if len(meta) > 2 else None)
+                    
+                    # Extract gewaesser from "Gewässerkennzahl / Gewässername / Auflage Gewässerkennzahl"
+                    gewaesser = None
+                    gewaesser_line = extract_text("Gewässerkennzahl / Gewässername / Auflage Gewässerkennzahl", detail_text)
+                    if gewaesser_line:
+                        parts = [x.strip() for x in gewaesser_line.split("/")]
+                        if len(parts) >= 2:
+                            gewaesser = parts[1]
+                    if not gewaesser:
+                        gewaesser = meta[2] if len(meta) > 2 else None
+
                     typ = extract_text("Bauwerkstyp", detail_text)
+
+                    # Switch to Betreiber tab if present
+                    betreiber = None
+                    select_elem = frame.locator("select").first
+                    if await select_elem.count() > 0:
+                        opts = await select_elem.locator("option").all_text_contents()
+                        if "Betreiber" in opts:
+                            await ec.switch_detail_tab(frame, "Betreiber")
+                            betreiber_text = await frame.locator("body").inner_text()
+                            betreiber = extract_text("Name / Firma", betreiber_text) or extract_text("Betreiber", betreiber_text)
+                            await ec.switch_detail_tab(frame, "Stammdaten")
+                    if not betreiber:
+                        betreiber = meta[3] if len(meta) > 3 else None
 
                     results[anlagen_nr] = {
                         "name": name or (meta[1] if len(meta) > 1 else None),
@@ -133,7 +156,7 @@ async def main():
                         "gewaesser": gewaesser,
                         "typ": typ
                     }
-                    print(f"  {anlagen_nr}: {name} Ost={ost} Nord={nord} Gewaesser={gewaesser}", flush=True)
+                    print(f"  {anlagen_nr}: {name} Ost={ost} Nord={nord} Gewaesser={gewaesser} Betreiber={betreiber}", flush=True)
 
                     await frame.click("text=Ergebnisse")
                     await page.wait_for_timeout(1500)

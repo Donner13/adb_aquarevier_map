@@ -1,632 +1,632 @@
 {
-  "unknown_Städteregion Aachen_0": {
-    "name": "e",
+  "faa_199": {
+    "name": "Fischaufstieg faa_199",
     "kreis": "Städteregion Aachen",
     "utm_east": "304993,919",
     "utm_north": "5603861,702",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Städteregion Aachen_1": {
-    "name": "e",
+  "faa_200": {
+    "name": "Fischaufstieg faa_200",
     "kreis": "Städteregion Aachen",
     "utm_east": "304924,795",
     "utm_north": "5603667,094",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Städteregion Aachen_2": {
-    "name": "e",
+  "faa_272": {
+    "name": "Fischaufstieg faa_272",
     "kreis": "Städteregion Aachen",
     "utm_east": "296418,393",
     "utm_north": "5638887,555",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28284 / Broicher Bach / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t28284 / Broicher Bach / 3E"
+    "betreiber": null,
+    "gewaesser": "Broicher Bach",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Städteregion Aachen_3": {
-    "name": "e",
+  "faa_295": {
+    "name": "Fischaufstieg faa_295",
     "kreis": "Städteregion Aachen",
     "utm_east": "310293,604",
     "utm_north": "5633134,13",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2824 / Inde / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2824 / Inde / 3E"
+    "betreiber": null,
+    "gewaesser": "Inde",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Städteregion Aachen_4": {
-    "name": "e",
+  "faa_296": {
+    "name": "Fischaufstieg faa_296",
     "kreis": "Städteregion Aachen",
     "utm_east": "310095,352",
     "utm_north": "5633027,98",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2824 / Inde / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2824 / Inde / 3E"
+    "betreiber": null,
+    "gewaesser": "Inde",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Städteregion Aachen_5": {
-    "name": "e",
+  "faa_369": {
+    "name": "Fischaufstieg faa_369",
     "kreis": "Städteregion Aachen",
     "utm_east": "305394,982",
     "utm_north": "5600408,863",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28214 / Perlenbach / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t28214 / Perlenbach / 3E"
+    "betreiber": null,
+    "gewaesser": "Perlenbach",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Städteregion Aachen_6": {
-    "name": "e",
+  "faa_451": {
+    "name": "Fischaufstieg faa_451",
     "kreis": "Städteregion Aachen",
     "utm_east": "304130,378",
     "utm_north": "5603702,145",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Städteregion Aachen_7": {
-    "name": "e",
+  "faa_485": {
+    "name": "Fischaufstieg faa_485",
     "kreis": "Städteregion Aachen",
     "utm_east": "304514,398",
     "utm_north": "5605762,924",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282152 / Laufenbach / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282152 / Laufenbach / 3E"
+    "betreiber": null,
+    "gewaesser": "Laufenbach",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Städteregion Aachen_8": {
-    "name": "e",
+  "qbw_1276": {
+    "name": "Schwelle unterhalb ehem. Wehr Dedenborn",
     "kreis": "Städteregion Aachen",
     "utm_east": "313424",
     "utm_north": "5606588",
-    "bauwerksart": "Schwelle unterhalb ehem. Wehr Dedenborn",
-    "typ": "Sohlschwelle",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Sohlschwelle"
   },
-  "unknown_Städteregion Aachen_9": {
-    "name": "e",
+  "qbw_1277": {
+    "name": "Wehr Rauchenauel",
     "kreis": "Städteregion Aachen",
     "utm_east": "312715",
     "utm_north": "5607224",
-    "bauwerksart": "Wehr Rauchenauel",
-    "typ": "Rampe",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Rampe"
   },
-  "unknown_Heinsberg_0": {
-    "name": "e",
+  "faa_104": {
+    "name": "Fischaufstieg faa_104",
     "kreis": "Heinsberg",
     "utm_east": "297708,157",
     "utm_north": "5664646,256",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Heinsberg_1": {
-    "name": "e",
+  "faa_277": {
+    "name": "Fischaufstieg faa_277",
     "kreis": "Heinsberg",
     "utm_east": "297753,928",
     "utm_north": "5669098,511",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28298 / Afslagtak Rode Beek Vlodrop / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t28298 / Afslagtak Rode Beek Vlodrop / 3E"
+    "betreiber": null,
+    "gewaesser": "Afslagtak Rode Beek Vlodrop",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Heinsberg_2": {
-    "name": "e",
+  "faa_469": {
+    "name": "Fischaufstieg faa_469",
     "kreis": "Heinsberg",
     "utm_east": "310438,178",
     "utm_north": "5657588,263",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28256 / Baaler Bach / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t28256 / Baaler Bach / 3E"
+    "betreiber": null,
+    "gewaesser": "Baaler Bach",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Heinsberg_3": {
-    "name": "e",
+  "faa_568": {
+    "name": "Fischaufstieg faa_568",
     "kreis": "Heinsberg",
     "utm_east": "309396",
     "utm_north": "5671312,2",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2844 / Mühlenbach / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2844 / Mühlenbach / 3E"
+    "betreiber": null,
+    "gewaesser": "Mühlenbach",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Heinsberg_4": {
-    "name": "e",
+  "qbw_1166": {
+    "name": "Karkener Wehr",
     "kreis": "Heinsberg",
     "utm_east": "296492",
     "utm_north": "5665355",
-    "bauwerksart": "Karkener Wehr",
-    "typ": "Absturz",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Absturz"
   },
-  "unknown_Heinsberg_5": {
-    "name": "e",
+  "qbw_1167": {
+    "name": "Klappenwehr Kempen-Hochbrück",
     "kreis": "Heinsberg",
     "utm_east": "297708",
     "utm_north": "5664647",
-    "bauwerksart": "Klappenwehr Kempen-Hochbrück",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Heinsberg_6": {
-    "name": "e",
+  "qbw_1168": {
+    "name": "Raue Rampe Brehm",
     "kreis": "Heinsberg",
     "utm_east": "298895",
     "utm_north": "5663647",
-    "bauwerksart": "Raue Rampe Brehm",
-    "typ": "Rampe",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Rampe"
   },
-  "unknown_Heinsberg_7": {
-    "name": "e",
+  "qbw_1169": {
+    "name": "Wehr Orsbeck",
     "kreis": "Heinsberg",
     "utm_east": "299894",
     "utm_north": "5663201",
-    "bauwerksart": "Wehr Orsbeck",
-    "typ": "Absturz",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Absturz"
   },
-  "unknown_Heinsberg_8": {
-    "name": "e",
+  "qbw_1170": {
+    "name": "Grundschwelle Luchtenberg",
     "kreis": "Heinsberg",
     "utm_east": "300741",
     "utm_north": "5662366",
-    "bauwerksart": "Grundschwelle Luchtenberg",
-    "typ": "Gleite",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Gleite"
   },
-  "unknown_Heinsberg_9": {
-    "name": "e",
+  "qbw_1171": {
+    "name": "Sohlgleite Ratheim-Oberbruch",
     "kreis": "Heinsberg",
     "utm_east": "300873",
     "utm_north": "5660956",
-    "bauwerksart": "Sohlgleite Ratheim-Oberbruch",
-    "typ": "Gleite",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Gleite"
   },
-  "unknown_Mönchengladbach_0": {
-    "name": "e",
+  "qbw_2761": {
+    "name": "Bresgespark",
     "kreis": "Mönchengladbach",
     "utm_east": "322755",
     "utm_north": "5671260",
-    "bauwerksart": "Bresgespark",
-    "typ": "Absturz",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+    "betreiber": null,
+    "gewaesser": "Niers",
+    "typ": "Absturz"
   },
-  "unknown_Mönchengladbach_1": {
-    "name": "e",
+  "qbw_2762": {
+    "name": "Eickesmühle",
     "kreis": "Mönchengladbach",
     "utm_east": "322298",
     "utm_north": "5670602",
-    "bauwerksart": "Eickesmühle",
-    "typ": "Absturz",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3C"
+    "betreiber": null,
+    "gewaesser": "Niers",
+    "typ": "Absturz"
   },
-  "unknown_Mönchengladbach_2": {
-    "name": "e",
+  "qbw_2763": {
+    "name": "Wehr Bellermühle",
     "kreis": "Mönchengladbach",
     "utm_east": "321849",
     "utm_north": "5668914",
-    "bauwerksart": "Wehr Bellermühle",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+    "betreiber": null,
+    "gewaesser": "Niers",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Mönchengladbach_3": {
-    "name": "e",
+  "qbw_2764": {
+    "name": "Wehr Henkenmühle",
     "kreis": "Mönchengladbach",
     "utm_east": "321606",
     "utm_north": "5667955",
-    "bauwerksart": "Wehr Henkenmühle",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+    "betreiber": null,
+    "gewaesser": "Niers",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Mönchengladbach_4": {
-    "name": "e",
+  "qbw_2765": {
+    "name": "Ehem. Güdderather Mühle",
     "kreis": "Mönchengladbach",
     "utm_east": "320822",
     "utm_north": "5667483",
-    "bauwerksart": "Ehem. Güdderather Mühle",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3C"
+    "betreiber": null,
+    "gewaesser": "Niers",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Mönchengladbach_5": {
-    "name": "e",
+  "qbw_2767": {
+    "name": "Oelmühle",
     "kreis": "Mönchengladbach",
     "utm_east": "318764",
     "utm_north": "5665630",
-    "bauwerksart": "Oelmühle",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3C"
+    "betreiber": null,
+    "gewaesser": "Niers",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Mönchengladbach_6": {
-    "name": "e",
+  "qbw_6043": {
+    "name": "Hoher Absturz",
     "kreis": "Mönchengladbach",
     "utm_east": "318595",
     "utm_north": "5663655",
-    "bauwerksart": "Hoher Absturz",
-    "typ": "Absturz",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+    "betreiber": null,
+    "gewaesser": "Niers",
+    "typ": "Absturz"
   },
-  "unknown_Mönchengladbach_7": {
-    "name": "e",
+  "qbw_6045": {
+    "name": "Kleiner Absturz",
     "kreis": "Mönchengladbach",
     "utm_east": "318601",
     "utm_north": "5663549",
-    "bauwerksart": "Kleiner Absturz",
-    "typ": "Absturz",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+    "betreiber": null,
+    "gewaesser": "Niers",
+    "typ": "Absturz"
   },
-  "unknown_Mönchengladbach_8": {
-    "name": "e",
+  "qbw_6046": {
+    "name": "Kleiner Absturz",
     "kreis": "Mönchengladbach",
     "utm_east": "318612",
     "utm_north": "5663452",
-    "bauwerksart": "Kleiner Absturz",
-    "typ": "Absturz",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+    "betreiber": null,
+    "gewaesser": "Niers",
+    "typ": "Absturz"
   },
-  "unknown_Mönchengladbach_9": {
-    "name": "e",
+  "qbw_6052": {
+    "name": "Absturz",
     "kreis": "Mönchengladbach",
     "utm_east": "324728",
     "utm_north": "5678414",
-    "bauwerksart": "Absturz",
-    "typ": "Absturz",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t286 / Niers / 3E"
+    "betreiber": null,
+    "gewaesser": "Niers",
+    "typ": "Absturz"
   },
-  "unknown_Rhein-Kreis Neuss_0": {
-    "name": "e",
+  "faa_114": {
+    "name": "Fischaufstieg faa_114",
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "339254,791",
     "utm_north": "5670810,773",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+    "betreiber": null,
+    "gewaesser": "Erft",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Rhein-Kreis Neuss_1": {
-    "name": "e",
+  "faa_602": {
+    "name": "Fischaufstieg Gnadenthal",
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "341440,747",
     "utm_north": "5672033,8",
-    "bauwerksart": "Fischaufstieg Gnadenthal",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+    "betreiber": null,
+    "gewaesser": "Erft",
+    "typ": "Fischaufstieg Gnadenthal"
   },
-  "unknown_Rhein-Kreis Neuss_2": {
-    "name": "e",
+  "faa_627": {
+    "name": "Fischaufstieg faa_627",
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "340336,2",
     "utm_north": "5671472,9",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+    "betreiber": null,
+    "gewaesser": "Erft",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Rhein-Kreis Neuss_3": {
-    "name": "e",
+  "qbw_238": {
+    "name": "Erprather Muehle, W3",
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "338381",
     "utm_north": "5670215",
-    "bauwerksart": "Erprather Muehle, W3",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+    "betreiber": null,
+    "gewaesser": "Erft",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Rhein-Kreis Neuss_4": {
-    "name": "e",
+  "qbw_274": {
+    "name": "Neubruecker Muehle, W5",
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "334887",
     "utm_north": "5667174",
-    "bauwerksart": "Neubruecker Muehle, W5",
-    "typ": "Absturz",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+    "betreiber": null,
+    "gewaesser": "Erft",
+    "typ": "Absturz"
   },
-  "unknown_Rhein-Kreis Neuss_5": {
-    "name": "e",
+  "qbw_276": {
+    "name": "Wehr Selikum, W2",
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "339255",
     "utm_north": "5670811",
-    "bauwerksart": "Wehr Selikum, W2",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+    "betreiber": null,
+    "gewaesser": "Erft",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Rhein-Kreis Neuss_6": {
-    "name": "e",
+  "qbw_281": {
+    "name": "Untermühle Wevelinghoven, Vitus, Drees, W7",
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "333747",
     "utm_north": "5664841",
-    "bauwerksart": "Untermühle Wevelinghoven, Vitus, Drees, W7",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2747934 / Vituskanal / 3E"
+    "betreiber": null,
+    "gewaesser": "Vituskanal",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Rhein-Kreis Neuss_7": {
-    "name": "e",
+  "qbw_282": {
+    "name": "Muehle Kottmann, W8",
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "332558",
     "utm_north": "5663705",
-    "bauwerksart": "Muehle Kottmann, W8",
-    "typ": "Absturz",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+    "betreiber": null,
+    "gewaesser": "Erft",
+    "typ": "Absturz"
   },
-  "unknown_Rhein-Kreis Neuss_8": {
-    "name": "e",
+  "qbw_283": {
+    "name": "Wehr Grevenbroich, Kamper, W9",
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "331107",
     "utm_north": "5662277",
-    "bauwerksart": "Wehr Grevenbroich, Kamper, W9",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274792 / Mühlenerft Grevenbroich / 3E"
+    "betreiber": null,
+    "gewaesser": "Mühlenerft Grevenbroich",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Rhein-Kreis Neuss_9": {
-    "name": "e",
+  "qbw_310": {
+    "name": "Überleitung an der Kläranlage",
     "kreis": "Rhein-Kreis Neuss",
     "utm_east": "340046",
     "utm_north": "5659609",
-    "bauwerksart": "Überleitung an der Kläranlage",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2748 / Gillbach / 3E"
+    "betreiber": null,
+    "gewaesser": "Gillbach",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Düren_0": {
-    "name": "e",
+  "faa_69": {
+    "name": "Fischaufstieg faa_69",
     "kreis": "Düren",
     "utm_east": "308924,987",
     "utm_north": "5650030,002",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Düren_1": {
-    "name": "e",
+  "faa_70": {
+    "name": "Fischaufstieg faa_70",
     "kreis": "Düren",
     "utm_east": "319544,675",
     "utm_north": "5636481,633",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Düren_2": {
-    "name": "e",
+  "faa_71": {
+    "name": "Fischaufstieg faa_71",
     "kreis": "Düren",
     "utm_east": "319928,998",
     "utm_north": "5634865,474",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Düren_3": {
-    "name": "e",
+  "faa_72": {
+    "name": "Fischaufstieg faa_72",
     "kreis": "Düren",
     "utm_east": "322772,479",
     "utm_north": "5626992,11",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Düren_4": {
-    "name": "e",
+  "faa_106": {
+    "name": "Fischaufstieg faa_106",
     "kreis": "Düren",
     "utm_east": "322372,466",
     "utm_north": "5624710,69",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Düren_5": {
-    "name": "e",
+  "faa_107": {
+    "name": "Fischaufstieg faa_107",
     "kreis": "Düren",
     "utm_east": "321279,321",
     "utm_north": "5622517,447",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Düren_6": {
-    "name": "e",
+  "faa_216": {
+    "name": "Fischaufstieg faa_216",
     "kreis": "Düren",
     "utm_east": "310339,551",
     "utm_north": "5628960,357",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28246 / Omerbach / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t28246 / Omerbach / 3E"
+    "betreiber": null,
+    "gewaesser": "Omerbach",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Düren_7": {
-    "name": "e",
+  "faa_235": {
+    "name": "Fischaufstieg faa_235",
     "kreis": "Düren",
     "utm_east": "322397,34",
     "utm_north": "5622942,999",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Düren_8": {
-    "name": "e",
+  "faa_251": {
+    "name": "Fischaufstieg faa_251",
     "kreis": "Düren",
     "utm_east": "314767,639",
     "utm_north": "5641194,892",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2824 / Inde / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2824 / Inde / 3E"
+    "betreiber": null,
+    "gewaesser": "Inde",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Düren_9": {
-    "name": "e",
+  "faa_339": {
+    "name": "Fischaufstieg faa_339",
     "kreis": "Düren",
     "utm_east": "322820,942",
     "utm_north": "5623361,001",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t282 / Rur / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t282 / Rur / 3E"
+    "betreiber": null,
+    "gewaesser": "Rur",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Rhein-Erft-Kreis_0": {
-    "name": "e",
+  "faa_120": {
+    "name": "Fischaufstieg faa_120",
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "339223,998",
     "utm_north": "5639917,6",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+    "betreiber": null,
+    "gewaesser": "Erft",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Rhein-Erft-Kreis_1": {
-    "name": "e",
+  "faa_161": {
+    "name": "Fischaufstieg faa_161",
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "347362,937",
     "utm_north": "5626966,461",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2742 / Swistbach / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2742 / Swistbach / 3E"
+    "betreiber": null,
+    "gewaesser": "Swistbach",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Rhein-Erft-Kreis_2": {
-    "name": "e",
+  "faa_311": {
+    "name": "Fischaufstieg faa_311",
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "329008,036",
     "utm_north": "5653598,454",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274754 / Kasterer Mühlenerft / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274754 / Kasterer Mühlenerft / 3E"
+    "betreiber": null,
+    "gewaesser": "Kasterer Mühlenerft",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Rhein-Erft-Kreis_3": {
-    "name": "e",
+  "faa_324": {
+    "name": "Fischaufstieg faa_324",
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "333246,805",
     "utm_north": "5647549,158",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+    "betreiber": null,
+    "gewaesser": "Erft",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Rhein-Erft-Kreis_4": {
-    "name": "e",
+  "faa_453": {
+    "name": "Fischaufstieg faa_453",
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "347355,704",
     "utm_north": "5626971,098",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2742 / Swistbach / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2742 / Swistbach / 3E"
+    "betreiber": null,
+    "gewaesser": "Swistbach",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Rhein-Erft-Kreis_5": {
-    "name": "e",
+  "faa_623": {
+    "name": "Fischaufstieg faa_623",
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "339222,6",
     "utm_north": "5639920,2",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t274 / Erft / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274 / Erft / 3E"
+    "betreiber": null,
+    "gewaesser": "Erft",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Rhein-Erft-Kreis_6": {
-    "name": "e",
+  "qbw_232": {
+    "name": "Wehr Blessem",
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "345039",
     "utm_north": "5631722",
-    "bauwerksart": "Wehr Blessem",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t27454 / Liblarer Mühlengraben / 3E"
+    "betreiber": null,
+    "gewaesser": "Liblarer Mühlengraben",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Rhein-Erft-Kreis_7": {
-    "name": "e",
+  "qbw_234": {
+    "name": "Standort WKA-2 Horremer Muehle",
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "338492",
     "utm_north": "5642777",
-    "bauwerksart": "Standort WKA-2 Horremer Muehle",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274732 / Kleine Erft / 3E"
+    "betreiber": null,
+    "gewaesser": "Kleine Erft",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Rhein-Erft-Kreis_8": {
-    "name": "e",
+  "qbw_254": {
+    "name": "Muehle Kaster",
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "328775",
     "utm_north": "5653847",
-    "bauwerksart": "Muehle Kaster",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274754 / Kasterer Mühlenerft / 3E"
+    "betreiber": null,
+    "gewaesser": "Kasterer Mühlenerft",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Rhein-Erft-Kreis_9": {
-    "name": "e",
+  "qbw_255": {
+    "name": "Standort WKA-3 Pliesmuehle",
     "kreis": "Rhein-Erft-Kreis",
     "utm_east": "337352",
     "utm_north": "5644490",
-    "bauwerksart": "Standort WKA-3 Pliesmuehle",
-    "typ": "Bewegliches Wehr",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t274732 / Kleine Erft / 3E"
+    "betreiber": null,
+    "gewaesser": "Kleine Erft",
+    "typ": "Bewegliches Wehr"
   },
-  "unknown_Euskirchen_0": {
-    "name": "e",
+  "faa_203": {
+    "name": "Fischaufstieg faa_203",
     "kreis": "Euskirchen",
     "utm_east": "322989,413",
     "utm_north": "5605393,082",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2822 / Urft / 3E"
+    "betreiber": null,
+    "gewaesser": "Urft",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Euskirchen_1": {
-    "name": "e",
+  "faa_226": {
+    "name": "Fischaufstieg faa_226",
     "kreis": "Euskirchen",
     "utm_east": "325053,251",
     "utm_north": "5604380,716",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2822 / Urft / 3E"
+    "betreiber": null,
+    "gewaesser": "Urft",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Euskirchen_2": {
-    "name": "e",
+  "faa_227": {
+    "name": "Fischaufstieg faa_227",
     "kreis": "Euskirchen",
     "utm_east": "320208,056",
     "utm_north": "5598925,991",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t28228 / Olef / 3E"
+    "betreiber": null,
+    "gewaesser": "Olef",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Euskirchen_3": {
-    "name": "e",
+  "faa_228": {
+    "name": "Fischaufstieg faa_228",
     "kreis": "Euskirchen",
     "utm_east": "319135,921",
     "utm_north": "5596240,347",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t28228 / Olef / 3E"
+    "betreiber": null,
+    "gewaesser": "Olef",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Euskirchen_4": {
-    "name": "e",
+  "faa_260": {
+    "name": "Fischaufstieg faa_260",
     "kreis": "Euskirchen",
     "utm_east": "321144,816",
     "utm_north": "5600379,495",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t28228 / Olef / 3E"
+    "betreiber": null,
+    "gewaesser": "Olef",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Euskirchen_5": {
-    "name": "e",
+  "faa_261": {
+    "name": "Fischaufstieg faa_261",
     "kreis": "Euskirchen",
     "utm_east": "322263,221",
     "utm_north": "5603010,869",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t28228 / Olef / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t28228 / Olef / 3E"
+    "betreiber": null,
+    "gewaesser": "Olef",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Euskirchen_6": {
-    "name": "e",
+  "faa_325": {
+    "name": "Fischaufstieg faa_325",
     "kreis": "Euskirchen",
     "utm_east": "333351,626",
     "utm_north": "5619385,574",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2746 / Neffelbach / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2746 / Neffelbach / 3E"
+    "betreiber": null,
+    "gewaesser": "Neffelbach",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Euskirchen_7": {
-    "name": "e",
+  "faa_356": {
+    "name": "Fischaufstieg faa_356",
     "kreis": "Euskirchen",
     "utm_east": "340007,314",
     "utm_north": "5620010,479",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2744 / Rotbach / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2744 / Rotbach / 3E"
+    "betreiber": null,
+    "gewaesser": "Rotbach",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Euskirchen_8": {
-    "name": "e",
+  "faa_433": {
+    "name": "Fischaufstieg faa_433",
     "kreis": "Euskirchen",
     "utm_east": "325048,356",
     "utm_north": "5604381,433",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2822 / Urft / 3E"
+    "betreiber": null,
+    "gewaesser": "Urft",
+    "typ": "Fischaufstieg"
   },
-  "unknown_Euskirchen_9": {
-    "name": "e",
+  "faa_446": {
+    "name": "Fischaufstieg faa_446",
     "kreis": "Euskirchen",
     "utm_east": "329060,884",
     "utm_north": "5598334,757",
-    "bauwerksart": "",
-    "typ": "Gewässerkennzahl / Gewässername / Auflage\t2822 / Urft / 3E",
-    "gewaesser": "kennzahl / Gewässername / Auflage\t2822 / Urft / 3E"
+    "betreiber": null,
+    "gewaesser": "Urft",
+    "typ": "Fischaufstieg"
   }
 }
