@@ -948,6 +948,14 @@
             zoomControl: false
         }).setView([51.15, 6.75], 9);
 
+        // Eigene Pane fuer Logo-Callouts: garantiert IMMER ueber den normalen
+        // Punkt-Markern (markerPane, z-index 600), unabhaengig von Einfuege-
+        // Reihenfolge oder y-Position-Tiebreaks, die sonst zu wechselndem
+        // Ueberdecken fuehren.
+        map.createPane('logoCalloutPane');
+        map.getPane('logoCalloutPane').style.zIndex = 625;
+        map.getPane('logoCalloutPane').style.pointerEvents = 'none';
+
         // Position Zoom Control
         L.control.zoom({
             position: 'bottomright'
@@ -2910,8 +2918,13 @@
                 return null;
             }
 
+            // Logos werden beim Reinzoomen sichtbar groesser (skaliert vom
+            // Ankerpunkt aus, damit die Verbindungslinie exakt am Marker
+            // bleibt) - Basiszoom 9 = Original-Groesse, gedeckelt bei 2.2x.
+            const logoScale = Math.min(2.2, Math.max(1, 1 + (map.getZoom() - 9) * 0.15));
+
             const html = `
-                <div class="logo-callout-container">
+                <div class="logo-callout-container" style="transform: scale(${logoScale}); transform-origin: ${ax}px ${ay}px;">
                     <svg width="${sizeX}" height="${sizeY}" style="position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible;">
                         ${svgContent}
                     </svg>
@@ -2929,7 +2942,8 @@
             // interactive: false - this divIcon's bounding box (350x250px) is mostly
             // invisible padding around a small logo image. Without this, that invisible
             // area swallows clicks meant for real contact markers underneath it.
-            return L.marker([lat, lng], { icon: icon, interactive: false, keyboard: false });
+            // pane: logoCalloutPane - immer ueber den normalen Punkt-Markern.
+            return L.marker([lat, lng], { icon: icon, interactive: false, keyboard: false, pane: 'logoCalloutPane' });
         }
 
         // Render Sidebar and Markers
