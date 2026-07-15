@@ -1,0 +1,2450 @@
+{
+  "358540": {
+    "utm_east": "323268",
+    "utm_north": "5627678",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22225": {
+    "utm_east": "321452",
+    "utm_north": "5632513",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "NW->E2",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "NW->E3",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "NW->E4",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "NW->E5",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 5,
+        "bezeichnung": "Kesselwasser",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "4850"
+      },
+      {
+        "nr": 6,
+        "bezeichnung": "NW->E9",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 7,
+        "bezeichnung": "NW->E8",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 8,
+        "bezeichnung": "NW->E7",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 9,
+        "bezeichnung": "NW->E6",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 10,
+        "bezeichnung": "KÜWA E8",
+        "abwasserbeschaffenheit": "Kühlwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": "240",
+        "max_a": null
+      },
+      {
+        "nr": 11,
+        "bezeichnung": "Textilherstellung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 12,
+        "bezeichnung": "Textilherstellung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 13,
+        "bezeichnung": "Textilherstellung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 14,
+        "bezeichnung": "NW -> E1",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 15,
+        "bezeichnung": "NW -> E19",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 16,
+        "bezeichnung": "NW->E10",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 17,
+        "bezeichnung": "NW->E11",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 18,
+        "bezeichnung": "NW->E12",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 19,
+        "bezeichnung": "NW->E13",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 20,
+        "bezeichnung": "NW->E14",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 21,
+        "bezeichnung": "NW->E16",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 22,
+        "bezeichnung": "NW->E17",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 23,
+        "bezeichnung": "NW->E18",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 24,
+        "bezeichnung": "NW->E20",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 25,
+        "bezeichnung": "NW->E21",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 26,
+        "bezeichnung": "NW->E22",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "358154": {
+    "utm_east": "306952",
+    "utm_north": "5647850",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Nassschleifen von Kfz",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "358203": {
+    "utm_east": "325125",
+    "utm_north": "5632043",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Naßschleiferei",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2225874": {
+    "utm_east": "320910",
+    "utm_north": "5634150",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Dampferzeugung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Textilveredelung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Wasseraufbereitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "358196": {
+    "utm_east": "315173",
+    "utm_north": "5644115",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Eloxal u. Hartanodisation",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2222532": {
+    "utm_east": "323028",
+    "utm_north": "5627578",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Waschrohstoffherstellung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "22 Chemische Industrie",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "24217"
+      }
+    ]
+  },
+  "358418": {
+    "utm_east": "314608",
+    "utm_north": "5642968",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Entfettung von Metallteilen",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "358480": {
+    "utm_east": "324917",
+    "utm_north": "5626533",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Gleitschleiferei",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "35859": {
+    "utm_east": "319490",
+    "utm_north": "5638050",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Naßschleiferei",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "358424": {
+    "utm_east": "321158",
+    "utm_north": "5635622",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Oberflächenbeh. v. Metallen",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2222989": {
+    "utm_east": "322251",
+    "utm_north": "5626799",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Lohnbeizerei",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "5600"
+      }
+    ]
+  },
+  "22211": {
+    "utm_east": "319739",
+    "utm_north": "5618376",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "NW -> E2",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "NW -> E1",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Produktionsabwasser",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "28 Herstellung von Papier, Karton oder Pappe",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "NW -> E3",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22232251": {
+    "utm_east": "320569",
+    "utm_north": "5633604",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Polymerisation",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "22 Chemische Industrie",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Wasseraufbereitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31.2 Nr. 2.2 Anforderungen an das Abwasser aus Wasseraufbereitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "358481": {
+    "utm_east": "308600",
+    "utm_north": "5652020",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Teilereinigungsmaschine",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "358558": {
+    "utm_east": "315381",
+    "utm_north": "5644047",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Teppichreinigung",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "55 Wäschereien",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22228": {
+    "utm_east": "320658",
+    "utm_north": "5632109",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "NW->Versickerung",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Abschlämmung Dampfkessel",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "3500"
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Abscheider Waschplatz",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "Abscheider Werkstatt+Waschhalle",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "2"
+      },
+      {
+        "nr": 5,
+        "bezeichnung": "Aufbereitung Rurwasser",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "9000"
+      },
+      {
+        "nr": 6,
+        "bezeichnung": "Spannrahmen 304",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 7,
+        "bezeichnung": "Aufbereitung Weichwasser",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "200"
+      },
+      {
+        "nr": 8,
+        "bezeichnung": "Fixiermaschine K 118",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 9,
+        "bezeichnung": "NW E1",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 10,
+        "bezeichnung": "NW E3",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 11,
+        "bezeichnung": "NW E2",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 12,
+        "bezeichnung": "Fixiermaschine K 117",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 13,
+        "bezeichnung": "Waschmaschine 30",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 14,
+        "bezeichnung": "KÜWA",
+        "abwasserbeschaffenheit": "Kühlwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "400000"
+      }
+    ]
+  },
+  "358587": {
+    "utm_east": "320867",
+    "utm_north": "5634736",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Waschplatz f. Teppiche",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "55 Wäschereien",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2222170": {
+    "utm_east": "348547",
+    "utm_north": "5624567",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Beizerei",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "14",
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22223774": {
+    "utm_east": "333292",
+    "utm_north": "5606931",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Oberflächenbehandlung von Metallen",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22232182": {
+    "utm_east": "324097",
+    "utm_north": "5604990",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Wäscherei",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "55 Wäschereien",
+        "max_d": "90",
+        "max_h": null,
+        "max_a": "23400"
+      }
+    ]
+  },
+  "22223752": {
+    "utm_east": "319484",
+    "utm_north": "5596288",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Werkstatt, Gleitschleiferei",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "2",
+        "max_h": null,
+        "max_a": "500"
+      }
+    ]
+  },
+  "22229883": {
+    "utm_east": "308090",
+    "utm_north": "5656712",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Chukyo Europe",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230014": {
+    "utm_east": "299733",
+    "utm_north": "5660279",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Leiterplattenherstellung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22229978": {
+    "utm_east": "297597",
+    "utm_north": "5660790",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Galvanikbetrieb",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22229843": {
+    "utm_east": "299727",
+    "utm_north": "5665167",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Jansen Edelstahl GmbH",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22229888": {
+    "utm_east": "296516",
+    "utm_north": "5651962",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Lackiererei",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22231403": {
+    "utm_east": "296177",
+    "utm_north": "5651005",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "LBBZ - NRW GmbH",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "45",
+        "max_h": null,
+        "max_a": "14040"
+      }
+    ]
+  },
+  "22229929": {
+    "utm_east": "296850",
+    "utm_north": "5645608",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Metallverarbeitung Schlafhorst-Saurer",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2222002": {
+    "utm_east": "308309",
+    "utm_north": "5656819",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Metallverarbeitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2221986": {
+    "utm_east": "305987",
+    "utm_north": "5654747",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Beschichtungsbetrieb",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Eloxalbetrieb",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Over Eloxal GmbH",
+        "abwasserbeschaffenheit": "Kühlwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2224656": {
+    "utm_east": "319300",
+    "utm_north": "5674669",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Färberei",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230496": {
+    "utm_east": "322942",
+    "utm_north": "5676698",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Eloxieranlage",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "5",
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230493": {
+    "utm_east": "324870",
+    "utm_north": "5670667",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Fruchtsaftherstellung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "3 Herstellung von Nahrungsmitteln und Futtermitteln",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230460": {
+    "utm_east": "322327",
+    "utm_north": "5675750",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Galvanik",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230494": {
+    "utm_east": "318849",
+    "utm_north": "5668527",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Eloxal- Pulverbeschichtung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "1",
+        "max_h": null,
+        "max_a": "300"
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Gleitschliffanlage",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2224861": {
+    "utm_east": "322418",
+    "utm_north": "5671570",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Beizerei",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22223723": {
+    "utm_east": "320169",
+    "utm_north": "5671299",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Druckerei, Waschmaschine, Pastenküche",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Überlauf Thermex, Färbereilabor",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Textile Ausrüstung, Pastenküche",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "Färberei",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230318": {
+    "utm_east": "319094",
+    "utm_north": "5668523",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Gleitschliffanlage",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230291": {
+    "utm_east": "324385",
+    "utm_north": "5677519",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Wäscherei",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "55 Wäschereien",
+        "max_d": "4",
+        "max_h": null,
+        "max_a": "880"
+      }
+    ]
+  },
+  "22230299": {
+    "utm_east": "322655",
+    "utm_north": "5676700",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Produktion",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "3 Herstellung von Nahrungsmitteln und Futtermitteln",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230499": {
+    "utm_east": "320456",
+    "utm_north": "5666474",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Getränkeproduktion",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "3 Herstellung von Nahrungsmitteln und Futtermitteln",
+        "max_d": "140",
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230312": {
+    "utm_east": "320293",
+    "utm_north": "5673439",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Laborabwässer",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230287": {
+    "utm_east": "321441",
+    "utm_north": "5669453",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Betrieb",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230489": {
+    "utm_east": "320060",
+    "utm_north": "5673926",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Produktion Gleitschliffwasser",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "10",
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230319": {
+    "utm_east": "319849",
+    "utm_north": "5673845",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Pulverbeschichtung Entfettung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Entfettung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Nass-Lackieranlage Entfettung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2224727": {
+    "utm_east": "314863",
+    "utm_north": "5669598",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Dampfkessel",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Sandfilter",
+        "abwasserbeschaffenheit": "Kühlwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Kühlturm",
+        "abwasserbeschaffenheit": "Kühlwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "Labor",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "0,5",
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 5,
+        "bezeichnung": "Produktion (Reinigung)",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "0,5",
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230314": {
+    "utm_east": "321368",
+    "utm_north": "5666533",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Wäscherei",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "55 Wäschereien",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230316": {
+    "utm_east": "321591",
+    "utm_north": "5668502",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Werk 2 Teilereinigung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22230491": {
+    "utm_east": "323889",
+    "utm_north": "5678540",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "fotografischen Prozessen",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "53 Fotografische Prozesse (Silberhalogenid-Fotografie)",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Galvanik",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2227806": {
+    "utm_east": "321502",
+    "utm_north": "5676193",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Produktionsabwasser",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": "1.300",
+        "max_h": null,
+        "max_a": "299000"
+      }
+    ]
+  },
+  "22230320": {
+    "utm_east": "319184",
+    "utm_north": "5674211",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Produktion",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22223667": {
+    "utm_east": "319183",
+    "utm_north": "5674326",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Abwasser",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "25",
+        "max_h": null,
+        "max_a": "7500"
+      }
+    ]
+  },
+  "2222082": {
+    "utm_east": "336754",
+    "utm_north": "5639117",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Oberflächenbehandlung Metall",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "14000"
+      }
+    ]
+  },
+  "362641": {
+    "utm_east": "346805",
+    "utm_north": "5643085",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Anlage 5: Kondensat",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Anlage 4: Reststoffsammelst.",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Anlage 3: KFZ-Annahmestelle",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "Anlage 1.2 Sprühraum",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 5,
+        "bezeichnung": "Anlage 2: Werkstatt",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 6,
+        "bezeichnung": "Anlage 6: Lackierb.",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 7,
+        "bezeichnung": "Anlage 1.1: Waschhalle",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2222320": {
+    "utm_east": "353942",
+    "utm_north": "5633178",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Metallverarbeitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "4200"
+      }
+    ]
+  },
+  "362846": {
+    "utm_east": "353784",
+    "utm_north": "5633945",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Elektromotorreinigung",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "362403": {
+    "utm_east": "332676",
+    "utm_north": "5646655",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Kfz- Wäsche",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Emaillierung",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Wasseraufbereitung",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "Lackierung",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "36256": {
+    "utm_east": "331549",
+    "utm_north": "5648984",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Produktionsabwasser",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "362103": {
+    "utm_east": "336604",
+    "utm_north": "5640974",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Beiz- und Werkstattabwasser",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "362597": {
+    "utm_east": "354034",
+    "utm_north": "5633190",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Galvanik",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "362634": {
+    "utm_east": "336216",
+    "utm_north": "5639222",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Niederschlagswasser",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Wäschen",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2222400": {
+    "utm_east": "348897",
+    "utm_north": "5636175",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Lagerplatz \"Abfall\"",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Lagerplatz \"Schrotte\"",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "1974"
+      }
+    ]
+  },
+  "36234": {
+    "utm_east": "336331",
+    "utm_north": "5639158",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Metallbau",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2227609": {
+    "utm_east": "341855",
+    "utm_north": "5641837",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "3 Waschplatz Feuerwehr",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "2200"
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "6 Diesellok Abspritzplatz",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": "36",
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "7 E-Lok Abspritzplatz",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": "36",
+        "max_a": null
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "1 Wagenwaschplatz",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "3800"
+      },
+      {
+        "nr": 5,
+        "bezeichnung": "4 Schrottplatzlagerstätte",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "662"
+      },
+      {
+        "nr": 6,
+        "bezeichnung": "5 Elektromotorenwäsche",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "4",
+        "max_h": null,
+        "max_a": "1251"
+      },
+      {
+        "nr": 7,
+        "bezeichnung": "2 Batteriewaschhalle",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "712"
+      }
+    ]
+  },
+  "362839": {
+    "utm_east": "341974",
+    "utm_north": "5642022",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Entwässerung Halle 7",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Maschinenteile",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Schrottboxen",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "Entwässerung Halle 10",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 5,
+        "bezeichnung": "Batteriewaschhalle",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 6,
+        "bezeichnung": "Wagenwaschplatz",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 7,
+        "bezeichnung": "SA Feuerwehr",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "362676": {
+    "utm_east": "329747",
+    "utm_north": "5651809",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Chemische Reinigung",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "55 Wäschereien",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "36264": {
+    "utm_east": "329192",
+    "utm_north": "5645498",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Textilreinigung",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "55 Wäschereien",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "362504": {
+    "utm_east": "340064",
+    "utm_north": "5643032",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Wäschereiabwasser",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "55 Wäschereien",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2227027": {
+    "utm_east": "326016",
+    "utm_north": "5674421",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Anodisieranlage",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "22500"
+      }
+    ]
+  },
+  "22222513": {
+    "utm_east": "325883",
+    "utm_north": "5674342",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "IEANF Service-Labor Dohmen Gmb",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "38 Textilherstellung, Textilveredlung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "2520"
+      }
+    ]
+  },
+  "222819": {
+    "utm_east": "340448",
+    "utm_north": "5675397",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Niederschlagswasser unbelastet",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "schwach belastetes Niederschlagswasser",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Papiermaschinen PM 1/2",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "28 Herstellung von Papier, Karton oder Pappe",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22222213": {
+    "utm_east": "339867",
+    "utm_north": "5672970",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "IEANF Gleitschleiferei Eternit",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "73"
+      }
+    ]
+  },
+  "22222613": {
+    "utm_east": "344158",
+    "utm_north": "5669982",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "IEANF Gleitschleifen/Polieren/",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "477"
+      }
+    ]
+  },
+  "222808": {
+    "utm_east": "332190",
+    "utm_north": "5662918",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "belastetes Niederschlagswasser",
+        "abwasserbeschaffenheit": "Niederschlagswasser mit Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": "144",
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Produktionsabwasser Intersnack",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "3 Herstellung von Nahrungsmitteln und Futtermitteln",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Produktionsabwasser Pfeiffer & Langen",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "3 Herstellung von Nahrungsmitteln und Futtermitteln",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "Niederschlagswasser belastet",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 5,
+        "bezeichnung": "Niederschlageswasser unbelastet",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": "260,5",
+        "max_a": null
+      },
+      {
+        "nr": 6,
+        "bezeichnung": "belastetes Niederschlagswasser",
+        "abwasserbeschaffenheit": "Niederschlagswasser mit Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": "252",
+        "max_a": null
+      }
+    ]
+  },
+  "22222768": {
+    "utm_east": "342665",
+    "utm_north": "5671123",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Tipu Orientteppiche",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "55 Wäschereien",
+        "max_d": "1",
+        "max_h": null,
+        "max_a": "220"
+      }
+    ]
+  },
+  "22222452": {
+    "utm_east": "333618",
+    "utm_north": "5666275",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "IEANF Phosphatierung / KHT Fa",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "IEANF Härterei / KHT Fahrzeug",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "1400"
+      }
+    ]
+  },
+  "22222494": {
+    "utm_east": "341798",
+    "utm_north": "5669888",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "IEANF NGT Neusser Galvanotechn",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22222647": {
+    "utm_east": "111111",
+    "utm_north": "1111111",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "IEANF Durchkontaktierungsanlag",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "6"
+      }
+    ]
+  },
+  "22222648": {
+    "utm_east": "341620",
+    "utm_north": "5669534",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "IEANF Siebreinigungsanlage Nov",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22223659": {
+    "utm_east": "323389",
+    "utm_north": "5675202",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Kühlkreislauf Filter",
+        "abwasserbeschaffenheit": "Kühlwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Mechanische Nachbearbeitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Wasseraufbereitung",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "Abflutung Hybridkühlung",
+        "abwasserbeschaffenheit": "Kühlwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "22222650": {
+    "utm_east": "334556",
+    "utm_north": "5676329",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "IEANF Reinigung SAFE-TEC GmbH",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "55 Wäschereien",
+        "max_d": "14,3",
+        "max_h": null,
+        "max_a": "2845"
+      }
+    ]
+  },
+  "22222393": {
+    "utm_east": "339071",
+    "utm_north": "5679549",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "IEANF Gleitschleifanlage Teepa",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "2"
+      }
+    ]
+  },
+  "22222748": {
+    "utm_east": "337853",
+    "utm_north": "5656234",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "IEANF Terkes",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "55 Wäschereien",
+        "max_d": "0,5",
+        "max_h": null,
+        "max_a": "110"
+      }
+    ]
+  },
+  "22222178": {
+    "utm_east": "338076",
+    "utm_north": "5675206",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "IEANF Phosphatieranlage Textro",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "144",
+        "max_h": null,
+        "max_a": "42000"
+      }
+    ]
+  },
+  "2224684": {
+    "utm_east": "111111",
+    "utm_north": "1111111",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Chem. Betrieb",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "22 Chemische Industrie",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2225457": {
+    "utm_east": "111111",
+    "utm_north": "1111111",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Wäscherei",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "55 Wäschereien",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2223355": {
+    "utm_east": "111111",
+    "utm_north": "1111111",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Abbeizbetrieb",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2223509": {
+    "utm_east": "111111",
+    "utm_north": "1111111",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Metallverarbeitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2226257": {
+    "utm_east": "111111",
+    "utm_north": "1111111",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Metallverarbeitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2223108": {
+    "utm_east": "111111",
+    "utm_north": "1111111",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Metallverarbeitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2221935": {
+    "utm_east": "298963",
+    "utm_north": "5627821",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Wasseraufbereitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": "144",
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Labor / Produktion",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "22 Chemische Industrie",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "30000"
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Dampferzeugung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": "5",
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2224721": {
+    "utm_east": "111111",
+    "utm_north": "1111111",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Metallverarbeitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2222680": {
+    "utm_east": "304404",
+    "utm_north": "5628810",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Dachflächenwässer",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Beizerei",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "48",
+        "max_h": null,
+        "max_a": "17520"
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Waschplatz",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "49 Mineralölhaltiges Abwasser",
+        "max_d": "2",
+        "max_h": null,
+        "max_a": "545"
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "Kühlwasser",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "2600"
+      }
+    ]
+  },
+  "2222332": {
+    "utm_east": "111111",
+    "utm_north": "1111111",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Wäscherei AREI",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "55 Wäschereien",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2223": {
+    "utm_east": "307359",
+    "utm_north": "5613056",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Rissprüfung Metallverarbeitung",
+        "abwasserbeschaffenheit": "sonstiges Abwasser (verändertes Wasser)",
+        "anhang": "99 Keine eindeutige Zuordnung möglich",
+        "max_d": null,
+        "max_h": "0,14",
+        "max_a": null
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Mechanische Werkstatt",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "1,5",
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Kühlwasserkreislauf",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": "1",
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "Kupferfilteranlage",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "1",
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 5,
+        "bezeichnung": "Drainage-u. Niederschlagswässer -> E1",
+        "abwasserbeschaffenheit": "Niederschlagswasser mit Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      },
+      {
+        "nr": 6,
+        "bezeichnung": "NW -> E2 / Junker",
+        "abwasserbeschaffenheit": "Niederschlagswasser ohne Sonderbauwerk",
+        "anhang": "",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2225298": {
+    "utm_east": "111111",
+    "utm_north": "1111111",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Metallverarbeitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2223023": {
+    "utm_east": "299371",
+    "utm_north": "5632081",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Galvanik",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": "10,64",
+        "max_h": "1,33",
+        "max_a": "2341"
+      }
+    ]
+  },
+  "2225212": {
+    "utm_east": "304770",
+    "utm_north": "5626710",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Metallverarbeitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "175000"
+      },
+      {
+        "nr": 2,
+        "bezeichnung": "Kiesfilteranlage",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "1920"
+      },
+      {
+        "nr": 3,
+        "bezeichnung": "Kühlwasser Fa. Aurubis",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": "36",
+        "max_h": null,
+        "max_a": "13140"
+      },
+      {
+        "nr": 4,
+        "bezeichnung": "Umkehrosmose",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "31 Wasseraufbereitung, Kühlsysteme, Dampferzeugung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": "5500"
+      }
+    ]
+  },
+  "2224704": {
+    "utm_east": "111111",
+    "utm_north": "1111111",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Metallverarbeitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  },
+  "2224169": {
+    "utm_east": "111111",
+    "utm_north": "1111111",
+    "anfallstellen": [
+      {
+        "nr": 1,
+        "bezeichnung": "Metallverarbeitung",
+        "abwasserbeschaffenheit": "Produktionsabwasser",
+        "anhang": "40 Metallbearbeitung, Metallverarbeitung",
+        "max_d": null,
+        "max_h": null,
+        "max_a": null
+      }
+    ]
+  }
+}

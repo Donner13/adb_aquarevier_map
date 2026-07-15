@@ -1,0 +1,344 @@
+{
+  "27": {
+    "name": "Dreilägerbachtalsperre",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "302721",
+    "utm_north": "5615728",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "35": {
+    "name": "HRB Euchen",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "300381,256",
+    "utm_north": "5637398,128",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "48": {
+    "name": "HRB Herzogenrath",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "296114",
+    "utm_north": "5638938",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "61": {
+    "name": "Kalltalsperre",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "309873",
+    "utm_north": "5613784",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "101": {
+    "name": "Perlenbachtalsperre",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "304419",
+    "utm_north": "5602216",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "105": {
+    "name": "HRB Rahe",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "293815",
+    "utm_north": "5631386",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "164": {
+    "name": "Wehebachtalsperre",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "312519,588",
+    "utm_north": "5626061,666",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "171": {
+    "name": "Vorsperre Eiserbach",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "314924,902",
+    "utm_north": "5609301,107",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "174": {
+    "name": "Stauanlage Diepenbenden",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "294121,601",
+    "utm_north": "5625348,38",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "175": {
+    "name": "Stauanlage Kupferbach",
+    "kreis": "Städteregion Aachen",
+    "utm_east": "294998",
+    "utm_north": "5625429",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "235": {
+    "name": "Beeckbach III Erkelenz",
+    "kreis": "Heinsberg",
+    "utm_east": "312433,484",
+    "utm_north": "5664757,968",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "236": {
+    "name": "Beeckbach II Grenzlandring",
+    "kreis": "Heinsberg",
+    "utm_east": "311830,904",
+    "utm_north": "5667677,879",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "237": {
+    "name": "Beeckbach I Ophover Mühle",
+    "kreis": "Heinsberg",
+    "utm_east": "310036,42",
+    "utm_north": "5668499,202",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "238": {
+    "name": "Dahlheimer Mühle",
+    "kreis": "Heinsberg",
+    "utm_east": "301637,893",
+    "utm_north": "5670175,157",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "239": {
+    "name": "Nierstraß",
+    "kreis": "Heinsberg",
+    "utm_east": "294802,707",
+    "utm_north": "5650519,51",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "240": {
+    "name": "HRB Siepenbusch",
+    "kreis": "Heinsberg",
+    "utm_east": "294621,077",
+    "utm_north": "5647125,161",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "241": {
+    "name": "In der Schroiff",
+    "kreis": "Heinsberg",
+    "utm_east": "296397,017",
+    "utm_north": "5645921,435",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "242": {
+    "name": "Beeck",
+    "kreis": "Heinsberg",
+    "utm_east": "303095,399",
+    "utm_north": "5651335,206",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "243": {
+    "name": "Uetterath",
+    "kreis": "Heinsberg",
+    "utm_east": "298355,889",
+    "utm_north": "5656046,429",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "244": {
+    "name": "Herb",
+    "kreis": "Heinsberg",
+    "utm_east": "299342,568",
+    "utm_north": "5651063,004",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "94": {
+    "name": "HRB Odenkirchen",
+    "kreis": "Mönchengladbach",
+    "utm_east": "320690,276",
+    "utm_north": "5667512,732",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "516": {
+    "name": "HRB Hochneukirch",
+    "kreis": "Mönchengladbach",
+    "utm_east": "320062,085",
+    "utm_north": "5664319,282",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "751": {
+    "name": "HRB Geneicken",
+    "kreis": "Mönchengladbach",
+    "utm_east": "323694",
+    "utm_north": "5672222",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "315": {
+    "name": "HRB Gill",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "337847,981",
+    "utm_north": "5655227,019",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "316": {
+    "name": "HRB Damm",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "330316,852",
+    "utm_north": "5668423,153",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "317": {
+    "name": "HRB Herberath",
+    "kreis": "Rhein-Kreis Neuss",
+    "utm_east": "326423,251",
+    "utm_north": "5664748,299",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "102": {
+    "name": "Polder 1-3, Zuckerfabrik Jülich (keine Anlage gem. §105 LWG)",
+    "kreis": "Düren",
+    "utm_east": "314268,553",
+    "utm_north": "5642423,701",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Sedimentationsbecken"
+  },
+  "106": {
+    "name": "Rurtalsperre Schwammenauel",
+    "kreis": "Düren",
+    "utm_east": "319225,58",
+    "utm_north": "5612510,451",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "134": {
+    "name": "Stauanlage Heimbach",
+    "kreis": "Düren",
+    "utm_east": "321713,198",
+    "utm_north": "5611541,794",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "140": {
+    "name": "Stauanlage Lucherberger See",
+    "kreis": "Düren",
+    "utm_east": "315081,718",
+    "utm_north": "5635172,222",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Pumpspeicherbecken"
+  },
+  "141": {
+    "name": "Stauanlage Obermaubach",
+    "kreis": "Düren",
+    "utm_east": "319737,983",
+    "utm_north": "5621335,026",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "170": {
+    "name": "Vorsperre Obersee",
+    "kreis": "Düren",
+    "utm_east": "315214,697",
+    "utm_north": "5609403,848",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Talsperre"
+  },
+  "180": {
+    "name": "Schlangengraben",
+    "kreis": "Düren",
+    "utm_east": "307254,79",
+    "utm_north": "5639809,348",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "193": {
+    "name": "Oberzier",
+    "kreis": "Düren",
+    "utm_east": "322155,866",
+    "utm_north": "5637597,835",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "195": {
+    "name": "Drove",
+    "kreis": "Düren",
+    "utm_east": "324421,402",
+    "utm_north": "5621897,944",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "196": {
+    "name": "Thum",
+    "kreis": "Düren",
+    "utm_east": "325305,763",
+    "utm_north": "5620890,914",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "24": {
+    "name": "HRB Diebenhöhle I",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "338902",
+    "utm_north": "5650670",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  },
+  "56": {
+    "name": "HRB Ingendorf",
+    "kreis": "Rhein-Erft-Kreis",
+    "utm_east": "340575",
+    "utm_north": "5652898",
+    "betreiber": "Absperrbauwerk",
+    "gewaesser": "stationierungskarte",
+    "typ": "Hochwasserrückhaltebecken"
+  }
+}

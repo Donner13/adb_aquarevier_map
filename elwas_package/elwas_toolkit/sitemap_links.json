@@ -1,0 +1,142 @@
+[
+  {
+    "text": "Einleitende Betriebe",
+    "href": "/elwas-web/data/abw/indabw/deinl/dT80Betrieb.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=0&mtheme=0&lindex=0&nested=true"
+  },
+  {
+    "text": "Kläranlagen",
+    "href": "/elwas-web/data/abw/komabw/ka/t80Klaeranlage.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=0&mtheme=1&lindex=0&nested=true"
+  },
+  {
+    "text": "Abwasserbeseitigungskonzepte",
+    "href": "/elwas-web/data/abw/komabw/abk/abkMass.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=0&mtheme=1&lindex=1&nested=true"
+  },
+  {
+    "text": "Regenbecken/-entlastungsanlagen",
+    "href": "/elwas-web/data/abw/niedersch/anl/t80Sonderbauwerk.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=0&mtheme=2&lindex=0&nested=true"
+  },
+  {
+    "text": "Einleitungsstellen",
+    "href": "/elwas-web/data/abw/einleitung/einl/t80Einleitungsstelle.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=0&mtheme=3&lindex=0&nested=true"
+  },
+  {
+    "text": "Messstellen",
+    "href": "/elwas-web/data/abw/einleitung/mst/messstelle.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=0&mtheme=3&lindex=1&nested=true"
+  },
+  {
+    "text": "Stand der Abwasserbeseitigung",
+    "href": "/elwas-web/data/abw/ueausw/standardausw/standardausw.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=0&mtheme=4&lindex=0&nested=true"
+  },
+  {
+    "text": "Überwachung Direkteinleiter",
+    "href": "/elwas-web/data/abw/ueausw/uedeinl/ueberwachungDirekteinleiter.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=0&mtheme=4&lindex=1&nested=true"
+  },
+  {
+    "text": "Überwachung Indirekteinleiter",
+    "href": "/elwas-web/data/abw/ueausw/ueideinl/ueberwachungIndirekteinleiter.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=0&mtheme=4&lindex=2&nested=true"
+  },
+  {
+    "text": "amtl. Überwachungswerte für Anlagen",
+    "href": "/elwas-web/data/abw/ueausw/ueanl/ueberwachungAnlage.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=0&mtheme=4&lindex=3&nested=true"
+  },
+  {
+    "text": "Abwasserbeseitigungskonzepte",
+    "href": "/elwas-web/data/abw/ueausw/abk/auswertung.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=0&mtheme=4&lindex=4&nested=true"
+  },
+  {
+    "text": "Grundwassermessstellen",
+    "href": "/elwas-web/data/gw/zustand/gwm/grundwasserMst.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=1&mtheme=0&lindex=0&nested=true"
+  },
+  {
+    "text": "Daten der Kartierung",
+    "href": "/elwas-web/data/ow/gs/kartierung/gs.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=2&mtheme=0&lindex=0&nested=true"
+  },
+  {
+    "text": "Bauwerke",
+    "href": "/elwas-web/data/ow/anlagen/querbauwerk/querbauwerk.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=2&mtheme=1&lindex=0&nested=true"
+  },
+  {
+    "text": "Stauanlagen",
+    "href": "/elwas-web/data/ow/anlagen/stauanlagen/stauanlagen.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=2&mtheme=1&lindex=1&nested=true"
+  },
+  {
+    "text": "Pegel",
+    "href": "/elwas-web/data/ow/menge/pegel/pegel.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=2&mtheme=2&lindex=0&nested=true"
+  },
+  {
+    "text": "Gebietsniederschläge",
+    "href": "/elwas-web/data/ow/menge/gbn/gbn.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=2&mtheme=2&lindex=1&nested=true"
+  },
+  {
+    "text": "Niederschlagsstationen",
+    "href": "/elwas-web/data/ow/menge/station/nst.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=2&mtheme=2&lindex=2&nested=true"
+  },
+  {
+    "text": "Messstellen Chemie und Biologie",
+    "href": "/elwas-web/data/ow/guete/t38Messstelle.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=2&mtheme=3&lindex=0&nested=true"
+  },
+  {
+    "text": "Messstellen Chemie und Biologie",
+    "href": "/elwas-web/data/ow/ausw/auswertungen.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=2&mtheme=4&lindex=0&nested=true"
+  },
+  {
+    "text": "Wasserschutzgebiete",
+    "href": "/elwas-web/data/tw/wsg_ww/wsg/wasserschutzgebiete.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=3&mtheme=0&lindex=0&nested=true"
+  },
+  {
+    "text": "Zentrale Wasserversorgungsanlagen (Wasserwerke)",
+    "href": "/elwas-web/data/tw/wsg_ww/zw/wasserversorgungsanlagen.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=3&mtheme=0&lindex=1&nested=true"
+  },
+  {
+    "text": "Versorgungsgebiete",
+    "href": "/elwas-web/data/tw/wsg_ww/vg/versorgungsgebiete.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=3&mtheme=0&lindex=2&nested=true"
+  },
+  {
+    "text": "Fließwasserkörper",
+    "href": "/elwas-web/data/wrrl/wki/fwk/t38KT15OwKoerper.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=4&mtheme=0&lindex=0&nested=true"
+  },
+  {
+    "text": "Seewasserkörper",
+    "href": "/elwas-web/data/wrrl/wki/seeWk/seewasserKoerper.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=4&mtheme=0&lindex=1&nested=true"
+  },
+  {
+    "text": "Grundwasserkörper",
+    "href": "/elwas-web/data/wrrl/wki/gwk/grundwasserkoerper.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=4&mtheme=0&lindex=2&nested=true"
+  },
+  {
+    "text": "Maßnahmenprogramm",
+    "href": "/elwas-web/data/wrrl/bwd/mpg/wrrlMpg.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=4&mtheme=1&lindex=0&nested=true"
+  },
+  {
+    "text": "Belastungsfaktoren",
+    "href": "/elwas-web/data/wrrl/bwd/bfk/wrrlBfk.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=4&mtheme=1&lindex=1&nested=true"
+  },
+  {
+    "text": "Bewirtschaftungsziele",
+    "href": "/elwas-web/data/wrrl/bwd/bwz/wrrlBwz.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=4&mtheme=1&lindex=2&nested=true"
+  },
+  {
+    "text": "Zustand der Fließwasserkörper",
+    "href": "/elwas-web/data/wrrl/ausw/zustandFwk/auswZustandFwk.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=4&mtheme=2&lindex=0&nested=true"
+  },
+  {
+    "text": "Zustand der Seewasserkörper",
+    "href": "/elwas-web/data/wrrl/ausw/zustandSeewk/auswZustandSeewk.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=4&mtheme=2&lindex=1&nested=true"
+  },
+  {
+    "text": "Zentrale Wasserhaltungen",
+    "href": "/elwas-web/data/wfd/grubenwasseranstiegsmonitoring/zentraleWasserhaltungen/zentraleWasserhaltungen.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=5&mtheme=0&lindex=0&nested=true"
+  },
+  {
+    "text": "Tiefe Grundwasserkörper",
+    "href": "/elwas-web/data/wfd/grubenwasseranstiegsmonitoring/tiefeGrundwasserkoerper/tiefeGwk.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=5&mtheme=0&lindex=1&nested=true"
+  },
+  {
+    "text": "Grubenwasseranstiegsmonitoring",
+    "href": "/elwas-web/data/wfd/ausw/auswGrubenwasserMonitoring.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=5&mtheme=1&lindex=0&nested=true"
+  },
+  {
+    "text": "Suche im Gewässerverlauf",
+    "href": "/elwas-web/data/wfd/ausw/stationierteObjekte/stationierteObjekte.xhtml;jsessionid=970C6925B3237D1B2F16358C9C9A91A1?marea=5&mtheme=1&lindex=1&nested=true"
+  }
+]

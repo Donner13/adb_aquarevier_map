@@ -26,8 +26,8 @@ while time.time() - start_time < 15:
     print(f"SSH: {line.strip()}")
     if "localhost.run" in line or "lhr.life" in line or "lhr.rocks" in line:
         print("\n==============================================")
-        print("🎉 Live-Tunnel erfolgreich gestartet!")
-        print(f"Dein Link für jeden: {line.strip()}")
+        print("Live-Tunnel erfolgreich gestartet!")
+        print(f"Dein Link fuer jeden: {line.strip()}")
         print("==============================================")
         url_found = True
         break

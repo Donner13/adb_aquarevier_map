@@ -1,0 +1,71 @@
+import json
+import os
+import shutil
+from pyproj import Transformer
+
+BASE = os.path.dirname(os.path.abspath(__file__))
+IN_PATH = os.path.join(BASE, "regenbecken.json")
+OUT_PATH = os.path.join(BASE, "regenbecken.geojson")
+ROOT_PATH = os.path.join(os.path.dirname(BASE), "regenbecken.geojson")
+
+transformer = Transformer.from_crs("epsg:25832", "epsg:4326", always_xy=True)
+
+def to_float(v):
+    if not v:
+        return None
+    try:
+        return float(v.replace(",", "."))
+    except (ValueError, AttributeError):
+        return None
+
+def main():
+    if not os.path.exists(IN_PATH):
+        print(f"Input file not found: {IN_PATH}")
+        return
+
+    with open(IN_PATH, encoding="utf-8") as f:
+        data = json.load(f)
+
+    features = []
+    skipped = []
+    for anlagen_nr, v in data.items():
+        if "error" in v:
+            skipped.append(anlagen_nr)
+            continue
+        ost, nord = to_float(v.get("utm_east")), to_float(v.get("utm_north"))
+        if ost is None or nord is None:
+            skipped.append(anlagen_nr)
+            continue
+        try:
+            lon, lat = transformer.transform(ost, nord)
+        except (ValueError, TypeError):
+            skipped.append(anlagen_nr)
+            continue
+        features.append({
+            "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [lon, lat]},
+            "properties": {
+                "anlagen_nr": anlagen_nr,
+                "name": v.get("name"),
+                "kreis": v.get("kreis"),
+                "gemeinde": v.get("gemeinde"),
+                "betreiber": v.get("betreiber"),
+                "typ": v.get("typ"),
+                "abwasserbereich": v.get("abwasserbereich"),
+                "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
+            },
+        })
+
+    geojson = {"type": "FeatureCollection", "features": features}
+    with open(OUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(geojson, f, indent=2, ensure_ascii=False, allow_nan=False)
+
+    # Copy to root
+    shutil.copy(OUT_PATH, ROOT_PATH)
+
+    print(f"Features written: {len(features)}")
+    print(f"Skipped: {len(skipped)} {skipped}")
+    print(f"Output copied to: {ROOT_PATH}")
+
+if __name__ == "__main__":
+    main()

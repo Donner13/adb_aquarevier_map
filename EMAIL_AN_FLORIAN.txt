@@ -1,0 +1,22 @@
+Betreff: AquaRevier-Karte: Logos, Branchen & dein eigener Editor-Zugang
+
+Hallo Florian,
+
+alles umgesetzt: Logos getrennt (ISA/IWW/GI), Branchen ergänzt, Ladeprobleme
+und die Klick-Aussetzer auf der Karte behoben.
+
+Neu: Du kannst die Akteurs-Datenbank jetzt selbst pflegen, direkt über den
+Browser – Anleitung + Zugangsdaten im Anhang (PDF), dazu ein Ordner mit
+allen Projektdateien als Backup.
+
+Kurz zusammengefasst:
+- Editor: https://c9cd747508617e.lhr.life/internal.html (Login: florian /
+  Wasser2026Rur)
+- Öffentliche Karte: http://adb-aquarevier-secure.surge.sh
+- Nach dem Bearbeiten im Editor auf "Veröffentlichen" klicken – nach ca.
+  1-2 Minuten ist es live.
+
+Details siehe angehängtes PDF. Bei Fragen einfach melden.
+
+Viele Grüße
+Shubham

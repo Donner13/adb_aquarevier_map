@@ -204,3 +204,28 @@ Punktobjekt wie ein Pegel - lohnt sich, das mit einem einzelnen
    nachdenken (deutlich mehr Aufwand pro Datensatz) - mit dem Nutzer
    ruecksprechen, ob die ueberhaupt gebraucht werden, bevor viel Zeit
    reingeht.
+
+## 6. Update von Antigravity (2026-07-15)
+
+In dieser Session wurden die Vorbereitungen für die drei neuen Datensätze abgeschlossen, bevor der Nutzer den Laptop mitnehmen musste:
+
+### Was wurde erledigt?
+1. **Scraper- & Builder-Skripte erstellt:**
+   - [scrape_stauanlagen.py](file:///C:/Users/user/.gemini/antigravity-ide/scratch/contact_map/elwas_raw_data/scrape_stauanlagen.py) (Koordinaten direkt aus dem Stammdaten-Text extrahiert; Fix für ID- und Name-Auslesung).
+   - [scrape_regenbecken.py](file:///C:/Users/user/.gemini/antigravity-ide/scratch/contact_map/elwas_raw_data/scrape_regenbecken.py) (Robuster Extraktions-Fallback für `Ostwert`/`Nordwert` enthalten).
+   - [scrape_querbauwerke.py](file:///C:/Users/user/.gemini/antigravity-ide/scratch/contact_map/elwas_raw_data/scrape_querbauwerke.py) (Wartet explizit auf Rendering-Settle bei Cold-Sessions).
+   - Die entsprechenden GeoJSON-Builder in `elwas_raw_data/build_<name>_geojson.py` mit `pyproj`-Transformation (EPSG:25832 -> EPSG:4326).
+2. **Stauanlagen teilweise gescraped:**
+   - 37 Stauanlagen (Aachen, Heinsberg, Mönchengladbach, Rhein-Kreis Neuss und Düren) wurden erfolgreich gescraped.
+   - [stauanlagen.geojson](file:///C:/Users/user/.gemini/antigravity-ide/scratch/contact_map/stauanlagen.geojson) enthält bereits diese 37 Datensätze mit korrekten WGS84-Koordinaten.
+3. **Template-GeoJSONs erstellt:**
+   - Für die noch nicht gescrapten Datensätze wurden leere GeoJSONs ([regenbecken.geojson](file:///C:/Users/user/.gemini/antigravity-ide/scratch/contact_map/regenbecken.geojson) und [querbauwerke.geojson](file:///C:/Users/user/.gemini/antigravity-ide/scratch/contact_map/querbauwerke.geojson)) angelegt, um 404-Fehler in den HTML-Seiten zu vermeiden.
+4. **Leaflet-Karten-Integration synchronisiert:**
+   - In [index.html](file:///C:/Users/user/.gemini/antigravity-ide/scratch/contact_map/index.html) und [internal.html](file:///C:/Users/user/.gemini/antigravity-ide/scratch/contact_map/internal.html) wurden die 3 Layer (`stauanlagenLayer`, `regenbeckenLayer`, `querbauwerkeLayer`) mit passenden CSS-Farben (Orange/Cyan/Violett), Symbolen (⛰️/🌧️/🧱) und aufbereiteten Info-Popups integriert und in `overlayMaps` registriert.
+
+### Was ist noch offen?
+- **Rest-Scrape durchführen:**
+  - Sobald der Laptop wieder online ist, können die restlichen Kreise für Stauanlagen geladen werden (einfach `python elwas_raw_data/scrape_stauanlagen.py` laufen lassen, es überspringt bereits vorhandene Datensätze automatisch).
+  - Skripte für Regenbecken (`scrape_regenbecken.py`) und Querbauwerke (`scrape_querbauwerke.py`) ausführen.
+  - Anschließend die GeoJSON-Builder erneut ausführen, damit die Karten-Layer vollständig befüllt werden.
+

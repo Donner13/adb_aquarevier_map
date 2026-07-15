@@ -1640,6 +1640,150 @@
             })
             .catch(err => console.log("pegel layer not loaded:", err));
 
+        // Stauanlagen (ELWAS)
+        const stauanlagenLayer = L.layerGroup().addTo(map);
+        fetch('stauanlagen.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    pointToLayer: function(feature, latlng) {
+                        const size = 22;
+                        const color = "#f97316";
+                        const html = `
+                            <div style="
+                                width: ${size}px;
+                                height: ${size}px;
+                                background-color: ${color};
+                                border: 2px solid #ffffff;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 12px;
+                                box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                            ">⛰️</div>
+                        `;
+                        return L.marker(latlng, {
+                            icon: L.divIcon({ html, className: 'stauanlage-marker', iconSize: [size, size], iconAnchor: [size / 2, size / 2] })
+                        });
+                    },
+                    onEachFeature: function(feature, layer) {
+                        const p = feature.properties;
+                        let html = `
+                            <div class="popup-card">
+                                <div class="popup-group" style="color: #f97316">Stauanlage</div>
+                                <div class="popup-title">${p.name || 'Unbekannt'}</div>
+                                <div class="popup-detail">📍 ${p.kreis || ''}</div>
+                        `;
+                        if (p.betreiber) html += `<div class="popup-detail">🏢 Betreiber: ${p.betreiber}</div>`;
+                        if (p.gewaesser) html += `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>`;
+                        if (p.typ) html += `<div class="popup-detail">🔧 Typ: ${p.typ}</div>`;
+                        html += `
+                                <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
+                            </div>
+                        `;
+                        layer.bindPopup(html);
+                    }
+                }).addTo(stauanlagenLayer);
+            })
+            .catch(err => console.log("stauanlagen layer not loaded:", err));
+
+        // Regenbecken/-entlastungsanlagen (ELWAS)
+        const regenbeckenLayer = L.layerGroup().addTo(map);
+        fetch('regenbecken.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    pointToLayer: function(feature, latlng) {
+                        const size = 22;
+                        const color = "#06b6d4";
+                        const html = `
+                            <div style="
+                                width: ${size}px;
+                                height: ${size}px;
+                                background-color: ${color};
+                                border: 2px solid #ffffff;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 12px;
+                                box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                            ">🌧️</div>
+                        `;
+                        return L.marker(latlng, {
+                            icon: L.divIcon({ html, className: 'regenbecken-marker', iconSize: [size, size], iconAnchor: [size / 2, size / 2] })
+                        });
+                    },
+                    onEachFeature: function(feature, layer) {
+                        const p = feature.properties;
+                        let html = `
+                            <div class="popup-card">
+                                <div class="popup-group" style="color: #06b6d4">Regenbecken / Sonderbauwerk</div>
+                                <div class="popup-title">${p.name || 'Unbekannt'}</div>
+                                <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
+                        `;
+                        if (p.betreiber) html += `<div class="popup-detail">🏢 Betreiber: ${p.betreiber}</div>`;
+                        if (p.typ) html += `<div class="popup-detail">🔧 Typ: ${p.typ}</div>`;
+                        if (p.abwasserbereich) html += `<div class="popup-detail">⚙️ Abwasserbereich: ${p.abwasserbereich}</div>`;
+                        html += `
+                                <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
+                            </div>
+                        `;
+                        layer.bindPopup(html);
+                    }
+                }).addTo(regenbeckenLayer);
+            })
+            .catch(err => console.log("regenbecken layer not loaded:", err));
+
+        // Querbauwerke (ELWAS)
+        const querbauwerkeLayer = L.layerGroup().addTo(map);
+        fetch('querbauwerke.geojson')
+            .then(res => res.ok ? res.json() : Promise.reject())
+            .then(data => {
+                L.geoJSON(data, {
+                    pointToLayer: function(feature, latlng) {
+                        const size = 22;
+                        const color = "#a855f7";
+                        const html = `
+                            <div style="
+                                width: ${size}px;
+                                height: ${size}px;
+                                background-color: ${color};
+                                border: 2px solid #ffffff;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 12px;
+                                box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                            ">🧱</div>
+                        `;
+                        return L.marker(latlng, {
+                            icon: L.divIcon({ html, className: 'querbauwerke-marker', iconSize: [size, size], iconAnchor: [size / 2, size / 2] })
+                        });
+                    },
+                    onEachFeature: function(feature, layer) {
+                        const p = feature.properties;
+                        let html = `
+                            <div class="popup-card">
+                                <div class="popup-group" style="color: #a855f7">Querbauwerk / Bauwerk</div>
+                                <div class="popup-title">${p.name || 'Unbekannt'}</div>
+                                <div class="popup-detail">📍 ${p.kreis || ''}</div>
+                        `;
+                        if (p.gewaesser) html += `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>`;
+                        if (p.bauwerksart) html += `<div class="popup-detail">🏗️ Bauwerksart: ${p.bauwerksart}</div>`;
+                        if (p.typ) html += `<div class="popup-detail">🔧 Typ: ${p.typ}</div>`;
+                        html += `
+                                <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
+                            </div>
+                        `;
+                        layer.bindPopup(html);
+                    }
+                }).addTo(querbauwerkeLayer);
+            })
+            .catch(err => console.log("querbauwerke layer not loaded:", err));
+
         // Einzugsgebiet-Statistik: Spatial Join (Point-in-Polygon) zwischen
         // elwas_einleiter.geojson und rur_einzugsgebiet.geojson, vorberechnet
         // in build_catchment_stats.py. Zeigt Anzahl Betriebe + summierte
@@ -1729,6 +1873,9 @@
             "🚰 Kläranlagen (ELWAS)": klaeranlagenLayer,
             "💧 Grundwassermessstellen (ELWAS, 4400+)": gwmLayer,
             "📏 Pegel (ELWAS)": pegelLayer,
+            "⛰️ Stauanlagen (ELWAS)": stauanlagenLayer,
+            "🌧️ Regenbecken/-entlastungsanlagen (ELWAS)": regenbeckenLayer,
+            "🧱 Querbauwerke (ELWAS)": querbauwerkeLayer,
             "🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)": catchmentStatsLayer
         };
 
