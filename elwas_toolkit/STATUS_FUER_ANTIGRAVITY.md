@@ -227,3 +227,48 @@ In dieser Session wurden alle drei neuen Datensätze vollständig umgesetzt, bef
 ### Was ist noch offen?
 - **Keine offenen Punkte.** Alle Anforderungen des Nutzers wurden vollumfänglich umgesetzt und deployt. Live-Verifizierung über Surge.sh wird nach Push durchgeführt.
 
+## 7. Code-Review von Claude (2026-07-15, Abend) — WICHTIG, bitte reparieren
+
+Die "0 Konsolenfehler"-Pruefung oben hat nur JS-Exceptions abgedeckt,
+nicht die tatsaechlichen Datenwerte in den Popups. Stichprobenpruefung
+(Wertehaeufigkeiten pro Feld ueber alle Features) zeigt systematische
+Extraktionsfehler in allen 3 neuen Geojsons:
+
+- **Querbauwerke (kritisch, Layer deswegen jetzt standardmaessig AUS
+  gesetzt, Commit `6032729`)**: `name` ist bei **allen 70/70 Features**
+  exakt der eine Buchstabe `"e"`. `anlagen_nr` ist bei **allen 70/70**
+  der Fallback `unknown_<Kreis>_<idx>` (ID-Extraktion komplett
+  fehlgeschlagen). `typ`/`gewaesser` enthalten oft woertlichen
+  Tabellen-Spaltenkopf-Text ("Gewässerkennzahl / Gewässername /
+  Auflage...") statt echter Werte.
+- **Stauanlagen (Layer bleibt AN, Name/Koordinaten sehen korrekt aus)**:
+  `betreiber` ist bei **allen 56/56 Features** woertlich `"Absperrbauwerk"`
+  (das ist ein Tab-Name der Detailseite, keine Firma). `gewaesser` ist
+  bei **allen 56/56** woertlich `"stationierungskarte"` (sieht nach einem
+  Link-Textfragment aus, kein Gewaessername).
+- **Regenbecken (Layer bleibt AN)**: alle 70/70 Features haben
+  mindestens ein kontaminiertes Feld, z.B. `betreiber` beginnt mit
+  `"Zustellanschrift\t..."` (Label-Text der Adresse mit reingerutscht),
+  `name` hat Textfragment-Praefixe wie `"/-entlastungsanlagen: ..."`.
+
+**Vermutete Ursache**: Die 3 neuen Skripte lesen
+`frame.locator("body").inner_text()` (den kompletten flachen Seitentext)
+und suchen darin per Regex nach "Label ... Wert bis zum Zeilenumbruch".
+Bei Stauanlagen/Regenbecken/Querbauwerke gibt es auf der Detailseite
+offenbar mehrfach aehnlich aussehenden Text (Tab-Namen, Ueberschriften,
+andere Adressfelder), und die Regex matcht die falsche Stelle. Die
+bereits integrierten Datensaetze (Pegel, Klaeranlagen) umgehen das, indem
+sie gezielt einen einzelnen Tab/Abschnitt oeffnen statt den ganzen
+Seitentext zu durchsuchen - das waere vermutlich auch hier die
+robustere Loesung (z.B. den relevanten DOM-Abschnitt/Tabelle direkt
+per Selektor lesen statt Freitext-Regex ueber die ganze Seite).
+
+**Empfehlung**: Vor dem Wiedereinschalten von Querbauwerke: pruefen, was
+tatsaechlich auf der Detailseite steht (z.B. `page.screenshot()` oder
+kompletten `inner_text()` fuer 1-2 Objekte ausgeben und manuell
+anschauen), dann die Extraktion gezielter machen (DOM-Selektoren statt
+Body-weite Regex). Stauanlagen/Regenbecken sind live sichtbar, aber die
+falschen `betreiber`/`gewaesser`-Werte sollten trotzdem reparaert und neu
+gescraped werden, auch wenn sie weniger sofort auffallen als das
+Querbauwerke-Problem.
+
