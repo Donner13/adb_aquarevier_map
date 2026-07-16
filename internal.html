@@ -269,6 +269,87 @@
             box-shadow: 0 0 10px var(--accent-glow);
         }
 
+        /* Filter button styling improvements */
+        .filter-btn {
+            position: relative;
+            width: 100%;
+            justify-content: flex-start;
+            padding: 8px 12px;
+            box-sizing: border-box;
+        }
+        .filter-btn.inactive {
+            opacity: 0.45;
+            background: rgba(0, 0, 0, 0.05);
+            border-color: var(--border-color);
+            color: var(--text-secondary) !important;
+            box-shadow: none !important;
+        }
+        .filter-btn.inactive span.filter-label {
+            text-decoration: line-through;
+        }
+        .filter-btn .swatch {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        body.light-theme .filter-btn .swatch {
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        .filter-btn .filter-label {
+            flex-grow: 1;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .filter-btn .counter-badge {
+            font-size: 9px;
+            font-family: monospace;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            padding: 1px 4px;
+            border-radius: 4px;
+            margin-left: 6px;
+            flex-shrink: 0;
+        }
+        .filter-btn.active .counter-badge {
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+        }
+
+        .filter-block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 4px;
+        }
+        .filter-block-actions {
+            display: flex;
+            gap: 4px;
+        }
+        .filter-block-actions button {
+            background: none;
+            border: none;
+            color: var(--accent-primary);
+            font-size: 10px;
+            cursor: pointer;
+            padding: 2px 4px;
+            font-weight: 500;
+        }
+        .filter-block-actions button:hover {
+            text-decoration: underline;
+        }
+
+        /* Tooltip style */
+        .filter-btn[title]::after {
+            /* Handled by browser default title tooltip for native UX, or we can use custom tooltips if needed */
+        }
+
         .dot {
             width: 8px;
             height: 8px;
@@ -693,63 +774,146 @@
             </div>
             
             <div class="sidebar-content">
-                <!-- Group Filters -->
+                <!-- Block 1: Regionale Akteure & Institutionen -->
                 <div>
-                    <div class="section-title">Gruppen-Filter</div>
+                    <div class="filter-block-header">
+                        <div class="section-title" style="margin-bottom: 0;">👥 Regionale Akteure</div>
+                        <div class="filter-block-actions">
+                            <button id="btn-actors-all" type="button">Alle an</button>
+                            <button id="btn-actors-none" type="button">Alle aus</button>
+                        </div>
+                    </div>
                     <div class="filter-group">
-                        <button class="filter-btn active" data-group="all">Alle</button>
-                        <button class="filter-btn active" data-group="Behörde">
-                            <span class="dot dot-behorde"></span> Behörde
+                        <button class="filter-btn active" data-group="Behörde" title="Wasserbehörden, Bezirksregierungen und Ministerien">
+                            <span class="swatch" style="background-color: var(--color-behorde);"></span>
+                            <span class="filter-label">Behörde</span>
+                            <span class="counter-badge" id="cnt-group-Behörde">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Forschung">
-                            <span class="dot dot-forschung"></span> Forschung
+                        <button class="filter-btn active" data-group="Forschung" title="Universitäten und wissenschaftliche Institute im Rurgebiet">
+                            <span class="swatch" style="background-color: var(--color-forschung);"></span>
+                            <span class="filter-label">Forschung</span>
+                            <span class="counter-badge" id="cnt-group-Forschung">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Gebietskörperschaft">
-                            <span class="dot dot-gebietskorperschaft"></span> Gebietskörperschaft
+                        <button class="filter-btn active" data-group="Gebietskörperschaft" title="Städte, Gemeinden und Kreise im Untersuchungsgebiet">
+                            <span class="swatch" style="background-color: var(--color-gebietskorperschaft);"></span>
+                            <span class="filter-label">Gebietskörperschaft</span>
+                            <span class="counter-badge" id="cnt-group-Gebietskörperschaft">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Gewerbe/ Industrie">
-                            <span class="dot dot-gewerbe"></span> Gewerbe/ Industrie
+                        <button class="filter-btn active" data-group="Gewerbe/ Industrie" title="Gewerbebetriebe und größere Industriestandorte">
+                            <span class="swatch" style="background-color: var(--color-gewerbe);"></span>
+                            <span class="filter-label">Gewerbe/ Industrie</span>
+                            <span class="counter-badge" id="cnt-group-Gewerbe-Industrie">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Landwirtschaft">
-                            <span class="dot dot-landwirtschaft"></span> Landwirtschaft
+                        <button class="filter-btn active" data-group="Landwirtschaft" title="Landwirtschaftliche Verbände und Betriebe">
+                            <span class="swatch" style="background-color: var(--color-landwirtschaft);"></span>
+                            <span class="filter-label">Landwirtschaft</span>
+                            <span class="counter-badge" id="cnt-group-Landwirtschaft">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Netzwerk/ Multiplikator">
-                            <span class="dot dot-netzwerk"></span> Netzwerk/ Mult.
+                        <button class="filter-btn active" data-group="Netzwerk/ Multiplikator" title="Netzwerke, Vereine und Multiplikatoren">
+                            <span class="swatch" style="background-color: var(--color-netzwerk);"></span>
+                            <span class="filter-label">Netzwerk/ Mult.</span>
+                            <span class="counter-badge" id="cnt-group-Netzwerk-Multiplikator">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Ver-/ Entsorger">
-                            <span class="dot dot-entsorger"></span> Ver-/ Entsorger
+                        <button class="filter-btn active" data-group="Ver-/ Entsorger" title="Wasserverbände, Ver- und Entsorgungsbetriebe">
+                            <span class="swatch" style="background-color: var(--color-entsorger);"></span>
+                            <span class="filter-label">Ver-/ Entsorger</span>
+                            <span class="counter-badge" id="cnt-group-Ver-Entsorger">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Sonstige">
-                            <span class="dot dot-sonstige"></span> Sonstige
+                        <button class="filter-btn active" data-group="Sonstige" title="Sonstige Akteure und Interessenvertreter">
+                            <span class="swatch" style="background-color: var(--color-sonstige);"></span>
+                            <span class="filter-label">Sonstige</span>
+                            <span class="counter-badge" id="cnt-group-Sonstige">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Einzelakteure">
-                            <span class="dot dot-einzelakteure"></span> Einzelakteure
+                        <button class="filter-btn active" data-group="Einzelakteure" title="Einzelpersonen und direkte Kontakte">
+                            <span class="swatch" style="background-color: var(--color-einzelakteure);"></span>
+                            <span class="filter-label">Einzelakteure</span>
+                            <span class="counter-badge" id="cnt-group-Einzelakteure">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Konsortium">
-                            <span class="dot dot-konsortium"></span> Konsortium
+                        <button class="filter-btn active" data-group="Konsortium" title="Mitglieder des AquaRevier-Konsortiums">
+                            <span class="swatch" style="background-color: var(--color-konsortium);"></span>
+                            <span class="filter-label">Konsortium</span>
+                            <span class="counter-badge" id="cnt-group-Konsortium">(0/0)</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- ELWAS Industrieeinleiter Filter -->
+                <!-- Block 2: Industrie-Branchen (ELWAS) -->
                 <div>
-                    <div class="section-title">🏭 Industrieeinleiter (ELWAS)</div>
+                    <div class="filter-block-header">
+                        <div class="section-title" style="margin-bottom: 0;">🏭 Industrie-Branchen</div>
+                        <div class="filter-block-actions">
+                            <button id="btn-branches-all" type="button">Alle an</button>
+                            <button id="btn-branches-none" type="button">Alle aus</button>
+                        </div>
+                    </div>
                     <div class="filter-group">
-                        <button class="filter-btn active" data-branche="all">Alle</button>
-                        <button class="filter-btn active" data-branche="Papierindustrie">
-                            <span class="dot" style="background:#E69F00"></span> Papier
+                        <button class="filter-btn active" data-branche="Papierindustrie" title="Papiererzeugung und -verarbeitung (AbwV Anhang 28)">
+                            <span class="swatch" style="background-color: #E69F00;"></span>
+                            <span class="filter-label">Papierindustrie</span>
+                            <span class="counter-badge" id="cnt-branche-Papierindustrie">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-branche="Textilindustrie">
-                            <span class="dot" style="background:#CC79A7"></span> Textil
+                        <button class="filter-btn active" data-branche="Textilindustrie" title="Textilveredlung und -herstellung (AbwV Anhang 38)">
+                            <span class="swatch" style="background-color: #CC79A7;"></span>
+                            <span class="filter-label">Textilindustrie</span>
+                            <span class="counter-badge" id="cnt-branche-Textilindustrie">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-branche="Chemieindustrie">
-                            <span class="dot" style="background:#D55E00"></span> Chemie
+                        <button class="filter-btn active" data-branche="Chemieindustrie" title="Chemische Industrie und Laboratorien (AbwV Anhang 22)">
+                            <span class="swatch" style="background-color: #D55E00;"></span>
+                            <span class="filter-label">Chemieindustrie</span>
+                            <span class="counter-badge" id="cnt-branche-Chemieindustrie">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-branche="Metallindustrie">
-                            <span class="dot" style="background:#000000"></span> Metall
+                        <button class="filter-btn active" data-branche="Metallindustrie" title="Metallbe- und verarbeitung (AbwV Anhang 40)">
+                            <span class="swatch" style="background-color: #000000;"></span>
+                            <span class="filter-label">Metallindustrie</span>
+                            <span class="counter-badge" id="cnt-branche-Metallindustrie">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-branche="Lebensmittelindustrie">
-                            <span class="dot" style="background:#009E73"></span> Lebensmittel
+                        <button class="filter-btn active" data-branche="Lebensmittelindustrie" title="Lebensmittelherstellung und -verarbeitung (AbwV Anhang 3)">
+                            <span class="swatch" style="background-color: #009E73;"></span>
+                            <span class="filter-label">Lebensmittelindustrie</span>
+                            <span class="counter-badge" id="cnt-branche-Lebensmittelindustrie">(0/0)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Block 3: Fachdaten & Layer (ELWAS/LANUV) -->
+                <div>
+                    <div class="filter-block-header">
+                        <div class="section-title" style="margin-bottom: 0;">🗺️ Fachdaten & Layer</div>
+                        <div class="filter-block-actions">
+                            <button id="btn-layers-all" type="button">Alle an</button>
+                            <button id="btn-layers-none" type="button">Alle aus</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <button class="filter-btn" data-layer-name="💧 Grundwassermessstellen (ELWAS, 3700+)" title="Messergebnisse zur Grundwasserqualität und Pegelständen (ELWAS)">
+                            <span class="swatch" style="background-color: #56B4E9;"></span>
+                            <span class="filter-label">Grundwassermessstellen</span>
+                            <span class="counter-badge" id="cnt-layer-gwm">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-layer-name="📏 Pegel (ELWAS)" title="Flusspegelstände und Durchflussmengen (ELWAS)">
+                            <span class="swatch" style="background-color: #009E73;"></span>
+                            <span class="filter-label">Flusspegel</span>
+                            <span class="counter-badge" id="cnt-layer-pegel">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-layer-name="⛰️ Stauanlagen (ELWAS)" title="Talsperren, Wehre und Rückhaltebecken (ELWAS)">
+                            <span class="swatch" style="background-color: #D55E00;"></span>
+                            <span class="filter-label">Stauanlagen</span>
+                            <span class="counter-badge" id="cnt-layer-stauanlagen">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-layer-name="🌧️ Regenbecken/-entlastungsanlagen (ELWAS)" title="Regenüberlaufbecken und Entlastungsanlagen (ELWAS)">
+                            <span class="swatch" style="background-color: #CC79A7;"></span>
+                            <span class="filter-label">Regenbecken</span>
+                            <span class="counter-badge" id="cnt-layer-regenbecken">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-layer-name="🧱 Querbauwerke (ELWAS)" title="Wehre, Sohlgleiten und andere Wanderungsbarrieren (ELWAS)">
+                            <span class="swatch" style="background-color: #E69F00;"></span>
+                            <span class="filter-label">Querbauwerke</span>
+                            <span class="counter-badge" id="cnt-layer-querbauwerke">(0/0)</span>
+                        </button>
+                        <button class="filter-btn" data-layer-name="🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)" title="Aggregierte Einleitungsstatistik pro Teileinzugsgebiet (Choroplethenkarte)">
+                            <span class="swatch" style="background-color: #991b1b;"></span>
+                            <span class="filter-label">Einzugsgebiet-Statistik</span>
+                            <span class="counter-badge" id="cnt-layer-stats">(0/0)</span>
                         </button>
                     </div>
                 </div>
@@ -1703,6 +1867,7 @@
             fetch('grundwassermessstellen.geojson')
                 .then(res => res.ok ? res.json() : Promise.reject())
                 .then(data => {
+                    gwmGeoData = data;
                     const gwmMarkers = L.geoJSON(data, {
                         pointToLayer: function(feature, latlng) {
                             // Muss ein echter L.marker sein (kein circleMarker/Path) -
@@ -1748,6 +1913,7 @@
         fetch('pegel.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
+                pegelGeoData = data;
                 L.geoJSON(data, {
                     pointToLayer: function(feature, latlng) {
                         const size = 22;
@@ -1796,6 +1962,7 @@
         fetch('stauanlagen.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
+                stauanlagenGeoData = data;
                 L.geoJSON(data, {
                     pointToLayer: function(feature, latlng) {
                         const size = 22;
@@ -1844,6 +2011,7 @@
         fetch('regenbecken.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
+                regenbeckenGeoData = data;
                 L.geoJSON(data, {
                     pointToLayer: function(feature, latlng) {
                         const size = 22;
@@ -1892,6 +2060,7 @@
         fetch('querbauwerke.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
+                querbauwerkeGeoData = data;
                 L.geoJSON(data, {
                     pointToLayer: function(feature, latlng) {
                         const size = 22;
@@ -1954,6 +2123,7 @@
             fetch('rur_einzugsgebiet_stats.geojson')
                 .then(res => res.ok ? res.json() : Promise.reject())
                 .then(data => {
+                    statsGeoData = data;
                     L.geoJSON(data, {
                         style: function(feature) {
                             const v = feature.properties.gesamtabwasser_a;
@@ -2090,6 +2260,14 @@
             return div;
         };
         markerLegend.addTo(map);
+
+        // Global geojson data containers for live counter calculation
+        let pegelGeoData = null;
+        let stauanlagenGeoData = null;
+        let regenbeckenGeoData = null;
+        let querbauwerkeGeoData = null;
+        let gwmGeoData = null;
+        let statsGeoData = null;
 
         // Contacts State
         let geojsonData = { type: "FeatureCollection", features: [] };
@@ -3475,48 +3653,216 @@
 
                 listContainer.appendChild(item);
             });
+            updateSidebarCounters();
         }
 
-        // Filter button toggle logic
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
+        // Helper to update active/inactive button states
+        function updateButtonVisualStates() {
+            document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
+                const g = btn.getAttribute('data-group');
+                if (activeFilters.has(g)) {
+                    btn.classList.add('active');
+                    btn.classList.remove('inactive');
+                } else {
+                    btn.classList.remove('active');
+                    btn.classList.add('inactive');
+                }
+            });
+
+            document.querySelectorAll('.filter-btn[data-branche]').forEach(btn => {
+                const b = btn.getAttribute('data-branche');
+                if (elwasActiveBranchen.has(b)) {
+                    btn.classList.add('active');
+                    btn.classList.remove('inactive');
+                } else {
+                    btn.classList.remove('active');
+                    btn.classList.add('inactive');
+                }
+            });
+
+            document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
+                const name = btn.getAttribute('data-layer-name');
+                const hasLayer = map.hasLayer(overlayMaps[name]);
+                if (hasLayer) {
+                    btn.classList.add('active');
+                    btn.classList.remove('inactive');
+                } else {
+                    btn.classList.remove('active');
+                    btn.classList.add('inactive');
+                }
+            });
+        }
+
+        // Live viewport counter updates
+        function updateSidebarCounters() {
+            const bounds = map.getBounds();
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+
+            // 1. Group counters
+            document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
                 const group = btn.getAttribute('data-group');
-                if (!group) return;
-
-                if (group === 'all') {
-                    const isAnyInactive = activeFilters.size < Object.keys(groupColors).length;
-                    document.querySelectorAll('.filter-btn[data-group]').forEach(b => {
-                        const bg = b.getAttribute('data-group');
-                        if (bg === 'all') return;
-                        if (isAnyInactive) {
-                            b.classList.add('active');
-                            activeFilters.add(bg);
-                        } else {
-                            b.classList.remove('active');
-                            activeFilters.delete(bg);
-                        }
-                    });
-                } else {
-                    if (activeFilters.has(group)) {
-                        activeFilters.delete(group);
-                        btn.classList.remove('active');
-                    } else {
-                        activeFilters.add(group);
-                        btn.classList.add('active');
+                const total = geojsonData.features.filter(f => f.properties.group === group).length;
+                const visible = geojsonData.features.filter(f => {
+                    if (f.properties.group !== group) return false;
+                    const coords = f.geometry.coordinates;
+                    const latlng = L.latLng(coords[1], coords[0]);
+                    if (!bounds.contains(latlng)) return false;
+                    if (searchQuery) {
+                        return f.properties.name.toLowerCase().includes(searchQuery) ||
+                               f.properties.group.toLowerCase().includes(searchQuery);
                     }
-                }
-                
-                // Update All btn active state
-                const allBtn = document.querySelector('.filter-btn[data-group="all"]');
-                if (activeFilters.size === Object.keys(groupColors).length) {
-                    allBtn.classList.add('active');
-                } else {
-                    allBtn.classList.remove('active');
-                }
+                    return true;
+                }).length;
+                const badge = btn.querySelector('.counter-badge');
+                if (badge) badge.innerText = `(${visible}/${total})`;
+            });
 
+            // 2. Branche counters
+            document.querySelectorAll('.filter-btn[data-branche]').forEach(btn => {
+                const branch = btn.getAttribute('data-branche');
+                if (!elwasGeoData) return;
+                const total = elwasGeoData.features.filter(f => {
+                    const branchen = f.properties.branchen || [];
+                    return branchen.includes(branch);
+                }).length;
+                const visible = elwasGeoData.features.filter(f => {
+                    const branchen = f.properties.branchen || [];
+                    if (!branchen.includes(branch)) return false;
+                    const coords = f.geometry.coordinates;
+                    return bounds.contains(L.latLng(coords[1], coords[0]));
+                }).length;
+                const badge = btn.querySelector('.counter-badge');
+                if (badge) badge.innerText = `(${visible}/${total})`;
+            });
+
+            // 3. Layer counters
+            document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
+                const layerName = btn.getAttribute('data-layer-name');
+                let geoData = null;
+                if (layerName.includes("Grundwassermessstellen")) geoData = gwmGeoData;
+                else if (layerName.includes("Pegel")) geoData = pegelGeoData;
+                else if (layerName.includes("Stauanlagen")) geoData = stauanlagenGeoData;
+                else if (layerName.includes("Regenbecken")) geoData = regenbeckenGeoData;
+                else if (layerName.includes("Querbauwerke")) geoData = querbauwerkeGeoData;
+                else if (layerName.includes("Einzugsgebiet-Statistik")) geoData = statsGeoData;
+
+                let total = 0, visible = 0;
+                if (geoData && geoData.features) {
+                    total = geoData.features.length;
+                    visible = geoData.features.filter(f => {
+                        if (!f.geometry || !f.geometry.coordinates) return false;
+                        if (f.geometry.type === 'Point') {
+                            const coords = f.geometry.coordinates;
+                            return bounds.contains(L.latLng(coords[1], coords[0]));
+                        } else {
+                            const coords = f.geometry.type === 'Polygon' ? f.geometry.coordinates[0][0] : f.geometry.coordinates[0];
+                            return coords ? bounds.contains(L.latLng(coords[1], coords[0])) : false;
+                        }
+                    }).length;
+                }
+                const badge = btn.querySelector('.counter-badge');
+                if (badge) badge.innerText = `(${visible}/${total})`;
+            });
+        }
+
+        // Toggle listeners for Group buttons
+        document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const group = btn.getAttribute('data-group');
+                if (activeFilters.has(group)) {
+                    activeFilters.delete(group);
+                } else {
+                    activeFilters.add(group);
+                }
+                updateButtonVisualStates();
                 renderMapAndSidebar();
             });
         });
+
+        // Toggle listeners for Branche buttons
+        document.querySelectorAll('.filter-btn[data-branche]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const branch = btn.getAttribute('data-branche');
+                if (elwasActiveBranchen.has(branch)) {
+                    elwasActiveBranchen.delete(branch);
+                } else {
+                    elwasActiveBranchen.add(branch);
+                }
+                updateButtonVisualStates();
+                renderElwasLayer();
+            });
+        });
+
+        // Toggle listeners for Layer buttons
+        document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const name = btn.getAttribute('data-layer-name');
+                const layer = overlayMaps[name];
+                if (map.hasLayer(layer)) {
+                    map.removeLayer(layer);
+                } else {
+                    map.addLayer(layer);
+                }
+                updateButtonVisualStates();
+                updateSidebarCounters();
+            });
+        });
+
+        // Quick Action: Regionale Akteure - Alle an
+        document.getElementById('btn-actors-all').addEventListener('click', () => {
+            Object.keys(groupColors).forEach(g => activeFilters.add(g));
+            updateButtonVisualStates();
+            renderMapAndSidebar();
+        });
+
+        // Quick Action: Regionale Akteure - Alle aus
+        document.getElementById('btn-actors-none').addEventListener('click', () => {
+            activeFilters.clear();
+            updateButtonVisualStates();
+            renderMapAndSidebar();
+        });
+
+        // Quick Action: Industrie-Branchen - Alle an
+        document.getElementById('btn-branches-all').addEventListener('click', () => {
+            Object.keys(elwasBranchColors).forEach(b => elwasActiveBranchen.add(b));
+            updateButtonVisualStates();
+            renderElwasLayer();
+        });
+
+        // Quick Action: Industrie-Branchen - Alle aus
+        document.getElementById('btn-branches-none').addEventListener('click', () => {
+            elwasActiveBranchen.clear();
+            updateButtonVisualStates();
+            renderElwasLayer();
+        });
+
+        // Quick Action: Fachdaten & Layer - Alle an
+        document.getElementById('btn-layers-all').addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
+                const name = btn.getAttribute('data-layer-name');
+                const layer = overlayMaps[name];
+                if (!map.hasLayer(layer)) map.addLayer(layer);
+            });
+            updateButtonVisualStates();
+            updateSidebarCounters();
+        });
+
+        // Quick Action: Fachdaten & Layer - Alle aus
+        document.getElementById('btn-layers-none').addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
+                const name = btn.getAttribute('data-layer-name');
+                const layer = overlayMaps[name];
+                if (map.hasLayer(layer)) map.removeLayer(layer);
+            });
+            updateButtonVisualStates();
+            updateSidebarCounters();
+        });
+
+        // Initial visual states update
+        setTimeout(() => {
+            updateButtonVisualStates();
+            updateSidebarCounters();
+        }, 100);
 
         // Search trigger
         document.getElementById('search-input').addEventListener('input', renderMapAndSidebar);
@@ -3545,6 +3891,11 @@
         map.on('zoomend', () => {
             renderMapAndSidebar();
             drawRivers();
+        });
+
+        // Update counters when map view boundaries change (panning/zooming)
+        map.on('moveend', () => {
+            updateSidebarCounters();
         });
 
         // Initial Load
