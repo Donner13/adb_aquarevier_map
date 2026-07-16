@@ -975,6 +975,36 @@
                             <span class="filter-label">Einzugsgebiet-Statistik</span>
                             <span class="counter-badge" id="cnt-layer-stats">(0/0)</span>
                         </button>
+                        <button class="filter-btn active" data-layer-name="Rur Einzugsgebiet (Hydrologisch)" title="Hydrologisches Einzugsgebiet der Rur">
+                            <span class="swatch" style="background-color: #3b82f6;"></span>
+                            <span class="filter-label">Rur Einzugsgebiet</span>
+                            <span class="counter-badge" id="cnt-layer-catchment">(0/0)</span>
+                        </button>
+                        <button class="filter-btn" data-layer-name="Wasserschutzgebiete (LANUV)" title="Offizielle Wasserschutzgebiete in NRW (LANUV WMS)">
+                            <span class="swatch" style="background-color: #F0E442;"></span>
+                            <span class="filter-label">Wasserschutzgebiete</span>
+                            <span class="counter-badge" id="cnt-layer-wsg">(0/0)</span>
+                        </button>
+                        <button class="filter-btn" data-layer-name="Tagebaue & Bergbaufelder (GD)" title="Tagebaue und Bergbaufelder in der Region (GD WMS)">
+                            <span class="swatch" style="background-color: #92400e;"></span>
+                            <span class="filter-label">Tagebaue & Bergbau</span>
+                            <span class="counter-badge" id="cnt-layer-mining">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-layer-name="Eigene Gewässer mit Namen" title="Haupterweiterung der Gewässerläufe mit Namenstags">
+                            <span class="swatch" style="background-color: #0072B2;"></span>
+                            <span class="filter-label">Gewässernetz (Namen)</span>
+                            <span class="counter-badge" id="cnt-layer-rivers">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-layer-name="Landkreisgrenzen (Rheinisches Revier)" title="Grenzen des Rheinischen Reviers (Strukturwandel-Region)">
+                            <span class="swatch" style="background-color: #000000; border: 1.2px dashed #ffffff;"></span>
+                            <span class="filter-label">Revier-Grenze</span>
+                            <span class="counter-badge" id="cnt-layer-boundary">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-layer-name="Kreisgrenzen (Schwarz gestrichelt)" title="Grenzen der 7 Kreise und kreisfreien Städte im Untersuchungsgebiet">
+                            <span class="swatch" style="background-color: #475569; border: 1.2px dashed #ffffff;"></span>
+                            <span class="filter-label">Kreisgrenzen</span>
+                            <span class="counter-badge" id="cnt-layer-kreise">(0/0)</span>
+                        </button>
                     </div>
                 </div>
 
@@ -1975,7 +2005,7 @@
             "🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)": catchmentStatsLayer
         };
 
-        L.control.layers(baseMaps, overlayMaps, { position: 'topright' }).addTo(map);
+        L.control.layers(baseMaps, {}, { position: 'topright' }).addTo(map);
 
         // Global geojson data containers for live counter calculation
         let pegelGeoData = null;
@@ -2527,6 +2557,7 @@
                 else if (layerName.includes("Einzugsgebiet-Statistik")) geoData = statsGeoData;
 
                 let total = 0, visible = 0;
+                const badge = btn.querySelector('.counter-badge');
                 if (geoData && geoData.features) {
                     total = geoData.features.length;
                     visible = geoData.features.filter(f => {
@@ -2539,9 +2570,15 @@
                             return coords ? bounds.contains(L.latLng(coords[1], coords[0])) : false;
                         }
                     }).length;
+                    if (badge) {
+                        badge.style.display = 'inline-block';
+                        badge.innerText = `(${visible}/${total})`;
+                    }
+                } else {
+                    if (badge) {
+                        badge.style.display = 'none';
+                    }
                 }
-                const badge = btn.querySelector('.counter-badge');
-                if (badge) badge.innerText = `(${visible}/${total})`;
             });
         }
 
