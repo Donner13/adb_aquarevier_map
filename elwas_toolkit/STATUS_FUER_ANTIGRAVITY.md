@@ -298,3 +298,56 @@ Alle Fehler aus dem Code-Review wurden behoben und die Daten vollständig neu ge
 * Der unbenutzte Ordner `elwas_package/` und die veraltete Datei `elwas_data_package.zip` wurden mit `git rm` vollständig aus dem Repository entfernt.
 
 
+
+## 9. UI/UX-Audit-Backlog (2026-07-16, 4-Perspektiven-Audit: UX/Performance/Mobile/A11y)
+
+Umgesetzt bereits (Commit `db60675`): Marker-Legende, Suchfeld-Fokusrahmen,
+Fluss-Label-Kontrast, mobile Popup-Breite. Groessere Punkte NICHT umgesetzt
+(zu riskant/aufwendig fuer eine schnelle Session), hier priorisiert:
+
+**Kritisch (echter Bug, kein Kosmetik):**
+- Bei ~750 unclusterten Markern auf einmal (343 Institutionen + 411 ELWAS-
+  Punkte) klicken sich Marker gegenseitig weg: bestaetigt per Klick-Test,
+  dass ein Klick auf ein Klaeranlage-Icon einen Industrieeinleiter-Popup
+  oeffnete, Regenbecken -> Stauanlage-Popup, Stauanlage -> falsches
+  Gebietskoerperschaft-Popup. Fix: Leaflet.markercluster pro Punkt-Layer.
+
+**Hoch/niedriger Aufwand:**
+- ~21% der Institutionen-Marker rendern WEISS statt ihrer Kategoriefarbe
+  (unsichtbar auf hellem Basemap) - z.B. ein verifiziertes
+  "Gebietskoerperschaft"-Beispiel, obwohl `groupColors['Gebietskörperschaft']
+  = '#fbbf24'` korrekt gesetzt ist (Zeile ~756 in index.html). Ursache NICHT
+  gefunden (evtl. die separate "Akteure Stand 2025 Archiv"-Layer mit
+  eigener/fehlerhafter Farblogik, nicht verifiziert) - vor einem Fix erst
+  den echten Datenpfad der betroffenen 21% identifizieren, nicht blind
+  raten.
+- Institutionen-Popups (das Hauptlayer der Seite) zeigen nur Name + rohe
+  Lat/Lng-Koordinaten, waehrend alle ELWAS-Layer reichhaltige Popups haben.
+
+**Mobile (hoher Aufwand, echter Redesign):**
+- Karte ist auf Handy-Breite (<480px) komplett unsichtbar/unbedienbar:
+  `#sidebar` hat feste `width: 440px` ohne Media-Query-Override, quetscht
+  die Karte auf 0 Breite. Braucht echten Breakpoint (Sidebar als
+  Drawer/Bottom-Sheet statt Flexbox-Stack).
+
+**Performance (mittlerer Aufwand):**
+- 14 von 18 GeoJSON-Layern laden eager beim Pageload unabhaengig von
+  Sichtbarkeit, ~8.16MB roh / 2.3MB gzip insgesamt. Groesster Einzelposten:
+  `gewaesser_rur_official.geojson` (4.23MB), eager + default sichtbar.
+  Fix: dem bereits etablierten `loadGwmLayer()`-Lazy-Pattern
+  (`map.on('overlayadd', ...)`) folgen fuer alle nicht sofort noetigen
+  Layer; grosse reine Grenzlinien-Dateien (`kreise_rr.geojson`,
+  `untersuchungsgebiet.geojson`) mit `mapshaper -simplify` verkleinern.
+
+**Barrierefreiheit (niedriger Aufwand, mehrere Kleinteile):**
+- Marker sind einzeln per Tab fokussierbar (bei 343 Institutionen macht das
+  Tab-Navigation praktisch unbenutzbar) - Leaflet-Keyboard-Interaktion auf
+  Markerebene deaktivieren.
+- Filter-Buttons haben kein `aria-pressed` (mehrere Stellen im Code, nicht
+  ein einzelner zentraler Handler - siehe `classList.add('active')`-Treffer
+  in index.html um Zeile 1266, 2156, 2329).
+- Popup-Title ist ein `<div>`, keine echte Ueberschrift; keine Landmark-
+  Regionen (`<main>`/`<aside>`/`<header>`) im DOM.
+
+Volle Rohbefunde (alle 4 Agenten, mit genauen Zeilennummern/Messwerten):
+`C:\Users\user\.claude\projects\C--Users-user\eebfc37d-7537-41f5-ad22-4069251ad0c8\subagents\workflows\wf_dc8413d5-d06\journal.jsonl`
