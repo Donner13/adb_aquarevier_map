@@ -305,6 +305,96 @@
             border-color: var(--accent-primary);
         }
 
+        /* Unified Search (all-layer search box, top-left on the map) */
+        .unified-search-control {
+            margin: 10px 0 0 10px !important;
+        }
+        .usearch-box {
+            position: relative;
+            width: 300px;
+        }
+        .usearch-box input {
+            width: 100%;
+            box-sizing: border-box;
+            background: var(--bg-surface);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            outline: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+            transition: border-color 0.2s;
+        }
+        .usearch-box input:focus { border-color: var(--accent-primary); }
+        .usearch-box input::placeholder { color: var(--text-secondary); }
+        .usearch-results {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            width: 100%;
+            max-height: 380px;
+            overflow-y: auto;
+            background: var(--bg-surface);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            z-index: 1001;
+        }
+        .usearch-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 12.5px;
+            color: var(--text-primary);
+        }
+        .usearch-item:last-child { border-bottom: none; }
+        .usearch-item:hover, .usearch-item.active { background: var(--bg-surface-hover); }
+        .usearch-tag {
+            flex: 0 0 auto;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 2px 6px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .usearch-label {
+            flex: 1 1 auto;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .usearch-sub {
+            flex: 0 0 auto;
+            font-size: 10.5px;
+            color: var(--text-secondary);
+            max-width: 38%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .usearch-empty {
+            padding: 12px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        @media (max-width: 640px) {
+            .usearch-box { width: 220px; }
+        }
+
         .contacts-meta {
             font-size: 11px;
             color: var(--text-secondary);
@@ -745,9 +835,12 @@
                 </div>
 
                 <!-- Export Section -->
-                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; gap: 8px;">
-                    <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;">📄 CSV Export</button>
-                    <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;">📑 PDF Export</button>
+                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; gap: 8px;">
+                        <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;">📄 CSV Export</button>
+                        <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;">📑 PDF Export</button>
+                    </div>
+                    <button id="generate-report-btn" class="filter-btn active" style="justify-content: center; background: #6366f1; border-color: #6366f1; font-weight: 600; color: white;">📊 Bericht generieren (PDF)</button>
                 </div>
             </div>
         </div>
@@ -765,6 +858,9 @@
     <!-- jsPDF for PDF Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- html2canvas for map screenshot capturing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <script>
         // Group Color Map
@@ -802,18 +898,21 @@
         const baseLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
-            maxZoom: 20
+            maxZoom: 20,
+            crossOrigin: 'anonymous'
         }).addTo(map);
 
         const baseDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
-            maxZoom: 20
+            maxZoom: 20,
+            crossOrigin: 'anonymous'
         });
 
         // 2. Base Map: OpenStreetMap Standard
         const baseOsm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            crossOrigin: 'anonymous'
         });
 
         // 3. Base Map: WebAtlasDE NRW (Official Base Map from Geobasis NRW)
@@ -2323,6 +2422,170 @@
             doc.save(`Akteure_${today}.pdf`);
         });
 
+        // Generate Detailed Report containing map capture and table analysis
+        document.getElementById('generate-report-btn').addEventListener('click', async () => {
+            const btn = document.getElementById('generate-report-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "⏳ Generiere Bericht...";
+            btn.disabled = true;
+
+            try {
+                // Determine visible bounding box of the map
+                const bounds = map.getBounds();
+
+                // 1. Filter visible contacts (from geojsonData)
+                const visibleContacts = geojsonData.features.filter(f => {
+                    const coords = f.geometry.coordinates;
+                    const latlng = L.latLng(coords[1], coords[0]);
+                    return bounds.contains(latlng) && (activeFilters.has(f.properties.group) || f.properties.isMainPartner);
+                }).map(f => f.properties);
+
+                // 2. Filter visible industrial dischargers (from elwasGeoData)
+                let visibleEinleiter = [];
+                if (elwasGeoData && map.hasLayer(elwasLayer)) {
+                    visibleEinleiter = elwasGeoData.features.filter(f => {
+                        const coords = f.geometry.coordinates;
+                        const latlng = L.latLng(coords[1], coords[0]);
+                        const branchen = f.properties.branchen || [];
+                        const matchesBranche = branchen.some(b => elwasActiveBranchen.has(b));
+                        return bounds.contains(latlng) && matchesBranche;
+                    }).map(f => f.properties);
+                }
+
+                // Temporary hide Leaflet controls for clean capture
+                const controlsToHide = document.querySelectorAll('.leaflet-control-zoom, .leaflet-control-layers, .unified-search-control');
+                controlsToHide.forEach(el => el.style.opacity = '0');
+
+                // Render Map Canvas via html2canvas
+                const mapCanvas = await html2canvas(document.getElementById('map'), {
+                    useCORS: true,
+                    allowTaint: false,
+                    logging: false,
+                    scale: window.devicePixelRatio || 1
+                });
+
+                // Restore hidden UI controls
+                controlsToHide.forEach(el => el.style.opacity = '1');
+
+                // Build PDF Document
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'mm', 'a4');
+                const pageWidth = doc.internal.pageSize.getWidth();
+                const margin = 14;
+
+                // Page 1: Cover / Map Image
+                doc.setFontSize(22);
+                doc.setTextColor(30, 41, 59); // Sleek dark slate
+                doc.text("AquaRevier - Lagebericht", margin, 20);
+
+                doc.setFontSize(10);
+                doc.setTextColor(100, 116, 139);
+                const printDate = new Date().toLocaleString('de-DE');
+                doc.text(`Generiert am: ${printDate} | Massstab/Zoom: Level ${map.getZoom()}`, margin, 26);
+                doc.text(`Kartenzentrum: Lat ${map.getCenter().lat.toFixed(4)}, Lng ${map.getCenter().lng.toFixed(4)}`, margin, 31);
+
+                // Active Filters Meta
+                const activeFiltersStr = Array.from(activeFilters).join(', ');
+                doc.setFontSize(9);
+                doc.text(`Aktive Filter (Gruppen): ${activeFiltersStr}`, margin, 38, { maxWidth: pageWidth - 28 });
+
+                // Map Image Insertion
+                const imgWidth = pageWidth - 28;
+                const imgHeight = (mapCanvas.height * imgWidth) / mapCanvas.width;
+                const mapImgData = mapCanvas.toDataURL('image/png');
+                doc.addImage(mapImgData, 'PNG', margin, 44, imgWidth, imgHeight);
+
+                // Page 2: Visible Actors Table & Industrial Discharges
+                doc.addPage();
+                doc.setFontSize(16);
+                doc.setTextColor(30, 41, 59);
+                doc.text("Analysedaten im Kartenausschnitt", margin, 20);
+
+                doc.setFontSize(11);
+                doc.setTextColor(71, 85, 105);
+                doc.text(`Gefundene Akteure in diesem Ausschnitt: ${visibleContacts.length}`, margin, 28);
+
+                // Table 1: Visible Contacts
+                const contactsBody = visibleContacts.map(props => [
+                    props.name || '',
+                    props.organisation || props.institution || '–',
+                    props.group || '',
+                    props.email || '–'
+                ]);
+
+                doc.autoTable({
+                    startY: 32,
+                    head: [['Akteur Name', 'Organisation / Institution', 'Gruppe', 'E-Mail']],
+                    body: contactsBody.length > 0 ? contactsBody : [['Keine Akteure im sichtbaren Bereich', '', '', '']],
+                    theme: 'striped',
+                    headStyles: { fillColor: [99, 102, 241] }, // Indigo theme
+                    styles: { fontSize: 8.5 }
+                });
+
+                // Section 2: Industrial Wastewater Discharges
+                let nextY = doc.lastAutoTable.finalY + 12;
+                doc.setFontSize(14);
+                doc.setTextColor(30, 41, 59);
+                doc.text("Industrieeinleiter & Abwassermengen (ELWAS)", margin, nextY);
+
+                // Compute sums
+                let totalDischarge = 0;
+                let unit = "m³/a";
+                const einleiterBody = visibleEinleiter.map(props => {
+                    let maxVal = 0;
+                    if (props.mengen_je_typ) {
+                        Object.keys(props.mengen_je_typ).forEach(type => {
+                            const val = props.mengen_je_typ[type].max_a;
+                            if (val) {
+                                const parsed = parseFloat(val);
+                                if (!isNaN(parsed)) maxVal += parsed;
+                            }
+                        });
+                    }
+                    totalDischarge += maxVal;
+                    return [
+                        props.name || 'Unbekannt',
+                        props.branchen ? props.branchen.join(', ') : '–',
+                        props.einleitungsart || '–',
+                        maxVal > 0 ? `${maxVal.toLocaleString('de-DE')} m³/a` : 'keine Angabe'
+                    ];
+                });
+
+                doc.setFontSize(11);
+                doc.setTextColor(71, 85, 105);
+                doc.text(`Summierte Abwassermenge im Ausschnitt: ${totalDischarge.toLocaleString('de-DE')} m³/a (aus ${visibleEinleiter.length} Betrieben)`, margin, nextY + 6);
+
+                doc.autoTable({
+                    startY: nextY + 10,
+                    head: [['Betriebsname', 'Branche(n)', 'Einleitungsart', 'Menge (max_a)']],
+                    body: einleiterBody.length > 0 ? einleiterBody : [['Keine aktiven Industrieeinleiter im Ausschnitt geladen', '', '', '']],
+                    theme: 'striped',
+                    headStyles: { fillColor: [89, 89, 89] },
+                    styles: { fontSize: 8.5 }
+                });
+
+                // Verification check: count matching markers currently loaded in active Leaflet bounds
+                let leafletContactsCount = 0;
+                markersLayer.eachLayer(layer => {
+                    if (layer instanceof L.Marker && bounds.contains(layer.getLatLng())) {
+                        leafletContactsCount++;
+                    }
+                });
+
+                // Save PDF
+                const fileDate = new Date().toISOString().split('T')[0];
+                doc.save(`AquaRevier_Report_${fileDate}.pdf`);
+
+                console.log(`[Report Verification] PDF Table: ${visibleContacts.length} vs Leaflet Markers: ${leafletContactsCount}`);
+            } catch (err) {
+                console.error("Fehler bei der Berichtgenerierung:", err);
+                alert("Fehler beim Erstellen des PDF-Berichts. Bitte prüfe die Entwicklerkonsole.");
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        });
+
         // Initial Load parsing URL
         function parseUrlParamsAndLoad() {
             const url = new URL(window.location);
@@ -2378,6 +2641,445 @@
 
         // Initial Load
         parseUrlParamsAndLoad();
+
+        // ============================================================
+        // UNIFIED SEARCH — durchsucht ALLE geladenen Layer gleichzeitig
+        // (UX-Differenzierung ggue. ELWAS-WEB's 35 getrennten Suchmasken)
+        // Selbstständiges IIFE: eigene (gecachte) Fetches statt Hooks in
+        // die bestehenden onEachFeature-Callbacks -> Null Risiko fuer
+        // die bestehende Layer-/Filter-Logik. GWM (lazy, 3700+ Punkte)
+        // wird fuer den Index eager gefetcht (Namen/Koords billig, ~1.5MB,
+        // gleiche Datei wie beim Toggle -> HTTP-Cache greift meist),
+        // das eigentliche Rendern/Clustern bleibt lazy (nur bei Toggle).
+        // ============================================================
+        (function() {
+            const catColors = {
+                akteur: '#6366f1',
+                einleiter: '#595959',
+                klaeranlage: '#0072B2',
+                gwm: '#56B4E9',
+                pegel: '#009E73',
+                stauanlage: '#D55E00',
+                regenbecken: '#CC79A7',
+                querbauwerk: '#E69F00',
+                kreis: '#1e3a8a',
+                gemeinde: '#64748b',
+                gewaesser: '#2563eb'
+            };
+            const catLabels = {
+                akteur: 'Akteur',
+                einleiter: 'Industrieeinleiter',
+                klaeranlage: 'Kläranlage',
+                gwm: 'Grundwassermessstelle',
+                pegel: 'Pegel',
+                stauanlage: 'Stauanlage',
+                regenbecken: 'Regenbecken',
+                querbauwerk: 'Querbauwerk',
+                kreis: 'Kreis',
+                gemeinde: 'Gemeinde',
+                gewaesser: 'Gewässer'
+            };
+
+            const searchIndex = [];
+            function addSearchRecord(rec) {
+                rec.catLabel = catLabels[rec.cat] || rec.cat;
+                rec.color = rec.color || catColors[rec.cat] || '#94a3b8';
+                rec.searchText = (rec.label + ' ' + (rec.sub || '') + ' ' + rec.catLabel).toLowerCase();
+                searchIndex.push(rec);
+            }
+
+            function addAgg(map_, name, lat, lng) {
+                if (!name) return;
+                const key = String(name).trim();
+                if (!key) return;
+                if (!map_.has(key)) map_.set(key, []);
+                map_.get(key).push([lat, lng]);
+            }
+
+            // ---------- Index aufbauen (eigene, unabhaengige Fetches) ----------
+            function buildUnifiedSearchIndex() {
+                const gemeindeAgg = new Map();
+                const gewaesserAgg = new Map();
+                const tasks = [];
+
+                // Akteure / Institutionen
+                tasks.push(fetch('contacts_anonymized.geojson')
+                    .then(r => r.ok ? r.json() : null)
+                    .then(d => {
+                        if (!d) return;
+                        d.features.forEach(f => {
+                            const p = f.properties;
+                            const [lng, lat] = f.geometry.coordinates;
+                            const color = groupColors[p.group] || '#595959';
+                            addSearchRecord({
+                                cat: 'akteur', label: p.name || 'Unbekannt', sub: p.group || '',
+                                lat, lng, color,
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">${p.group || ''}</div><div class="popup-title">${p.name || ''}</div></div>`
+                            });
+                        });
+                    }).catch(() => {}));
+
+                // Industrieeinleiter (ELWAS)
+                tasks.push(fetch('elwas_einleiter.geojson')
+                    .then(r => r.ok ? r.json() : null)
+                    .then(d => {
+                        if (!d) return;
+                        d.features.forEach(f => {
+                            const p = f.properties;
+                            const [lng, lat] = f.geometry.coordinates;
+                            const branchen = p.branchen || [];
+                            const color = elwasBranchColors[branchen[0]] || '#595959';
+                            addSearchRecord({
+                                cat: 'einleiter', label: p.name || 'Unbekannt',
+                                sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
+                                lat, lng, color,
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 Branche: ${branchen.join(', ') || '–'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}</div>`
+                            });
+                            if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
+                            (p.gewaesser_liste || '').split(',').map(s => s.trim()).filter(Boolean).forEach(g => addAgg(gewaesserAgg, g, lat, lng));
+                            (p.einleitungen || []).forEach(e => { if (e.gewaesser && typeof e.lat === 'number' && typeof e.lon === 'number') addAgg(gewaesserAgg, e.gewaesser, e.lat, e.lon); });
+                        });
+                    }).catch(() => {}));
+
+                // Kläranlagen
+                tasks.push(fetch('klaeranlagen.geojson')
+                    .then(r => r.ok ? r.json() : null)
+                    .then(d => {
+                        if (!d) return;
+                        d.features.forEach(f => {
+                            const p = f.properties;
+                            const [lng, lat] = f.geometry.coordinates;
+                            addSearchRecord({
+                                cat: 'klaeranlage', label: p.name || 'Unbekannt',
+                                sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
+                                lat, lng,
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.klaeranlage}">Kläranlage</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.betreiber ? `<div class="popup-detail">🏢 Betreiber: ${p.betreiber}</div>` : ''}${p.gewaesser ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser}</div>` : ''}</div>`
+                            });
+                            if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
+                            if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
+                        });
+                    }).catch(() => {}));
+
+                // Grundwassermessstellen (lazy-Layer: nur Index eager, Rendering bleibt lazy)
+                tasks.push(fetch('grundwassermessstellen.geojson')
+                    .then(r => r.ok ? r.json() : null)
+                    .then(d => {
+                        if (!d) return;
+                        d.features.forEach(f => {
+                            const p = f.properties;
+                            const [lng, lat] = f.geometry.coordinates;
+                            addSearchRecord({
+                                cat: 'gwm', label: p.name || 'Unbekannt',
+                                sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
+                                lat, lng,
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.gwm}">Grundwassermessstelle</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.eigentuemer ? `<div class="popup-detail">🏢 Eigentümer: ${p.eigentuemer}</div>` : ''}${p.messstellenart ? `<div class="popup-detail">🔧 Art: ${p.messstellenart}</div>` : ''}</div>`
+                            });
+                            if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
+                        });
+                    }).catch(() => {}));
+
+                // Pegel
+                tasks.push(fetch('pegel.geojson')
+                    .then(r => r.ok ? r.json() : null)
+                    .then(d => {
+                        if (!d) return;
+                        d.features.forEach(f => {
+                            const p = f.properties;
+                            const [lng, lat] = f.geometry.coordinates;
+                            addSearchRecord({
+                                cat: 'pegel', label: p.name || 'Unbekannt', sub: p.kreis || '',
+                                lat, lng,
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.pegel}">Pegel</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}</div>`
+                            });
+                            if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
+                        });
+                    }).catch(() => {}));
+
+                // Stauanlagen
+                tasks.push(fetch('stauanlagen.geojson')
+                    .then(r => r.ok ? r.json() : null)
+                    .then(d => {
+                        if (!d) return;
+                        d.features.forEach(f => {
+                            const p = f.properties;
+                            const [lng, lat] = f.geometry.coordinates;
+                            addSearchRecord({
+                                cat: 'stauanlage', label: p.name || 'Unbekannt', sub: p.kreis || '',
+                                lat, lng,
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.stauanlage}">Stauanlage</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}</div>`
+                            });
+                            if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
+                        });
+                    }).catch(() => {}));
+
+                // Regenbecken
+                tasks.push(fetch('regenbecken.geojson')
+                    .then(r => r.ok ? r.json() : null)
+                    .then(d => {
+                        if (!d) return;
+                        d.features.forEach(f => {
+                            const p = f.properties;
+                            const [lng, lat] = f.geometry.coordinates;
+                            addSearchRecord({
+                                cat: 'regenbecken', label: p.name || 'Unbekannt',
+                                sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
+                                lat, lng,
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.regenbecken}">Regenbecken / Sonderbauwerk</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div></div>`
+                            });
+                            if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
+                        });
+                    }).catch(() => {}));
+
+                // Querbauwerke
+                tasks.push(fetch('querbauwerke.geojson')
+                    .then(r => r.ok ? r.json() : null)
+                    .then(d => {
+                        if (!d) return;
+                        d.features.forEach(f => {
+                            const p = f.properties;
+                            const [lng, lat] = f.geometry.coordinates;
+                            addSearchRecord({
+                                cat: 'querbauwerk', label: p.name || 'Unbekannt', sub: p.kreis || '',
+                                lat, lng,
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.querbauwerk}">Querbauwerk / Bauwerk</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}</div>`
+                            });
+                            if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
+                        });
+                    }).catch(() => {}));
+
+                // Kreise (echte Polygone -> zoom+highlight auf die tatsaechliche Grenze)
+                tasks.push(fetch('kreise_rr.geojson')
+                    .then(r => r.ok ? r.json() : null)
+                    .then(d => {
+                        if (!d) return;
+                        d.features.forEach(f => {
+                            const name = f.properties.GN;
+                            if (!name) return;
+                            let bounds;
+                            try { bounds = L.geoJSON(f).getBounds(); } catch (e) { return; }
+                            addSearchRecord({
+                                cat: 'kreis', label: name, sub: 'Kreis', kind: 'polygon',
+                                bounds, geoFeature: f,
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.kreis}">Kreis</div><div class="popup-title">${name}</div></div>`
+                            });
+                        });
+                    }).catch(() => {}));
+
+                return Promise.allSettled(tasks).then(() => {
+                    gemeindeAgg.forEach((points, name) => {
+                        addSearchRecord({
+                            cat: 'gemeinde', label: name, sub: `${points.length} Objekt(e)`,
+                            kind: 'aggregate', points,
+                            popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.gemeinde}">Gemeinde</div><div class="popup-title">${name}</div><div class="popup-detail">📍 ${points.length} Objekt(e) gefunden</div></div>`
+                        });
+                    });
+                    gewaesserAgg.forEach((points, name) => {
+                        addSearchRecord({
+                            cat: 'gewaesser', label: name, sub: `${points.length} Objekt(e)`,
+                            kind: 'aggregate', points,
+                            popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.gewaesser}">Gewässer</div><div class="popup-title">${name}</div><div class="popup-detail">🌊 ${points.length} zugehörige(s) Objekt(e) gefunden</div></div>`
+                        });
+                    });
+                    console.log('[UnifiedSearch] Index bereit:', searchIndex.length, 'Eintraege');
+                });
+            }
+
+            // ---------- Auswahl-Aktionen (pan/zoom/popup/highlight) ----------
+            const highlightLayer = L.layerGroup().addTo(map);
+            let highlightTimer = null;
+            let standalonePopup = null;
+
+            function clearHighlight() {
+                highlightLayer.clearLayers();
+            }
+
+            function flashPoints(points, color) {
+                clearHighlight();
+                points.forEach(pt => {
+                    L.circleMarker(pt, {
+                        radius: 16, color: color, weight: 3,
+                        fillColor: color, fillOpacity: 0.22,
+                        className: 'usearch-pulse-marker'
+                    }).addTo(highlightLayer);
+                });
+                if (highlightTimer) clearTimeout(highlightTimer);
+                highlightTimer = setTimeout(clearHighlight, 4000);
+            }
+
+            function flashPolygon(feature) {
+                clearHighlight();
+                L.geoJSON(feature, {
+                    style: { color: '#f43f5e', weight: 4, opacity: 1, fillColor: '#f43f5e', fillOpacity: 0.16 }
+                }).addTo(highlightLayer);
+                if (highlightTimer) clearTimeout(highlightTimer);
+                highlightTimer = setTimeout(clearHighlight, 4000);
+            }
+
+            function openStandalonePopup(lat, lng, html) {
+                if (standalonePopup) map.closePopup(standalonePopup);
+                standalonePopup = L.popup({ maxWidth: 320, autoPan: true })
+                    .setLatLng([lat, lng])
+                    .setContent(html)
+                    .openOn(map);
+            }
+
+            function executeSelect(rec) {
+                if (rec.kind === 'polygon') {
+                    map.fitBounds(rec.bounds, { padding: [40, 40] });
+                    flashPolygon(rec.geoFeature);
+                    const c = rec.bounds.getCenter();
+                    openStandalonePopup(c.lat, c.lng, rec.popupHtml);
+                } else if (rec.kind === 'aggregate') {
+                    const bounds = L.latLngBounds(rec.points);
+                    map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
+                    flashPoints(rec.points, rec.color);
+                    const first = rec.points[0];
+                    openStandalonePopup(first[0], first[1], rec.popupHtml);
+                } else {
+                    // Punkt-Feature: bei GWM (standardmaessig AUS/lazy) den Layer
+                    // gleich mit einschalten, damit der Marker sichtbar ist.
+                    if (rec.cat === 'gwm') {
+                        if (!gwmLoaded) loadGwmLayer();
+                        if (!map.hasLayer(gwmLayer)) map.addLayer(gwmLayer);
+                    }
+                    const targetZoom = Math.max(map.getZoom(), 15);
+                    map.setView([rec.lat, rec.lng], targetZoom);
+                    flashPoints([[rec.lat, rec.lng]], rec.color);
+                    openStandalonePopup(rec.lat, rec.lng, rec.popupHtml);
+                }
+            }
+
+            // ---------- UI: Leaflet-Control mit Input + Autocomplete-Dropdown ----------
+            const UnifiedSearchControl = L.Control.extend({
+                options: { position: 'topleft' },
+                onAdd: function() {
+                    const container = L.DomUtil.create('div', 'leaflet-control unified-search-control');
+                    container.innerHTML = `
+                        <div class="usearch-box">
+                            <input type="text" id="usearch-input" autocomplete="off" spellcheck="false"
+                                   placeholder="🔍 Alles durchsuchen (Akteure, Gewässer, Gemeinden, Anlagen…)">
+                            <div id="usearch-results" class="usearch-results"></div>
+                        </div>
+                    `;
+                    L.DomEvent.disableClickPropagation(container);
+                    L.DomEvent.disableScrollPropagation(container);
+                    return container;
+                }
+            });
+
+            map.addControl(new UnifiedSearchControl());
+
+            const usearchInput = document.getElementById('usearch-input');
+            const usearchResults = document.getElementById('usearch-results');
+            let currentMatches = [];
+            let activeIndex = -1;
+
+            function usearchDebounce(fn, wait) {
+                let t;
+                return function() {
+                    const args = arguments;
+                    clearTimeout(t);
+                    t = setTimeout(() => fn.apply(null, args), wait);
+                };
+            }
+
+            function scoreRecord(r, tokens) {
+                const labelLower = r.label.toLowerCase();
+                let score = 0;
+                tokens.forEach(t => {
+                    if (labelLower.startsWith(t)) score -= 3;
+                    else if (labelLower.includes(t)) score -= 2;
+                });
+                return score;
+            }
+
+            function runSearch(query) {
+                const q = query.trim().toLowerCase();
+                if (q.length < 2) { renderResults([], q); return; }
+                const tokens = q.split(/\s+/).filter(Boolean);
+                const matches = searchIndex
+                    .filter(r => tokens.every(t => r.searchText.includes(t)))
+                    .sort((a, b) => scoreRecord(a, tokens) - scoreRecord(b, tokens) || a.label.localeCompare(b.label, 'de'))
+                    .slice(0, 12);
+                currentMatches = matches;
+                activeIndex = -1;
+                renderResults(matches, q);
+            }
+
+            function renderResults(matches) {
+                if (!matches.length) {
+                    const q = usearchInput.value.trim();
+                    usearchResults.innerHTML = q.length >= 2 ? `<div class="usearch-empty">Keine Treffer für „${q}"</div>` : '';
+                    usearchResults.style.display = q.length >= 2 ? 'block' : 'none';
+                    return;
+                }
+                usearchResults.innerHTML = matches.map((r, i) => `
+                    <div class="usearch-item" data-idx="${i}">
+                        <span class="usearch-tag" style="background:${r.color}22; color:${r.color}">${r.catLabel}</span>
+                        <span class="usearch-label">${r.label}</span>
+                        ${r.sub ? `<span class="usearch-sub">${r.sub}</span>` : ''}
+                    </div>
+                `).join('');
+                usearchResults.style.display = 'block';
+                usearchResults.querySelectorAll('.usearch-item').forEach(el => {
+                    // stopPropagation ist noetig, weil disableClickPropagation() auf dem
+                    // Control-Container nur mousedown/touchstart/dblclick/contextmenu
+                    // abfaengt, nicht 'click' selbst -> ohne dies bubbelt der Klick bis
+                    // zur Leaflet-Karte hoch und deren 'preclick' schliesst das gerade
+                    // erst geoeffnete Popup sofort wieder.
+                    el.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        selectMatch(parseInt(el.getAttribute('data-idx'), 10));
+                    });
+                });
+            }
+
+            function updateActiveHighlight() {
+                usearchResults.querySelectorAll('.usearch-item').forEach((el, i) => {
+                    el.classList.toggle('active', i === activeIndex);
+                });
+                const activeEl = usearchResults.querySelector('.usearch-item.active');
+                if (activeEl) activeEl.scrollIntoView({ block: 'nearest' });
+            }
+
+            function selectMatch(idx) {
+                const rec = currentMatches[idx];
+                if (!rec) return;
+                usearchInput.value = rec.label;
+                usearchResults.style.display = 'none';
+                usearchResults.innerHTML = '';
+                activeIndex = -1;
+                executeSelect(rec);
+            }
+
+            usearchInput.addEventListener('input', usearchDebounce(() => runSearch(usearchInput.value), 120));
+            usearchInput.addEventListener('focus', () => { if (usearchInput.value.trim().length >= 2) runSearch(usearchInput.value); });
+            usearchInput.addEventListener('keydown', (e) => {
+                if (!currentMatches.length) return;
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    activeIndex = Math.min(activeIndex + 1, currentMatches.length - 1);
+                    updateActiveHighlight();
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    activeIndex = Math.max(activeIndex - 1, 0);
+                    updateActiveHighlight();
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    selectMatch(activeIndex >= 0 ? activeIndex : 0);
+                } else if (e.key === 'Escape') {
+                    usearchResults.style.display = 'none';
+                    usearchInput.blur();
+                }
+            });
+            document.addEventListener('click', (e) => {
+                if (!usearchInput.contains(e.target) && !usearchResults.contains(e.target)) {
+                    usearchResults.style.display = 'none';
+                }
+            });
+
+            buildUnifiedSearchIndex();
+        })();
     </script>
 </body>
 </html>
