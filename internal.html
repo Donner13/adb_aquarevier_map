@@ -2387,7 +2387,7 @@
                     if (res.ok) {
                         geojsonData = await res.json();
                     } else {
-                        res = await fetch('contacts_anonymized.geojson');
+                        res = await fetch('contacts_anonymized.geojson?v=' + Date.now());
                         if (res.ok) {
                             geojsonData = await res.json();
                             document.getElementById('save-status').innerText = 'Anonymisierte Daten geladen (Vorschau-Modus).';
