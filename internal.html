@@ -13,6 +13,10 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
+    <!-- Leaflet.markercluster CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+
     <style>
         :root {
             --bg-base: #0b0f19;
@@ -938,7 +942,10 @@
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    
+
+    <!-- Leaflet.markercluster JS -->
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
     <script>
         // Group Color Map
         const groupColors = {
@@ -1569,7 +1576,25 @@
 
         // Grundwassermessstellen (ELWAS) - 4000+ Punkte, daher geclustert und
         // standardmaessig AUS (Volumen wuerde die Karte sonst zukleistern)
-        const gwmLayer = L.layerGroup();
+        // Hinweis: Kein Grenzwert-/Zustand-Feld in den gescrapten Daten (nur name,
+        // gemeinde, kreis, eigentuemer, messstellenart, genauigkeit, quelle) -
+        // Grenzwert-Warnfarbe pro Cluster daher nicht implementierbar ohne neuen
+        // ELWAS-Scrape (z.B. "Zustand der Fliesswasserkoerper"). Einheitliche
+        // AquaRevier-Cyan-Cluster-Farbe stattdessen.
+        const gwmLayer = L.markerClusterGroup({
+            maxClusterRadius: 60,
+            spiderfyOnMaxZoom: true,
+            showCoverageOnHover: false,
+            iconCreateFunction: function(cluster) {
+                const count = cluster.getChildCount();
+                const dim = count >= 100 ? 44 : (count >= 10 ? 38 : 32);
+                return L.divIcon({
+                    html: `<div style="width:${dim}px;height:${dim}px;line-height:${dim}px;background:rgba(14,165,233,0.85);border:2px solid #fff;border-radius:50%;color:#fff;font-weight:600;text-align:center;font-size:12px;box-shadow:0 0 6px rgba(0,0,0,0.5);">${count}</div>`,
+                    className: 'gwm-cluster-icon',
+                    iconSize: L.point(dim, dim)
+                });
+            }
+        });
         let gwmLoaded = false;
         function loadGwmLayer() {
             if (gwmLoaded) return;
@@ -1577,7 +1602,7 @@
             fetch('grundwassermessstellen.geojson')
                 .then(res => res.ok ? res.json() : Promise.reject())
                 .then(data => {
-                    L.geoJSON(data, {
+                    const gwmMarkers = L.geoJSON(data, {
                         pointToLayer: function(feature, latlng) {
                             // Muss ein echter L.marker sein (kein circleMarker/Path) -
                             // Leaflet.markercluster rendert Vektor-Layer nicht.
@@ -1603,7 +1628,13 @@
                             `;
                             layer.bindPopup(html);
                         }
-                    }).addTo(gwmLayer);
+                    });
+                    // Wichtig: Marker einzeln in die ClusterGroup geben, NICHT die
+                    // gesamte L.geoJSON-FeatureGroup per .addTo()/.addLayer() -
+                    // das war vermutlich die Ursache der zwei vorherigen Fehlversuche
+                    // (MarkerClusterGroup clustert dann die FeatureGroup als 1 Objekt
+                    // bzw. verschluckt sie, je nach Plugin-Version).
+                    gwmLayer.addLayers(gwmMarkers.getLayers());
                 })
                 .catch(err => console.log("grundwassermessstellen layer not loaded:", err));
         }
@@ -1890,7 +1921,7 @@
             "Wasserschutzgebiete (LANUV)": wmsWSG,
             "🏭 Industrieeinleiter (ELWAS)": elwasLayer,
             "🚰 Kläranlagen (ELWAS)": klaeranlagenLayer,
-            "💧 Grundwassermessstellen (ELWAS, 4400+)": gwmLayer,
+            "💧 Grundwassermessstellen (ELWAS, 3700+)": gwmLayer,
             "📏 Pegel (ELWAS)": pegelLayer,
             "⛰️ Stauanlagen (ELWAS)": stauanlagenLayer,
             "🌧️ Regenbecken/-entlastungsanlagen (ELWAS)": regenbeckenLayer,
