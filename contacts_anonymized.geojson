@@ -1,51 +1,9 @@
 {
   "type": "FeatureCollection",
-  "styleSettings": {
-    "markerSize": 14,
-    "markerBorder": 2,
-    "markerTooltip": "all",
-    "groupColors": {
-      "Behörde": "#f43f5e",
-      "Forschung": "#3b82f6",
-      "Gebietskörperschaft": "#fbbf24",
-      "Gewerbe/ Industrie": "#a855f7",
-      "Landwirtschaft": "#10b981",
-      "Netzwerk/ Multiplikator": "#ff007f",
-      "Ver-/ Entsorger": "#ff7300",
-      "Sonstige": "#8b5cf6",
-      "Konsortium": "#1d4ed8",
-      "Einzelakteure": "#00f5d4"
-    },
-    "groupNames": {
-      "Behörde": "Behörde",
-      "Einzelakteure": "Einzelakteure",
-      "Forschung": "Forschung",
-      "Gebietskörperschaft": "Gebietskörperschaft",
-      "Gewerbe/ Industrie": "Gewerbe/ Industrie",
-      "Landwirtschaft": "Landwirtschaft",
-      "Netzwerk/ Multiplikator": "Netzwerk/ Multiplikator",
-      "Ver-/ Entsorger": "Ver-/ Entsorger",
-      "Sonstige": "Sonstige",
-      "Konsortium": "Konsortium"
-    },
-    "boundaries": {
-      "ugColor": "#000000",
-      "ugFill": "#818cf8",
-      "ugWeight": 1.8,
-      "ugOpacity": 0.04,
-      "krColor": "#000000",
-      "krWeight": 2,
-      "krDash": "20, 10",
-      "caColor": "#1e3a8a",
-      "caFill": "#3b82f6",
-      "caWeight": 5,
-      "caOpacity": 0.1
-    }
-  },
   "features": [
     {
       "type": "Feature",
-      "id": "excel_1",
+      "id": "anon_0",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -54,78 +12,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Aachen",
+        "name": "Stadt Aachen (Aachen)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_2",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.0773820056721455,
-          50.758800003672576
-        ]
-      },
-      "properties": {
-        "name": "Stadt Aachen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_3",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.0773820056721455,
-          50.758800003672576
-        ]
-      },
-      "properties": {
-        "name": "Stadt Aachen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_4",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.0773820056721455,
-          50.758800003672576
-        ]
-      },
-      "properties": {
-        "name": "Stadt Aachen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_5",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.0773820056721455,
-          50.758800003672576
-        ]
-      },
-      "properties": {
-        "name": "Stadt Aachen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_6",
+      "id": "anon_1",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -134,14 +28,14 @@
         ]
       },
       "properties": {
-        "name": "StädteRegion Aachen",
+        "name": "StädteRegion Aachen (AC)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_7",
+      "id": "anon_2",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -150,30 +44,14 @@
         ]
       },
       "properties": {
-        "name": "StädteRegion Aachen",
+        "name": "StädteRegion Aachen (AC)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_8",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.098880996297133,
-          50.768892997477025
-        ]
-      },
-      "properties": {
-        "name": "StädteRegion Aachen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_9",
+      "id": "anon_3",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -182,30 +60,14 @@
         ]
       },
       "properties": {
-        "name": "StädteRegion Aachen",
+        "name": "StädteRegion Aachen (AC)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_10",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.098880996297133,
-          50.768892997477025
-        ]
-      },
-      "properties": {
-        "name": "StädteRegion Aachen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_11",
+      "id": "anon_4",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -214,46 +76,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Aldenhoven",
+        "name": "Gemeinde Aldenhoven (Aldenhoven)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_12",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.283033993164288,
-          50.8938940025143
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Aldenhoven",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_13",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.283033993164288,
-          50.8938940025143
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Aldenhoven",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_14",
+      "id": "anon_5",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -262,14 +92,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Alsdorf",
+        "name": "Stadt Alsdorf (Alsdorf)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_15",
+      "id": "anon_6",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -278,14 +108,14 @@
         ]
       },
       "properties": {
-        "name": "RWTH Aachen University - Institut für Advanced Mining Technologies (AMT)",
+        "name": "RWTH Aachen University - Institut für Advanced Mining Technologies (AMT) (AMT)",
         "group": "Forschung",
         "color": "#3b82f6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_16",
+      "id": "anon_7",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -296,12 +126,12 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 1 – Branche Textil",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_17",
+      "id": "anon_8",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -310,46 +140,14 @@
         ]
       },
       "properties": {
-        "name": "Bundesamt für Wirtschaft und Ausfuhrkontrolle",
+        "name": "Bundesamt für Wirtschaft und Ausfuhrkontrolle (BAFA)",
         "group": "Behörde",
         "color": "#f43f5e"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_18",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.571160002477338,
-          50.13458200123828
-        ]
-      },
-      "properties": {
-        "name": "Bundesamt für Wirtschaft und Ausfuhrkontrolle",
-        "group": "Behörde",
-        "color": "#f43f5e"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_19",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.571160002477338,
-          50.13458200123828
-        ]
-      },
-      "properties": {
-        "name": "Bundesamt für Wirtschaft und Ausfuhrkontrolle",
-        "group": "Behörde",
-        "color": "#f43f5e"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_20",
+      "id": "anon_9",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -358,46 +156,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Bedburg",
+        "name": "Stadt Bedburg (Bedburg)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_21",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.551017995930067,
-          51.00674100413568
-        ]
-      },
-      "properties": {
-        "name": "Stadt Bedburg",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_22",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.551017995930067,
-          51.00674100413568
-        ]
-      },
-      "properties": {
-        "name": "Stadt Bedburg",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_23",
+      "id": "anon_10",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -406,14 +172,14 @@
         ]
       },
       "properties": {
-        "name": "Bewässerungsverband Pütz",
+        "name": "Bewässerungsverband Pütz (Beregnungsverband Pütz)",
         "group": "Landwirtschaft",
         "color": "#10b981"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_24",
+      "id": "anon_11",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -422,46 +188,14 @@
         ]
       },
       "properties": {
-        "name": "Kreisstadt Bergheim",
+        "name": "Kreisstadt Bergheim (Bergheim)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_25",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.642214999154687,
-          50.95492100080168
-        ]
-      },
-      "properties": {
-        "name": "Kreisstadt Bergheim",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_26",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.642214999154687,
-          50.95492100080168
-        ]
-      },
-      "properties": {
-        "name": "Kreisstadt Bergheim",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_27",
+      "id": "anon_12",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -470,14 +204,14 @@
         ]
       },
       "properties": {
-        "name": "Bio Bursch GmbH & Co. KG",
+        "name": "Bio Bursch GmbH & Co. KG (Biohof Bursch)",
         "group": "Landwirtschaft",
         "color": "#10b981"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_28",
+      "id": "anon_13",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -486,14 +220,14 @@
         ]
       },
       "properties": {
-        "name": "Biologische Station im Kreis Düren e.V.",
+        "name": "Biologische Station im Kreis Düren e.V. (Biostation Düren)",
         "group": "Sonstige",
         "color": "#8b5cf6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_29",
+      "id": "anon_14",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -502,14 +236,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Blankenheim",
+        "name": "Gemeinde Blankenheim (Blankenheim)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_30",
+      "id": "anon_15",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -518,126 +252,30 @@
         ]
       },
       "properties": {
-        "name": "Rhein-Erft-Kreis",
+        "name": "Rhein-Erft-Kreis (BM)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_31",
+      "id": "anon_16",
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.631574005557042,
-          50.951577998213295
+          7.378533995832547,
+          52.50802200217439
         ]
       },
       "properties": {
-        "name": "Rhein-Erft-Kreis",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_32",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.631574005557042,
-          50.951577998213295
-        ]
-      },
-      "properties": {
-        "name": "Rhein-Erft-Kreis",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_33",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.631574005557042,
-          50.951577998213295
-        ]
-      },
-      "properties": {
-        "name": "Rhein-Erft-Kreis",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_34",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.631574005557042,
-          50.951577998213295
-        ]
-      },
-      "properties": {
-        "name": "Rhein-Erft-Kreis",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_35",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.631574005557042,
-          50.951577998213295
-        ]
-      },
-      "properties": {
-        "name": "Rhein-Erft-Kreis",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_36",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.631574005557042,
-          50.951577998213295
-        ]
-      },
-      "properties": {
-        "name": "Rhein-Erft-Kreis",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_37",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          13.3785823,
-          52.5080337
-        ]
-      },
-      "properties": {
-        "name": "Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit und Verbraucherschutz",
+        "name": "Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit und Verbraucherschutz (BMUKN)",
         "group": "Behörde",
         "color": "#f43f5e"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_38",
+      "id": "anon_17",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -648,12 +286,12 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 2 – Branche Ernährung",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_39",
+      "id": "anon_18",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -662,14 +300,14 @@
         ]
       },
       "properties": {
-        "name": "Bezirksregierung Arnsberg",
+        "name": "Bezirksregierung Arnsberg (BR Arnsberg)",
         "group": "Behörde",
         "color": "#f43f5e"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_40",
+      "id": "anon_19",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -678,62 +316,14 @@
         ]
       },
       "properties": {
-        "name": "Bezirksregierung Düsseldorf",
+        "name": "Bezirksregierung Düsseldorf (BR Düsseldorf)",
         "group": "Behörde",
         "color": "#f43f5e"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_41",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.772462995935434,
-          51.2379440034258
-        ]
-      },
-      "properties": {
-        "name": "Bezirksregierung Düsseldorf",
-        "group": "Behörde",
-        "color": "#f43f5e"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_42",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.772462995935434,
-          51.2379440034258
-        ]
-      },
-      "properties": {
-        "name": "Bezirksregierung Düsseldorf",
-        "group": "Behörde",
-        "color": "#f43f5e"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_43",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.772462995935434,
-          51.2379440034258
-        ]
-      },
-      "properties": {
-        "name": "Bezirksregierung Düsseldorf",
-        "group": "Behörde",
-        "color": "#f43f5e"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_44",
+      "id": "anon_20",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -742,110 +332,14 @@
         ]
       },
       "properties": {
-        "name": "Bezirksregierung Köln",
+        "name": "Bezirksregierung Köln (BR Köln)",
         "group": "Behörde",
         "color": "#f43f5e"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_45",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.949756000650613,
-          50.94140600452596
-        ]
-      },
-      "properties": {
-        "name": "Bezirksregierung Köln",
-        "group": "Behörde",
-        "color": "#f43f5e"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_46",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.949756000650613,
-          50.94140600452596
-        ]
-      },
-      "properties": {
-        "name": "Bezirksregierung Köln",
-        "group": "Behörde",
-        "color": "#f43f5e"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_47",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.949756000650613,
-          50.94140600452596
-        ]
-      },
-      "properties": {
-        "name": "Bezirksregierung Köln",
-        "group": "Behörde",
-        "color": "#f43f5e"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_48",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.949756000650613,
-          50.94140600452596
-        ]
-      },
-      "properties": {
-        "name": "Bezirksregierung Köln",
-        "group": "Behörde",
-        "color": "#f43f5e"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_49",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.949756000650613,
-          50.94140600452596
-        ]
-      },
-      "properties": {
-        "name": "Bezirksregierung Köln",
-        "group": "Behörde",
-        "color": "#f43f5e"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_50",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.949756000650613,
-          50.94140600452596
-        ]
-      },
-      "properties": {
-        "name": "Bezirksregierung Köln",
-        "group": "Behörde",
-        "color": "#f43f5e"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_51",
+      "id": "anon_21",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -854,30 +348,14 @@
         ]
       },
       "properties": {
-        "name": "Gabriel Heineke (Center Smart Industrial Agriculture GmbH;\nWerkzeugmaschinenlabor WZL der RWTH Aachen)",
+        "name": "Center Smart Industrial Agriculture GmbH;\nWerkzeugmaschinenlabor WZL der RWTH Aachen (CSIA)",
         "group": "Forschung",
         "color": "#3b82f6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_52",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.046161996815083,
-          50.78312299824592
-        ]
-      },
-      "properties": {
-        "name": "Esben Schukat (Center Smart Industrial Agriculture GmbH;\nWerkzeugmaschinenlabor WZL der RWTH Aachen)",
-        "group": "Forschung",
-        "color": "#3b82f6"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_53",
+      "id": "anon_22",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -886,30 +364,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Dahlem",
+        "name": "Gemeinde Dahlem (Dahlem)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_54",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.55775799916853,
-          50.42058799924306
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Dahlem",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_55",
+      "id": "anon_23",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -918,62 +380,14 @@
         ]
       },
       "properties": {
-        "name": "Kreis Düren",
+        "name": "Entwicklungsgesellschaft indeland GmbH (indeland) / Kreis Düren (DN)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_56",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Kreis Düren",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_57",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Kreis Düren",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_58",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Kreis Düren",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_59",
+      "id": "anon_24",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -982,142 +396,14 @@
         ]
       },
       "properties": {
-        "name": "Kreis Düren",
+        "name": "Kreis Düren (DN)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_60",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Kreis Düren",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_61",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487291993499523,
-          50.80658599848388
-        ]
-      },
-      "properties": {
-        "name": "Kreis Düren",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_62",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Kreis Düren",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_63",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487291993499523,
-          50.80658599848388
-        ]
-      },
-      "properties": {
-        "name": "Kreis Düren",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_64",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Kreis Düren",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_65",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Kreis Düren",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_66",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Kreis Düren",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_67",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Kreis Düren",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_68",
+      "id": "anon_25",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1126,14 +412,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Dormagen",
+        "name": "Stadt Dormagen (Dormagen)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_69",
+      "id": "anon_26",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1142,30 +428,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Düren",
+        "name": "Stadt Düren (Düren)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_70",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.482060995704271,
-          50.80328900127496
-        ]
-      },
-      "properties": {
-        "name": "Stadt Düren",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_71",
+      "id": "anon_27",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1174,94 +444,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Elsdorf",
+        "name": "Stadt Elsdorf (Elsdorf)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_72",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.562243998179771,
-          50.93819400464263
-        ]
-      },
-      "properties": {
-        "name": "Stadt Elsdorf",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_73",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.562243998179771,
-          50.93819400464263
-        ]
-      },
-      "properties": {
-        "name": "Stadt Elsdorf",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_74",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.562243998179771,
-          50.93819400464263
-        ]
-      },
-      "properties": {
-        "name": "Stadt Elsdorf",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_75",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.562243998179771,
-          50.93819400464263
-        ]
-      },
-      "properties": {
-        "name": "Stadt Elsdorf",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_76",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.562243998179771,
-          50.93819400464263
-        ]
-      },
-      "properties": {
-        "name": "Stadt Elsdorf",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_77",
+      "id": "anon_28",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1270,78 +460,14 @@
         ]
       },
       "properties": {
-        "name": "NRW.Energy4Climate GmbH",
+        "name": "NRW.Energy4Climate GmbH (energy4climate)",
         "group": "Netzwerk/ Multiplikator",
         "color": "#ff007f"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_78",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.790890996277695,
-          51.290269000003974
-        ]
-      },
-      "properties": {
-        "name": "NRW.Energy4Climate GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_79",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.790890996277695,
-          51.290269000003974
-        ]
-      },
-      "properties": {
-        "name": "NRW.Energy4Climate GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_80",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.790890996277695,
-          51.290269000003974
-        ]
-      },
-      "properties": {
-        "name": "NRW.Energy4Climate GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_81",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.790890996277695,
-          51.290269000003974
-        ]
-      },
-      "properties": {
-        "name": "NRW.Energy4Climate GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_82",
+      "id": "anon_29",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1350,14 +476,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Erftstadt",
+        "name": "Stadt Erftstadt (Erftstadt)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_83",
+      "id": "anon_30",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1366,62 +492,14 @@
         ]
       },
       "properties": {
-        "name": "Erftverband",
+        "name": "Erftverband (Erftverband)",
         "group": "Ver-/ Entsorger",
         "color": "#ff7300"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_84",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.630731001425003,
-          50.96050800238247
-        ]
-      },
-      "properties": {
-        "name": "Erftverband",
-        "group": "Ver-/ Entsorger",
-        "color": "#ff7300"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_85",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.630731001425003,
-          50.96050800238247
-        ]
-      },
-      "properties": {
-        "name": "Erftverband",
-        "group": "Ver-/ Entsorger",
-        "color": "#ff7300"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_86",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.630731001425003,
-          50.96050800238247
-        ]
-      },
-      "properties": {
-        "name": "Erftverband",
-        "group": "Ver-/ Entsorger",
-        "color": "#ff7300"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_87",
+      "id": "anon_31",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1430,78 +508,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Erkelenz",
+        "name": "Stadt Erkelenz (Erkelenz)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_88",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.314079000354718,
-          51.08019100254338
-        ]
-      },
-      "properties": {
-        "name": "Stadt Erkelenz",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_89",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.314079000354718,
-          51.08019100254338
-        ]
-      },
-      "properties": {
-        "name": "Stadt Erkelenz",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_90",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.314079000354718,
-          51.08019100254338
-        ]
-      },
-      "properties": {
-        "name": "Stadt Erkelenz",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_91",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.314079000354718,
-          51.08019100254338
-        ]
-      },
-      "properties": {
-        "name": "Stadt Erkelenz",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_92",
+      "id": "anon_32",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1510,14 +524,14 @@
         ]
       },
       "properties": {
-        "name": "erlebnisplan Deutschland GmbH",
+        "name": "erlebnisplan Deutschland GmbH (erlebnisplan Deutschland)",
         "group": "Netzwerk/ Multiplikator",
         "color": "#ff007f"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_93",
+      "id": "anon_33",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1528,12 +542,12 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 3 – Branche Papier",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_94",
+      "id": "anon_34",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1542,62 +556,14 @@
         ]
       },
       "properties": {
-        "name": "Kreis Euskirchen",
+        "name": "Kreis Euskirchen (EU)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_95",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.783701003338692,
-          50.66979799813469
-        ]
-      },
-      "properties": {
-        "name": "Kreis Euskirchen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_96",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.783701003338692,
-          50.66979799813469
-        ]
-      },
-      "properties": {
-        "name": "Kreis Euskirchen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_97",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.783701003338692,
-          50.66979799813469
-        ]
-      },
-      "properties": {
-        "name": "Kreis Euskirchen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_98",
+      "id": "anon_35",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1606,14 +572,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Euskirchen",
+        "name": "Stadt Euskirchen (Euskirchen)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_99",
+      "id": "anon_36",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1624,12 +590,12 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 4 – Branche Chemie",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_100",
+      "id": "anon_37",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1638,126 +604,14 @@
         ]
       },
       "properties": {
-        "name": "Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.",
+        "name": "Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V. (FiW)",
         "group": "Konsortium",
-        "color": "#1d4ed8"
+        "color": "#8b5cf6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_101",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.051410002362722,
-          50.794084999355285
-        ]
-      },
-      "properties": {
-        "name": "Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_102",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.051410002362722,
-          50.794084999355285
-        ]
-      },
-      "properties": {
-        "name": "Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_103",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.051410002362722,
-          50.794084999355285
-        ]
-      },
-      "properties": {
-        "name": "Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_104",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.051410002362722,
-          50.794084999355285
-        ]
-      },
-      "properties": {
-        "name": "Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_105",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.051410002362722,
-          50.794084999355285
-        ]
-      },
-      "properties": {
-        "name": "Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_106",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.051410002362722,
-          50.794084999355285
-        ]
-      },
-      "properties": {
-        "name": "Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_107",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.051410002362722,
-          50.794084999355285
-        ]
-      },
-      "properties": {
-        "name": "Forschungsinstitut für Wasserwirtschaft und Klimazukunft an der RWTH Aachen (FiW) e. V.",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_108",
+      "id": "anon_38",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1766,14 +620,14 @@
         ]
       },
       "properties": {
-        "name": "FaserInnovationsZentrum Zerkall e.V.",
+        "name": "FaserInnovationsZentrum Zerkall e.V. (FIZZ) / Gewerbe-/ Industriebetrieb Nr. 14 – Branche Papier",
         "group": "Forschung",
         "color": "#3b82f6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_109",
+      "id": "anon_39",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1782,30 +636,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Frechen",
+        "name": "Stadt Frechen (Frechen)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_110",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.808373996823214,
-          50.90803200494908
-        ]
-      },
-      "properties": {
-        "name": "Stadt Frechen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_111",
+      "id": "anon_40",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1814,14 +652,14 @@
         ]
       },
       "properties": {
-        "name": "Forschungszentrum Jülich GmbH",
+        "name": "Forschungszentrum Jülich GmbH (FZ Jülich)",
         "group": "Forschung",
         "color": "#3b82f6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_112",
+      "id": "anon_41",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1830,14 +668,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Gangelt",
+        "name": "Gemeinde Gangelt (Gangelt)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_113",
+      "id": "anon_42",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1846,14 +684,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Geilenkirchen",
+        "name": "Stadt Geilenkirchen (Geilenkirchen)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_114",
+      "id": "anon_43",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1862,14 +700,14 @@
         ]
       },
       "properties": {
-        "name": "Pesch Gemüse GmbH & Co. KG",
+        "name": "Pesch Gemüse GmbH & Co. KG (Gemüsebau Pesch)",
         "group": "Landwirtschaft",
         "color": "#10b981"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_115",
+      "id": "anon_44",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1878,62 +716,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Grevenbroich",
+        "name": "Stadt Grevenbroich (Grevenbroich)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_116",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.589592001748118,
-          51.08922100030158
-        ]
-      },
-      "properties": {
-        "name": "Stadt Grevenbroich",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_117",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.589592001748118,
-          51.08922100030158
-        ]
-      },
-      "properties": {
-        "name": "Stadt Grevenbroich",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_118",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.589592001748118,
-          51.08922100030158
-        ]
-      },
-      "properties": {
-        "name": "Stadt Grevenbroich",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_119",
+      "id": "anon_45",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1942,14 +732,14 @@
         ]
       },
       "properties": {
-        "name": "Gesellschaft für Wirtschaftsdienste Grevenbroich mbH",
+        "name": "Gesellschaft für Wirtschaftsdienste Grevenbroich mbH (GWD)",
         "group": "Ver-/ Entsorger",
         "color": "#ff7300"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_120",
+      "id": "anon_46",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1960,12 +750,12 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 5 – Branche Energie",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_121",
+      "id": "anon_47",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1974,14 +764,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Heimbach",
+        "name": "Stadt Heimbach (Heimbach)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_122",
+      "id": "anon_48",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -1990,14 +780,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Hellenthal",
+        "name": "Gemeinde Hellenthal (Hellenthal)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_123",
+      "id": "anon_49",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2006,46 +796,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Herzogenrath",
+        "name": "Stadt Herzogenrath (Herzogenrath)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_124",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.09367900003882,
-          50.866411003019685
-        ]
-      },
-      "properties": {
-        "name": "Stadt Herzogenrath",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_125",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.09367900003882,
-          50.866411003019685
-        ]
-      },
-      "properties": {
-        "name": "Stadt Herzogenrath",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_126",
+      "id": "anon_50",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2056,12 +814,12 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 6 – Branche Ernährung",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_127",
+      "id": "anon_51",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2070,30 +828,14 @@
         ]
       },
       "properties": {
-        "name": "Kreis Heinsberg",
+        "name": "Kreis Heinsberg (HS)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_128",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.107434997194719,
-          51.060543996345515
-        ]
-      },
-      "properties": {
-        "name": "Kreis Heinsberg",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_129",
+      "id": "anon_52",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2102,14 +844,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Hückelhoven",
+        "name": "Stadt Hückelhoven (Hückelhoven)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_130",
+      "id": "anon_53",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2118,14 +860,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Hürtgenwald",
+        "name": "Gemeinde Hürtgenwald (Hürtgenwald)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_131",
+      "id": "anon_54",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2134,126 +876,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Hürth",
+        "name": "Stadt Hürth (Hürth)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_132",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.878769994172183,
-          50.879705998199064
-        ]
-      },
-      "properties": {
-        "name": "Stadt Hürth",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_133",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.878769994172183,
-          50.879705998199064
-        ]
-      },
-      "properties": {
-        "name": "Stadt Hürth",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_134",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Entwicklungsgesellschaft indeland GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_135",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Entwicklungsgesellschaft indeland GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_136",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Entwicklungsgesellschaft indeland GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_137",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Entwicklungsgesellschaft indeland GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_138",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487668002989559,
-          50.80553700013155
-        ]
-      },
-      "properties": {
-        "name": "Entwicklungsgesellschaft indeland GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_139",
+      "id": "anon_55",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2262,126 +892,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Inden",
+        "name": "Gemeinde Inden (Inden)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_140",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.358255994541316,
-          50.84638899692941
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Inden",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_141",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.358255994541316,
-          50.84638899692941
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Inden",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_142",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.358255994541316,
-          50.84638899692941
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Inden",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_143",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.358255994541316,
-          50.84638899692941
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Inden",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_144",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.358255994541316,
-          50.84638899692941
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Inden",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_145",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.358255994541316,
-          50.84638899692941
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Inden",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_146",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.358255994541316,
-          50.84638899692941
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Inden",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_147",
+      "id": "anon_56",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2392,12 +910,12 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 7 – Branche Ernährung",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_148",
+      "id": "anon_57",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2406,78 +924,14 @@
         ]
       },
       "properties": {
-        "name": "RWTH Aachen University - Institut für Siedlungswasserwirtschaft",
+        "name": "RWTH Aachen University - Institut für Siedlungswasserwirtschaft (ISA)",
         "group": "Konsortium",
-        "color": "#1d4ed8"
+        "color": "#8b5cf6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_149",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.067663002870716,
-          50.77953300420479
-        ]
-      },
-      "properties": {
-        "name": "RWTH Aachen University - Institut für Siedlungswasserwirtschaft",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_150",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.067663002870716,
-          50.77953300420479
-        ]
-      },
-      "properties": {
-        "name": "RWTH Aachen University - Institut für Siedlungswasserwirtschaft",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_151",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.067663002870716,
-          50.77953300420479
-        ]
-      },
-      "properties": {
-        "name": "RWTH Aachen University - Institut für Siedlungswasserwirtschaft",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_152",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.067663002870716,
-          50.77953300420479
-        ]
-      },
-      "properties": {
-        "name": "RWTH Aachen University - Institut für Siedlungswasserwirtschaft",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_153",
+      "id": "anon_58",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2486,30 +940,14 @@
         ]
       },
       "properties": {
-        "name": "RWTH Aachen University - Institut für Textiltechnik",
+        "name": "RWTH Aachen University - Institut für Textiltechnik (ITA)",
         "group": "Forschung",
         "color": "#3b82f6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_154",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.04995600554365,
-          50.78382699865158
-        ]
-      },
-      "properties": {
-        "name": "RWTH Aachen University - Institut für Textiltechnik",
-        "group": "Forschung",
-        "color": "#3b82f6"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_155",
+      "id": "anon_59",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2520,60 +958,12 @@
       "properties": {
         "name": "Gewerbe-/ Industriebetrieb Nr. 8 – Branche Wirtschaftsverband",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_156",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.474050998891298,
-          50.801852997577484
-        ]
-      },
-      "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 9 – Branche Wirtschaftsverband",
-        "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_157",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.474050998891298,
-          50.801852997577484
-        ]
-      },
-      "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 10 – Branche Wirtschaftsverband",
-        "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_158",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.474050998891298,
-          50.801852997577484
-        ]
-      },
-      "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 11 – Branche Wirtschaftsverband",
-        "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_159",
+      "id": "anon_60",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2582,78 +972,14 @@
         ]
       },
       "properties": {
-        "name": "RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW)",
+        "name": "RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW) (IWW)",
         "group": "Konsortium",
-        "color": "#1d4ed8"
+        "color": "#8b5cf6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_160",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.065069996512569,
-          50.77858300291208
-        ]
-      },
-      "properties": {
-        "name": "RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW)",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_161",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.065069996512569,
-          50.77858300291208
-        ]
-      },
-      "properties": {
-        "name": "RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW)",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_162",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.065069996512569,
-          50.77858300291208
-        ]
-      },
-      "properties": {
-        "name": "RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW)",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_163",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.065069996512569,
-          50.77858300291208
-        ]
-      },
-      "properties": {
-        "name": "RWTH Aachen University - Institut für Wasserbau und Wasserwirtschaft (IWW)",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_164",
+      "id": "anon_61",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2662,30 +988,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Jüchen",
+        "name": "Stadt Jüchen (Jüchen)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_165",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.501080002718897,
-          51.100223000421444
-        ]
-      },
-      "properties": {
-        "name": "Stadt Jüchen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_166",
+      "id": "anon_62",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2694,46 +1004,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Jülich",
+        "name": "Stadt Jülich (Jülich)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_167",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.362850993371082,
-          50.92107000002269
-        ]
-      },
-      "properties": {
-        "name": "Stadt Jülich",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_168",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.362850993371082,
-          50.92107000002269
-        ]
-      },
-      "properties": {
-        "name": "Stadt Jülich",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_169",
+      "id": "anon_63",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2742,14 +1020,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Kaarst",
+        "name": "Stadt Kaarst (Kaarst)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_170",
+      "id": "anon_64",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2758,14 +1036,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Kall",
+        "name": "Gemeinde Kall (Kall)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_172",
+      "id": "anon_65",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2774,30 +1052,14 @@
         ]
       },
       "properties": {
-        "name": "Kreisbauernschaft Aachen",
+        "name": "Kreisbauernschaft Aachen (KB AC) / Kreisbauernschaft Düren (KB DN) / Kreisbauernschaft Heinsberg (KB HS)",
         "group": "Landwirtschaft",
         "color": "#10b981"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_173",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.363702005568335,
-          50.943833003267194
-        ]
-      },
-      "properties": {
-        "name": "Kreisbauernschaft Düren",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_174",
+      "id": "anon_66",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2806,30 +1068,14 @@
         ]
       },
       "properties": {
-        "name": "Kreisbauernschaft  Euskirchen",
+        "name": "Kreisbauernschaft  Euskirchen (KB EU)",
         "group": "Landwirtschaft",
         "color": "#10b981"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_175",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.363702005568335,
-          50.943833003267194
-        ]
-      },
-      "properties": {
-        "name": "Kreisbauernschaft Heinsberg",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_176",
+      "id": "anon_67",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2838,30 +1084,14 @@
         ]
       },
       "properties": {
-        "name": "Kreisbauernschaft Köln/Rhein-Erft-Kreis",
+        "name": "Kreisbauernschaft Köln/Rhein-Erft-Kreis (KB K/BM) / Kreisbauernschaft Neuss-Mönchengladbach e.V. (KB NE-MG)",
         "group": "Landwirtschaft",
         "color": "#10b981"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_177",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.677750995165886,
-          51.038704000907664
-        ]
-      },
-      "properties": {
-        "name": "Kreisbauernschaft Neuss-Mönchengladbach e.V.",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_178",
+      "id": "anon_68",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2870,62 +1100,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Kerpen",
+        "name": "Stadt Kerpen (Kerpen)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_179",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.691647999170792,
-          50.87278500268475
-        ]
-      },
-      "properties": {
-        "name": "Stadt Kerpen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_180",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.691647999170792,
-          50.87278500268475
-        ]
-      },
-      "properties": {
-        "name": "Stadt Kerpen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_181",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.691647999170792,
-          50.87278500268475
-        ]
-      },
-      "properties": {
-        "name": "Stadt Kerpen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_182",
+      "id": "anon_69",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2934,14 +1116,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Korschenbroich",
+        "name": "Stadt Korschenbroich (Korschenbroich)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_183",
+      "id": "anon_70",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2950,14 +1132,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Kreuzau",
+        "name": "Gemeinde Kreuzau (Kreuzau)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_184",
+      "id": "anon_71",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2966,30 +1148,14 @@
         ]
       },
       "properties": {
-        "name": "Ayça Sancar (RWTH Aachen University - Institut für Landschaftsarchitektur (LA);\nRWTH Aachen University - Profilbereich Built and Lived Environment (BLE))",
+        "name": "RWTH Aachen University - Institut für Landschaftsarchitektur (LA);\nRWTH Aachen University - Profilbereich Built and Lived Environment (BLE) (LA)",
         "group": "Forschung",
         "color": "#3b82f6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_185",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.082009996768572,
-          50.77580300169914
-        ]
-      },
-      "properties": {
-        "name": "Frank Lohrberg (RWTH Aachen University - Institut für Landschaftsarchitektur (LA);\nRWTH Aachen University - Profilbereich Built and Lived Environment (BLE))",
-        "group": "Forschung",
-        "color": "#3b82f6"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_186",
+      "id": "anon_72",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -2998,14 +1164,14 @@
         ]
       },
       "properties": {
-        "name": "LAG Rheinisches Revier an Inde und Rur e.V.",
+        "name": "LAG Rheinisches Revier an Inde und Rur e.V. (LAG RR Inde & Rur)",
         "group": "Netzwerk/ Multiplikator",
         "color": "#ff007f"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_187",
+      "id": "anon_73",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3014,30 +1180,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Langerwehe",
+        "name": "Gemeinde Langerwehe (Langerwehe)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_188",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.361810005218879,
-          50.81492300104932
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Langerwehe",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_189",
+      "id": "anon_74",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3046,30 +1196,14 @@
         ]
       },
       "properties": {
-        "name": "Provinz Limburg",
+        "name": "Provinz Limburg (Limburg)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_190",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.770524999538103,
-          51.24619699625452
-        ]
-      },
-      "properties": {
-        "name": "Provinz Limburg",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_191",
+      "id": "anon_75",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3078,14 +1212,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Linnich",
+        "name": "Stadt Linnich (Linnich)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_192",
+      "id": "anon_76",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3094,14 +1228,14 @@
         ]
       },
       "properties": {
-        "name": "Landwirtschaftskammer NRW",
+        "name": "Landwirtschaftskammer NRW (LWK NRW)",
         "group": "Landwirtschaft",
         "color": "#10b981"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_193",
+      "id": "anon_77",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3110,46 +1244,14 @@
         ]
       },
       "properties": {
-        "name": "Landwirtschaftskammer NRW",
+        "name": "Landwirtschaftskammer NRW (LWK NRW)",
         "group": "Landwirtschaft",
         "color": "#10b981"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_194",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.850030004058255,
-          51.00195599835699
-        ]
-      },
-      "properties": {
-        "name": "Landwirtschaftskammer NRW",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_195",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.850030004058255,
-          51.00195599835699
-        ]
-      },
-      "properties": {
-        "name": "Landwirtschaftskammer NRW",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_196",
+      "id": "anon_78",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3158,62 +1260,14 @@
         ]
       },
       "properties": {
-        "name": "Landwirtschaftskammer NRW",
+        "name": "Landwirtschaftskammer NRW (LWK NRW)",
         "group": "Landwirtschaft",
         "color": "#10b981"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_197",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.850030004058255,
-          51.00195599835699
-        ]
-      },
-      "properties": {
-        "name": "Landwirtschaftskammer NRW",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_198",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.850030004058255,
-          51.00195599835699
-        ]
-      },
-      "properties": {
-        "name": "Landwirtschaftskammer NRW",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_199",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.480183001239305,
-          50.79613200076388
-        ]
-      },
-      "properties": {
-        "name": "Landwirtschaftskammer NRW",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_200",
+      "id": "anon_79",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3222,14 +1276,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Meerbusch",
+        "name": "Stadt Meerbusch (Meerbusch)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_201",
+      "id": "anon_80",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3238,78 +1292,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Merzenich",
+        "name": "Gemeinde Merzenich (Merzenich)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_202",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.527835005884107,
-          50.825489996429035
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Merzenich",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_203",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.527835005884107,
-          50.825489996429035
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Merzenich",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_204",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.527835005884107,
-          50.825489996429035
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Merzenich",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_205",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.527835005884107,
-          50.825489996429035
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Merzenich",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_206",
+      "id": "anon_81",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3318,14 +1308,14 @@
         ]
       },
       "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 12 – Branche Papier",
+        "name": "Gewerbe-/ Industriebetrieb Nr. 9 – Branche Papier",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_207",
+      "id": "anon_82",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3334,14 +1324,14 @@
         ]
       },
       "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 13 – Branche Papier",
+        "name": "Gewerbe-/ Industriebetrieb Nr. 10 – Branche Papier",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_208",
+      "id": "anon_83",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3350,14 +1340,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Mönchengladbach",
+        "name": "Stadt Mönchengladbach (Mönchengladbach)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_209",
+      "id": "anon_84",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3366,30 +1356,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Mönchengladbach",
+        "name": "Stadt Mönchengladbach (Mönchengladbach)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_210",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.445169996205545,
-          51.16736900072223
-        ]
-      },
-      "properties": {
-        "name": "Stadt Mönchengladbach",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_211",
+      "id": "anon_85",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3398,30 +1372,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Mönchengladbach",
+        "name": "Stadt Mönchengladbach (Mönchengladbach)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_212",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.445895996692886,
-          51.167405001419425
-        ]
-      },
-      "properties": {
-        "name": "Stadt Mönchengladbach",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_213",
+      "id": "anon_86",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3430,14 +1388,14 @@
         ]
       },
       "properties": {
-        "name": "NABU-Naturschutzstation Aachen e.V.",
+        "name": "NABU-Naturschutzstation Aachen e.V. (NABU Aachen)",
         "group": "Sonstige",
         "color": "#8b5cf6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_214",
+      "id": "anon_87",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3446,46 +1404,14 @@
         ]
       },
       "properties": {
-        "name": "Rhein-Kreis Neuss",
+        "name": "Rhein-Kreis Neuss (NE)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_215",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.595272999095041,
-          51.08441399869182
-        ]
-      },
-      "properties": {
-        "name": "Rhein-Kreis Neuss",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_216",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.595272999095041,
-          51.08441399869182
-        ]
-      },
-      "properties": {
-        "name": "Rhein-Kreis Neuss",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_217",
+      "id": "anon_88",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3494,14 +1420,14 @@
         ]
       },
       "properties": {
-        "name": "Rhein-Kreis Neuss",
+        "name": "Rhein-Kreis Neuss (NE)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_218",
+      "id": "anon_89",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3510,30 +1436,14 @@
         ]
       },
       "properties": {
-        "name": "Rhein-Kreis Neuss",
+        "name": "Rhein-Kreis Neuss (NE)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_219",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.594463000698894,
-          51.0868980001667
-        ]
-      },
-      "properties": {
-        "name": "Rhein-Kreis Neuss",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_220",
+      "id": "anon_90",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3542,14 +1452,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Nettersheim",
+        "name": "Gemeinde Nettersheim (Nettersheim)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_221",
+      "id": "anon_91",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3558,126 +1468,14 @@
         ]
       },
       "properties": {
-        "name": "NEULAND HAMBACH GmbH",
+        "name": "NEULAND HAMBACH GmbH (NEULAND HAMBACH)",
         "group": "Netzwerk/ Multiplikator",
         "color": "#ff007f"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_222",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.63317700322339,
-          50.91448600179361
-        ]
-      },
-      "properties": {
-        "name": "NEULAND HAMBACH GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_223",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.63317700322339,
-          50.91448600179361
-        ]
-      },
-      "properties": {
-        "name": "NEULAND HAMBACH GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_224",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.63317700322339,
-          50.91448600179361
-        ]
-      },
-      "properties": {
-        "name": "NEULAND HAMBACH GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_225",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.63317700322339,
-          50.91448600179361
-        ]
-      },
-      "properties": {
-        "name": "NEULAND HAMBACH GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_226",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.63317700322339,
-          50.91448600179361
-        ]
-      },
-      "properties": {
-        "name": "NEULAND HAMBACH GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_227",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.63317700322339,
-          50.91448600179361
-        ]
-      },
-      "properties": {
-        "name": "NEULAND HAMBACH GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_228",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.63317700322339,
-          50.91448600179361
-        ]
-      },
-      "properties": {
-        "name": "NEULAND HAMBACH GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_229",
+      "id": "anon_92",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3686,14 +1484,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Neuss",
+        "name": "Stadt Neuss (Neuss)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_230",
+      "id": "anon_93",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3702,30 +1500,14 @@
         ]
       },
       "properties": {
-        "name": "NEW NiederrheinWasser GmbH",
+        "name": "NEW NiederrheinWasser GmbH (NEW)",
         "group": "Ver-/ Entsorger",
         "color": "#ff7300"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_231",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.390173993404847,
-          51.26058200050656
-        ]
-      },
-      "properties": {
-        "name": "NEW NiederrheinWasser GmbH",
-        "group": "Ver-/ Entsorger",
-        "color": "#ff7300"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_232",
+      "id": "anon_94",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3734,14 +1516,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Nideggen",
+        "name": "Stadt Nideggen (Nideggen)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_233",
+      "id": "anon_95",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3750,14 +1532,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Niederkrüchten",
+        "name": "Gemeinde Niederkrüchten (Niederkrüchten)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_234",
+      "id": "anon_96",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3766,46 +1548,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Niederzier",
+        "name": "Gemeinde Niederzier (Niederzier)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_235",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.46165999620356,
-          50.885029004182925
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Niederzier",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_236",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.46165999620356,
-          50.885029004182925
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Niederzier",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_237",
+      "id": "anon_97",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3814,14 +1564,14 @@
         ]
       },
       "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 14 – Branche Papier",
+        "name": "Gewerbe-/ Industriebetrieb Nr. 11 – Branche Papier",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_238",
+      "id": "anon_98",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3830,62 +1580,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Nörvenich",
+        "name": "Gemeinde Nörvenich (Nörvenich)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_239",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.642038993688657,
-          50.808964997111616
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Nörvenich",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_240",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.642038993688657,
-          50.808964997111616
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Nörvenich",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_241",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.642038993688657,
-          50.808964997111616
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Nörvenich",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_242",
+      "id": "anon_99",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3894,14 +1596,14 @@
         ]
       },
       "properties": {
-        "name": "NRW.Global Business GmbH",
+        "name": "NRW.Global Business GmbH (NRW Global Business)",
         "group": "Netzwerk/ Multiplikator",
         "color": "#ff007f"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_243",
+      "id": "anon_100",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3910,14 +1612,14 @@
         ]
       },
       "properties": {
-        "name": "Hans-Josef Hellwich (Fa. Katharina Tillmann Papier- und Wellpappenfabrik e.K.)",
+        "name": "Fa. Katharina Tillmann Papier- und Wellpappenfabrik e.K. (Papierfabrik Tillmann)",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_244",
+      "id": "anon_101",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3926,14 +1628,14 @@
         ]
       },
       "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 15 – Branche Papier",
+        "name": "Gewerbe-/ Industriebetrieb Nr. 12 – Branche Papier",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_245",
+      "id": "anon_102",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3942,30 +1644,14 @@
         ]
       },
       "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 16 – Branche Papier",
+        "name": "Gewerbe-/ Industriebetrieb Nr. 13 – Branche Papier",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_246",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.447741997349302,
-          50.689314998428905
-        ]
-      },
-      "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 17 – Branche Papier",
-        "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_247",
+      "id": "anon_103",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3974,14 +1660,14 @@
         ]
       },
       "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 18 – Branche Ernährung",
+        "name": "Gewerbe-/ Industriebetrieb Nr. 15 – Branche Ernährung",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_248",
+      "id": "anon_104",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -3990,30 +1676,14 @@
         ]
       },
       "properties": {
-        "name": "RWTH Aachen University - Lehr- und Forschungsgebiet Physische Geographie und Klimatologie (PGK)",
+        "name": "RWTH Aachen University - Lehr- und Forschungsgebiet Physische Geographie und Klimatologie (PGK) (PGK)",
         "group": "Konsortium",
-        "color": "#1d4ed8"
+        "color": "#8b5cf6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_249",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.07659100562632,
-          50.77930399639156
-        ]
-      },
-      "properties": {
-        "name": "RWTH Aachen University - Lehr- und Forschungsgebiet Physische Geographie und Klimatologie (PGK)",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_250",
+      "id": "anon_105",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4022,14 +1692,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Pulheim",
+        "name": "Stadt Pulheim (Pulheim)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_251",
+      "id": "anon_106",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4038,14 +1708,14 @@
         ]
       },
       "properties": {
-        "name": "Region Aachen Zweckverband",
+        "name": "Region Aachen Zweckverband (RAZV)",
         "group": "Netzwerk/ Multiplikator",
         "color": "#ff007f"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_252",
+      "id": "anon_107",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4054,30 +1724,14 @@
         ]
       },
       "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 19 – Branche Papier",
+        "name": "Gewerbe-/ Industriebetrieb Nr. 16 – Branche Papier",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_253",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.468844004321795,
-          50.81600900513741
-        ]
-      },
-      "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 20 – Branche Papier",
-        "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_254",
+      "id": "anon_108",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4086,46 +1740,14 @@
         ]
       },
       "properties": {
-        "name": "Region Köln/Bonn e.V.",
+        "name": "Region Köln/Bonn e.V. (Region Köln/Bonn)",
         "group": "Netzwerk/ Multiplikator",
         "color": "#ff007f"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_255",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.9610019961502445,
-          50.93456199746558
-        ]
-      },
-      "properties": {
-        "name": "Region Köln/Bonn e.V.",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_256",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.9610019961502445,
-          50.93456199746558
-        ]
-      },
-      "properties": {
-        "name": "Region Köln/Bonn e.V.",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_257",
+      "id": "anon_109",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4134,62 +1756,14 @@
         ]
       },
       "properties": {
-        "name": "Rheinischer Landwirtschafts-Verband e.V.",
+        "name": "Rheinischer Landwirtschafts-Verband e.V. (RLV)",
         "group": "Landwirtschaft",
         "color": "#10b981"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_258",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          7.0598280029215195,
-          50.72117800411567
-        ]
-      },
-      "properties": {
-        "name": "Rheinischer Landwirtschafts-Verband e.V.",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_259",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          7.0598280029215195,
-          50.72117800411567
-        ]
-      },
-      "properties": {
-        "name": "Rheinischer Landwirtschafts-Verband e.V.",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_260",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          7.0598280029215195,
-          50.72117800411567
-        ]
-      },
-      "properties": {
-        "name": "Rheinischer Landwirtschafts-Verband e.V.",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_261",
+      "id": "anon_110",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4198,14 +1772,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Roetgen",
+        "name": "Gemeinde Roetgen (Roetgen)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_262",
+      "id": "anon_111",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4214,94 +1788,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Rommerskirchen",
+        "name": "Gemeinde Rommerskirchen (Rommerskirchen)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_263",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.695884006084197,
-          51.03600399854141
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Rommerskirchen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_264",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.695884006084197,
-          51.03600399854141
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Rommerskirchen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_265",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.695884006084197,
-          51.03600399854141
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Rommerskirchen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_266",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.695884006084197,
-          51.03600399854141
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Rommerskirchen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_267",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.695884006084197,
-          51.03600399854141
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Rommerskirchen",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_268",
+      "id": "anon_112",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4310,14 +1804,14 @@
         ]
       },
       "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 21 – Branche Anlagen der Schüttguttechnik",
+        "name": "Gewerbe-/ Industriebetrieb Nr. 17 – Branche Anlagen der Schüttguttechnik",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_269",
+      "id": "anon_113",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4326,46 +1820,14 @@
         ]
       },
       "properties": {
-        "name": "RWW Rheinisch-Westfälische Wasserwerksgesellschaft mbH",
+        "name": "RWW Rheinisch-Westfälische Wasserwerksgesellschaft mbH (RWW)",
         "group": "Ver-/ Entsorger",
         "color": "#ff7300"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_270",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.874167995406817,
-          51.42627700197096
-        ]
-      },
-      "properties": {
-        "name": "RWW Rheinisch-Westfälische Wasserwerksgesellschaft mbH",
-        "group": "Ver-/ Entsorger",
-        "color": "#ff7300"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_271",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.874167995406817,
-          51.42627700197096
-        ]
-      },
-      "properties": {
-        "name": "RWW Rheinisch-Westfälische Wasserwerksgesellschaft mbH",
-        "group": "Ver-/ Entsorger",
-        "color": "#ff7300"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_272",
+      "id": "anon_114",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4374,14 +1836,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Schleiden",
+        "name": "Stadt Schleiden (Schleiden)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_273",
+      "id": "anon_115",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4390,46 +1852,14 @@
         ]
       },
       "properties": {
-        "name": "Christoph Nahrath (SCHOELLERSHAMMER GmbH)",
+        "name": "SCHOELLERSHAMMER GmbH (Schoellershammer)",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_274",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487426998603715,
-          50.77701599992516
-        ]
-      },
-      "properties": {
-        "name": "Armin Vetter (SCHOELLERSHAMMER GmbH)",
-        "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_275",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.487426998603715,
-          50.77701599992516
-        ]
-      },
-      "properties": {
-        "name": "Maren Wolf (SCHOELLERSHAMMER GmbH)",
-        "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_276",
+      "id": "anon_116",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4438,126 +1868,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Eschweiler",
+        "name": "Stadt Eschweiler (SE)",
         "group": "Konsortium",
-        "color": "#1d4ed8"
+        "color": "#8b5cf6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_277",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.271954998565629,
-          50.81796900385408
-        ]
-      },
-      "properties": {
-        "name": "Stadt Eschweiler",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_278",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.271954998565629,
-          50.81796900385408
-        ]
-      },
-      "properties": {
-        "name": "Stadt Eschweiler",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_279",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.271954998565629,
-          50.81796900385408
-        ]
-      },
-      "properties": {
-        "name": "Stadt Eschweiler",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_280",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.271954998565629,
-          50.81796900385408
-        ]
-      },
-      "properties": {
-        "name": "Stadt Eschweiler",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_281",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.271954998565629,
-          50.81796900385408
-        ]
-      },
-      "properties": {
-        "name": "Stadt Eschweiler",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_282",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.271954998565629,
-          50.81796900385408
-        ]
-      },
-      "properties": {
-        "name": "Stadt Eschweiler",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_283",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.271954998565629,
-          50.81796900385408
-        ]
-      },
-      "properties": {
-        "name": "Stadt Eschweiler",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_284",
+      "id": "anon_117",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4566,14 +1884,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Selfkant",
+        "name": "Gemeinde Selfkant (Selfkant)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_285",
+      "id": "anon_118",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4582,14 +1900,14 @@
         ]
       },
       "properties": {
-        "name": "Gewerbe-/ Industriebetrieb Nr. 22 – Branche Papier",
+        "name": "Gewerbe-/ Industriebetrieb Nr. 18 – Branche Papier",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_286",
+      "id": "anon_119",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4598,14 +1916,14 @@
         ]
       },
       "properties": {
-        "name": "Bernd\nSander Goffart\nLutterbach (Gemeinde Simmerath)",
+        "name": "Gemeinde Simmerath (Simmerath)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_287",
+      "id": "anon_120",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4614,30 +1932,14 @@
         ]
       },
       "properties": {
-        "name": "Jürgen Groth (Smurfit Westrock Zülpich Paper GmbH)",
+        "name": "Smurfit Westrock Zülpich Paper GmbH (Smurfit Westrock Zülpich Paper)",
         "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
+        "color": "#d946ef"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_288",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.652299994739826,
-          50.705773001400665
-        ]
-      },
-      "properties": {
-        "name": "Patrick Offer (Smurfit Westrock Zülpich Paper GmbH)",
-        "group": "Gewerbe/ Industrie",
-        "color": "#a855f7"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_289",
+      "id": "anon_121",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4646,78 +1948,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Stolberg",
+        "name": "Stadt Stolberg (Stolberg)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_290",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.25539899857828,
-          50.75203699927471
-        ]
-      },
-      "properties": {
-        "name": "Stadt Stolberg",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_291",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.25539899857828,
-          50.75203699927471
-        ]
-      },
-      "properties": {
-        "name": "Stadt Stolberg",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_292",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.25539899857828,
-          50.75203699927471
-        ]
-      },
-      "properties": {
-        "name": "Stadt Stolberg",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_293",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.25539899857828,
-          50.75203699927471
-        ]
-      },
-      "properties": {
-        "name": "Stadt Stolberg",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_294",
+      "id": "anon_122",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4726,62 +1964,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Titz",
+        "name": "Gemeinde Titz (Titz)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_295",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.4249719960304486,
-          51.00299400124807
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Titz",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_296",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.4249719960304486,
-          51.00299400124807
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Titz",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_297",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.4249719960304486,
-          51.00299400124807
-        ]
-      },
-      "properties": {
-        "name": "Gemeinde Titz",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_298",
+      "id": "anon_123",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4790,14 +1980,14 @@
         ]
       },
       "properties": {
-        "name": "TU Darmstadt - Papierfabrikation und Mechanische Verfahrenstechnik",
+        "name": "TU Darmstadt - Papierfabrikation und Mechanische Verfahrenstechnik (TU Darmstadt - PMV)",
         "group": "Forschung",
         "color": "#3b82f6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_299",
+      "id": "anon_124",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4806,14 +1996,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Übach-Palenberg",
+        "name": "Stadt Übach-Palenberg (Übach-Palenberg)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_300",
+      "id": "anon_125",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4822,46 +2012,14 @@
         ]
       },
       "properties": {
-        "name": "Veolia Industriepark Deutschland GmbH",
+        "name": "Veolia Industriepark Deutschland GmbH (Veolia IP Deutschland)",
         "group": "Ver-/ Entsorger",
         "color": "#ff7300"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_301",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.132031471214872,
-          51.05999297723656
-        ]
-      },
-      "properties": {
-        "name": "Veolia Industriepark Deutschland GmbH",
-        "group": "Ver-/ Entsorger",
-        "color": "#ff7300"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_302",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.132031471214872,
-          51.05999297723656
-        ]
-      },
-      "properties": {
-        "name": "Veolia Industriepark Deutschland GmbH",
-        "group": "Ver-/ Entsorger",
-        "color": "#ff7300"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_303",
+      "id": "anon_126",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4870,14 +2028,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Vettweiß",
+        "name": "Gemeinde Vettweiß (Vettweiß)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_304",
+      "id": "anon_127",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4886,14 +2044,14 @@
         ]
       },
       "properties": {
-        "name": "Wassergewinnungs- u. -aufbereitungsgesellschaft Nordeifel mbH",
+        "name": "Wassergewinnungs- u. -aufbereitungsgesellschaft Nordeifel mbH (WAG Nordeifel)",
         "group": "Ver-/ Entsorger",
         "color": "#ff7300"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_305",
+      "id": "anon_128",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4902,14 +2060,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Waldfeucht",
+        "name": "Gemeinde Waldfeucht (Waldfeucht)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_306",
+      "id": "anon_129",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4918,14 +2076,14 @@
         ]
       },
       "properties": {
-        "name": "Wasserhub Aachen",
+        "name": "Wasserhub Aachen (Wasserhub Aachen)",
         "group": "Forschung",
         "color": "#3b82f6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_307",
+      "id": "anon_130",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4934,30 +2092,14 @@
         ]
       },
       "properties": {
-        "name": "Wasserbehörde Limburg (Waterschap Limburg)",
+        "name": "Wasserbehörde Limburg (Waterschap Limburg) (Waterschap Limburg)",
         "group": "Behörde",
         "color": "#f43f5e"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_308",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          5.99562200040498,
-          51.191179002049445
-        ]
-      },
-      "properties": {
-        "name": "Wasserbehörde Limburg (Waterschap Limburg)",
-        "group": "Behörde",
-        "color": "#f43f5e"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_309",
+      "id": "anon_131",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4966,14 +2108,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Wegberg",
+        "name": "Stadt Wegberg (Wegberg)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_310",
+      "id": "anon_132",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4982,14 +2124,14 @@
         ]
       },
       "properties": {
-        "name": "Gemeinde Weilerswist",
+        "name": "Gemeinde Weilerswist (Weilerswist)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_311",
+      "id": "anon_133",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -4998,30 +2140,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Wesseling",
+        "name": "Stadt Wesseling (Wesseling)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_312",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.981757003048151,
-          50.82781499652073
-        ]
-      },
-      "properties": {
-        "name": "Stadt Wesseling",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_313",
+      "id": "anon_134",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -5030,14 +2156,14 @@
         ]
       },
       "properties": {
-        "name": "Wirtschaftsfördergesellschaft für den Kreis Heinsberg mbH",
+        "name": "Wirtschaftsfördergesellschaft für den Kreis Heinsberg mbH (WFG HS)",
         "group": "Netzwerk/ Multiplikator",
         "color": "#ff007f"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_314",
+      "id": "anon_135",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -5046,30 +2172,14 @@
         ]
       },
       "properties": {
-        "name": "WIN.DN GmbH - Wirtschafts- und Innovationsnetzwerk Düren",
+        "name": "WIN.DN GmbH - Wirtschafts- und Innovationsnetzwerk Düren (WIN.DN)",
         "group": "Netzwerk/ Multiplikator",
         "color": "#ff007f"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_315",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.470921005233685,
-          50.83133699707422
-        ]
-      },
-      "properties": {
-        "name": "WIN.DN GmbH - Wirtschafts- und Innovationsnetzwerk Düren",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_316",
+      "id": "anon_136",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -5078,14 +2188,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Würselen",
+        "name": "Stadt Würselen (Würselen)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_317",
+      "id": "anon_137",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -5094,126 +2204,14 @@
         ]
       },
       "properties": {
-        "name": "Wasserverband Eifel-Rur",
+        "name": "Wasserverband Eifel-Rur (WVER)",
         "group": "Konsortium",
-        "color": "#1d4ed8"
+        "color": "#8b5cf6"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_318",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.480183994931681,
-          50.80981099764889
-        ]
-      },
-      "properties": {
-        "name": "Wasserverband Eifel-Rur",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_319",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.480183994931681,
-          50.80981099764889
-        ]
-      },
-      "properties": {
-        "name": "Wasserverband Eifel-Rur",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_320",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.480183994931681,
-          50.80981099764889
-        ]
-      },
-      "properties": {
-        "name": "Wasserverband Eifel-Rur",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_321",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.480183994931681,
-          50.80981099764889
-        ]
-      },
-      "properties": {
-        "name": "Wasserverband Eifel-Rur",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_322",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.480183994931681,
-          50.80981099764889
-        ]
-      },
-      "properties": {
-        "name": "Wasserverband Eifel-Rur",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_323",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.480183994931681,
-          50.80981099764889
-        ]
-      },
-      "properties": {
-        "name": "Wasserverband Eifel-Rur",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_324",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.480183994931681,
-          50.80981099764889
-        ]
-      },
-      "properties": {
-        "name": "Wasserverband Eifel-Rur",
-        "group": "Konsortium",
-        "color": "#1d4ed8"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_325",
+      "id": "anon_138",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -5222,14 +2220,14 @@
         ]
       },
       "properties": {
-        "name": "Wasserversorgungszweckverband Perlenbach",
+        "name": "Wasserversorgungszweckverband Perlenbach (WVZV Perlenbach)",
         "group": "Ver-/ Entsorger",
         "color": "#ff7300"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_326",
+      "id": "anon_139",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -5238,222 +2236,14 @@
         ]
       },
       "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
+        "name": "Zukunftsagentur Rheinisches Revier (ZRR) / Zukunftsagentur Rheinisches Revier GmbH (ZRR)",
         "group": "Netzwerk/ Multiplikator",
         "color": "#ff007f"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_327",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_328",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_329",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_330",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_331",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_332",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_333",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_334",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_335",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_336",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_337",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_338",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_339",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.367215000063611,
-          50.94337800227374
-        ]
-      },
-      "properties": {
-        "name": "Zukunftsagentur Rheinisches Revier GmbH",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_340",
+      "id": "anon_140",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -5462,14 +2252,14 @@
         ]
       },
       "properties": {
-        "name": "Stadt Zülpich",
+        "name": "Stadt Zülpich (Zülpich)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
       }
     },
     {
       "type": "Feature",
-      "id": "excel_341",
+      "id": "anon_141",
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -5478,55 +2268,7 @@
         ]
       },
       "properties": {
-        "name": "Zweckverband LANDFOLGE Garzweiler",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_342",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.390703994510381,
-          51.083150002770715
-        ]
-      },
-      "properties": {
-        "name": "Zweckverband LANDFOLGE Garzweiler",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_343",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.390703994510381,
-          51.083150002770715
-        ]
-      },
-      "properties": {
-        "name": "Zweckverband LANDFOLGE Garzweiler",
-        "group": "Netzwerk/ Multiplikator",
-        "color": "#ff007f"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "excel_344",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.390703994510381,
-          51.083150002770715
-        ]
-      },
-      "properties": {
-        "name": "Zweckverband LANDFOLGE Garzweiler",
+        "name": "Zweckverband LANDFOLGE Garzweiler (ZV LANDFOLGE)",
         "group": "Netzwerk/ Multiplikator",
         "color": "#ff007f"
       }
