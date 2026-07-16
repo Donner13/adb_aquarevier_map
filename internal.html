@@ -3837,8 +3837,10 @@
                 const layer = overlayMaps[name];
                 if (map.hasLayer(layer)) {
                     map.removeLayer(layer);
+                    map.fire('overlayremove', { layer: layer, name: name });
                 } else {
                     map.addLayer(layer);
+                    map.fire('overlayadd', { layer: layer, name: name });
                 }
                 updateButtonVisualStates();
                 updateSidebarCounters();
@@ -3878,7 +3880,10 @@
             document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
                 const name = btn.getAttribute('data-layer-name');
                 const layer = overlayMaps[name];
-                if (!map.hasLayer(layer)) map.addLayer(layer);
+                if (!map.hasLayer(layer)) {
+                    map.addLayer(layer);
+                    map.fire('overlayadd', { layer: layer, name: name });
+                }
             });
             updateButtonVisualStates();
             updateSidebarCounters();
@@ -3889,7 +3894,10 @@
             document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
                 const name = btn.getAttribute('data-layer-name');
                 const layer = overlayMaps[name];
-                if (map.hasLayer(layer)) map.removeLayer(layer);
+                if (map.hasLayer(layer)) {
+                    map.removeLayer(layer);
+                    map.fire('overlayremove', { layer: layer, name: name });
+                }
             });
             updateButtonVisualStates();
             updateSidebarCounters();
