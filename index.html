@@ -29,14 +29,14 @@
             --accent-glow: rgba(99, 102, 241, 0.4);
             
             /* Group Colors (Excluding Einzelakteure as they are filtered) */
-            --color-behorde: #f43f5e;
-            --color-forschung: #3b82f6;
-            --color-gebietskorperschaft: #fbbf24;
-            --color-gewerbe: #a855f7;
-            --color-landwirtschaft: #10b981;
-            --color-netzwerk: #ff007f;
-            --color-entsorger: #ff7300;
-            --color-sonstige: #8b5cf6;
+            --color-behorde: #D55E00;
+            --color-forschung: #0072B2;
+            --color-gebietskorperschaft: #E69F00;
+            --color-gewerbe: #CC79A7;
+            --color-landwirtschaft: #009E73;
+            --color-netzwerk: #56B4E9;
+            --color-entsorger: #F0E442;
+            --color-sonstige: #595959;
         }
 
         body.light-theme {
@@ -711,19 +711,19 @@
                     <div class="filter-group">
                         <button class="filter-btn active" data-branche="all">Alle</button>
                         <button class="filter-btn active" data-branche="Papierindustrie">
-                            <span class="dot" style="background:#a16207"></span> Papier
+                            <span class="dot" style="background:#E69F00"></span> Papier
                         </button>
                         <button class="filter-btn active" data-branche="Textilindustrie">
-                            <span class="dot" style="background:#db2777"></span> Textil
+                            <span class="dot" style="background:#CC79A7"></span> Textil
                         </button>
                         <button class="filter-btn active" data-branche="Chemieindustrie">
-                            <span class="dot" style="background:#dc2626"></span> Chemie
+                            <span class="dot" style="background:#D55E00"></span> Chemie
                         </button>
                         <button class="filter-btn active" data-branche="Metallindustrie">
-                            <span class="dot" style="background:#64748b"></span> Metall
+                            <span class="dot" style="background:#000000"></span> Metall
                         </button>
                         <button class="filter-btn active" data-branche="Lebensmittelindustrie">
-                            <span class="dot" style="background:#16a34a"></span> Lebensmittel
+                            <span class="dot" style="background:#009E73"></span> Lebensmittel
                         </button>
                     </div>
                 </div>
@@ -769,15 +769,15 @@
     <script>
         // Group Color Map
         const groupColors = {
-            'Behörde': '#f43f5e',
-            'Forschung': '#3b82f6',
-            'Gebietskörperschaft': '#fbbf24',
-            'Gewerbe/ Industrie': '#a855f7',
-            'Landwirtschaft': '#10b981',
-            'Netzwerk/ Multiplikator': '#ff007f',
-            'Ver-/ Entsorger': '#ff7300',
-            'Sonstige': '#8b5cf6',
-            'Konsortium': '#1d4ed8'
+            'Behörde': '#D55E00',
+            'Forschung': '#0072B2',
+            'Gebietskörperschaft': '#E69F00',
+            'Gewerbe/ Industrie': '#CC79A7',
+            'Landwirtschaft': '#009E73',
+            'Netzwerk/ Multiplikator': '#56B4E9',
+            'Ver-/ Entsorger': '#F0E442',
+            'Sonstige': '#595959',
+            'Konsortium': '#000000'
         };
 
         // Initialize Map centered on NRW (Düsseldorf / Aachen area)
@@ -1173,11 +1173,11 @@
 
         // ELWAS Industrieeinleiter (Direkt-/Indirekteinleiter Rheinisches Revier)
         const elwasBranchColors = {
-            "Papierindustrie": "#a16207",
-            "Textilindustrie": "#db2777",
-            "Chemieindustrie": "#dc2626",
-            "Metallindustrie": "#64748b",
-            "Lebensmittelindustrie": "#16a34a"
+            "Papierindustrie": "#E69F00",
+            "Textilindustrie": "#CC79A7",
+            "Chemieindustrie": "#D55E00",
+            "Metallindustrie": "#000000",
+            "Lebensmittelindustrie": "#009E73"
         };
         const elwasBranchIcons = {
             "Papierindustrie": "📄",
@@ -1201,7 +1201,7 @@
                 pointToLayer: function(feature, latlng) {
                     const branchen = feature.properties.branchen || [];
                     const primary = branchen[0] || "Sonstige";
-                    const color = elwasBranchColors[primary] || "#475569";
+                    const color = elwasBranchColors[primary] || "#595959";
                     const emoji = elwasBranchIcons[primary] || "🏭";
                     const size = 26;
                     const html = `
@@ -1229,7 +1229,7 @@
                 onEachFeature: function(feature, layer) {
                     const p = feature.properties;
                     const branchen = p.branchen || [];
-                    const primaryColor = elwasBranchColors[branchen[0]] || "#475569";
+                    const primaryColor = elwasBranchColors[branchen[0]] || "#595959";
                     let html = `
                         <div class="popup-card">
                             <div class="popup-group" style="color: ${primaryColor}">Industrieeinleiter</div>
@@ -1315,7 +1315,7 @@
                 L.geoJSON(data, {
                     pointToLayer: function(feature, latlng) {
                         const size = 22;
-                        const color = "#0891b2";
+                        const color = "#0072B2";
                         const html = `
                             <div style="
                                 width: ${size}px;
@@ -1338,7 +1338,7 @@
                         const p = feature.properties;
                         let html = `
                             <div class="popup-card">
-                                <div class="popup-group" style="color: #0891b2">Kläranlage</div>
+                                <div class="popup-group" style="color: #0072B2">Kläranlage</div>
                                 <div class="popup-title">${p.name || 'Unbekannt'}</div>
                                 <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
                         `;
@@ -1370,7 +1370,7 @@
                 const count = cluster.getChildCount();
                 const dim = count >= 100 ? 44 : (count >= 10 ? 38 : 32);
                 return L.divIcon({
-                    html: `<div style="width:${dim}px;height:${dim}px;line-height:${dim}px;background:rgba(14,165,233,0.85);border:2px solid #fff;border-radius:50%;color:#fff;font-weight:600;text-align:center;font-size:12px;box-shadow:0 0 6px rgba(0,0,0,0.5);">${count}</div>`,
+                    html: `<div style="width:${dim}px;height:${dim}px;line-height:${dim}px;background:rgba(86,180,233,0.85);border:2px solid #fff;border-radius:50%;color:#fff;font-weight:600;text-align:center;font-size:12px;box-shadow:0 0 6px rgba(0,0,0,0.5);">${count}</div>`,
                     className: 'gwm-cluster-icon',
                     iconSize: L.point(dim, dim)
                 });
@@ -1388,7 +1388,7 @@
                             // Muss ein echter L.marker sein (kein circleMarker/Path) -
                             // Leaflet.markercluster rendert Vektor-Layer nicht.
                             const icon = L.divIcon({
-                                html: '<div style="width:10px;height:10px;background:#0ea5e9;border:1px solid #fff;border-radius:50%;box-shadow:0 0 3px rgba(0,0,0,0.5);"></div>',
+                                html: '<div style="width:10px;height:10px;background:#56B4E9;border:1px solid #fff;border-radius:50%;box-shadow:0 0 3px rgba(0,0,0,0.5);"></div>',
                                 className: 'gwm-marker',
                                 iconSize: [10, 10],
                                 iconAnchor: [5, 5]
@@ -1399,7 +1399,7 @@
                             const p = feature.properties;
                             const html = `
                                 <div class="popup-card">
-                                    <div class="popup-group" style="color: #0ea5e9">Grundwassermessstelle</div>
+                                    <div class="popup-group" style="color: #56B4E9">Grundwassermessstelle</div>
                                     <div class="popup-title">${p.name || 'Unbekannt'}</div>
                                     <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
                                     ${p.eigentuemer ? `<div class="popup-detail">🏢 Eigentümer: ${p.eigentuemer}</div>` : ''}
@@ -1431,7 +1431,7 @@
                 L.geoJSON(data, {
                     pointToLayer: function(feature, latlng) {
                         const size = 22;
-                        const color = "#2563eb";
+                        const color = "#009E73";
                         const html = `
                             <div style="
                                 width: ${size}px;
@@ -1454,7 +1454,7 @@
                         const p = feature.properties;
                         let html = `
                             <div class="popup-card">
-                                <div class="popup-group" style="color: #2563eb">Pegel</div>
+                                <div class="popup-group" style="color: #009E73">Pegel</div>
                                 <div class="popup-title">${p.name || 'Unbekannt'}</div>
                                 <div class="popup-detail">📍 ${p.kreis || ''}</div>
                         `;
@@ -1479,7 +1479,7 @@
                 L.geoJSON(data, {
                     pointToLayer: function(feature, latlng) {
                         const size = 22;
-                        const color = "#f97316";
+                        const color = "#D55E00";
                         const html = `
                             <div style="
                                 width: ${size}px;
@@ -1502,7 +1502,7 @@
                         const p = feature.properties;
                         let html = `
                             <div class="popup-card">
-                                <div class="popup-group" style="color: #f97316">Stauanlage</div>
+                                <div class="popup-group" style="color: #D55E00">Stauanlage</div>
                                 <div class="popup-title">${p.name || 'Unbekannt'}</div>
                                 <div class="popup-detail">📍 ${p.kreis || ''}</div>
                         `;
@@ -1527,7 +1527,7 @@
                 L.geoJSON(data, {
                     pointToLayer: function(feature, latlng) {
                         const size = 22;
-                        const color = "#06b6d4";
+                        const color = "#CC79A7";
                         const html = `
                             <div style="
                                 width: ${size}px;
@@ -1550,7 +1550,7 @@
                         const p = feature.properties;
                         let html = `
                             <div class="popup-card">
-                                <div class="popup-group" style="color: #06b6d4">Regenbecken / Sonderbauwerk</div>
+                                <div class="popup-group" style="color: #CC79A7">Regenbecken / Sonderbauwerk</div>
                                 <div class="popup-title">${p.name || 'Unbekannt'}</div>
                                 <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
                         `;
@@ -1575,7 +1575,7 @@
                 L.geoJSON(data, {
                     pointToLayer: function(feature, latlng) {
                         const size = 22;
-                        const color = "#a855f7";
+                        const color = "#E69F00";
                         const html = `
                             <div style="
                                 width: ${size}px;
@@ -1598,7 +1598,7 @@
                         const p = feature.properties;
                         let html = `
                             <div class="popup-card">
-                                <div class="popup-group" style="color: #a855f7">Querbauwerk / Bauwerk</div>
+                                <div class="popup-group" style="color: #E69F00">Querbauwerk / Bauwerk</div>
                                 <div class="popup-title">${p.name || 'Unbekannt'}</div>
                                 <div class="popup-detail">📍 ${p.kreis || ''}</div>
                         `;
@@ -2083,7 +2083,7 @@
             filteredFeatures.forEach(feature => {
                 const [lng, lat] = feature.geometry.coordinates;
                 const props = feature.properties;
-                const color = groupColors[props.group] || '#8b5cf6';
+                const color = groupColors[props.group] || '#595959';
 
                 // Render the normal custom marker (colored by group, e.g. purple for Tillmann)
                 let marker = createCustomMarker(lat, lng, color, props.name, props.group);

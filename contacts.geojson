@@ -6934,16 +6934,16 @@
     "markerBorder": 2,
     "markerTooltip": "all",
     "groupColors": {
-      "Behörde": "#f43f5e",
-      "Forschung": "#3b82f6",
-      "Gebietskörperschaft": "#fbbf24",
-      "Gewerbe/ Industrie": "#a855f7",
-      "Landwirtschaft": "#10b981",
-      "Netzwerk/ Multiplikator": "#ff007f",
-      "Ver-/ Entsorger": "#ff7300",
-      "Sonstige": "#8b5cf6",
-      "Konsortium": "#1d4ed8",
-      "Einzelakteure": "#00f5d4"
+      "Behörde": "#D55E00",
+      "Forschung": "#0072B2",
+      "Gebietskörperschaft": "#E69F00",
+      "Gewerbe/ Industrie": "#CC79A7",
+      "Landwirtschaft": "#009E73",
+      "Netzwerk/ Multiplikator": "#56B4E9",
+      "Ver-/ Entsorger": "#F0E442",
+      "Sonstige": "#595959",
+      "Konsortium": "#000000",
+      "Einzelakteure": "#A8A8A8"
     },
     "groupNames": {
       "Behörde": "Behörde",
