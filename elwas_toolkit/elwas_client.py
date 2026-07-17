@@ -95,7 +95,41 @@ async def fill_regional_search(page, frame, kreis_or_gemeinde_text):
     `page` must be passed explicitly for the keyboard.type() call (typing
     goes through the OS-level keyboard API, not the frame).
     """
+async def open_regional_search_dropdown(frame):
+    """Opens the 'Regionale Suche' dropdown if it's not already open."""
+    print("open_regional_search_dropdown aufgerufen.")
+    # Check if the search fields are already visible
+    if await frame.locator("input[id$='gemeindeName_idCommon2']").is_visible():
+        print("Regionale Suche Dropdown ist bereits offen.")
+        return
+
+    print("Suche nach 'Regionale Suche' Dropdown-Button...")
+    # Try to find and click the button/link to open the dropdown
+    # Common selectors: text, specific ID, or class
+    dropdown_button = frame.locator("a:has-text('Regionale Suche')").first
+    if await dropdown_button.count() == 0:
+        dropdown_button = frame.locator("button:has-text('Regionale Suche')").first
+    if await dropdown_button.count() == 0:
+        dropdown_button = frame.locator("span:has-text('Regionale Suche')").first # Neuer Versuch: span
+    
+    if await dropdown_button.count() > 0:
+        print(f"Dropdown-Button gefunden: {await dropdown_button.inner_text()}")
+        await dropdown_button.click()
+        print("Dropdown-Button geklickt. Warte auf Sichtbarkeit des Suchfeldes...")
+        await frame.locator("input[id$='gemeindeName_idCommon2']").wait_for(state="visible", timeout=10000) # Erhöhe Timeout
+        print("'Regionale Suche' Dropdown geöffnet und Suchfeld sichtbar.")
+    else:
+        print("Fehler: 'Regionale Suche' Dropdown-Button nicht gefunden.")
+        raise RuntimeError("Regionale Suche Dropdown-Button nicht gefunden.") # Fehler werfen, um den Prozess zu stoppen und zu debuggen
+
+
+async def fill_regional_search(frame, page, kreis_or_gemeinde_text):
+    """Fills the regional search field (Kreis or Gemeinde) and selects the value."""
+    await open_regional_search_dropdown(frame) # <-- HIER WIRD DIE NEUE FUNKTION AUFGERUFEN
+
     field = frame.locator("input[id$='gemeindeName_idCommon2']")
+    if await field.count() == 0:
+        field = frame.locator("input[id$='kreisName_idCommon2']")
     if await field.count() == 0:
         raise RuntimeError("Regional search field not found on this page")
     await field.first.click()

@@ -1,0 +1,20 @@
+{
+  "stauanlagen": {
+    "geojson_path": "stauanlagen.geojson",
+    "required_fields": ["anlagen_nr", "name", "kreis", "betreiber", "gewaesser"],
+    "blacklist_fragments": ["Absperrbauwerk", "stationierungskarte"],
+    "row_count_baseline_key": "stauanlagen"
+  },
+  "regenbecken": {
+    "geojson_path": "regenbecken.geojson",
+    "required_fields": ["anlagen_nr", "name", "kreis", "betreiber"],
+    "blacklist_fragments": ["Zustellanschrift", "/-entlastungsanlagen:"],
+    "row_count_baseline_key": "regenbecken"
+  },
+  "querbauwerke": {
+    "geojson_path": "querbauwerke.geojson",
+    "required_fields": ["anlagen_nr", "name", "kreis", "bauwerksart", "typ", "gewaesser"],
+    "blacklist_fragments": ["e", "Gewässerkennzahl / Gewässername / Auflage...", "unknown_"],
+    "row_count_baseline_key": "querbauwerke"
+  }
+}

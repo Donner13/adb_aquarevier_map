@@ -12,6 +12,9 @@ from playwright.async_api import async_playwright
 sys.path.insert(0, r"C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\elwas_toolkit")
 import elwas_client as ec
 
+# Import des DataQualityGate
+from elwas_raw_data.data_quality_gate import DataQualityGate
+
 BASE = os.path.dirname(os.path.abspath(__file__))
 OUT_PATH = os.path.join(BASE, "stauanlagen.json")
 
@@ -67,6 +70,7 @@ async def main():
         catalog = ec.load_sitemap()
         match = next(c for c in catalog if c["text"] == "Stauanlagen")
 
+        all_kreis_counts = {}
         for kreis in KREISE:
             print(f"\n=== Kreis: {kreis} ===", flush=True)
             await ec.open_dataset(page, match["href"])
@@ -87,7 +91,41 @@ async def main():
 
             n = await ec.get_result_row_count(frame)
             print(f"  {n} Stauanlagen gefunden", flush=True)
+            all_kreis_counts[kreis] = n
 
+        # Pre-Scrape Data Quality Gate: Row-Count-Tripwire
+        gate = DataQualityGate()
+        try:
+            gate.check_row_count_tripwire("stauanlagen", all_kreis_counts)
+        except RuntimeError as e:
+            print(e)
+            print("Scraping abgebrochen aufgrund des Row-Count-Tripwires.")
+            await browser.close()
+            return # Skript beenden
+
+        # Reset page for actual scraping after tripwire check
+        await page.goto(match["href"])
+        frame = await ec.get_frame(page)
+
+        for kreis in KREISE:
+            print(f"\n=== Kreis: {kreis} ===", flush=True)
+            await ec.open_dataset(page, match["href"])
+            frame = await ec.get_frame(page)
+            
+            # Cold-session form rendering wait
+            try:
+                await frame.wait_for_selector("input[value='Suchen'], select", state="attached", timeout=8000)
+            except Exception:
+                pass
+
+            try:
+                await ec.fill_regional_search(page, frame, kreis)
+            except Exception as e:
+                print(f"  Regional search failed: {e}", flush=True)
+                continue
+            await ec.submit_search(frame, wait_ms=3000)
+
+            n = all_kreis_counts[kreis] # Verwende die bereits ermittelte Anzahl
             if n == 0:
                 continue
 

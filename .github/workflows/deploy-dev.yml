@@ -17,6 +17,16 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run Data Quality Gate
+        run: |
+          pip install -r requirements.txt # falls noetig, ansonsten entfernen
+          python validate_geojson.py --all
+
       - name: Install Surge
         run: npm install -g surge
 

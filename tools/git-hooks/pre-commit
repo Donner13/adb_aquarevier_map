@@ -1,0 +1,56 @@
+#!/bin/sh
+
+# Navigiere zum Root-Verzeichnis des Git-Repos
+cd "$(git rev-parse --show-toplevel)"
+
+CONFIG_FILE="elwas_raw_data/dataset_quality_config.json"
+
+# Überprüfe, ob die Konfigurationsdatei existiert
+if [ ! -f "$CONFIG_FILE" ]; then
+  echo "WARN: Konfigurationsdatei $CONFIG_FILE nicht gefunden. Datenqualitäts-Gate übersprungen."
+  exit 0
+fi
+
+# Lese die GeoJSON-Pfade aus der Konfigurationsdatei
+GEOJSON_PATHS=$(python -c "import json; f=open('$CONFIG_FILE', 'r', encoding='utf-8'); config=json.load(f); f.close(); print(' '.join([d['geojson_path'] for d in config.values()]))")
+
+# Ermittle alle gestagten GeoJSON-Dateien, die in der Konfiguration sind
+STAGED_GEOJSON_FILES=$(git diff --cached --name-only | grep -E "("$(echo $GEOJSON_PATHS | sed 's/ /|/g')")")
+
+if [ -z "$STAGED_GEOJSON_FILES" ]; then
+  echo "INFO: Keine relevanten GeoJSON-Dateien gestaged. Datenqualitäts-Gate übersprungen."
+  exit 0
+fi
+
+OVERALL_EXIT_CODE=0
+QUARANTINE_FILES_TO_ADD=""
+
+for FILE in $STAGED_GEOJSON_FILES;
+do
+  BASENAME=$(basename "$FILE")
+  DATASET_KEY=$(python -c "import json; f=open('$CONFIG_FILE', 'r', encoding='utf-8'); config=json.load(f); f.close(); print([k for k, v in config.items() if v['geojson_path'] == '$BASENAME'][0] if any(v['geojson_path'] == '$BASENAME' for v in config.values()) else '')")
+
+  if [ -n "$DATASET_KEY" ]; then
+    echo "INFO: Validierung von $FILE (Datensatz: $DATASET_KEY) ..."
+    python validate_geojson.py --dataset "$DATASET_KEY"
+    VALIDATION_EXIT_CODE=$?
+
+    if [ $VALIDATION_EXIT_CODE -ne 0 ]; then
+      echo "FEHLER: Datenqualitäts-Gate für $FILE fehlgeschlagen. Commit abgebrochen."
+      OVERALL_EXIT_CODE=1
+    fi
+
+    QUARANTINE_FILE="$(dirname "$FILE")/${BASENAME%.geojson}.quarantine.geojson"
+    if [ -f "$QUARANTINE_FILE" ]; then
+      echo "WARN: Quarantäne-Datei $QUARANTINE_FILE erstellt. Wird automatisch zum Commit hinzugefügt."
+      QUARANTINE_FILES_TO_ADD="$QUARANTINE_FILES_TO_ADD $QUARANTINE_FILE"
+    fi
+  fi
+done
+
+# Quarantäne-Dateien zum Staging hinzufügen
+if [ -n "$QUARANTINE_FILES_TO_ADD" ]; then
+  git add $QUARANTINE_FILES_TO_ADD
+fi
+
+exit $OVERALL_EXIT_CODE

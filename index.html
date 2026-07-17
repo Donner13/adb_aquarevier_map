@@ -993,6 +993,7 @@
                             <span class="swatch" style="background-color: #E69F00;"></span>
                             <span class="filter-label">Querbauwerke</span>
                             <span class="counter-badge" id="cnt-layer-querbauwerke">(0/0)</span>
+                            <span class="quality-badge" id="qbadge-layer-querbauwerke" title="" hidden>⚠️</span>
                         </button>
                         <button class="filter-btn" data-layer-name="🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)" title="Aggregierte Einleitungsstatistik pro Teileinzugsgebiet (Choroplethenkarte)">
                             <span class="swatch" style="background-color: #991b1b;"></span>
@@ -3172,7 +3173,15 @@
                 searchIndex.push(rec);
             }
 
-            function addAgg(map_, name, lat, lng) {
+            function addAggDetailed(map_, name, entry) {
+    if (!name) return;
+    const key = String(name).trim();
+    if (!key) return;
+    if (!map_.has(key)) map_.set(key, []);
+    map_.get(key).push(entry); // entry = { cat, lat, lng, props }
+}
+
+function addAgg(map_, name, lat, lng) {
                 if (!name) return;
                 const key = String(name).trim();
                 if (!key) return;
@@ -3181,8 +3190,19 @@
             }
 
             // ---------- Index aufbauen (eigene, unabhaengige Fetches) ----------
-            function buildUnifiedSearchIndex() {
+            function nearestPegel(centerLatLng, pegelList) {
+    let best = null, bestDist = Infinity;
+    pegelList.forEach(p => {
+        const d = centerLatLng.distanceTo(L.latLng(p.lat, p.lng)); // Meter
+        if (d < bestDist) { bestDist = d; best = p; }
+    });
+    return best ? { ...best, distanceKm: (bestDist / 1000).toFixed(1) } : null;
+}
+
+function buildUnifiedSearchIndex() {
                 const gemeindeAgg = new Map();
+                const gemeindeDetailAgg = new Map();
+                const allPegel = [];
                 const gewaesserAgg = new Map();
                 const tasks = [];
 
@@ -3219,7 +3239,7 @@
                                 lat, lng, color,
                                 popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 Branche: ${branchen.join(', ') || '–'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}</div>`
                             });
-                            if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
+                            if (p.gemeinde) { addAgg(gemeindeAgg, p.gemeinde, lat, lng); addAggDetailed(gemeindeDetailAgg, p.gemeinde, { cat: 'einleiter', lat, lng, props: p }); }
                             (p.gewaesser_liste || '').split(',').map(s => s.trim()).filter(Boolean).forEach(g => addAgg(gewaesserAgg, g, lat, lng));
                             (p.einleitungen || []).forEach(e => { if (e.gewaesser && typeof e.lat === 'number' && typeof e.lon === 'number') addAgg(gewaesserAgg, e.gewaesser, e.lat, e.lon); });
                         });
@@ -3239,7 +3259,7 @@
                                 lat, lng,
                                 popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.klaeranlage}">Kläranlage</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.betreiber ? `<div class="popup-detail">🏢 Betreiber: ${p.betreiber}</div>` : ''}${p.gewaesser ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser}</div>` : ''}</div>`
                             });
-                            if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
+                            if (p.gemeinde) { addAgg(gemeindeAgg, p.gemeinde, lat, lng); addAggDetailed(gemeindeDetailAgg, p.gemeinde, { cat: 'klaeranlage', lat, lng, props: p }); }
                             if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
                         });
                     }).catch(() => {}));
