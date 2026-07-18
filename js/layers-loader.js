@@ -139,6 +139,11 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
           });
           // Add individual markers (not the FeatureGroup) to cluster
           clusterGroup.addLayers(markers.getLayers());
+          // Counter badge must reflect real feature count once the lazy
+          // cluster load resolves - see updateSidebarCounters() in
+          // index.html/internal.html; layers-loader.js is shared, hence
+          // the defensive typeof guard (same pattern as getZustaendigkeitHtml above).
+          if (typeof updateSidebarCounters === 'function') updateSidebarCounters();
         })
         .catch(err => console.log(`${cfg.id} layer not loaded:`, err));
     }

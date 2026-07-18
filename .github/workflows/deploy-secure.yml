@@ -28,19 +28,18 @@ jobs:
 
       - name: Install UI regression test dependencies
         run: |
-          pip install -r tests/requirements.txt
-          playwright install --with-deps chromium
+          npm ci
+          npx playwright install --with-deps chromium
 
       - name: Run UI Regression Gate (Playwright)
-        run: |
-          python -m pytest tests/ -v
+        run: npx playwright test
 
-      - name: Upload failing screenshots (diagnostics)
+      - name: Upload Playwright report (diagnostics)
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: ui-regression-actual-screenshots
-          path: tests/screenshots/actual/
+          name: ui-regression-playwright-report
+          path: playwright-report/
           retention-days: 14
 
       - name: Install Surge

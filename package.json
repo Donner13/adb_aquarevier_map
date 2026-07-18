@@ -1,0 +1,27 @@
+{
+  "name": "contact_map",
+  "version": "1.0.0",
+  "description": "Dieses Tool visualisiert die Akteure aus dem Excel-Datensatz `ADB_AquaRevier` auf einer interaktiven Karte sowie in **QGIS**. Es beinhaltet zusätzlich amtliche Geodaten des Landes NRW (Grenzen, Landkreise, Flüsse und Gewässer).",
+  "main": "add_css.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dtunder/adb_aquarevier_map.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Dtunder/adb_aquarevier_map/issues"
+  },
+  "homepage": "https://github.com/Dtunder/adb_aquarevier_map#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1"
+  }
+}

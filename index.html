@@ -2363,6 +2363,7 @@
                             layer.bindPopup(html);
                         }
                     }).addTo(catchmentStatsLayer);
+                    updateSidebarCounters();
                 })
                 .catch(err => console.log("catchment stats layer not loaded:", err));
         }

@@ -10,4 +10,9 @@ internal.html
 .github
 *.log
 tests
-pytest.ini
+package.json
+package-lock.json
+node_modules
+playwright.config.js
+playwright-report
+test-results

@@ -1,18 +1,23 @@
 name: Regenerate UI Regression Baselines
 
-# Manual-only: regenerates tests/screenshots/baseline/*.png by actually
-# running the Playwright capture on the same ubuntu-latest + Playwright
-# Chromium environment the "Run UI Regression Gate" step in
+# Manual-only: regenerates tests/ui-regression/**/*-snapshots/*.png by
+# actually running the Playwright capture on the same ubuntu-latest +
+# Playwright Chromium environment the "Run UI Regression Gate" step in
 # deploy-secure.yml uses. Screenshot baselines are OS/font-rendering
 # sensitive (this repo's sidebar buttons use a lot of emoji + German
 # umlauts), so baselines generated on a developer's machine (Windows/macOS)
 # will not match what CI renders. Use this instead of hand-editing
-# DIFF_THRESHOLD when the gate fails on screenshot diffs after an
+# maxDiffPixelRatio when the gate fails on screenshot diffs after an
 # intentional UI change.
+#
+# Node port of the original Python-suite regen-ui-baselines.yml (same
+# manual download-then-commit pattern, proven earlier today - not switched
+# to an auto-commit-back workflow_call as backlog #8 section 8 sketches,
+# since only this one workflow needs it; see migration commit message).
 #
 # Usage: trigger via `gh workflow run regen-ui-baselines.yml --ref <branch>`,
 # wait for completion, then `gh run download <run-id> -n ui-regression-baselines`
-# and commit the downloaded PNGs over tests/screenshots/baseline/.
+# and commit the downloaded PNGs over tests/ui-regression/**/*-snapshots/.
 
 on:
   workflow_dispatch:
@@ -24,24 +29,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.10'
+          node-version: "20"
 
       - name: Install UI regression test dependencies
         run: |
-          pip install -r tests/requirements.txt
-          playwright install --with-deps chromium
+          npm ci
+          npx playwright install --with-deps chromium
 
       - name: Regenerate baselines
         run: |
-          rm -rf tests/screenshots/actual
-          python -m pytest tests/ -v --update-baselines
+          rm -rf test-results
+          npx playwright test --update-snapshots
 
       - name: Upload regenerated baselines
         uses: actions/upload-artifact@v4
         with:
           name: ui-regression-baselines
-          path: tests/screenshots/baseline/
+          path: tests/ui-regression/**/*-snapshots/
           retention-days: 14

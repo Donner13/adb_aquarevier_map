@@ -19,7 +19,12 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Playwright UI regression suite: baselines under tests/screenshots/baseline
-# ARE committed; actual/diff output from local runs is not.
-tests/screenshots/actual/
-.pytest_cache/
+# Playwright UI regression suite (Node/@playwright/test): baselines under
+# tests/ui-regression/**/*-snapshots/ ARE committed; everything else here
+# is local/CI run output.
+node_modules/
+test-results/
+playwright-report/
+
+# Sub-agent isolation worktrees (not part of repo content)
+.claude/worktrees/
