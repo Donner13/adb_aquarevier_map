@@ -1,0 +1,9 @@
+[
+    { "kn5": "05334", "name": "Städteregion Aachen", "einwohner": 559761, "stichtag": "31.12.2022", "quelle_url": "https://www.it.nrw/kommunalprofil-staedteregion-aachen-05334000" },
+    { "kn5": "05362", "name": "Rhein-Erft-Kreis", "einwohner": 473080, "stichtag": "31.12.2022", "quelle_url": "https://www.it.nrw/kommunalprofil-rhein-erft-kreis-05362000" },
+    { "kn5": "05162", "name": "Rhein-Kreis Neuss", "einwohner": 458016, "stichtag": "31.12.2022", "quelle_url": "https://www.it.nrw/kommunalprofil-rhein-kreis-neuss-05162000" },
+    { "kn5": "05116", "name": "Mönchengladbach", "einwohner": 268936, "stichtag": "31.12.2022", "quelle_url": "https://www.it.nrw/kommunalprofil-moenchengladbach-05116000" },
+    { "kn5": "05358", "name": "Kreis Düren", "einwohner": 270522, "stichtag": "31.12.2022", "quelle_url": "https://www.it.nrw/kommunalprofil-kreis-dueren-05358000" },
+    { "kn5": "05370", "name": "Kreis Heinsberg", "einwohner": 259785, "stichtag": "31.12.2022", "quelle_url": "https://www.it.nrw/kommunalprofil-kreis-heinsberg-05370000" },
+    { "kn5": "05366", "name": "Kreis Euskirchen", "einwohner": 199199, "stichtag": "31.12.2022", "quelle_url": "https://www.it.nrw/kommunalprofil-kreis-euskirchen-05366000" }
+]

@@ -351,3 +351,15 @@ Fluss-Label-Kontrast, mobile Popup-Breite. Groessere Punkte NICHT umgesetzt
 
 Volle Rohbefunde (alle 4 Agenten, mit genauen Zeilennummern/Messwerten):
 `C:\Users\user\.claude\projects\C--Users-user\eebfc37d-7537-41f5-ad22-4069251ad0c8\subagents\workflows\wf_dc8413d5-d06\journal.jsonl`
+
+## 10. Kreis-Choropleth + Vergleichsscorecard mit Bevölkerungsbezug (2026-07-18)
+
+- **Was umgesetzt wurde:** 
+  - Eine vollflächige Choroplethenkarte (`kreise_scorecard.geojson`) der 7 Kreise/Städte des Rheinischen Reviers mit 4 wählbaren Kennzahlen (Industrieeinleiter, Kläranlagen-Kapazität, Messstellendichte, Einwohner).
+  - Ein zentriertes Modal-Scorecard-Vergleichspanel, welches bei Klick auf einen Kreis alle 7 Kreise absteigend sortiert nach der aktiven Kennzahl auflistet und den ausgewählten Kreis hervorhebt.
+  - Dynamisches Resortieren und Update der Modal-Tabelle sowie des Informationstexts, wenn das Dropdown bei geöffnetem Modal umgeschaltet wird.
+  - Einbindung in `index.html` und `internal.html` synchron, inklusive CSS-Farbrampe und mobile/Contrast-Optimierungen.
+- **Datenbasis / Einwohnerdaten:**
+  - Quelle: IT.NRW (Bevölkerungsstand Fortschreibung auf Basis Zensus 2022, Stichtag 31.12.2022).
+  - Städteregion Aachen: 559.761, Rhein-Erft-Kreis: 473.080, Rhein-Kreis Neuss: 458.016, Mönchengladbach: 268.936, Kreis Düren: 270.522, Kreis Heinsberg: 259.785, Kreis Euskirchen: 199.199.
+- **Kläranlagen-Auslastung:** Da in ELWAS-WEB kein tatsächlicher Auslastungsgrad verfügbar ist, wurde die Kennzahl wahrheitsgemäß in "Kläranlagen-Kapazität (Ausbaugröße EW)" umbenannt, um irreführende Schätzwerte zu vermeiden.

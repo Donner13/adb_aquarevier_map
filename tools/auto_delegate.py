@@ -121,6 +121,8 @@ def run_delegation(limit=1):
             f"2. Write any helper Python scripts or data conversions in the repository if necessary.\n"
             f"3. Run check_html.py and verify JS syntax to ensure there are no syntax errors.\n"
             f"4. Once implemented and verified, commit the changes to git with a descriptive commit message starting with 'feat: '.\n"
+            f"5. IMPORTANT: DO NOT run 'git pull' or 'git push' as it will fail due to authentication. The repository is already fully up to date. Only modify files locally, verify them, and commit them locally using git.\n"
+            f"6. IMPORTANT: The Python data script 'elwas_raw_data/build_kreis_choropleth_stats.py' and the data file 'kreise_scorecard.geojson' are ALREADY fully implemented, validated, and working. DO NOT modify, create, or re-run the Python script. ONLY implement the frontend parts in index.html and internal.html to render the choropleth map and the scorecard modal using Leaflet and CSS. Proceed directly to editing index.html and internal.html.\n"
         )
         
         def safe_print(msg):

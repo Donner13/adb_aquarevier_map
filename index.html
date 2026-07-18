@@ -132,6 +132,191 @@
             text-shadow: 2px 2px 4px #fff, -2px -2px 4px #fff, 2px -2px 4px #fff, -2px 2px 4px #fff !important;
         }
 
+        body.light-theme .main-partner-label {
+            color: #1e3a8a !important;
+            text-shadow: 2px 2px 4px #fff, -2px -2px 4px #fff, 2px -2px 4px #fff, -2px 2px 4px #fff !important;
+        }
+
+        /* Choropleth Colors (Okabe-Ito Blue Ramp) */
+        .choropleth-color-1 { fill: #cfe8f3; }
+        .choropleth-color-2 { fill: #8fc4e3; }
+        .choropleth-color-3 { fill: #4a9bd1; }
+        .choropleth-color-4 { fill: #0072B2; }
+        .choropleth-color-5 { fill: #004a75; }
+
+        /* Scorecard Modal */
+        #kreisScorecardModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #kreisScorecardModal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scorecard-content {
+            background: var(--bg-surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        #kreisScorecardModal.active .scorecard-content {
+            transform: translateY(0);
+        }
+
+        .scorecard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .scorecard-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8em;
+            color: var(--text-primary);
+        }
+
+        .scorecard-header .close-btn {
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .scorecard-header .close-btn:hover {
+            color: var(--accent-primary);
+        }
+
+        .scorecard-summary {
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .scorecard-summary strong {
+            color: var(--text-primary);
+        }
+
+        .scorecard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .scorecard-table th, .scorecard-table td {
+            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .scorecard-table th {
+            background-color: rgba(255, 255, 255, 0.05);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            color: var(--text-primary);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 1;
+        }
+
+        .scorecard-table tbody tr:hover {
+            background-color: var(--bg-surface-hover);
+        }
+
+        .scorecard-table .highlighted-row {
+            background-color: rgba(99, 102, 241, 0.2); /* --accent-primary with transparency */
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        .scorecard-table .highlighted-row:hover {
+            background-color: rgba(99, 102, 241, 0.3);
+        }
+
+        body.light-theme .scorecard-table th {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        body.light-theme .scorecard-table .highlighted-row {
+            background-color: rgba(79, 70, 229, 0.1);
+            border-left-color: var(--accent-primary);
+        }
+
+        body.light-theme .scorecard-table .highlighted-row:hover {
+            background-color: rgba(79, 70, 229, 0.15);
+        }
+
+        /* Dropdown for Choropleth Metric */
+        .choropleth-controls {
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 10px;
+        }
+
+        .choropleth-controls label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+
+        .choropleth-controls select {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-surface-hover);
+            color: var(--text-primary);
+            font-size: 1em;
+            appearance: none; /* Remove default dropdown arrow */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23f3f4f6%22%20d%3D%22M287%2C197.3L159.3%2C69.7c-4.7-4.7-12.3-4.7-17%2C0L5.4%2C197.3c-4.7%2C4.7-4.7%2C12.3%2C0%2C17l19.7%2C19.7c4.7%2C4.7%2C12.3%2C4.7%2C17%2C0l108.6-108.6l108.6%2C108.6c4.7%2C4.7%2C12.3%2C4.7%2C17%2C0l19.7-19.7C291.7%2C209.6%2C291.7%2C202%2C287%2C197.3z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow */
+            background-repeat: no-repeat;
+            background-position: right 12px top 50%;
+            background-size: 12px auto;
+            cursor: pointer;
+        }
+
+        body.light-theme .choropleth-controls select {
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%230f172a%22%20d%3D%22M287%2C197.3L159.3%2C69.7c-4.7-4.7-12.3-4.7-17%2C0L5.4%2C197.3c-4.7%2C4.7-4.7%2C12.3%2C0%2C17l19.7%2C19.7c4.7%2C4.7%2C12.3%2C4.7%2C17%2C0l108.6-108.6l108.6%2C108.6c4.7%2C4.7%2C12.3%2C4.7%2C17%2C0l19.7-19.7C291.7%2C209.6%2C291.7%2C202%2C287%2C197.3z%22%2F%3E%3C%2Fsvg%3E');
+        }
+
+        .choropleth-controls select:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 1px;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -851,6 +1036,147 @@
             font-weight: 800;
             font-size: 11px;
         }
+
+        /* Choropleth select styling */
+        .choropleth-select-container {
+            margin: 8px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .choropleth-select-container label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .choropleth-select-container select {
+            background: var(--bg-surface-hover);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 13px;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .choropleth-select-container select:hover {
+            border-color: var(--accent-primary);
+        }
+
+        /* Scorecard Modal */
+        .scorecard-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .scorecard-modal {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 750px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: modalFadeIn 0.25s ease-out;
+            backdrop-filter: blur(20px);
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .scorecard-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .scorecard-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .scorecard-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .scorecard-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+        .scorecard-body {
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .scorecard-kpi-narration {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-primary);
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent-primary);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+        }
+        .scorecard-table-wrapper {
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+        .scorecard-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            text-align: left;
+        }
+        .scorecard-table th, .scorecard-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .scorecard-table th {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .scorecard-table tr.active-row {
+            background: rgba(99, 102, 241, 0.15) !important;
+            font-weight: 500;
+        }
+        .scorecard-table tr.active-row td {
+            border-bottom: 2px solid var(--accent-primary);
+        }
+        .scorecard-table tr:hover:not(.active-row) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .scorecard-source {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
     </style>
 </head>
 <body class="light-theme">
@@ -1000,6 +1326,20 @@
                             <span class="filter-label">Einzugsgebiet-Statistik</span>
                             <span class="counter-badge" id="cnt-layer-stats">(0/0)</span>
                         </button>
+                        <button class="filter-btn" data-layer-name="📊 Kreis-Vergleich (Choroplethenkarte)" title="Vergleich der 7 Kreise nach wählbarer Kennzahl inkl. Bevölkerungsbezug">
+                            <span class="swatch" style="background-color: #0072B2; border: 1.2px solid #ffffff;"></span>
+                            <span class="filter-label">Kreis-Vergleich</span>
+                            <span class="counter-badge" id="cnt-layer-kreis-choropleth" style="display: none;">(0/7)</span>
+                        </button>
+                        <div class="choropleth-select-container" id="choroplethMetricContainer" style="display: none;">
+                            <label for="choroplethMetricSelect">Kennzahl:</label>
+                            <select id="choroplethMetricSelect">
+                                <option value="anzahl_einleiter" selected>Industrieeinleiter (Anzahl)</option>
+                                <option value="klaeranlagen_kapazitaet_ew">Kläranlagen-Kapazität (EW)</option>
+                                <option value="messstellendichte_km2">Messstellendichte (Stellen/km²)</option>
+                                <option value="einwohner">Einwohner im Kreisgebiet</option>
+                            </select>
+                        </div>
                         <button class="filter-btn active" data-layer-name="Rur Einzugsgebiet (Hydrologisch)" title="Hydrologisches Einzugsgebiet der Rur">
                             <span class="swatch" style="background-color: #3b82f6;"></span>
                             <span class="filter-label">Rur Einzugsgebiet</span>
@@ -2048,6 +2388,195 @@
         }
         map.on('overlayadd', function(e) {
             if (e.layer === catchmentStatsLayer) loadCatchmentStatsLayer();
+            if (e.layer === kreisChoroplethLayer) {
+                loadKreisChoroplethLayer();
+                document.getElementById('choroplethMetricContainer').style.display = 'flex';
+            }
+        });
+        map.on('overlayremove', function(e) {
+            if (e.layer === kreisChoroplethLayer) {
+                document.getElementById('choroplethMetricContainer').style.display = 'none';
+            }
+        });
+
+        // Kreis-Choropleth + Vergleichsscorecard
+        const kreisChoroplethLayer = L.layerGroup();
+        let kreisChoroplethLoaded = false;
+        let kreisChoroplethData = null;
+        let kreisChoroplethGeoJSON = null;
+        let currentChoroplethMetric = 'anzahl_einleiter';
+        let activeScorecardKreis = null;
+
+        function getQuantileColor(val, values) {
+            const idx = values.indexOf(val);
+            const colors = ['#cfe8f3', '#8fc4e3', '#4a9bd1', '#0072B2', '#004a75'];
+            if (idx === -1) return colors[0];
+            const percent = idx / (values.length - 1 || 1);
+            if (percent < 0.2) return colors[0];
+            if (percent < 0.4) return colors[1];
+            if (percent < 0.6) return colors[2];
+            if (percent < 0.8) return colors[3];
+            return colors[4];
+        }
+
+        function formatMetricValue(val, metric) {
+            if (metric === 'messstellendichte_km2') {
+                return val.toLocaleString('de-DE', {minimumFractionDigits: 3, maximumFractionDigits: 3}) + ' Stellen/km²';
+            }
+            if (metric === 'klaeranlagen_kapazitaet_ew') {
+                return val.toLocaleString('de-DE') + ' EW';
+            }
+            if (metric === 'einwohner') {
+                return val.toLocaleString('de-DE') + ' EW';
+            }
+            return val.toLocaleString('de-DE');
+        }
+
+        function showScorecardModal(selectedKreisName) {
+            if (!kreisChoroplethData) return;
+            const metric = currentChoroplethMetric;
+            const features = kreisChoroplethData.features;
+            
+            const sortedFeatures = [...features].sort((a, b) => b.properties[metric] - a.properties[metric]);
+            const tbody = document.getElementById('scorecardModalTableBody');
+            tbody.innerHTML = '';
+            
+            sortedFeatures.forEach((f) => {
+                const p = f.properties;
+                const isSelected = p.name === selectedKreisName;
+                const tr = document.createElement('tr');
+                if (isSelected) {
+                    tr.className = 'active-row';
+                }
+                
+                tr.innerHTML = `
+                    <td><b>${p.name}</b></td>
+                    <td>${p.einwohner.toLocaleString('de-DE')}</td>
+                    <td>${p.flaeche_km2.toLocaleString('de-DE', {maximumFractionDigits: 1})}</td>
+                    <td>${p.anzahl_einleiter} (${p.einleiter_je_10000ew.toLocaleString('de-DE', {maximumFractionDigits: 1})} / 10k EW)</td>
+                    <td>${p.klaeranlagen_kapazitaet_ew.toLocaleString('de-DE')}</td>
+                    <td>${p.anzahl_messstellen}</td>
+                    <td>${p.messstellendichte_km2.toLocaleString('de-DE', {maximumFractionDigits: 3})}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            const selectedFeature = features.find(f => f.properties.name === selectedKreisName);
+            if (selectedFeature) {
+                const p = selectedFeature.properties;
+                const rank = sortedFeatures.findIndex(f => f.properties.name === selectedKreisName) + 1;
+                const metricLabels = {
+                    'anzahl_einleiter': 'Industrieeinleiter',
+                    'klaeranlagen_kapazitaet_ew': 'Kläranlagen-Kapazität',
+                    'messstellendichte_km2': 'Messstellendichte',
+                    'einwohner': 'Einwohner'
+                };
+                
+                const rankSuffix = `Platz ${rank} von 7 bei ${metricLabels[metric]}`;
+                const text = `<b>${p.name}</b> im Vergleich: ca. ${p.einwohner.toLocaleString('de-DE')} Einwohner (Stand 31.12.2022, Quelle: IT.NRW) | <b>${rankSuffix}</b>`;
+                document.getElementById('scorecardModalNarration').innerHTML = text;
+                document.getElementById('scorecardModalTitle').innerText = `${p.name} im Kreisvergleich`;
+            }
+            
+            document.getElementById('kreisScorecardBackdrop').style.display = 'flex';
+        }
+
+        function loadKreisChoroplethLayer() {
+            if (kreisChoroplethLoaded) return;
+            kreisChoroplethLoaded = true;
+            
+            document.getElementById('choroplethMetricContainer').style.display = 'flex';
+            const badge = document.getElementById('cnt-layer-kreis-choropleth');
+            if (badge) {
+                badge.style.display = 'inline-block';
+                badge.innerText = '(7/7)';
+            }
+
+            fetch('kreise_scorecard.geojson')
+                .then(res => res.ok ? res.json() : Promise.reject())
+                .then(data => {
+                    kreisChoroplethData = data;
+                    renderKreisChoropleth();
+                })
+                .catch(err => {
+                    console.error("Failed to load kreise_scorecard.geojson:", err);
+                    kreisChoroplethLoaded = false;
+                });
+        }
+        
+        function renderKreisChoropleth() {
+            if (!kreisChoroplethData) return;
+            kreisChoroplethLayer.clearLayers();
+            
+            const metric = currentChoroplethMetric;
+            const values = kreisChoroplethData.features.map(f => f.properties[metric]).sort((a, b) => a - b);
+            
+            kreisChoroplethGeoJSON = L.geoJSON(kreisChoroplethData, {
+                style: function(feature) {
+                    const val = feature.properties[metric];
+                    return {
+                        color: '#1e293b',
+                        weight: 1.5,
+                        opacity: 0.8,
+                        fillColor: getQuantileColor(val, values),
+                        fillOpacity: 0.7
+                    };
+                },
+                onEachFeature: function(feature, layer) {
+                    const p = feature.properties;
+                    const sorted = [...kreisChoroplethData.features].sort((a, b) => b.properties[metric] - a.properties[metric]);
+                    const rank = sorted.findIndex(f => f.properties.name === p.name) + 1;
+                    
+                    const formatted = formatMetricValue(p[metric], metric);
+                    const tooltipHtml = `<b>${p.name}</b><br>${formatted} (Platz ${rank} von 7)`;
+                    layer.bindTooltip(tooltipHtml, { sticky: true, direction: 'top' });
+                    
+                    layer.on({
+                        mouseover: function(e) {
+                            const l = e.target;
+                            l.setStyle({
+                                weight: 3,
+                                color: '#6366f1',
+                                fillOpacity: 0.85
+                            });
+                            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                                l.bringToFront();
+                            }
+                        },
+                        mouseout: function(e) {
+                            kreisChoroplethGeoJSON.resetStyle(e.target);
+                        },
+                        click: function(e) {
+                            activeScorecardKreis = p.name;
+                            showScorecardModal(p.name);
+                        }
+                    });
+                }
+            }).addTo(kreisChoroplethLayer);
+        }
+
+        document.getElementById('choroplethMetricSelect').addEventListener('change', (e) => {
+            currentChoroplethMetric = e.target.value;
+            renderKreisChoropleth();
+            if (activeScorecardKreis) {
+                showScorecardModal(activeScorecardKreis);
+            }
+        });
+
+        const closeScorecard = () => {
+            document.getElementById('kreisScorecardBackdrop').style.display = 'none';
+            activeScorecardKreis = null;
+        };
+        document.getElementById('scorecardModalClose').addEventListener('click', closeScorecard);
+        document.getElementById('kreisScorecardBackdrop').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('kreisScorecardBackdrop')) {
+                closeScorecard();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeScorecard();
+            }
         });
 
         // Map layer controller
@@ -2080,7 +2609,8 @@
             "⛰️ Stauanlagen (ELWAS)": stauanlagenLayer,
             "🌧️ Regenbecken/-entlastungsanlagen (ELWAS)": regenbeckenLayer,
             "🧱 Querbauwerke (ELWAS)": querbauwerkeLayer,
-            "🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)": catchmentStatsLayer
+            "🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)": catchmentStatsLayer,
+            "📊 Kreis-Vergleich (Choroplethenkarte)": kreisChoroplethLayer
         };
 
         L.control.layers(baseMaps, {}, { position: 'topright' }).addTo(map);
@@ -2633,6 +3163,7 @@
                 else if (layerName.includes("Regenbecken")) geoData = regenbeckenGeoData;
                 else if (layerName.includes("Querbauwerke")) geoData = querbauwerkeGeoData;
                 else if (layerName.includes("Einzugsgebiet-Statistik")) geoData = statsGeoData;
+                else if (layerName.includes("Kreis-Vergleich")) geoData = kreisChoroplethData;
 
                 let total = 0, visible = 0;
                 const badge = btn.querySelector('.counter-badge');
@@ -3585,5 +4116,41 @@ function buildUnifiedSearchIndex() {
             buildUnifiedSearchIndex();
         })();
     </script>
+    <!-- Kreis comparison scorecard modal -->
+    <div class="scorecard-backdrop" id="kreisScorecardBackdrop" style="display: none;">
+        <div class="scorecard-modal" id="kreisScorecardModal">
+            <div class="scorecard-header">
+                <div class="scorecard-title" id="scorecardModalTitle">Kreisvergleich</div>
+                <button class="scorecard-close" id="scorecardModalClose">&times;</button>
+            </div>
+            <div class="scorecard-body">
+                <div class="scorecard-kpi-narration" id="scorecardModalNarration">
+                    Wählen Sie einen Kreis aus, um Details anzuzeigen.
+                </div>
+                <div class="scorecard-table-wrapper">
+                    <table class="scorecard-table" id="scorecardModalTable">
+                        <thead>
+                            <tr>
+                                <th>Kreis</th>
+                                <th>Einwohner</th>
+                                <th>Fläche (km²)</th>
+                                <th>Einleiter</th>
+                                <th>Klärkapazität (EW)</th>
+                                <th>Messstellen</th>
+                                <th>Dichte (St./km²)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scorecardModalTableBody">
+                            <!-- Rows will be injected here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="scorecard-source" id="scorecardModalSource">
+                    Datenquellen: IT.NRW (Einwohnerzahl Stand 31.12.2022) / ELWAS-WEB
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
