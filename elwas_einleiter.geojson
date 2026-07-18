@@ -33,11 +33,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -45,7 +41,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.465282047481766,
+          6.465282047481765,
           50.81678307291724
         ]
       },
@@ -89,11 +85,7 @@
           }
         ],
         "gewaesser_liste": "Mühlenteich",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -128,11 +120,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -167,11 +155,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -207,11 +191,7 @@
         "anzahl_anfallstellen": 3,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -246,11 +226,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -258,7 +234,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.490009647596082,
+          6.490009647596083,
           50.772929879560785
         ]
       },
@@ -285,11 +261,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -324,11 +296,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -337,7 +305,7 @@
         "type": "Point",
         "coordinates": [
           6.517271586191385,
-          50.76411439994705
+          50.764114399947054
         ]
       },
       "properties": {
@@ -363,11 +331,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -376,7 +340,7 @@
         "type": "Point",
         "coordinates": [
           6.434730772655113,
-          50.86591786668697
+          50.86591786668698
         ]
       },
       "properties": {
@@ -402,11 +366,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -441,11 +401,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -480,11 +436,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -530,11 +482,7 @@
           }
         ],
         "gewaesser_liste": "Kall",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -570,11 +518,7 @@
         "anzahl_anfallstellen": 2,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -609,11 +553,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -648,11 +588,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -710,11 +646,7 @@
           }
         ],
         "gewaesser_liste": "Rur, Lendersdorfer Mühlenteich",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -749,11 +681,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -788,13 +716,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0",
-        "wsg_zone": "3B",
-        "wsg_status": "P"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -802,7 +724,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.644757654056052,
+          6.644757654056051,
           50.59044996284812
         ]
       },
@@ -829,11 +751,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -841,7 +759,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.515895959022844,
+          6.515895959022843,
           50.5703128616042
         ]
       },
@@ -868,11 +786,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -907,11 +821,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -946,11 +856,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -985,11 +891,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -997,7 +899,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.111353771051161,
+          6.111353771051162,
           51.06290141410298
         ]
       },
@@ -1024,11 +926,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1063,11 +961,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1102,11 +996,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1141,11 +1031,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1180,11 +1066,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1219,11 +1101,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1270,11 +1148,7 @@
           }
         ],
         "gewaesser_liste": "Linnicher Mühlenteich",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1309,11 +1183,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1348,11 +1218,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1387,13 +1253,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0",
-        "wsg_zone": "3A",
-        "wsg_status": "F"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1402,7 +1262,7 @@
         "type": "Point",
         "coordinates": [
           6.456520043463794,
-          51.20547988370345
+          51.20547988370344
         ]
       },
       "properties": {
@@ -1428,11 +1288,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1467,13 +1323,7 @@
         "anzahl_anfallstellen": 2,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0",
-        "wsg_zone": "3A",
-        "wsg_status": "P"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1481,7 +1331,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.459887646152634,
+          6.459887646152633,
           51.16795773584023
         ]
       },
@@ -1508,11 +1358,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1547,11 +1393,7 @@
         "anzahl_anfallstellen": 4,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1586,13 +1428,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0",
-        "wsg_zone": "3A",
-        "wsg_status": "P"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1627,11 +1463,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1666,11 +1498,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1705,11 +1533,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1744,11 +1568,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1783,11 +1603,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1822,11 +1638,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1861,11 +1673,7 @@
         "anzahl_anfallstellen": 3,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1911,13 +1719,7 @@
         "anzahl_anfallstellen": 5,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0",
-        "wsg_zone": "3B",
-        "wsg_status": "F"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1926,7 +1728,7 @@
         "type": "Point",
         "coordinates": [
           6.44738316142695,
-          51.122381746030115
+          51.12238174603012
         ]
       },
       "properties": {
@@ -1952,11 +1754,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1991,11 +1789,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2031,11 +1825,7 @@
         "anzahl_anfallstellen": 2,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2070,11 +1860,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2109,11 +1895,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2148,11 +1930,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2187,11 +1965,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2200,7 +1974,7 @@
         "type": "Point",
         "coordinates": [
           6.820472455857477,
-          50.919047092397605
+          50.91904709239761
         ]
       },
       "properties": {
@@ -2232,13 +2006,7 @@
         "anzahl_anfallstellen": 7,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0",
-        "wsg_zone": "3B",
-        "wsg_status": "P"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2273,11 +2041,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2312,11 +2076,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2353,11 +2113,7 @@
         "anzahl_anfallstellen": 4,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2392,11 +2148,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2431,11 +2183,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2470,11 +2218,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2482,8 +2226,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.671682583813967,
-          50.88142908909895
+          6.671682583813966,
+          50.881429089098944
         ]
       },
       "properties": {
@@ -2509,11 +2253,7 @@
         "anzahl_anfallstellen": 2,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2548,11 +2288,7 @@
         "anzahl_anfallstellen": 2,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2561,7 +2297,7 @@
         "type": "Point",
         "coordinates": [
           6.673344611973237,
-          50.88088661659574
+          50.88088661659573
         ]
       },
       "properties": {
@@ -2587,11 +2323,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2627,11 +2359,7 @@
         "anzahl_anfallstellen": 7,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2667,11 +2395,7 @@
         "anzahl_anfallstellen": 7,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2706,11 +2430,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2745,11 +2465,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2784,11 +2500,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2823,13 +2535,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0",
-        "wsg_zone": "3B",
-        "wsg_status": "P"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2864,13 +2570,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0",
-        "wsg_zone": "3B",
-        "wsg_status": "P"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2921,11 +2621,7 @@
           }
         ],
         "gewaesser_liste": "Rhein, Hafen Neuss, Hafenbecken V",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2960,11 +2656,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -2973,7 +2665,7 @@
         "type": "Point",
         "coordinates": [
           6.77127234003094,
-          51.160025759400405
+          51.1600257594004
         ]
       },
       "properties": {
@@ -2999,13 +2691,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0",
-        "wsg_zone": "3B",
-        "wsg_status": "P"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3056,11 +2742,7 @@
           }
         ],
         "gewaesser_liste": "Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3095,11 +2777,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3134,11 +2812,7 @@
         "anzahl_anfallstellen": 2,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3173,13 +2847,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0",
-        "wsg_zone": "3B",
-        "wsg_status": "P"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3188,7 +2856,7 @@
         "type": "Point",
         "coordinates": [
           5.45338704902769,
-          10.032557916244835
+          10.032557916244837
         ]
       },
       "properties": {
@@ -3214,11 +2882,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3253,13 +2917,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0",
-        "wsg_zone": "3B",
-        "wsg_status": "P"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3305,11 +2963,7 @@
         "anzahl_anfallstellen": 4,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3344,11 +2998,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3383,11 +3033,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3422,11 +3068,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3434,7 +3076,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.6820130591796465,
+          6.682013059179647,
           51.20527379378534
         ]
       },
@@ -3461,11 +3103,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3474,7 +3112,7 @@
         "type": "Point",
         "coordinates": [
           5.45338704902769,
-          10.032557916244835
+          10.032557916244837
         ]
       },
       "properties": {
@@ -3500,11 +3138,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3513,7 +3147,7 @@
         "type": "Point",
         "coordinates": [
           5.45338704902769,
-          10.032557916244835
+          10.032557916244837
         ]
       },
       "properties": {
@@ -3539,11 +3173,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3552,7 +3182,7 @@
         "type": "Point",
         "coordinates": [
           5.45338704902769,
-          10.032557916244835
+          10.032557916244837
         ]
       },
       "properties": {
@@ -3578,11 +3208,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3591,7 +3217,7 @@
         "type": "Point",
         "coordinates": [
           5.45338704902769,
-          10.032557916244835
+          10.032557916244837
         ]
       },
       "properties": {
@@ -3617,11 +3243,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3630,7 +3252,7 @@
         "type": "Point",
         "coordinates": [
           5.45338704902769,
-          10.032557916244835
+          10.032557916244837
         ]
       },
       "properties": {
@@ -3656,11 +3278,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3669,7 +3287,7 @@
         "type": "Point",
         "coordinates": [
           5.45338704902769,
-          10.032557916244835
+          10.032557916244837
         ]
       },
       "properties": {
@@ -3695,11 +3313,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3735,11 +3349,7 @@
         "anzahl_anfallstellen": 3,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3748,7 +3358,7 @@
         "type": "Point",
         "coordinates": [
           5.45338704902769,
-          10.032557916244835
+          10.032557916244837
         ]
       },
       "properties": {
@@ -3774,11 +3384,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3826,11 +3432,7 @@
           }
         ],
         "gewaesser_liste": "Vichtbach",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3839,7 +3441,7 @@
         "type": "Point",
         "coordinates": [
           5.45338704902769,
-          10.032557916244835
+          10.032557916244837
         ]
       },
       "properties": {
@@ -3865,11 +3467,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3932,11 +3530,7 @@
           }
         ],
         "gewaesser_liste": "Kelzer Bach, NN",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -3945,7 +3539,7 @@
         "type": "Point",
         "coordinates": [
           5.45338704902769,
-          10.032557916244835
+          10.032557916244837
         ]
       },
       "properties": {
@@ -3971,11 +3565,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -4010,13 +3600,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0",
-        "wsg_zone": "3",
-        "wsg_status": "F"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -4024,7 +3608,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.231824806295866,
+          6.231824806295865,
           50.75927650543765
         ]
       },
@@ -4052,11 +3636,7 @@
         "anzahl_anfallstellen": 4,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -4065,7 +3645,7 @@
         "type": "Point",
         "coordinates": [
           5.45338704902769,
-          10.032557916244835
+          10.032557916244837
         ]
       },
       "properties": {
@@ -4091,11 +3671,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -4104,7 +3680,7 @@
         "type": "Point",
         "coordinates": [
           5.45338704902769,
-          10.032557916244835
+          10.032557916244837
         ]
       },
       "properties": {
@@ -4130,11 +3706,7 @@
         "anzahl_anfallstellen": 1,
         "einleitungen": [],
         "gewaesser_liste": "",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     }
   ]

@@ -17,11 +17,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -40,11 +36,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -63,11 +55,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Broicher Bach",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -86,11 +74,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Inde",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -99,7 +83,7 @@
         "type": "Point",
         "coordinates": [
           6.303978200938475,
-          50.81779706166768
+          50.81779706166769
         ]
       },
       "properties": {
@@ -109,11 +93,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Inde",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -132,11 +112,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Perlenbach",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -155,11 +131,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -178,11 +150,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Laufenbach",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -201,11 +169,7 @@
         "bauwerksart": null,
         "typ": "Sohlschwelle",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -224,11 +188,7 @@
         "bauwerksart": null,
         "typ": "Rampe",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -247,11 +207,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -270,11 +226,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Afslagtak Rode Beek Vlodrop",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -293,11 +245,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Baaler Bach",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -316,11 +264,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Mühlenbach",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -339,11 +283,7 @@
         "bauwerksart": null,
         "typ": "Absturz",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -362,11 +302,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -385,11 +321,7 @@
         "bauwerksart": null,
         "typ": "Rampe",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -408,11 +340,7 @@
         "bauwerksart": null,
         "typ": "Absturz",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -431,11 +359,7 @@
         "bauwerksart": null,
         "typ": "Gleite",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -454,11 +378,7 @@
         "bauwerksart": null,
         "typ": "Gleite",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -477,11 +397,7 @@
         "bauwerksart": null,
         "typ": "Absturz",
         "gewaesser": "Niers",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -500,11 +416,7 @@
         "bauwerksart": null,
         "typ": "Absturz",
         "gewaesser": "Niers",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -523,11 +435,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Niers",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -546,11 +454,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Niers",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -569,11 +473,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Niers",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -581,7 +481,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.410666681553066,
+          6.4106666815530655,
           51.11345221497079
         ]
       },
@@ -592,11 +492,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Niers",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -615,11 +511,7 @@
         "bauwerksart": null,
         "typ": "Absturz",
         "gewaesser": "Niers",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -628,7 +520,7 @@
         "type": "Point",
         "coordinates": [
           6.409386257116436,
-          51.09470674290316
+          51.09470674290317
         ]
       },
       "properties": {
@@ -638,11 +530,7 @@
         "bauwerksart": null,
         "typ": "Absturz",
         "gewaesser": "Niers",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -661,11 +549,7 @@
         "bauwerksart": null,
         "typ": "Absturz",
         "gewaesser": "Niers",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -684,11 +568,7 @@
         "bauwerksart": null,
         "typ": "Absturz",
         "gewaesser": "Niers",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -696,8 +576,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.700839791315681,
-          51.166115781713316
+          6.70083979131568,
+          51.16611578171332
         ]
       },
       "properties": {
@@ -707,11 +587,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -720,7 +596,7 @@
         "type": "Point",
         "coordinates": [
           6.731539993000455,
-          51.177715002394585
+          51.17771500239458
         ]
       },
       "properties": {
@@ -730,11 +606,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg Gnadenthal",
         "gewaesser": "Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -753,11 +625,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -776,11 +644,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -799,11 +663,7 @@
         "bauwerksart": null,
         "typ": "Absturz",
         "gewaesser": "Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -822,11 +682,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -845,11 +701,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Vituskanal",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -868,11 +720,7 @@
         "bauwerksart": null,
         "typ": "Absturz",
         "gewaesser": "Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -891,11 +739,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Mühlenerft Grevenbroich",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -914,11 +758,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Gillbach",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -937,11 +777,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -949,8 +785,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.436280133005738,
-          50.85184518629818
+          6.436280133005739,
+          50.85184518629817
         ]
       },
       "properties": {
@@ -960,11 +796,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -983,11 +815,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1006,11 +834,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1019,7 +843,7 @@
         "type": "Point",
         "coordinates": [
           6.482105396132897,
-          50.74696910306235
+          50.74696910306234
         ]
       },
       "properties": {
@@ -1029,11 +853,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1052,11 +872,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1075,11 +891,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Omerbach",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1088,7 +900,7 @@
         "type": "Point",
         "coordinates": [
           6.483309483293647,
-          50.731095390191676
+          50.73109539019167
         ]
       },
       "properties": {
@@ -1098,11 +910,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1121,11 +929,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Inde",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1144,11 +948,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rur",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1167,11 +967,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1179,7 +975,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.835121438261939,
+          6.83512143826194,
           50.77434903957484
         ]
       },
@@ -1190,11 +986,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Swistbach",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1203,7 +995,7 @@
         "type": "Point",
         "coordinates": [
           6.562563552454129,
-          51.00850594493063
+          51.00850594493064
         ]
       },
       "properties": {
@@ -1213,11 +1005,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Kasterer Mühlenerft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1236,11 +1024,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1259,11 +1043,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Swistbach",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1282,11 +1062,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1305,11 +1081,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Liblarer Mühlengraben",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1317,7 +1089,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.7024375874870135,
+          6.702437587487014,
           50.914012918295896
         ]
       },
@@ -1328,11 +1100,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Kleine Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1351,11 +1119,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Kasterer Mühlenerft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1374,11 +1138,7 @@
         "bauwerksart": null,
         "typ": "Bewegliches Wehr",
         "gewaesser": "Kleine Erft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1397,11 +1157,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Urft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1409,7 +1165,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.529673169409752,
+          6.529673169409753,
           50.56512568399141
         ]
       },
@@ -1420,11 +1176,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Urft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1443,11 +1195,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Olef",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1466,11 +1214,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Olef",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1489,11 +1233,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Olef",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1512,11 +1252,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Olef",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1535,11 +1271,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Neffelbach",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1558,11 +1290,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Rotbach",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1571,7 +1299,7 @@
         "type": "Point",
         "coordinates": [
           6.529603781200768,
-          50.56513066061127
+          50.56513066061126
         ]
       },
       "properties": {
@@ -1581,11 +1309,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Urft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1594,7 +1318,7 @@
         "type": "Point",
         "coordinates": [
           6.588981321905832,
-          50.511987412746926
+          50.51198741274692
         ]
       },
       "properties": {
@@ -1604,11 +1328,7 @@
         "bauwerksart": null,
         "typ": "Fischaufstieg",
         "gewaesser": "Urft",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     }
   ]

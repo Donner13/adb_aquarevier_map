@@ -1335,6 +1335,32 @@
                     </div>
                 </div>
 
+
+                <!-- Block 4: Daten-Audit-Trail / Change-Feed -->
+                <div id="audit-trail-section">
+                    <div class="section-title" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="toggleAuditPanel()">
+                        <span>📋 Daten-Audit-Trail / Change-Feed</span>
+                        <span id="audit-toggle-icon">▼</span>
+                    </div>
+                    <div class="glass-panel" id="audit-panel" style="padding:10px; border-radius:8px; margin-bottom:10px; background: var(--bg-surface); border:1px solid var(--border-color); display:none;">
+                        <p style="font-size: 0.85em; color: var(--text-secondary); margin-bottom: 10px;">
+                            Letzte Datenänderungen nach Scrape-Läufen (Diff-Historie):
+                        </p>
+                        <select id="auditLayerSelect" style="width: 100%; margin-bottom: 10px; padding: 5px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-primary);" onchange="loadAuditTrail()">
+                            <option value="stauanlagen">Stauanlagen</option>
+                            <option value="regenbecken">Regenbecken</option>
+                            <option value="querbauwerke">Querbauwerke</option>
+                            <option value="klaeranlagen">Kläranlagen</option>
+                            <option value="pegel">Pegel</option>
+                            <option value="elwas_einleiter">Industrieeinleiter</option>
+                            <option value="grundwassermessstellen">Grundwassermessstellen</option>
+                        </select>
+                        <div id="audit-log-container" style="max-height: 200px; overflow-y: auto; font-size: 0.85em;">
+                            <div style="color: var(--text-secondary); font-style: italic;">Wähle einen Layer...</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Editor -->
                 <div>
                     <div class="section-title">Akteur bearbeiten</div>
@@ -5072,6 +5098,102 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+    function toggleAuditPanel() {
+        const panel = document.getElementById('audit-panel');
+        const icon = document.getElementById('audit-toggle-icon');
+        if (panel.style.display === 'none') {
+            panel.style.display = 'block';
+            icon.innerText = '▲';
+            loadAuditTrail(); // Load on open
+        } else {
+            panel.style.display = 'none';
+            icon.innerText = '▼';
+        }
+    }
+
+    async function loadAuditTrail() {
+        const layer = document.getElementById('auditLayerSelect').value;
+        const container = document.getElementById('audit-log-container');
+        container.innerHTML = '<div style="color: var(--text-secondary);">Lade Historie...</div>';
+
+        try {
+            const manifestUrl = `changelog/${layer}/index.json?_t=${new Date().getTime()}`;
+            const res = await fetch(manifestUrl);
+            if (!res.ok) {
+                if (res.status === 404) {
+                    container.innerHTML = `<div style="color: var(--text-secondary); font-style: italic;">Noch kein Audit-Trail für ${layer} vorhanden.</div>`;
+                    return;
+                }
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            const manifest = await res.json();
+
+            if (manifest.length === 0) {
+                container.innerHTML = '<div style="color: var(--text-secondary); font-style: italic;">Keine Einträge.</div>';
+                return;
+            }
+
+            let html = '';
+            for (const entry of manifest) {
+                const date = new Date(entry.run_timestamp).toLocaleString('de-DE');
+                let badgeStyle = "background: #475569; color: white;";
+                let badgeText = "DIFF";
+                if (entry.baseline) {
+                    badgeStyle = "background: #3b82f6; color: white;";
+                    badgeText = "INIT";
+                } else if (entry.added_count > 0 || entry.removed_count > 0 || entry.changed_count > 0) {
+                    badgeStyle = "background: #f59e0b; color: white;"; // orange if changes
+                    badgeText = "UPDATE";
+                } else {
+                    badgeStyle = "background: #10b981; color: white;"; // green if identical
+                    badgeText = "CLEAN";
+                }
+
+                html += `
+                    <div style="border-bottom: 1px solid var(--border-color); padding: 5px 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                            <strong>${date}</strong>
+                            <span style="font-size: 0.7em; padding: 1px 4px; border-radius: 3px; ${badgeStyle}">${badgeText}</span>
+                        </div>
+                        <div style="color: var(--text-primary); margin-bottom: 2px;">${entry.summary}</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9em; cursor: pointer; text-decoration: underline;" onclick="loadAuditDetail('${layer}', '${entry.file}')">Details ansehen</div>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+        } catch (e) {
+            container.innerHTML = `<div style="color: #ef4444;">Fehler beim Laden: ${e.message}</div>`;
+        }
+    }
+
+    async function loadAuditDetail(layer, filename) {
+        try {
+            const res = await fetch(`changelog/${layer}/${filename}`);
+            if (!res.ok) throw new Error("File not found");
+            const data = await res.json();
+            console.log("Audit Detail:", data);
+            // Just basic alert for now, could be expanded to a modal if needed
+            let msg = `Detail für ${layer} am ${data.run_timestamp}:
+`;
+            msg += `Vorher: ${data.previous_count}, Nachher: ${data.new_count}
+`;
+            msg += `Zusammenfassung: ${data.summary}
+`;
+            if (data.added.length > 0) msg += `
+Hinzu: ${data.added.map(f => f.name || f.id).join(', ')}`;
+            if (data.removed.length > 0) msg += `
+Entfernt: ${data.removed.map(f => f.name || f.id).join(', ')}`;
+            if (data.changed.length > 0) msg += `
+Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
+            alert(msg);
+        } catch(e) {
+            alert("Konnte Details nicht laden: " + e.message);
+        }
+    }
+    </script>
 
 </body>
 </html>

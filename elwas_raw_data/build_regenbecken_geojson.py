@@ -1,12 +1,21 @@
 import json
 import os
+
+import sys
+BASE = os.path.dirname(os.path.abspath(__file__))
+ROOT_PATH = os.path.join(BASE, "..")
+sys.path.insert(0, os.path.join(ROOT_PATH, "elwas_toolkit"))
+from changelog import write_changelog
 import shutil
 from pyproj import Transformer
 
-BASE = os.path.dirname(os.path.abspath(__file__))
+
 IN_PATH = os.path.join(BASE, "regenbecken.json")
 OUT_PATH = os.path.join(BASE, "regenbecken.geojson")
-ROOT_PATH = os.path.join(os.path.dirname(BASE), "regenbecken.geojson")
+ROOT_COPY_PATH = os.path.join(ROOT_PATH, "regenbecken.geojson")
+ROOT_COPY_PATH = os.path.join(ROOT_PATH, "regenbecken.geojson")
+ROOT_COPY_PATH = os.path.join(ROOT_PATH, "regenbecken.geojson")
+ROOT_PATH = os.path.join(BASE, "..")
 
 transformer = Transformer.from_crs("epsg:25832", "epsg:4326", always_xy=True)
 
@@ -60,8 +69,24 @@ def main():
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(geojson, f, indent=2, ensure_ascii=False, allow_nan=False)
 
+    # Load old features for diffing
+    old_features = []
+    if os.path.exists(ROOT_COPY_PATH):
+        try:
+            with open(ROOT_COPY_PATH, "r", encoding="utf-8") as f:
+                old_data = json.load(f)
+                old_features = old_data.get("features", [])
+        except Exception as e:
+            print(f"Could not load old features: {e}")
+
+    # Write changelog
+    write_changelog("regenbecken", "anlagen_nr", old_features, features, os.path.join(ROOT_PATH, "changelog"))
+
     # Copy to root
-    shutil.copy(OUT_PATH, ROOT_PATH)
+    shutil.copy(OUT_PATH, ROOT_COPY_PATH)
+
+    # Copy to root
+
 
     print(f"Features written: {len(features)}")
     print(f"Skipped: {len(skipped)} {skipped}")
