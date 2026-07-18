@@ -792,7 +792,9 @@
         "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
         "zustaendigkeit_amt": "Untere Wasserbehörde",
         "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "zustaendigkeit_telefon": "02251 15-0",
+        "wsg_zone": "3B",
+        "wsg_status": "P"
       }
     },
     {
@@ -1389,7 +1391,9 @@
         "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
         "zustaendigkeit_amt": "Fachbereich Umwelt",
         "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "zustaendigkeit_telefon": "02161 25-0",
+        "wsg_zone": "3A",
+        "wsg_status": "F"
       }
     },
     {
@@ -1467,7 +1471,9 @@
         "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
         "zustaendigkeit_amt": "Fachbereich Umwelt",
         "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "zustaendigkeit_telefon": "02161 25-0",
+        "wsg_zone": "3A",
+        "wsg_status": "P"
       }
     },
     {
@@ -1584,7 +1590,9 @@
         "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
         "zustaendigkeit_amt": "Fachbereich Umwelt",
         "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "zustaendigkeit_telefon": "02161 25-0",
+        "wsg_zone": "3A",
+        "wsg_status": "P"
       }
     },
     {
@@ -1907,7 +1915,9 @@
         "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
         "zustaendigkeit_amt": "Fachbereich Umwelt",
         "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "zustaendigkeit_telefon": "02161 25-0",
+        "wsg_zone": "3B",
+        "wsg_status": "F"
       }
     },
     {
@@ -2226,7 +2236,9 @@
         "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
         "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
         "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "zustaendigkeit_telefon": "02271 83-0",
+        "wsg_zone": "3B",
+        "wsg_status": "P"
       }
     },
     {
@@ -2815,7 +2827,9 @@
         "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
         "zustaendigkeit_amt": "Amt für Umweltschutz",
         "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "zustaendigkeit_telefon": "02181 601-0",
+        "wsg_zone": "3B",
+        "wsg_status": "P"
       }
     },
     {
@@ -2854,7 +2868,9 @@
         "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
         "zustaendigkeit_amt": "Amt für Umweltschutz",
         "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "zustaendigkeit_telefon": "02181 601-0",
+        "wsg_zone": "3B",
+        "wsg_status": "P"
       }
     },
     {
@@ -2987,7 +3003,9 @@
         "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
         "zustaendigkeit_amt": "Amt für Umweltschutz",
         "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "zustaendigkeit_telefon": "02181 601-0",
+        "wsg_zone": "3B",
+        "wsg_status": "P"
       }
     },
     {
@@ -3159,7 +3177,9 @@
         "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
         "zustaendigkeit_amt": "Amt für Umweltschutz",
         "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "zustaendigkeit_telefon": "02181 601-0",
+        "wsg_zone": "3B",
+        "wsg_status": "P"
       }
     },
     {
@@ -3237,7 +3257,9 @@
         "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
         "zustaendigkeit_amt": "Amt für Umweltschutz",
         "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "zustaendigkeit_telefon": "02181 601-0",
+        "wsg_zone": "3B",
+        "wsg_status": "P"
       }
     },
     {
@@ -3992,7 +4014,9 @@
         "zustaendigkeit_behoerde": "Städteregion Aachen",
         "zustaendigkeit_amt": "A 66 - Umweltamt",
         "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "zustaendigkeit_telefon": "0241 5198-0",
+        "wsg_zone": "3",
+        "wsg_status": "F"
       }
     },
     {

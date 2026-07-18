@@ -1351,6 +1351,34 @@
         .tippy-box[data-theme~='aquarevier'] .tippy-arrow {
             color: var(--bg-surface);
         }
+
+        /* WSG Overlap Pulse Ring Alert */
+        @keyframes wsg-pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+            70% {
+                transform: scale(2.2);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(2.2);
+                opacity: 0;
+            }
+        }
+        .wsg-pulse-ring {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border: 3px solid #dc2626;
+            border-radius: 50%;
+            animation: wsg-pulse 1.8s infinite;
+            top: -2px;
+            left: -2px;
+            pointer-events: none;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body class="light-theme">
@@ -1769,13 +1797,69 @@
             attribution: "GD NRW"
         });
 
-        // 7. Overlays: Wasserschutzgebiete gesamt (LANUV NRW)
-        const wmsWSG = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/wsg", {
-            layers: 'wsg_festgesetzt_gesamt',
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.45,
-            attribution: "LANUV NRW"
+        // 7. Overlays: Wasserschutzgebiete gesamt (LANUV NRW) - Local GeoJSON with styling
+        const wsgLayer = L.layerGroup();
+        let wsgGeoData = null;
+        let wsgLoaded = false;
+
+        function loadWsgLayer() {
+            if (wsgLoaded) return;
+            wsgLoaded = true;
+            fetch('wasserschutzgebiete.geojson')
+                .then(res => res.ok ? res.json() : Promise.reject())
+                .then(data => {
+                    wsgGeoData = data;
+                    L.geoJSON(data, {
+                        style: function(feature) {
+                            const zone = feature.properties.wsg_zone || '';
+                            let opacity = 0.25;
+                            let color = "#D55E00"; // Default orange/red for zones
+
+                            if (zone.includes("III") || zone.includes("3")) {
+                                opacity = 0.15;
+                                color = "#E69F00"; // Yellowish orange for Zone III
+                            } else if (zone.includes("II") || zone.includes("2")) {
+                                opacity = 0.3;
+                                color = "#D55E00"; // Orange for Zone II
+                            } else if (zone.includes("I") || zone.includes("1")) {
+                                opacity = 0.5;
+                                color = "#dc2626"; // Red for Zone I
+                            }
+
+                            return {
+                                color: color,
+                                weight: 1.5,
+                                opacity: 0.8,
+                                fillColor: color,
+                                fillOpacity: opacity
+                            };
+                        },
+                        onEachFeature: function(feature, layer) {
+                            const p = feature.properties;
+                            const html = `
+                                <div class="popup-card">
+                                    <div class="popup-group" style="color: #dc2626">Trinkwasserschutzgebiet</div>
+                                    <div class="popup-title">${p.wsg_name || 'Unbekannt'}</div>
+                                    <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'}</div>
+                                    <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
+                                    <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
+                                </div>
+                            `;
+                            layer.bindPopup(html);
+                            
+                            // Tooltip on hover
+                            layer.bindTooltip(`Zone ${p.wsg_zone || '–'} (${p.areastatus || '–'})`, { sticky: true });
+                        }
+                    }).addTo(wsgLayer);
+                    
+                    // Trigger counter update
+                    updateSidebarCounters();
+                })
+                .catch(err => console.log("Wasserschutzgebiete layer not loaded:", err));
+        }
+
+        map.on('overlayadd', function(e) {
+            if (e.layer === wsgLayer) loadWsgLayer();
         });
 
         // 8. Custom Boundary: Untersuchungsgebiet (Landkreise als Hintergrund)
@@ -2101,8 +2185,13 @@
                     const color = elwasBranchColors[primary] || "#595959";
                     const emoji = elwasBranchIcons[primary] || "🏭";
                     const size = 26;
+                    let pulseRing = '';
+                    if (feature.properties.wsg_zone) {
+                        pulseRing = '<div class="wsg-pulse-ring"></div>';
+                    }
                     const html = `
                         <div style="
+                            position: relative;
                             width: ${size}px;
                             height: ${size}px;
                             background-color: ${color};
@@ -2113,7 +2202,7 @@
                             justify-content: center;
                             font-size: 13px;
                             box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
-                        ">${emoji}</div>
+                        ">${emoji}${pulseRing}</div>
                     `;
                     const icon = L.divIcon({
                         html: html,
@@ -2135,6 +2224,9 @@
                             <div class="popup-detail">💧 Einleitungsart<span class="glossar-icon" data-glossar="EINLEITUNGSART">i</span>: ${p.einleitungsart || '–'}</div>
                             <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
                     `;
+                    if (p.wsg_zone) {
+                        html += `<div class="popup-detail" style="color: #dc2626; font-weight: bold; background: rgba(220, 38, 38, 0.1); padding: 4.5px 8px; border-radius: 6px; margin-top: 5px; display: flex; align-items: center; gap: 4px;">⚠️ Liegt in Trinkwasserschutzzone: ${p.wsg_zone} (${p.wsg_status || '–'})</div>`;
+                    }
                     if (p.mengen_text) {
                         html += `<div class="popup-detail">📊 Abwassermenge: ${p.mengen_text}</div>`;
                     }
@@ -2798,7 +2890,7 @@
             "Gewässernetz Detailliert (LANUV)": wmsDetailedRivers,
             "Einzugsgebiete Hydrologisch (LANUV)": wmsCatchments,
             "Tagebaue & Bergbaufelder (GD)": wmsMining,
-            "Wasserschutzgebiete (LANUV)": wmsWSG,
+            "Wasserschutzgebiete (LANUV)": wsgLayer,
             "🏭 Industrieeinleiter (ELWAS)": elwasLayer,
             "🚰 Kläranlagen (ELWAS)": klaeranlagenLayer,
             "💧 Grundwassermessstellen (ELWAS, 3700+)": gwmLayer,
@@ -3361,6 +3453,7 @@
                 else if (layerName.includes("Querbauwerke")) geoData = querbauwerkeGeoData;
                 else if (layerName.includes("Einzugsgebiet-Statistik")) geoData = statsGeoData;
                 else if (layerName.includes("Kreis-Vergleich")) geoData = kreisChoroplethData;
+                else if (layerName.includes("Wasserschutzgebiete")) geoData = wsgGeoData;
 
                 let total = 0, visible = 0;
                 const badge = btn.querySelector('.counter-badge');
