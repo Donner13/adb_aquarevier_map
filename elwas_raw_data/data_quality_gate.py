@@ -82,11 +82,19 @@ class DataQualityGate:
                         print(f"WARN: Feature {i} in Quarantäne: Feld '{field}' hat verdächtig kurzen Wert '{prop_val}'.")
 
             # Blacklist-Fragmente
+            # Kurze Fragmente (<=2 Zeichen, z.B. "e" als Signatur fuer den
+            # frueheren name=="e"-Extraktionsbug) werden exakt verglichen,
+            # nicht als Substring - sonst matcht "e" praktisch jedes
+            # deutsche Wort (Duesseldorf, Kreis, ...) und quarantaenisiert
+            # gute Daten. Laengere Fragmente (z.B. geleakte Tab-Label-Reste)
+            # bleiben Substring-Checks, da dort echte Kontamination erkannt
+            # werden soll, kein exakter Wert.
             for i, val in enumerate(features):
                 prop_val = val["properties"].get(field)
                 if isinstance(prop_val, str):
                     for fragment in blacklist_fragments:
-                        if fragment in prop_val and i not in quarantine_indices:
+                        is_match = (prop_val == fragment) if len(fragment) <= 2 else (fragment in prop_val)
+                        if is_match and i not in quarantine_indices:
                             quarantine_indices.append(i)
                             print(f"WARN: Feature {i} in Quarantäne: Feld '{field}' enthält Blacklist-Fragment '{fragment}'.")
                             break

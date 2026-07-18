@@ -2,19 +2,19 @@
   "stauanlagen": {
     "total": 56,
     "per_kreis": {},
-    "updated": "2026-07-15",
-    "source_commit": "<initial_commit_sha>"
+    "updated": "2026-07-18",
+    "source_commit": "0454db0021fdc3a98ba690b815acf7ea4c169c08"
   },
   "regenbecken": {
     "total": 70,
     "per_kreis": {},
-    "updated": "2026-07-15",
-    "source_commit": "<initial_commit_sha>"
+    "updated": "2026-07-18",
+    "source_commit": "0454db0021fdc3a98ba690b815acf7ea4c169c08"
   },
   "querbauwerke": {
     "total": 70,
     "per_kreis": {},
-    "updated": "2026-07-15",
-    "source_commit": "<initial_commit_sha>"
+    "updated": "2026-07-18",
+    "source_commit": "0454db0021fdc3a98ba690b815acf7ea4c169c08"
   }
 }
