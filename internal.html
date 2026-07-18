@@ -1894,7 +1894,7 @@
             .catch(err => console.log("Landkreis layer not loaded:", err));
 
         // 8a2. Kreisgrenzen (7 Kreise des Rheinischen Reviers) - schwarz gestrichelt
-        const kreiseLayer = L.layerGroup();
+        const kreiseLayer = L.layerGroup().addTo(map);
         fetch('kreise_rr.geojson')
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
@@ -2614,7 +2614,7 @@
             "Teilgewässer (Natürlich) [Grün]": tgNatuerlichLayer,
             "Akteure (Stand 2025, Archiv)": stakeholder2025Layer,
             "Landkreisgrenzen (Rheinisches Revier)": boundaryLayer,
-            "Kreisgrenzen (7 Kreise, gestrichelt)": kreiseLayer,
+            "Kreisgrenzen (Schwarz gestrichelt)": kreiseLayer,
             "Eigene Gewässer mit Namen": riverLayer,
             "NRW Landkreise & Grenzen": wmsBorders,
             "Flüsse & Gewässer (LANUV)": wmsRivers,
@@ -2639,8 +2639,12 @@
             'Flüsse & Gewässer (LANUV)': wmsRivers,
             'Gewässernetz Detailliert (LANUV)': wmsDetailedRivers,
             'Einzugsgebiete Hydrologisch (LANUV)': wmsCatchments,
-            'Tagebaue & Bergbaufelder (GD)': wmsMining,
-            'Wasserschutzgebiete (LANUV)': wsgLayer
+            'Tagebaue & Bergbaufelder (GD)': wmsMining
+            // NOTE: 'Wasserschutzgebiete (LANUV)' (wsgLayer) is deliberately NOT
+            // listed here — it's an L.layerGroup() of geoJSON polygons, not an
+            // L.tileLayer.wms(), so it has no .setOpacity()/.setZIndex(). It used
+            // to be included and threw a TypeError on every page load via
+            // applyWmsSettingsToLayers() (called from loadContacts()).
         };
 
         // Legend: Grenzen & Gebiete
@@ -2732,8 +2736,7 @@
                 'Flüsse & Gewässer (LANUV)': { opacity: 0.8, zIndex: 10 },
                 'Gewässernetz Detailliert (LANUV)': { opacity: 0.8, zIndex: 10 },
                 'Einzugsgebiete Hydrologisch (LANUV)': { opacity: 0.4, zIndex: 5 },
-                'Tagebaue & Bergbaufelder (GD)': { opacity: 0.5, zIndex: 5 },
-                'Wasserschutzgebiete (LANUV)': { opacity: 0.45, zIndex: 5 }
+                'Tagebaue & Bergbaufelder (GD)': { opacity: 0.5, zIndex: 5 }
             },
             customWMS: [],
             searchFields: ['name', 'group'],
