@@ -78,6 +78,18 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       html += `<div class="popup-detail">📊 NQ<span class="glossar-icon" data-glossar="NQ">i</span>: ${p.nq_m3s || '–'}, MQ<span class="glossar-icon" data-glossar="MQ">i</span>: ${p.mq_m3s}, HQ<span class="glossar-icon" data-glossar="HQ">i</span>: ${p.hq_m3s || '–'} m³/s</div>`;
     }
 
+    // Special: Pegel <-> Industrieeinleiter-Korrelation (siehe
+    // elwas_raw_data/build_pegel_correlation.py für Methodik/Limitierungen).
+    // upstream_mq_pct kann ein echtes 0 sein (kein fabricated Wert) -- daher
+    // explizit auf null/undefined prüfen, nicht auf Falsy.
+    if (cfg.pegelStats && p.mq_m3s && p.upstream_data_available && p.upstream_mq_pct !== null && p.upstream_mq_pct !== undefined) {
+      const pctStr = Number(p.upstream_mq_pct).toFixed(2).replace('.', ',');
+      const betriebeHinweis = p.upstream_betriebe_mit_wert > 0
+        ? ` (${p.upstream_betriebe_mit_wert} Betrieb(e) mit Mengenangabe oberhalb)`
+        : ' (keine quantifizierten Industrieeinleiter oberhalb gefunden)';
+      html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${p.mq_m3s} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${pctStr}% davon als Industrieabwasser ein${betriebeHinweis}.</div>`;
+    }
+
     // getZustaendigkeitHtml is a global function defined in index/internal.html
     if (typeof getZustaendigkeitHtml === 'function') {
       html += getZustaendigkeitHtml(p);
