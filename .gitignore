@@ -18,3 +18,8 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# Playwright UI regression suite: baselines under tests/screenshots/baseline
+# ARE committed; actual/diff output from local runs is not.
+tests/screenshots/actual/
+.pytest_cache/

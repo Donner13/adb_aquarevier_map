@@ -9,3 +9,5 @@ internal.html
 .git
 .github
 *.log
+tests
+pytest.ini

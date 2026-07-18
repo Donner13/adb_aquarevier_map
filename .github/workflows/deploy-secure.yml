@@ -26,6 +26,15 @@ jobs:
         run: |
           python validate_geojson.py --all
 
+      - name: Install UI regression test dependencies
+        run: |
+          pip install -r tests/requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Run UI Regression Gate (Playwright)
+        run: |
+          python -m pytest tests/ -v
+
       - name: Install Surge
         run: npm install -g surge
 
