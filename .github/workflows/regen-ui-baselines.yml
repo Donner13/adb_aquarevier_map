@@ -1,0 +1,47 @@
+name: Regenerate UI Regression Baselines
+
+# Manual-only: regenerates tests/screenshots/baseline/*.png by actually
+# running the Playwright capture on the same ubuntu-latest + Playwright
+# Chromium environment the "Run UI Regression Gate" step in
+# deploy-secure.yml uses. Screenshot baselines are OS/font-rendering
+# sensitive (this repo's sidebar buttons use a lot of emoji + German
+# umlauts), so baselines generated on a developer's machine (Windows/macOS)
+# will not match what CI renders. Use this instead of hand-editing
+# DIFF_THRESHOLD when the gate fails on screenshot diffs after an
+# intentional UI change.
+#
+# Usage: trigger via `gh workflow run regen-ui-baselines.yml --ref <branch>`,
+# wait for completion, then `gh run download <run-id> -n ui-regression-baselines`
+# and commit the downloaded PNGs over tests/screenshots/baseline/.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  regen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install UI regression test dependencies
+        run: |
+          pip install -r tests/requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Regenerate baselines
+        run: |
+          rm -rf tests/screenshots/actual
+          python -m pytest tests/ -v --update-baselines
+
+      - name: Upload regenerated baselines
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-regression-baselines
+          path: tests/screenshots/baseline/
+          retention-days: 14

@@ -35,6 +35,14 @@ jobs:
         run: |
           python -m pytest tests/ -v
 
+      - name: Upload failing screenshots (diagnostics)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-regression-actual-screenshots
+          path: tests/screenshots/actual/
+          retention-days: 14
+
       - name: Install Surge
         run: npm install -g surge
 
