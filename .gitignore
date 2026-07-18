@@ -28,3 +28,8 @@ playwright-report/
 
 # Sub-agent isolation worktrees (not part of repo content)
 .claude/worktrees/
+
+# Synthetic watchdog runtime output (local only)
+tools/watchdog_*.log
+tools/watchdog_*.jsonl
+tools/STOP_WATCHDOG
