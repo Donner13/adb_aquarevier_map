@@ -87,10 +87,16 @@ def main():
             else:
                 valid_features.append(feature)
         
+        # Zähle Features pro Kreis
+        kreis_counts = {}
+        for feature in valid_features:
+            kreis = feature.get("properties", {}).get("kreis")
+            if kreis:
+                kreis_counts[kreis] = kreis_counts.get(kreis, 0) + 1
+
         # Row-Count-Tripwire (Post-Scrape-Check, nur wenn keine Hard-Fails)
         try:
-            # Dummy kreis_counts für Post-Scrape, da wir hier nur die Gesamtanzahl prüfen
-            gate.check_row_count_tripwire(dataset_key, {"total": len(valid_features)}, threshold=0.30)
+            gate.check_row_count_tripwire(dataset_key, len(valid_features), kreis_counts, threshold=0.30)
         except RuntimeError as e:
             print(e)
             overall_exit_code = 1
@@ -112,7 +118,7 @@ def main():
             
             # Nur wenn alles sauber ist (keine Quarantäne, kein Hard-Fail), wird die Baseline aktualisiert.
             if overall_exit_code == 0:
-                gate.update_row_counts_baseline(dataset_key, len(valid_features), {}, current_commit_sha)
+                gate.update_row_counts_baseline(dataset_key, len(valid_features), kreis_counts, current_commit_sha)
 
         # Ursprüngliche GeoJSON-Datei aktualisieren (nur mit validen Features)
         geojson_data["features"] = valid_features
