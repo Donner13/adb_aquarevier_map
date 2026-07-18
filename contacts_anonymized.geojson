@@ -23,40 +23,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.09781700610447,
-          50.76879400497947
-        ]
-      },
-      "properties": {
-        "name": "StädteRegion Aachen (AC)",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "anon_2",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.098880996297133,
-          50.768892997477025
-        ]
-      },
-      "properties": {
-        "name": "StädteRegion Aachen (AC)",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "anon_3",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.097285999646101,
-          50.76869799771627
+          6.0979946673492345,
+          50.76879500005759
         ]
       },
       "properties": {
@@ -1335,24 +1303,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.445895996692886,
-          51.167405001419425
-        ]
-      },
-      "properties": {
-        "name": "Stadt Mönchengladbach (Mönchengladbach)",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "anon_84",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.445169996205545,
-          51.16736900072223
+          6.445532996449215,
+          51.16738700107083
         ]
       },
       "properties": {
@@ -1399,40 +1351,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.595272999095041,
-          51.08441399869182
-        ]
-      },
-      "properties": {
-        "name": "Rhein-Kreis Neuss (NE)",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "anon_88",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.594629006769339,
-          51.086550002750705
-        ]
-      },
-      "properties": {
-        "name": "Rhein-Kreis Neuss (NE)",
-        "group": "Gebietskörperschaft",
-        "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "anon_89",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.594463000698894,
-          51.0868980001667
+          6.594788335521091,
+          51.08595400053641
         ]
       },
       "properties": {

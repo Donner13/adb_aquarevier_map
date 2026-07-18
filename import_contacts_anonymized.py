@@ -2,6 +2,50 @@ import pandas as pd
 import pyproj
 import json
 import os
+from math import radians, cos, sin, asin, sqrt
+
+# Distinct real-world contacts at the same institution often geocode a few
+# tens of meters apart (different building entrance, slightly different
+# address on file). Since anonymization already collapses them to the same
+# display name (institution + abbreviation, no personal info left), leaving
+# them as separate nearby markers only adds visual clutter with zero extra
+# information - merge same-name markers within this radius into one point.
+MERGE_RADIUS_M = 300
+
+def haversine_m(lon1, lat1, lon2, lat2):
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    dlon, dlat = lon2 - lon1, lat2 - lat1
+    a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
+    return 2 * 6371000 * asin(sqrt(a))
+
+def merge_nearby_same_name(features, radius_m=MERGE_RADIUS_M):
+    used = [False] * len(features)
+    merged = []
+    for i, f in enumerate(features):
+        if used[i]:
+            continue
+        used[i] = True
+        cluster = [f]
+        lon_i, lat_i = f['geometry']['coordinates']
+        for j in range(i + 1, len(features)):
+            if used[j]:
+                continue
+            g = features[j]
+            if g['properties']['name'] != f['properties']['name']:
+                continue
+            lon_j, lat_j = g['geometry']['coordinates']
+            if haversine_m(lon_i, lat_i, lon_j, lat_j) <= radius_m:
+                used[j] = True
+                cluster.append(g)
+        if len(cluster) == 1:
+            merged.append(f)
+        else:
+            avg_lon = sum(c['geometry']['coordinates'][0] for c in cluster) / len(cluster)
+            avg_lat = sum(c['geometry']['coordinates'][1] for c in cluster) / len(cluster)
+            m = dict(cluster[0])
+            m['geometry'] = {"type": "Point", "coordinates": [avg_lon, avg_lat]}
+            merged.append(m)
+    return merged
 
 EXCEL_PATH = r"C:\Users\user\Downloads\ADB_260706.xlsx"
 OUTPUT_PATH = r"C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\contacts_anonymized.geojson"
@@ -195,6 +239,10 @@ def main():
         }
         features.append(feature)
         idx_counter += 1
+
+    before = len(features)
+    features = merge_nearby_same_name(features)
+    print(f"Merged {before - len(features)} near-duplicate same-name markers within {MERGE_RADIUS_M}m")
 
     geojson = {
         "type": "FeatureCollection",
