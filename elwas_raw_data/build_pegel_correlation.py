@@ -328,7 +328,9 @@ def main():
 
     out = {"type": "FeatureCollection", "features": out_features}
     with open(OUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(out, f, ensure_ascii=False, allow_nan=False)
+        # indent=2 wie im Original build_pegel_geojson.py (haelt den Diff
+        # minimal / lesbar statt kompakt wie rur_einzugsgebiet_stats.geojson)
+        json.dump(out, f, indent=2, ensure_ascii=False, allow_nan=False)
     shutil.copy(OUT_PATH, ROOT_PATH)
 
     print(f"Pegel gesamt: {len(out_features)}")
