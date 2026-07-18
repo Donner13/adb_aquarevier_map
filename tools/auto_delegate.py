@@ -132,15 +132,25 @@ def run_delegation(limit=1):
         # Execute Sonu CLI
         cmd = [sys.executable, sonu_cli_path, "-p", prompt]
         safe_print(f"Launching Sonu: {' '.join(cmd)}")
-        
+
+        sha_before = subprocess.run(["git", "rev-parse", "HEAD"], cwd=repo_dir,
+                                     capture_output=True, text=True).stdout.strip()
+
         start_time = time.time()
         res = subprocess.run(cmd, cwd=repo_dir)
         elapsed = time.time() - start_time
-        
-        safe_print(f"Sonu execution finished in {elapsed:.1f}s with exit code {res.returncode}")
-        
-        # Mark as done in the backlog file
-        if res.returncode == 0:
+
+        sha_after = subprocess.run(["git", "rev-parse", "HEAD"], cwd=repo_dir,
+                                    capture_output=True, text=True).stdout.strip()
+        commit_happened = sha_before != sha_after
+
+        safe_print(f"Sonu execution finished in {elapsed:.1f}s with exit code {res.returncode}, new commit: {commit_happened}")
+
+        # Mark as done in the backlog file - exit code 0 alone is not enough,
+        # sonu can "succeed" without actually finishing+committing the feature
+        # (seen live: wrote helper data files but never touched index.html or
+        # committed). Require an actual new commit before marking ERLEDIGT.
+        if res.returncode == 0 and commit_happened:
             print("Successfully implemented, updating backlog status...")
             with open(backlog_path, "r", encoding="utf-8") as f_back:
                 b_content = f_back.read()
@@ -166,7 +176,7 @@ def run_delegation(limit=1):
             # Run index builder
             subprocess.run([sys.executable, os.path.join(vault_root, "_system", "build_index.py")], cwd=vault_root)
         else:
-            print("Sonu execution failed. Skipping marking as done.")
+            print("Sonu did not produce a new commit (or exited non-zero). Skipping marking as done.")
             
         count += 1
         
