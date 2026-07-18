@@ -2895,11 +2895,13 @@
             document.getElementById('kreisScorecardBackdrop').style.display = 'none';
             activeScorecardKreis = null;
         };
-        document.getElementById('scorecardModalClose').addEventListener('click', closeScorecard);
-        document.getElementById('kreisScorecardBackdrop').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('kreisScorecardBackdrop')) {
-                closeScorecard();
-            }
+        document.addEventListener('DOMContentLoaded', () => {
+            const scorecardCloseBtn = document.getElementById('scorecardModalClose');
+            if (scorecardCloseBtn) scorecardCloseBtn.addEventListener('click', closeScorecard);
+            const scorecardBackdrop = document.getElementById('kreisScorecardBackdrop');
+            if (scorecardBackdrop) scorecardBackdrop.addEventListener('click', (e) => {
+                if (e.target === scorecardBackdrop) closeScorecard();
+            });
         });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {

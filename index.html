@@ -1592,6 +1592,7 @@
                         <div class="contacts-meta" id="contacts-count" style="margin-bottom: 0;">0 von 0 Kontakten angezeigt</div>
                         <button id="reset-filters-btn" class="filter-btn" style="padding: 4px 8px; font-size: 10px;">Filter zurücksetzen</button>
                     </div>
+                    <button id="share-view-btn" class="filter-btn" style="width: 100%; margin-bottom: 12px; font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
                     <div class="contact-list" id="contact-list-container">
                         <!-- Filled by JS -->
                     </div>
@@ -2856,11 +2857,13 @@
             document.getElementById('kreisScorecardBackdrop').style.display = 'none';
             activeScorecardKreis = null;
         };
-        document.getElementById('scorecardModalClose').addEventListener('click', closeScorecard);
-        document.getElementById('kreisScorecardBackdrop').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('kreisScorecardBackdrop')) {
-                closeScorecard();
-            }
+        document.addEventListener('DOMContentLoaded', () => {
+            const scorecardCloseBtn = document.getElementById('scorecardModalClose');
+            if (scorecardCloseBtn) scorecardCloseBtn.addEventListener('click', closeScorecard);
+            const scorecardBackdrop = document.getElementById('kreisScorecardBackdrop');
+            if (scorecardBackdrop) scorecardBackdrop.addEventListener('click', (e) => {
+                if (e.target === scorecardBackdrop) closeScorecard();
+            });
         });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
@@ -3587,6 +3590,87 @@
             updateButtonVisualStates();
             updateSidebarCounters();
         }, 100);
+
+        // --- Teilbare Ansichten (Filter + Kartenausschnitt per Link) ---
+        function restoreViewFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            if (!params.has('lat') && !params.has('akteure') && !params.has('branchen') && !params.has('layers')) {
+                return; // kein geteilter Link, Standardansicht behalten
+            }
+            if (params.has('akteure')) {
+                activeFilters = new Set(params.get('akteure').split(',').filter(Boolean).map(decodeURIComponent));
+            }
+            if (params.has('branchen')) {
+                elwasActiveBranchen = new Set(params.get('branchen').split(',').filter(Boolean).map(decodeURIComponent));
+            }
+            if (params.has('layers')) {
+                const wanted = new Set(params.get('layers').split(',').filter(Boolean).map(decodeURIComponent));
+                document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
+                    const name = btn.getAttribute('data-layer-name');
+                    const layer = overlayMaps[name];
+                    if (!layer) return;
+                    const shouldBeOn = wanted.has(name);
+                    const isOn = map.hasLayer(layer);
+                    if (shouldBeOn && !isOn) {
+                        map.addLayer(layer);
+                        map.fire('overlayadd', { layer: layer, name: name });
+                    } else if (!shouldBeOn && isOn) {
+                        map.removeLayer(layer);
+                        map.fire('overlayremove', { layer: layer, name: name });
+                    }
+                });
+            }
+            if (params.has('lat') && params.has('lng') && params.has('zoom')) {
+                map.setView([parseFloat(params.get('lat')), parseFloat(params.get('lng'))], parseInt(params.get('zoom'), 10));
+            }
+            updateButtonVisualStates();
+            updateSidebarCounters();
+            renderMapAndSidebar();
+            renderElwasLayer();
+        }
+        setTimeout(restoreViewFromURL, 300);
+
+        const shareViewBtn = document.getElementById('share-view-btn');
+        if (shareViewBtn) {
+            shareViewBtn.addEventListener('click', () => {
+                const activeLayerNames = Array.from(document.querySelectorAll('.filter-btn[data-layer-name]'))
+                    .filter(btn => {
+                        const layer = overlayMaps[btn.getAttribute('data-layer-name')];
+                        return layer && map.hasLayer(layer);
+                    })
+                    .map(btn => encodeURIComponent(btn.getAttribute('data-layer-name')));
+                const center = map.getCenter();
+                const params = new URLSearchParams();
+                params.set('akteure', Array.from(activeFilters).map(encodeURIComponent).join(','));
+                params.set('branchen', Array.from(elwasActiveBranchen).map(encodeURIComponent).join(','));
+                params.set('layers', activeLayerNames.join(','));
+                params.set('lat', center.lat.toFixed(5));
+                params.set('lng', center.lng.toFixed(5));
+                params.set('zoom', map.getZoom());
+                const shareUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+                const originalText = shareViewBtn.textContent;
+                const fallbackCopy = () => {
+                    const ta = document.createElement('textarea');
+                    ta.value = shareUrl;
+                    ta.style.position = 'fixed';
+                    ta.style.opacity = '0';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    try { document.execCommand('copy'); } catch (e) {}
+                    document.body.removeChild(ta);
+                };
+                const showCopied = () => {
+                    shareViewBtn.textContent = '✓ Link kopiert!';
+                    setTimeout(() => { shareViewBtn.textContent = originalText; }, 2000);
+                };
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(shareUrl).then(showCopied).catch(() => { fallbackCopy(); showCopied(); });
+                } else {
+                    fallbackCopy();
+                    showCopied();
+                }
+            });
+        }
 
         // Search trigger
         document.getElementById('search-input').addEventListener('input', renderMapAndSidebar);
