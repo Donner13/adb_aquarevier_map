@@ -190,6 +190,15 @@ def assert_screenshot_matches(page, name: str):
     baseline_path = BASELINE_DIR / f"{name}.png"
     ACTUAL_DIR.mkdir(parents=True, exist_ok=True)
     actual_path = ACTUAL_DIR / f"{name}.png"
+
+    # Park the mouse off the sidebar before capturing. Without this, whichever
+    # button the OS-level cursor happens to sit over after the test's last
+    # click()+any async layout shift (e.g. the choropleth metric <select>
+    # collapsing when "Kreis-Vergleich" toggles off, shifting every button
+    # below it) keeps a :hover style — flaky by construction, unrelated to
+    # any real regression. Observed causing a ~1% false-positive diff.
+    page.mouse.move(5, 5)
+    page.wait_for_timeout(100)
     page.screenshot(path=str(actual_path), full_page=True)
 
     if UPDATE_BASELINES or not baseline_path.exists():
