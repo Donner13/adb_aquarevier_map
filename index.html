@@ -1312,6 +1312,45 @@
             color: var(--text-secondary);
             margin-top: 4px;
         }
+
+        /* Glossar / Laien-Modus */
+        .glossar-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent-primary);
+            font-size: 9px;
+            font-weight: 700;
+            cursor: help;
+            margin-left: 4px;
+            vertical-align: middle;
+            transition: all 0.2s ease;
+        }
+        .glossar-icon:hover {
+            background: var(--accent-primary);
+            color: white;
+        }
+        body:not(.laien-mode) .glossar-icon {
+            display: none !important;
+        }
+        /* Custom Tippy Theme */
+        .tippy-box[data-theme~='aquarevier'] {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+            font-size: 12px;
+            padding: 4px;
+            backdrop-filter: blur(10px);
+        }
+        .tippy-box[data-theme~='aquarevier'] .tippy-arrow {
+            color: var(--bg-surface);
+        }
     </style>
 </head>
 <body class="light-theme">
@@ -1323,6 +1362,9 @@
                     <h1>Akteure - AquaRevier</h1>
                     <p>Regionale Institutionen im Untersuchungsgebiet</p>
                 </div>
+                <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; margin-right: 8px;" title="Laien-Modus: Fachbegriffe erklären">
+                    ℹ️
+                </button>
                 <button id="presentation-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; margin-right: 8px;" title="Präsentationsmodus starten (Beamer)">
                 🎥
             </button>
@@ -1435,33 +1477,33 @@
                     <div class="filter-group">
                         <button class="filter-btn" data-layer-name="💧 Grundwassermessstellen (ELWAS, 3700+)" title="Messergebnisse zur Grundwasserqualität und Pegelständen (ELWAS)">
                             <span class="swatch" style="background-color: #56B4E9;"></span>
-                            <span class="filter-label">Grundwassermessstellen</span>
+                            <span class="filter-label">Grundwassermessstellen<span class="glossar-icon" data-glossar="GRUNDWASSERMESSSTELLE">i</span></span>
                             <span class="counter-badge" id="cnt-layer-gwm">(0/0)</span>
                         </button>
                         <button class="filter-btn active" data-layer-name="📏 Pegel (ELWAS)" title="Flusspegelstände und Durchflussmengen (ELWAS)">
                             <span class="swatch" style="background-color: #009E73;"></span>
-                            <span class="filter-label">Flusspegel</span>
+                            <span class="filter-label">Flusspegel<span class="glossar-icon" data-glossar="PEGEL">i</span></span>
                             <span class="counter-badge" id="cnt-layer-pegel">(0/0)</span>
                         </button>
                         <button class="filter-btn active" data-layer-name="⛰️ Stauanlagen (ELWAS)" title="Talsperren, Wehre und Rückhaltebecken (ELWAS)">
                             <span class="swatch" style="background-color: #D55E00;"></span>
-                            <span class="filter-label">Stauanlagen</span>
+                            <span class="filter-label">Stauanlagen<span class="glossar-icon" data-glossar="STAUANLAGE">i</span></span>
                             <span class="counter-badge" id="cnt-layer-stauanlagen">(0/0)</span>
                         </button>
                         <button class="filter-btn active" data-layer-name="🌧️ Regenbecken/-entlastungsanlagen (ELWAS)" title="Regenüberlaufbecken und Entlastungsanlagen (ELWAS)">
                             <span class="swatch" style="background-color: #CC79A7;"></span>
-                            <span class="filter-label">Regenbecken</span>
+                            <span class="filter-label">Regenbecken<span class="glossar-icon" data-glossar="REGENBECKEN">i</span></span>
                             <span class="counter-badge" id="cnt-layer-regenbecken">(0/0)</span>
                         </button>
                         <button class="filter-btn active" data-layer-name="🧱 Querbauwerke (ELWAS)" title="Wehre, Sohlgleiten und andere Wanderungsbarrieren (ELWAS)">
                             <span class="swatch" style="background-color: #E69F00;"></span>
-                            <span class="filter-label">Querbauwerke</span>
+                            <span class="filter-label">Querbauwerke<span class="glossar-icon" data-glossar="QUERBAUWERK">i</span></span>
                             <span class="counter-badge" id="cnt-layer-querbauwerke">(0/0)</span>
                             <span class="quality-badge" id="qbadge-layer-querbauwerke" title="" hidden>⚠️</span>
                         </button>
                         <button class="filter-btn" data-layer-name="🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)" title="Aggregierte Einleitungsstatistik pro Teileinzugsgebiet (Choroplethenkarte)">
                             <span class="swatch" style="background-color: #991b1b;"></span>
-                            <span class="filter-label">Einzugsgebiet-Statistik</span>
+                            <span class="filter-label">Einzugsgebiet-Statistik<span class="glossar-icon" data-glossar="EINZUGSGEBIET">i</span></span>
                             <span class="counter-badge" id="cnt-layer-stats">(0/0)</span>
                         </button>
                         <button class="filter-btn" data-layer-name="📊 Kreis-Vergleich (Choroplethenkarte)" title="Vergleich der 7 Kreise nach wählbarer Kennzahl inkl. Bevölkerungsbezug">
@@ -1485,7 +1527,7 @@
                         </button>
                         <button class="filter-btn" data-layer-name="Wasserschutzgebiete (LANUV)" title="Offizielle Wasserschutzgebiete in NRW (LANUV WMS)">
                             <span class="swatch" style="background-color: #F0E442;"></span>
-                            <span class="filter-label">Wasserschutzgebiete</span>
+                            <span class="filter-label">Wasserschutzgebiete<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span></span>
                             <span class="counter-badge" id="cnt-layer-wsg">(0/0)</span>
                         </button>
                         <button class="filter-btn" data-layer-name="Tagebaue & Bergbaufelder (GD)" title="Tagebaue und Bergbaufelder in der Region (GD WMS)">
@@ -1563,6 +1605,12 @@
 
     <!-- Leaflet.markercluster JS -->
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+    <!-- Tippy.js für Glossar-Tooltips -->
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css"/>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="glossar.js"></script>
 
     <!-- jsPDF for PDF Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -2083,15 +2131,15 @@
                         <div class="popup-card">
                             <div class="popup-group" style="color: ${primaryColor}">Industrieeinleiter</div>
                             <div class="popup-title">${p.name || 'Unbekannt'}</div>
-                            <div class="popup-detail">🏭 Branche: ${branchen.join(', ') || '–'}</div>
-                            <div class="popup-detail">💧 Einleitungsart: ${p.einleitungsart || '–'}</div>
+                            <div class="popup-detail">🏭 Branche<span class="glossar-icon" data-glossar="ABWV_ANHANG">i</span>: ${branchen.join(', ') || '–'}</div>
+                            <div class="popup-detail">💧 Einleitungsart<span class="glossar-icon" data-glossar="EINLEITUNGSART">i</span>: ${p.einleitungsart || '–'}</div>
                             <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
                     `;
                     if (p.mengen_text) {
                         html += `<div class="popup-detail">📊 Abwassermenge: ${p.mengen_text}</div>`;
                     }
                     if (p.gewaesser_liste) {
-                        html += `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>`;
+                        html += `<div class="popup-detail">🌊 Einleitung in<span class="glossar-icon" data-glossar="GEWAESSER_EINLEITUNG">i</span>: ${p.gewaesser_liste}</div>`;
                     }
                     html += getZustaendigkeitHtml(p);
                     html += `
@@ -2192,9 +2240,9 @@
                                 <div class="popup-title">${p.name || 'Unbekannt'}</div>
                                 <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
                         `;
-                        if (p.betreiber) html += `<div class="popup-detail">🏢 Betreiber: ${p.betreiber}</div>`;
-                        if (p.gewaesser) html += `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser}</div>`;
-                        if (p.ausbaugroesse_ew) html += `<div class="popup-detail">📊 Ausbaugröße: ${p.ausbaugroesse_ew} EW</div>`;
+                        if (p.betreiber) html += `<div class="popup-detail">🏢 Betreiber<span class="glossar-icon" data-glossar="BETREIBER">i</span>: ${p.betreiber}</div>`;
+                        if (p.gewaesser) html += `<div class="popup-detail">🌊 Einleitung in<span class="glossar-icon" data-glossar="GEWAESSER_EINLEITUNG">i</span>: ${p.gewaesser}</div>`;
+                        if (p.ausbaugroesse_ew) html += `<div class="popup-detail">📊 Ausbaugröße<span class="glossar-icon" data-glossar="AUSBAUGROESSE_EW">i</span>: ${p.ausbaugroesse_ew} EW</div>`;
                         html += getZustaendigkeitHtml(p);
                         html += `
                                 <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
@@ -2255,7 +2303,7 @@
                                     <div class="popup-title">${p.name || 'Unbekannt'}</div>
                                     <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
                                     ${p.eigentuemer ? `<div class="popup-detail">🏢 Eigentümer: ${p.eigentuemer}</div>` : ''}
-                                    ${p.messstellenart ? `<div class="popup-detail">🔧 Art: ${p.messstellenart}</div>` : ''}
+                                    ${p.messstellenart ? `<div class="popup-detail">🔧 Art<span class="glossar-icon" data-glossar="MESSSTELLENART">i</span>: ${p.messstellenart}</div>` : ''}
                                     ${getZustaendigkeitHtml(p)}
                                     <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Koordinaten ${p.genauigkeit}. Quelle: ELWAS-WEB (Land NRW)</div>
                                 </div>
@@ -2312,9 +2360,9 @@
                                 <div class="popup-title">${p.name || 'Unbekannt'}</div>
                                 <div class="popup-detail">📍 ${p.kreis || ''}</div>
                         `;
-                        if (p.gewaesser) html += `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>`;
-                        if (p.einzugsgebiet_km2) html += `<div class="popup-detail">📐 Einzugsgebiet: ${p.einzugsgebiet_km2} km²</div>`;
-                        if (p.mq_m3s) html += `<div class="popup-detail">📊 NQ: ${p.nq_m3s || '–'}, MQ: ${p.mq_m3s}, HQ: ${p.hq_m3s || '–'} m³/s</div>`;
+                        if (p.gewaesser) html += `<div class="popup-detail">🌊 Gewässer<span class="glossar-icon" data-glossar="GEWAESSER_EINLEITUNG">i</span>: ${p.gewaesser}</div>`;
+                        if (p.einzugsgebiet_km2) html += `<div class="popup-detail">📐 Einzugsgebiet<span class="glossar-icon" data-glossar="EINZUGSGEBIET">i</span>: ${p.einzugsgebiet_km2} km²</div>`;
+                        if (p.mq_m3s) html += `<div class="popup-detail">📊 NQ<span class="glossar-icon" data-glossar="NQ">i</span>: ${p.nq_m3s || '–'}, MQ<span class="glossar-icon" data-glossar="MQ">i</span>: ${p.mq_m3s}, HQ<span class="glossar-icon" data-glossar="HQ">i</span>: ${p.hq_m3s || '–'} m³/s</div>`;
                         html += getZustaendigkeitHtml(p);
                         html += `
                                 <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
@@ -2362,8 +2410,8 @@
                                 <div class="popup-title">${p.name || 'Unbekannt'}</div>
                                 <div class="popup-detail">📍 ${p.kreis || ''}</div>
                         `;
-                        if (p.betreiber) html += `<div class="popup-detail">🏢 Betreiber: ${p.betreiber}</div>`;
-                        if (p.gewaesser) html += `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>`;
+                        if (p.betreiber) html += `<div class="popup-detail">🏢 Betreiber<span class="glossar-icon" data-glossar="BETREIBER">i</span>: ${p.betreiber}</div>`;
+                        if (p.gewaesser) html += `<div class="popup-detail">🌊 Gewässer<span class="glossar-icon" data-glossar="GEWAESSER_EINLEITUNG">i</span>: ${p.gewaesser}</div>`;
                         if (p.typ) html += `<div class="popup-detail">🔧 Typ: ${p.typ}</div>`;
                         html += getZustaendigkeitHtml(p);
                         html += `
@@ -2412,9 +2460,9 @@
                                 <div class="popup-title">${p.name || 'Unbekannt'}</div>
                                 <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
                         `;
-                        if (p.betreiber) html += `<div class="popup-detail">🏢 Betreiber: ${p.betreiber}</div>`;
+                        if (p.betreiber) html += `<div class="popup-detail">🏢 Betreiber<span class="glossar-icon" data-glossar="BETREIBER">i</span>: ${p.betreiber}</div>`;
                         if (p.typ) html += `<div class="popup-detail">🔧 Typ: ${p.typ}</div>`;
-                        if (p.abwasserbereich) html += `<div class="popup-detail">⚙️ Abwasserbereich: ${p.abwasserbereich}</div>`;
+                        if (p.abwasserbereich) html += `<div class="popup-detail">⚙️ Abwasserbereich<span class="glossar-icon" data-glossar="ABWASSERBEREICH">i</span>: ${p.abwasserbereich}</div>`;
                         html += getZustaendigkeitHtml(p);
                         html += `
                                 <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
@@ -2462,8 +2510,8 @@
                                 <div class="popup-title">${p.name || 'Unbekannt'}</div>
                                 <div class="popup-detail">📍 ${p.kreis || ''}</div>
                         `;
-                        if (p.gewaesser) html += `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>`;
-                        if (p.bauwerksart) html += `<div class="popup-detail">🏗️ Bauwerksart: ${p.bauwerksart}</div>`;
+                        if (p.gewaesser) html += `<div class="popup-detail">🌊 Gewässer<span class="glossar-icon" data-glossar="GEWAESSER_EINLEITUNG">i</span>: ${p.gewaesser}</div>`;
+                        if (p.bauwerksart) html += `<div class="popup-detail">🏗️ Bauwerksart<span class="glossar-icon" data-glossar="BAUWERKSART">i</span>: ${p.bauwerksart}</div>`;
                         if (p.typ) html += `<div class="popup-detail">🔧 Typ: ${p.typ}</div>`;
                         html += getZustaendigkeitHtml(p);
                         html += `
@@ -4436,6 +4484,56 @@ function buildUnifiedSearchIndex() {
                     goToStep(presentationStepIndex - 1);
                 } else if (e.key === 'Escape') {
                     exitPresentationMode();
+                }
+            });
+
+            // ===== Laien-Glossar-Modus =====
+            let laienModeActive = localStorage.getItem('laien-mode-active') === 'true';
+
+            function initGlossarTippy(root) {
+                if (typeof tippy === 'undefined') return;
+                root.querySelectorAll('.glossar-icon').forEach(el => {
+                    if (el._tippy) return;
+                    const key = el.getAttribute('data-glossar');
+                    const text = GLOSSAR_BEGRIFFE[key] || 'Keine Erklärung hinterlegt.';
+                    tippy(el, {
+                        content: text,
+                        theme: 'aquarevier',
+                        placement: 'top',
+                        maxWidth: 260,
+                        touch: true
+                    });
+                });
+            }
+
+            function toggleLaienMode() {
+                laienModeActive = !laienModeActive;
+                localStorage.setItem('laien-mode-active', laienModeActive);
+                updateLaienModeVisuals();
+            }
+
+            function updateLaienModeVisuals() {
+                const btn = document.getElementById('laien-mode-btn');
+                if (!btn) return;
+                if (laienModeActive) {
+                    document.body.classList.add('laien-mode');
+                    btn.classList.add('active');
+                } else {
+                    document.body.classList.remove('laien-mode');
+                    btn.classList.remove('active');
+                }
+            }
+
+            const laienModeBtn = document.getElementById('laien-mode-btn');
+            if (laienModeBtn) laienModeBtn.addEventListener('click', toggleLaienMode);
+
+            updateLaienModeVisuals();
+            initGlossarTippy(document);
+
+            map.on('popupopen', (e) => {
+                const popupNode = e.popup.getElement();
+                if (popupNode) {
+                    initGlossarTippy(popupNode);
                 }
             });
 
