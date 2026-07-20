@@ -1,20 +1,44 @@
 {
   "stauanlagen": {
     "total": 56,
-    "per_kreis": {},
+    "per_kreis": {
+      "Städteregion Aachen": 10,
+      "Heinsberg": 10,
+      "Mönchengladbach": 3,
+      "Rhein-Kreis Neuss": 3,
+      "Düren": 10,
+      "Rhein-Erft-Kreis": 10,
+      "Euskirchen": 10
+    },
     "updated": "2026-07-18",
-    "source_commit": "0454db0021fdc3a98ba690b815acf7ea4c169c08"
+    "source_commit": "e88536500eb616cb3f5f0c8732d602951d29a850"
   },
   "regenbecken": {
     "total": 70,
-    "per_kreis": {},
+    "per_kreis": {
+      "Städteregion Aachen": 10,
+      "Heinsberg": 10,
+      "Mönchengladbach": 10,
+      "Rhein-Kreis Neuss": 10,
+      "Düren": 10,
+      "Rhein-Erft-Kreis": 10,
+      "Euskirchen": 10
+    },
     "updated": "2026-07-18",
-    "source_commit": "0454db0021fdc3a98ba690b815acf7ea4c169c08"
+    "source_commit": "e88536500eb616cb3f5f0c8732d602951d29a850"
   },
   "querbauwerke": {
     "total": 70,
-    "per_kreis": {},
+    "per_kreis": {
+      "Städteregion Aachen": 10,
+      "Heinsberg": 10,
+      "Mönchengladbach": 10,
+      "Rhein-Kreis Neuss": 10,
+      "Düren": 10,
+      "Rhein-Erft-Kreis": 10,
+      "Euskirchen": 10
+    },
     "updated": "2026-07-18",
-    "source_commit": "0454db0021fdc3a98ba690b815acf7ea4c169c08"
+    "source_commit": "e88536500eb616cb3f5f0c8732d602951d29a850"
   }
 }

@@ -96,7 +96,7 @@ async def main():
         # Pre-Scrape Data Quality Gate: Row-Count-Tripwire
         gate = DataQualityGate()
         try:
-            gate.check_row_count_tripwire("stauanlagen", all_kreis_counts)
+            gate.check_row_count_tripwire("stauanlagen", sum(all_kreis_counts.values()), all_kreis_counts)
         except RuntimeError as e:
             print(e)
             print("Scraping abgebrochen aufgrund des Row-Count-Tripwires.")

@@ -27,11 +27,10 @@ class DataQualityGate:
         with open(path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
-    def check_row_count_tripwire(self, dataset_key: str, kreis_counts: Dict[str, int], threshold: float = 0.30) -> None:
+    def check_row_count_tripwire(self, dataset_key: str, total_new_count: int, kreis_counts: Dict[str, int], threshold: float = 0.30) -> None:
         """
-        Prüft die Zeilenanzahl gegen den letzten bekannten Stand.
+        Prüft die Zeilenanzahl gegen den letzten bekannten Stand (Gesamt und pro Kreis).
         """
-        total_new_count = sum(kreis_counts.values())
         baseline_data = self.known_row_counts.get(dataset_key)
 
         if not baseline_data:
@@ -43,15 +42,29 @@ class DataQualityGate:
             print(f"INFO: Baseline für '{dataset_key}' hat 0 Zeilen. Tripwire übersprungen.")
             return
 
+        # Check total count deviation
         deviation = abs(total_new_count - total_baseline_count) / total_baseline_count
-
         if deviation > threshold:
             raise RuntimeError(
-                f"Datenqualitäts-Gate FAIL: Row-Count-Tripwire für '{dataset_key}' ausgelöst.\n"
+                f"Datenqualitäts-Gate HARD FAIL: Row-Count-Tripwire für '{dataset_key}' ausgelöst (Gesamtanzahl).\n"
                 f"Neue Gesamtanzahl: {total_new_count}, Baseline: {total_baseline_count} (Abweichung: {deviation:.2%}).\n"
                 f"Bitte manuelle Prüfung der Daten vor dem Scrape."
             )
-        print(f"INFO: Row-Count-Tripwire für '{dataset_key}' bestanden (Abweichung: {deviation:.2%}).")
+
+        # Check per-Kreis count deviation
+        baseline_per_kreis = baseline_data.get("per_kreis", {})
+        for kreis, baseline_count in baseline_per_kreis.items():
+            if baseline_count is not None and baseline_count > 0:
+                new_count = kreis_counts.get(kreis, 0)
+                kreis_deviation = abs(new_count - baseline_count) / baseline_count
+                if kreis_deviation > threshold:
+                    raise RuntimeError(
+                        f"Datenqualitäts-Gate HARD FAIL: Row-Count-Tripwire für '{dataset_key}' im Kreis '{kreis}' ausgelöst.\n"
+                        f"Neue Anzahl: {new_count}, Baseline: {baseline_count} (Abweichung: {kreis_deviation:.2%}).\n"
+                        f"Bitte manuelle Prüfung der Daten vor dem Scrape."
+                    )
+
+        print(f"INFO: Row-Count-Tripwire (Gesamt und pro Kreis) für '{dataset_key}' bestanden.")
 
     def check_cardinality(self, features: List[Dict], required_fields: List[str],
                           blacklist_fragments: List[str], mode_ratio_threshold: float = 0.8,
