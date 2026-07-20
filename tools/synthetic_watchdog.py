@@ -30,7 +30,7 @@ ELWAS_BASE = "https://www.elwasweb.nrw.de/elwas-web/index.xhtml"
 
 CHECK_INTERVAL_S = 15 * 60          # site + geojson sanity every 15 min
 ELWAS_CHECK_EVERY_N = 4             # ELWAS (heavier/external) every 4th cycle = hourly
-MAX_RUNTIME_HOURS = 37
+MAX_RUNTIME_HOURS = 24
 
 # contacts.geojson holds raw PII (names/emails/phones) and is intentionally
 # excluded from every deploy via .surgeignore - never live, checking it would
