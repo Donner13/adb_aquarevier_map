@@ -1,0 +1,12 @@
+{
+  "layer": "pegel",
+  "id_field": "pegel_nr",
+  "run_timestamp": "2026-07-18T16-29-40Z",
+  "baseline": false,
+  "previous_count": 46,
+  "new_count": 46,
+  "added": [],
+  "removed": [],
+  "changed": [],
+  "summary": "0 neu, 0 entfernt, 0 geändert."
+}

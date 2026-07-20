@@ -7,7 +7,7 @@
         "type": "Point",
         "coordinates": [
           6.310100555016211,
-          50.83149376299212
+          50.83149376299211
         ]
       },
       "properties": {
@@ -18,11 +18,7 @@
         "betreiber": "RWE Power AG - Tagebau Inden",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -42,11 +38,7 @@
         "betreiber": "RWE Power AG - Tagebau Inden",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -66,11 +58,7 @@
         "betreiber": "KERPEN DATACOM GmbH",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -79,7 +67,7 @@
         "type": "Point",
         "coordinates": [
           6.257882418804695,
-          50.7516441759018
+          50.75164417590181
         ]
       },
       "properties": {
@@ -90,11 +78,7 @@
         "betreiber": "KERPEN DATACOM GmbH",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -102,7 +86,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.222776179779209,
+          6.222776179779208,
           50.87483470936783
         ]
       },
@@ -114,11 +98,7 @@
         "betreiber": "Eigenbetrieb Abwasser der Stadt Alsdorf",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -126,7 +106,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.262713191593536,
+          6.262713191593537,
           50.52809554508983
         ]
       },
@@ -138,11 +118,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -150,7 +126,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.13690465638016,
+          6.1369046563801595,
           50.86353853688764
         ]
       },
@@ -162,11 +138,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "SK (Stauraumkanal)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -186,11 +158,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "SK (Stauraumkanal)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -210,11 +178,7 @@
         "betreiber": "Eigenbetrieb Abwasser der Stadt Alsdorf",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -234,11 +198,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -258,11 +218,7 @@
         "betreiber": "Bundeswehr-Dienstleistungszentrum Aachen TGM Geilenkirchen",
         "typ": "RBF (Retentionsbodenfilter)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -282,11 +238,7 @@
         "betreiber": "Bundeswehr-Dienstleistungszentrum Aachen TGM Geilenkirchen",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -306,11 +258,7 @@
         "betreiber": "Bürgermeister Heinsberg",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -330,11 +278,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -354,11 +298,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "SK (Stauraumkanal)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -378,11 +318,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -402,11 +338,7 @@
         "betreiber": "WVER",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -426,11 +358,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -450,11 +378,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "SK (Stauraumkanal)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -474,11 +398,7 @@
         "betreiber": "Stadt Geilenkirchen",
         "typ": "SK (Stauraumkanal)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -487,7 +407,7 @@
         "type": "Point",
         "coordinates": [
           6.491783089415481,
-          51.230255513059404
+          51.23025551305941
         ]
       },
       "properties": {
@@ -498,11 +418,7 @@
         "betreiber": "Flughafen Düsseldorf-Mönchengladbach GmbH",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -522,11 +438,7 @@
         "betreiber": "Flughafen Düsseldorf-Mönchengladbach GmbH",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -546,11 +458,7 @@
         "betreiber": "Flughafen Düsseldorf-Mönchengladbach GmbH",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -559,7 +467,7 @@
         "type": "Point",
         "coordinates": [
           6.435711613900272,
-          51.17386978674842
+          51.17386978674841
         ]
       },
       "properties": {
@@ -570,11 +478,7 @@
         "betreiber": "Niersverband",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -594,11 +498,7 @@
         "betreiber": "Niersverband",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -618,11 +518,7 @@
         "betreiber": "NEW AG Mönchengladbach -",
         "typ": "SK (Stauraumkanal)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -642,11 +538,7 @@
         "betreiber": "Oberbürgermeister Mönchengladbach",
         "typ": "SK (Stauraumkanal)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -666,11 +558,7 @@
         "betreiber": "NEW AG Mönchengladbach -",
         "typ": "SK (Stauraumkanal)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -690,11 +578,7 @@
         "betreiber": "NVV AG Mönchengladbach -",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -714,11 +598,7 @@
         "betreiber": "NVV AG Mönchengladbach -",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -738,11 +618,7 @@
         "betreiber": "Aluminium Norf GmbH",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -762,11 +638,7 @@
         "betreiber": "O. & L. Sels GmbH & Co. KG",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -775,7 +647,7 @@
         "type": "Point",
         "coordinates": [
           6.785247090278356,
-          51.15074899893962
+          51.15074899893961
         ]
       },
       "properties": {
@@ -786,11 +658,7 @@
         "betreiber": "HYDRO Aluminium Rolled Products GmbH Werk Neuss",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -810,11 +678,7 @@
         "betreiber": "Stürzelberg II, Dormagen Sabine Beyer-Schewe",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -823,7 +687,7 @@
         "type": "Point",
         "coordinates": [
           6.60279534806762,
-          51.09771933094696
+          51.09771933094695
         ]
       },
       "properties": {
@@ -834,11 +698,7 @@
         "betreiber": "Intersnack Knabber-Gebäck GmbH & Co. KG Wevelinghoven",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -858,11 +718,7 @@
         "betreiber": "Pfeifer & Langen KG Werk Wevelinghoven",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -882,11 +738,7 @@
         "betreiber": "WW Waldhütte/Lodshof NVV AG",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -906,11 +758,7 @@
         "betreiber": "Speira GmbH Werk Grevenbroich",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -930,11 +778,7 @@
         "betreiber": "Dachser GmbH & Co. KG Niederlassung Neuss",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -954,11 +798,7 @@
         "betreiber": "Erftverband",
         "typ": "SK (Stauraumkanal)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -978,11 +818,7 @@
         "betreiber": "J. & W. Stollenwerk OHG",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -991,7 +827,7 @@
         "type": "Point",
         "coordinates": [
           6.5402528672664495,
-          50.818037841611286
+          50.81803784161129
         ]
       },
       "properties": {
@@ -1002,11 +838,7 @@
         "betreiber": "J. & W. Stollenwerk OHG",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1026,11 +858,7 @@
         "betreiber": "SIG Combibloc GmbH",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1050,11 +878,7 @@
         "betreiber": "RWE Power AG - Tagebau Hambach",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1074,11 +898,7 @@
         "betreiber": "EBV Aktiengesellschaft Berghalde Emil Mayrisch (Freialdenhoven)",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1087,7 +907,7 @@
         "type": "Point",
         "coordinates": [
           6.642297841853594,
-          50.82137785531085
+          50.82137785531086
         ]
       },
       "properties": {
@@ -1098,11 +918,7 @@
         "betreiber": "Standortverwaltung Düren",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1122,11 +938,7 @@
         "betreiber": "Metsä Tissue GmbH Werk Kreuzau",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1146,11 +958,7 @@
         "betreiber": "Metsä Tissue GmbH Werk Kreuzau",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1170,11 +978,7 @@
         "betreiber": "Pfeifer & Langen GmbH & Co.KG Zuckerfabrik Jülich",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1194,11 +998,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "SK (Stauraumkanal)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1206,7 +1006,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.817189571476923,
+          6.817189571476922,
           50.8885591048056
         ]
       },
@@ -1218,11 +1018,7 @@
         "betreiber": "Landesbetrieb Straßenbau NRW",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1242,11 +1038,7 @@
         "betreiber": "Stadtwerke Bergheim GmbH",
         "typ": "SK (Stauraumkanal)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1266,11 +1058,7 @@
         "betreiber": "Stadt Pulheim Der Bürgermeister",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1290,11 +1078,7 @@
         "betreiber": "Stadt Frechen",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1314,11 +1098,7 @@
         "betreiber": "Aldi GmbH & Co. KG",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1338,11 +1118,7 @@
         "betreiber": "Stadt Brühl",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1362,11 +1138,7 @@
         "betreiber": "Heitkamp Immobilien GbR",
         "typ": "SK (Stauraumkanal)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1386,11 +1158,7 @@
         "betreiber": "Stadt Pulheim Der Bürgermeister",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1410,11 +1178,7 @@
         "betreiber": "Stadtwerke Bergheim GmbH",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1434,11 +1198,7 @@
         "betreiber": "Stadtwerke Bergheim GmbH",
         "typ": "RKB (Regenklärbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1458,11 +1218,7 @@
         "betreiber": "Abfallwirtschaftszentrum Mechernich",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1471,7 +1227,7 @@
         "type": "Point",
         "coordinates": [
           6.461780257341332,
-          50.442136738129705
+          50.4421367381297
         ]
       },
       "properties": {
@@ -1482,11 +1238,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RRB (Regenrückhaltebecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1506,11 +1258,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1530,11 +1278,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1554,11 +1298,7 @@
         "betreiber": "Abwasserwerk der Gemeinde Dahlem",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1578,11 +1318,7 @@
         "betreiber": "Gemeinde Dahlem",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1602,11 +1338,7 @@
         "betreiber": "Abwasserwerk der Gemeinde Dahlem",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1626,11 +1358,7 @@
         "betreiber": "Abwasserwerk der Gemeinde Dahlem",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1650,11 +1378,7 @@
         "betreiber": "Abwasserwerk der Gemeinde Dahlem",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1674,11 +1398,7 @@
         "betreiber": "Abwasserwerk der Gemeinde Dahlem",
         "typ": "RÜB (Regenüberlaufbecken)",
         "abwasserbereich": null,
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     }
   ]

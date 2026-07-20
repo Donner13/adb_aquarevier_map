@@ -17,11 +17,7 @@
         "betreiber": "WAG Nordeifel",
         "gewaesser": "Dreilägerbach",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -40,11 +36,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Euchener Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -52,7 +44,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.102462056905574,
+          6.1024620569055745,
           50.866123984571836
         ]
       },
@@ -63,11 +55,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Broicher Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -86,11 +74,7 @@
         "betreiber": "WAG Nordeifel",
         "gewaesser": "Kall",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -109,11 +93,7 @@
         "betreiber": "Wasserversorgungsverband Perlenbach",
         "gewaesser": "Perlenbach",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -132,11 +112,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Wildbach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -155,11 +131,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Wehebach",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -178,11 +150,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Eiserbach",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -201,11 +169,7 @@
         "betreiber": "Stadt Aachen",
         "gewaesser": "Wurm (Arm Luttitz)",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -224,11 +188,7 @@
         "betreiber": "Stadt Aachen",
         "gewaesser": "Kupferbach",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -247,11 +207,7 @@
         "betreiber": "Schwalm V",
         "gewaesser": "Beeckbach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -270,11 +226,7 @@
         "betreiber": "Schwalm V",
         "gewaesser": "Beeckbach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -293,11 +245,7 @@
         "betreiber": "Schwalm V",
         "gewaesser": "Beeckbach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -306,7 +254,7 @@
         "type": "Point",
         "coordinates": [
           6.163790204573696,
-          51.148602815802505
+          51.1486028158025
         ]
       },
       "properties": {
@@ -316,11 +264,7 @@
         "betreiber": "Dahlheimer Mühle",
         "gewaesser": "Afslagtak Rode Beek Vlodrop",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -339,11 +283,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Rodebach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -362,11 +302,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Rodebach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -385,11 +321,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Übach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -408,11 +340,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Beeckfließ",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -431,11 +359,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Kötteler Schar",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -444,7 +368,7 @@
         "type": "Point",
         "coordinates": [
           6.141613674149045,
-          50.97615350289981
+          50.976153502899805
         ]
       },
       "properties": {
@@ -454,11 +378,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Wurm",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -477,11 +397,7 @@
         "betreiber": "Niersverband",
         "gewaesser": "Niers",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -500,11 +416,7 @@
         "betreiber": "Niersverband",
         "gewaesser": "Hochneukircher Fließ",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -523,11 +435,7 @@
         "betreiber": "Niersverband",
         "gewaesser": "Niers",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -546,11 +454,7 @@
         "betreiber": "Eftverband",
         "gewaesser": "Gillbach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -558,7 +462,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.574244521753862,
+          6.5742445217538625,
           51.142083636569055
         ]
       },
@@ -569,11 +473,7 @@
         "betreiber": "Eftverband",
         "gewaesser": "Jüchener Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -592,11 +492,7 @@
         "betreiber": "Eftverband",
         "gewaesser": "Scheulenbendgraben",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -615,11 +511,7 @@
         "betreiber": "Zuckerfabrik Jülich AG",
         "gewaesser": "Rur",
         "typ": "Sedimentationsbecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -638,11 +530,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Rur",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -661,11 +549,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Rur",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -684,11 +568,7 @@
         "betreiber": "Rheinisch Westfälische",
         "gewaesser": "Mühlengraben (Waagmühle)",
         "typ": "Pumpspeicherbecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -707,11 +587,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Rur",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -730,11 +606,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Rur",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -753,11 +625,7 @@
         "betreiber": "Stadt Aachen",
         "gewaesser": "Schlangengraben",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -765,7 +633,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.472796097449849,
+          6.472796097449848,
           50.86268179198293
         ]
       },
@@ -776,11 +644,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Ellebach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -788,7 +652,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.512459658881689,
+          6.51245965888169,
           50.72232142093041
         ]
       },
@@ -799,11 +663,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Boicher Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -822,11 +682,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Drover Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -845,11 +701,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -868,11 +720,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -891,11 +739,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -904,7 +748,7 @@
         "type": "Point",
         "coordinates": [
           6.772638386400773,
-          50.97497696198068
+          50.97497696198069
         ]
       },
       "properties": {
@@ -914,11 +758,7 @@
         "betreiber": "Unterhaltungsverband Pullheimer Bach",
         "gewaesser": "Pulheimer Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -926,7 +766,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.7022999899533575,
+          6.702299989953357,
           50.98326398806309
         ]
       },
@@ -937,11 +777,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -960,11 +796,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Norfbach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -983,11 +815,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1006,11 +834,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1029,11 +853,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1052,11 +872,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Stommelner Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1075,11 +891,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Erft",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1098,11 +910,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Erft",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1121,11 +929,7 @@
         "betreiber": "Wasserversorgungsverband",
         "gewaesser": "Rauscheidsiefen (Madbach)",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1144,11 +948,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Olef",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1167,11 +967,7 @@
         "betreiber": "Zweckverband Kronenburger See",
         "gewaesser": "Kyll",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1190,11 +986,7 @@
         "betreiber": "Wasserversorgungsverband",
         "gewaesser": "Steinbach",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1202,8 +994,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.418804337206176,
-          50.602174938135136
+          6.4188043372061765,
+          50.60217493813513
         ]
       },
       "properties": {
@@ -1213,11 +1005,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Urft",
         "typ": "Talsperre",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1236,11 +1024,7 @@
         "betreiber": "Bundeswehr Wehrbereichsverwaltung West",
         "gewaesser": "Bergheimer Bach",
         "typ": "Sedimentationsbecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1259,11 +1043,7 @@
         "betreiber": "Eftverband",
         "gewaesser": "Neffelbach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1282,11 +1062,7 @@
         "betreiber": "Eftverband",
         "gewaesser": "Bürvenicher Bach",
         "typ": "Hochwasserrückhaltebecken",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     }
   ]

@@ -18,11 +18,7 @@
         "betreiber": "Stadt Erkelenz",
         "gewaesser": "Beeckbach",
         "ausbaugroesse_ew": "48.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -42,11 +38,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Wurm",
         "ausbaugroesse_ew": "70.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -66,11 +58,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Flutgraben",
         "ausbaugroesse_ew": "52.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -90,11 +78,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Wurm",
         "ausbaugroesse_ew": "11.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -102,7 +86,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.168607706297068,
+          6.168607706297067,
           51.06500496404554
         ]
       },
@@ -114,11 +98,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Mühlenbach",
         "ausbaugroesse_ew": "75.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -138,11 +118,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Wurm",
         "ausbaugroesse_ew": "65.500",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -150,7 +126,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.042776691758152,
+          6.042776691758153,
           51.096517116556285
         ]
       },
@@ -162,11 +138,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Kitschbach",
         "ausbaugroesse_ew": "17.500",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -186,11 +158,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Myhler Bach",
         "ausbaugroesse_ew": "25.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -210,11 +178,7 @@
         "betreiber": "Stadt Wegberg",
         "gewaesser": "Schwalm",
         "ausbaugroesse_ew": "46.790",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -234,11 +198,7 @@
         "betreiber": "Stadt Wegberg",
         "gewaesser": "Afslagtak Rode Beek Vlodrop",
         "ausbaugroesse_ew": "20.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
-        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
-        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
-        "zustaendigkeit_telefon": "02452 13-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -258,11 +218,7 @@
         "betreiber": "Niersverband",
         "gewaesser": "Niers",
         "ausbaugroesse_ew": "632.500",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Stadt Mönchengladbach",
-        "zustaendigkeit_amt": "Fachbereich Umwelt",
-        "zustaendigkeit_email": "umwelt@moenchengladbach.de",
-        "zustaendigkeit_telefon": "02161 25-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -271,7 +227,7 @@
         "type": "Point",
         "coordinates": [
           6.690577165860264,
-          51.27814828938008
+          51.27814828938007
         ]
       },
       "properties": {
@@ -282,11 +238,7 @@
         "betreiber": "Stadt Düsseldorf",
         "gewaesser": "Rhein",
         "ausbaugroesse_ew": "600.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -295,7 +247,7 @@
         "type": "Point",
         "coordinates": [
           6.854111400998682,
-          51.09254923366005
+          51.09254923366006
         ]
       },
       "properties": {
@@ -306,11 +258,7 @@
         "betreiber": "Stadt Dormagen",
         "gewaesser": "Rhein",
         "ausbaugroesse_ew": "95.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -330,11 +278,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Wevelinghovener Entwässerungsgraben",
         "ausbaugroesse_ew": "97.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -354,11 +298,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Erft",
         "ausbaugroesse_ew": "27.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -378,11 +318,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Jüchener Bach",
         "ausbaugroesse_ew": "34.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -402,11 +338,7 @@
         "betreiber": "InfraStruktur Neuss AöR",
         "gewaesser": "Rhein",
         "ausbaugroesse_ew": "420.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -426,11 +358,7 @@
         "betreiber": "InfraStruktur Neuss AöR",
         "gewaesser": "Erft",
         "ausbaugroesse_ew": "121.200",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -450,11 +378,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Gillbach",
         "ausbaugroesse_ew": "12.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -463,7 +387,7 @@
         "type": "Point",
         "coordinates": [
           6.56254453598293,
-          51.22654394296185
+          51.22654394296184
         ]
       },
       "properties": {
@@ -474,11 +398,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Nordkanal",
         "ausbaugroesse_ew": "80.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
-        "zustaendigkeit_amt": "Amt für Umweltschutz",
-        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
-        "zustaendigkeit_telefon": "02181 601-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -498,11 +418,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Rur",
         "ausbaugroesse_ew": "310.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -522,11 +438,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Rur",
         "ausbaugroesse_ew": "11.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -546,11 +458,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Rur",
         "ausbaugroesse_ew": "2.500",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -559,7 +467,7 @@
         "type": "Point",
         "coordinates": [
           6.4198852104289665,
-          50.756593565959506
+          50.7565935659595
         ]
       },
       "properties": {
@@ -570,11 +478,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Birgeler Bach",
         "ausbaugroesse_ew": "4.500",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -594,11 +498,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Rur",
         "ausbaugroesse_ew": "2.200",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -618,11 +518,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Rur",
         "ausbaugroesse_ew": "90.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -642,11 +538,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Wehebach",
         "ausbaugroesse_ew": "11.620",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -666,11 +558,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Rur",
         "ausbaugroesse_ew": "30.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -690,11 +578,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Sollerbach",
         "ausbaugroesse_ew": "6.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -702,7 +586,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.588526972434637,
+          6.588526972434638,
           50.68400315752021
         ]
       },
@@ -714,11 +598,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Neffelbach",
         "ausbaugroesse_ew": "6.500",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
-        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
-        "zustaendigkeit_email": "amt66@kreis-dueren.de",
-        "zustaendigkeit_telefon": "02421 220"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -738,11 +618,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Erft",
         "ausbaugroesse_ew": "27.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -762,11 +638,7 @@
         "betreiber": "Stadt Bad Muenstereifel",
         "gewaesser": "Effelsberger Bach",
         "ausbaugroesse_ew": "1.500",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -775,7 +647,7 @@
         "type": "Point",
         "coordinates": [
           6.659366776618471,
-          50.43221320551684
+          50.43221320551683
         ]
       },
       "properties": {
@@ -786,11 +658,7 @@
         "betreiber": "Gemeinde Blankenheim",
         "gewaesser": "Ahr",
         "ausbaugroesse_ew": "4.500",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -810,11 +678,7 @@
         "betreiber": "Gemeinde Blankenheim",
         "gewaesser": "Mühlenbach",
         "ausbaugroesse_ew": "2.300",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -834,11 +698,7 @@
         "betreiber": "Gemeinde Blankenheim",
         "gewaesser": "Ahbach",
         "ausbaugroesse_ew": "1.500",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -847,7 +707,7 @@
         "type": "Point",
         "coordinates": [
           6.740835423905607,
-          50.38539666511083
+          50.385396665110825
         ]
       },
       "properties": {
@@ -858,11 +718,7 @@
         "betreiber": "Gemeinde Blankenheim",
         "gewaesser": "Ahr",
         "ausbaugroesse_ew": "1.500",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -882,11 +738,7 @@
         "betreiber": "Gemeinde Blankenheim",
         "gewaesser": "Reetzer Bach",
         "ausbaugroesse_ew": "800",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -906,11 +758,7 @@
         "betreiber": "Gemeinde Blankenheim",
         "gewaesser": "Borbach",
         "ausbaugroesse_ew": "1.500",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -930,11 +778,7 @@
         "betreiber": "Gemeinde Blankenheim",
         "gewaesser": "Nonnenbach",
         "ausbaugroesse_ew": "300",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -943,7 +787,7 @@
         "type": "Point",
         "coordinates": [
           6.754362986988166,
-          50.45367661000634
+          50.45367661000635
         ]
       },
       "properties": {
@@ -954,11 +798,7 @@
         "betreiber": "Gemeinde Blankenheim",
         "gewaesser": "Armuthsbach",
         "ausbaugroesse_ew": "1.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
-        "zustaendigkeit_amt": "Untere Wasserbehörde",
-        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
-        "zustaendigkeit_telefon": "02251 15-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -967,7 +807,7 @@
         "type": "Point",
         "coordinates": [
           6.104169253328469,
-          50.808534958347366
+          50.80853495834736
         ]
       },
       "properties": {
@@ -978,11 +818,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Wurm",
         "ausbaugroesse_ew": "458.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -990,7 +826,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          6.149008769400947,
+          6.149008769400948,
           50.792801456239204
         ]
       },
@@ -1002,11 +838,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Haarbach",
         "ausbaugroesse_ew": "87.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1015,7 +847,7 @@
         "type": "Point",
         "coordinates": [
           6.059292002715149,
-          50.840414746246495
+          50.84041474624649
         ]
       },
       "properties": {
@@ -1026,11 +858,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Amstelbach",
         "ausbaugroesse_ew": "34.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1039,7 +867,7 @@
         "type": "Point",
         "coordinates": [
           6.186168950634148,
-          50.74969177334801
+          50.749691773348005
         ]
       },
       "properties": {
@@ -1050,11 +878,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Inde",
         "ausbaugroesse_ew": "41.910",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1063,7 +887,7 @@
         "type": "Point",
         "coordinates": [
           6.133168343583837,
-          50.86536268470474
+          50.865362684704735
         ]
       },
       "properties": {
@@ -1074,11 +898,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Broicher Bach",
         "ausbaugroesse_ew": "30.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1087,7 +907,7 @@
         "type": "Point",
         "coordinates": [
           6.211807337550218,
-          50.88877588820972
+          50.88877588820973
         ]
       },
       "properties": {
@@ -1098,11 +918,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Freialdenhovener Fließ",
         "ausbaugroesse_ew": "50.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1122,11 +938,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Gereonsweiler Fließ",
         "ausbaugroesse_ew": "50.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1135,7 +947,7 @@
         "type": "Point",
         "coordinates": [
           6.335283834367577,
-          50.832215880954834
+          50.83221588095484
         ]
       },
       "properties": {
@@ -1146,11 +958,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Inde",
         "ausbaugroesse_ew": "157.700",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1170,11 +978,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Wurm",
         "ausbaugroesse_ew": "50.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1194,11 +998,7 @@
         "betreiber": "Wasserverband Eifel-Rur",
         "gewaesser": "Wurm",
         "ausbaugroesse_ew": "32.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Städteregion Aachen",
-        "zustaendigkeit_amt": "A 66 - Umweltamt",
-        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
-        "zustaendigkeit_telefon": "0241 5198-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1207,7 +1007,7 @@
         "type": "Point",
         "coordinates": [
           6.578082800879263,
-          51.00970618384605
+          51.00970618384604
         ]
       },
       "properties": {
@@ -1218,11 +1018,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Erft",
         "ausbaugroesse_ew": "66.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1242,11 +1038,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Gillbach",
         "ausbaugroesse_ew": "23.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1255,7 +1047,7 @@
         "type": "Point",
         "coordinates": [
           6.7602044629909654,
-          50.97285037043081
+          50.9728503704308
         ]
       },
       "properties": {
@@ -1266,11 +1058,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Pulheimer Bach",
         "ausbaugroesse_ew": "9.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1279,7 +1067,7 @@
         "type": "Point",
         "coordinates": [
           6.654358992630766,
-          50.93984105637056
+          50.93984105637057
         ]
       },
       "properties": {
@@ -1290,11 +1078,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Erft",
         "ausbaugroesse_ew": "120.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1314,11 +1098,7 @@
         "betreiber": "Stadt Brühl",
         "gewaesser": "Palmersdorfer Bach",
         "ausbaugroesse_ew": "70.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1327,7 +1107,7 @@
         "type": "Point",
         "coordinates": [
           6.584334094501134,
-          50.95304640387224
+          50.95304640387225
         ]
       },
       "properties": {
@@ -1338,11 +1118,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Elsdorfer Fließ",
         "ausbaugroesse_ew": "20.400",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1362,11 +1138,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Erft",
         "ausbaugroesse_ew": "70.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1386,11 +1158,7 @@
         "betreiber": "Erftverband",
         "gewaesser": "Frechener Bach",
         "ausbaugroesse_ew": "56.100",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1410,11 +1178,7 @@
         "betreiber": "Stadtwerke Hürth AöR",
         "gewaesser": "Südlicher Randkanal",
         "ausbaugroesse_ew": "92.750",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     },
     {
@@ -1423,7 +1187,7 @@
         "type": "Point",
         "coordinates": [
           6.8184157114019275,
-          51.014955539075046
+          51.01495553907505
         ]
       },
       "properties": {
@@ -1434,11 +1198,7 @@
         "betreiber": "Pulheim",
         "gewaesser": "Kölner Randkanal",
         "ausbaugroesse_ew": "80.000",
-        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
-        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
-        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
-        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
-        "zustaendigkeit_telefon": "02271 83-0"
+        "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0"
       }
     }
   ]

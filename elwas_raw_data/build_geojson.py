@@ -5,16 +5,26 @@ Kann jederzeit erneut laufen (auch mit unvollstaendigem scrape_progress.json)
 - Firmen ohne Koordinaten werden uebersprungen und am Ende aufgelistet.
 """
 import json
+import shutil
 import os
+
+import sys
+BASE = os.path.dirname(os.path.abspath(__file__))
+ROOT_PATH = os.path.join(BASE, "..")
+sys.path.insert(0, os.path.join(ROOT_PATH, "elwas_toolkit"))
+from changelog import write_changelog
 import re
 import pandas as pd
 from pyproj import Transformer
 
-BASE = os.path.dirname(os.path.abspath(__file__))
+
 CSV_PATH = os.path.join(BASE, "matching_companies.csv")
 PROGRESS_PATH = os.path.join(BASE, "scrape_progress.json")
 EINLEITUNGSSTELLEN_PATH = os.path.join(BASE, "scrape_progress_einleitungsstellen.json")
 OUT_PATH = os.path.join(BASE, "elwas_einleiter.geojson")
+ROOT_COPY_PATH = os.path.join(ROOT_PATH, "elwas_einleiter.geojson")
+ROOT_COPY_PATH = os.path.join(ROOT_PATH, "elwas_einleiter.geojson")
+ROOT_COPY_PATH = os.path.join(ROOT_PATH, "elwas_einleiter.geojson")
 
 BRANCHE_MAP = {
     28: "Papierindustrie",
@@ -218,6 +228,22 @@ def main():
     geojson = {"type": "FeatureCollection", "features": features}
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(geojson, f, indent=2, ensure_ascii=False, allow_nan=False)
+
+    # Load old features for diffing
+    old_features = []
+    if os.path.exists(ROOT_COPY_PATH):
+        try:
+            with open(ROOT_COPY_PATH, "r", encoding="utf-8") as f:
+                old_data = json.load(f)
+                old_features = old_data.get("features", [])
+        except Exception as e:
+            print(f"Could not load old features: {e}")
+
+    # Write changelog
+    write_changelog("elwas_einleiter", "betriebs_nr", old_features, features, os.path.join(ROOT_PATH, "changelog"))
+
+    # Copy to root
+    shutil.copy(OUT_PATH, ROOT_COPY_PATH)
 
     print(f"Companies total in CSV: {len(df)}")
     print(f"Features written: {len(features)}")

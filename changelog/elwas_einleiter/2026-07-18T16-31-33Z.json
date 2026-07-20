@@ -1,0 +1,12 @@
+{
+  "layer": "elwas_einleiter",
+  "id_field": "betriebs_nr",
+  "run_timestamp": "2026-07-18T16-31-33Z",
+  "baseline": false,
+  "previous_count": 101,
+  "new_count": 101,
+  "added": [],
+  "removed": [],
+  "changed": [],
+  "summary": "0 neu, 0 entfernt, 0 geändert."
+}

@@ -20,12 +20,22 @@ hat. Verifiziert gegen bekannte Ortslagen (u.a. Herzogenrath, Vaalserquartier,
 Rurich) nach Anwendung des *10-Fixes.
 """
 import json
+import shutil
 import os
+
+import sys
+BASE = os.path.dirname(os.path.abspath(__file__))
+ROOT_PATH = os.path.join(BASE, "..")
+sys.path.insert(0, os.path.join(ROOT_PATH, "elwas_toolkit"))
+from changelog import write_changelog
 from pyproj import Transformer
 
-BASE = os.path.dirname(os.path.abspath(__file__))
+
 IN_PATH = os.path.join(BASE, "grundwassermessstellen.json")
 OUT_PATH = os.path.join(BASE, "grundwassermessstellen.geojson")
+ROOT_COPY_PATH = os.path.join(ROOT_PATH, "grundwassermessstellen.geojson")
+ROOT_COPY_PATH = os.path.join(ROOT_PATH, "grundwassermessstellen.geojson")
+ROOT_COPY_PATH = os.path.join(ROOT_PATH, "grundwassermessstellen.geojson")
 
 transformer = Transformer.from_crs("epsg:25832", "epsg:4326", always_xy=True)
 
@@ -88,6 +98,30 @@ def main():
     geojson = {"type": "FeatureCollection", "features": features}
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(geojson, f, ensure_ascii=False, allow_nan=False)
+
+    # Load old features for diffing
+    old_features = []
+    if os.path.exists(ROOT_COPY_PATH):
+        try:
+            with open(ROOT_COPY_PATH, "r", encoding="utf-8") as f:
+                old_data = json.load(f)
+                old_features = old_data.get("features", [])
+        except Exception as e:
+            print(f"Could not load old features: {e}")
+
+    # Write changelog
+    import hashlib
+    def gwm_id(f):
+        p = f["properties"]
+        c = f["geometry"]["coordinates"]
+        name = p.get("name", "")
+        gemeinde = p.get("gemeinde", "")
+        return hashlib.sha1(f"{name}|{gemeinde}|{round(c[0],5)}|{round(c[1],5)}".encode()).hexdigest()[:12]
+
+    write_changelog("grundwassermessstellen", gwm_id, old_features, features, os.path.join(ROOT_PATH, "changelog"))
+
+    # Copy to root
+    shutil.copy(OUT_PATH, ROOT_COPY_PATH)
 
     print(f"Features written: {len(features)} (deduplicated)")
     print(f"Skipped (no coords): {skipped}")

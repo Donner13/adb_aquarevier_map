@@ -1,0 +1,12 @@
+{
+  "layer": "grundwassermessstellen",
+  "id_field": "gwm_id",
+  "run_timestamp": "2026-07-18T16-29-41Z",
+  "baseline": false,
+  "previous_count": 3746,
+  "new_count": 3746,
+  "added": [],
+  "removed": [],
+  "changed": [],
+  "summary": "0 neu, 0 entfernt, 0 geändert."
+}
