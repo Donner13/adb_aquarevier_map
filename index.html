@@ -1378,7 +1378,106 @@
             pointer-events: none;
             box-sizing: border-box;
         }
+
+        #pegel-analysis-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 320px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            max-height: 80vh;
+            overflow: hidden;
+        }
+        #pegel-analysis-panel.hidden {
+            display: none;
+        }
+        #pegel-analysis-panel .panel-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-secondary);
+        }
+        #pegel-analysis-panel .panel-header h3 {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        #pegel-analysis-panel .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #pegel-analysis-panel .panel-content {
+            padding: 16px;
+            overflow-y: auto;
+            color: var(--text-primary);
+            font-size: 13px;
+        }
+        #pegel-analysis-panel .analysis-stats {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        #pegel-analysis-panel .stat-box {
+            flex: 1;
+            background: rgba(0, 158, 115, 0.1);
+            border: 1px solid rgba(0, 158, 115, 0.3);
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+        #pegel-analysis-panel .stat-value {
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            color: #009E73;
+        }
+        #pegel-analysis-panel .stat-label {
+            display: block;
+            font-size: 10px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        #pegel-analysis-panel .betrieb-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #pegel-analysis-panel .betrieb-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        #pegel-analysis-panel .betrieb-list li:last-child {
+            border-bottom: none;
+        }
+
+        .pegel-analysis-line {
+            animation: dash-flow 2s linear infinite;
+        }
+        @keyframes dash-flow {
+            from { stroke-dashoffset: 15; }
+            to { stroke-dashoffset: 0; }
+        }
+        .pegel-analysis-marker {
+            animation: pulse-glow 2s infinite;
+        }
+        @keyframes pulse-glow {
+            0% { filter: drop-shadow(0 0 2px #D55E00); }
+            50% { filter: drop-shadow(0 0 8px #FFD700); }
+            100% { filter: drop-shadow(0 0 2px #D55E00); }
+        }
     </style>
+
 </head>
 <body class="light-theme">
     <div id="app-container">
@@ -1506,6 +1605,9 @@
                             <span class="swatch" style="background-color: #56B4E9;"></span>
                             <span class="filter-label">Grundwassermessstellen<span class="glossar-icon" data-glossar="GRUNDWASSERMESSSTELLE">i</span></span>
                             <span class="counter-badge" id="cnt-layer-gwm">(0/0)</span>
+                        </button>
+                        <button id="btn-pegel-analysis" class="filter-btn" style="background-color: rgba(0, 158, 115, 0.1); border-color: #009E73;" title="Aktiviert die Analyse-Ansicht für Industrieabwasseranteile an Pegeln">
+                            <span class="filter-label" style="display:flex; align-items:center; justify-content:center; width:100%;"><span style="margin-right: 5px;">🌊</span> Pegel-Abwasser-Analyse</span>
                         </button>
                         <button class="filter-btn active" data-layer-name="📏 Pegel (ELWAS)" title="Flusspegelstände und Durchflussmengen (ELWAS)">
                             <span class="swatch" style="background-color: #009E73;"></span>
@@ -1641,6 +1743,7 @@
     <script src="glossar.js"></script>
     <script src="js/layers-config.js"></script>
     <script src="js/layers-loader.js"></script>
+    <script src="js/pegel-analysis.js"></script>
 
     <!-- jsPDF for PDF Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>

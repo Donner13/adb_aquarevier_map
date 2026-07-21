@@ -88,6 +88,9 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         ? ` (${p.upstream_betriebe_mit_wert} Betrieb(e) mit Mengenangabe oberhalb)`
         : ' (keine quantifizierten Industrieeinleiter oberhalb gefunden)';
       html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${p.mq_m3s} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${pctStr}% davon als Industrieabwasser ein${betriebeHinweis}.</div>`;
+      if (p.upstream_betriebe_count > 0) {
+        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${p.pegel_nr}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
+      }
     }
 
     // getZustaendigkeitHtml is a global function defined in index/internal.html
@@ -167,7 +170,14 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       window[cfg.geoDataVar] = data;  // backward-compat global
       L.geoJSON(data, {
         pointToLayer: (feature, latlng) => L.marker(latlng, { icon: buildIcon() }),
-        onEachFeature: (feature, layer) => layer.bindPopup(buildPopupHtml(feature.properties))
+        onEachFeature: (feature, layer) => {
+          layer.bindPopup(buildPopupHtml(feature.properties));
+          if (cfg.pegelStats) {
+            layer.on('click', () => {
+              if (window.analyzePegel) window.analyzePegel(feature.properties.pegel_nr);
+            });
+          }
+        }
       }).addTo(layerGroup);
     })
     .catch(err => console.log(`${cfg.id} layer not loaded:`, err));

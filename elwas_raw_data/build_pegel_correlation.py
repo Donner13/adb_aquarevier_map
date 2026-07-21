@@ -260,6 +260,14 @@ def main():
             continue
         total_m3a, has_value = company_total_m3a(p)
         direct_companies.append({
+            "betriebs_nr": p.get("betriebs_nr"),
+            "lng": feat["geometry"]["coordinates"][0],
+            "lat": feat["geometry"]["coordinates"][1],
+            "anhang_codes": p.get("anhang_codes", []),
+            "betriebs_nr": p.get("betriebs_nr"),
+            "lng": feat["geometry"]["coordinates"][0],
+            "lat": feat["geometry"]["coordinates"][1],
+            "anhang_codes": p.get("anhang_codes", []),
             "name": p.get("name"),
             "point": shape(feat["geometry"]),
             "total_m3a": total_m3a,
@@ -293,6 +301,7 @@ def main():
             p["upstream_data_available"] = False
             p["upstream_betriebe_count"] = None
             p["upstream_betriebe_mit_wert"] = None
+            p["upstream_betriebe"] = []
             p["upstream_abwasser_m3s"] = None
             p["upstream_mq_pct"] = None
             stats["without_coverage"] += 1
@@ -300,6 +309,7 @@ def main():
             stats["gew_with_tezg_coverage"] += 1
             betriebe_count = 0
             betriebe_mit_wert = 0
+            upstream_betriebe = []
             total_m3a = 0.0
             for c, poly_ids in company_polygon_ids:
                 if poly_ids & upstream_ids:
@@ -312,6 +322,7 @@ def main():
             p["upstream_data_available"] = True
             p["upstream_betriebe_count"] = betriebe_count
             p["upstream_betriebe_mit_wert"] = betriebe_mit_wert
+            p["upstream_betriebe"] = upstream_betriebe
             p["upstream_abwasser_m3s"] = round(abwasser_m3s, 6)
             if mq and mq > 0 and betriebe_mit_wert > 0:
                 p["upstream_mq_pct"] = round((abwasser_m3s / mq) * 100, 2)
