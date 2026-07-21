@@ -1457,37 +1457,62 @@
                 <!-- Block 2: Industrie-Branchen (ELWAS) -->
                 <div>
                     <div class="filter-block-header">
-                        <div class="section-title" style="margin-bottom: 0;">🏭 Industrie-Branchen</div>
+                        <div class="section-title" style="margin-bottom: 0;">🏭 Abwasserverordnung Anhänge</div>
                         <div class="filter-block-actions">
                             <button id="btn-branches-all" type="button">Alle an</button>
                             <button id="btn-branches-none" type="button">Alle aus</button>
                         </div>
                     </div>
                     <div class="filter-group">
-                        <button class="filter-btn active" data-branche="Papierindustrie" title="Papiererzeugung und -verarbeitung (AbwV Anhang 28)">
-                            <span class="swatch" style="background-color: #E69F00;"></span>
-                            <span class="filter-label">Papierindustrie</span>
-                            <span class="counter-badge" id="cnt-branche-Papierindustrie">(0/0)</span>
-                        </button>
-                        <button class="filter-btn active" data-branche="Textilindustrie" title="Textilveredlung und -herstellung (AbwV Anhang 38)">
-                            <span class="swatch" style="background-color: #CC79A7;"></span>
-                            <span class="filter-label">Textilindustrie</span>
-                            <span class="counter-badge" id="cnt-branche-Textilindustrie">(0/0)</span>
-                        </button>
-                        <button class="filter-btn active" data-branche="Chemieindustrie" title="Chemische Industrie und Laboratorien (AbwV Anhang 22)">
-                            <span class="swatch" style="background-color: #D55E00;"></span>
-                            <span class="filter-label">Chemieindustrie</span>
-                            <span class="counter-badge" id="cnt-branche-Chemieindustrie">(0/0)</span>
-                        </button>
-                        <button class="filter-btn active" data-branche="Metallindustrie" title="Metallbe- und verarbeitung (AbwV Anhang 40)">
+                        <button class="filter-btn active" data-anhang="40" title="Metallbe- und verarbeitung (AbwV Anhang 40)">
                             <span class="swatch" style="background-color: #000000;"></span>
-                            <span class="filter-label">Metallindustrie</span>
-                            <span class="counter-badge" id="cnt-branche-Metallindustrie">(0/0)</span>
+                            <span class="filter-label">Anhang 40 (Metall)</span>
+                            <span class="counter-badge" id="cnt-anhang-40">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-branche="Lebensmittelindustrie" title="Lebensmittelherstellung und -verarbeitung (AbwV Anhang 3)">
+                        <button class="filter-btn active" data-anhang="55" title="Wäschereien (AbwV Anhang 55)">
+                            <span class="swatch" style="background-color: #56B4E9;"></span>
+                            <span class="filter-label">Anhang 55 (Wäschereien)</span>
+                            <span class="counter-badge" id="cnt-anhang-55">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-anhang="31" title="Wasseraufbereitung, Kühlsysteme, Dampferzeugung (AbwV Anhang 31)">
+                            <span class="swatch" style="background-color: #0072B2;"></span>
+                            <span class="filter-label">Anhang 31 (Wasseraufb.)</span>
+                            <span class="counter-badge" id="cnt-anhang-31">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-anhang="38" title="Textilherstellung, Textilveredlung (AbwV Anhang 38)">
+                            <span class="swatch" style="background-color: #CC79A7;"></span>
+                            <span class="filter-label">Anhang 38 (Textil)</span>
+                            <span class="counter-badge" id="cnt-anhang-38">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-anhang="49" title="Mineralölhaltiges Abwasser (AbwV Anhang 49)">
+                            <span class="swatch" style="background-color: #999999;"></span>
+                            <span class="filter-label">Anhang 49 (Mineralöl)</span>
+                            <span class="counter-badge" id="cnt-anhang-49">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-anhang="22" title="Chemische Industrie (AbwV Anhang 22)">
+                            <span class="swatch" style="background-color: #D55E00;"></span>
+                            <span class="filter-label">Anhang 22 (Chemie)</span>
+                            <span class="counter-badge" id="cnt-anhang-22">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-anhang="3" title="Milchverarbeitung (AbwV Anhang 3)">
                             <span class="swatch" style="background-color: #009E73;"></span>
-                            <span class="filter-label">Lebensmittelindustrie</span>
-                            <span class="counter-badge" id="cnt-branche-Lebensmittelindustrie">(0/0)</span>
+                            <span class="filter-label">Anhang 3 (Milch)</span>
+                            <span class="counter-badge" id="cnt-anhang-3">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-anhang="28" title="Herstellung von Papier und Pappe (AbwV Anhang 28)">
+                            <span class="swatch" style="background-color: #E69F00;"></span>
+                            <span class="filter-label">Anhang 28 (Papier)</span>
+                            <span class="counter-badge" id="cnt-anhang-28">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-anhang="53" title="Fotografische Prozesse (AbwV Anhang 53)">
+                            <span class="swatch" style="background-color: #8B4513;"></span>
+                            <span class="filter-label">Anhang 53 (Foto)</span>
+                            <span class="counter-badge" id="cnt-anhang-53">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-anhang="99" title="Sonstige (AbwV Anhang 99)">
+                            <span class="swatch" style="background-color: #F0E442;"></span>
+                            <span class="filter-label">Anhang 99 (Sonstige)</span>
+                            <span class="counter-badge" id="cnt-anhang-99">(0/0)</span>
                         </button>
                     </div>
                 </div>
@@ -2161,22 +2186,32 @@
         });
 
         // ELWAS Industrieeinleiter (Direkt-/Indirekteinleiter Rheinisches Revier)
-        const elwasBranchColors = {
-            "Papierindustrie": "#E69F00",
-            "Textilindustrie": "#CC79A7",
-            "Chemieindustrie": "#D55E00",
-            "Metallindustrie": "#000000",
-            "Lebensmittelindustrie": "#009E73"
+        const elwasAnhangColors = {
+            "40": "#000000",
+            "55": "#56B4E9",
+            "31": "#0072B2",
+            "38": "#CC79A7",
+            "49": "#999999",
+            "22": "#D55E00",
+            "3": "#009E73",
+            "28": "#E69F00",
+            "53": "#8B4513",
+            "99": "#F0E442"
         };
-        const elwasBranchIcons = {
-            "Papierindustrie": "📄",
-            "Textilindustrie": "🧵",
-            "Chemieindustrie": "⚗️",
-            "Metallindustrie": "⚙️",
-            "Lebensmittelindustrie": "🌾"
+        const elwasAnhangIcons = {
+            "40": "⚙️",
+            "55": "👕",
+            "31": "💨",
+            "38": "🧵",
+            "49": "🛢️",
+            "22": "⚗️",
+            "3": "🥛",
+            "28": "📄",
+            "53": "📷",
+            "99": "❓"
         };
         let elwasGeoData = null;
-        let elwasActiveBranchen = new Set(Object.keys(elwasBranchColors));
+        let elwasActiveAnhaenge = new Set(Object.keys(elwasAnhangColors));
         const elwasLayer = L.layerGroup().addTo(map);
 
         function renderElwasLayer() {
@@ -2184,14 +2219,14 @@
             if (!elwasGeoData) return;
             L.geoJSON(elwasGeoData, {
                 filter: function(feature) {
-                    const branchen = feature.properties.branchen || [];
-                    return branchen.some(b => elwasActiveBranchen.has(b));
+                    const anhang_codes = feature.properties.anhang_codes || [];
+                    return anhang_codes.map(String).some(b => elwasActiveAnhaenge.has(b));
                 },
                 pointToLayer: function(feature, latlng) {
-                    const branchen = feature.properties.branchen || [];
-                    const primary = branchen[0] || "Sonstige";
-                    const color = elwasBranchColors[primary] || "#595959";
-                    const emoji = elwasBranchIcons[primary] || "🏭";
+                    const anhang_codes = feature.properties.anhang_codes || [];
+                    const primary = anhang_codes[0] ? anhang_codes[0].toString() : "99";
+                    const color = elwasAnhangColors[primary] || "#595959";
+                    const emoji = elwasAnhangIcons[primary] || "🏭";
                     const size = 26;
                     let pulseRing = '';
                     if (feature.properties.wsg_zone) {
@@ -2222,13 +2257,13 @@
                 },
                 onEachFeature: function(feature, layer) {
                     const p = feature.properties;
-                    const branchen = p.branchen || [];
-                    const primaryColor = elwasBranchColors[branchen[0]] || "#595959";
+                    const anhang_codes = p.anhang_codes || [];
+                    const primaryColor = elwasAnhangColors[anhang_codes[0]] || "#595959";
                     let html = `
                         <div class="popup-card">
                             <div class="popup-group" style="color: ${primaryColor}">Industrieeinleiter</div>
                             <div class="popup-title">${p.name || 'Unbekannt'}</div>
-                            <div class="popup-detail">🏭 Branche<span class="glossar-icon" data-glossar="ABWV_ANHANG">i</span>: ${branchen.join(', ') || '–'}</div>
+                            <div class="popup-detail">🏭 AbwV Anhang<span class="glossar-icon" data-glossar="ABWV_ANHANG">i</span>: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div>
                             <div class="popup-detail">💧 Einleitungsart<span class="glossar-icon" data-glossar="EINLEITUNGSART">i</span>: ${p.einleitungsart || '–'}</div>
                             <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
                     `;
@@ -2269,34 +2304,34 @@
             })
             .catch(err => console.log("elwas_einleiter layer not loaded:", err));
 
-        document.querySelectorAll('.filter-btn[data-branche]').forEach(btn => {
+        document.querySelectorAll('.filter-btn[data-anhang]').forEach(btn => {
             btn.addEventListener('click', () => {
-                const branche = btn.getAttribute('data-branche');
-                const allBranchen = Object.keys(elwasBranchColors);
-                if (branche === 'all') {
-                    const isAnyInactive = elwasActiveBranchen.size < allBranchen.length;
-                    document.querySelectorAll('.filter-btn[data-branche]').forEach(b => {
-                        const bb = b.getAttribute('data-branche');
+                const anhang = btn.getAttribute('data-anhang');
+                const allBranchen = Object.keys(elwasAnhangColors);
+                if (anhang === 'all') {
+                    const isAnyInactive = elwasActiveAnhaenge.size < allBranchen.length;
+                    document.querySelectorAll('.filter-btn[data-anhang]').forEach(b => {
+                        const bb = b.getAttribute('data-anhang');
                         if (bb === 'all') return;
                         if (isAnyInactive) {
                             b.classList.add('active');
-                            elwasActiveBranchen.add(bb);
+                            elwasActiveAnhaenge.add(bb);
                         } else {
                             b.classList.remove('active');
-                            elwasActiveBranchen.delete(bb);
+                            elwasActiveAnhaenge.delete(bb);
                         }
                     });
                 } else {
-                    if (elwasActiveBranchen.has(branche)) {
-                        elwasActiveBranchen.delete(branche);
+                    if (elwasActiveAnhaenge.has(anhang)) {
+                        elwasActiveAnhaenge.delete(anhang);
                         btn.classList.remove('active');
                     } else {
-                        elwasActiveBranchen.add(branche);
+                        elwasActiveAnhaenge.add(anhang);
                         btn.classList.add('active');
                     }
                 }
-                const allBtn = document.querySelector('.filter-btn[data-branche="all"]');
-                if (elwasActiveBranchen.size === allBranchen.length) {
+                const allBtn = document.querySelector('.filter-btn[data-anhang="all"]');
+                if (elwasActiveAnhaenge.size === allBranchen.length) {
                     allBtn.classList.add('active');
                 } else {
                     allBtn.classList.remove('active');
@@ -3066,9 +3101,9 @@
                 }
             });
 
-            document.querySelectorAll('.filter-btn[data-branche]').forEach(btn => {
-                const b = btn.getAttribute('data-branche');
-                if (elwasActiveBranchen.has(b)) {
+            document.querySelectorAll('.filter-btn[data-anhang]').forEach(btn => {
+                const b = btn.getAttribute('data-anhang');
+                if (elwasActiveAnhaenge.has(b)) {
                     btn.classList.add('active');
                     btn.classList.remove('inactive');
                 } else {
@@ -3115,16 +3150,16 @@
             });
 
             // 2. Branche counters
-            document.querySelectorAll('.filter-btn[data-branche]').forEach(btn => {
-                const branch = btn.getAttribute('data-branche');
+            document.querySelectorAll('.filter-btn[data-anhang]').forEach(btn => {
+                const branch = btn.getAttribute('data-anhang');
                 if (!elwasGeoData) return;
                 const total = elwasGeoData.features.filter(f => {
-                    const branchen = f.properties.branchen || [];
-                    return branchen.includes(branch);
+                    const anhang_codes = f.properties.anhang_codes || [];
+                    return anhang_codes.map(String).includes(branch);
                 }).length;
                 const visible = elwasGeoData.features.filter(f => {
-                    const branchen = f.properties.branchen || [];
-                    if (!branchen.includes(branch)) return false;
+                    const anhang_codes = f.properties.anhang_codes || [];
+                    if (!anhang_codes.map(String).includes(branch)) return false;
                     const coords = f.geometry.coordinates;
                     return bounds.contains(L.latLng(coords[1], coords[0]));
                 }).length;
@@ -3193,13 +3228,13 @@
         });
 
         // Toggle listeners for Branche buttons
-        document.querySelectorAll('.filter-btn[data-branche]').forEach(btn => {
+        document.querySelectorAll('.filter-btn[data-anhang]').forEach(btn => {
             btn.addEventListener('click', () => {
-                const branch = btn.getAttribute('data-branche');
-                if (elwasActiveBranchen.has(branch)) {
-                    elwasActiveBranchen.delete(branch);
+                const branch = btn.getAttribute('data-anhang');
+                if (elwasActiveAnhaenge.has(branch)) {
+                    elwasActiveAnhaenge.delete(branch);
                 } else {
-                    elwasActiveBranchen.add(branch);
+                    elwasActiveAnhaenge.add(branch);
                 }
                 updateButtonVisualStates();
                 renderElwasLayer();
@@ -3239,14 +3274,14 @@
 
         // Quick Action: Industrie-Branchen - Alle an
         document.getElementById('btn-branches-all').addEventListener('click', () => {
-            Object.keys(elwasBranchColors).forEach(b => elwasActiveBranchen.add(b));
+            Object.keys(elwasAnhangColors).forEach(b => elwasActiveAnhaenge.add(b));
             updateButtonVisualStates();
             renderElwasLayer();
         });
 
         // Quick Action: Industrie-Branchen - Alle aus
         document.getElementById('btn-branches-none').addEventListener('click', () => {
-            elwasActiveBranchen.clear();
+            elwasActiveAnhaenge.clear();
             updateButtonVisualStates();
             renderElwasLayer();
         });
@@ -3288,14 +3323,14 @@
         // --- Teilbare Ansichten (Filter + Kartenausschnitt per Link) ---
         function restoreViewFromURL() {
             const params = new URLSearchParams(window.location.search);
-            if (!params.has('lat') && !params.has('akteure') && !params.has('branchen') && !params.has('layers')) {
+            if (!params.has('lat') && !params.has('akteure') && !params.has('anhaenge') && !params.has('layers')) {
                 return; // kein geteilter Link, Standardansicht behalten
             }
             if (params.has('akteure')) {
                 activeFilters = new Set(params.get('akteure').split(',').filter(Boolean).map(decodeURIComponent));
             }
-            if (params.has('branchen')) {
-                elwasActiveBranchen = new Set(params.get('branchen').split(',').filter(Boolean).map(decodeURIComponent));
+            if (params.has('anhaenge')) {
+                elwasActiveAnhaenge = new Set(params.get('anhaenge').split(',').filter(Boolean).map(decodeURIComponent));
             }
             if (params.has('layers')) {
                 const wanted = new Set(params.get('layers').split(',').filter(Boolean).map(decodeURIComponent));
@@ -3336,7 +3371,7 @@
                 const center = map.getCenter();
                 const params = new URLSearchParams();
                 params.set('akteure', Array.from(activeFilters).map(encodeURIComponent).join(','));
-                params.set('branchen', Array.from(elwasActiveBranchen).map(encodeURIComponent).join(','));
+                params.set('anhaenge', Array.from(elwasActiveAnhaenge).map(encodeURIComponent).join(','));
                 params.set('layers', activeLayerNames.join(','));
                 params.set('lat', center.lat.toFixed(5));
                 params.set('lng', center.lng.toFixed(5));
@@ -3530,8 +3565,8 @@
                     visibleEinleiter = elwasGeoData.features.filter(f => {
                         const coords = f.geometry.coordinates;
                         const latlng = L.latLng(coords[1], coords[0]);
-                        const branchen = f.properties.branchen || [];
-                        const matchesBranche = branchen.some(b => elwasActiveBranchen.has(b));
+                        const anhang_codes = f.properties.anhang_codes || [];
+                        const matchesBranche = anhang_codes.some(b => elwasActiveAnhaenge.has(b.toString()));
                         return bounds.contains(latlng) && matchesBranche;
                     }).map(f => f.properties);
                 }
@@ -3629,7 +3664,7 @@
                     totalDischarge += maxVal;
                     return [
                         props.name || 'Unbekannt',
-                        props.branchen ? props.branchen.join(', ') : '–',
+                        props.anhang_codes ? props.anhang_codes.map(a => 'Anhang ' + a).join(', ') : '–',
                         props.einleitungsart || '–',
                         maxVal > 0 ? `${maxVal.toLocaleString('de-DE')} m³/a` : 'keine Angabe'
                     ];
@@ -3641,7 +3676,7 @@
 
                 doc.autoTable({
                     startY: nextY + 10,
-                    head: [['Betriebsname', 'Branche(n)', 'Einleitungsart', 'Menge (max_a)']],
+                    head: [['Betriebsname', 'Anhang', 'Einleitungsart', 'Menge (max_a)']],
                     body: einleiterBody.length > 0 ? einleiterBody : [['Keine aktiven Industrieeinleiter im Ausschnitt geladen', '', '', '']],
                     theme: 'striped',
                     headStyles: { fillColor: [89, 89, 89] },
@@ -3830,13 +3865,13 @@ function buildUnifiedSearchIndex() {
                         d.features.forEach(f => {
                             const p = f.properties;
                             const [lng, lat] = f.geometry.coordinates;
-                            const branchen = p.branchen || [];
-                            const color = elwasBranchColors[branchen[0]] || '#595959';
+                            const anhang_codes = p.anhang_codes || [];
+                            const color = elwasAnhangColors[anhang_codes[0]] || '#595959';
                             addSearchRecord({
                                 cat: 'einleiter', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng, color,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 Branche: ${branchen.join(', ') || '–'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}</div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}</div>`
                             });
                             if (p.gemeinde) { addAgg(gemeindeAgg, p.gemeinde, lat, lng); addAggDetailed(gemeindeDetailAgg, p.gemeinde, { cat: 'einleiter', lat, lng, props: p }); }
                             (p.gewaesser_liste || '').split(',').map(s => s.trim()).filter(Boolean).forEach(g => addAgg(gewaesserAgg, g, lat, lng));
