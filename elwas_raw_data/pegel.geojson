@@ -24,7 +24,20 @@
         "upstream_data_available": true,
         "upstream_betriebe_count": 2,
         "upstream_betriebe_mit_wert": 1,
-        "upstream_betriebe": [],
+        "upstream_betriebe": [
+          {
+            "name": "Over Eloxal GmbH / Over Beschichtung GmbH",
+            "lat": 51.01151986065255,
+            "lng": 6.234176738976669,
+            "total_m3a": null
+          },
+          {
+            "name": "KME Stolberg GmbH",
+            "lat": 50.778016129768886,
+            "lng": 6.225525416202692,
+            "total_m3a": 17520.0
+          }
+        ],
         "upstream_abwasser_m3s": 0.000555,
         "upstream_mq_pct": 0.02
       }
@@ -332,7 +345,14 @@
         "upstream_data_available": true,
         "upstream_betriebe_count": 1,
         "upstream_betriebe_mit_wert": 0,
-        "upstream_betriebe": [],
+        "upstream_betriebe": [
+          {
+            "name": "Over Eloxal GmbH / Over Beschichtung GmbH",
+            "lat": 51.01151986065255,
+            "lng": 6.234176738976669,
+            "total_m3a": null
+          }
+        ],
         "upstream_abwasser_m3s": 0.0,
         "upstream_mq_pct": 0.0
       }
@@ -388,7 +408,14 @@
         "upstream_data_available": true,
         "upstream_betriebe_count": 1,
         "upstream_betriebe_mit_wert": 0,
-        "upstream_betriebe": [],
+        "upstream_betriebe": [
+          {
+            "name": "Over Eloxal GmbH / Over Beschichtung GmbH",
+            "lat": 51.01151986065255,
+            "lng": 6.234176738976669,
+            "total_m3a": null
+          }
+        ],
         "upstream_abwasser_m3s": 0.0,
         "upstream_mq_pct": 0.0
       }
@@ -416,7 +443,56 @@
         "upstream_data_available": true,
         "upstream_betriebe_count": 8,
         "upstream_betriebe_mit_wert": 3,
-        "upstream_betriebe": [],
+        "upstream_betriebe": [
+          {
+            "name": "Anker Gebr. Schoeller GmbH & Co KG",
+            "lat": 50.81678307291724,
+            "lng": 6.465282047481765,
+            "total_m3a": 4850.0
+          },
+          {
+            "name": "Gleitschleiferei",
+            "lat": 50.764114399947054,
+            "lng": 6.517271586191385,
+            "total_m3a": null
+          },
+          {
+            "name": "Papierfabrik Zerkall / Renker & Söhne GmbH & Co KG",
+            "lat": 50.68924665847107,
+            "lng": 6.44790960498507,
+            "total_m3a": null
+          },
+          {
+            "name": "Teilereinigung",
+            "lat": 50.98790051769469,
+            "lng": 6.272819227598871,
+            "total_m3a": null
+          },
+          {
+            "name": "Thomas Josef Heimbach GmbH & Co. KG",
+            "lat": 50.812908265703186,
+            "lng": 6.45421949876325,
+            "total_m3a": 409000.0
+          },
+          {
+            "name": "Over Eloxal GmbH / Over Beschichtung GmbH",
+            "lat": 51.01151986065255,
+            "lng": 6.234176738976669,
+            "total_m3a": null
+          },
+          {
+            "name": "KME Stolberg GmbH",
+            "lat": 50.778016129768886,
+            "lng": 6.225525416202692,
+            "total_m3a": 17520.0
+          },
+          {
+            "name": "Otto Junker GmbH",
+            "lat": 50.63749094246654,
+            "lng": 6.27561001111866,
+            "total_m3a": null
+          }
+        ],
         "upstream_abwasser_m3s": 0.013669,
         "upstream_mq_pct": 0.06
       }
@@ -584,7 +660,50 @@
         "upstream_data_available": true,
         "upstream_betriebe_count": 7,
         "upstream_betriebe_mit_wert": 3,
-        "upstream_betriebe": [],
+        "upstream_betriebe": [
+          {
+            "name": "Anker Gebr. Schoeller GmbH & Co KG",
+            "lat": 50.81678307291724,
+            "lng": 6.465282047481765,
+            "total_m3a": 4850.0
+          },
+          {
+            "name": "Gleitschleiferei",
+            "lat": 50.764114399947054,
+            "lng": 6.517271586191385,
+            "total_m3a": null
+          },
+          {
+            "name": "Papierfabrik Zerkall / Renker & Söhne GmbH & Co KG",
+            "lat": 50.68924665847107,
+            "lng": 6.44790960498507,
+            "total_m3a": null
+          },
+          {
+            "name": "Thomas Josef Heimbach GmbH & Co. KG",
+            "lat": 50.812908265703186,
+            "lng": 6.45421949876325,
+            "total_m3a": 409000.0
+          },
+          {
+            "name": "Over Eloxal GmbH / Over Beschichtung GmbH",
+            "lat": 51.01151986065255,
+            "lng": 6.234176738976669,
+            "total_m3a": null
+          },
+          {
+            "name": "KME Stolberg GmbH",
+            "lat": 50.778016129768886,
+            "lng": 6.225525416202692,
+            "total_m3a": 17520.0
+          },
+          {
+            "name": "Otto Junker GmbH",
+            "lat": 50.63749094246654,
+            "lng": 6.27561001111866,
+            "total_m3a": null
+          }
+        ],
         "upstream_abwasser_m3s": 0.013669,
         "upstream_mq_pct": 0.11
       }
@@ -612,7 +731,50 @@
         "upstream_data_available": true,
         "upstream_betriebe_count": 7,
         "upstream_betriebe_mit_wert": 3,
-        "upstream_betriebe": [],
+        "upstream_betriebe": [
+          {
+            "name": "Anker Gebr. Schoeller GmbH & Co KG",
+            "lat": 50.81678307291724,
+            "lng": 6.465282047481765,
+            "total_m3a": 4850.0
+          },
+          {
+            "name": "Gleitschleiferei",
+            "lat": 50.764114399947054,
+            "lng": 6.517271586191385,
+            "total_m3a": null
+          },
+          {
+            "name": "Papierfabrik Zerkall / Renker & Söhne GmbH & Co KG",
+            "lat": 50.68924665847107,
+            "lng": 6.44790960498507,
+            "total_m3a": null
+          },
+          {
+            "name": "Thomas Josef Heimbach GmbH & Co. KG",
+            "lat": 50.812908265703186,
+            "lng": 6.45421949876325,
+            "total_m3a": 409000.0
+          },
+          {
+            "name": "Over Eloxal GmbH / Over Beschichtung GmbH",
+            "lat": 51.01151986065255,
+            "lng": 6.234176738976669,
+            "total_m3a": null
+          },
+          {
+            "name": "KME Stolberg GmbH",
+            "lat": 50.778016129768886,
+            "lng": 6.225525416202692,
+            "total_m3a": 17520.0
+          },
+          {
+            "name": "Otto Junker GmbH",
+            "lat": 50.63749094246654,
+            "lng": 6.27561001111866,
+            "total_m3a": null
+          }
+        ],
         "upstream_abwasser_m3s": 0.013669,
         "upstream_mq_pct": 0.08
       }
@@ -696,7 +858,50 @@
         "upstream_data_available": true,
         "upstream_betriebe_count": 7,
         "upstream_betriebe_mit_wert": 3,
-        "upstream_betriebe": [],
+        "upstream_betriebe": [
+          {
+            "name": "Anker Gebr. Schoeller GmbH & Co KG",
+            "lat": 50.81678307291724,
+            "lng": 6.465282047481765,
+            "total_m3a": 4850.0
+          },
+          {
+            "name": "Gleitschleiferei",
+            "lat": 50.764114399947054,
+            "lng": 6.517271586191385,
+            "total_m3a": null
+          },
+          {
+            "name": "Papierfabrik Zerkall / Renker & Söhne GmbH & Co KG",
+            "lat": 50.68924665847107,
+            "lng": 6.44790960498507,
+            "total_m3a": null
+          },
+          {
+            "name": "Thomas Josef Heimbach GmbH & Co. KG",
+            "lat": 50.812908265703186,
+            "lng": 6.45421949876325,
+            "total_m3a": 409000.0
+          },
+          {
+            "name": "Over Eloxal GmbH / Over Beschichtung GmbH",
+            "lat": 51.01151986065255,
+            "lng": 6.234176738976669,
+            "total_m3a": null
+          },
+          {
+            "name": "KME Stolberg GmbH",
+            "lat": 50.778016129768886,
+            "lng": 6.225525416202692,
+            "total_m3a": 17520.0
+          },
+          {
+            "name": "Otto Junker GmbH",
+            "lat": 50.63749094246654,
+            "lng": 6.27561001111866,
+            "total_m3a": null
+          }
+        ],
         "upstream_abwasser_m3s": 0.013669,
         "upstream_mq_pct": 0.08
       }
@@ -752,7 +957,50 @@
         "upstream_data_available": true,
         "upstream_betriebe_count": 7,
         "upstream_betriebe_mit_wert": 3,
-        "upstream_betriebe": [],
+        "upstream_betriebe": [
+          {
+            "name": "Anker Gebr. Schoeller GmbH & Co KG",
+            "lat": 50.81678307291724,
+            "lng": 6.465282047481765,
+            "total_m3a": 4850.0
+          },
+          {
+            "name": "Gleitschleiferei",
+            "lat": 50.764114399947054,
+            "lng": 6.517271586191385,
+            "total_m3a": null
+          },
+          {
+            "name": "Papierfabrik Zerkall / Renker & Söhne GmbH & Co KG",
+            "lat": 50.68924665847107,
+            "lng": 6.44790960498507,
+            "total_m3a": null
+          },
+          {
+            "name": "Thomas Josef Heimbach GmbH & Co. KG",
+            "lat": 50.812908265703186,
+            "lng": 6.45421949876325,
+            "total_m3a": 409000.0
+          },
+          {
+            "name": "Over Eloxal GmbH / Over Beschichtung GmbH",
+            "lat": 51.01151986065255,
+            "lng": 6.234176738976669,
+            "total_m3a": null
+          },
+          {
+            "name": "KME Stolberg GmbH",
+            "lat": 50.778016129768886,
+            "lng": 6.225525416202692,
+            "total_m3a": 17520.0
+          },
+          {
+            "name": "Otto Junker GmbH",
+            "lat": 50.63749094246654,
+            "lng": 6.27561001111866,
+            "total_m3a": null
+          }
+        ],
         "upstream_abwasser_m3s": 0.013669,
         "upstream_mq_pct": 0.11
       }
@@ -780,7 +1028,14 @@
         "upstream_data_available": true,
         "upstream_betriebe_count": 1,
         "upstream_betriebe_mit_wert": 0,
-        "upstream_betriebe": [],
+        "upstream_betriebe": [
+          {
+            "name": "Over Eloxal GmbH / Over Beschichtung GmbH",
+            "lat": 51.01151986065255,
+            "lng": 6.234176738976669,
+            "total_m3a": null
+          }
+        ],
         "upstream_abwasser_m3s": 0.0,
         "upstream_mq_pct": 0.0
       }
@@ -808,7 +1063,20 @@
         "upstream_data_available": true,
         "upstream_betriebe_count": 2,
         "upstream_betriebe_mit_wert": 0,
-        "upstream_betriebe": [],
+        "upstream_betriebe": [
+          {
+            "name": "Papierfabrik Zerkall / Renker & Söhne GmbH & Co KG",
+            "lat": 50.68924665847107,
+            "lng": 6.44790960498507,
+            "total_m3a": null
+          },
+          {
+            "name": "Otto Junker GmbH",
+            "lat": 50.63749094246654,
+            "lng": 6.27561001111866,
+            "total_m3a": null
+          }
+        ],
         "upstream_abwasser_m3s": 0.0,
         "upstream_mq_pct": 0.0
       }
@@ -836,7 +1104,20 @@
         "upstream_data_available": true,
         "upstream_betriebe_count": 2,
         "upstream_betriebe_mit_wert": 0,
-        "upstream_betriebe": [],
+        "upstream_betriebe": [
+          {
+            "name": "Papierfabrik Zerkall / Renker & Söhne GmbH & Co KG",
+            "lat": 50.68924665847107,
+            "lng": 6.44790960498507,
+            "total_m3a": null
+          },
+          {
+            "name": "Otto Junker GmbH",
+            "lat": 50.63749094246654,
+            "lng": 6.27561001111866,
+            "total_m3a": null
+          }
+        ],
         "upstream_abwasser_m3s": 0.0,
         "upstream_mq_pct": null
       }

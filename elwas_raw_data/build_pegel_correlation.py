@@ -310,6 +310,12 @@ def main():
             for c, poly_ids in company_polygon_ids:
                 if poly_ids & upstream_ids:
                     betriebe_count += 1
+                    upstream_betriebe.append({
+                        "name": c["name"],
+                        "lat": c["lat"],
+                        "lng": c["lng"],
+                        "total_m3a": c["total_m3a"] if c["has_value"] else None,
+                    })
                     if c["has_value"]:
                         betriebe_mit_wert += 1
                         total_m3a += c["total_m3a"]
