@@ -2060,18 +2060,24 @@
                                         nameLower === 'erft' || 
                                         nameLower === 'maas' || 
                                         nameLower === 'rhein';
+                    const isSmallStream = feature.properties && feature.properties.size === 'small';
                     
-                    const isZoomedOut = map.getZoom() < 11;
-                    if (isZoomedOut) {
+                    const currentZoom = map.getZoom();
+                    if (currentZoom < 11) {
                         return isMainRiver; // Only show main rivers in overview mode
                     }
-                    return true; // Show all when zoomed in
+                    if (currentZoom >= 11 && currentZoom < 13) {
+                        return !isSmallStream; // Show all standard rivers, hide small streams
+                    }
+                    return true; // Show all when zoomed in (>= 13)
                 },
                 style: function(feature) {
-                    const isZoomedOut = map.getZoom() < 11;
+                    const currentZoom = map.getZoom();
+                    const isZoomedOut = currentZoom < 11;
+                    const isSmallStream = feature.properties && feature.properties.size === 'small';
                     return {
                         color: r.color,
-                        weight: isZoomedOut ? r.weightOverview : r.weightDetail,
+                        weight: isZoomedOut ? r.weightOverview : (isSmallStream ? 1.5 : r.weightDetail),
                         opacity: r.opacity
                     };
                 },

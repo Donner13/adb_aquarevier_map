@@ -33,3 +33,4 @@ playwright-report/
 tools/watchdog_*.log
 tools/watchdog_*.jsonl
 tools/STOP_WATCHDOG
+venv/
