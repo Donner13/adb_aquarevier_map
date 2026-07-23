@@ -131,5 +131,25 @@ const LAYER_CONFIGS = [
       { label: '🏗️ Bauwerksart', glossar: 'BAUWERKSART', field: 'bauwerksart' },
       { label: '🔧 Typ', field: 'typ' }
     ]
+  },
+  {
+    id: 'h2_elektrolyseure_nrw',
+    file: 'h2_elektrolyseure_nrw.geojson',
+    name: 'H2-Industrie (Elektrolyseure NRW)',
+    overlayLabel: '⚡ H2-Industrie (Elektrolyseure NRW)',
+    icon: '⚡',
+    color: '#F0E442',
+    className: 'h2-elektrolyseure-marker',
+    groupLabel: 'H2-Elektrolyseur',
+    defaultOn: false,
+    cluster: false,
+    geoDataVar: 'h2ElektrolyseureGeoData',
+    layerVar: 'h2ElektrolyseureLayer',
+    popupFields: [
+      { label: '📍', expr: p => [p.gemeinde, p.kreis].filter(Boolean).join(', ') },
+      { label: '🏢 Betreiber', field: 'operator' },
+      { label: '⚡ Kapazität', field: 'capacity_mw', suffix: ' MW' },
+      { label: '📊 Status', field: 'status' }
+    ]
   }
 ];

@@ -40,6 +40,7 @@ const EAGER_LAYERS = {
   // fetched eagerly for the cross-entity search index (buildUnifiedSearchIndex),
   // even though the *map rendering* of this one is lazy - see GWM_NAME below.
   '💧 Grundwassermessstellen (ELWAS, 3700+)': 'grundwassermessstellen.geojson',
+  '⚡ H2-Industrie (Elektrolyseure NRW)': 'h2_elektrolyseure_nrw.geojson',
 };
 
 // geojson fetched only the first time the layer is switched on
@@ -95,8 +96,8 @@ function realFeatureCount(geojsonFile) {
   return JSON.parse(raw).features.length;
 }
 
-if (Object.keys(ALL_LAYERS).length !== 13) {
-  throw new Error(`Expected exactly 13 sidebar layer-toggle buttons, got ${Object.keys(ALL_LAYERS).length}`);
+if (Object.keys(ALL_LAYERS).length !== 14) {
+  throw new Error(`Expected exactly 14 sidebar layer-toggle buttons, got ${Object.keys(ALL_LAYERS).length}`);
 }
 for (const name of DEFAULT_ON) {
   if (!(name in ALL_LAYERS)) throw new Error(`DEFAULT_ON contains an unknown layer name: ${name}`);

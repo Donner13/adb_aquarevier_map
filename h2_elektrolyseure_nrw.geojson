@@ -1,0 +1,95 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "H2-Testwerk Duisburg",
+        "operator": "H2-NRW GmbH",
+        "capacity_mw": 20,
+        "status": "In operation",
+        "gemeinde": "Duisburg",
+        "kreis": "Duisburg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.762329,
+          51.434407
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Elektrolyseur Wesseling",
+        "operator": "Refhyne",
+        "capacity_mw": 10,
+        "status": "In operation",
+        "gemeinde": "Wesseling",
+        "kreis": "Rhein-Erft-Kreis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.974917,
+          50.822778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Papierfabrik Pfeiler",
+        "operator": "Pfeiler GmbH",
+        "capacity_mw": 5,
+        "status": "Planned",
+        "gemeinde": "Düren",
+        "kreis": "Düren"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.481667,
+          50.803056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chempark Dormagen",
+        "operator": "Currenta",
+        "capacity_mw": 50,
+        "status": "Planned",
+        "gemeinde": "Dormagen",
+        "kreis": "Rhein-Kreis Neuss"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.840556,
+          51.082778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "H2Herten",
+        "operator": "Herten Energie",
+        "capacity_mw": 2,
+        "status": "In operation",
+        "gemeinde": "Herten",
+        "kreis": "Recklinghausen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.1475,
+          51.593056
+        ]
+      }
+    }
+  ]
+}
