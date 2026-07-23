@@ -5273,6 +5273,46 @@
                 const popupNode = e.popup.getElement();
                 if (popupNode) {
                     initGlossarTippy(popupNode);
+
+                    // PEGELONLINE Live-Dashboard logic
+                    const pegelContainer = popupNode.querySelector('.pegelonline-container');
+                    if (pegelContainer) {
+                        const contentDiv = pegelContainer.querySelector('.pegelonline-content');
+                        const latlng = e.popup.getLatLng();
+
+                        // Fetch nearby stations within 5km radius
+                        fetch(`https://pegelonline.wsv.de/webservices/rest-api/v2/stations.json?latitude=${latlng.lat}&longitude=${latlng.lng}&radius=5&includeTimeseries=true&includeCurrentMeasurement=true`)
+                            .then(res => res.json())
+                            .then(stations => {
+                                if (stations && stations.length > 0) {
+                                    // Use the closest station (first in list)
+                                    const station = stations[0];
+                                    let htmlContent = `<strong>${station.water.shortname} / ${station.shortname}</strong><br>`;
+
+                                    if (station.timeseries && station.timeseries.length > 0) {
+                                        station.timeseries.forEach(ts => {
+                                            if (ts.currentMeasurement) {
+                                                const timeStr = new Date(ts.currentMeasurement.timestamp).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+                                                let valStr = ts.currentMeasurement.value;
+                                                // Handle unit conversion if necessary or formatting
+                                                htmlContent += `${ts.shortname}: ${valStr} ${ts.unit} (Stand: ${timeStr})<br>`;
+                                            }
+                                        });
+                                    } else {
+                                        htmlContent += 'Keine aktuellen Messwerte verfügbar.';
+                                    }
+
+                                    contentDiv.innerHTML = htmlContent;
+                                    contentDiv.style.color = '#0f172a';
+                                } else {
+                                    contentDiv.innerHTML = 'Keine PEGELONLINE-Station in der Nähe (5km) gefunden.';
+                                }
+                            })
+                            .catch(err => {
+                                console.error('Error fetching PEGELONLINE data:', err);
+                                contentDiv.innerHTML = '<span style="color:#ef4444;">Fehler beim Laden der Live-Daten.</span>';
+                            });
+                    }
                 }
             });
 

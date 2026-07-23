@@ -23,5 +23,8 @@
   "homepage": "https://github.com/Dtunder/adb_aquarevier_map#readme",
   "devDependencies": {
     "@playwright/test": "^1.61.1"
+  },
+  "dependencies": {
+    "playwright": "^1.61.1"
   }
 }

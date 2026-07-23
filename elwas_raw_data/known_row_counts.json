@@ -10,7 +10,7 @@
       "Rhein-Erft-Kreis": 10,
       "Euskirchen": 10
     },
-    "updated": "2026-07-21",
+    "updated": "2026-07-23",
     "source_commit": "294661ecb687f8445e4b1513d1902b10840b8085"
   },
   "regenbecken": {
@@ -24,7 +24,7 @@
       "Rhein-Erft-Kreis": 10,
       "Euskirchen": 10
     },
-    "updated": "2026-07-21",
+    "updated": "2026-07-23",
     "source_commit": "294661ecb687f8445e4b1513d1902b10840b8085"
   },
   "querbauwerke": {
@@ -38,7 +38,7 @@
       "Rhein-Erft-Kreis": 10,
       "Euskirchen": 10
     },
-    "updated": "2026-07-21",
+    "updated": "2026-07-23",
     "source_commit": "294661ecb687f8445e4b1513d1902b10840b8085"
   }
 }
