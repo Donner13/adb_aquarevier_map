@@ -167,7 +167,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
   }
 
   // --- Standard point layer ---
-  const layerGroup = L.layerGroup().addTo(map);
+  const layerGroup = cfg.defaultOn ? L.layerGroup().addTo(map) : L.layerGroup();
   window[cfg.layerVar] = layerGroup;
   overlayMaps[cfg.overlayLabel] = layerGroup;
 
