@@ -13,8 +13,6 @@ from pyproj import Transformer
 IN_PATH = os.path.join(BASE, "pegel.json")
 OUT_PATH = os.path.join(BASE, "pegel.geojson")
 ROOT_COPY_PATH = os.path.join(ROOT_PATH, "pegel.geojson")
-ROOT_COPY_PATH = os.path.join(ROOT_PATH, "pegel.geojson")
-ROOT_COPY_PATH = os.path.join(ROOT_PATH, "pegel.geojson")
 
 transformer = Transformer.from_crs("epsg:25832", "epsg:4326", always_xy=True)
 
@@ -56,7 +54,9 @@ def main():
                 "betreiber": v.get("betreiber"),
                 "einzugsgebiet_km2": v.get("einzugsgebiet_km2"),
                 "nq_m3s": v.get("nq_m3s"),
+                "mnq_m3s": v.get("mnq_m3s"),
                 "mq_m3s": v.get("mq_m3s"),
+                "mhq_m3s": v.get("mhq_m3s"),
                 "hq_m3s": v.get("hq_m3s"),
                 "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
             },

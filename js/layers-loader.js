@@ -75,7 +75,37 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // Special: Pegel NQ/MQ/HQ row
     if (cfg.pegelStats && p.mq_m3s) {
-      html += `<div class="popup-detail">📊 NQ<span class="glossar-icon" data-glossar="NQ">i</span>: ${p.nq_m3s || '–'}, MQ<span class="glossar-icon" data-glossar="MQ">i</span>: ${p.mq_m3s}, HQ<span class="glossar-icon" data-glossar="HQ">i</span>: ${p.hq_m3s || '–'} m³/s</div>`;
+      html += `<div class="popup-detail">📊 NQ<span class="glossar-icon" data-glossar="NQ">i</span>: ${p.nq_m3s || '–'}, MNQ<span class="glossar-icon" data-glossar="MNQ">i</span>: ${p.mnq_m3s || '–'}, MQ<span class="glossar-icon" data-glossar="MQ">i</span>: ${p.mq_m3s}, HQ<span class="glossar-icon" data-glossar="HQ">i</span>: ${p.hq_m3s || '–'} m³/s</div>`;
+
+      // Calculate trend indicators if we have numerical values
+      if (p.nq_m3s && p.mnq_m3s) {
+          const nqNum = parseFloat(p.nq_m3s.replace(',', '.'));
+          const mnqNum = parseFloat(p.mnq_m3s.replace(',', '.'));
+
+          if (!isNaN(nqNum) && !isNaN(mnqNum)) {
+              let trendColor = '#64748b'; // default gray
+              let trendText = 'Normal';
+              let trendIcon = '🌊';
+
+              if (nqNum < mnqNum * 0.5) {
+                  trendColor = '#ef4444'; // red (severe drought indicator)
+                  trendText = 'Kritisch (Dürre-Trend)';
+                  trendIcon = '⚠️';
+              } else if (nqNum < mnqNum) {
+                  trendColor = '#f59e0b'; // orange (warning)
+                  trendText = 'Niedrig (Beobachtung)';
+                  trendIcon = '📉';
+              } else if (nqNum > mnqNum * 1.5) {
+                  trendColor = '#0ea5e9'; // blue (above average NQ)
+                  trendText = 'Entspannt';
+                  trendIcon = '📈';
+              }
+
+              html += `<div class="popup-detail" style="color: ${trendColor}; font-weight: 500; font-size: 11px; margin-top: 4px; padding: 4px; background: #f8fafc; border-radius: 4px; border: 1px solid #e2e8f0;">
+                  ${trendIcon} Niedrigwasser-Trend: ${trendText}
+              </div>`;
+          }
+      }
     }
 
     // Special: Pegel <-> Industrieeinleiter-Korrelation (siehe

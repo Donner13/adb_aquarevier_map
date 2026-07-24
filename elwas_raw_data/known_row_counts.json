@@ -11,7 +11,7 @@
       "Euskirchen": 10
     },
     "updated": "2026-07-23",
-    "source_commit": "294661ecb687f8445e4b1513d1902b10840b8085"
+    "source_commit": "a993189bed2cf6f97959abc19195faf2f2081766"
   },
   "regenbecken": {
     "total": 70,
@@ -25,7 +25,7 @@
       "Euskirchen": 10
     },
     "updated": "2026-07-23",
-    "source_commit": "294661ecb687f8445e4b1513d1902b10840b8085"
+    "source_commit": "a993189bed2cf6f97959abc19195faf2f2081766"
   },
   "querbauwerke": {
     "total": 70,
@@ -39,6 +39,6 @@
       "Euskirchen": 10
     },
     "updated": "2026-07-23",
-    "source_commit": "294661ecb687f8445e4b1513d1902b10840b8085"
+    "source_commit": "a993189bed2cf6f97959abc19195faf2f2081766"
   }
 }
