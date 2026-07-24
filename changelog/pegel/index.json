@@ -1,5 +1,32 @@
 [
   {
+    "file": "2026-07-23T19-15-25Z.json",
+    "run_timestamp": "2026-07-23T19-15-25Z",
+    "baseline": false,
+    "added_count": 0,
+    "removed_count": 0,
+    "changed_count": 0,
+    "summary": "0 neu, 0 entfernt, 0 geändert."
+  },
+  {
+    "file": "2026-07-23T19-10-07Z.json",
+    "run_timestamp": "2026-07-23T19-10-07Z",
+    "baseline": false,
+    "added_count": 0,
+    "removed_count": 0,
+    "changed_count": 0,
+    "summary": "0 neu, 0 entfernt, 0 geändert."
+  },
+  {
+    "file": "2026-07-23T18-58-24Z.json",
+    "run_timestamp": "2026-07-23T18-58-24Z",
+    "baseline": false,
+    "added_count": 0,
+    "removed_count": 0,
+    "changed_count": 39,
+    "summary": "0 neu, 0 entfernt, 39 geändert (mhq_m3s, mnq_m3s)."
+  },
+  {
     "file": "2026-07-18T16-29-40Z.json",
     "run_timestamp": "2026-07-18T16-29-40Z",
     "baseline": false,

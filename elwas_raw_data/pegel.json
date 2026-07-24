@@ -8,7 +8,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "232,15",
     "nq_m3s": "0,2",
+    "mnq_m3s": "0,51",
     "mq_m3s": "2,78",
+    "mhq_m3s": "50,7",
     "hq_m3s": "330"
   },
   "2828200000200": {
@@ -20,7 +22,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "15,32",
     "nq_m3s": "0,02",
+    "mnq_m3s": "0,07",
     "mq_m3s": "0,29",
+    "mhq_m3s": "5,45",
     "hq_m3s": "14,7"
   },
   "2828300000200": {
@@ -32,7 +36,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "96,29",
     "nq_m3s": "0,19",
+    "mnq_m3s": "0,83",
     "mq_m3s": "1,91",
+    "mhq_m3s": "25,5",
     "hq_m3s": "46,1"
   },
   "2828400000200": {
@@ -44,7 +50,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "41,39",
     "nq_m3s": "0,11",
+    "mnq_m3s": "0,17",
     "mq_m3s": "0,32",
+    "mhq_m3s": "3,14",
     "hq_m3s": "9,86"
   },
   "2828100000100": {
@@ -56,7 +64,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "33,63",
     "nq_m3s": "0",
+    "mnq_m3s": "0,07",
     "mq_m3s": "0,28",
+    "mhq_m3s": "19,6",
     "hq_m3s": "39,1"
   },
   "2824300000100": {
@@ -68,7 +78,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "65,02",
     "nq_m3s": "0,03",
+    "mnq_m3s": "0,08",
     "mq_m3s": "0,72",
+    "mhq_m3s": "18,3",
     "hq_m3s": "96,4"
   },
   "2821530000200": {
@@ -80,7 +92,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "143,63",
     "nq_m3s": "0",
+    "mnq_m3s": "0,32",
     "mq_m3s": "3,77",
+    "mhq_m3s": "51,3",
     "hq_m3s": "110"
   },
   "2824450000100": {
@@ -92,7 +106,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "45,6",
     "nq_m3s": "0,04",
+    "mnq_m3s": "0,07",
     "mq_m3s": "0,57",
+    "mhq_m3s": "19,6",
     "hq_m3s": "139"
   },
   "2824410000100": {
@@ -104,7 +120,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "6,74",
     "nq_m3s": "",
+    "mnq_m3s": null,
     "mq_m3s": "",
+    "mhq_m3s": null,
     "hq_m3s": ""
   },
   "2823100000100": {
@@ -116,7 +134,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "3,51",
     "nq_m3s": "0",
+    "mnq_m3s": "0",
     "mq_m3s": "0,05",
+    "mhq_m3s": "0,65",
     "hq_m3s": "1,66"
   },
   "2842000000100": {
@@ -128,7 +148,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "19,65",
     "nq_m3s": "0,02",
+    "mnq_m3s": "0,04",
     "mq_m3s": "0,1",
+    "mhq_m3s": "0,94",
     "hq_m3s": "2,02"
   },
   "2828890000200": {
@@ -140,7 +162,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "56,55",
     "nq_m3s": "0",
+    "mnq_m3s": "0,02",
     "mq_m3s": "0,09",
+    "mhq_m3s": "2,38",
     "hq_m3s": "5"
   },
   "2843000000100": {
@@ -152,7 +176,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "52,93",
     "nq_m3s": "0,17",
+    "mnq_m3s": "0,24",
     "mq_m3s": "0,41",
+    "mhq_m3s": "2,98",
     "hq_m3s": "5,62"
   },
   "2828900000200": {
@@ -164,7 +190,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "310,52",
     "nq_m3s": "1,05",
+    "mnq_m3s": "1,71",
     "mq_m3s": "3,34",
+    "mhq_m3s": "25,7",
     "hq_m3s": "35,7"
   },
   "2829100000100": {
@@ -176,7 +204,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "2.135,15",
     "nq_m3s": "5,71",
+    "mnq_m3s": "11",
     "mq_m3s": "21,4",
+    "mhq_m3s": "90,4",
     "hq_m3s": "356"
   },
   "2818100000200": {
@@ -188,7 +218,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "68,75",
     "nq_m3s": "",
+    "mnq_m3s": null,
     "mq_m3s": "",
+    "mhq_m3s": null,
     "hq_m3s": ""
   },
   "2751250000100": {
@@ -200,7 +232,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "81,31",
     "nq_m3s": "0,02",
+    "mnq_m3s": "0,04",
     "mq_m3s": "0,09",
+    "mhq_m3s": "0,76",
     "hq_m3s": "1,23"
   },
   "2751270000100": {
@@ -212,7 +246,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "105,98",
     "nq_m3s": "0,05",
+    "mnq_m3s": "0,13",
     "mq_m3s": "0,32",
+    "mhq_m3s": "1,76",
     "hq_m3s": "3,71"
   },
   "2747900000200": {
@@ -224,7 +260,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "1.595,43",
     "nq_m3s": "4,83",
+    "mnq_m3s": "10,2",
     "mq_m3s": "16,6",
+    "mhq_m3s": "31,2",
     "hq_m3s": "46,6"
   },
   "2748900000100": {
@@ -236,7 +274,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "95,39",
     "nq_m3s": "0,02",
+    "mnq_m3s": "0,2",
     "mq_m3s": "0,46",
+    "mhq_m3s": "1,89",
     "hq_m3s": "4,28"
   },
   "2823900000200": {
@@ -248,7 +288,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "958,76",
     "nq_m3s": "2,36",
+    "mnq_m3s": "6,31",
     "mq_m3s": "12,3",
+    "mhq_m3s": "51,8",
     "hq_m3s": "161"
   },
   "2825190000200": {
@@ -260,7 +302,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "1.334,57",
     "nq_m3s": "3,96",
+    "mnq_m3s": "7,47",
     "mq_m3s": "16,2",
+    "mhq_m3s": "89,9",
     "hq_m3s": "375"
   },
   "2824900000200": {
@@ -272,7 +316,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "",
     "nq_m3s": "",
+    "mnq_m3s": null,
     "mq_m3s": "",
+    "mhq_m3s": null,
     "hq_m3s": ""
   },
   "2824900000300": {
@@ -284,7 +330,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "",
     "nq_m3s": "",
+    "mnq_m3s": null,
     "mq_m3s": "",
+    "mhq_m3s": null,
     "hq_m3s": ""
   },
   "2825330000100": {
@@ -296,7 +344,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "1.471,75",
     "nq_m3s": "2,69",
+    "mnq_m3s": "7,46",
     "mq_m3s": "16,5",
+    "mhq_m3s": "86,6",
     "hq_m3s": "277"
   },
   "2824890000300": {
@@ -308,7 +358,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "62,47",
     "nq_m3s": "0,01",
+    "mnq_m3s": "0,08",
     "mq_m3s": "0,26",
+    "mhq_m3s": "4,06",
     "hq_m3s": "7,82"
   },
   "2823900000100": {
@@ -320,7 +372,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "934,75",
     "nq_m3s": "3,51",
+    "mnq_m3s": "6,03",
     "mq_m3s": "12",
+    "mhq_m3s": "51,6",
     "hq_m3s": "154"
   },
   "2825349000100": {
@@ -332,7 +386,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "98,16",
     "nq_m3s": "0,01",
+    "mnq_m3s": "0,12",
     "mq_m3s": "0,32",
+    "mhq_m3s": "5,12",
     "hq_m3s": "23,8"
   },
   "2823500000100": {
@@ -344,7 +400,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "787",
     "nq_m3s": "0,98",
+    "mnq_m3s": "3,86",
     "mq_m3s": "11,8",
+    "mhq_m3s": "51",
     "hq_m3s": "171"
   },
   "2823490000100": {
@@ -356,7 +414,9 @@
     "betreiber": "Enwor",
     "einzugsgebiet_km2": "74,53",
     "nq_m3s": "",
+    "mnq_m3s": null,
     "mq_m3s": "",
+    "mhq_m3s": null,
     "hq_m3s": ""
   },
   "2743000000100": {
@@ -368,7 +428,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "604",
     "nq_m3s": "0,09",
+    "mnq_m3s": "0,74",
     "mq_m3s": "2,47",
+    "mhq_m3s": "26,5",
     "hq_m3s": "55,8"
   },
   "2745400000100": {
@@ -380,7 +442,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "0",
     "nq_m3s": "",
+    "mnq_m3s": null,
     "mq_m3s": "",
+    "mhq_m3s": null,
     "hq_m3s": ""
   },
   "2744910000100": {
@@ -392,7 +456,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "191",
     "nq_m3s": "0,01",
+    "mnq_m3s": "0,14",
     "mq_m3s": "0,54",
+    "mhq_m3s": "8,06",
     "hq_m3s": "53,7"
   },
   "2747390000100": {
@@ -404,7 +470,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "1.323",
     "nq_m3s": "1,75",
+    "mnq_m3s": "7,86",
     "mq_m3s": "13,2",
+    "mhq_m3s": "25,7",
     "hq_m3s": "35,3"
   },
   "2731450500099": {
@@ -416,7 +484,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "25,2",
     "nq_m3s": "",
+    "mnq_m3s": null,
     "mq_m3s": "",
+    "mhq_m3s": null,
     "hq_m3s": ""
   },
   "2746790000100": {
@@ -428,7 +498,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "194,2",
     "nq_m3s": "0,04",
+    "mnq_m3s": "0,16",
     "mq_m3s": "0,39",
+    "mhq_m3s": "3,77",
     "hq_m3s": "8,73"
   },
   "2718193000100": {
@@ -440,7 +512,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "124",
     "nq_m3s": "0,02",
+    "mnq_m3s": "0,33",
     "mq_m3s": "1,27",
+    "mhq_m3s": "24,4",
     "hq_m3s": "74,5"
   },
   "2741500000100": {
@@ -452,7 +526,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "114,39",
     "nq_m3s": "0,02",
+    "mnq_m3s": "0,08",
     "mq_m3s": "0,77",
+    "mhq_m3s": "12,6",
     "hq_m3s": "40,9"
   },
   "2746310000100": {
@@ -464,7 +540,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "47,4",
     "nq_m3s": "0,02",
+    "mnq_m3s": "0,09",
     "mq_m3s": "0,25",
+    "mhq_m3s": "3,13",
     "hq_m3s": "6,98"
   },
   "2741870000100": {
@@ -476,7 +554,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "62,46",
     "nq_m3s": "0,24",
+    "mnq_m3s": "0,36",
     "mq_m3s": "0,6",
+    "mhq_m3s": "6,17",
     "hq_m3s": "16,6"
   },
   "2822900000200": {
@@ -488,7 +568,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "344,55",
     "nq_m3s": "0,19",
+    "mnq_m3s": "0,94",
     "mq_m3s": "4,66",
+    "mhq_m3s": "68,4",
     "hq_m3s": "143"
   },
   "2822849000100": {
@@ -500,7 +582,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "36,4",
     "nq_m3s": "0",
+    "mnq_m3s": "0,04",
     "mq_m3s": "0,7",
+    "mhq_m3s": "11,1",
     "hq_m3s": "36,6"
   },
   "2822700000200": {
@@ -512,7 +596,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "131,11",
     "nq_m3s": "0,09",
+    "mnq_m3s": "0,22",
     "mq_m3s": "1,35",
+    "mhq_m3s": "25,2",
     "hq_m3s": "76,5"
   },
   "2741490000200": {
@@ -524,7 +610,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "32,01",
     "nq_m3s": "0,01",
+    "mnq_m3s": "0,04",
     "mq_m3s": "0,18",
+    "mhq_m3s": "4,22",
     "hq_m3s": "27,5"
   },
   "2822869000100": {
@@ -536,7 +624,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "48,95",
     "nq_m3s": "0",
+    "mnq_m3s": "0,03",
     "mq_m3s": "0,76",
+    "mhq_m3s": "15,4",
     "hq_m3s": "37,9"
   },
   "2822870000100": {
@@ -548,7 +638,9 @@
     "betreiber": "LANUV, NRW",
     "einzugsgebiet_km2": "159,41",
     "nq_m3s": "0,1",
+    "mnq_m3s": "0,46",
     "mq_m3s": "2,68",
+    "mhq_m3s": "38,4",
     "hq_m3s": "89,7"
   }
 }

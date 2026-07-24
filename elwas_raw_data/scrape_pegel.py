@@ -10,7 +10,7 @@ import re
 import sys
 from playwright.async_api import async_playwright
 
-sys.path.insert(0, r"C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\elwas_toolkit")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "elwas_toolkit"))
 import elwas_client as ec
 
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -89,11 +89,17 @@ async def main():
                     name, pegel_nr = extract_name_nr(header_text)
                     if not pegel_nr:
                         pegel_nr = f"unknown_{kreis}_{idx}"
-                    if pegel_nr in results and "error" not in results[pegel_nr] and "nq_m3s" in results[pegel_nr]:
+
+                    # Check if all new values are there, skip if so
+                    if pegel_nr in results and "error" not in results[pegel_nr] and "mnq_m3s" in results[pegel_nr] and "mhq_m3s" in results[pegel_nr]:
                         await frame.click("text=Ergebnisse")
                         await page.wait_for_timeout(1200)
                         links = frame.locator("tbody.ui-datatable-data tr td input[type='submit'], tbody.ui-datatable-data tr td a, input.buttonLink")
                         continue
+
+                    # Extract Stammdaten values
+                    mnq = extract_num("MNQ [m³/s]", header_text)
+                    mhq = extract_num("MHQ [m³/s]", header_text)
 
                     select_elem = frame.locator("select:has(option:has-text('Lage'))")
                     ost = nord = None
@@ -104,6 +110,7 @@ async def main():
                         ost = extract_num("Ostwert in UTM", lage_text)
                         nord = extract_num("Nordwert in UTM", lage_text)
 
+                    # Keep existing metrics + add mnq and mhq
                     results[pegel_nr] = {
                         "name": name or (meta[3] if len(meta) > 3 else None),
                         "kreis": kreis,
@@ -113,10 +120,12 @@ async def main():
                         "betreiber": meta[4] if len(meta) > 4 else None,
                         "einzugsgebiet_km2": meta[6] if len(meta) > 6 else None,
                         "nq_m3s": meta[9] if len(meta) > 9 else None,
+                        "mnq_m3s": mnq,
                         "mq_m3s": meta[11] if len(meta) > 11 else None,
+                        "mhq_m3s": mhq,
                         "hq_m3s": meta[13] if len(meta) > 13 else None,
                     }
-                    print(f"  {pegel_nr}: {name} Ost={ost} Nord={nord}", flush=True)
+                    print(f"  {pegel_nr}: {name} Ost={ost} Nord={nord} MNQ={mnq} MHQ={mhq}", flush=True)
 
                     await frame.click("text=Ergebnisse")
                     await page.wait_for_timeout(1500)

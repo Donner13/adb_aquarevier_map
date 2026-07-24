@@ -2,6 +2,7 @@
 const GLOSSAR_BEGRIFFE = {
   ABWV_ANHANG: "AbwV = Abwasserverordnung des Bundes. Der 'Anhang' klassifiziert, aus welcher Branche das Abwasser stammt (z.B. Anhang 22 = Chemische Industrie) und legt branchenspezifische Grenzwerte fest.",
   NQ: "NQ = Niedrigwasserabfluss. Der kleinste in einem Beobachtungszeitraum gemessene Abfluss eines Gewässers, in m³/s.",
+  MNQ: "MNQ = Mittlerer Niedrigwasserabfluss. Das arithmetische Mittel der Niedrigwasserabflüsse in einem Beobachtungszeitraum, in m³/s. Dient als Referenzwert für die Einordnung aktueller Niedrigwasser-Ereignisse.",
   MQ: "MQ = Mittelwasserabfluss. Der langjährige Durchschnittsabfluss eines Gewässers, in m³/s.",
   HQ: "HQ = Hochwasserabfluss. Der größte gemessene bzw. statistisch erwartete Abfluss eines Gewässers, in m³/s.",
   TEILEINZUGSGEBIET: "Teilfläche eines größeren Flusseinzugsgebiets: die Landfläche, von der Regenwasser in einen bestimmten Gewässerabschnitt abfließt.",
