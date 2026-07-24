@@ -41,6 +41,7 @@ python C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\server.py
   - **Flüsse & Gewässernetz** (LANUV NRW WMS)
   - **Tagebaue & Bergbaufelder** (Geologischer Dienst NRW WMS - zeigt Bergbauberechtigungen wie Garzweiler, Hambach, Inden)
   - **Wasserschutzgebiete** (LANUV NRW WMS - zeigt festgesetzte Wasserschutzzonen)
+  - **Hochwassergefahrenkarten** (LANUV NRW WMS) & **Starkregengefahrenkarten** (Kommunal)
   - **Umschaltbare Basiskarten** (Dunkel, OSM-Standard, Offizielle NRW-Karte)
 
 ---
@@ -84,5 +85,16 @@ Du kannst die offiziellen NRW-Karten-Feeds direkt in QGIS als Hintergrundlayer h
 - **Name**: `LANUV NRW Wasserschutzgebiete`
 - **URL**: `https://www.wms.nrw.de/umwelt/wsg`
 - **Empfohlener Layer**: `wsg_festgesetzt_gesamt` (Festgesetzte Wasserschutzzonen)
+
+
+#### E. Hochwassergefahrenkarten (WMS):
+- **Name**: `LANUV NRW HW_Gefahrenkarte`
+- **URL**: `https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte`
+- **Empfohlene Layer**: `Tiefen_Ueberflutungsgebiet_nw` (HQ häufig), `Tiefen_Ueberflutungsgebiet_mw` (HQ 100), `Tiefen_Ueberflutungsgebiet_hw` (HQ extrem)
+
+#### F. Starkregengefahrenkarten (WMS, beispielhaft Kreis Euskirchen):
+- **Name**: `Starkregen Kreis Euskirchen`
+- **URL**: `https://starkregen-euskirchen-v11.cismet.de/geoserver/wms`
+- **Empfohlener Layer**: `starkregen:L_T100_v1.1_depth3857`
 
 *Anleitung zur Einbindung:* In QGIS im Menü **Layer -> Layer hinzufügen -> WMS/WMTS-Layer hinzufügen...** wählen, auf **Neu** klicken, Namen und URL eintragen, mit **OK** speichern, **Verbinden** klicken, den gewünschten Layer auswählen und auf **Hinzufügen** klicken.

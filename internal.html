@@ -1753,6 +1753,66 @@
                     </div>
                 </div>
 
+
+                <!-- Block 4: Hochwasser- & Starkregengefahren -->
+                <div>
+                    <div class="filter-block-header">
+                        <div class="section-title" style="margin-bottom: 0;">🌊 Hochwasser- & Starkregengefahren</div>
+                        <div class="filter-block-actions">
+                            <button id="btn-hazard-all" type="button">Alle an</button>
+                            <button id="btn-hazard-none" type="button">Alle aus</button>
+                        </div>
+                    </div>
+                    <div id="hazard-layer-group">
+                        <div style="font-size: 11px; color: #64748b; margin-bottom: 8px; font-weight: 500;">Fluvial (LANUV)</div>
+                        <div class="filter-group">
+                            <button class="filter-btn" data-layer-name="HQ häufig (LANUV)" title="LANUV Hochwassergefahrenkarte">
+                                <span class="swatch" style="background: #fde047;"></span>
+                                <span>HQ häufig (LANUV)</span>
+                            </button>
+                            <button class="filter-btn" data-layer-name="HQ100 (LANUV)" title="LANUV Hochwassergefahrenkarte">
+                                <span class="swatch" style="background: #f97316;"></span>
+                                <span>HQ100 (LANUV)</span>
+                            </button>
+                            <button class="filter-btn" data-layer-name="HQ extrem (LANUV)" title="LANUV Hochwassergefahrenkarte">
+                                <span class="swatch" style="background: #dc2626;"></span>
+                                <span>HQ extrem (LANUV)</span>
+                            </button>
+                        </div>
+                        <div style="font-size: 11px; color: #64748b; margin-top: 12px; margin-bottom: 8px; font-weight: 500;">Pluvial (Kommunen)</div>
+                        <div class="filter-group">
+                            <button class="filter-btn" data-layer-name="Starkregen Euskirchen" title="Starkregengefahrenkarte Kreis Euskirchen">
+                                <span class="swatch" style="background: #7c3aed;"></span>
+                                <span>Kreis Euskirchen</span>
+                            </button>
+                            <button class="filter-btn" onclick="window.open('https://starkregengefahrenkarten-staedteregion-aachen.cismet.de/', '_blank')" title="Starkregengefahrenkarte Städteregion Aachen (Extern)">
+                                <span class="swatch" style="background: #7c3aed;"></span>
+                                <span>🔗 Städteregion Aachen</span>
+                            </button>
+                            <button class="filter-btn" onclick="window.open('https://starkregengefahrenkarten-kreis-dueren.cismet.de/', '_blank')" title="Starkregengefahrenkarte Kreis Düren (Extern)">
+                                <span class="swatch" style="background: #7c3aed;"></span>
+                                <span>🔗 Kreis Düren</span>
+                            </button>
+                            <button class="filter-btn" onclick="window.open('https://www.kreis-heinsberg.de/', '_blank')" title="Geoportal Kreis Heinsberg (Extern)">
+                                <span class="swatch" style="background: #7c3aed;"></span>
+                                <span>🔗 Kreis Heinsberg</span>
+                            </button>
+                            <button class="filter-btn" onclick="window.open('https://www.geoportal-rhein-erft-kreis.de/', '_blank')" title="Geoportal Rhein-Erft-Kreis (Extern)">
+                                <span class="swatch" style="background: #7c3aed;"></span>
+                                <span>🔗 Rhein-Erft-Kreis</span>
+                            </button>
+                            <button class="filter-btn" onclick="window.open('https://geoportal.rhein-kreis-neuss.de/', '_blank')" title="Geoportal Rhein-Kreis Neuss (Extern)">
+                                <span class="swatch" style="background: #7c3aed;"></span>
+                                <span>🔗 Rhein-Kreis Neuss</span>
+                            </button>
+                            <button class="filter-btn" onclick="window.open('https://geoportal.moenchengladbach.de/', '_blank')" title="Geoportal Mönchengladbach (Extern)">
+                                <span class="swatch" style="background: #7c3aed;"></span>
+                                <span>🔗 Mönchengladbach</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Search -->
                 <div>
                     <div class="section-title">Institutionen Suchen</div>
@@ -2032,7 +2092,44 @@
             if (e.layer === wsgLayer) loadWsgLayer();
         });
 
-        // 8. Custom Boundary: Untersuchungsgebiet (Landkreise als Hintergrund)
+
+        // 8. Hochwasser- und Starkregengefahrenkarten
+        // 8a. LANUV Hochwassergefahrenkarten (Fluvial)
+        // Keine automatische Verschneidung – WFS nicht verfügbar, nur manueller visueller Kartenvergleich durch gleichzeitiges Einblenden beider Layer.
+        const wmsHwgkHaeufig = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
+            layers: 'Tiefen_Ueberflutungsgebiet_nw',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.6,
+            attribution: "LANUV NRW"
+        });
+
+        const wmsHwgkHq100 = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
+            layers: 'Tiefen_Ueberflutungsgebiet_mw',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.6,
+            attribution: "LANUV NRW"
+        });
+
+        const wmsHwgkExtrem = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
+            layers: 'Tiefen_Ueberflutungsgebiet_hw',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.6,
+            attribution: "LANUV NRW"
+        });
+
+        // 8b. Kommunale Starkregengefahrenkarten (Pluvial)
+        const wmsStarkregenEuskirchen = L.tileLayer.wms("https://starkregen-euskirchen-v11.cismet.de/geoserver/wms", {
+            layers: 'starkregen:L_T100_v1.1_depth3857',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.6,
+            attribution: "Kreis Euskirchen / cismet GmbH"
+        });
+
+        // 9. Custom Boundary: Untersuchungsgebiet (Landkreise als Hintergrund)
         let leafletUG = null;
         let leafletKR = null;
         let leafletCA = null;
@@ -2785,6 +2882,11 @@
         };
 
         const overlayMaps = {
+
+            "HQ häufig (LANUV)": wmsHwgkHaeufig,
+            "HQ100 (LANUV)": wmsHwgkHq100,
+            "HQ extrem (LANUV)": wmsHwgkExtrem,
+            "Starkregen Euskirchen": wmsStarkregenEuskirchen,
             "Rur Einzugsgebiet (Hydrologisch)": catchmentLayer,
             "Gewässerflächen (Seen & Talsperren) [Blau]": gewFlaecheLayer,
             "Gewässerkanäle (Kanäle & Gräben) [Cyan]": gewKanalLayer,
@@ -2814,6 +2916,11 @@
         const layerControl = L.control.layers(baseMaps, {}, { position: 'topright' }).addTo(map);
 
         const wmsLayersMap = {
+
+            "HQ häufig (LANUV)": wmsHwgkHaeufig,
+            "HQ100 (LANUV)": wmsHwgkHq100,
+            "HQ extrem (LANUV)": wmsHwgkExtrem,
+            "Starkregen Euskirchen": wmsStarkregenEuskirchen,
             'Flüsse & Gewässer (LANUV)': wmsRivers,
             'Gewässernetz Detailliert (LANUV)': wmsDetailedRivers,
             'Einzugsgebiete Hydrologisch (LANUV)': wmsCatchments,
@@ -4331,6 +4438,54 @@
         }
 
         // Helper to update active/inactive button states
+
+        // Legend: Hochwasser- & Starkregengefahren
+        const hazardLegend = L.control({ position: 'bottomleft' });
+        hazardLegend.onAdd = function () {
+            const div = L.DomUtil.create('div', 'info-legend');
+            div.style.background = '#ffffff';
+            div.style.padding = '8px 12px';
+            div.style.borderRadius = '6px';
+            div.style.boxShadow = '0 1.5px 5px rgba(0,0,0,0.25)';
+            div.style.fontSize = '12px';
+            div.style.lineHeight = '1.7';
+            div.style.color = '#1e293b';
+            div.innerHTML = `
+                <div style="font-weight:700; margin-bottom:4px; font-size:12.5px;">Gefahrenkarten</div>
+                <div style="font-size:11px; color:#64748b; margin-bottom:2px;">Fluvial (LANUV)</div>
+                <div><span style="display:inline-block; width:14px; height:14px; background:#fde047; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #ca8a04;"></span>HQ häufig</div>
+                <div><span style="display:inline-block; width:14px; height:14px; background:#f97316; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #c2410c;"></span>HQ 100</div>
+                <div><span style="display:inline-block; width:14px; height:14px; background:#dc2626; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #991b1b;"></span>HQ extrem</div>
+                <div style="font-size:11px; color:#64748b; margin-top:6px; margin-bottom:2px;">Pluvial (Kommunen)</div>
+                <div><span style="display:inline-block; width:14px; height:14px; background:#7c3aed; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #5b21b6;"></span>Starkregen</div>
+            `;
+            return div;
+        };
+
+        // Dynamically show/hide hazard legend
+        const hazardLayersList = ["HQ häufig (LANUV)", "HQ100 (LANUV)", "HQ extrem (LANUV)", "Starkregen Euskirchen"];
+
+        function updateHazardLegend() {
+            let show = false;
+            hazardLayersList.forEach(name => {
+                if (map.hasLayer(overlayMaps[name])) {
+                    show = true;
+                }
+            });
+            if (show) {
+                hazardLegend.addTo(map);
+            } else {
+                hazardLegend.remove();
+            }
+        }
+
+        map.on('overlayadd', function(e) {
+            if (hazardLayersList.includes(e.name)) updateHazardLegend();
+        });
+        map.on('overlayremove', function(e) {
+            if (hazardLayersList.includes(e.name)) updateHazardLegend();
+        });
+
         function updateButtonVisualStates() {
             document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
                 const g = btn.getAttribute('data-group');
@@ -4529,8 +4684,39 @@
         });
 
         // Quick Action: Fachdaten & Layer - Alle an
+        // Quick Action: Hazard & Starkregen - Alle an
+        document.getElementById('btn-hazard-all').addEventListener('click', () => {
+            const container = document.getElementById('hazard-layer-group');
+            const btns = container.querySelectorAll('.filter-btn[data-layer-name]');
+            btns.forEach(btn => {
+                const name = btn.getAttribute('data-layer-name');
+                const layer = overlayMaps[name];
+                if (!map.hasLayer(layer)) {
+                    map.addLayer(layer);
+                    map.fire('overlayadd', { layer: layer, name: name });
+                }
+            });
+            updateButtonVisualStates();
+        });
+
+        // Quick Action: Hazard & Starkregen - Alle aus
+        document.getElementById('btn-hazard-none').addEventListener('click', () => {
+            const container = document.getElementById('hazard-layer-group');
+            const btns = container.querySelectorAll('.filter-btn[data-layer-name]');
+            btns.forEach(btn => {
+                const name = btn.getAttribute('data-layer-name');
+                const layer = overlayMaps[name];
+                if (map.hasLayer(layer)) {
+                    map.removeLayer(layer);
+                    map.fire('overlayremove', { layer: layer, name: name });
+                }
+            });
+            updateButtonVisualStates();
+        });
+
+
         document.getElementById('btn-layers-all').addEventListener('click', () => {
-            document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
+            Array.from(document.querySelectorAll('.filter-btn[data-layer-name]')).filter(b => !b.closest('#hazard-layer-group')).forEach(btn => {
                 const name = btn.getAttribute('data-layer-name');
                 const layer = overlayMaps[name];
                 if (!map.hasLayer(layer)) {
@@ -4544,7 +4730,7 @@
 
         // Quick Action: Fachdaten & Layer - Alle aus
         document.getElementById('btn-layers-none').addEventListener('click', () => {
-            document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
+            Array.from(document.querySelectorAll('.filter-btn[data-layer-name]')).filter(b => !b.closest('#hazard-layer-group')).forEach(btn => {
                 const name = btn.getAttribute('data-layer-name');
                 const layer = overlayMaps[name];
                 if (map.hasLayer(layer)) {
