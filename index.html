@@ -4195,6 +4195,12 @@ function buildUnifiedSearchIndex() {
                     }).catch(() => {}));
 
                 // Grundwassermessstellen (lazy-Layer: nur Index eager, Rendering bleibt lazy)
+                // Hinweis (2026-07): Kein Grenzwert-/Zustand-Feld für Nitrat in den gescrapten Daten verfügbar.
+                // Recherche-Ergebnis:
+                // Hypothese A (GWM-Detailseite) liefert unter "Untersuchte Parameter"/"Probenliste" nur "Keine Daten gefunden".
+                // Hypothese B (Grundwasserkörper-Detailseite) liefert flächenhafte Zustandsbewertungen ("gut"/"schlecht" für 50mg/l-Grenzwert)
+                // aber keine punktgenauen numerischen Messwerte pro Messstelle, um sie an die GeoJSON anzuspielen.
+                // Daher ist eine Warnfarben-Klassifizierung pro Marker nach ELWAS-Datenlage nicht umsetzbar.
                 tasks.push(fetch('grundwassermessstellen.geojson')
                     .then(r => r.ok ? r.json() : null)
                     .then(d => {

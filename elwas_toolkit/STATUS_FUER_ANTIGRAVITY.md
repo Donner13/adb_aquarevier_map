@@ -363,3 +363,11 @@ Volle Rohbefunde (alle 4 Agenten, mit genauen Zeilennummern/Messwerten):
   - Quelle: IT.NRW (Bevölkerungsstand Fortschreibung auf Basis Zensus 2022, Stichtag 31.12.2022).
   - Städteregion Aachen: 559.761, Rhein-Erft-Kreis: 473.080, Rhein-Kreis Neuss: 458.016, Mönchengladbach: 268.936, Kreis Düren: 270.522, Kreis Heinsberg: 259.785, Kreis Euskirchen: 199.199.
 - **Kläranlagen-Auslastung:** Da in ELWAS-WEB kein tatsächlicher Auslastungsgrad verfügbar ist, wurde die Kennzahl wahrheitsgemäß in "Kläranlagen-Kapazität (Ausbaugröße EW)" umbenannt, um irreführende Schätzwerte zu vermeiden.
+
+## 11. Nitrat-/Nährstoffbelastung im Grundwasser (Recherche-Ergebnis, 2026-07)
+
+- **Ergebnis:** Keine punktgenauen numerischen Nitrat-Daten in ELWAS verfügbar, daher **keine UI-Änderung/Farbskalen implementiert**, um keine Pseudo-Daten vorzugaukeln.
+- **Details:**
+  - **Hypothese A (Grundwassermessstellen, Punktlayer):** Die Detailseiten (Reiter "Untersuchte Parameter" und "Probenliste") zeigen bei manueller Prüfung und im Playwright-Skript nur "Keine Daten gefunden!". Ein Excel-Massenexport dieser Parameter auf dem Grundwassermessstellen-Katalog existiert ebenfalls nicht.
+  - **Hypothese B (Grundwasserkörper, Polygonlayer):** Der ELWAS-Katalog unter `wrrl/wki/gwk/grundwasserkoerper.xhtml` liefert im Reiter "Zustandsbewertung" zwar flächenhafte Informationen zur Nitrat-Belastung (z. B. Nitrat (50 mg/l): "gut" oder "schlecht"). Diese sind jedoch (1) rein qualitativ und nicht numerisch, und (2) an große Grundwasserkörper-Polygone gebunden, die nicht mit den punktgenauen `grundwassermessstellen.geojson`-Markern (nur verknüpfbar über Name/Gemeinde) abgeglichen werden können.
+- **Aktion:** Ein kommentierender Hinweis wurde in `index.html` und `internal.html` oberhalb des `grundwassermessstellen.geojson`-Fetches eingefügt, der den Sachverhalt und die durchgeführte Recherche für Folge-Entwickler nachvollziehbar dokumentiert.
