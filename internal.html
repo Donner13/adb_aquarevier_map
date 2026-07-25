@@ -1124,6 +1124,62 @@
             box-sizing: border-box;
         }
 
+        /* Accessbility Focus & High Contrast styles */
+        button:focus-visible,
+        .contact-item:focus-visible,
+        .leaflet-marker-icon:focus-visible,
+        a:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+
+        body.high-contrast button:focus-visible,
+        body.high-contrast .contact-item:focus-visible,
+        body.high-contrast .leaflet-marker-icon:focus-visible,
+        body.high-contrast a:focus-visible,
+        body.high-contrast input:focus-visible,
+        body.high-contrast select:focus-visible {
+            outline: 4px solid #ff5f00;
+            outline-offset: 2px;
+        }
+
+        body.high-contrast {
+            --bg-color: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --border-color: #ff5f00;
+            --accent-primary: #ff5f00;
+            --item-hover: #1a1a1a;
+        }
+
+        body.light-theme.high-contrast {
+            --bg-color: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #111111;
+            --border-color: #0000ff;
+            --accent-primary: #0000ff;
+            --item-hover: #e6e6e6;
+        }
+
+        body.high-contrast .contact-name span:first-child,
+        body.high-contrast .popup-title,
+        body.high-contrast .sidebar-header h1,
+        body.high-contrast .filter-label {
+            font-size: 1.15em;
+            font-weight: 700;
+        }
+
+        body.high-contrast .popup-card,
+        body.high-contrast .contact-item,
+        body.high-contrast .filter-btn,
+        body.high-contrast .search-box input {
+            border-width: 2px;
+            border-style: solid;
+            border-color: var(--border-color);
+        }
+
         #pegel-analysis-panel {
             position: absolute;
             top: 20px;
@@ -1238,6 +1294,9 @@
                 </button>
                 <button id="presentation-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; margin-right: 8px;" title="Präsentationsmodus starten (Beamer)">
                     🎥
+                </button>
+                <button id="contrast-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
+                    ◐
                 </button>
                 <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln">
                     🌙
@@ -1819,7 +1878,7 @@
                     <div class="search-box">
                         <input type="text" id="search-input" placeholder="Nach Name oder Ort suchen...">
                     </div>
-                    <div class="contacts-meta" id="contacts-count">0 von 0 Kontakten angezeigt</div>
+                    <div class="contacts-meta" id="contacts-count" aria-live="polite">0 von 0 Kontakten angezeigt</div>
                     <div class="contact-list" id="contact-list-container">
                         <!-- Filled by JS -->
                     </div>
@@ -2592,27 +2651,27 @@
                         const bb = b.getAttribute('data-anhang');
                         if (bb === 'all') return;
                         if (isAnyInactive) {
-                            b.classList.add('active');
+                            b.classList.add('active'); b.setAttribute('aria-pressed', 'true');
                             elwasActiveAnhaenge.add(bb);
                         } else {
-                            b.classList.remove('active');
+                            b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
                             elwasActiveAnhaenge.delete(bb);
                         }
                     });
                 } else {
                     if (elwasActiveAnhaenge.has(anhang)) {
                         elwasActiveAnhaenge.delete(anhang);
-                        btn.classList.remove('active');
+                        btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
                     } else {
                         elwasActiveAnhaenge.add(anhang);
-                        btn.classList.add('active');
+                        btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                     }
                 }
                 const allBtn = document.querySelector('.filter-btn[data-anhang="all"]');
                 if (elwasActiveAnhaenge.size === allBranchen.length) {
-                    allBtn.classList.add('active');
+                    allBtn.classList.add('active'); allBtn.setAttribute('aria-pressed', 'true');
                 } else {
-                    allBtn.classList.remove('active');
+                    allBtn.classList.remove('active'); allBtn.setAttribute('aria-pressed', 'false');
                 }
                 renderElwasLayer();
             });
@@ -2691,6 +2750,25 @@
                 document.getElementById('choroplethMetricContainer').style.display = 'none';
             }
         });
+
+
+        const contrastToggle = document.getElementById('contrast-toggle');
+        let highContrast = localStorage.getItem('aquarevier-high-contrast') === 'true';
+        function applyContrastMode() {
+            document.body.classList.toggle('high-contrast', highContrast);
+            if (contrastToggle) {
+                contrastToggle.setAttribute('aria-pressed', String(highContrast));
+            }
+        }
+        applyContrastMode();
+
+        if (contrastToggle) {
+            contrastToggle.addEventListener('click', () => {
+                highContrast = !highContrast;
+                localStorage.setItem('aquarevier-high-contrast', String(highContrast));
+                applyContrastMode();
+            });
+        }
 
         // Kreis-Choropleth + Vergleichsscorecard
         const kreisChoroplethLayer = L.layerGroup();
@@ -4415,6 +4493,9 @@
                 const safeGroupClass = props.group.toLowerCase().replace(/[\s\/]/g, '_');
                 const displayGroup = styleSettings.groupNames[props.group] || props.group;
                 item.className = `contact-item ${safeGroupClass}`;
+                item.setAttribute('role', 'button');
+                item.setAttribute('tabindex', '0');
+                item.setAttribute('aria-label', `${props.name}, Gruppe ${props.group}. Auf Karte anzeigen.`);
                 item.innerHTML = `
                     <div class="contact-name">
                         <span>${props.name}</span>
@@ -4426,10 +4507,18 @@
                     </div>
                 `;
 
-                item.addEventListener('click', () => {
+                const activateItem = () => {
                     map.panTo([lat, lng]);
                     const marker = clusterMarkers.get(key);
                     if (marker) marker.openPopup();
+                };
+
+                item.addEventListener('click', activateItem);
+                item.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        activateItem();
+                    }
                 });
 
                 listContainer.appendChild(item);
@@ -4490,10 +4579,10 @@
             document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
                 const g = btn.getAttribute('data-group');
                 if (activeFilters.has(g)) {
-                    btn.classList.add('active');
+                    btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                     btn.classList.remove('inactive');
                 } else {
-                    btn.classList.remove('active');
+                    btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
                     btn.classList.add('inactive');
                 }
             });
@@ -4501,10 +4590,10 @@
             document.querySelectorAll('.filter-btn[data-anhang]').forEach(btn => {
                 const b = btn.getAttribute('data-anhang');
                 if (elwasActiveAnhaenge.has(b)) {
-                    btn.classList.add('active');
+                    btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                     btn.classList.remove('inactive');
                 } else {
-                    btn.classList.remove('active');
+                    btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
                     btn.classList.add('inactive');
                 }
             });
@@ -4513,10 +4602,10 @@
                 const name = btn.getAttribute('data-layer-name');
                 const hasLayer = map.hasLayer(overlayMaps[name]);
                 if (hasLayer) {
-                    btn.classList.add('active');
+                    btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                     btn.classList.remove('inactive');
                 } else {
-                    btn.classList.remove('active');
+                    btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
                     btn.classList.add('inactive');
                 }
             });
@@ -5449,10 +5538,10 @@
                 if (!btn) return;
                 if (laienModeActive) {
                     document.body.classList.add('laien-mode');
-                    btn.classList.add('active');
+                    btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                 } else {
                     document.body.classList.remove('laien-mode');
-                    btn.classList.remove('active');
+                    btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
                 }
             }
 

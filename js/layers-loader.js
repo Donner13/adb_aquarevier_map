@@ -175,7 +175,36 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
           layerDataStore[cfg.id] = data;
           window[cfg.geoDataVar] = data;  // backward-compat global
           const markers = L.geoJSON(data, {
-            pointToLayer: (feature, latlng) => L.marker(latlng, { icon: buildIcon() }),
+            pointToLayer: (feature, latlng) => {
+              const marker = L.marker(latlng, { icon: buildIcon() });
+              // Safely extract name from nested blocks like Stammdaten or Lage if they exist
+              let extractedName = '';
+              if (feature.properties) {
+                  extractedName = feature.properties.name || feature.properties.bezeichnung || feature.properties.standort || feature.properties.id || '';
+                  if (!extractedName) {
+                      if (feature.properties.Stammdaten && (feature.properties.Stammdaten.name || feature.properties.Stammdaten.Name)) {
+                          extractedName = feature.properties.Stammdaten.name || feature.properties.Stammdaten.Name;
+                      } else if (feature.properties.Lage && (feature.properties.Lage.name || feature.properties.Lage.Name)) {
+                          extractedName = feature.properties.Lage.name || feature.properties.Lage.Name;
+                      }
+                  }
+              }
+              const nameProp = extractedName;
+              const ariaLabel = nameProp ? `${cfg.groupLabel}: ${nameProp}` : `${cfg.groupLabel} Standort`;
+              // Try to use the global makeMarkerAccessible if defined
+              if (typeof makeMarkerAccessible === 'function') {
+                return makeMarkerAccessible(marker, ariaLabel);
+              }
+              // Inline fallback if not
+              marker.on('add', () => {
+                  const el = marker.getElement();
+                  if (el) {
+                      el.setAttribute('role', 'button');
+                      el.setAttribute('aria-label', ariaLabel);
+                  }
+              });
+              return marker;
+            },
             onEachFeature: (feature, layer) => layer.bindPopup(buildPopupHtml(feature.properties))
           });
           // Add individual markers (not the FeatureGroup) to cluster
@@ -207,7 +236,34 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       layerDataStore[cfg.id] = data;
       window[cfg.geoDataVar] = data;  // backward-compat global
       L.geoJSON(data, {
-        pointToLayer: (feature, latlng) => L.marker(latlng, { icon: buildIcon() }),
+        pointToLayer: (feature, latlng) => {
+          const marker = L.marker(latlng, { icon: buildIcon() });
+          // Safely extract name from nested blocks like Stammdaten or Lage if they exist
+          let extractedName = '';
+          if (feature.properties) {
+              extractedName = feature.properties.name || feature.properties.bezeichnung || feature.properties.standort || feature.properties.id || '';
+              if (!extractedName) {
+                  if (feature.properties.Stammdaten && (feature.properties.Stammdaten.name || feature.properties.Stammdaten.Name)) {
+                      extractedName = feature.properties.Stammdaten.name || feature.properties.Stammdaten.Name;
+                  } else if (feature.properties.Lage && (feature.properties.Lage.name || feature.properties.Lage.Name)) {
+                      extractedName = feature.properties.Lage.name || feature.properties.Lage.Name;
+                  }
+              }
+          }
+          const nameProp = extractedName;
+          const ariaLabel = nameProp ? `${cfg.groupLabel}: ${nameProp}` : `${cfg.groupLabel} Standort`;
+          if (typeof makeMarkerAccessible === 'function') {
+            return makeMarkerAccessible(marker, ariaLabel);
+          }
+          marker.on('add', () => {
+              const el = marker.getElement();
+              if (el) {
+                  el.setAttribute('role', 'button');
+                  el.setAttribute('aria-label', ariaLabel);
+              }
+          });
+          return marker;
+        },
         onEachFeature: (feature, layer) => {
           layer.bindPopup(buildPopupHtml(feature.properties));
           if (cfg.pegelStats) {
