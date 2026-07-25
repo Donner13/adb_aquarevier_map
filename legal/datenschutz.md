@@ -54,6 +54,9 @@ Folgende externe Ressourcen werden geladen:
 - **Google Fonts (Schriften):** Geladen von `https://fonts.googleapis.com` und `https://fonts.gstatic.com`. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.
 - **Leaflet & Leaflet.markercluster (Karten-Bibliotheken):** Geladen von `https://unpkg.com`. Betrieben von Cloudflare Inc.
 - **jsPDF, jsPDF-autotable, html2canvas (Export-Bibliotheken):** Geladen von `https://cdnjs.cloudflare.com`. Betrieben von Cloudflare Inc.
+- **Marked.js (Markdown Parser):** Geladen von `https://cdn.jsdelivr.net`.
+- **FontAwesome (Icons):** Geladen von `https://cdnjs.cloudflare.com`.
+- **OpenStreetMap (Kartenkacheln):** Geladen von `https://tile.openstreetmap.org`. Anbieter ist die OpenStreetMap Foundation (OSMF).
 
 Die Nutzung dieser CDNs erfolgt im Interesse einer einheitlichen, visuell ansprechenden und performanten Darstellung unserer Online-Angebote. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.
 
