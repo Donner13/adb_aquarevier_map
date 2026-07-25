@@ -4891,7 +4891,7 @@
                                 cat: 'einleiter', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng, color,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}</div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
                             (p.gewaesser_liste || '').split(',').map(s => s.trim()).filter(Boolean).forEach(g => addAgg(gewaesserAgg, g, lat, lng));
@@ -4911,7 +4911,7 @@
                                 cat: 'klaeranlage', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.klaeranlage}">Kläranlage</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.betreiber ? `<div class="popup-detail">🏢 Betreiber: ${p.betreiber}</div>` : ''}${p.gewaesser ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser}</div>` : ''}</div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.klaeranlage}">Kläranlage</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.betreiber ? `<div class="popup-detail">🏢 Betreiber: ${p.betreiber}</div>` : ''}${p.gewaesser ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
                             if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
@@ -4936,7 +4936,7 @@
                                 cat: 'gwm', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.gwm}">Grundwassermessstelle</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.eigentuemer ? `<div class="popup-detail">🏢 Eigentümer: ${p.eigentuemer}</div>` : ''}${p.messstellenart ? `<div class="popup-detail">🔧 Art: ${p.messstellenart}</div>` : ''}</div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.gwm}">Grundwassermessstelle</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.eigentuemer ? `<div class="popup-detail">🏢 Eigentümer: ${p.eigentuemer}</div>` : ''}${p.messstellenart ? `<div class="popup-detail">🔧 Art: ${p.messstellenart}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
                         });
@@ -4953,7 +4953,7 @@
                             addSearchRecord({
                                 cat: 'pegel', label: p.name || 'Unbekannt', sub: p.kreis || '',
                                 lat, lng,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.pegel}">Pegel</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}</div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.pegel}">Pegel</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
                         });
@@ -4970,7 +4970,7 @@
                             addSearchRecord({
                                 cat: 'stauanlage', label: p.name || 'Unbekannt', sub: p.kreis || '',
                                 lat, lng,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.stauanlage}">Stauanlage</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}</div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.stauanlage}">Stauanlage</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
                         });
@@ -4988,7 +4988,7 @@
                                 cat: 'regenbecken', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.regenbecken}">Regenbecken / Sonderbauwerk</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div></div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.regenbecken}">Regenbecken / Sonderbauwerk</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
                         });
@@ -5005,7 +5005,7 @@
                             addSearchRecord({
                                 cat: 'querbauwerk', label: p.name || 'Unbekannt', sub: p.kreis || '',
                                 lat, lng,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.querbauwerk}">Querbauwerk / Bauwerk</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}</div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.querbauwerk}">Querbauwerk / Bauwerk</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
                         });

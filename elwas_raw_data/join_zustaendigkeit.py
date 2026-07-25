@@ -1,80 +1,77 @@
 import csv
 import json
 import os
+import shutil
 
-# Paths
-root_dir = r"C:\Users\user\.gemini\antigravity-ide\scratch\contact_map"
-csv_path = os.path.join(root_dir, "elwas_raw_data", "zustaendigkeiten_kreise.csv")
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CSV_PATH = os.path.join(ROOT_DIR, 'elwas_raw_data', 'zustaendigkeiten_kreise.csv')
 
-files = [
-    "stauanlagen.geojson",
-    "regenbecken.geojson",
-    "querbauwerke.geojson",
-    "klaeranlagen.geojson",
-    "pegel.geojson",
-    "elwas_einleiter.geojson",
-    "grundwassermessstellen.geojson"
+GEOJSON_FILES = [
+    'klaeranlagen.geojson',
+    'stauanlagen.geojson',
+    'regenbecken.geojson',
+    'querbauwerke.geojson',
+    'pegel.geojson',
+    'elwas_einleiter.geojson',
+    'grundwassermessstellen.geojson'
 ]
 
-# Load CSV data
-mapping = {}
-with open(csv_path, "r", encoding="utf-8") as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        k_normalized = row["kreis"].strip().casefold()
-        mapping[k_normalized] = {
-            "behoerde": row["behoerde"].strip(),
-            "amt": row["amt"].strip(),
-            "email": row["email"].strip(),
-            "telefon": row["telefon"].strip(),
-            "hinweis": row["hinweis"].strip()
-        }
+def load_csv():
+    zustaendigkeit = {}
+    with open(CSV_PATH, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            kreis = row.get('kreis', '').strip().casefold()
+            if kreis:
+                zustaendigkeit[kreis] = {
+                    'behoerde': row.get('behoerde', '').strip(),
+                    'amt': row.get('amt', '').strip(),
+                    'email': row.get('email', '').strip(),
+                    'telefon': row.get('telefon', '').strip()
+                }
+    return zustaendigkeit
 
-print(f"Loaded {len(mapping)} county responsibility mappings.")
+def process_geojson(filename, zustaendigkeit):
+    filepath = os.path.join(ROOT_DIR, filename)
+    if not os.path.exists(filepath):
+        print(f"File not found: {filename}")
+        return
 
-# Process each GeoJSON file
-for file_name in files:
-    file_path = os.path.join(root_dir, file_name)
-    if not os.path.exists(file_path):
-        print(f"File not found, skipping: {file_name}")
-        continue
-    
-    with open(file_path, "r", encoding="utf-8") as f:
+    with open(filepath, 'r', encoding='utf-8') as f:
         data = json.load(f)
-    
-    matched_count = 0
+
+    matched = 0
+    total = len(data.get('features', []))
     unmatched_kreise = set()
-    total_count = len(data.get("features", []))
-    
-    for feature in data.get("features", []):
-        props = feature.get("properties", {})
-        k = props.get("kreis")
+
+    for feature in data.get('features', []):
+        props = feature.get('properties', {})
+        kreis = props.get('kreis', '')
+        if not kreis:
+            continue
+
+        kreis_normalized = kreis.strip().casefold()
         
-        # Clean previous joined properties if they exist (idempotency)
-        for field in ["zustaendigkeit_behoerde", "zustaendigkeit_amt", "zustaendigkeit_email", "zustaendigkeit_telefon", "zustaendigkeit_hinweis"]:
-            if field in props:
-                del props[field]
-        
-        if k:
-            k_normalized = k.strip().casefold()
-            if k_normalized in mapping:
-                info = mapping[k_normalized]
-                props["zustaendigkeit_behoerde"] = info["behoerde"]
-                props["zustaendigkeit_amt"] = info["amt"]
-                props["zustaendigkeit_email"] = info["email"]
-                props["zustaendigkeit_telefon"] = info["telefon"]
-                if info["hinweis"]:
-                    props["zustaendigkeit_hinweis"] = info["hinweis"]
-                matched_count += 1
-            else:
-                unmatched_kreise.add(k.strip())
+        if kreis_normalized in zustaendigkeit:
+            z = zustaendigkeit[kreis_normalized]
+            if z['behoerde']:
+                props['zustaendigkeit_behoerde'] = z['behoerde']
+            if z['amt']:
+                props['zustaendigkeit_amt'] = z['amt']
+            if z['email']:
+                props['zustaendigkeit_email'] = z['email']
+            if z['telefon']:
+                props['zustaendigkeit_telefon'] = z['telefon']
+            matched += 1
         else:
-            unmatched_kreise.add("Kein Kreis-Attribut")
-            
-    # Write back in-place
-    with open(file_path, "w", encoding="utf-8") as f:
+            unmatched_kreise.add(kreis)
+
+    with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False, allow_nan=False)
-        
-    print(f"Processed {file_name}: {matched_count}/{total_count} features matched.")
-    if unmatched_kreise:
-        print(f"  Unmatched: {sorted(list(unmatched_kreise))}")
+
+    print(f"{filename}: {matched}/{total} Features gematcht, nicht gematchte kreis-Werte: {list(unmatched_kreise)}")
+
+if __name__ == "__main__":
+    zustaendigkeit = load_csv()
+    for filename in GEOJSON_FILES:
+        process_geojson(filename, zustaendigkeit)

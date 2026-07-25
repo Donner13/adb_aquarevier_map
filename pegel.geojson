@@ -41,7 +41,11 @@
           }
         ],
         "upstream_abwasser_m3s": 0.000555,
-        "upstream_mq_pct": 0.02
+        "upstream_mq_pct": 0.02,
+        "zustaendigkeit_behoerde": "Städteregion Aachen",
+        "zustaendigkeit_amt": "A 66 - Umweltamt",
+        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
+        "zustaendigkeit_telefon": "0241 5198-0"
       }
     },
     {
@@ -71,7 +75,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Städteregion Aachen",
+        "zustaendigkeit_amt": "A 66 - Umweltamt",
+        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
+        "zustaendigkeit_telefon": "0241 5198-0"
       }
     },
     {
@@ -101,7 +109,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Städteregion Aachen",
+        "zustaendigkeit_amt": "A 66 - Umweltamt",
+        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
+        "zustaendigkeit_telefon": "0241 5198-0"
       }
     },
     {
@@ -131,7 +143,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Städteregion Aachen",
+        "zustaendigkeit_amt": "A 66 - Umweltamt",
+        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
+        "zustaendigkeit_telefon": "0241 5198-0"
       }
     },
     {
@@ -161,7 +177,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Städteregion Aachen",
+        "zustaendigkeit_amt": "A 66 - Umweltamt",
+        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
+        "zustaendigkeit_telefon": "0241 5198-0"
       }
     },
     {
@@ -191,7 +211,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Städteregion Aachen",
+        "zustaendigkeit_amt": "A 66 - Umweltamt",
+        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
+        "zustaendigkeit_telefon": "0241 5198-0"
       }
     },
     {
@@ -221,7 +245,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Städteregion Aachen",
+        "zustaendigkeit_amt": "A 66 - Umweltamt",
+        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
+        "zustaendigkeit_telefon": "0241 5198-0"
       }
     },
     {
@@ -251,7 +279,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Städteregion Aachen",
+        "zustaendigkeit_amt": "A 66 - Umweltamt",
+        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
+        "zustaendigkeit_telefon": "0241 5198-0"
       }
     },
     {
@@ -281,7 +313,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Städteregion Aachen",
+        "zustaendigkeit_amt": "A 66 - Umweltamt",
+        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
+        "zustaendigkeit_telefon": "0241 5198-0"
       }
     },
     {
@@ -311,7 +347,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Städteregion Aachen",
+        "zustaendigkeit_amt": "A 66 - Umweltamt",
+        "zustaendigkeit_email": "umweltamt@staedteregion-aachen.de",
+        "zustaendigkeit_telefon": "0241 5198-0"
       }
     },
     {
@@ -341,7 +381,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
+        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
+        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
+        "zustaendigkeit_telefon": "02452 13-0"
       }
     },
     {
@@ -378,7 +422,11 @@
           }
         ],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
+        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
+        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
+        "zustaendigkeit_telefon": "02452 13-0"
       }
     },
     {
@@ -408,7 +456,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
+        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
+        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
+        "zustaendigkeit_telefon": "02452 13-0"
       }
     },
     {
@@ -445,7 +497,11 @@
           }
         ],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
+        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
+        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
+        "zustaendigkeit_telefon": "02452 13-0"
       }
     },
     {
@@ -524,7 +580,11 @@
           }
         ],
         "upstream_abwasser_m3s": 0.013669,
-        "upstream_mq_pct": 0.06
+        "upstream_mq_pct": 0.06,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
+        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
+        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
+        "zustaendigkeit_telefon": "02452 13-0"
       }
     },
     {
@@ -554,7 +614,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Heinsberg",
+        "zustaendigkeit_amt": "Amt für Umwelt und Verkehrsplanung",
+        "zustaendigkeit_email": "umweltamt@kreis-heinsberg.de",
+        "zustaendigkeit_telefon": "02452 13-0"
       }
     },
     {
@@ -584,7 +648,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
+        "zustaendigkeit_amt": "Amt für Umweltschutz",
+        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
+        "zustaendigkeit_telefon": "02181 601-0"
       }
     },
     {
@@ -614,7 +682,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
+        "zustaendigkeit_amt": "Amt für Umweltschutz",
+        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
+        "zustaendigkeit_telefon": "02181 601-0"
       }
     },
     {
@@ -644,7 +716,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
+        "zustaendigkeit_amt": "Amt für Umweltschutz",
+        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
+        "zustaendigkeit_telefon": "02181 601-0"
       }
     },
     {
@@ -674,7 +750,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Rhein-Kreis Neuss",
+        "zustaendigkeit_amt": "Amt für Umweltschutz",
+        "zustaendigkeit_email": "umwelt@rhein-kreis-neuss.de",
+        "zustaendigkeit_telefon": "02181 601-0"
       }
     },
     {
@@ -747,7 +827,11 @@
           }
         ],
         "upstream_abwasser_m3s": 0.013669,
-        "upstream_mq_pct": 0.11
+        "upstream_mq_pct": 0.11,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
+        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
+        "zustaendigkeit_email": "amt66@kreis-dueren.de",
+        "zustaendigkeit_telefon": "02421 220"
       }
     },
     {
@@ -820,7 +904,11 @@
           }
         ],
         "upstream_abwasser_m3s": 0.013669,
-        "upstream_mq_pct": 0.08
+        "upstream_mq_pct": 0.08,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
+        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
+        "zustaendigkeit_email": "amt66@kreis-dueren.de",
+        "zustaendigkeit_telefon": "02421 220"
       }
     },
     {
@@ -850,7 +938,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
+        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
+        "zustaendigkeit_email": "amt66@kreis-dueren.de",
+        "zustaendigkeit_telefon": "02421 220"
       }
     },
     {
@@ -880,7 +972,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
+        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
+        "zustaendigkeit_email": "amt66@kreis-dueren.de",
+        "zustaendigkeit_telefon": "02421 220"
       }
     },
     {
@@ -953,7 +1049,11 @@
           }
         ],
         "upstream_abwasser_m3s": 0.013669,
-        "upstream_mq_pct": 0.08
+        "upstream_mq_pct": 0.08,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
+        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
+        "zustaendigkeit_email": "amt66@kreis-dueren.de",
+        "zustaendigkeit_telefon": "02421 220"
       }
     },
     {
@@ -983,7 +1083,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
+        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
+        "zustaendigkeit_email": "amt66@kreis-dueren.de",
+        "zustaendigkeit_telefon": "02421 220"
       }
     },
     {
@@ -1056,7 +1160,11 @@
           }
         ],
         "upstream_abwasser_m3s": 0.013669,
-        "upstream_mq_pct": 0.11
+        "upstream_mq_pct": 0.11,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
+        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
+        "zustaendigkeit_email": "amt66@kreis-dueren.de",
+        "zustaendigkeit_telefon": "02421 220"
       }
     },
     {
@@ -1093,7 +1201,11 @@
           }
         ],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
+        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
+        "zustaendigkeit_email": "amt66@kreis-dueren.de",
+        "zustaendigkeit_telefon": "02421 220"
       }
     },
     {
@@ -1136,7 +1248,11 @@
           }
         ],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
+        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
+        "zustaendigkeit_email": "amt66@kreis-dueren.de",
+        "zustaendigkeit_telefon": "02421 220"
       }
     },
     {
@@ -1179,7 +1295,11 @@
           }
         ],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Düren",
+        "zustaendigkeit_amt": "Amt für Bodenschutz und Wasserwirtschaft",
+        "zustaendigkeit_email": "amt66@kreis-dueren.de",
+        "zustaendigkeit_telefon": "02421 220"
       }
     },
     {
@@ -1209,7 +1329,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
+        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
+        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
+        "zustaendigkeit_telefon": "02271 83-0"
       }
     },
     {
@@ -1239,7 +1363,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
+        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
+        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
+        "zustaendigkeit_telefon": "02271 83-0"
       }
     },
     {
@@ -1269,7 +1397,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
+        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
+        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
+        "zustaendigkeit_telefon": "02271 83-0"
       }
     },
     {
@@ -1299,7 +1431,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
+        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
+        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
+        "zustaendigkeit_telefon": "02271 83-0"
       }
     },
     {
@@ -1329,7 +1465,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
+        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
+        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
+        "zustaendigkeit_telefon": "02271 83-0"
       }
     },
     {
@@ -1359,7 +1499,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Rhein-Erft-Kreis",
+        "zustaendigkeit_amt": "Amt für Umweltschutz und Kreisentwicklung",
+        "zustaendigkeit_email": "umweltschutzamt@rhein-erft-kreis.de",
+        "zustaendigkeit_telefon": "02271 83-0"
       }
     },
     {
@@ -1389,7 +1533,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
+        "zustaendigkeit_amt": "Untere Wasserbehörde",
+        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
+        "zustaendigkeit_telefon": "02251 15-0"
       }
     },
     {
@@ -1419,7 +1567,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
+        "zustaendigkeit_amt": "Untere Wasserbehörde",
+        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
+        "zustaendigkeit_telefon": "02251 15-0"
       }
     },
     {
@@ -1449,7 +1601,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
+        "zustaendigkeit_amt": "Untere Wasserbehörde",
+        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
+        "zustaendigkeit_telefon": "02251 15-0"
       }
     },
     {
@@ -1479,7 +1635,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
+        "zustaendigkeit_amt": "Untere Wasserbehörde",
+        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
+        "zustaendigkeit_telefon": "02251 15-0"
       }
     },
     {
@@ -1509,7 +1669,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
+        "zustaendigkeit_amt": "Untere Wasserbehörde",
+        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
+        "zustaendigkeit_telefon": "02251 15-0"
       }
     },
     {
@@ -1539,7 +1703,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
+        "zustaendigkeit_amt": "Untere Wasserbehörde",
+        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
+        "zustaendigkeit_telefon": "02251 15-0"
       }
     },
     {
@@ -1569,7 +1737,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
+        "zustaendigkeit_amt": "Untere Wasserbehörde",
+        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
+        "zustaendigkeit_telefon": "02251 15-0"
       }
     },
     {
@@ -1599,7 +1771,11 @@
         "upstream_betriebe_mit_wert": null,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": null,
-        "upstream_mq_pct": null
+        "upstream_mq_pct": null,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
+        "zustaendigkeit_amt": "Untere Wasserbehörde",
+        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
+        "zustaendigkeit_telefon": "02251 15-0"
       }
     },
     {
@@ -1629,7 +1805,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
+        "zustaendigkeit_amt": "Untere Wasserbehörde",
+        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
+        "zustaendigkeit_telefon": "02251 15-0"
       }
     },
     {
@@ -1659,7 +1839,11 @@
         "upstream_betriebe_mit_wert": 0,
         "upstream_betriebe": [],
         "upstream_abwasser_m3s": 0.0,
-        "upstream_mq_pct": 0.0
+        "upstream_mq_pct": 0.0,
+        "zustaendigkeit_behoerde": "Kreisverwaltung Euskirchen",
+        "zustaendigkeit_amt": "Untere Wasserbehörde",
+        "zustaendigkeit_email": "wasserwirtschaft@kreis-euskirchen.de",
+        "zustaendigkeit_telefon": "02251 15-0"
       }
     }
   ]
