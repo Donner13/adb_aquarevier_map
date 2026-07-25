@@ -136,6 +136,11 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       </div>`;
     }
 
+    // Feedback Link
+    html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
+      <a href="#" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', '${cfg.groupLabel}', '${p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || ''}', ${p.lat || p.latitutde || 0}, ${p.lng || p.longitude || p.lon || 0}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a>
+    </div>`;
+
     // Footer
     const footer = cfg.footerTemplate
       ? cfg.footerTemplate(p)
