@@ -2086,8 +2086,9 @@
         }); // Disabled by default
 
         // 6. Overlays: Tagebaue / Bergbauberechtigungen Gewinnung (GD NRW)
-        const wmsMining = L.tileLayer.wms("https://www.wms.nrw.de/gd/wms_nw_bergbauberechtigungen", {
-            layers: 'nw_bergbauberechtigungen_gewinnend',
+        // Scope changed from 'nur aktive Berechtigungen' (nw_bergbauberechtigungen_gewinnend) to 'alle Berechtigungen' (19) as the new WMS service no longer provides this subdivision.
+        const wmsMining = L.tileLayer.wms("https://www.wms.nrw.de/wms/bebu", {
+            layers: '19',
             format: 'image/png',
             transparent: true,
             opacity: 0.5,

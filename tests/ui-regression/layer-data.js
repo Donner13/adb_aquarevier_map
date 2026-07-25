@@ -55,7 +55,7 @@ const LAZY_LAYERS = {
 // same lazy-on-first-toggle shape, but an external WMS tile request
 // instead of a same-origin geojson fetch (mocked in fixtures.js).
 const WMS_LAYERS = {
-  'Tagebaue & Bergbaufelder (GD)': 'wms_nw_bergbauberechtigungen',
+  'Tagebaue & Bergbaufelder (GD)': 'wms/bebu',
   'HQ häufig (LANUV)': 'Tiefen_Ueberflutungsgebiet_nw',
   'HQ100 (LANUV)': 'Tiefen_Ueberflutungsgebiet_mw',
   'HQ extrem (LANUV)': 'Tiefen_Ueberflutungsgebiet_hw',
