@@ -1707,6 +1707,118 @@
             50% { filter: drop-shadow(0 0 8px #FFD700); }
             100% { filter: drop-shadow(0 0 2px #D55E00); }
         }
+
+        /* Onboarding Styles */
+        #onboarding-role-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 10001;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        #onboarding-role-modal .modal-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 800px;
+            width: 90%;
+            color: var(--text-primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        .onboarding-role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+        .onboarding-role-card {
+            background: var(--bg-surface);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        .onboarding-role-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+        .onboarding-role-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+        .onboarding-role-card p {
+            margin: 0;
+            font-size: 13px;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+        #coachmark-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 10002;
+            pointer-events: none;
+            display: none;
+        }
+        #coachmark-spotlight {
+            position: fixed;
+            box-shadow: 0 0 0 9999px rgba(0,0,0,0.6);
+            border: 2px solid var(--accent-primary);
+            border-radius: 12px;
+            pointer-events: none;
+            transition: all 0.25s ease;
+        }
+        #coachmark-tooltip {
+            position: fixed;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            width: 250px;
+            color: var(--text-primary);
+            pointer-events: auto;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        #coachmark-tooltip h4 {
+            margin: 0 0 5px 0;
+            font-size: 14px;
+        }
+        #coachmark-tooltip p {
+            margin: 0 0 15px 0;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        .coachmark-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .coachmark-progress {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+        .coachmark-buttons button {
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .coachmark-skip {
+            background: transparent !important;
+            border: 1px solid var(--border-color) !important;
+            color: var(--text-primary) !important;
+            margin-right: 5px;
+        }
     </style>
 
 </head>
@@ -1728,6 +1840,7 @@
                 <button id="contrast-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
                     ◐
                 </button>
+                        <button id="replay-tour-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; margin-left: 5px;" title="Tour erneut starten" onclick="showRoleModal()">🎓</button>
             <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln">
                     🌙
                 </button>
@@ -4197,6 +4310,11 @@
         setTimeout(() => {
             updateButtonVisualStates();
             updateSidebarCounters();
+
+            // Onboarding Check
+            if (!localStorage.getItem('aquarevier_onboarding_completed_v1')) {
+                window.showRoleModal();
+            }
         }, 100);
 
         // --- Teilbare Ansichten (Filter + Kartenausschnitt per Link) ---
@@ -5427,6 +5545,224 @@ function buildUnifiedSearchIndex() {
             });
 
             buildUnifiedSearchIndex();
+
+        // --- Onboarding & Coachmark Logic ---
+        let currentCoachmarkStep = 0;
+        let coachmarkResizeHandler = null;
+
+        window.showRoleModal = function() {
+            document.getElementById('onboarding-role-modal').style.display = 'flex';
+        };
+
+        window.closeRoleModal = function() {
+            document.getElementById('onboarding-role-modal').style.display = 'none';
+        };
+
+        window.applyRolePreset = function(role) {
+            // 1. Define Presets
+            let groupsToEnable = [];
+            let branchenToEnable = [];
+            let layersToEnable = [];
+
+            if (role === 'Politik / Gemeinderat') {
+                groupsToEnable = ['Behörde', 'Gebietskörperschaft', 'Netzwerk/ Multiplikator'];
+                branchenToEnable = [];
+                layersToEnable = ['Landkreisgrenzen (Rheinisches Revier)', 'Kreisgrenzen (Schwarz gestrichelt)', '🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)'];
+            } else if (role === 'Gemeinde / Verwaltung') {
+                groupsToEnable = ['Gebietskörperschaft', 'Behörde', 'Ver-/ Entsorger'];
+                branchenToEnable = [];
+                layersToEnable = ['💧 Grundwassermessstellen (ELWAS, 3700+)', '⛰️ Stauanlagen (ELWAS)', '🌧️ Regenbecken/-entlastungsanlagen (ELWAS)', '📏 Pegel (ELWAS)', 'Kreisgrenzen (Schwarz gestrichelt)'];
+            } else if (role === 'Industrie / Gewerbe') {
+                groupsToEnable = ['Gewerbe/ Industrie', 'Ver-/ Entsorger', 'Behörde'];
+                branchenToEnable = ['Papierindustrie', 'Textilindustrie', 'Chemieindustrie', 'Metallindustrie', 'Lebensmittelindustrie'];
+                layersToEnable = ['Wasserschutzgebiete (LANUV)', '🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)', '🧱 Querbauwerke (ELWAS)'];
+            } else if (role === 'Bürger / Öffentlichkeit') {
+                groupsToEnable = ['Behörde', 'Gebietskörperschaft', 'Netzwerk/ Multiplikator', 'Ver-/ Entsorger'];
+                branchenToEnable = [];
+                layersToEnable = ['Eigene Gewässer mit Namen', 'Wasserschutzgebiete (LANUV)', 'Landkreisgrenzen (Rheinisches Revier)'];
+            }
+
+            // 2. Set activeFilters
+            activeFilters.clear();
+            groupsToEnable.forEach(g => activeFilters.add(g));
+
+            // 3. Set elwasActiveBranchen
+            elwasActiveBranchen.clear();
+            branchenToEnable.forEach(b => elwasActiveBranchen.add(b));
+
+            // 4. Set Map Layers
+            document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
+                const name = btn.getAttribute('data-layer-name');
+                const layer = overlayMaps[name];
+                if (!layer) return;
+
+                const shouldBeOn = layersToEnable.includes(name);
+                const isOn = map.hasLayer(layer);
+
+                if (shouldBeOn && !isOn) {
+                    map.addLayer(layer);
+                    map.fire('overlayadd', { layer: layer, name: name });
+                } else if (!shouldBeOn && isOn) {
+                    map.removeLayer(layer);
+                    map.fire('overlayremove', { layer: layer, name: name });
+                }
+            });
+
+            // 5. Update UI
+            updateButtonVisualStates();
+            renderMapAndSidebar();
+            renderElwasLayer();
+            updateSidebarCounters();
+
+            // Close Modal & Start Tour
+            window.closeRoleModal();
+            window.startCoachmarkTour(1);
+        };
+
+        const coachmarkSteps = [
+            {
+                targetSelector: '.unified-search-control',
+                title: 'Globale Suche',
+                text: 'Hier durchsuchst du alle 35+ Datenquellen auf einmal — Akteure, Gewässer, Gemeinden, Anlagen.'
+            },
+            {
+                targetFunction: () => {
+                    const titles = Array.from(document.querySelectorAll('.section-title'));
+                    const title = titles.find(el => el.textContent.includes('Regionale Akteure'));
+                    if (title && title.nextElementSibling && title.nextElementSibling.classList.contains('filter-group')) {
+                        return title.nextElementSibling;
+                    }
+                    return null;
+                },
+                title: 'Akteure filtern',
+                text: 'Über diese Buttons blendest du Akteursgruppen ein oder aus. Deine Rollenwahl hat hier schon vorgefiltert.'
+            },
+            {
+                targetFunction: () => {
+                    const titles = Array.from(document.querySelectorAll('.section-title'));
+                    const title = titles.find(el => el.textContent.includes('Fachdaten & Layer'));
+                    if (title && title.nextElementSibling && title.nextElementSibling.classList.contains('filter-group')) {
+                        return title.nextElementSibling;
+                    }
+                    return null;
+                },
+                title: 'Fachdaten aktivieren',
+                text: 'Hier aktivierst du amtliche Fachdaten wie Pegel, Grundwassermessstellen oder Wasserschutzgebiete.'
+            },
+            {
+                targetSelector: '#reset-filters-btn',
+                title: 'Zurücksetzen',
+                text: 'Verirrst du dich? Ein Klick setzt alle Filter zurück auf die Vollansicht.'
+            }
+        ];
+
+        window.positionCoachmark = function() {
+            if (currentCoachmarkStep < 1 || currentCoachmarkStep > coachmarkSteps.length) return;
+
+            const stepConfig = coachmarkSteps[currentCoachmarkStep - 1];
+            let targetEl = null;
+            if (stepConfig.targetSelector) {
+                targetEl = document.querySelector(stepConfig.targetSelector);
+            } else if (stepConfig.targetFunction) {
+                targetEl = stepConfig.targetFunction();
+            }
+
+            if (!targetEl) return;
+
+            const rect = targetEl.getBoundingClientRect();
+            const spotlight = document.getElementById('coachmark-spotlight');
+            const tooltip = document.getElementById('coachmark-tooltip');
+
+            const padding = 8;
+            spotlight.style.left = (rect.left - padding) + 'px';
+            spotlight.style.top = (rect.top - padding) + 'px';
+            spotlight.style.width = (rect.width + padding * 2) + 'px';
+            spotlight.style.height = (rect.height + padding * 2) + 'px';
+
+            let tooltipLeft = rect.right + padding + 15;
+            let tooltipTop = rect.top - padding;
+
+            if (tooltipLeft + 250 > window.innerWidth) {
+                tooltipLeft = rect.left - padding - 250 - 15;
+            }
+            if (tooltipLeft < 0) {
+                tooltipLeft = rect.left;
+                tooltipTop = rect.bottom + padding + 15;
+            }
+
+            if (tooltipTop + tooltip.offsetHeight > window.innerHeight) {
+                 tooltipTop = window.innerHeight - tooltip.offsetHeight - 20;
+            }
+
+            tooltip.style.left = tooltipLeft + 'px';
+            tooltip.style.top = tooltipTop + 'px';
+        }
+
+        window.startCoachmarkTour = function(step) {
+            currentCoachmarkStep = step;
+            const overlay = document.getElementById('coachmark-overlay');
+            overlay.style.display = 'block';
+
+            window.updateCoachmarkContent();
+
+            if (!coachmarkResizeHandler) {
+                coachmarkResizeHandler = () => window.positionCoachmark();
+                window.addEventListener('resize', coachmarkResizeHandler);
+            }
+            document.querySelector('.sidebar-content')?.addEventListener('scroll', coachmarkResizeHandler);
+        };
+
+        window.updateCoachmarkContent = function() {
+            if (currentCoachmarkStep < 1 || currentCoachmarkStep > coachmarkSteps.length) {
+                window.endCoachmarkTour();
+                return;
+            }
+
+            const stepConfig = coachmarkSteps[currentCoachmarkStep - 1];
+
+            document.getElementById('coachmark-title').textContent = stepConfig.title;
+            document.getElementById('coachmark-text').textContent = stepConfig.text;
+            document.getElementById('coachmark-progress').textContent = `Schritt ${currentCoachmarkStep} von ${coachmarkSteps.length}`;
+
+            const nextBtn = document.getElementById('coachmark-next-btn');
+            if (currentCoachmarkStep === coachmarkSteps.length) {
+                nextBtn.textContent = 'Fertig';
+            } else {
+                nextBtn.textContent = 'Weiter';
+            }
+
+            let targetEl = null;
+            if (stepConfig.targetSelector) {
+                targetEl = document.querySelector(stepConfig.targetSelector);
+            } else if (stepConfig.targetFunction) {
+                targetEl = stepConfig.targetFunction();
+            }
+            if (targetEl) {
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+
+            setTimeout(window.positionCoachmark, 50);
+        }
+
+        window.nextCoachmarkStep = function() {
+            currentCoachmarkStep++;
+            window.updateCoachmarkContent();
+        };
+
+        window.skipCoachmarkTour = function() {
+            window.endCoachmarkTour();
+        };
+
+        window.endCoachmarkTour = function() {
+            document.getElementById('coachmark-overlay').style.display = 'none';
+            if (coachmarkResizeHandler) {
+                window.removeEventListener('resize', coachmarkResizeHandler);
+                document.querySelector('.sidebar-content')?.removeEventListener('scroll', coachmarkResizeHandler);
+                coachmarkResizeHandler = null;
+            }
+            localStorage.setItem('aquarevier_onboarding_completed_v1', '1');
+        };
+
         })();
     </script>
     <!-- Kreis comparison scorecard modal -->
@@ -5460,6 +5796,50 @@ function buildUnifiedSearchIndex() {
                 </div>
                 <div class="scorecard-source" id="scorecardModalSource">
                     Datenquellen: IT.NRW (Einwohnerzahl Stand 31.12.2022) / ELWAS-WEB
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Onboarding Modal -->
+    <div id="onboarding-role-modal">
+        <div class="modal-content">
+            <h2>Willkommen bei der AquaRevier-Akteurskarte</h2>
+            <p>Wähle deine Rolle, damit wir dir die Karte passend vorfiltern:</p>
+            <div class="onboarding-role-grid">
+                <div class="onboarding-role-card" onclick="applyRolePreset('Politik / Gemeinderat')">
+                    <h3>🏛️ Politik / Gemeinderat</h3>
+                    <p>Kreisgrenzen, Statistik & Behörden/Politik</p>
+                </div>
+                <div class="onboarding-role-card" onclick="applyRolePreset('Gemeinde / Verwaltung')">
+                    <h3>🏢 Gemeinde / Verwaltung</h3>
+                    <p>Fachdaten wie Pegel, Grundwasser & Stauanlagen</p>
+                </div>
+                <div class="onboarding-role-card" onclick="applyRolePreset('Industrie / Gewerbe')">
+                    <h3>🏭 Industrie / Gewerbe</h3>
+                    <p>Alle Industriebranchen, Einzugsgebiete & WSG</p>
+                </div>
+                <div class="onboarding-role-card" onclick="applyRolePreset('Bürger / Öffentlichkeit')">
+                    <h3>👨‍👩‍👧‍👦 Bürger / Öffentlichkeit</h3>
+                    <p>Gewässer mit Namen, WSG & öffentliche Akteure</p>
+                </div>
+            </div>
+            <a href="#" onclick="closeRoleModal(); localStorage.setItem('aquarevier_onboarding_completed_v1', '1'); return false;" style="color: var(--text-primary); text-decoration: underline; font-size: 14px; opacity: 0.8;">Überspringen, ich kenne mich aus</a>
+        </div>
+    </div>
+
+    <!-- Coachmark Overlay -->
+    <div id="coachmark-overlay">
+        <div id="coachmark-spotlight"></div>
+        <div id="coachmark-tooltip">
+            <h4 id="coachmark-title">Titel</h4>
+            <p id="coachmark-text">Text</p>
+            <div class="coachmark-footer">
+                <div class="coachmark-progress" id="coachmark-progress">Schritt 1 von 4</div>
+                <div class="coachmark-buttons">
+                    <button class="coachmark-skip" onclick="skipCoachmarkTour()">Überspringen</button>
+                    <button id="coachmark-next-btn" onclick="nextCoachmarkStep()">Weiter</button>
                 </div>
             </div>
         </div>

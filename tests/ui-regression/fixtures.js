@@ -55,8 +55,21 @@ const test = base.test.extend({
 
 const expect = base.expect;
 
-/** Navigate to a page and wait for the sidebar + initial fetch burst to settle. */
+/** Navigate to a page and wait for the sidebar + initial fetch burst to settle.
+ *
+ * index.html shows a blocking full-viewport onboarding modal
+ * (#onboarding-role-modal) on first visit, i.e. whenever
+ * localStorage['aquarevier_onboarding_completed_v1'] is unset - which is
+ * always true for a fresh Playwright browser context. Pre-seed that flag via
+ * an init script (runs before any page script, so it beats the page's own
+ * `if (!localStorage.getItem(...)) showRoleModal()` check on load) so this
+ * suite exercises the returning-user / layer-toggle behavior it's actually
+ * testing, not the onboarding flow itself.
+ */
 async function gotoPage(page, filename) {
+  await page.addInitScript(() => {
+    localStorage.setItem('aquarevier_onboarding_completed_v1', '1');
+  });
   await page.goto(`/${filename}`);
   await page.waitForSelector('.filter-btn[data-layer-name]');
   await page.waitForLoadState('networkidle');
