@@ -49,6 +49,7 @@ const LAZY_LAYERS = {
   '🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)': 'rur_einzugsgebiet_stats.geojson',
   '📊 Kreis-Vergleich (Choroplethenkarte)': 'kreise_scorecard.geojson',
   'Wasserschutzgebiete (LANUV)': 'wasserschutzgebiete.geojson',
+  '📈 Grundwasserwiederanstieg (Modell)': 'grundwasserwiederanstieg.geojson',
 };
 
 // same lazy-on-first-toggle shape, but an external WMS tile request
@@ -115,8 +116,8 @@ function realFeatureCount(geojsonFile) {
   return JSON.parse(raw).features.length;
 }
 
-if (Object.keys(ALL_LAYERS).length !== 18) {
-  throw new Error(`Expected exactly 18 sidebar layer-toggle buttons, got ${Object.keys(ALL_LAYERS).length}`);
+if (Object.keys(ALL_LAYERS).length !== 19) {
+  throw new Error(`Expected exactly 19 sidebar layer-toggle buttons, got ${Object.keys(ALL_LAYERS).length}`);
 }
 for (const name of DEFAULT_ON) {
   if (!(name in ALL_LAYERS)) throw new Error(`DEFAULT_ON contains an unknown layer name: ${name}`);

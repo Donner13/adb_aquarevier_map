@@ -1860,10 +1860,13 @@
                         </div>
                     </div>
                     <div class="filter-group">
-                        <button class="filter-btn" data-layer-name="💧 Grundwassermessstellen (ELWAS, 3700+)" title="Messergebnisse zur Grundwasserqualität und Pegelständen (ELWAS)">
-                            <span class="swatch" style="background-color: #56B4E9;"></span>
+                                                <button class="filter-btn" data-layer-name="💧 Grundwassermessstellen (ELWAS, 3700+)" title="Messergebnisse zur Grundwasserqualität und Pegelständen (ELWAS)">
                             <span class="filter-label">Grundwassermessstellen<span class="glossar-icon" data-glossar="GRUNDWASSERMESSSTELLE">i</span></span>
-                            <span class="counter-badge" id="cnt-layer-gwm">(0/0)</span>
+                            <span class="counter-badge" id="cnt-layer-grundwassermessstellen">(0/0)</span>
+                        </button>
+                        <button class="filter-btn" data-layer-name="📈 Grundwasserwiederanstieg (Modell)" title="Interpolierte Konturen des erwarteten Grundwasserwiederanstiegs">
+                            <span class="filter-label">Grundwasserwiederanstieg<span class="glossar-icon" data-glossar="GRUNDWASSERWIEDERANSTIEG">i</span></span>
+                            <span class="counter-badge" id="cnt-layer-gwwa">(0/0)</span>
                         </button>
                         <button id="btn-pegel-analysis" class="filter-btn" style="background-color: rgba(0, 158, 115, 0.1); border-color: #009E73;" title="Aktiviert die Analyse-Ansicht für Industrieabwasseranteile an Pegeln">
                             <span class="filter-label" style="display:flex; align-items:center; justify-content:center; width:100%;"><span style="margin-right: 5px;">🌊</span> Pegel-Abwasser-Analyse</span>
@@ -2312,6 +2315,37 @@
         let wsgGeoData = null;
         let wsgLoaded = false;
 
+        let gwwaLayer = L.layerGroup();
+        let gwwaGeoData = null;
+        let gwwaLoaded = false;
+
+        function loadGwwaLayer() {
+            if (gwwaLoaded) return;
+            gwwaLoaded = true;
+            fetch('grundwasserwiederanstieg.geojson')
+                .then(res => res.ok ? res.json() : Promise.reject())
+                .then(data => {
+                    gwwaGeoData = data;
+                    L.geoJSON(data, {
+                        style: function(feature) {
+                            return {
+                                color: '#1E90FF',
+                                weight: 3,
+                                opacity: 0.8
+                            };
+                        },
+                        onEachFeature: function(feature, layer) {
+                            if (feature.properties && feature.properties.name) {
+                                layer.bindPopup(`<div class="popup-card"><div class="popup-group" style="color:#1E90FF">Modell</div><div class="popup-title">${feature.properties.name}</div><div class="popup-detail">${feature.properties.beschreibung}</div></div>`);
+                            }
+                        }
+                    }).addTo(gwwaLayer);
+                    document.getElementById('cnt-layer-gwwa').innerText = `(${data.features.length})`;
+                })
+                .catch(err => console.error("Could not load grundwasserwiederanstieg.geojson:", err));
+        }
+
+
         function loadWsgLayer() {
             if (wsgLoaded) return;
             wsgLoaded = true;
@@ -2370,6 +2404,7 @@
 
         map.on('overlayadd', function(e) {
             if (e.layer === wsgLayer) loadWsgLayer();
+            if (e.layer === gwwaLayer) loadGwwaLayer();
         });
 
 
@@ -3164,6 +3199,7 @@
             "Einzugsgebiete Hydrologisch (LANUV)": wmsCatchments,
             "Tagebaue & Bergbaufelder (GD)": wmsMining,
             "Wasserschutzgebiete (LANUV)": wsgLayer,
+            "📈 Grundwasserwiederanstieg (Modell)": gwwaLayer,
             "🏭 Industrieeinleiter (ELWAS)": elwasLayer,
             "🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)": catchmentStatsLayer,
             "📊 Kreis-Vergleich (Choroplethenkarte)": kreisChoroplethLayer

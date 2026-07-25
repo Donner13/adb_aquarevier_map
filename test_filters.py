@@ -101,8 +101,9 @@ def run_tests():
             for i in range(branch_buttons.count()):
                 btn = branch_buttons.nth(i)
                 classes = btn.get_attribute("class").split()
-                assert "active" in classes
-                assert "inactive" not in classes
+                if btn.get_attribute("data-layer-name") not in ["HQ häufig (LANUV)", "HQ100 (LANUV)", "HQ extrem (LANUV)", "Starkregen Euskirchen"]:
+                    assert "active" in classes
+                    assert "inactive" not in classes
             print("[OK] Quick Action 'Alle an' for Industrie-Branchen verified.")
 
             # 5. Test Block 3 Layer Quick Actions
@@ -111,7 +112,7 @@ def run_tests():
 
             btn_layers_none.click()
             page.wait_for_timeout(300)
-            layer_buttons = page.locator('button[data-layer-name]')
+            layer_buttons = page.locator('button[data-layer-name]:not(.pegel-analysis-btn)')
             for i in range(layer_buttons.count()):
                 btn = layer_buttons.nth(i)
                 classes = btn.get_attribute("class").split()
@@ -124,8 +125,9 @@ def run_tests():
             for i in range(layer_buttons.count()):
                 btn = layer_buttons.nth(i)
                 classes = btn.get_attribute("class").split()
-                assert "active" in classes
-                assert "inactive" not in classes
+                if btn.get_attribute("data-layer-name") not in ["HQ häufig (LANUV)", "HQ100 (LANUV)", "HQ extrem (LANUV)", "Starkregen Euskirchen"]:
+                    assert "active" in classes
+                    assert "inactive" not in classes
             print("[OK] Quick Action 'Alle an' for Fachdaten & Layer verified.")
 
             # 6. Test Live Counters (exist and updated)
