@@ -55,6 +55,10 @@ const LAZY_LAYERS = {
 // instead of a same-origin geojson fetch (mocked in fixtures.js).
 const WMS_LAYERS = {
   'Tagebaue & Bergbaufelder (GD)': 'wms_nw_bergbauberechtigungen',
+  'HQ häufig (LANUV)': 'Tiefen_Ueberflutungsgebiet_nw',
+  'HQ100 (LANUV)': 'Tiefen_Ueberflutungsgebiet_mw',
+  'HQ extrem (LANUV)': 'Tiefen_Ueberflutungsgebiet_hw',
+  'Starkregen Euskirchen': 'L_T100_v1.1_depth3857',
 };
 
 // Grundwassermessstellen: geojson is fetched eagerly (search index), but the
@@ -96,8 +100,8 @@ function realFeatureCount(geojsonFile) {
   return JSON.parse(raw).features.length;
 }
 
-if (Object.keys(ALL_LAYERS).length !== 14) {
-  throw new Error(`Expected exactly 14 sidebar layer-toggle buttons, got ${Object.keys(ALL_LAYERS).length}`);
+if (Object.keys(ALL_LAYERS).length !== 18) {
+  throw new Error(`Expected exactly 18 sidebar layer-toggle buttons, got ${Object.keys(ALL_LAYERS).length}`);
 }
 for (const name of DEFAULT_ON) {
   if (!(name in ALL_LAYERS)) throw new Error(`DEFAULT_ON contains an unknown layer name: ${name}`);

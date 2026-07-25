@@ -5,7 +5,7 @@
  * apply:
  *
  * - Cross-origin map tile / WMS requests (basemaps.cartocdn.com,
- *   tile.openstreetmap.org, wms.nrw.de) are intercepted and fulfilled with
+ *   tile.openstreetmap.org, wms.nrw.de, cismet.de) are intercepted and fulfilled with
  *   a fixed 1x1 placeholder PNG. Two reasons: (1) screenshot diffing needs
  *   deterministic pixels - real CDN tile content/rendering is not
  *   guaranteed stable run-to-run; (2) CI shouldn't depend on those
@@ -21,7 +21,7 @@
 
 const base = require('@playwright/test');
 
-const EXTERNAL_TILE_HOST_RE = /basemaps\.cartocdn\.com|tile\.openstreetmap\.org|wms\.nrw\.de/;
+const EXTERNAL_TILE_HOST_RE = /basemaps\.cartocdn\.com|tile\.openstreetmap\.org|wms\.nrw\.de|cismet\.de/;
 
 // Smallest-possible valid PNG (1x1, black pixel) - deterministic placeholder,
 // no image-generation dependency needed.
