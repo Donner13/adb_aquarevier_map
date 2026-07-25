@@ -1984,62 +1984,32 @@
                 <!-- Block 2: Industrie-Branchen (ELWAS) -->
                 <div>
                     <div class="filter-block-header">
-                        <div class="section-title" style="margin-bottom: 0;">🏭 Abwasserverordnung Anhänge</div>
+                        <div class="section-title" style="margin-bottom: 0;">🏭 Industrieeinleiter (Risikoklasse)</div>
                         <div class="filter-block-actions">
                             <button id="btn-branches-all" type="button">Alle an</button>
                             <button id="btn-branches-none" type="button">Alle aus</button>
                         </div>
                     </div>
                     <div class="filter-group">
-                        <button class="filter-btn active" data-anhang="40" title="Metallbe- und verarbeitung (AbwV Anhang 40)">
-                            <span class="swatch" style="background-color: #000000;"></span>
-                            <span class="filter-label">Anhang 40 (Metall)</span>
-                            <span class="counter-badge" id="cnt-anhang-40">(0/0)</span>
-                        </button>
-                        <button class="filter-btn active" data-anhang="55" title="Wäschereien (AbwV Anhang 55)">
-                            <span class="swatch" style="background-color: #56B4E9;"></span>
-                            <span class="filter-label">Anhang 55 (Wäschereien)</span>
-                            <span class="counter-badge" id="cnt-anhang-55">(0/0)</span>
-                        </button>
-                        <button class="filter-btn active" data-anhang="31" title="Wasseraufbereitung, Kühlsysteme, Dampferzeugung (AbwV Anhang 31)">
-                            <span class="swatch" style="background-color: #0072B2;"></span>
-                            <span class="filter-label">Anhang 31 (Wasseraufb.)</span>
-                            <span class="counter-badge" id="cnt-anhang-31">(0/0)</span>
-                        </button>
-                        <button class="filter-btn active" data-anhang="38" title="Textilherstellung, Textilveredlung (AbwV Anhang 38)">
-                            <span class="swatch" style="background-color: #CC79A7;"></span>
-                            <span class="filter-label">Anhang 38 (Textil)</span>
-                            <span class="counter-badge" id="cnt-anhang-38">(0/0)</span>
-                        </button>
-                        <button class="filter-btn active" data-anhang="49" title="Mineralölhaltiges Abwasser (AbwV Anhang 49)">
-                            <span class="swatch" style="background-color: #999999;"></span>
-                            <span class="filter-label">Anhang 49 (Mineralöl)</span>
-                            <span class="counter-badge" id="cnt-anhang-49">(0/0)</span>
-                        </button>
-                        <button class="filter-btn active" data-anhang="22" title="Chemische Industrie (AbwV Anhang 22)">
+                        <button class="filter-btn active" data-risk="Hoch" title="Hohes Risiko (z.B. Direkteinleiter, Chemische Industrie, große Abwassermengen)">
                             <span class="swatch" style="background-color: #D55E00;"></span>
-                            <span class="filter-label">Anhang 22 (Chemie)</span>
-                            <span class="counter-badge" id="cnt-anhang-22">(0/0)</span>
+                            <span class="filter-label">Risiko: Hoch</span>
+                            <span class="counter-badge" id="cnt-risk-Hoch">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-anhang="3" title="Milchverarbeitung (AbwV Anhang 3)">
-                            <span class="swatch" style="background-color: #009E73;"></span>
-                            <span class="filter-label">Anhang 3 (Milch)</span>
-                            <span class="counter-badge" id="cnt-anhang-3">(0/0)</span>
-                        </button>
-                        <button class="filter-btn active" data-anhang="28" title="Herstellung von Papier und Pappe (AbwV Anhang 28)">
-                            <span class="swatch" style="background-color: #E69F00;"></span>
-                            <span class="filter-label">Anhang 28 (Papier)</span>
-                            <span class="counter-badge" id="cnt-anhang-28">(0/0)</span>
-                        </button>
-                        <button class="filter-btn active" data-anhang="53" title="Fotografische Prozesse (AbwV Anhang 53)">
-                            <span class="swatch" style="background-color: #8B4513;"></span>
-                            <span class="filter-label">Anhang 53 (Foto)</span>
-                            <span class="counter-badge" id="cnt-anhang-53">(0/0)</span>
-                        </button>
-                        <button class="filter-btn active" data-anhang="99" title="Sonstige (AbwV Anhang 99)">
+                        <button class="filter-btn active" data-risk="Mittel" title="Mittleres Risiko (z.B. Textil, Wäscherei, mittlere Abwassermengen)">
                             <span class="swatch" style="background-color: #F0E442;"></span>
-                            <span class="filter-label">Anhang 99 (Sonstige)</span>
-                            <span class="counter-badge" id="cnt-anhang-99">(0/0)</span>
+                            <span class="filter-label">Risiko: Mittel</span>
+                            <span class="counter-badge" id="cnt-risk-Mittel">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-risk="Niedrig" title="Niedriges Risiko (Indirekteinleiter ohne spezifisches Profil)">
+                            <span class="swatch" style="background-color: #009E73;"></span>
+                            <span class="filter-label">Risiko: Niedrig</span>
+                            <span class="counter-badge" id="cnt-risk-Niedrig">(0/0)</span>
+                        </button>
+                        <button class="filter-btn active" data-risk="Unbekannt" title="Keine Klassifizierung möglich (fehlende Daten)">
+                            <span class="swatch" style="background-color: #999999;"></span>
+                            <span class="filter-label">Risiko: Unbekannt</span>
+                            <span class="counter-badge" id="cnt-risk-Unbekannt">(0/0)</span>
                         </button>
                     </div>
                 </div>
@@ -2975,18 +2945,53 @@
         });
 
         // ELWAS Industrieeinleiter (Direkt-/Indirekteinleiter Rheinisches Revier)
-        const elwasAnhangColors = {
-            "40": "#000000",
-            "55": "#56B4E9",
-            "31": "#0072B2",
-            "38": "#CC79A7",
-            "49": "#999999",
-            "22": "#D55E00",
-            "3": "#009E73",
-            "28": "#E69F00",
-            "53": "#8B4513",
-            "99": "#F0E442"
+        const elwasRiskColors = {
+            "Hoch": "#D55E00",
+            "Mittel": "#F0E442",
+            "Niedrig": "#009E73",
+            "Unbekannt": "#999999"
         };
+
+        function getEinleiterRisk(feature) {
+            const p = feature.properties;
+            const anhang_codes = p.anhang_codes || [];
+            const art = p.einleitungsart || "";
+
+            let max_volume_a = 0;
+            let max_volume_d = 0;
+            const mengen = p.mengen_je_typ || {};
+            if (mengen) {
+                for (const key in mengen) {
+                    if (mengen[key]) {
+                        if (mengen[key].max_a) {
+                            const val = parseFloat(String(mengen[key].max_a).replace(',', '.'));
+                            if (!isNaN(val) && val > max_volume_a) max_volume_a = val;
+                        }
+                        if (mengen[key].max_d) {
+                            const val = parseFloat(String(mengen[key].max_d).replace(',', '.'));
+                            if (!isNaN(val) && val > max_volume_d) max_volume_d = val;
+                        }
+                    }
+                }
+            }
+            if (max_volume_a === 0 && max_volume_d > 0) {
+                max_volume_a = max_volume_d * 200;
+            }
+
+            const is_direkt = art.includes('Direkteinleitung');
+            const has_very_high_anhang = anhang_codes.some(c => [22, 49, 53].includes(c));
+            const has_high_anhang = anhang_codes.some(c => [55, 38, 28].includes(c));
+
+            if (is_direkt || max_volume_a > 50000 || (has_very_high_anhang && max_volume_a > 5000)) {
+                return 'Hoch';
+            } else if (has_very_high_anhang || has_high_anhang || max_volume_a > 5000) {
+                return 'Mittel';
+            } else if (anhang_codes.length === 0 && max_volume_a === 0) {
+                return 'Unbekannt';
+            } else {
+                return 'Niedrig';
+            }
+        }
         const elwasAnhangIcons = {
             "40": "⚙️",
             "55": "👕",
@@ -3000,7 +3005,7 @@
             "99": "❓"
         };
         let elwasGeoData = null;
-        let elwasActiveAnhaenge = new Set(Object.keys(elwasAnhangColors));
+        let elwasActiveRisks = new Set(Object.keys(elwasRiskColors));
         const elwasLayer = L.layerGroup().addTo(map);
 
         function renderElwasLayer() {
@@ -3008,13 +3013,14 @@
             if (!elwasGeoData) return;
             L.geoJSON(elwasGeoData, {
                 filter: function(feature) {
-                    const anhang_codes = feature.properties.anhang_codes || [];
-                    return anhang_codes.map(String).some(b => elwasActiveAnhaenge.has(b));
+                    const risk = getEinleiterRisk(feature);
+                    return elwasActiveRisks.has(risk);
                 },
                 pointToLayer: function(feature, latlng) {
                     const anhang_codes = feature.properties.anhang_codes || [];
                     const primary = anhang_codes[0] ? anhang_codes[0].toString() : "99";
-                    const color = elwasAnhangColors[primary] || "#595959";
+                    const risk = getEinleiterRisk(feature);
+                    const color = elwasRiskColors[risk] || "#999999";
                     const emoji = elwasAnhangIcons[primary] || "🏭";
                     const size = 26;
                     let pulseRing = '';
@@ -3047,13 +3053,15 @@
                 onEachFeature: function(feature, layer) {
                     const p = feature.properties;
                     const anhang_codes = p.anhang_codes || [];
-                    const primaryColor = elwasAnhangColors[anhang_codes[0]] || "#595959";
+                    const risk = getEinleiterRisk(feature);
+                    const primaryColor = elwasRiskColors[risk] || "#999999";
                     let html = `
                         <div class="popup-card">
                             <div class="popup-group" style="color: ${primaryColor}">Industrieeinleiter</div>
                             <div class="popup-title">${p.name || 'Unbekannt'}</div>
                             <div class="popup-detail">🏭 AbwV Anhang<span class="glossar-icon" data-glossar="ABWV_ANHANG">i</span>: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div>
                             <div class="popup-detail">💧 Einleitungsart<span class="glossar-icon" data-glossar="EINLEITUNGSART">i</span>: ${p.einleitungsart || '–'}</div>
+                            <div class="popup-detail">🚦 Risikoklasse: <strong style="color: ${primaryColor};">${risk}</strong></div>
                             <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
                     `;
                     if (p.wsg_zone) {
@@ -3093,37 +3101,39 @@
             })
             .catch(err => console.log("elwas_einleiter layer not loaded:", err));
 
-        document.querySelectorAll('.filter-btn[data-anhang]').forEach(btn => {
+        document.querySelectorAll('.filter-btn[data-risk]').forEach(btn => {
             btn.addEventListener('click', () => {
-                const anhang = btn.getAttribute('data-anhang');
-                const allBranchen = Object.keys(elwasAnhangColors);
-                if (anhang === 'all') {
-                    const isAnyInactive = elwasActiveAnhaenge.size < allBranchen.length;
-                    document.querySelectorAll('.filter-btn[data-anhang]').forEach(b => {
-                        const bb = b.getAttribute('data-anhang');
+                const riskVal = btn.getAttribute('data-risk');
+                const allRisks = Object.keys(elwasRiskColors);
+                if (riskVal === 'all') {
+                    const isAnyInactive = elwasActiveRisks.size < allRisks.length;
+                    document.querySelectorAll('.filter-btn[data-risk]').forEach(b => {
+                        const bb = b.getAttribute('data-risk');
                         if (bb === 'all') return;
                         if (isAnyInactive) {
                             b.classList.add('active'); b.setAttribute('aria-pressed', 'true');
-                            elwasActiveAnhaenge.add(bb);
+                            elwasActiveRisks.add(bb);
                         } else {
                             b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
-                            elwasActiveAnhaenge.delete(bb);
+                            elwasActiveRisks.delete(bb);
                         }
                     });
                 } else {
-                    if (elwasActiveAnhaenge.has(anhang)) {
-                        elwasActiveAnhaenge.delete(anhang);
+                    if (elwasActiveRisks.has(riskVal)) {
+                        elwasActiveRisks.delete(riskVal);
                         btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
                     } else {
-                        elwasActiveAnhaenge.add(anhang);
+                        elwasActiveRisks.add(riskVal);
                         btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                     }
                 }
-                const allBtn = document.querySelector('.filter-btn[data-anhang="all"]');
-                if (elwasActiveAnhaenge.size === allBranchen.length) {
-                    allBtn.classList.add('active'); allBtn.setAttribute('aria-pressed', 'true');
-                } else {
-                    allBtn.classList.remove('active'); allBtn.setAttribute('aria-pressed', 'false');
+                const allBtn = document.querySelector('.filter-btn[data-risk="all"]');
+                if (allBtn) {
+                    if (elwasActiveRisks.size === allRisks.length) {
+                        allBtn.classList.add('active'); allBtn.setAttribute('aria-pressed', 'true');
+                    } else {
+                        allBtn.classList.remove('active'); allBtn.setAttribute('aria-pressed', 'false');
+                    }
                 }
                 renderElwasLayer();
             });
@@ -3975,9 +3985,9 @@
                 }
             });
 
-            document.querySelectorAll('.filter-btn[data-anhang]').forEach(btn => {
-                const b = btn.getAttribute('data-anhang');
-                if (elwasActiveAnhaenge.has(b)) {
+            document.querySelectorAll('.filter-btn[data-risk]').forEach(btn => {
+                const b = btn.getAttribute('data-risk');
+                if (elwasActiveRisks.has(b)) {
                     btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                     btn.classList.remove('inactive');
                 } else {
@@ -4024,8 +4034,7 @@
                     const coords = f.geometry.coordinates;
                     const latlng = L.latLng(coords[1], coords[0]);
 
-                    const anhang_codes = f.properties.anhang_codes || [];
-                    const isVisible = anhang_codes.some(b => elwasActiveAnhaenge.has(b.toString()));
+                    const isVisible = elwasActiveRisks.has(getEinleiterRisk(f));
 
                     if (bounds.contains(latlng) && isVisible) {
                         result.einleiter.count++;
@@ -4232,16 +4241,14 @@
             });
 
             // 2. Branche counters
-            document.querySelectorAll('.filter-btn[data-anhang]').forEach(btn => {
-                const branch = btn.getAttribute('data-anhang');
+            document.querySelectorAll('.filter-btn[data-risk]').forEach(btn => {
+                const riskVal = btn.getAttribute('data-risk');
                 if (!elwasGeoData) return;
                 const total = elwasGeoData.features.filter(f => {
-                    const anhang_codes = f.properties.anhang_codes || [];
-                    return anhang_codes.map(String).includes(branch);
+                    return getEinleiterRisk(f) === riskVal;
                 }).length;
                 const visible = elwasGeoData.features.filter(f => {
-                    const anhang_codes = f.properties.anhang_codes || [];
-                    if (!anhang_codes.map(String).includes(branch)) return false;
+                    if (getEinleiterRisk(f) !== riskVal) return false;
                     const coords = f.geometry.coordinates;
                     return bounds.contains(L.latLng(coords[1], coords[0]));
                 }).length;
@@ -4319,13 +4326,13 @@
         });
 
         // Toggle listeners for Branche buttons
-        document.querySelectorAll('.filter-btn[data-anhang]').forEach(btn => {
+        document.querySelectorAll('.filter-btn[data-risk]').forEach(btn => {
             btn.addEventListener('click', () => {
-                const branch = btn.getAttribute('data-anhang');
-                if (elwasActiveAnhaenge.has(branch)) {
-                    elwasActiveAnhaenge.delete(branch);
+                const riskVal = btn.getAttribute('data-risk');
+                if (elwasActiveRisks.has(riskVal)) {
+                    elwasActiveRisks.delete(riskVal);
                 } else {
-                    elwasActiveAnhaenge.add(branch);
+                    elwasActiveRisks.add(riskVal);
                 }
                 updateButtonVisualStates();
                 renderElwasLayer();
@@ -4365,14 +4372,14 @@
 
         // Quick Action: Industrie-Branchen - Alle an
         document.getElementById('btn-branches-all').addEventListener('click', () => {
-            Object.keys(elwasAnhangColors).forEach(b => elwasActiveAnhaenge.add(b));
+            Object.keys(elwasRiskColors).forEach(b => elwasActiveRisks.add(b));
             updateButtonVisualStates();
             renderElwasLayer();
         });
 
         // Quick Action: Industrie-Branchen - Alle aus
         document.getElementById('btn-branches-none').addEventListener('click', () => {
-            elwasActiveAnhaenge.clear();
+            elwasActiveRisks.clear();
             updateButtonVisualStates();
             renderElwasLayer();
         });
@@ -4457,7 +4464,7 @@
                 activeFilters = new Set(params.get('akteure').split(',').filter(Boolean).map(decodeURIComponent));
             }
             if (params.has('anhaenge')) {
-                elwasActiveAnhaenge = new Set(params.get('anhaenge').split(',').filter(Boolean).map(decodeURIComponent));
+                elwasActiveRisks = new Set(params.get('anhaenge').split(',').filter(Boolean).map(decodeURIComponent));
             }
             if (params.has('layers')) {
                 const wanted = new Set(params.get('layers').split(',').filter(Boolean).map(decodeURIComponent));
@@ -4498,7 +4505,7 @@
                 const center = map.getCenter();
                 const params = new URLSearchParams();
                 params.set('akteure', Array.from(activeFilters).map(encodeURIComponent).join(','));
-                params.set('anhaenge', Array.from(elwasActiveAnhaenge).map(encodeURIComponent).join(','));
+                params.set('anhaenge', Array.from(elwasActiveRisks).map(encodeURIComponent).join(','));
                 params.set('layers', activeLayerNames.join(','));
                 params.set('lat', center.lat.toFixed(5));
                 params.set('lng', center.lng.toFixed(5));
@@ -4750,8 +4757,7 @@
                     visibleEinleiter = elwasGeoData.features.filter(f => {
                         const coords = f.geometry.coordinates;
                         const latlng = L.latLng(coords[1], coords[0]);
-                        const anhang_codes = f.properties.anhang_codes || [];
-                        const matchesBranche = anhang_codes.some(b => elwasActiveAnhaenge.has(b.toString()));
+                        const matchesBranche = elwasActiveRisks.has(getEinleiterRisk(f));
                         return bounds.contains(latlng) && matchesBranche;
                     }).map(f => f.properties);
                 }
@@ -5051,12 +5057,13 @@ function buildUnifiedSearchIndex() {
                             const p = f.properties;
                             const [lng, lat] = f.geometry.coordinates;
                             const anhang_codes = p.anhang_codes || [];
-                            const color = elwasAnhangColors[anhang_codes[0]] || '#595959';
+                            const risk = getEinleiterRisk(f);
+                            const color = elwasRiskColors[risk] || '#999999';
                             addSearchRecord({
                                 cat: 'einleiter', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng, color,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">💧 Einleitungsart: ${p.einleitungsart || '–'}</div><div class="popup-detail">🚦 Risikoklasse: <strong style="color: ${color};">${risk}</strong></div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gemeinde) { addAgg(gemeindeAgg, p.gemeinde, lat, lng); addAggDetailed(gemeindeDetailAgg, p.gemeinde, { cat: 'einleiter', lat, lng, props: p }); }
                             (p.gewaesser_liste || '').split(',').map(s => s.trim()).filter(Boolean).forEach(g => addAgg(gewaesserAgg, g, lat, lng));
@@ -5875,9 +5882,9 @@ function buildUnifiedSearchIndex() {
             activeFilters.clear();
             groupsToEnable.forEach(g => activeFilters.add(g));
 
-            // 3. Set elwasActiveAnhaenge
-            elwasActiveAnhaenge.clear();
-            anhaengeToEnable.forEach(a => elwasActiveAnhaenge.add(a));
+            // 3. Risikoklassen-Filter: unveraendert lassen (alle Stufen an), da anhaengeToEnable
+            // sich auf AbwV-Anhaenge bezieht, die PR42 durch Risikoklassen (elwasActiveRisks) ersetzt hat.
+            // Es gibt keine verlustfreie 1:1-Abbildung Anhang -> Risikoklasse.
 
             // 4. Set Map Layers
             document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
