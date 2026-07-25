@@ -371,3 +371,17 @@ Volle Rohbefunde (alle 4 Agenten, mit genauen Zeilennummern/Messwerten):
   - **Hypothese A (Grundwassermessstellen, Punktlayer):** Die Detailseiten (Reiter "Untersuchte Parameter" und "Probenliste") zeigen bei manueller Prüfung und im Playwright-Skript nur "Keine Daten gefunden!". Ein Excel-Massenexport dieser Parameter auf dem Grundwassermessstellen-Katalog existiert ebenfalls nicht.
   - **Hypothese B (Grundwasserkörper, Polygonlayer):** Der ELWAS-Katalog unter `wrrl/wki/gwk/grundwasserkoerper.xhtml` liefert im Reiter "Zustandsbewertung" zwar flächenhafte Informationen zur Nitrat-Belastung (z. B. Nitrat (50 mg/l): "gut" oder "schlecht"). Diese sind jedoch (1) rein qualitativ und nicht numerisch, und (2) an große Grundwasserkörper-Polygone gebunden, die nicht mit den punktgenauen `grundwassermessstellen.geojson`-Markern (nur verknüpfbar über Name/Gemeinde) abgeglichen werden können.
 - **Aktion:** Ein kommentierender Hinweis wurde in `index.html` und `internal.html` oberhalb des `grundwassermessstellen.geojson`-Fetches eingefügt, der den Sachverhalt und die durchgeführte Recherche für Folge-Entwickler nachvollziehbar dokumentiert.
+
+## 12. Update-Radar (Session-Diff seit letztem Besuch)
+
+- **Was umgesetzt wurde:**
+  - Ein localStorage-basiertes Session-Diff-Panel ("Update-Radar"), das dem Nutzer beim Besuch anzeigt, was sich seit seinem letzten Besuch (auf der Basis seines eigenen localStorage) verändert hat.
+  - Das Feature arbeitet rein auf dem Client und diffed gegen die 7 stabilen Layer: Industrieeinleiter, Kläranlagen, Pegel, Stauanlagen, Regenbecken, Querbauwerke, Institutionen/Akteure.
+  - Das Radar berücksichtigt explizit **nicht** die Grundwassermessstellen, Archiv-Layer und Geometrie/Grenz-Layer (da diese entweder keine stabile ID haben oder keine Sachdaten sind).
+  - Ein Panel erscheint mittig oben, das dismissable ist, und listet genau auf, was neu hinzugekommen ist, was sich geändert hat, oder was entfernt wurde. Ein Klick auf ein Item zoomt automatisch dorthin und öffnet ein Popup (sogar für ehemals existierende und entfernte Items basierend auf gespeicherten Koordinaten).
+  - Die Features wurden strikt als isolierte IIFE in `index.html` und `internal.html` nach `buildUnifiedSearchIndex()` hinzugefügt, sodass bestehende Sidebar-Refactors und Lazy-Load-Events nicht berührt werden.
+- **Ergebnisse der Spotchecks:**
+  - Manuelle Mutation der `localStorage` Daten bewies, dass Änderungen präzise detektiert und im Panel korrekt deklariert werden.
+  - Interaktives Zoomen durch den Klick auf Listeneinträge funktioniert.
+  - Ruhige Reloads lösen kein Spam-Panel aus.
+  - Theme Support (Light/Dark) und Responsivität verifiziert, und existierende UI-Toggle Events (wie Kläranlagen, Pegel Button Clicks) funktionieren unverändert (geprüft mittels Playwright und Regression-TestSuite).
