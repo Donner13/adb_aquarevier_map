@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- docx -->
+    <script src="https://unpkg.com/docx@8/build/index.js"></script>
+
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
@@ -2030,6 +2033,8 @@
                         <button id="embed-open-btn" class="filter-btn" style="flex: 1; justify-content: center;">🔗 Karte einbetten</button>
                     </div>
                     <button id="generate-report-btn" class="filter-btn active" style="justify-content: center; background: #6366f1; border-color: #6366f1; font-weight: 600; color: white;">📊 Bericht generieren (PDF)</button>
+                    <button id="generate-sprechzettel-btn" class="filter-btn" style="justify-content: center;">🗣️ Sprechzettel generieren</button>
+                    <button id="generate-beschlussvorlage-btn" class="filter-btn" style="justify-content: center;">📋 Beschlussvorlage generieren</button>
                 </div>
             </div>
             <div class="sidebar-footer">
@@ -3723,6 +3728,214 @@
             });
         }
 
+        // Sprechzettel / Beschlussvorlage Aggregation
+        function aggregateVisibleState() {
+            const bounds = map.getBounds();
+            const result = {
+                actors: { count: 0 },
+                einleiter: { count: 0, total: 0 }
+            };
+
+            // 1. Akteure (geojsonData)
+            if (typeof geojsonData !== 'undefined' && geojsonData && typeof markersLayer !== 'undefined' && map.hasLayer(markersLayer)) {
+                geojsonData.features.forEach(f => {
+                    const coords = f.geometry.coordinates;
+                    const latlng = L.latLng(coords[1], coords[0]);
+                    if (bounds.contains(latlng) && (activeFilters.has(f.properties.group) || f.properties.isMainPartner)) {
+                        result.actors.count++;
+                    }
+                });
+            }
+
+            // 2. ELWAS-Einleiter (elwasGeoData)
+            if (typeof elwasGeoData !== 'undefined' && elwasGeoData && typeof elwasLayer !== 'undefined' && map.hasLayer(elwasLayer)) {
+                elwasGeoData.features.forEach(f => {
+                    const coords = f.geometry.coordinates;
+                    const latlng = L.latLng(coords[1], coords[0]);
+
+                    const anhang_codes = f.properties.anhang_codes || [];
+                    const isVisible = anhang_codes.some(b => elwasActiveAnhaenge.has(b.toString()));
+
+                    if (bounds.contains(latlng) && isVisible) {
+                        result.einleiter.count++;
+                        if (f.properties.mengen_je_typ) {
+                            for (const key in f.properties.mengen_je_typ) {
+                                const val = f.properties.mengen_je_typ[key].max_a;
+                                if (val && !isNaN(parseFloat(val))) {
+                                    result.einleiter.total += parseFloat(val);
+                                }
+                            }
+                        }
+                    }
+                });
+                result.einleiter.total = Math.round(result.einleiter.total);
+            }
+
+            return result;
+        }
+
+        const SPRECHZETTEL_THRESHOLDS = [
+            {
+                id: 'akteure_dicht',
+                test: (agg) => agg.actors.count > 0,
+                text: (agg) => `${agg.actors.count} Akteure sind im aktuell sichtbaren Bereich verzeichnet.`
+            },
+            {
+                id: 'einleiter_hoch',
+                test: (agg) => agg.einleiter.count > 0,
+                text: (agg) => `Im Kartenausschnitt sind ${agg.einleiter.count} Industrieeinleiter mit einer Gesamtabwassermenge von ${agg.einleiter.total.toLocaleString('de-DE')} m³/a aktiv.`
+            }
+        ];
+
+        // Helper to get text based on thresholds
+        function getGeneratedTextText(mode) {
+            const agg = aggregateVisibleState();
+            let text = "";
+            const today = new Date().toLocaleDateString('de-DE');
+
+            if (mode === 'sprechzettel') {
+                SPRECHZETTEL_THRESHOLDS.forEach(th => {
+                    if (th.test(agg)) {
+                        text += `• ${th.text(agg)}\n`;
+                    }
+                });
+            } else if (mode === 'beschluss') {
+                text += `ENTWURF — vor Einreichung ins Ratsinformationssystem prüfen\n\n`;
+                text += `Sachverhalt:\n`;
+                SPRECHZETTEL_THRESHOLDS.forEach(th => {
+                    if (th.test(agg)) {
+                        text += `${th.text(agg)} `;
+                    }
+                });
+                text += `\n\n`;
+                text += `Beschlussvorschlag:\n`;
+                text += `Der Ausschuss nimmt den Sachverhalt zur Kenntnis und beauftragt die Verwaltung mit der weiteren Prüfung.\n`;
+            }
+            return text;
+        }
+
+        // Open Modal logic
+        function openTextGeneratorModal(mode) {
+            const modalTitle = document.getElementById('textGeneratorTitle');
+            const modalContent = document.getElementById('textGeneratorContent');
+            const hint = document.getElementById('textGeneratorHint');
+            const backdrop = document.getElementById('textGeneratorBackdrop');
+            const btnCopy = document.getElementById('btn-textgen-copy');
+            const btnTxt = document.getElementById('btn-textgen-txt');
+            const btnDocx = document.getElementById('btn-textgen-docx');
+
+            const today = new Date().toLocaleDateString('de-DE');
+
+            if (mode === 'sprechzettel') {
+                modalTitle.innerText = `Sprechzettel — Kartenausschnitt vom ${today}`;
+                hint.innerText = "Die folgenden Stichpunkte basieren auf dem aktuell sichtbaren Kartenausschnitt. Sie können den Text vor dem Kopieren bearbeiten.";
+                btnCopy.style.display = 'flex';
+                btnTxt.style.display = 'none';
+                btnDocx.style.display = 'none';
+            } else if (mode === 'beschluss') {
+                modalTitle.innerText = `Beschlussvorlage — Kartenausschnitt vom ${today}`;
+                hint.innerText = "Die folgende Beschlussvorlage basiert auf dem aktuell sichtbaren Kartenausschnitt. Sie können den Text bearbeiten oder exportieren.";
+                btnCopy.style.display = 'none';
+                btnTxt.style.display = 'flex';
+                btnDocx.style.display = 'flex';
+            }
+
+            modalContent.value = getGeneratedTextText(mode);
+            backdrop.style.display = 'flex';
+        }
+
+        // Button Listeners
+        // Wrapped in DOMContentLoaded: the text-generator modal markup (textGeneratorClose
+        // etc.) lives near the end of <body>, well after this inline script runs at parse time.
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('generate-sprechzettel-btn').addEventListener('click', () => {
+                openTextGeneratorModal('sprechzettel');
+            });
+
+            document.getElementById('generate-beschlussvorlage-btn').addEventListener('click', () => {
+                openTextGeneratorModal('beschluss');
+            });
+
+            document.getElementById('textGeneratorClose').addEventListener('click', () => {
+                document.getElementById('textGeneratorBackdrop').style.display = 'none';
+            });
+
+            // Copy to clipboard
+            document.getElementById('btn-textgen-copy').addEventListener('click', async () => {
+                const btn = document.getElementById('btn-textgen-copy');
+                const content = document.getElementById('textGeneratorContent').value;
+                try {
+                    await navigator.clipboard.writeText(content);
+                    const oldText = btn.innerText;
+                    btn.innerText = "✓ Kopiert";
+                    setTimeout(() => btn.innerText = oldText, 2000);
+                } catch (err) {
+                    alert("Kopieren fehlgeschlagen.");
+                }
+            });
+
+            // Export TXT
+            document.getElementById('btn-textgen-txt').addEventListener('click', () => {
+                const content = document.getElementById('textGeneratorContent').value;
+                const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                const today = new Date().toISOString().split('T')[0];
+                a.href = url;
+                a.download = `Beschlussvorlage_${today}.txt`;
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+
+            // Export DOCX
+            document.getElementById('btn-textgen-docx').addEventListener('click', () => {
+                const content = document.getElementById('textGeneratorContent').value;
+                const today = new Date().toISOString().split('T')[0];
+                const filename = `Beschlussvorlage_${today}`;
+
+                if (window.docx) {
+                    const doc = new window.docx.Document({
+                        sections: [{
+                            properties: {},
+                            children: content.split('\n').map(line => new window.docx.Paragraph({
+                                children: [new window.docx.TextRun(line)]
+                            }))
+                        }]
+                    });
+
+                    window.docx.Packer.toBlob(doc).then(blob => {
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `${filename}.docx`;
+                        a.click();
+                        URL.revokeObjectURL(url);
+                    }).catch(err => {
+                        console.error("docx generation failed, falling back to .rtf", err);
+                        exportRTF(content, filename);
+                    });
+                } else {
+                    console.error("docx library not loaded, falling back to .rtf");
+                    exportRTF(content, filename);
+                }
+            });
+        });
+
+        function exportRTF(content, filename) {
+            // Simple RTF generation
+            const rtfContent = `{\\rtf1\\ansi\\ansicpg1252\\deff0\\nouicompat\\deflang1031{\\fonttbl{\\f0\\fnil\\fcharset0 Calibri;}}
+{\\*\\generator Riched20 10.0.19041}\\viewkind4\\uc1
+\\pard\\sa200\\sl276\\slmult1\\f0\\fs22\\lang7 ${content.replace(/\n/g, '\\par\n')}\\par
+}
+`;
+            const blob = new Blob([rtfContent], { type: 'application/rtf' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${filename}.rtf`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
         // Live viewport counter updates
         function updateSidebarCounters() {
             const bounds = map.getBounds();
@@ -5210,6 +5423,26 @@ function buildUnifiedSearchIndex() {
                 </div>
                 <div class="scorecard-source" id="scorecardModalSource">
                     Datenquellen: IT.NRW (Einwohnerzahl Stand 31.12.2022) / ELWAS-WEB
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Text Generator Modal (Sprechzettel / Beschlussvorlage) -->
+    <div class="scorecard-backdrop" id="textGeneratorBackdrop" style="display: none;">
+        <div class="scorecard-modal" id="textGeneratorModal" style="max-width: 800px; width: 90%; max-height: 90vh; display: flex; flex-direction: column;">
+            <div class="scorecard-header" style="flex-shrink: 0;">
+                <div class="scorecard-title" id="textGeneratorTitle">Text generieren</div>
+                <button class="scorecard-close" id="textGeneratorClose">&times;</button>
+            </div>
+            <div class="scorecard-body" style="display: flex; flex-direction: column; flex: 1; overflow: hidden; padding: 20px; gap: 15px;">
+                <div id="textGeneratorHint" style="font-size: 14px; color: var(--text-secondary); flex-shrink: 0;"></div>
+                <textarea id="textGeneratorContent" style="flex: 1; min-height: 250px; width: 100%; resize: none; background: rgba(0,0,0,0.2); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 12px; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5;"></textarea>
+
+                <div id="textGeneratorActions" style="display: flex; gap: 10px; flex-shrink: 0;">
+                    <button id="btn-textgen-copy" class="filter-btn" style="flex: 1; justify-content: center; display: none;">📋 In Zwischenablage kopieren</button>
+                    <button id="btn-textgen-txt" class="filter-btn" style="flex: 1; justify-content: center; display: none;">💾 Als .txt herunterladen</button>
+                    <button id="btn-textgen-docx" class="filter-btn" style="flex: 1; justify-content: center; display: none;">💾 Als .docx herunterladen</button>
                 </div>
             </div>
         </div>
