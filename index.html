@@ -5561,24 +5561,24 @@ function buildUnifiedSearchIndex() {
         window.applyRolePreset = function(role) {
             // 1. Define Presets
             let groupsToEnable = [];
-            let branchenToEnable = [];
+            let anhaengeToEnable = [];
             let layersToEnable = [];
 
             if (role === 'Politik / Gemeinderat') {
                 groupsToEnable = ['Behörde', 'Gebietskörperschaft', 'Netzwerk/ Multiplikator'];
-                branchenToEnable = [];
+                anhaengeToEnable = [];
                 layersToEnable = ['Landkreisgrenzen (Rheinisches Revier)', 'Kreisgrenzen (Schwarz gestrichelt)', '🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)'];
             } else if (role === 'Gemeinde / Verwaltung') {
                 groupsToEnable = ['Gebietskörperschaft', 'Behörde', 'Ver-/ Entsorger'];
-                branchenToEnable = [];
+                anhaengeToEnable = [];
                 layersToEnable = ['💧 Grundwassermessstellen (ELWAS, 3700+)', '⛰️ Stauanlagen (ELWAS)', '🌧️ Regenbecken/-entlastungsanlagen (ELWAS)', '📏 Pegel (ELWAS)', 'Kreisgrenzen (Schwarz gestrichelt)'];
             } else if (role === 'Industrie / Gewerbe') {
                 groupsToEnable = ['Gewerbe/ Industrie', 'Ver-/ Entsorger', 'Behörde'];
-                branchenToEnable = ['Papierindustrie', 'Textilindustrie', 'Chemieindustrie', 'Metallindustrie', 'Lebensmittelindustrie'];
+                anhaengeToEnable = ['28', '38', '22', '40', '3'];
                 layersToEnable = ['Wasserschutzgebiete (LANUV)', '🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)', '🧱 Querbauwerke (ELWAS)'];
             } else if (role === 'Bürger / Öffentlichkeit') {
                 groupsToEnable = ['Behörde', 'Gebietskörperschaft', 'Netzwerk/ Multiplikator', 'Ver-/ Entsorger'];
-                branchenToEnable = [];
+                anhaengeToEnable = [];
                 layersToEnable = ['Eigene Gewässer mit Namen', 'Wasserschutzgebiete (LANUV)', 'Landkreisgrenzen (Rheinisches Revier)'];
             }
 
@@ -5586,9 +5586,9 @@ function buildUnifiedSearchIndex() {
             activeFilters.clear();
             groupsToEnable.forEach(g => activeFilters.add(g));
 
-            // 3. Set elwasActiveBranchen
-            elwasActiveBranchen.clear();
-            branchenToEnable.forEach(b => elwasActiveBranchen.add(b));
+            // 3. Set elwasActiveAnhaenge
+            elwasActiveAnhaenge.clear();
+            anhaengeToEnable.forEach(a => elwasActiveAnhaenge.add(a));
 
             // 4. Set Map Layers
             document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
