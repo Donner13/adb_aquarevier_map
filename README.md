@@ -43,6 +43,10 @@ python C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\server.py
   - **Wasserschutzgebiete** (LANUV NRW WMS - zeigt festgesetzte Wasserschutzzonen)
   - **Hochwassergefahrenkarten** (LANUV NRW WMS) & **Starkregengefahrenkarten** (Kommunal)
   - **Umschaltbare Basiskarten** (Dunkel, OSM-Standard, Offizielle NRW-Karte)
+- **Einbetten / oEmbed / Widget-Generator**:
+  - Die Karte kann via Button "🔗 Karte einbetten" als responsives iframe-Widget (ohne Sidebar) generiert und kopiert werden.
+  - Alternativ reicht es für oEmbed-fähige Systeme (wie WordPress), einfach den nackten Karten-Link einzufügen – die Live-Vorschau wird dank `oembed.json` automatisch geladen.
+  - Technischer Modus: Der Parameter `?embed=1` blendet die Sidebar/Suche aus und erzwingt das Widget-Layout mit einer kompakten Mini-Legende.
 
 ---
 
