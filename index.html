@@ -2120,6 +2120,11 @@
                             <span class="filter-label">Wasserschutzgebiete<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span></span>
                             <span class="counter-badge" id="cnt-layer-wsg">(0/0)</span>
                         </button>
+                        <button class="filter-btn" data-layer-name="Wassergewinnungsgebiete (Zone I)" title="Fassungsbereich (Zone I) von Trinkwasserschutzgebieten">
+                            <span class="swatch" style="background-color: #005A9C;"></span>
+                            <span class="filter-label">Wassergewinnungsgebiete</span>
+                            <span class="counter-badge" id="cnt-layer-wsg-gewinnung" style="display: none;"></span>
+                        </button>
                         <button class="filter-btn" data-layer-name="Tagebaue & Bergbaufelder (GD)" title="Tagebaue und Bergbaufelder in der Region (GD WMS)">
                             <span class="swatch" style="background-color: #92400e;"></span>
                             <span class="filter-label">Tagebaue & Bergbau</span>
@@ -2507,6 +2512,7 @@
 
         // 7. Overlays: Wasserschutzgebiete gesamt (LANUV NRW) - Local GeoJSON with styling
         const wsgLayer = L.layerGroup();
+        const wsgGewinnungLayer = L.layerGroup();
         let wsgGeoData = null;
         let wsgLoaded = false;
 
@@ -2554,13 +2560,14 @@
                             let opacity = 0.25;
                             let color = "#D55E00"; // Default orange/red for zones
 
-                            if (zone.includes("III") || zone.includes("3")) {
+                            const zoneUpper = String(zone).toUpperCase();
+                            if (zoneUpper.includes("III") || zoneUpper.includes("3")) {
                                 opacity = 0.15;
                                 color = "#E69F00"; // Yellowish orange for Zone III
-                            } else if (zone.includes("II") || zone.includes("2")) {
+                            } else if (zoneUpper.includes("II") || zoneUpper.includes("2")) {
                                 opacity = 0.3;
                                 color = "#D55E00"; // Orange for Zone II
-                            } else if (zone.includes("I") || zone.includes("1")) {
+                            } else if (zoneUpper === "1" || zoneUpper === "1A" || zoneUpper === "1B" || zoneUpper === "I") {
                                 opacity = 0.5;
                                 color = "#dc2626"; // Red for Zone I
                             }
@@ -2591,6 +2598,37 @@
                         }
                     }).addTo(wsgLayer);
                     
+                    // Layer 2: Only Zone 1 (Wassergewinnungsgebiete)
+                    L.geoJSON(data, {
+                        filter: function(feature) {
+                            const zone = feature.properties.wsg_zone ? String(feature.properties.wsg_zone).toUpperCase() : '';
+                            return zone === "1" || zone === "1A" || zone === "1B" || zone === "I";
+                        },
+                        style: function(feature) {
+                            return {
+                                color: "#003366",
+                                weight: 2,
+                                opacity: 1,
+                                fillColor: "#005A9C",
+                                fillOpacity: 0.7
+                            };
+                        },
+                        onEachFeature: function(feature, layer) {
+                            const p = feature.properties;
+                            const html = `
+                                <div class="popup-card">
+                                    <div class="popup-group" style="color: #005A9C">Wassergewinnungsgebiet</div>
+                                    <div class="popup-title">${p.wsg_name || 'Unbekannt'}</div>
+                                    <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'} (Fassungsbereich)</div>
+                                    <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
+                                    <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
+                                </div>
+                            `;
+                            layer.bindPopup(html);
+                            layer.bindTooltip(`Wassergewinnung ${p.wsg_name || ''} (Zone ${p.wsg_zone || '–'})`, { sticky: true });
+                        }
+                    }).addTo(wsgGewinnungLayer);
+
                     // Trigger counter update
                     updateSidebarCounters();
                 })
@@ -2599,6 +2637,7 @@
 
         map.on('overlayadd', function(e) {
             if (e.layer === wsgLayer) loadWsgLayer();
+            if (e.layer === wsgGewinnungLayer) loadWsgLayer();
             if (e.layer === gwwaLayer) loadGwwaLayer();
         });
 
@@ -3394,6 +3433,7 @@
             "Einzugsgebiete Hydrologisch (LANUV)": wmsCatchments,
             "Tagebaue & Bergbaufelder (GD)": wmsMining,
             "Wasserschutzgebiete (LANUV)": wsgLayer,
+            "Wassergewinnungsgebiete (Zone I)": wsgGewinnungLayer,
             "📈 Grundwasserwiederanstieg (Modell)": gwwaLayer,
             "🏭 Industrieeinleiter (ELWAS)": elwasLayer,
             "🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)": catchmentStatsLayer,
@@ -4227,6 +4267,15 @@
                     geoData = kreisChoroplethData;
                 } else if (layerName.includes("Wasserschutzgebiete")) {
                     geoData = wsgGeoData;
+                } else if (layerName.includes("Wassergewinnungsgebiete")) {
+                    if (wsgGeoData && wsgGeoData.features) {
+                        geoData = {
+                            features: wsgGeoData.features.filter(f => {
+                                const zone = f.properties && f.properties.wsg_zone ? String(f.properties.wsg_zone).toUpperCase() : "";
+                                return zone === "1" || zone === "1A" || zone === "1B" || zone === "I";
+                            })
+                        };
+                    }
                 }
 
                 let total = 0, visible = 0;
