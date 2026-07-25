@@ -61,6 +61,18 @@ const WMS_LAYERS = {
   'Starkregen Euskirchen': 'L_T100_v1.1_depth3857',
 };
 
+// #hazard-layer-group (the 4 LANUV/Starkregen layers) is deliberately
+// excluded from the #btn-layers-all / #btn-layers-none bulk-toggle handlers
+// in index.html/internal.html (see the `!b.closest('#hazard-layer-group')`
+// filter there) - these are heavy external WMS overlays meant to be
+// switched on individually, not swept in with everything else.
+const HAZARD_LAYERS = {
+  'HQ häufig (LANUV)': true,
+  'HQ100 (LANUV)': true,
+  'HQ extrem (LANUV)': true,
+  'Starkregen Euskirchen': true,
+};
+
 // Grundwassermessstellen: geojson is fetched eagerly (search index), but the
 // MarkerClusterGroup only gets populated with markers the first time it's
 // switched on (js/layers-loader.js: map.on('overlayadd', ...) -> loadClusterLayer()).
@@ -71,6 +83,9 @@ const GWM_LAYER_VAR = 'gwmLayer';
 
 const ALL_LAYERS = { ...EAGER_LAYERS, ...LAZY_LAYERS, ...WMS_LAYERS };
 const LAZY_OR_WMS = { ...LAZY_LAYERS, ...WMS_LAYERS };
+const BULK_TOGGLE_LAYERS = Object.fromEntries(
+  Object.entries(ALL_LAYERS).filter(([name]) => !(name in HAZARD_LAYERS))
+);
 
 // class="filter-btn active" in the pristine HTML
 const DEFAULT_ON = new Set([
@@ -115,6 +130,8 @@ module.exports = {
   WMS_LAYERS,
   ALL_LAYERS,
   LAZY_OR_WMS,
+  HAZARD_LAYERS,
+  BULK_TOGGLE_LAYERS,
   DEFAULT_ON,
   GWM_NAME,
   GWM_LAYER_VAR,

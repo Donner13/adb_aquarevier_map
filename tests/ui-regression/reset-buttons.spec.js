@@ -10,7 +10,7 @@
  */
 
 const { test, expect, gotoPage, assertNoJsErrors, layerButton, isButtonActive, mapHasLayer } = require('./fixtures');
-const { PAGES, ALL_LAYERS } = require('./layer-data');
+const { PAGES, ALL_LAYERS, BULK_TOGGLE_LAYERS } = require('./layer-data');
 
 for (const filename of PAGES) {
   test.describe(filename, () => {
@@ -19,9 +19,15 @@ for (const filename of PAGES) {
       await page.locator('#btn-layers-all').click();
       await page.waitForLoadState('networkidle');
 
-      for (const name of Object.keys(ALL_LAYERS)) {
+      for (const name of Object.keys(BULK_TOGGLE_LAYERS)) {
         expect(await isButtonActive(page, name), `${name}: not active after #btn-layers-all`).toBe(true);
         expect(await mapHasLayer(page, name), `${name}: map layer missing after #btn-layers-all`).toBe(true);
+      }
+      // #hazard-layer-group is deliberately excluded from the bulk toggle
+      // (see layer-data.js HAZARD_LAYERS) - must stay untouched.
+      for (const name of Object.keys(ALL_LAYERS)) {
+        if (name in BULK_TOGGLE_LAYERS) continue;
+        expect(await isButtonActive(page, name), `${name}: hazard layer wrongly activated by #btn-layers-all`).toBe(false);
       }
       assertNoJsErrors(page);
     });
