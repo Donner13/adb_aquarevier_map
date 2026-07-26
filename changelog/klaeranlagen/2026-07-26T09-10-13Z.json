@@ -1,0 +1,1333 @@
+{
+  "layer": "klaeranlagen",
+  "id_field": "anlagen_nr",
+  "run_timestamp": "2026-07-26T09-10-13Z",
+  "baseline": false,
+  "previous_count": 60,
+  "new_count": 60,
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "id": "222137",
+      "name": "Erkelenz-Mitte",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222144",
+      "name": "Flahstrass",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222146",
+      "name": "Kirchhoven",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222148",
+      "name": "Dremmen",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222149",
+      "name": "Hückelhoven-Ratheim",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222153",
+      "name": "Frelenberg",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222154",
+      "name": "Waldfeucht Haaren",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222155",
+      "name": "Wassenberg",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222156",
+      "name": "Wegberg-Mitte",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222159",
+      "name": "Wegberg-Arsbeck/Dalheim",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222598",
+      "name": "Mönchengladbach GWK I",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222595",
+      "name": "Düsseldorf-Nord",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222626",
+      "name": "Dormagen-Rheinfeld",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222627",
+      "name": "Grevenbroich",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222628",
+      "name": "Wevelinghoven",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222631",
+      "name": "Glehn",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222632",
+      "name": "Neuss-Ost",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222633",
+      "name": "Neuss-Süd",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222634",
+      "name": "Anstel",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222644",
+      "name": "Kaarst- Nordkanal",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22235",
+      "name": "Düren",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22236",
+      "name": "Heimbach",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22237",
+      "name": "Hausen-Blens",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22241",
+      "name": "Hürtgenwald-Gey",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22244",
+      "name": "Schophoven",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22245",
+      "name": "Jülich",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22254",
+      "name": "Langerwehe",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22258",
+      "name": "Linnich",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22263",
+      "name": "Schmidt",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22264",
+      "name": "Nideggen-Embken",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22279",
+      "name": "Kläranlage Kirspenich",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22295",
+      "name": "Wald",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22296",
+      "name": "Blankenheim",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22297",
+      "name": "Freilingen",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22298",
+      "name": "Ahrdorf",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22299",
+      "name": "Ahrhuette",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222100",
+      "name": "Reetz",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222101",
+      "name": "Huengersdorf",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222102",
+      "name": "Nonnenbach",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222103",
+      "name": "Rohr",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "2221",
+      "name": "Aachen-Soers",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "2222",
+      "name": "Eilendorf",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "2223",
+      "name": "Aachen-Horbach",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "2226",
+      "name": "Aachen-Brand",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "2227",
+      "name": "Alsdorf-Broichtal",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "2228",
+      "name": "Bettendorf",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "2229",
+      "name": "Setterich",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22212",
+      "name": "Eschweiler-Weisweiler-ZKA",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22213",
+      "name": "Herzogenrath-Worm",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "22214",
+      "name": "Steinbusch",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222475",
+      "name": "Bedburg Kaster",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222477",
+      "name": "Bergheim Auenheim",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222480",
+      "name": "Bergheim Glessen",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222482",
+      "name": "Bergheim Kenten",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222483",
+      "name": "Brühl",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222485",
+      "name": "Elsdorf",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222486",
+      "name": "Erftstadt",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222487",
+      "name": "Frechen",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222489",
+      "name": "KA Hürth Stotzheim",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    },
+    {
+      "id": "222490",
+      "name": "Pulheim",
+      "fields": {
+        "zustaendigkeit_behoerde": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_amt": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_email": {
+          "old": null,
+          "new": "N/A"
+        },
+        "zustaendigkeit_telefon": {
+          "old": null,
+          "new": "N/A"
+        }
+      }
+    }
+  ],
+  "summary": "0 neu, 0 entfernt, 60 geändert (zustaendigkeit_amt, zustaendigkeit_behoerde, zustaendigkeit_email, zustaendigkeit_telefon)."
+}

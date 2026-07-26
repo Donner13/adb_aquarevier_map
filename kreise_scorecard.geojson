@@ -33309,13 +33309,15 @@
         "STAND": "2024-10-28",
         "anzahl_einleiter": 9,
         "klaeranlagen_kapazitaet_ew": 430790.0,
+        "klaeranlagen_auslastung_ew": 550818.0,
         "anzahl_messstellen": 826,
-        "flaeche_km2": 628.056588972602,
+        "flaeche_km2": 628.0565889726008,
         "einwohner": 259785,
         "name": "Heinsberg",
         "kn5": "05370",
+        "freie_kapazitaet_ew": -120028.0,
         "einleiter_je_10000ew": 0.34644032565390614,
-        "messstellendichte_km2": 1.3151681146299272
+        "messstellendichte_km2": 1.3151681146299294
       }
     },
     {
@@ -48530,13 +48532,15 @@
         "STAND": "2024-10-28",
         "anzahl_einleiter": 22,
         "klaeranlagen_kapazitaet_ew": 632500.0,
+        "klaeranlagen_auslastung_ew": 420000.0,
         "anzahl_messstellen": 239,
-        "flaeche_km2": 170.4850881410618,
+        "flaeche_km2": 170.48508814106196,
         "einwohner": 268936,
         "name": "Mönchengladbach",
         "kn5": "05116",
+        "freie_kapazitaet_ew": 212500.0,
         "einleiter_je_10000ew": 0.8180384924294256,
-        "messstellendichte_km2": 1.401882138819367
+        "messstellendichte_km2": 1.4018821388193656
       }
     },
     {
@@ -90791,13 +90795,15 @@
         "STAND": "2024-10-28",
         "anzahl_einleiter": 4,
         "klaeranlagen_kapazitaet_ew": 41900.0,
+        "klaeranlagen_auslastung_ew": 31516.0,
         "anzahl_messstellen": 458,
-        "flaeche_km2": 1248.5899660965788,
+        "flaeche_km2": 1248.5899660965802,
         "einwohner": 199199,
         "name": "Euskirchen",
         "kn5": "05366",
+        "freie_kapazitaet_ew": 10384.0,
         "einleiter_je_10000ew": 0.20080422090472344,
-        "messstellendichte_km2": 0.36681377588819547
+        "messstellendichte_km2": 0.366813775888195
       }
     },
     {
@@ -152910,13 +152916,15 @@
         "STAND": "2024-10-28",
         "anzahl_einleiter": 16,
         "klaeranlagen_kapazitaet_ew": 990610.0,
+        "klaeranlagen_auslastung_ew": 863731.0,
         "anzahl_messstellen": 399,
-        "flaeche_km2": 682.0037765434622,
+        "flaeche_km2": 682.0037765434612,
         "einwohner": 559761,
         "name": "Städteregion Aachen",
         "kn5": "05334",
+        "freie_kapazitaet_ew": 126879.0,
         "einleiter_je_10000ew": 0.2858362765537435,
-        "messstellendichte_km2": 0.5850407486337033
+        "messstellendichte_km2": 0.5850407486337041
       }
     },
     {
@@ -190159,13 +190167,15 @@
         "STAND": "2024-10-28",
         "anzahl_einleiter": 18,
         "klaeranlagen_kapazitaet_ew": 474320.0,
+        "klaeranlagen_auslastung_ew": 630759.0,
         "anzahl_messstellen": 685,
-        "flaeche_km2": 941.4318173176893,
+        "flaeche_km2": 941.4318173176889,
         "einwohner": 270522,
         "name": "Düren",
         "kn5": "05358",
+        "freie_kapazitaet_ew": -156439.0,
         "einleiter_je_10000ew": 0.6653802648213454,
-        "messstellendichte_km2": 0.7276150937321088
+        "messstellendichte_km2": 0.7276150937321091
       }
     },
     {
@@ -208352,13 +208362,15 @@
         "STAND": "2024-10-28",
         "anzahl_einleiter": 16,
         "klaeranlagen_kapazitaet_ew": 607250.0,
+        "klaeranlagen_auslastung_ew": 560878.0,
         "anzahl_messstellen": 502,
-        "flaeche_km2": 704.6486042887419,
+        "flaeche_km2": 704.6486042887412,
         "einwohner": 473080,
         "name": "Rhein-Erft-Kreis",
         "kn5": "05362",
+        "freie_kapazitaet_ew": 46372.0,
         "einleiter_je_10000ew": 0.33820918237930164,
-        "messstellendichte_km2": 0.7124118276040704
+        "messstellendichte_km2": 0.7124118276040711
       }
     },
     {
@@ -227817,13 +227829,15 @@
         "STAND": "2024-10-28",
         "anzahl_einleiter": 16,
         "klaeranlagen_kapazitaet_ew": 1486200.0,
+        "klaeranlagen_auslastung_ew": 1315996.0,
         "anzahl_messstellen": 637,
-        "flaeche_km2": 576.3129748867658,
+        "flaeche_km2": 576.3129748867656,
         "einwohner": 458016,
         "name": "Rhein-Kreis Neuss",
         "kn5": "05162",
+        "freie_kapazitaet_ew": 170204.0,
         "einleiter_je_10000ew": 0.3493327744008943,
-        "messstellendichte_km2": 1.1053022016815741
+        "messstellendichte_km2": 1.1053022016815746
       }
     }
   ]

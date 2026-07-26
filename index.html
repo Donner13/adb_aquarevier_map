@@ -2120,7 +2120,8 @@
                             <label for="choroplethMetricSelect">Kennzahl:</label>
                             <select id="choroplethMetricSelect">
                                 <option value="anzahl_einleiter" selected>Industrieeinleiter (Anzahl)</option>
-                                <option value="klaeranlagen_kapazitaet_ew">Kläranlagen-Kapazität (EW)</option>
+                                <option value="klaeranlagen_kapazitaet_ew">Kläranlagen-Kapazität (Ausbaugröße EW)</option>
+                                <option value="freie_kapazitaet_ew">Freie Kapazität (EW)</option>
                                 <option value="messstellendichte_km2">Messstellendichte (Stellen/km²)</option>
                                 <option value="einwohner">Einwohner im Kreisgebiet</option>
                             </select>
@@ -3357,6 +3358,7 @@
                     <td>${p.flaeche_km2.toLocaleString('de-DE', {maximumFractionDigits: 1})}</td>
                     <td>${p.anzahl_einleiter} (${p.einleiter_je_10000ew.toLocaleString('de-DE', {maximumFractionDigits: 1})} / 10k EW)</td>
                     <td>${p.klaeranlagen_kapazitaet_ew.toLocaleString('de-DE')}</td>
+                    <td style="color: ${p.freie_kapazitaet_ew < 0 ? 'red' : 'green'};">${p.freie_kapazitaet_ew.toLocaleString('de-DE')}</td>
                     <td>${p.anzahl_messstellen}</td>
                     <td>${p.messstellendichte_km2.toLocaleString('de-DE', {maximumFractionDigits: 3})}</td>
                 `;
@@ -6302,6 +6304,7 @@ function buildUnifiedSearchIndex() {
                                 <th>Fläche (km²)</th>
                                 <th>Einleiter</th>
                                 <th>Klärkapazität (EW)</th>
+                                <th>Freie Kapazität (EW)</th>
                                 <th>Messstellen</th>
                                 <th>Dichte (St./km²)</th>
                             </tr>
