@@ -1518,11 +1518,61 @@
             color: var(--text-primary) !important;
             margin-right: 5px;
         }
+
+        /* Mobile Sidebar Toggle CSS */
+        #mobile-sidebar-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2000;
+            padding: 12px 24px;
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            #mobile-sidebar-toggle {
+                display: flex !important;
+            }
+            body:not(.mobile-sidebar-open) #sidebar {
+                display: none !important;
+            }
+            body.mobile-sidebar-open #sidebar {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100% !important;
+                height: 100vh;
+                z-index: 1500;
+                display: flex;
+            }
+            body.mobile-sidebar-open #map {
+                /* Optionally hide or push map away so interaction doesn't bleed, but overlay is fine */
+                /* display: none !important; */
+            }
+        }
     </style>
 
 </head>
 <body class="light-theme">
     <div id="app-container">
+
+        <!-- Mobile Sidebar Toggle -->
+        <button id="mobile-sidebar-toggle">
+            <span class="icon" style="font-size:16px;">☰</span>
+            <span class="text">Filter & Daten</span>
+        </button>
+
+
         <!-- Sidebar -->
         <div id="sidebar">
             <div class="sidebar-header">
@@ -6941,6 +6991,21 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
         </div>
     </div>
 
+<script>
+
+        // Mobile Sidebar Toggle Logic
+        const mobileSidebarToggle = document.getElementById('mobile-sidebar-toggle');
+        if (mobileSidebarToggle) {
+            mobileSidebarToggle.addEventListener('click', function() {
+                document.body.classList.toggle('mobile-sidebar-open');
+                const isOpen = document.body.classList.contains('mobile-sidebar-open');
+                this.innerHTML = isOpen
+                    ? '<span class="icon" style="font-size:16px;">✖</span><span class="text">Karte zeigen</span>'
+                    : '<span class="icon" style="font-size:16px;">☰</span><span class="text">Filter & Daten</span>';
+            });
+        }
+
+</script>
 </body>
 </html>
 
