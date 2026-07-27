@@ -2206,34 +2206,40 @@
                         </div>
                         <div style="font-size: 11px; color: #64748b; margin-top: 12px; margin-bottom: 8px; font-weight: 500;">Pluvial (Kommunen)</div>
                         <div class="filter-group">
-                            <button class="filter-btn" data-layer-name="Starkregen Euskirchen" title="Starkregengefahrenkarte Kreis Euskirchen">
+                            <button class="filter-btn" data-layer-name="Starkregen Euskirchen" title="Starkregengefahrenkarte Kreis Euskirchen (WMS Karte)">
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>Kreis Euskirchen</span>
                             </button>
-                            <button class="filter-btn" onclick="window.open('https://starkregengefahrenkarten-staedteregion-aachen.cismet.de/', '_blank')" title="Starkregengefahrenkarte Städteregion Aachen (Extern)">
-                                <span class="swatch" style="background: #7c3aed;"></span>
-                                <span>🔗 Städteregion Aachen</span>
-                            </button>
-                            <button class="filter-btn" onclick="window.open('https://starkregengefahrenkarten-kreis-dueren.cismet.de/', '_blank')" title="Starkregengefahrenkarte Kreis Düren (Extern)">
-                                <span class="swatch" style="background: #7c3aed;"></span>
-                                <span>🔗 Kreis Düren</span>
-                            </button>
-                            <button class="filter-btn" onclick="window.open('https://www.kreis-heinsberg.de/', '_blank')" title="Geoportal Kreis Heinsberg (Extern)">
-                                <span class="swatch" style="background: #7c3aed;"></span>
-                                <span>🔗 Kreis Heinsberg</span>
-                            </button>
-                            <button class="filter-btn" onclick="window.open('https://www.geoportal-rhein-erft-kreis.de/', '_blank')" title="Geoportal Rhein-Erft-Kreis (Extern)">
-                                <span class="swatch" style="background: #7c3aed;"></span>
-                                <span>🔗 Rhein-Erft-Kreis</span>
-                            </button>
-                            <button class="filter-btn" onclick="window.open('https://geoportal.rhein-kreis-neuss.de/', '_blank')" title="Geoportal Rhein-Kreis Neuss (Extern)">
-                                <span class="swatch" style="background: #7c3aed;"></span>
-                                <span>🔗 Rhein-Kreis Neuss</span>
-                            </button>
-                            <button class="filter-btn" onclick="window.open('https://geoportal.moenchengladbach.de/', '_blank')" title="Geoportal Mönchengladbach (Extern)">
-                                <span class="swatch" style="background: #7c3aed;"></span>
-                                <span>🔗 Mönchengladbach</span>
-                            </button>
+                            <a href="https://starkregengefahrenkarten-staedteregion-aachen.cismet.de/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das externe Starkregen-Portal der Städteregion Aachen in einem neuen Tab">
+                                <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
+                                <span class="filter-label" style="margin-left: 6px;">🔗 Städteregion Aachen</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                            </a>
+                            <a href="https://starkregengefahrenkarten-kreis-dueren.cismet.de/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das externe Starkregen-Portal des Kreises Düren in einem neuen Tab">
+                                <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
+                                <span class="filter-label" style="margin-left: 6px;">🔗 Kreis Düren</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                            </a>
+                            <a href="https://www.kreis-heinsberg.de/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das Geoportal des Kreises Heinsberg in einem neuen Tab">
+                                <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
+                                <span class="filter-label" style="margin-left: 6px;">🔗 Kreis Heinsberg</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                            </a>
+                            <a href="https://www.rhein-erft-kreis.de/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das Geoportal des Rhein-Erft-Kreises in einem neuen Tab">
+                                <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
+                                <span class="filter-label" style="margin-left: 6px;">🔗 Rhein-Erft-Kreis</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                            </a>
+                            <a href="https://www.rhein-kreis-neuss.de/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das Geoportal des Rhein-Kreis Neuss in einem neuen Tab">
+                                <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
+                                <span class="filter-label" style="margin-left: 6px;">🔗 Rhein-Kreis Neuss</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                            </a>
+                            <a href="https://www.moenchengladbach.de/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das Geoportal der Stadt Mönchengladbach in einem neuen Tab">
+                                <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
+                                <span class="filter-label" style="margin-left: 6px;">🔗 Mönchengladbach</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                            </a>
                         </div>
                     </div>
                 </div>
