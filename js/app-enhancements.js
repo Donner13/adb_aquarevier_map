@@ -526,13 +526,62 @@
         document.body.appendChild(badge);
     }
 
+    // --- 0. DYNAMIC COLOR HARMONY FOR FILTER BUTTONS ---
+    function applyLayerColorHarmony() {
+        if (!document.getElementById('color-harmony-styles')) {
+            const style = document.createElement('style');
+            style.id = 'color-harmony-styles';
+            style.textContent = `
+                .filter-btn {
+                    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease !important;
+                }
+                .filter-btn.active {
+                    background: color-mix(in srgb, var(--swatch-color, var(--accent-primary)) 20%, var(--bg-surface, rgba(17, 24, 39, 0.9))) !important;
+                    border-color: var(--swatch-color, var(--accent-primary)) !important;
+                    color: var(--text-primary, #f3f4f6) !important;
+                    box-shadow: 0 0 12px color-mix(in srgb, var(--swatch-color, var(--accent-primary)) 40%, transparent) !important;
+                }
+                .filter-btn.active .swatch {
+                    box-shadow: 0 0 8px var(--swatch-color, var(--accent-primary)) !important;
+                    transform: scale(1.2) !important;
+                }
+                .filter-btn.active .counter-badge {
+                    background: color-mix(in srgb, var(--swatch-color, var(--accent-primary)) 35%, transparent) !important;
+                    color: var(--text-primary, #ffffff) !important;
+                    border: 1px solid color-mix(in srgb, var(--swatch-color, var(--accent-primary)) 60%, transparent) !important;
+                }
+                body.light-theme .filter-btn.active {
+                    background: color-mix(in srgb, var(--swatch-color, var(--accent-primary)) 18%, #ffffff) !important;
+                    color: #0f172a !important;
+                }
+                body.light-theme .filter-btn.active .counter-badge {
+                    color: #0f172a !important;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        const buttons = document.querySelectorAll('.filter-btn');
+        buttons.forEach(btn => {
+            const swatch = btn.querySelector('.swatch');
+            if (swatch) {
+                let bgColor = swatch.style.backgroundColor || swatch.style.background;
+                if (bgColor) {
+                    btn.style.setProperty('--swatch-color', bgColor);
+                }
+            }
+        });
+    }
+
     // --- 5. INITIALIZE ALL ON DOM READY ---
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
+            applyLayerColorHarmony();
             initCommandPalette();
             initSystemHealthBadge();
         });
     } else {
+        applyLayerColorHarmony();
         initCommandPalette();
         initSystemHealthBadge();
     }
