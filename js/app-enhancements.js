@@ -573,17 +573,96 @@
         });
     }
 
+    // --- 6. MEHRSPRACHIGKEITS-SUPPORT (DE / EN) ---
+    const I18N_DICT = {
+        de: {
+            app_title: "Akteurskarte - AquaRevier",
+            search_placeholder: "Nach Name oder Ort suchen...",
+            cmd_placeholder: "Schnellsuche (Gemeinden, Layer, Akteure, Aktionen)...",
+            share_view: "🔗 Ansicht teilen",
+            reset_filters: "Filter zurücksetzen",
+            generate_report: "📊 Bericht generieren (PDF)",
+            open_data_export: "💾 Geodaten-Export",
+            health_online: "ELWAS & WMS 🟢 Operational",
+            switch_lang: "🇬🇧 English"
+        },
+        en: {
+            app_title: "Stakeholder Map - AquaRevier",
+            search_placeholder: "Search by name or location...",
+            cmd_placeholder: "Quick search (Municipalities, Layers, Stakeholders, Actions)...",
+            share_view: "🔗 Share View",
+            reset_filters: "Reset Filters",
+            generate_report: "📊 Generate Report (PDF)",
+            open_data_export: "💾 Open Data Export",
+            health_online: "ELWAS & WMS 🟢 Operational",
+            switch_lang: "🇩🇪 Deutsch"
+        }
+    };
+
+    function initLanguageToggle() {
+        let currentLang = localStorage.getItem('aquarevier_lang') || 'de';
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('aquarevier_lang', lang);
+            const dict = I18N_DICT[lang];
+            if (!dict) return;
+
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) searchInput.placeholder = dict.search_placeholder;
+
+            const cmdInput = document.getElementById('cmd-input');
+            if (cmdInput) cmdInput.placeholder = dict.cmd_placeholder;
+
+            const shareBtn = document.getElementById('share-view-btn');
+            if (shareBtn) shareBtn.textContent = dict.share_view;
+
+            const resetBtn = document.getElementById('reset-filters-btn');
+            if (resetBtn) resetBtn.textContent = dict.reset_filters;
+
+            const reportBtn = document.getElementById('generate-report-btn');
+            if (reportBtn) reportBtn.textContent = dict.generate_report;
+
+            const exportBtn = document.getElementById('open-data-export-btn');
+            if (exportBtn) exportBtn.textContent = dict.open_data_export;
+
+            const langBtn = document.getElementById('lang-toggle-btn');
+            if (langBtn) langBtn.textContent = dict.switch_lang;
+
+            window.showToast(lang === 'de' ? "Sprache: Deutsch 🇩🇪" : "Language: English 🇬🇧", "🌐");
+        }
+
+        const resetBtn = document.getElementById('reset-filters-btn');
+        if (resetBtn && resetBtn.parentElement && !document.getElementById('lang-toggle-btn')) {
+            const langBtn = document.createElement('button');
+            langBtn.id = 'lang-toggle-btn';
+            langBtn.className = 'filter-btn';
+            langBtn.style.cssText = 'padding: 4px 8px; font-size: 10px; margin-left: 6px;';
+            langBtn.textContent = currentLang === 'de' ? '🇬🇧 English' : '🇩🇪 Deutsch';
+            langBtn.addEventListener('click', () => {
+                applyLanguage(currentLang === 'de' ? 'en' : 'de');
+            });
+            resetBtn.parentElement.appendChild(langBtn);
+        }
+
+        if (currentLang !== 'de') {
+            applyLanguage(currentLang);
+        }
+    }
+
     // --- 5. INITIALIZE ALL ON DOM READY ---
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             applyLayerColorHarmony();
             initCommandPalette();
             initSystemHealthBadge();
+            initLanguageToggle();
         });
     } else {
         applyLayerColorHarmony();
         initCommandPalette();
         initSystemHealthBadge();
+        initLanguageToggle();
     }
 
 })();
