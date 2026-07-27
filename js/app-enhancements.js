@@ -650,6 +650,59 @@
         }
     }
 
+    // --- 7. INTERACTIVE PLUVIAL KREIS MAP CONTROLS & MAP INTERACTION ---
+    function initPluvialKreisControls() {
+        const kreisData = {
+            "Städteregion Aachen": { lat: 50.7753, lng: 6.2000, zoom: 11, url: "https://starkregengefahrenkarten-staedteregion-aachen.cismet.de/" },
+            "Kreis Düren": { lat: 50.8022, lng: 6.4833, zoom: 11, url: "https://starkregengefahrenkarten-kreis-dueren.cismet.de/" },
+            "Kreis Euskirchen": { lat: 50.6606, lng: 6.7872, zoom: 11, url: "https://starkregen-euskirchen-v11.cismet.de/geoserver/wms" },
+            "Kreis Heinsberg": { lat: 51.0631, lng: 6.0964, zoom: 11, url: "https://www.kreis-heinsberg.de/" },
+            "Rhein-Erft-Kreis": { lat: 50.9577, lng: 6.6406, zoom: 11, url: "https://www.rhein-erft-kreis.de/" },
+            "Rhein-Kreis Neuss": { lat: 51.1983, lng: 6.6917, zoom: 11, url: "https://www.rhein-kreis-neuss.de/" },
+            "Mönchengladbach": { lat: 51.1912, lng: 6.4430, zoom: 11, url: "https://www.moenchengladbach.de/" }
+        };
+
+        const pluvialLinks = document.querySelectorAll('.external-portal-link');
+        pluvialLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const text = link.textContent.replace('🔗', '').replace('↗', '').trim();
+                const info = kreisData[text];
+                if (info && window.map) {
+                    window.map.flyTo([info.lat, info.lng], info.zoom, { duration: 1.2 });
+                    window.showToast(`🌊 Starkregen-Fokus: ${text} auf Karte zentriert!`, "📍");
+                }
+            });
+        });
+    }
+
+    // --- 8. KEYBOARD ACCESSIBILITY & ARIA ENHANCEMENTS ---
+    function initAccessibility() {
+        const buttons = document.querySelectorAll('.filter-btn');
+        buttons.forEach(btn => {
+            if (!btn.hasAttribute('tabindex')) btn.setAttribute('tabindex', '0');
+            if (!btn.hasAttribute('role')) btn.setAttribute('role', 'button');
+            
+            btn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    btn.click();
+                }
+            });
+        });
+    }
+
+    // --- 9. AUTO SYSTEM THEME SYNC ---
+    function initAutoThemeSync() {
+        if (!localStorage.getItem('aquarevier_theme')) {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDark) {
+                document.body.classList.remove('light-theme');
+            } else {
+                document.body.classList.add('light-theme');
+            }
+        }
+    }
+
     // --- 5. INITIALIZE ALL ON DOM READY ---
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
@@ -657,12 +710,18 @@
             initCommandPalette();
             initSystemHealthBadge();
             initLanguageToggle();
+            initPluvialKreisControls();
+            initAccessibility();
+            initAutoThemeSync();
         });
     } else {
         applyLayerColorHarmony();
         initCommandPalette();
         initSystemHealthBadge();
         initLanguageToggle();
+        initPluvialKreisControls();
+        initAccessibility();
+        initAutoThemeSync();
     }
 
 })();
