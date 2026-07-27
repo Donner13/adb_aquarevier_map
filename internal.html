@@ -2460,9 +2460,12 @@
 
         // 8. Hochwasser- und Starkregengefahrenkarten
         // 8a. LANUV Hochwassergefahrenkarten (Fluvial)
-        // Keine automatische Verschneidung – WFS nicht verfügbar, nur manueller visueller Kartenvergleich durch gleichzeitiges Einblenden beider Layer.
+        // Zuordnung nach LANUV NRW HWRM-RL:
+        // hw = Hohe Wahrscheinlichkeit (HQ häufig)
+        // mw = Mittlere Wahrscheinlichkeit (HQ100)
+        // nw = Niedrige Wahrscheinlichkeit (HQ extrem)
         const wmsHwgkHaeufig = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
-            layers: 'Tiefen_Ueberflutungsgebiet_nw',
+            layers: 'Tiefen_Ueberflutungsgebiet_hw',
             format: 'image/png',
             transparent: true,
             opacity: 0.6,
@@ -2478,7 +2481,7 @@
         });
 
         const wmsHwgkExtrem = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
-            layers: 'Tiefen_Ueberflutungsgebiet_hw',
+            layers: 'Tiefen_Ueberflutungsgebiet_nw',
             format: 'image/png',
             transparent: true,
             opacity: 0.6,
