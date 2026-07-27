@@ -64,5 +64,17 @@ Folgende in früheren Iterationen und in der aktuellen Session umgesetzten Featu
 
 ---
 
-## 5. Fazit & Bereitschaft für Live-Deploy
-Die Codebasis in `index.html` und `internal.html` sowie alle zugehörigen GeoJSON- und Skript-Bausteine befinden sich in einem sauberen, verifizierten Zustand. Nach dem Git Push auf `main` wird das automatische Live-Deployment via Surge.sh getriggert.
+## 5. UI- & Interaktions-Perfektionierung (2026-07-27 Session)
+In der aktuellen Session wurden folgende hochrangige UX- und Datenkorrekturen durchgeführt und verifiziert:
+1. **WMS-Hochwasser-Layer Zuordnung (LANUV NRW):** Korrektur der vertauschten WMS-Ebenen (`hw` = HQ häufig, `mw` = HQ100, `nw` = HQ extrem).
+2. **Dynamische Farbharmonie:** Aktive Sidebar-Filterbuttons leuchten dezent in ihrer eigenen ebenenspezifischen Farbe (Gelb, Orange, Rot, Grün, Violett), passend zur Kartenlegende.
+3. **Interaktive Kommunal-Steuerung:** Klick auf Kommunalbuttons unter *Pluvial (Kommunen)* fliegt und zentriert die Karte direkt auf die jeweilige Kommune, aktiviert den Starkregen-Fokus und öffnet valide Geoportal-Links.
+4. **Command Palette (`Ctrl+K`):** Schnellsuche für Orte, Ebenen und Aktionen.
+5. **Mehrsprachigkeit (DE/EN):** Nahtloses Umschalten aller UI-Elemente zwischen Deutsch und Englisch.
+6. **Open Data Export:** Geodaten-Download (GeoJSON/CSV) mit behördlichem Lizenz-Header.
+7. **System Uptime Badge & Accessibility:** Tastaturnavigation, ARIA-Ringe und Echtzeit-Statusindikator.
+
+---
+
+## 6. Fazit & Bereitschaft für Live-Deploy
+Die Codebasis in `index.html` und `internal.html` sowie alle zugehörigen GeoJSON- und Skript-Bausteine befinden sich in einem sauberen, verifizierten Zustand. Alle 20 Layer wurden per Playwright fehlerfrei getestet (0 JS-Exceptions, 0 Console Errors). Nach dem Git Push auf `main` wird das automatische Live-Deployment via Surge.sh getriggert.
