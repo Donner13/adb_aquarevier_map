@@ -137,6 +137,9 @@
                 const avgDelta = (deltaSum / totalStations).toFixed(1);
                 const avgColor = getDeltaColor(parseFloat(avgDelta));
                 statsSummary.innerHTML = `
+                    <div id="gwm-timeseries-spinner" style="display:none; text-align:center; padding:6px; color:#2563eb; font-size:11px;">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Lade Grundwasser-Zeitreihe...
+                    </div>
                     <div style="background:#fef3c7; color:#92400e; font-size:9.5px; padding:2px 4px; border-radius:3px; text-align:center; font-weight:600; margin-bottom:4px;">
                         ⚠️ Trendmodell / Modellierte Werte (Keine Echtdaten-Zeitreihe)
                     </div>

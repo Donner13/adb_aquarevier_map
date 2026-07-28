@@ -204,6 +204,10 @@
                     <button type="button" onclick="closeGemeindeDossier()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
                 </div>
                 
+                <div id="gemeinde-loading-indicator" style="display:none; padding:8px 16px; background:#eff6ff; color:#1d4ed8; font-size:11px; text-align:center;">
+                    🔄 Dossier wird zusammengestellt...
+                </div>
+                
                 <div style="padding: 16px; overflow-y: auto; flex: 1; font-size: 12px;">
                     <!-- Key Figures Grid -->
                     <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px;">

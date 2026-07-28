@@ -1,3 +1,11 @@
+"""
+test_all_frontend_layers.py
+NOTE / DEPRECATION:
+Canonical E2E regression tests for AquaRevier are now maintained in the Playwright JS test suite:
+  `npx playwright test tests/ui-regression/`
+This Python script serves as an auxiliary standalone HTTP layer audit runner.
+"""
+
 import asyncio
 import subprocess
 import time

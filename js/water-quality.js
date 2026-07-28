@@ -14,7 +14,7 @@
 
     window.openWrrlQualityModal = function(riverName) {
         const name = riverName || 'Rur';
-        const data = window.wrrlQualityData[name] || window.wrrlQualityData['Rur'];
+        const data = window.wrrlQualityData ? window.wrrlQualityData[name] : null;
 
         let modal = document.getElementById('wrrl-quality-modal');
         if (!modal) {
@@ -32,6 +32,19 @@
                 padding: 15px;
             `;
             document.body.appendChild(modal);
+        }
+
+        if (!data) {
+            modal.innerHTML = `
+                <div style="background: #ffffff; width: 100%; max-width: 440px; border-radius: 12px; padding: 20px; text-align: center;">
+                    <div style="font-size: 24px; margin-bottom: 8px;">⚠️</div>
+                    <div style="font-weight: 700; color: #dc2626; margin-bottom: 4px;">Wassergüte-Daten nicht verfügbar</div>
+                    <div style="font-size: 11px; color: #64748b; margin-bottom: 14px;">Die Messwerte für '${escapeHtml(name)}' konnten vom Server nicht geladen werden.</div>
+                    <button type="button" class="btn btn-sm btn-secondary" onclick="closeWrrlQualityModal()">Schließen</button>
+                </div>
+            `;
+            modal.style.display = 'flex';
+            return;
         }
 
         modal.innerHTML = `

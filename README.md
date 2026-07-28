@@ -25,7 +25,7 @@ python C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\server.py
 
 ## 🗺️ Kartenfunktionen im Web-Interface
 
-- **9 Akteursgruppen**: Farblich codiert nach den Gruppen im Excel-Datensatz:
+- **9 Akteursgruppen & 20+ Fachdaten-Layer**: Farblich codiert nach den Gruppen im Excel-Datensatz:
   - 🔴 **Behörde**
   - 🟢 **Einzelakteure**
   - 🔵 **Forschung**
@@ -35,8 +35,9 @@ python C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\server.py
   - 💗 **Netzwerk/ Multiplikator**
   - 🟠 **Ver-/ Entsorger**
   - 🟣 **Sonstige**
+  - 🚰 **ELWAS Kläranlagen, Pegel, Stauanlagen, Regenbecken, Querbauwerke & H2-Elektrolyseure**
 - **Suchen & Filtern**: Durchsuche alle 281 Kontakte live nach Namen, E-Mail, Notizen oder filtere Gruppen über die Klick-Buttons.
-- **NRW Geodaten-Layer**: Oben rechts auf der Karte kannst du über das Layer-Symbol folgende Dienste ein- und ausblenden:
+- **20+ NRW Geodaten- & Fachdaten-Layer**: Oben rechts auf der Karte kannst du über das Layer-Symbol WMS-Overlays und ELWAS-Objekte ein- und ausblenden:
   - **Landkreisgrenzen & Landesgrenze NRW** (Geobasis NRW WMS)
   - **Flüsse & Gewässernetz** (LANUV NRW WMS)
   - **Tagebaue & Bergbaufelder** (Geologischer Dienst NRW WMS - zeigt Bergbauberechtigungen wie Garzweiler, Hambach, Inden)
