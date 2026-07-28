@@ -7,8 +7,19 @@ def convert_shp_to_geojson(shp_path, geojson_path):
     print(f"Converting {shp_path} to {geojson_path}...")
     sf = shapefile.Reader(shp_path)
     
-    # Projection transformer: EPSG:25832 -> EPSG:4326
-    transformer = pyproj.Transformer.from_crs("epsg:25832", "epsg:4326", always_xy=True)
+    # Projection transformer: PRJ or default EPSG:25832 -> EPSG:4326
+    prj_path = os.path.splitext(shp_path)[0] + ".prj"
+    src_crs = "epsg:25832"
+    if os.path.exists(prj_path):
+        try:
+            with open(prj_path, 'r', encoding='utf-8', errors='ignore') as f:
+                prj_wkt = f.read()
+                if prj_wkt.strip():
+                    src_crs = pyproj.CRS.from_wkt(prj_wkt)
+        except Exception:
+            src_crs = "epsg:25832"
+
+    transformer = pyproj.Transformer.from_crs(src_crs, "epsg:4326", always_xy=True)
     
     features = []
     fields = [f[0] for f in sf.fields[1:]] # Skip DeletionFlag
