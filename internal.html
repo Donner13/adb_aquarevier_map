@@ -2002,6 +2002,11 @@
                     <button class="filter-btn active" id="btn-new-contact" style="width:100%; justify-content:center; margin-bottom:6px;">➕ Neuer Akteur</button>
                     <button class="filter-btn" id="btn-export-geojson" style="width:100%; justify-content:center; margin-bottom:6px;">💾 Als .geojson exportieren</button>
                     <button class="filter-btn" id="btn-export-csv" style="width:100%; justify-content:center; margin-bottom:6px;">📄 Als .csv exportieren</button>
+                    <button class="filter-btn" id="export-csv-btn" style="display:none;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('csv')"></button>
+                    <button class="filter-btn" id="export-pdf-btn" style="display:none;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()"></button>
+                    <button class="filter-btn" id="open-data-export-btn" style="display:none;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('geojson')"></button>
+                    <button class="filter-btn" id="embed-open-btn" style="display:none;" onclick="if(typeof openEmbedModal==='function') openEmbedModal()"></button>
+                    <button class="filter-btn" id="generate-report-btn" style="display:none;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()"></button>
                     <button class="filter-btn" id="generate-sprechzettel-btn" style="width:100%; justify-content:center; margin-bottom:6px;">🗣️ Sprechzettel generieren</button>
                     <button class="filter-btn" id="generate-beschlussvorlage-btn" style="width:100%; justify-content:center; margin-bottom:6px;">📋 Beschlussvorlage generieren</button>
                     <button class="filter-btn" id="btn-save-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #059669; border-color: #059669; color: white;">💾 Auf Server speichern</button>
@@ -2234,31 +2239,31 @@
                         </div>
                         <div style="font-size: 11px; color: #64748b; margin-top: 12px; margin-bottom: 8px; font-weight: 500;">Pluvial (Kommunen)</div>
                         <div class="filter-group">
-                            <button class="filter-btn" data-layer-name="Starkregen Euskirchen" title="Starkregengefahrenkarte Kreis Euskirchen">
+                            <button class="filter-btn external-portal-link" data-layer-name="Starkregen Euskirchen" title="Starkregengefahrenkarte Kreis Euskirchen">
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>Kreis Euskirchen</span>
                             </button>
-                            <button class="filter-btn" onclick="window.open('https://starkregengefahrenkarten-staedteregion-aachen.cismet.de/', '_blank')" title="Starkregengefahrenkarte Städteregion Aachen (Extern)">
+                            <button class="filter-btn external-portal-link" onclick="window.open('https://starkregengefahrenkarten-staedteregion-aachen.cismet.de/', '_blank')" title="Starkregengefahrenkarte Städteregion Aachen (Extern)">
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>🔗 Städteregion Aachen</span>
                             </button>
-                            <button class="filter-btn" onclick="window.open('https://starkregengefahrenkarten-kreis-dueren.cismet.de/', '_blank')" title="Starkregengefahrenkarte Kreis Düren (Extern)">
+                            <button class="filter-btn external-portal-link" onclick="window.open('https://starkregengefahrenkarten-kreis-dueren.cismet.de/', '_blank')" title="Starkregengefahrenkarte Kreis Düren (Extern)">
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>🔗 Kreis Düren</span>
                             </button>
-                            <button class="filter-btn" onclick="window.open('https://www.kreis-heinsberg.de/', '_blank')" title="Geoportal Kreis Heinsberg (Extern)">
+                            <button class="filter-btn external-portal-link" onclick="window.open('https://www.kreis-heinsberg.de/', '_blank')" title="Geoportal Kreis Heinsberg (Extern)">
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>🔗 Kreis Heinsberg</span>
                             </button>
-                            <button class="filter-btn" onclick="window.open('https://www.geoportal-rhein-erft-kreis.de/', '_blank')" title="Geoportal Rhein-Erft-Kreis (Extern)">
+                            <button class="filter-btn external-portal-link" onclick="window.open('https://www.geoportal-rhein-erft-kreis.de/', '_blank')" title="Geoportal Rhein-Erft-Kreis (Extern)">
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>🔗 Rhein-Erft-Kreis</span>
                             </button>
-                            <button class="filter-btn" onclick="window.open('https://geoportal.rhein-kreis-neuss.de/', '_blank')" title="Geoportal Rhein-Kreis Neuss (Extern)">
+                            <button class="filter-btn external-portal-link" onclick="window.open('https://geoportal.rhein-kreis-neuss.de/', '_blank')" title="Geoportal Rhein-Kreis Neuss (Extern)">
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>🔗 Rhein-Kreis Neuss</span>
                             </button>
-                            <button class="filter-btn" onclick="window.open('https://geoportal.moenchengladbach.de/', '_blank')" title="Geoportal Mönchengladbach (Extern)">
+                            <button class="filter-btn external-portal-link" onclick="window.open('https://geoportal.moenchengladbach.de/', '_blank')" title="Geoportal Mönchengladbach (Extern)">
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>🔗 Mönchengladbach</span>
                             </button>
@@ -2272,7 +2277,11 @@
                     <div class="search-box">
                         <input type="text" id="search-input" placeholder="Nach Name oder Ort suchen...">
                     </div>
-                    <div class="contacts-meta" id="contacts-count" aria-live="polite">0 von 0 Kontakten angezeigt</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div class="contacts-meta" id="contacts-count" aria-live="polite" style="margin-bottom: 0;">0 von 0 Kontakten angezeigt</div>
+                        <button id="reset-filters-btn" class="filter-btn" style="padding: 4px 8px; font-size: 10px;">Filter zurücksetzen</button>
+                    </div>
+                    <button id="share-view-btn" class="filter-btn" style="width: 100%; margin-bottom: 12px; font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
                     <div class="contact-list" id="contact-list-container">
                         <!-- Filled by JS -->
                     </div>

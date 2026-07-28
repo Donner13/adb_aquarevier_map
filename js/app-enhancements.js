@@ -485,9 +485,9 @@
         badge.id = 'system-health-badge';
         badge.style.cssText = `
             position: fixed;
-            bottom: 24px;
-            left: 24px;
-            z-index: 1000;
+            bottom: 12px;
+            right: 24px;
+            z-index: 999;
             display: flex;
             align-items: center;
             gap: 8px;
