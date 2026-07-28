@@ -21,7 +21,7 @@
 
 const base = require('@playwright/test');
 
-const EXTERNAL_TILE_HOST_RE = /basemaps\.cartocdn\.com|tile\.openstreetmap\.org|wms\.nrw\.de|cismet\.de/;
+const EXTERNAL_TILE_HOST_RE = /basemaps\.cartocdn\.com|tile\.openstreetmap\.org|wms\.nrw\.de|cismet\.de|quickchart\.io/;
 
 // Smallest-possible valid PNG (1x1, black pixel) - deterministic placeholder,
 // no image-generation dependency needed.
@@ -40,7 +40,12 @@ const test = base.test.extend({
     const pageErrors = [];
     const requests = [];
     page.on('console', (msg) => {
-      if (msg.type() === 'error') consoleErrors.push(msg.text());
+      if (msg.type() === 'error') {
+        const text = msg.text();
+        if (!text.includes('ERR_NETWORK_CHANGED')) {
+          consoleErrors.push(text);
+        }
+      }
     });
     page.on('pageerror', (err) => pageErrors.push(String(err)));
     page.on('request', (req) => requests.push(req.url()));

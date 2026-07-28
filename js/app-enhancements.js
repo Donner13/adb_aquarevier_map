@@ -84,7 +84,7 @@
             background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            display: flex;
+            display: none;
             align-items: flex-start;
             justify-content: center;
             padding-top: 12vh;
@@ -305,6 +305,7 @@
 
         function openPalette() {
             modal.hidden = false;
+            modal.style.display = 'flex';
             requestAnimationFrame(() => { modal.style.opacity = '1'; });
             input.value = '';
             selectedIndex = 0;
@@ -314,7 +315,10 @@
 
         function closePalette() {
             modal.style.opacity = '0';
-            setTimeout(() => { modal.hidden = true; }, 200);
+            setTimeout(() => {
+                modal.hidden = true;
+                modal.style.display = 'none';
+            }, 200);
         }
 
         // Global Keydown Handler

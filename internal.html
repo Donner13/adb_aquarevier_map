@@ -1746,7 +1746,108 @@
                     </div>
                 </div>
 
+                <!-- Block: Umkreis- & Radius-Analyse -->
+                <div style="margin-top: 16px;">
+                    <div class="filter-block-header">
+                        <div class="section-title" style="margin-bottom: 0;">🎯 Umkreis- & Radius-Analyse</div>
+                    </div>
+                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: 8px;">
+                            Ermittle alle Akteure, Messstellen &amp; Fachdaten in einem definierten Umkreis.
+                        </div>
+                        <div style="display: flex; gap: 6px; align-items: center; margin-bottom: 8px;">
+                            <label for="radius-select" style="font-size: 11px; font-weight: 600; white-space: nowrap; margin: 0;">Radius:</label>
+                            <select id="radius-select" class="form-select form-select-sm" style="font-size: 11px; padding: 2px 6px; border-radius: 4px; flex: 1;">
+                                <option value="1000">1 km</option>
+                                <option value="2000">2 km</option>
+                                <option value="5000" selected>5 km</option>
+                                <option value="10000">10 km</option>
+                                <option value="25000">25 km</option>
+                            </select>
+                        </div>
+                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                            <button id="btn-radius-activate" type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: var(--bg-surface, #ffffff); border: 1px solid #3b82f6; color: #2563eb; font-weight: 600;" onclick="toggleRadiusAnalysis()">
+                                📍 Punkt wählen
+                            </button>
+                            <button id="btn-radius-clear" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" onclick="clearRadiusAnalysis()" disabled>
+                                ❌ Reset
+                            </button>
+                        </div>
+                        <div id="radius-status-info" style="font-size: 10.5px; color: #475569; background: #f8fafc; padding: 6px 8px; border-radius: 4px; border: 1px dashed #cbd5e1; text-align: center;">
+                            Klicke auf "📍 Punkt wählen" &amp; danach auf die Karte.
+                        </div>
+                        <div id="radius-results-container" style="display: none; margin-top: 8px; max-height: 250px; overflow-y: auto; font-size: 11px;">
+                            <!-- Dynamische Ergebnisse -->
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Block: Gemeinde-Steckbrief -->
+                <div style="margin-top: 16px;">
+                    <div class="filter-block-header">
+                        <div class="section-title" style="margin-bottom: 0;">🏛️ Gemeinde-Steckbrief</div>
+                    </div>
+                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: 8px;">
+                            Wähle eine Gemeinde aus, um alle lokalen Akteure &amp; Wasser-Objekte auszuwerten:
+                        </div>
+                        <select class="form-select form-select-sm gemeinde-dossier-select" style="font-size: 11px; padding: 4px 6px; border-radius: 4px; width: 100%; margin-bottom: 8px;" onchange="if(this.value) openGemeindeDossier(this.value)">
+                            <option value="">-- Gemeinde wählen --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Block: Grundwasser-Zeitraffer -->
+                <div style="margin-top: 16px;">
+                    <div class="filter-block-header">
+                        <div class="section-title" style="margin-bottom: 0;">⏳ Grundwasser-Zeitraffer</div>
+                    </div>
+                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-size: 11px; color: var(--text-secondary, #64748b);">Jahr:</span>
+                            <span id="timeseries-year-display" style="font-size: 16px; font-weight: 700; color: #2563eb;">2025</span>
+                        </div>
+                        <input type="range" id="timeseries-slider" min="0" max="6" step="1" value="5" style="width: 100%; margin-bottom: 8px; cursor: pointer;" oninput="setTimeSeriesYearIndex(parseInt(this.value, 10))">
+                        <div style="display: flex; justify-content: space-between; font-size: 9.5px; color: #64748b; margin-bottom: 8px;">
+                            <span>2000</span>
+                            <span>2010</span>
+                            <span>2020</span>
+                            <span>2030 (Prog.)</span>
+                        </div>
+                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                            <button id="btn-timeseries-play" type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: #16a34a; border: 1px solid #15803d; color: white; font-weight: 600;" onclick="toggleTimeSeriesPlay()">
+                                ▶️ Play
+                            </button>
+                            <button id="btn-timeseries-reset" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" onclick="resetTimeSeries()">
+                                🔄 Reset
+                            </button>
+                        </div>
+                        <div id="timeseries-stats-summary" style="margin-top: 6px;">
+                            <!-- Dynamische Kennzahlen -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Block: Favoriten & Teilen -->
+                <div style="margin-top: 16px;">
+                    <div class="filter-block-header">
+                        <div class="section-title" style="margin-bottom: 0;">⭐ Favoriten &amp; Teilen</div>
+                        <span id="network-status-badge" style="font-size: 10px; padding: 2px 6px; border-radius: 10px; border: 1px solid #cbd5e1; background: #f1f5f9;">🟢 Online</span>
+                    </div>
+                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                            <button type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: #3b82f6; color: white; border-color: #2563eb; font-weight: 600;" onclick="const t = prompt('Name für diesen Favoriten:'); if(t) saveBookmark(t);">
+                                ➕ Favorit speichern
+                            </button>
+                            <button type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px; background: #8b5cf6; color: white; border-color: #7c3aed; font-weight: 600;" onclick="openQrShareModal()">
+                                📱 QR-Code
+                            </button>
+                        </div>
+                        <div id="bookmarks-list-container">
+                            <!-- Dynamische Favoriten-Liste -->
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Block 4: Gemeldete Probleme -->
                 <div>
@@ -2158,6 +2259,13 @@
     <script src="js/layers-config.js"></script>
     <script src="js/layers-loader.js"></script>
     <script src="js/pegel-analysis.js"></script>
+    <script src="js/radius-analysis.js"></script>
+    <script src="js/gemeinde-steckbrief.js"></script>
+    <script src="js/groundwater-timeseries.js"></script>
+    <script src="js/universal-search.js"></script>
+    <script src="js/qr-sharing.js"></script>
+    <script src="js/bookmarks-manager.js"></script>
+    <script src="js/pwa-offline.js"></script>
 
     <!-- jsPDF for PDF Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
