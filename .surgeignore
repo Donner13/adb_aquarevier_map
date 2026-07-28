@@ -5,6 +5,8 @@ deploy_surge.py
 get_tunnel_url.py
 server.py
 contacts.geojson
+contacts.enc
+editor_backend/
 internal.html
 .git
 .github

@@ -257,6 +257,8 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                     push_res = subprocess.run(["git", "push", repo_url, "HEAD:main"], cwd=DIRECTORY, capture_output=True, text=True)
 
                     output = (commit_res.stdout or '') + (commit_res.stderr or '') + (push_res.stdout or '') + (push_res.stderr or '')
+                    # Redact any token in URL
+                    output = re.sub(r'https://[^@]+@', 'https://[REDACTED]@', output)
                     code = push_res.returncode
 
                 if len(output) > 8000:

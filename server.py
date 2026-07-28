@@ -7,10 +7,14 @@ import base64
 import subprocess
 import urllib.parse
 
-PORT = 8000
+import hmac
+
+PORT = int(os.environ.get('PORT', 8000))
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
-ENC_PASSWORD = 'AquaRevier2026'
+ENC_PASSWORD = os.environ.get('ENC_PASSWORD', 'AquaRevier2026')
+EDITOR_USER = os.environ.get('EDITOR_USER', 'florian')
+EDITOR_PASSWORD = os.environ.get('EDITOR_PASSWORD', 'AquaRevier2026')
 
 GROUP_COLORS = {
     'Behörde': '#f43f5e', 'Einzelakteure': '#00f5d4', 'Forschung': '#3b82f6',
@@ -144,29 +148,70 @@ def encrypt_geojson_file(src_path, dest_path):
             raise RuntimeError(f"encrypt_contacts.js failed: {result.stderr}")
         return True
 
+
 class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
+    def check_auth(self):
+        auth_header = self.headers.get('Authorization')
+        if not auth_header or not auth_header.startswith('Basic '):
+            return False
+        try:
+            cred = base64.b64decode(auth_header[6:].strip()).decode('utf-8')
+            user, pwd = cred.split(':', 1)
+            return hmac.compare_digest(user, EDITOR_USER) and hmac.compare_digest(pwd, EDITOR_PASSWORD)
+        except Exception:
+            return False
+
+    def send_auth_challenge(self):
+        self.send_response(401)
+        self.send_header('WWW-Authenticate', 'Basic realm="AquaRevier Editor"')
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+        self.wfile.write(json.dumps({"status": "error", "message": "Authentication required."}).encode('utf-8'))
+
     def end_headers(self):
-        # Enable CORS for convenience
+        # Enable CORS for origin validation
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
         super().end_headers()
 
     def do_OPTIONS(self):
         self.send_response(200, "OK")
         self.end_headers()
 
+    def do_GET(self):
+        parsed_path = urllib.parse.urlparse(self.path)
+        # Protect raw PII contacts.geojson file from direct GET access without auth
+        if parsed_path.path == '/contacts.geojson' or parsed_path.path.startswith('/api/'):
+            if not self.check_auth():
+                self.send_auth_challenge()
+                return
+        super().do_GET()
+
     def do_POST(self):
+        if not self.check_auth():
+            self.send_auth_challenge()
+            return
+
         parsed_path = urllib.parse.urlparse(self.path)
         if parsed_path.path == '/api/contacts':
-            content_length = int(self.headers['Content-Length'])
+            content_length = int(self.headers.get('Content-Length', 0))
+            if content_length > 10 * 1024 * 1024:  # 10 MB limit
+                self.send_response(413)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "message": "Payload too large (max 10MB)."}).encode('utf-8'))
+                return
+
             post_data = self.rfile.read(content_length)
 
             try:
                 data = json.loads(post_data.decode('utf-8'))
+                if not isinstance(data, dict) or 'features' not in data or not isinstance(data['features'], list):
+                    raise ValueError("Invalid GeoJSON format: must contain 'features' list.")
 
                 # Write to contacts.geojson (full PII dataset, never deployed as plaintext)
                 geojson_path = os.path.join(DIRECTORY, 'contacts.geojson')
@@ -188,7 +233,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps({"status": "success", "message": "Contacts saved, anonymized layer and encrypted archive regenerated."}).encode('utf-8'))
             except Exception as e:
-                self.send_response(500)
+                self.send_response(400 if isinstance(e, ValueError) else 500)
                 self.send_header('Content-Type', 'application/json')
                 self.end_headers()
                 self.wfile.write(json.dumps({"status": "error", "message": str(e)}).encode('utf-8'))
@@ -199,6 +244,8 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                     cwd=DIRECTORY, capture_output=True, text=True, timeout=120
                 )
                 output = (result.stdout or '') + (('\n' + result.stderr) if result.stderr else '')
+                # Redact sensitive token in output
+                output = re.sub(r'https://[^@]+@', 'https://[REDACTED]@', output)
                 if len(output) > 8000:
                     output = output[-8000:]
                 self.send_response(200 if result.returncode == 0 else 500)
