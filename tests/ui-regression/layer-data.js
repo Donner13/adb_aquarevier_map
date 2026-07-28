@@ -40,7 +40,7 @@ const EAGER_LAYERS = {
   // fetched eagerly for the cross-entity search index (buildUnifiedSearchIndex),
   // even though the *map rendering* of this one is lazy - see GWM_NAME below.
   '💧 Grundwassermessstellen (ELWAS, 3700+)': 'grundwassermessstellen.geojson',
-  '⚡ H2-Industrie (Elektrolyseure NRW)': 'h2_elektrolyseure_nrw.geojson',
+  '⚡ H₂-Elektrolyseure NRW': 'h2_elektrolyseure_nrw.geojson',
 };
 
 // geojson fetched only the first time the layer is switched on

@@ -1,6 +1,6 @@
 /**
  * js/layers-config.js
- * Config-Array für alle 6 ELWAS-Punkt-Layer.
+ * Config-Array für ELWAS-Punkt-Layer und ergänzende Fachpunktdaten.
  * Jeder Eintrag beschreibt genau einen Layer: Datei, Farbe, Icon,
  * Label, ob defaultOn, ob GWM-Cluster-Spezialfall, Popup-Template.
  *
@@ -18,7 +18,7 @@ const LAYER_CONFIGS = [
     color: '#0072B2',
     className: 'klaeranlage-marker',
     groupLabel: 'Kläranlage',
-    defaultOn: true,
+    defaultOn: false,
     cluster: false,
     // windowGlobal: name of the global variable to assign geoData to (for sidebar counters)
     geoDataVar: 'klaeranlagenGeoData',
@@ -81,7 +81,7 @@ const LAYER_CONFIGS = [
     color: '#D55E00',
     className: 'stauanlage-marker',
     groupLabel: 'Stauanlage',
-    defaultOn: true,
+    defaultOn: false,
     cluster: false,
     geoDataVar: 'stauanlagenGeoData',
     layerVar: 'stauanlagenLayer',
@@ -101,7 +101,7 @@ const LAYER_CONFIGS = [
     color: '#CC79A7',
     className: 'regenbecken-marker',
     groupLabel: 'Regenbecken / Sonderbauwerk',
-    defaultOn: true,
+    defaultOn: false,
     cluster: false,
     geoDataVar: 'regenbeckenGeoData',
     layerVar: 'regenbeckenLayer',
@@ -121,7 +121,7 @@ const LAYER_CONFIGS = [
     color: '#E69F00',
     className: 'querbauwerke-marker',
     groupLabel: 'Querbauwerk / Bauwerk',
-    defaultOn: true,
+    defaultOn: false,
     cluster: false,
     geoDataVar: 'querbauwerkeGeoData',
     layerVar: 'querbauwerkeLayer',
@@ -135,21 +135,22 @@ const LAYER_CONFIGS = [
   {
     id: 'h2_elektrolyseure_nrw',
     file: 'h2_elektrolyseure_nrw.geojson',
-    name: 'H2-Industrie (Elektrolyseure NRW)',
-    overlayLabel: '⚡ H2-Industrie (Elektrolyseure NRW)',
-    icon: '⚡',
-    color: '#F0E442',
-    className: 'h2-elektrolyseure-marker',
-    groupLabel: 'H2-Elektrolyseur',
+    name: 'H2-Elektrolyseure NRW',
+    overlayLabel: '⚡ H₂-Elektrolyseure NRW',
+    icon: 'H₂',
+    color: '#7C3AED',
+    className: 'h2-elektrolyseur-marker',
+    groupLabel: 'H₂-herstellende Industrie',
     defaultOn: false,
     cluster: false,
     geoDataVar: 'h2ElektrolyseureGeoData',
     layerVar: 'h2ElektrolyseureLayer',
     popupFields: [
-      { label: '📍', expr: p => [p.gemeinde, p.kreis].filter(Boolean).join(', ') },
-      { label: '🏢 Betreiber', field: 'operator' },
-      { label: '⚡ Kapazität', field: 'capacity_mw', suffix: ' MW' },
-      { label: '📊 Status', field: 'status' }
-    ]
+      { label: '📍', field: 'address' },
+      { label: '🏢 Projektverantwortung', field: 'operator' },
+      { label: '⚡ Elektrolyseleistung', field: 'capacity' },
+      { label: '📅 Projektstatus', field: 'status' }
+    ],
+    footerTemplate: p => `Quelle: ${p.source || 'Ministerium für Wirtschaft, Industrie, Klimaschutz und Energie NRW'} (CC0), Datenstand ${p.data_date || '08.06.2026'}`
   }
 ];

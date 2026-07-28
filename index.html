@@ -2010,6 +2010,8 @@
                     <p>Regionale Institutionen im Untersuchungsgebiet</p>
                 </div>
                 <div style="display: flex; gap: 6px; align-items: center;">
+                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px 10px; font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" onclick="window.AquaI18n.toggleLanguage()">EN</button>
+                    <button id="audioToggleBtn" class="filter-btn" style="padding: 6px 10px; font-size: 13px;" title="Ton an/aus" aria-label="Audio Switcher" onclick="window.AquaAudio.toggleAudio()">🔇 Ton aus</button>
                     <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
                         ℹ️
                     </button>
@@ -2155,7 +2157,7 @@
                             <span class="counter-badge" id="cnt-layer-querbauwerke">(0/0)</span>
                             <span class="quality-badge" id="qbadge-layer-querbauwerke" title="" hidden>⚠️</span>
                         </button>
-                        <button class="filter-btn" data-layer-name="⚡ H2-Industrie (Elektrolyseure NRW)" title="H2-herstellende Industrie (Elektrolyseure NRW)">
+                        <button class="filter-btn" data-layer-name="⚡ H₂-Elektrolyseure NRW" title="H2-herstellende Industrie (Elektrolyseure NRW)">
                             <span class="swatch" style="background-color: #F0E442;"></span>
                             <span class="filter-label"><span data-i18n-key="layer_h2">H2-Industrie (NRW)</span></span>
                             <span class="counter-badge" id="cnt-layer-h2_elektrolyseure_nrw">(0/0)</span>
@@ -6653,5 +6655,11 @@ function buildUnifiedSearchIndex() {
             });
         }
     </script>
+    <!-- AquaRevier Suite Modules -->
+    <script src="js/i18n.js"></script>
+    <script src="js/error-handling.js"></script>
+    <script src="js/mascot.js"></script>
+    <script src="js/fun-features.js"></script>
+    <script src="js/audio-system.js"></script>
 </body>
 </html>

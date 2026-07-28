@@ -259,24 +259,29 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     if (loadedStandard) return;
     loadedStandard = true;
     fetch(cfg.file)
-      .then(res => res.ok ? res.json() : Promise.reject())
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status} when loading ${cfg.file}`);
+        return res.json();
+      })
       .then(data => {
         layerDataStore[cfg.id] = data;
         if (!window.layerDataStore) window.layerDataStore = {};
         window.layerDataStore[cfg.id] = data;
         if (cfg.id === 'contacts' || cfg.id === 'akteure') window.geojsonData = data;
         window[cfg.geoDataVar] = data;  // backward-compat global
-        L.geoJSON(data, {
+
+        const geoLayer = L.geoJSON(data, {
           pointToLayer: (feature, latlng) => {
             const marker = L.marker(latlng, { icon: buildIcon() });
             let extractedName = '';
-            if (feature.properties) {
-                extractedName = feature.properties.name || feature.properties.bezeichnung || feature.properties.standort || feature.properties.id || '';
+            if (feature && feature.properties) {
+                const props = feature.properties;
+                extractedName = props.name || props.bezeichnung || props.standort || props.id || '';
                 if (!extractedName) {
-                    if (feature.properties.Stammdaten && (feature.properties.Stammdaten.name || feature.properties.Stammdaten.Name)) {
-                        extractedName = feature.properties.Stammdaten.name || feature.properties.Stammdaten.Name;
-                    } else if (feature.properties.Lage && (feature.properties.Lage.name || feature.properties.Lage.Name)) {
-                        extractedName = feature.properties.Lage.name || feature.properties.Lage.Name;
+                    if (props.Stammdaten && (props.Stammdaten.name || props.Stammdaten.Name)) {
+                        extractedName = props.Stammdaten.name || props.Stammdaten.Name;
+                    } else if (props.Lage && (props.Lage.name || props.Lage.Name)) {
+                        extractedName = props.Lage.name || props.Lage.Name;
                     }
                 }
             }
@@ -295,26 +300,25 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
             return marker;
           },
           onEachFeature: (feature, layer) => {
-            layer.bindPopup(buildPopupHtml(feature.properties));
-            if (cfg.pegelStats) {
-              layer.on('click', () => {
-                if (window.analyzePegel) window.analyzePegel(feature.properties.pegel_nr);
-              });
+            if (feature && feature.properties) {
+              layer.bindPopup(buildPopupHtml(feature.properties));
+              if (cfg.pegelStats) {
+                layer.on('click', () => {
+                  if (window.analyzePegel) window.analyzePegel(feature.properties.pegel_nr);
+                });
+              }
             }
           }
-        }).addTo(layerGroup);
+        });
+        geoLayer.eachLayer(l => layerGroup.addLayer(l));
+        if (typeof updateSidebarCounters === 'function') updateSidebarCounters();
       })
       .catch(err => {
-        console.log(`${cfg.id} layer not loaded:`, err);
+        console.error(`[addGeoLayer] Layer "${cfg.id}" load error:`, err);
         if (typeof window.showToast === 'function') window.showToast(`Layer "${cfg.groupLabel}" konnte nicht geladen werden`, "⚠️");
       });
   }
 
-  if (cfg.defaultOn) {
-    loadStandardLayer();
-  } else {
-    map.on('overlayadd', function(e) {
-      if (e.layer === layerGroup) loadStandardLayer();
-    });
-  }
+  loadStandardLayer();
 }
+
