@@ -2255,15 +2255,15 @@
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>🔗 Kreis Heinsberg</span>
                             </button>
-                            <button class="filter-btn external-portal-link" onclick="window.open('https://www.geoportal-rhein-erft-kreis.de/', '_blank')" title="Geoportal Rhein-Erft-Kreis (Extern)">
+                            <button class="filter-btn external-portal-link" onclick="window.open('https://www.rhein-erft-kreis.de/', '_blank')" title="Kreis-Website Rhein-Erft-Kreis (Extern)">
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>🔗 Rhein-Erft-Kreis</span>
                             </button>
-                            <button class="filter-btn external-portal-link" onclick="window.open('https://geoportal.rhein-kreis-neuss.de/', '_blank')" title="Geoportal Rhein-Kreis Neuss (Extern)">
+                            <button class="filter-btn external-portal-link" onclick="window.open('https://www.rhein-kreis-neuss.de/', '_blank')" title="Kreis-Website Rhein-Kreis Neuss (Extern)">
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>🔗 Rhein-Kreis Neuss</span>
                             </button>
-                            <button class="filter-btn external-portal-link" onclick="window.open('https://geoportal.moenchengladbach.de/', '_blank')" title="Geoportal Mönchengladbach (Extern)">
+                            <button class="filter-btn external-portal-link" onclick="window.open('https://www.moenchengladbach.de/', '_blank')" title="Stadt-Website Mönchengladbach (Extern)">
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>🔗 Mönchengladbach</span>
                             </button>
@@ -4133,26 +4133,29 @@
             }
         }
 
+        let saveToServerTimeout = null;
         async function saveToServer() {
-            const status = document.getElementById('save-status');
-            const oldText = status.innerText;
-            status.innerText = 'Speichere auf Server...';
-            try {
-                const response = await fetch('/api/contacts', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(geojsonData)
-                });
-                const result = await response.json();
-                if (response.ok && result.status === 'success') {
-                    status.innerText = 'Auf Server gespeichert (' + new Date().toLocaleTimeString('de-DE') + ')';
-                } else {
-                    status.innerText = 'Server-Fehler: ' + (result.message || response.statusText);
+            if (saveToServerTimeout) clearTimeout(saveToServerTimeout);
+            saveToServerTimeout = setTimeout(async () => {
+                const status = document.getElementById('save-status');
+                if (status) status.innerText = 'Speichere auf Server...';
+                try {
+                    const response = await fetch('/api/contacts', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(geojsonData)
+                    });
+                    const result = await response.json();
+                    if (response.ok && result.status === 'success') {
+                        if (status) status.innerText = 'Auf Server gespeichert (' + new Date().toLocaleTimeString('de-DE') + ')';
+                    } else {
+                        if (status) status.innerText = 'Server-Fehler: ' + (result.message || response.statusText);
+                    }
+                } catch (err) {
+                    console.error(err);
+                    if (status) status.innerText = 'Lokale Änderung gesichert (Verbindungsfehler zum Server)';
                 }
-            } catch (err) {
-                console.error(err);
-                status.innerText = 'Lokale Änderung gesichert (Verbindungsfehler zum Server)';
-            }
+            }, 500);
         }
 
         // --- Editor state & helpers ---
@@ -4358,10 +4361,10 @@
                 const result = await response.json();
                 if (response.ok && result.status === 'success') {
                     status.innerText = 'Erfolgreich veröffentlicht!';
-                    alert('Veröffentlichung abgeschlossen:\n' + result.output);
+                    alert('Veröffentlichung abgeschlossen:\n' + (result.output || result.message));
                 } else {
                     status.innerText = 'Veröffentlichung fehlgeschlagen!';
-                    alert('Fehler:\n' + result.output);
+                    alert('Fehler:\n' + (result.output || result.message || 'Unbekannter Fehler'));
                 }
             } catch (err) {
                 console.error(err);

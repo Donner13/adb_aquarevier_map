@@ -142,7 +142,7 @@
                 if (dist <= radiusMeters) {
                     const p = f.properties || {};
                     const name = p.name || p.institution || p.name_anonymized || 'Akteur';
-                    const group = p.gruppe || 'Akteure';
+                    const group = p.group || p.gruppe || p.kategorie || 'Akteure';
                     addHit(`🤝 Akteure (${group})`, {
                         name: name,
                         sub: p.ort || p.stadt || p.typ || '',

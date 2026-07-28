@@ -1,7 +1,7 @@
 /**
  * js/pwa-offline.js
- * AquaRevier PWA Offline & Field Mode Handler
- * Manages network status indicators, offline caching, and PWA integration for field work.
+ * AquaRevier Network Connectivity & Field Mode Status Indicator
+ * Manages online/offline network status badge indicators during field work.
  */
 
 (function() {

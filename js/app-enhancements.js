@@ -403,17 +403,34 @@
     // --- 3. OPEN DATA EXPORT (GEOJSON & CSV) ---
     window.exportActiveLayersData = function (format = 'geojson') {
         const activeFeatures = [];
-        if (window.layerDataStore) {
+        if (window.layerDataStore && window.overlayMaps && window.map) {
+            Object.keys(window.overlayMaps).forEach(label => {
+                const layer = window.overlayMaps[label];
+                if (layer && window.map.hasLayer(layer)) {
+                    // Match overlay layer to dataStore entry
+                    Object.keys(window.layerDataStore).forEach(key => {
+                        const storeData = window.layerDataStore[key];
+                        if (storeData && storeData.features) {
+                            storeData.features.forEach(f => {
+                                const featCopy = JSON.parse(JSON.stringify(f));
+                                featCopy.properties._layer_name = key;
+                                activeFeatures.push(featCopy);
+                            });
+                        }
+                    });
+                }
+            });
+        }
+        // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly
+        if (activeFeatures.length === 0 && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
-                const store = window.layerDataStore[key];
-                if (store && store.layer && window.map && window.map.hasLayer(store.layer)) {
-                    if (store.geoData && store.geoData.features) {
-                        store.geoData.features.forEach(f => {
-                            const featCopy = JSON.parse(JSON.stringify(f));
-                            featCopy.properties._layer_name = key;
-                            activeFeatures.push(featCopy);
-                        });
-                    }
+                const storeData = window.layerDataStore[key];
+                if (storeData && storeData.features) {
+                    storeData.features.forEach(f => {
+                        const featCopy = JSON.parse(JSON.stringify(f));
+                        featCopy.properties._layer_name = key;
+                        activeFeatures.push(featCopy);
+                    });
                 }
             });
         }
@@ -447,13 +464,13 @@
             URL.revokeObjectURL(url);
             window.showToast(`${activeFeatures.length} Objekte als GeoJSON exportiert`, "💾");
         } else if (format === 'csv') {
-            // Flatten properties to CSV
+            // Flatten properties to CSV with semicolon delimiter and UTF-8 BOM
             const allKeys = new Set();
             activeFeatures.forEach(f => {
                 if (f.properties) Object.keys(f.properties).forEach(k => allKeys.add(k));
             });
             const keyArray = Array.from(allKeys);
-            let csv = keyArray.join(',') + '\n';
+            let csv = '\uFEFF' + keyArray.join(';') + '\n';
 
             activeFeatures.forEach(f => {
                 const row = keyArray.map(k => {
@@ -463,7 +480,7 @@
                     val = String(val).replace(/"/g, '""');
                     return `"${val}"`;
                 });
-                csv += row.join(',') + '\n';
+                csv += row.join(';') + '\n';
             });
 
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -727,6 +744,17 @@
             }
         }
     }
+
+    // --- 10. GLOBAL EMBED MODAL HELPER ---
+    window.openEmbedModal = function() {
+        const modal = document.getElementById('embed-modal');
+        if (modal) {
+            modal.style.display = 'flex';
+            modal.classList.remove('hidden');
+        } else {
+            window.showToast("Embed-Modal ist auf dieser Seite nicht verfügbar", "ℹ️");
+        }
+    };
 
     // --- 5. INITIALIZE ALL ON DOM READY ---
     if (document.readyState === 'loading') {

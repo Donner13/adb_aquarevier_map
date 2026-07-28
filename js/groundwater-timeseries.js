@@ -13,8 +13,9 @@
     window.timeSeriesMarkersGroup = null;
 
     /**
-     * Deterministic pseudo-random delta generator for historical simulation.
-     * Uses station ID / name to generate repeatable, smooth multi-year trends.
+     * Simulation trend model generator (SIMULATION / HYDROLOGICAL MODEL).
+     * Clarification: Real time-series measurement datasets (2000-2030) are not present in the static GeoJSON layer.
+     * Values are modeled trends for demonstration/scenario simulation.
      */
     function getStationDelta(stationId, year) {
         let hash = 0;
@@ -113,9 +114,9 @@
                 fillOpacity: 0.8
             }).bindTooltip(`
                 <div style="font-size: 11px;">
-                    <b>${escapeHtml(p.name || 'Messstelle')}</b><br>
-                    Jahr: <b>${year}</b><br>
-                    Grundwasser-Delta: <b style="color:${color};">${delta >= 0 ? '+' : ''}${delta} m</b>
+                    <b>${escapeHtml(p.name || 'Messstelle')}</b> <span style="background:#e0f2fe; color:#0369a1; font-size:9px; padding:1px 4px; border-radius:3px; font-weight:600;">SIMULATION</span><br>
+                    Modelljahr: <b>${year}</b><br>
+                    Simuliertes Delta: <b style="color:${color};">${delta >= 0 ? '+' : ''}${delta} m</b>
                 </div>
             `, { direction: 'top', offset: [0, -6] });
 
@@ -128,17 +129,21 @@
             if (totalStations === 0) {
                 statsSummary.innerHTML = `
                     <div style="font-size: 11px; color: #64748b; text-align: center; padding: 4px;">
-                        Aktiviere den Layer "Grundwassermessstellen", um 3.700+ Stations-Zeitreihen anzuzeigen.
+                        <span style="background:#fef3c7; color:#92400e; font-size:10px; padding:2px 6px; border-radius:4px; font-weight:600; display:inline-block; margin-bottom:4px;">⚠️ HYDROLOGISCHE SIMULATION</span><br>
+                        Aktiviere den Layer "Grundwassermessstellen", um Stations-Modellreihen (2000-2030) anzuzeigen.
                     </div>
                 `;
             } else {
                 const avgDelta = (deltaSum / totalStations).toFixed(1);
                 const avgColor = getDeltaColor(parseFloat(avgDelta));
                 statsSummary.innerHTML = `
+                    <div style="background:#fef3c7; color:#92400e; font-size:9.5px; padding:2px 4px; border-radius:3px; text-align:center; font-weight:600; margin-bottom:4px;">
+                        ⚠️ Trendmodell / Modellierte Werte (Keine Echtdaten-Zeitreihe)
+                    </div>
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; text-align: center; font-size: 11px;">
                         <div style="background: #f8fafc; padding: 4px; border-radius: 4px; border: 1px solid #e2e8f0;">
                             <div style="font-weight: 700; color: ${avgColor};">${avgDelta >= 0 ? '+' : ''}${avgDelta} m</div>
-                            <div style="font-size: 9.5px; color: #64748b;">Ø Delta</div>
+                            <div style="font-size: 9.5px; color: #64748b;">Ø Sim. Delta</div>
                         </div>
                         <div style="background: #f8fafc; padding: 4px; border-radius: 4px; border: 1px solid #e2e8f0;">
                             <div style="font-weight: 700; color: #2563eb;">${risingCount}</div>

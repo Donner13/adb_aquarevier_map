@@ -2661,8 +2661,8 @@
         });
 
         // 3. Base Map: WebAtlasDE NRW (Official Base Map from Geobasis NRW)
-        const baseWebAtlas = L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_webatlasde", {
-            layers: 'webatlasde',
+        const baseWebAtlas = L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_webatlasde_graustufen", {
+            layers: 'wmts_webatlasde_graustufen',
             format: 'image/png',
             transparent: false,
             attribution: "Geobasis NRW"

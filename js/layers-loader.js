@@ -191,7 +191,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
           layerDataStore[cfg.id] = data;
           if (!window.layerDataStore) window.layerDataStore = {};
           window.layerDataStore[cfg.id] = data;
-          window.geojsonData = data;
+          if (cfg.id === 'contacts' || cfg.id === 'akteure') window.geojsonData = data;
           window[cfg.geoDataVar] = data;  // backward-compat global
           const markers = L.geoJSON(data, {
             pointToLayer: (feature, latlng) => {
@@ -255,7 +255,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       layerDataStore[cfg.id] = data;
       if (!window.layerDataStore) window.layerDataStore = {};
       window.layerDataStore[cfg.id] = data;
-      window.geojsonData = data;
+      if (cfg.id === 'contacts' || cfg.id === 'akteure') window.geojsonData = data;
       window[cfg.geoDataVar] = data;  // backward-compat global
       L.geoJSON(data, {
         pointToLayer: (feature, latlng) => {

@@ -107,7 +107,10 @@
             if (!f || !f.properties) return;
             const p = f.properties;
             const gName = (p.gemeinde || p.stadt || p.ort || '').toLowerCase().trim();
-            if (gName === targetName || (p.name && p.name.toLowerCase().includes(targetName))) {
+            const kName = (p.kreis || p.landkreis || '').toLowerCase().trim();
+            const isNameMatch = gName === targetName || (p.name && p.name.toLowerCase().includes(targetName));
+            const isKreisMatch = kName && dossier.kreis && kName.includes(dossier.kreis.toLowerCase().replace('kreis ', '').trim());
+            if (isNameMatch || isKreisMatch) {
                 if (p.kreis && dossier.kreis === 'Rheinisches Revier') {
                     dossier.kreis = p.kreis;
                 }

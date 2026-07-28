@@ -195,24 +195,63 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             return
         parsed_path = urllib.parse.urlparse(self.path)
         if parsed_path.path == '/api/contacts':
-            content_length = int(self.headers['Content-Length'])
-            post_data = self.rfile.read(content_length)
-
             try:
+                cl_header = self.headers.get('Content-Length')
+                if not cl_header:
+                    self.send_response(400)
+                    self.send_header('Content-Type', 'application/json')
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"status": "error", "message": "Missing Content-Length header"}).encode('utf-8'))
+                    return
+                content_length = int(cl_header)
+                post_data = self.rfile.read(content_length)
                 data = json.loads(post_data.decode('utf-8'))
 
-                # Write to contacts.geojson (full PII dataset, never deployed as plaintext)
-                geojson_path = os.path.join(DIRECTORY, 'contacts.geojson')
-                with open(geojson_path, 'w', encoding='utf-8') as f:
-                    json.dump(data, f, indent=2, ensure_ascii=False)
+                # Validation check for GeoJSON FeatureCollection
+                if not isinstance(data, dict) or data.get('type') != 'FeatureCollection' or not isinstance(data.get('features'), list):
+                    self.send_response(400)
+                    self.send_header('Content-Type', 'application/json')
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"status": "error", "message": "Invalid GeoJSON FeatureCollection"}).encode('utf-8'))
+                    return
 
-                # Regenerate public-safe anonymized layer used by index.html
+                # Validate feature geometry coordinates
+                for feat in data.get('features', []):
+                    geom = feat.get('geometry')
+                    if geom:
+                        coords = geom.get('coordinates')
+                        if not coords or not isinstance(coords, list) or len(coords) < 2 or any(c is None or not isinstance(c, (int, float)) for c in coords[:2]):
+                            self.send_response(400)
+                            self.send_header('Content-Type', 'application/json')
+                            self.end_headers()
+                            self.wfile.write(json.dumps({"status": "error", "message": "Invalid geometry coordinates found in feature"}).encode('utf-8'))
+                            return
+
+                geojson_path = os.path.join(DIRECTORY, 'contacts.geojson')
+
+                # Create backup before saving
+                if os.path.exists(geojson_path):
+                    backup_path = geojson_path + '.bak'
+                    try:
+                        shutil.copy2(geojson_path, backup_path)
+                    except Exception:
+                        pass
+
+                # Atomic write to temporary file
+                tmp_geojson = geojson_path + '.tmp'
+                with open(tmp_geojson, 'w', encoding='utf-8') as f:
+                    json.dump(data, f, indent=2, ensure_ascii=False)
+                os.replace(tmp_geojson, geojson_path)
+
+                # Regenerate public-safe anonymized layer
                 anon_path = os.path.join(DIRECTORY, 'contacts_anonymized.geojson')
                 anonymized = build_anonymized_geojson(data)
-                with open(anon_path, 'w', encoding='utf-8') as f:
+                tmp_anon = anon_path + '.tmp'
+                with open(tmp_anon, 'w', encoding='utf-8') as f:
                     json.dump(anonymized, f, indent=2, ensure_ascii=False)
+                os.replace(tmp_anon, anon_path)
 
-                # Regenerate encrypted archive used by internal.html
+                # Regenerate encrypted archive
                 enc_path = os.path.join(DIRECTORY, 'contacts.enc')
                 encrypt_geojson_file(geojson_path, enc_path)
 
@@ -228,13 +267,6 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         elif parsed_path.path == '/api/deploy':
             try:
                 # Do git push
-                import subprocess
-
-                dry_run = os.environ.get("DRY_RUN", "false").lower() == "true"
-                git_token = os.environ.get("GIT_PUSH_TOKEN")
-
-                if dry_run:
-                    output = "DRY RUN: skipping git push"
                     code = 0
                 else:
                     if not git_token:

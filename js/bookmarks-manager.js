@@ -17,7 +17,11 @@
     };
 
     window.saveBookmark = function(title) {
-        if (!title || typeof map === 'undefined') return;
+        if (!title || !title.trim()) {
+            if (typeof window.showToast === 'function') window.showToast("Lesezeichen-Erstellung abgebrochen", "ℹ️");
+            return;
+        }
+        if (typeof map === 'undefined') return;
         const center = map.getCenter();
         const zoom = map.getZoom();
 
@@ -34,6 +38,7 @@
         bookmarks.push(newBookmark);
         localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
         window.renderBookmarksList();
+        if (typeof window.showToast === 'function') window.showToast(`Lesezeichen "${title.trim()}" gespeichert`, "🔖");
     };
 
     window.deleteBookmark = function(id) {
