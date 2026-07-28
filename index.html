@@ -2007,19 +2007,21 @@
                     <h1>Akteure - AquaRevier</h1>
                     <p>Regionale Institutionen im Untersuchungsgebiet</p>
                 </div>
-                <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; margin-right: 8px;" title="Laien-Modus: Fachbegriffe erklären">
-                    ℹ️
-                </button>
-                <button id="presentation-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; margin-right: 8px;" title="Präsentationsmodus starten (Beamer)">
-                🎥
-            </button>
-                <button id="contrast-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
-                    ◐
-                </button>
-                        <button id="replay-tour-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; margin-left: 5px;" title="Tour erneut starten" onclick="showRoleModal()">🎓</button>
-            <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln">
-                    🌙
-                </button>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
+                        ℹ️
+                    </button>
+                    <button id="presentation-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Präsentationsmodus starten (Beamer)" aria-label="Präsentationsmodus starten">
+                        🎥
+                    </button>
+                    <button id="contrast-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
+                        ◐
+                    </button>
+                    <button id="replay-tour-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Tour erneut starten" aria-label="Einführungstour erneut starten" onclick="showRoleModal()">🎓</button>
+                    <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln" aria-label="Farbschema umschalten">
+                        🌙
+                    </button>
+                </div>
             </div>
             
             <div class="sidebar-content">
@@ -2660,12 +2662,12 @@
             crossOrigin: 'anonymous'
         });
 
-        // 3. Base Map: WebAtlasDE NRW (Official Base Map from Geobasis NRW)
-        const baseWebAtlas = L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_webatlasde_graustufen", {
-            layers: 'wmts_webatlasde_graustufen',
+        // 3. Base Map: TopPlusOpen (Offizielle Deutschlandkarte BKG / Geodatenzentrum)
+        const baseWebAtlas = L.tileLayer.wms("https://sgx.geodatenzentrum.de/wms_topplus_open", {
+            layers: 'web',
             format: 'image/png',
             transparent: false,
-            attribution: "Geobasis NRW"
+            attribution: "&copy; BKG / Geodatenzentrum"
         });
 
         // 4. Overlays: NRW Administrative Boundaries (Landkreisgrenzen & Landesgrenze)
@@ -2962,7 +2964,29 @@
         map.getPane('riverLabelPane').style.zIndex = 550;
         map.getPane('riverLabelPane').style.pointerEvents = 'none';
         let riverGeoJson = null;
+        let riverLoaded = false;
         const riverLayer = L.layerGroup().addTo(map);
+
+        function loadRiverLayer() {
+            if (riverLoaded) return;
+            riverLoaded = true;
+            fetch('gewaesser_rur_official.geojson')
+                .then(res => res.ok ? res.json() : Promise.reject())
+                .then(data => {
+                    riverGeoJson = data;
+                    drawRivers();
+                    if (!map.hasLayer(riverLayer)) riverLayer.addTo(map);
+                })
+                .catch(err => {
+                    console.log("River layer not loaded:", err);
+                    if (typeof window.showToast === 'function') window.showToast("Gewässernetz-Layer konnte nicht geladen werden", "⚠️");
+                });
+        }
+        // Standardmäßig sichtbar (wie vor der Lazy-Load-Umstellung) -> sofort laden,
+        // NICHT erst bei Toggle. Der overlayadd-Listener unten bleibt als Re-Trigger-
+        // Absicherung (z.B. nach programmatischem removeLayer/addLayer), ist wegen des
+        // riverLoaded-Guards aber ein No-Op im Normalfall.
+        loadRiverLayer();
 
         function drawRivers() {
             if (!riverGeoJson) return;
@@ -3025,16 +3049,9 @@
             }).addTo(riverLayer);
         }
 
-        fetch('gewaesser_rur_official.geojson')
-            .then(res => {
-                if (res.ok) return res.json();
-                throw new Error("Could not load official rivers");
-            })
-            .then(data => {
-                riverGeoJson = data;
-                drawRivers();
-            })
-            .catch(err => console.log("Official river layer not loaded:", err));
+        map.on('overlayadd', function(e) {
+            if (e.layer === riverLayer) loadRiverLayer();
+        });
 
         // 9b. Teilgewässer (Kanalisiert) Layer - Loaded from Shapefiles in Blue
         const tgKanalisiertLayer = L.layerGroup();

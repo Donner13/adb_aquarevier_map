@@ -249,52 +249,67 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
   window[cfg.layerVar] = layerGroup;
   overlayMaps[cfg.overlayLabel] = layerGroup;
 
-  fetch(cfg.file)
-    .then(res => res.ok ? res.json() : Promise.reject())
-    .then(data => {
-      layerDataStore[cfg.id] = data;
-      if (!window.layerDataStore) window.layerDataStore = {};
-      window.layerDataStore[cfg.id] = data;
-      if (cfg.id === 'contacts' || cfg.id === 'akteure') window.geojsonData = data;
-      window[cfg.geoDataVar] = data;  // backward-compat global
-      L.geoJSON(data, {
-        pointToLayer: (feature, latlng) => {
-          const marker = L.marker(latlng, { icon: buildIcon() });
-          // Safely extract name from nested blocks like Stammdaten or Lage if they exist
-          let extractedName = '';
-          if (feature.properties) {
-              extractedName = feature.properties.name || feature.properties.bezeichnung || feature.properties.standort || feature.properties.id || '';
-              if (!extractedName) {
-                  if (feature.properties.Stammdaten && (feature.properties.Stammdaten.name || feature.properties.Stammdaten.Name)) {
-                      extractedName = feature.properties.Stammdaten.name || feature.properties.Stammdaten.Name;
-                  } else if (feature.properties.Lage && (feature.properties.Lage.name || feature.properties.Lage.Name)) {
-                      extractedName = feature.properties.Lage.name || feature.properties.Lage.Name;
-                  }
-              }
-          }
-          const nameProp = extractedName;
-          const ariaLabel = nameProp ? `${cfg.groupLabel}: ${nameProp}` : `${cfg.groupLabel} Standort`;
-          if (typeof makeMarkerAccessible === 'function') {
-            return makeMarkerAccessible(marker, ariaLabel);
-          }
-          marker.on('add', () => {
-              const el = marker.getElement();
-              if (el) {
-                  el.setAttribute('role', 'button');
-                  el.setAttribute('aria-label', ariaLabel);
-              }
-          });
-          return marker;
-        },
-        onEachFeature: (feature, layer) => {
-          layer.bindPopup(buildPopupHtml(feature.properties));
-          if (cfg.pegelStats) {
-            layer.on('click', () => {
-              if (window.analyzePegel) window.analyzePegel(feature.properties.pegel_nr);
+  let loadedStandard = false;
+  function loadStandardLayer() {
+    if (loadedStandard) return;
+    loadedStandard = true;
+    fetch(cfg.file)
+      .then(res => res.ok ? res.json() : Promise.reject())
+      .then(data => {
+        layerDataStore[cfg.id] = data;
+        if (!window.layerDataStore) window.layerDataStore = {};
+        window.layerDataStore[cfg.id] = data;
+        if (cfg.id === 'contacts' || cfg.id === 'akteure') window.geojsonData = data;
+        window[cfg.geoDataVar] = data;  // backward-compat global
+        L.geoJSON(data, {
+          pointToLayer: (feature, latlng) => {
+            const marker = L.marker(latlng, { icon: buildIcon() });
+            let extractedName = '';
+            if (feature.properties) {
+                extractedName = feature.properties.name || feature.properties.bezeichnung || feature.properties.standort || feature.properties.id || '';
+                if (!extractedName) {
+                    if (feature.properties.Stammdaten && (feature.properties.Stammdaten.name || feature.properties.Stammdaten.Name)) {
+                        extractedName = feature.properties.Stammdaten.name || feature.properties.Stammdaten.Name;
+                    } else if (feature.properties.Lage && (feature.properties.Lage.name || feature.properties.Lage.Name)) {
+                        extractedName = feature.properties.Lage.name || feature.properties.Lage.Name;
+                    }
+                }
+            }
+            const nameProp = extractedName;
+            const ariaLabel = nameProp ? `${cfg.groupLabel}: ${nameProp}` : `${cfg.groupLabel} Standort`;
+            if (typeof makeMarkerAccessible === 'function') {
+              return makeMarkerAccessible(marker, ariaLabel);
+            }
+            marker.on('add', () => {
+                const el = marker.getElement();
+                if (el) {
+                    el.setAttribute('role', 'button');
+                    el.setAttribute('aria-label', ariaLabel);
+                }
             });
+            return marker;
+          },
+          onEachFeature: (feature, layer) => {
+            layer.bindPopup(buildPopupHtml(feature.properties));
+            if (cfg.pegelStats) {
+              layer.on('click', () => {
+                if (window.analyzePegel) window.analyzePegel(feature.properties.pegel_nr);
+              });
+            }
           }
-        }
-      }).addTo(layerGroup);
-    })
-    .catch(err => console.log(`${cfg.id} layer not loaded:`, err));
+        }).addTo(layerGroup);
+      })
+      .catch(err => {
+        console.log(`${cfg.id} layer not loaded:`, err);
+        if (typeof window.showToast === 'function') window.showToast(`Layer "${cfg.groupLabel}" konnte nicht geladen werden`, "⚠️");
+      });
+  }
+
+  if (cfg.defaultOn) {
+    loadStandardLayer();
+  } else {
+    map.on('overlayadd', function(e) {
+      if (e.layer === layerGroup) loadStandardLayer();
+    });
+  }
 }

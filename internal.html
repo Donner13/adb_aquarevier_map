@@ -1580,19 +1580,21 @@
                     <h1>🔒 INTERN - Editor</h1>
                     <p>Volle Daten, direkt bearbeitbar</p>
                 </div>
-                <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; margin-right: 8px;" title="Laien-Modus: Fachbegriffe erklären">
-                    ℹ️
-                </button>
-                <button id="presentation-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; margin-right: 8px;" title="Präsentationsmodus starten (Beamer)">
-                    🎥
-                </button>
-                <button id="contrast-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
-                    ◐
-                </button>
-                            <button id="replay-tour-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; margin-left: 5px;" title="Tour erneut starten" onclick="showRoleModal()">🎓</button>
-            <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 14px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln">
-                    🌙
-                </button>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
+                        ℹ️
+                    </button>
+                    <button id="presentation-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Präsentationsmodus starten (Beamer)" aria-label="Präsentationsmodus starten">
+                        🎥
+                    </button>
+                    <button id="contrast-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
+                        ◐
+                    </button>
+                    <button id="replay-tour-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Tour erneut starten" aria-label="Einführungstour erneut starten" onclick="showRoleModal()">🎓</button>
+                    <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln" aria-label="Farbschema umschalten">
+                        🌙
+                    </button>
+                </div>
             </div>
             
             <div class="sidebar-content">
@@ -2446,12 +2448,12 @@
             crossOrigin: 'anonymous'
         });
 
-        // 3. Base Map: WebAtlasDE NRW (Official Base Map from Geobasis NRW)
-        const baseWebAtlas = L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_webatlasde", {
-            layers: 'webatlasde',
+        // 3. Base Map: TopPlusOpen (Offizielle Deutschlandkarte BKG / Geodatenzentrum)
+        const baseWebAtlas = L.tileLayer.wms("https://sgx.geodatenzentrum.de/wms_topplus_open", {
+            layers: 'web',
             format: 'image/png',
             transparent: false,
-            attribution: "Geobasis NRW"
+            attribution: "&copy; BKG / Geodatenzentrum"
         });
 
         // 4. Overlays: NRW Administrative Boundaries (Landkreisgrenzen & Landesgrenze)
@@ -4000,6 +4002,7 @@
                             document.getElementById('save-status').innerText = 'Anonymisierte Daten geladen (Vorschau-Modus).';
                         }
                     }
+                }
                 if (geojsonData) {
                     window.geojsonData = geojsonData;
                     if (!window.layerDataStore) window.layerDataStore = {};
