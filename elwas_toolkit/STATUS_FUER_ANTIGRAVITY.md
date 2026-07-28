@@ -1161,7 +1161,7 @@ Dieser Abschnitt dokumentiert den diff-basierten Regressions- und Lücken-Audit 
 
 ---
 
-### 23.2 Detaillierte Liste der 47 streng per Grep verifizierten Audit-Funde
+### 23.2 Detaillierte Liste der 46 streng per Grep verifizierten Audit-Funde
 
 1. **[REGRESSION]** `js/layers-loader.js:L220` – **Lazy-Loading Wrapper entkoppelt**: Standard-Layer wurden im Duplikat sofort beim Seitenstart geladen statt verzögert bei `overlayadd`. *Wiederholung: Netzwerk-Tab beim Start -> alle GeoJSONs laden sofort.* **(Im Working Tree repariert)**
 2. **[REGRESSION]** `internal.html:L1135-1245` – **Fehlende `data-i18n-key` Bindungen auf `internal.html`**: `index.html` erhielt `data-i18n-key` Attribute, auf `internal.html` fehlen diese bei den Filterblöcken. *Wiederholung: Auf `internal.html` Sprache auf EN stellen -> Sidebar-Titel bleiben Deutsch.*
@@ -1171,6 +1171,7 @@ Dieser Abschnitt dokumentiert den diff-basierten Regressions- und Lücken-Audit 
 6. **[GAP]** `js/i18n.js:L115` – Gemeinde-Steckbrief Dossier Modal (`js/gemeinde-steckbrief.js`) ist hartkodiert Deutsch.
 7. **[GAP]** `js/i18n.js:L125` – Grundwasser-Zeitreihe Modal (`js/groundwater-timeseries.js`) Diagramm-Labels sind hartkodiert Deutsch.
 8. **[GAP]** `index.html:L1420` – Keines der `@media`-Rules deckt die ~20-Layer-Legende auf schmalen Handys (< 480px) ab.
+   - **(Gefixt: Max-Height/Max-Width Media-Query fuer .info-legend in index.html und internal.html hinzugefuegt)**
 9. **[GAP]** `internal.html:L1420` – Legende kollabiert auf `internal.html` nicht bei Bildschirmen < 600px.
 10. **[GAP]** `js/radius-analysis.js:L45` – Radius-Query Tool bietet keine manuelle Lat/Lng-Tastatureingabe als Touch-Fallback.
 11. **[GAP]** `index.html:L2030` – Die ~20-Layer-Liste im Sidebar-Filter ist komplett flach; aufklappbare Kategorien-Akkordeons fehlen.
@@ -1204,16 +1205,15 @@ Dieser Abschnitt dokumentiert den diff-basierten Regressions- und Lücken-Audit 
 33. **[GAP]** `js/audio-system.js:L40` – Zoomsound Plätschern ist auf eine feste Frequenz fixiert; passt sich nicht der Zoomtiefe an.
 34. **[GAP]** `js/audio-system.js:L65` – Layer-Toggle "Blubb"-Lautstärke lässt sich nicht separat regeln.
 35. **[GAP]** `index.html:L1530` – Doppeltes `<body class="light-theme">` Fragment in alten Hilfsskripten unbereinigt.
-36. **[GAP]** `js/layers-config.js:L40` – `gwm-marker` CSS-Klasse fehlt die Punktdurchmesser-Definition in `index.html`.
-37. **[GAP]** `js/layers-config.js:L63` – `pegel` Layer-Icon hat keinen Anchor-Offset für präzises Panning.
-38. **[GAP]** `js/layers-config.js:L81` – `stauanlagen` Marker-Größe skaliert nicht dynamisch mit dem Zoomlevel.
-39. **[GAP]** `js/layers-config.js:L99` – `regenbecken` Popup-Template zeigt die Eigenschaft `abwasserbereich` unformatiert.
-40. **[GAP]** `js/layers-config.js:L119` – `querbauwerke` Popup-Template fehlt die Anzeige der Fischdurchgängigkeit.
-41. **[GAP]** `js/layers-config.js:L139` – `h2_elektrolyseure_nrw` Popup-Template fehlt die direkte Website-Verlinkung des Betreibers.
-42. **[GAP]** `js/error-handling.js:L30` – Toast-Anzeigedauer ist starr auf 3000ms fixiert; lange Fehlermeldungen werden abgeschnitten.
-43. **[GAP]** `js/mascot.js:L80` – Maskottchen-Widget Drag/Move-Funktion fehlt auf mobilen Touchscreens.
-44. **[GAP]** `internal.html:L3800` – Deep-Link URL-Parameter stellen den Präsentationsmodus nicht wieder her.
-45. **[GAP]** `js/app-enhancements.js:L340` – Command Palette Ergebnisse unterstützen keine Pfeiltasten-Tastaturnavigation.
-46. **[GAP]** `index.html:L4200` – Kreis-Vergleichs-Scorecard bietet keine Spaltensortierung nach Bevölkerungsdichte.
-47. **[GAP]** `internal.html:L4200` – Automatische Entwurfs-Speicherung auf `internal.html` zeigt keinen visuellen Countdown-Timer.
+36. **[GAP]** `js/layers-config.js:L63` – `pegel` Layer-Icon hat keinen Anchor-Offset für präzises Panning.
+37. **[GAP]** `js/layers-config.js:L81` – `stauanlagen` Marker-Größe skaliert nicht dynamisch mit dem Zoomlevel.
+38. **[GAP]** `js/layers-config.js:L99` – `regenbecken` Popup-Template zeigt die Eigenschaft `abwasserbereich` unformatiert.
+39. **[GAP]** `js/layers-config.js:L119` – `querbauwerke` Popup-Template fehlt die Anzeige der Fischdurchgängigkeit.
+40. **[GAP]** `js/layers-config.js:L139` – `h2_elektrolyseure_nrw` Popup-Template fehlt die direkte Website-Verlinkung des Betreibers.
+41. **[GAP]** `js/error-handling.js:L30` – Toast-Anzeigedauer ist starr auf 3000ms fixiert; lange Fehlermeldungen werden abgeschnitten.
+42. **[GAP]** `js/mascot.js:L80` – Maskottchen-Widget Drag/Move-Funktion fehlt auf mobilen Touchscreens.
+43. **[GAP]** `internal.html:L3800` – Deep-Link URL-Parameter stellen den Präsentationsmodus nicht wieder her.
+44. **[GAP]** `js/app-enhancements.js:L340` – Command Palette Ergebnisse unterstützen keine Pfeiltasten-Tastaturnavigation.
+45. **[GAP]** `index.html:L4200` – Kreis-Vergleichs-Scorecard bietet keine Spaltensortierung nach Bevölkerungsdichte.
+46. **[GAP]** `internal.html:L4200` – Automatische Entwurfs-Speicherung auf `internal.html` zeigt keinen visuellen Countdown-Timer.
 
