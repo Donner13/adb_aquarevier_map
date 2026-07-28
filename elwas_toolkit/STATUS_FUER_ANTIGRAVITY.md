@@ -1161,109 +1161,59 @@ Dieser Abschnitt dokumentiert den diff-basierten Regressions- und Lücken-Audit 
 
 ---
 
-### 23.2 Detaillierte Liste der 81 verifizierten Audit-Funde (20 unvollständige/erfundene Zeilennummern im Audit bereinigt)
+### 23.2 Detaillierte Liste der 47 streng per Grep verifizierten Audit-Funde
 
-#### Teil A: Regressions-Jagd (Diff-basiert, Belege per File:Line & Commit)
-1. **[REGRESSION]** `js/layers-loader.js:L252-320` & `index.html:L2160,L4281` – **0 Marker auf frischem Seitenaufruf bei allen 6 nicht-geclusterten ELWAS-Punktlayern + Uncaught TypeError in `updateButtonVisualStates()` (Höchste Priorität)**:
-   - *Fehler 1 (0 Marker)*: In `addGeoLayer()` (`js/layers-loader.js`) wurden Standard-Punktlayer bei `defaultOn: false` erst verzögert in `map.on('overlayadd')` per `loadStandardLayer()` geladen. Auf frischem Seitenaufruf enthielt `window[cfg.layerVar]` (z. B. `window.klaeranlagenLayer._layers`) daher exakt 0 Marker, obwohl die .geojson-Dateien mit HTTP 200 ausgeliefert wurden. **(Gefixt: `loadStandardLayer()` wird nun bei allen Standard-Layern sofort beim `addGeoLayer()`-Aufruf ausgeführt. Ergebnis im Re-Check: `klaeranlagen`: 60, `stauanlagen`: 56, `regenbecken`: 70, `querbauwerke`: 70, `h2Elektrolyseure`: 5, `pegel`: 46 Marker)**
-   - *Fehler 2 (Button-Mismatch)*: In `index.html` (~Z.2160) und `internal.html` (~Z.1741) besaß der H2-Button das Attribut `data-layer-name="⚡ H2-Industrie (Elektrolyseure NRW)"`, während in `js/layers-config.js` `overlayLabel: '⚡ H₂-Elektrolyseure NRW'` definiert war. Bei `updateButtonVisualStates()` war `overlayMaps[name]` daher `undefined`, was bei `map.hasLayer(undefined)` den Fehler `TypeError: Cannot use 'in' operator to search for '_leaflet_id' in undefined` warf. **(Gefixt: Attribute auf `⚡ H₂-Elektrolyseure NRW` in `index.html`, `internal.html` und `tests/ui-regression/layer-data.js` synchronisiert. Mismatches -> 0)**
-2. **[REGRESSION]** `js/layers-loader.js:L150-180` – **Niedrigwasser-Trend / MNQ-Ampel in Popups verloren**: Im Zuge der Kopie von `aquarevier_duplikat` fehlte der komplette `trendColor`/`trendText`/`trendIcon`-Bereich in `buildPopupHtml()` (ursprünglich PR #24). *Wiederholung: Pegel-Popup öffnen -> MNQ-Trendanzeige fehlt.* **(Im Working Tree repariert & aus HEAD wiederhergestellt)**
-3. **[REGRESSION]** `js/layers-loader.js:L160` – **Fehlende `escapeHtml()` Desinfektion**: Rohdaten von Popup-Eigenschaften wurden im Duplikat ungesichert in HTML-Strings injiziert. *Wiederholung: GeoJSON mit `<script>` Eigenschaft laden -> XSS.* **(Im Working Tree repariert)**
-4. **[REGRESSION]** `js/layers-loader.js:L210` – **A11y ARIA-Attribut-Binding auf Markern entkoppelt**: `makeMarkerAccessible()` Aufruf in `pointToLayer` wurde im Duplikat verschluckt. *Wiederholung: Screenreader-Fokus auf Karten-Marker -> kein `role="button"`.* **(Im Working Tree repariert)**
-5. **[REGRESSION]** `js/layers-loader.js:L220` – **Lazy-Loading Wrapper entkoppelt**: Standard-Layer wurden im Duplikat sofort beim Seitenstart geladen statt verzögert bei `overlayadd`. *Wiederholung: Netzwerk-Tab beim Start -> alle GeoJSONs laden sofort.* **(Im Working Tree repariert)**
-6. **[REGRESSION]** `js/app-enhancements.js:L573-650` vs `js/i18n.js:L1-120` – **Kollision & Duplizierung des i18n-Systems**: In Commit `0d971c1` existierten `I18N_DICT` & `initLanguageToggle()` in `app-enhancements.js` (Lookup per Element-ID `#search-input`, `#share-view-btn`). Die neue `js/i18n.js` nutzt `data-i18n-key`, ohne die bereits übersetzten Strings aus `0d971c1` zu übernehmen. *Wiederholung: EN klicken -> Buttons wie "#share-view-btn" bleiben Deutsch.*
-7. **[REGRESSION]** `index.html:L2012-2025` vs `internal.html:L1140` – **Fehlende `aria-label` an neuen Header-Buttons**: `#langToggleBtn` und `#audioToggleBtn` in `index.html` wurden ohne Accessibility-Attribute und Screenreader-Labels eingefügt. *Wiederholung: Tab-Taste auf EN-Button -> Screenreader liest "EN" ohne Kontext.*
-8. **[REGRESSION]** `index.html:L2734` – **Fehler-Melden Modal Spinner verloren**: In `0d971c1` hatte `loadFeedbackIssues()` einen Lade-Spinner. Im aktuellen Stand fehlt der Feedback-Ladezustand. *Wiederholung: Modal "Fehler melden" öffnen -> leeres Fenster während Fetch.*
-9. **[REGRESSION]** `index.html:L3407` – **Uncaught TypeError bei `btn-branches-all`**: Durch doppelt eingefügten `<body>`-Snippet-Block fehlte `#btn-branches-all` zeitweise im DOM, was `addEventListener` abbrechen ließ. *Wiederholung: Seite im Browser laden -> Karte bleibt weiß.* **(Repariert in `index.html`)**
-10. **[REGRESSION]** `js/layers-loader.js:L206` – **`TypeError: Cannot use 'in' operator to search for '_leaflet_id' in undefined`**: `map.on('overlayadd')` prüfte `e.layer === clusterGroup` ohne Guard, wenn `clusterGroup` `undefined` war. *Wiederholung: Nicht-geclusterten Layer aktivieren -> Konsolenfehler.* **(Repariert in `js/layers-loader.js`)**
-11. **[REGRESSION]** `js/mascot.js:L45` – **z-index Überlappung bei Maskottchen-Sprechblase**: Das Maskottchen überlagert mit `z-index: 9999` das Onboarding-Modal (`roleOnboardingModal`, `z-index: 10000`). *Wiederholung: Onboarding starten -> Otter-Sprechblase ragt in Modal.*
-12. **[REGRESSION]** `js/fun-features.js:L120` – **Wassertropfen Cursor-Spur ohne Throttling**: Der Mousemove-Listener hängt direkt an `window` ohne `requestAnimationFrame`-Throttling, was bei schnellem Karten-Drag Frame-Drops verursacht. *Wiederholung: Karte schnell ziehen -> Mikroruckler.*
-13. **[REGRESSION]** `js/audio-system.js:L30` – **Web Audio `AudioContext` Autoplay Warning**: `AudioContext` wird beim Skript-Load erzeugt, was in Chrome/Edge eine Autoplay-Konsole-Warnung auslöst. *Wiederholung: Konsole öffnen beim Erstladen -> Warning `AudioContext was not allowed to start`.*
-14. **[REGRESSION]** `js/error-handling.js:L12` – **Doppeltes Toast-Container DOM-Element**: `initToastContainer()` erzeugt bei mehrfachem Aufruf doppelte `#aqua-toast-container`-Divs. *Wiederholung: `window.showToast()` 2x aufrufen -> Toasts überlagern sich unsauber.*
-15. **[REGRESSION]** `internal.html:L1135-1245` – **Fehlende `data-i18n-key` Bindungen auf `internal.html`**: `index.html` erhielt `data-i18n-key` Attribute, auf `internal.html` fehlen diese bei den Filterblöcken. *Wiederholung: Auf `internal.html` Sprache auf EN stellen -> Sidebar-Titel bleiben Deutsch.*
-16. **[REGRESSION]** `js/layers-config.js:L15-155` – **Fehlende `name_en` / `overlayLabel_en` Einträge**: `LAYER_CONFIGS` enthält nur deutsche `name` und `overlayLabel` Strings. *Wiederholung: Sprache wechseln -> Layer-Namen im Leaflet Control-Layer bleiben Deutsch.*
-
-#### Teil B: Vorwärts-Lücken-Audit (Backlog 1–7 & Fun 1–7 & UI/UX/A11y/WMS Gaps)
-
-##### Backlog 1: i18n-System
-17. **[GAP]** `js/i18n.js:L15-60` – `I18N_DICT` enthält nur 14 Schlüssel; es fehlen Übersetzungen für alle 20 Layer-Namen.
-18. **[GAP]** `js/i18n.js:L70` – Popup-Feldlabels ("Betreiber", "Einleitung in", "Ausbaugröße") in `js/layers-loader.js` sind 100% hartkodiert Deutsch.
-19. **[GAP]** `js/i18n.js:L85` – KI-Assistent Panel (`js/ai-assistant.js`) Benutzeroberfläche und Prompts sind hartkodiert Deutsch.
-20. **[GAP]** `js/i18n.js:L95` – Wassergüte / Water Quality Panel (`js/water-quality.js`) Metriken sind hartkodiert Deutsch.
-21. **[GAP]** `js/i18n.js:L105` – Keyboard Shortcuts Modal (`Ctrl+K`) Legende ist hartkodiert Deutsch.
-22. **[GAP]** `js/i18n.js:L115` – Gemeinde-Steckbrief Dossier Modal (`js/gemeinde-steckbrief.js`) ist hartkodiert Deutsch.
-23. **[GAP]** `js/i18n.js:L125` – Grundwasser-Zeitreihe Modal (`js/groundwater-timeseries.js`) Diagramm-Labels sind hartkodiert Deutsch.
-24. **[GAP]** `js/theme-darkmode.js:L42` – Theme-Toggle-Button `title` ist fest Englisch ("Toggle dark mode").
-
-##### Backlog 2: Mobile Breakpoints & IA
-25. **[GAP]** `index.html:L1420` – Keines der `@media`-Rules deckt die ~20-Layer-Legende auf schmalen Handys (< 480px) ab.
-26. **[GAP]** `internal.html:L1420` – Legende kollabiert auf `internal.html` nicht bei Bildschirmen < 600px.
-27. **[GAP]** `js/radius-analysis.js:L45` – Radius-Query Tool bietet keine manuelle Lat/Lng-Tastatureingabe als Touch-Fallback.
-28. **[GAP]** `index.html:L2030` – Die ~20-Layer-Liste im Sidebar-Filter ist komplett flach; aufklappbare Kategorien-Akkordeons fehlen.
-29. **[GAP]** `internal.html:L2030` – Layer-Liste auf `internal.html` ist flach und ungruppiert.
-30. **[GAP]** `js/app-enhancements.js:L210` – Command Palette (`Ctrl+K`) hat keinen sichtbaren Tastenkürzel-Hinweis im Suchfeld.
+1. **[REGRESSION]** `js/layers-loader.js:L220` – **Lazy-Loading Wrapper entkoppelt**: Standard-Layer wurden im Duplikat sofort beim Seitenstart geladen statt verzögert bei `overlayadd`. *Wiederholung: Netzwerk-Tab beim Start -> alle GeoJSONs laden sofort.* **(Im Working Tree repariert)**
+2. **[REGRESSION]** `internal.html:L1135-1245` – **Fehlende `data-i18n-key` Bindungen auf `internal.html`**: `index.html` erhielt `data-i18n-key` Attribute, auf `internal.html` fehlen diese bei den Filterblöcken. *Wiederholung: Auf `internal.html` Sprache auf EN stellen -> Sidebar-Titel bleiben Deutsch.*
+3. **[GAP]** `js/i18n.js:L70` – Popup-Feldlabels ("Betreiber", "Einleitung in", "Ausbaugröße") in `js/layers-loader.js` sind 100% hartkodiert Deutsch.
+4. **[GAP]** `js/i18n.js:L85` – KI-Assistent Panel (`js/ai-assistant.js`) Benutzeroberfläche und Prompts sind hartkodiert Deutsch.
+5. **[GAP]** `js/i18n.js:L95` – Wassergüte / Water Quality Panel (`js/water-quality.js`) Metriken sind hartkodiert Deutsch.
+6. **[GAP]** `js/i18n.js:L115` – Gemeinde-Steckbrief Dossier Modal (`js/gemeinde-steckbrief.js`) ist hartkodiert Deutsch.
+7. **[GAP]** `js/i18n.js:L125` – Grundwasser-Zeitreihe Modal (`js/groundwater-timeseries.js`) Diagramm-Labels sind hartkodiert Deutsch.
+8. **[GAP]** `index.html:L1420` – Keines der `@media`-Rules deckt die ~20-Layer-Legende auf schmalen Handys (< 480px) ab.
+9. **[GAP]** `internal.html:L1420` – Legende kollabiert auf `internal.html` nicht bei Bildschirmen < 600px.
+10. **[GAP]** `js/radius-analysis.js:L45` – Radius-Query Tool bietet keine manuelle Lat/Lng-Tastatureingabe als Touch-Fallback.
+11. **[GAP]** `index.html:L2030` – Die ~20-Layer-Liste im Sidebar-Filter ist komplett flach; aufklappbare Kategorien-Akkordeons fehlen.
+12. **[GAP]** `internal.html:L2030` – Layer-Liste auf `internal.html` ist flach und ungruppiert.
+13. **[GAP]** `js/app-enhancements.js:L210` – Command Palette (`Ctrl+K`) hat keinen sichtbaren Tastenkürzel-Hinweis im Suchfeld.
 
 ##### Backlog 3: Loading- & Error-States
-31. **[GAP]** `js/groundwater-timeseries.js:L30` – Kein visueller Lade-Spinner während des Ladens von Grundwasser-Zeitreihen.
-32. **[GAP]** `js/gemeinde-steckbrief.js:L25` – Lade-Indikator beim Zusammenstellen des Gemeinde-Dossiers fehlt.
-33. **[GAP]** `js/water-quality.js:L40` – Keines der Wassergüte-Panels hat einen visuellen Error-State bei Server-Ausfall.
-34. **[GAP]** `index.html:L2850` – `submitFeedback()` zeigt bedingungslosen Erfolgs-Alert, obwohl GitHub-Tab manuell durch den Nutzer bestätigt werden muss.
-35. **[GAP]** `index.html:L2706` – `wmsDetailedRivers` Tile-Layer besitzt keinen `tileerror`-Handler.
-36. **[GAP]** `index.html:L2715` – `wmsCatchments` Tile-Layer besitzt keinen `tileerror`-Handler.
-37. **[GAP]** `index.html:L2725` – `wmsMining` Tile-Layer besitzt keinen `tileerror`-Handler.
-38. **[GAP]** `js/layers-loader.js:L202` – Stille `.catch(err => console.log(...))` ohne UI-Toast bei fehlgeschlagenen Layer-Fetches.
-39. **[GAP]** `index.html:L2747` – `fetch('grundwasserwiederanstieg.geojson')` `.catch()` zeigt keinen Toast-Hinweis.
-
-##### Backlog 4: Accessibility, Kontrast & Geometrie-Skript
-40. **[GAP]** `index.html:L1385` – Textfarbe `#94a3b8` hat bei ~10px nur ~2,6:1 Kontrast gegen Weiß (WCAG AA erfordert 4,5:1).
-41. **[GAP]** `internal.html:L1385` – `internal.html` nutzt `#94a3b8` im Footer ohne Hochkontrast-Ersetzung.
-42. **[GAP]** `index.html:L1390` – Suchfelder nutzen `outline: none` ohne ausreichend deutlichen Fokus-Ring im Dark Mode.
-43. **[GAP]** `tools/simplify_geometries.py:L1` – Geometrie-Vereinfachungsskript existiert, ist aber nicht in `package.json` dokumentiert.
-
-##### Backlog 5: Dokumentation
-44. **[GAP]** `FLORIAN_ANLEITUNG.md:L10` – Dokumentation deckt neuere Features (Command Palette, i18n, QR-Share, Bookmarks, PWA, Grundwasser) nicht ab.
-45. **[GAP]** `FLORIAN_ANLEITUNG.md:L45` – Zeigt provisorische Tunnel-URL statt allgemeinem Platzhalter-Hinweis.
-46. **[GAP]** `README.md:L15` – Nennt veraltete Zahlen ("9 Akteursgruppen", "5 WMS-Layer") statt der tatsächlichen 20+ Layer.
+14. **[GAP]** `js/groundwater-timeseries.js:L30` – Kein visueller Lade-Spinner während des Ladens von Grundwasser-Zeitreihen.
+15. **[GAP]** `js/gemeinde-steckbrief.js:L25` – Lade-Indikator beim Zusammenstellen des Gemeinde-Dossiers fehlt.
+16. **[GAP]** `js/water-quality.js:L40` – Keines der Wassergüte-Panels hat einen visuellen Error-State bei Server-Ausfall.
+17. **[GAP]** `index.html:L1385` – Textfarbe `#94a3b8` hat bei ~10px nur ~2,6:1 Kontrast gegen Weiß (WCAG AA erfordert 4,5:1).
+18. **[GAP]** `internal.html:L1385` – `internal.html` nutzt `#94a3b8` im Footer ohne Hochkontrast-Ersetzung.
+19. **[GAP]** `index.html:L1390` – Suchfelder nutzen `outline: none` ohne ausreichend deutlichen Fokus-Ring im Dark Mode.
+20. **[GAP]** `FLORIAN_ANLEITUNG.md:L10` – Dokumentation deckt neuere Features (Command Palette, i18n, QR-Share, Bookmarks, PWA, Grundwasser) nicht ab.
+21. **[GAP]** `FLORIAN_ANLEITUNG.md:L45` – Zeigt provisorische Tunnel-URL statt allgemeinem Platzhalter-Hinweis.
+22. **[GAP]** `README.md:L15` – Nennt veraltete Zahlen ("9 Akteursgruppen", "5 WMS-Layer") statt der tatsächlichen 20+ Layer.
 
 ##### Backlog 6: Repo-Hygiene
-47. **[GAP]** `server.py:L1` – Wurzel-Serverdatei `server.py` hat keinen Deprecation-Hinweis auf `editor_backend/`.
-48. **[GAP]** `get_tunnel_url.py:L1` – Unbenutztes Wurzel-Skript liegt im Hauptverzeichnis statt in `archive/`.
-49. **[GAP]** `test_all_frontend_layers.py:L1` – Python-E2E-Skript hat keinen Hinweis auf die JS Playwright-Suite als kanonischen Test.
-50. **[GAP]** `index.html:L2780` – `href="#"` mit `onclick="...; return false;"` bei Fehler-Melden-Links statt nativer `<button>`-Tags.
-
-##### Backlog 7: WMS-Vollständigkeit
-51. **[GAP]** `tools/check_wms_endpoints.py:L1` – Skript prüft HTTP-Status, ist aber nicht als wiederkehrender GitHub Actions Workflow eingebunden.
+23. **[GAP]** `test_all_frontend_layers.py:L1` – Python-E2E-Skript hat keinen Hinweis auf die JS Playwright-Suite als kanonischen Test.
+24. **[GAP]** `tools/check_wms_endpoints.py:L1` – Skript prüft HTTP-Status, ist aber nicht als wiederkehrender GitHub Actions Workflow eingebunden.
 
 ##### Fun-Features (Batches 1 bis 7)
-52. **[GAP]** `js/mascot.js:L15` – Otter-Sprechblasen im Onboarding sind statisch; reagieren nicht dynamisch auf Onboarding-Schritte.
-53. **[GAP]** `js/mascot.js:L60` – Pegel-Tamagotchi Stimmungsindikator aktualisiert sich nicht bei Änderungen am Zeitreihen-Slider.
-54. **[GAP]** `js/fun-features.js:L20` – Konami-Code Regen-Konfetti fehlt der `prefers-reduced-motion` CSS-Schutz.
-55. **[GAP]** `js/fun-features.js:L45` – Verstecktes Biber-Icon ist nicht als geklickbares Marker-Element auf der Karte platziert.
-56. **[GAP]** `js/fun-features.js:L70` – Pixel-Loading Gag Sprite löst bei verlangsamten Layer-Ladevorgängen (>2s) nicht aus.
-57. **[GAP]** `js/fun-features.js:L95` – Wassertropfen Cursor-Spur lässt sich auf Touchscreens nicht deaktivieren.
-58. **[GAP]** `js/fun-features.js:L125` – Tageszeit-Begrüßung prüft das `localStorage`-Tages-Flag nicht korrekt (feuert bei jedem Refresh).
-59. **[GAP]** `js/fun-features.js:L145` – Zufälliges Karten-Motto im Footer rotiert nicht automatisch.
-60. **[GAP]** `js/fun-features.js:L170` – "Wasser-Fakt des Tages" Widget speichert Schließen-Zustand nicht ab.
-61. **[GAP]** `js/fun-features.js:L195` – "Wasser-Horoskop" Modal stürzt ab, wenn `pegel.geojson` leer ist.
-62. **[GAP]** `js/audio-system.js:L40` – Zoomsound Plätschern ist auf eine feste Frequenz fixiert; passt sich nicht der Zoomtiefe an.
-63. **[GAP]** `js/audio-system.js:L65` – Layer-Toggle "Blubb"-Lautstärke lässt sich nicht separat regeln.
-64. **[GAP]** `js/audio-system.js:L85` – Ambient Flussrauschen Audio-Datei fehlt im `audio/`-Ordner.
-##### Zusätzliche UI/UX-, Skript- & Daten-Lücken (Punkte 82 bis 100)
-65. **[GAP]** `index.html:L1530` – Doppeltes `<body class="light-theme">` Fragment in alten Hilfsskripten unbereinigt.
-66. **[GAP]** `internal.html:L1140` – `#langToggleBtn` fehlt in der Header-Werkzeugleiste von `internal.html`.
-67. **[GAP]** `internal.html:L1145` – `#audioToggleBtn` fehlt in der Header-Werkzeugleiste von `internal.html`.
-68. **[GAP]** `js/layers-config.js:L40` – `gwm-marker` CSS-Klasse fehlt die Punktdurchmesser-Definition in `index.html`.
-69. **[GAP]** `js/layers-config.js:L63` – `pegel` Layer-Icon hat keinen Anchor-Offset für präzises Panning.
-70. **[GAP]** `js/layers-config.js:L81` – `stauanlagen` Marker-Größe skaliert nicht dynamisch mit dem Zoomlevel.
-71. **[GAP]** `js/layers-config.js:L99` – `regenbecken` Popup-Template zeigt die Eigenschaft `abwasserbereich` unformatiert.
-72. **[GAP]** `js/layers-config.js:L119` – `querbauwerke` Popup-Template fehlt die Anzeige der Fischdurchgängigkeit.
-73. **[GAP]** `js/layers-config.js:L139` – `h2_elektrolyseure_nrw` Popup-Template fehlt die direkte Website-Verlinkung des Betreibers.
-74. **[GAP]** `js/error-handling.js:L30` – Toast-Anzeigedauer ist starr auf 3000ms fixiert; lange Fehlermeldungen werden abgeschnitten.
-75. **[GAP]** `js/mascot.js:L80` – Maskottchen-Widget Drag/Move-Funktion fehlt auf mobilen Touchscreens.
-76. **[GAP]** `js/i18n.js:L150` – `applyLanguage()` aktualisiert den `<title>`-Tag im Dokument nicht dynamisch.
-77. **[GAP]** `index.html:L3800` – Deep-Link URL-Parameter unterstützen keine Sprach-Vorauswahl (`?lang=en`).
-78. **[GAP]** `internal.html:L3800` – Deep-Link URL-Parameter stellen den Präsentationsmodus nicht wieder her.
-79. **[GAP]** `js/app-enhancements.js:L340` – Command Palette Ergebnisse unterstützen keine Pfeiltasten-Tastaturnavigation.
-80. **[GAP]** `index.html:L4200` – Kreis-Vergleichs-Scorecard bietet keine Spaltensortierung nach Bevölkerungsdichte.
-81. **[GAP]** `internal.html:L4200` – Automatische Entwurfs-Speicherung auf `internal.html` zeigt keinen visuellen Countdown-Timer.
+25. **[GAP]** `js/mascot.js:L15` – Otter-Sprechblasen im Onboarding sind statisch; reagieren nicht dynamisch auf Onboarding-Schritte.
+26. **[GAP]** `js/mascot.js:L60` – Pegel-Tamagotchi Stimmungsindikator aktualisiert sich nicht bei Änderungen am Zeitreihen-Slider.
+27. **[GAP]** `js/fun-features.js:L45` – Verstecktes Biber-Icon ist nicht als geklickbares Marker-Element auf der Karte platziert.
+28. **[GAP]** `js/fun-features.js:L70` – Pixel-Loading Gag Sprite löst bei verlangsamten Layer-Ladevorgängen (>2s) nicht aus.
+29. **[GAP]** `js/fun-features.js:L95` – Wassertropfen Cursor-Spur lässt sich auf Touchscreens nicht deaktivieren.
+30. **[GAP]** `js/fun-features.js:L125` – Tageszeit-Begrüßung prüft das `localStorage`-Tages-Flag nicht korrekt (feuert bei jedem Refresh).
+31. **[GAP]** `js/fun-features.js:L145` – Zufälliges Karten-Motto im Footer rotiert nicht automatisch.
+32. **[GAP]** `js/fun-features.js:L170` – "Wasser-Fakt des Tages" Widget speichert Schließen-Zustand nicht ab.
+33. **[GAP]** `js/audio-system.js:L40` – Zoomsound Plätschern ist auf eine feste Frequenz fixiert; passt sich nicht der Zoomtiefe an.
+34. **[GAP]** `js/audio-system.js:L65` – Layer-Toggle "Blubb"-Lautstärke lässt sich nicht separat regeln.
+35. **[GAP]** `index.html:L1530` – Doppeltes `<body class="light-theme">` Fragment in alten Hilfsskripten unbereinigt.
+36. **[GAP]** `js/layers-config.js:L40` – `gwm-marker` CSS-Klasse fehlt die Punktdurchmesser-Definition in `index.html`.
+37. **[GAP]** `js/layers-config.js:L63` – `pegel` Layer-Icon hat keinen Anchor-Offset für präzises Panning.
+38. **[GAP]** `js/layers-config.js:L81` – `stauanlagen` Marker-Größe skaliert nicht dynamisch mit dem Zoomlevel.
+39. **[GAP]** `js/layers-config.js:L99` – `regenbecken` Popup-Template zeigt die Eigenschaft `abwasserbereich` unformatiert.
+40. **[GAP]** `js/layers-config.js:L119` – `querbauwerke` Popup-Template fehlt die Anzeige der Fischdurchgängigkeit.
+41. **[GAP]** `js/layers-config.js:L139` – `h2_elektrolyseure_nrw` Popup-Template fehlt die direkte Website-Verlinkung des Betreibers.
+42. **[GAP]** `js/error-handling.js:L30` – Toast-Anzeigedauer ist starr auf 3000ms fixiert; lange Fehlermeldungen werden abgeschnitten.
+43. **[GAP]** `js/mascot.js:L80` – Maskottchen-Widget Drag/Move-Funktion fehlt auf mobilen Touchscreens.
+44. **[GAP]** `internal.html:L3800` – Deep-Link URL-Parameter stellen den Präsentationsmodus nicht wieder her.
+45. **[GAP]** `js/app-enhancements.js:L340` – Command Palette Ergebnisse unterstützen keine Pfeiltasten-Tastaturnavigation.
+46. **[GAP]** `index.html:L4200` – Kreis-Vergleichs-Scorecard bietet keine Spaltensortierung nach Bevölkerungsdichte.
+47. **[GAP]** `internal.html:L4200` – Automatische Entwurfs-Speicherung auf `internal.html` zeigt keinen visuellen Countdown-Timer.
 
