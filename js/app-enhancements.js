@@ -227,8 +227,12 @@
                 label: "🌓 Farbschema wechseln (Dark / Light Theme)",
                 icon: "🌓",
                 action: () => {
-                    const btn = document.getElementById('theme-toggle-btn');
-                    if (btn) btn.click();
+                    const btn = document.getElementById('theme-toggle') || document.getElementById('btn-toggle-theme') || document.getElementById('theme-toggle-btn');
+                    if (btn) {
+                        btn.click();
+                    } else if (typeof window.toggleDarkMode === 'function') {
+                        window.toggleDarkMode();
+                    }
                 }
             });
 
@@ -697,12 +701,14 @@
 
     // --- 9. AUTO SYSTEM THEME SYNC ---
     function initAutoThemeSync() {
-        if (!localStorage.getItem('aquarevier_theme')) {
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (!localStorage.getItem('theme') && !localStorage.getItem('aquarevier_theme')) {
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
             if (prefersDark) {
                 document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme');
             } else {
                 document.body.classList.add('light-theme');
+                document.body.classList.remove('dark-theme');
             }
         }
     }

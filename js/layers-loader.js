@@ -16,6 +16,16 @@
  *   exposiert, damit bestehende Referenzen (search, events) weiter funktionieren.
  */
 
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
   const size = cfg.cluster ? 10 : 22;
 
@@ -48,12 +58,12 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
   /** Baut den Popup-HTML-String aus cfg.popupFields */
   function buildPopupHtml(p) {
     const glossarSpan = (key) =>
-      key ? `<span class="glossar-icon" data-glossar="${key}">i</span>` : '';
+      key ? `<span class="glossar-icon" data-glossar="${escapeHtml(key)}">i</span>` : '';
 
     let html = `
       <div class="popup-card">
-        <div class="popup-group" style="color:${cfg.color}">${cfg.groupLabel}</div>
-        <div class="popup-title">${p.name || 'Unbekannt'}</div>
+        <div class="popup-group" style="color:${cfg.color}">${escapeHtml(cfg.groupLabel)}</div>
+        <div class="popup-title">${escapeHtml(p.name || 'Unbekannt')}</div>
     `;
 
     for (const field of (cfg.popupFields || [])) {
@@ -65,22 +75,23 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       }
       if (!value) continue;
 
+      const safeVal = escapeHtml(value);
       // first field (📍) has no label prefix, just the value
       if (field.label === '📍') {
-        html += `<div class="popup-detail">📍 ${value}</div>`;
+        html += `<div class="popup-detail">📍 ${safeVal}</div>`;
       } else {
-        html += `<div class="popup-detail">${field.label}${glossarSpan(field.glossar)}: ${value}${field.suffix || ''}</div>`;
+        html += `<div class="popup-detail">${escapeHtml(field.label)}${glossarSpan(field.glossar)}: ${safeVal}${escapeHtml(field.suffix || '')}</div>`;
       }
     }
 
     // Special: Pegel NQ/MQ/HQ row
     if (cfg.pegelStats && p.mq_m3s) {
-      html += `<div class="popup-detail">📊 NQ<span class="glossar-icon" data-glossar="NQ">i</span>: ${p.nq_m3s || '–'}, MNQ<span class="glossar-icon" data-glossar="MNQ">i</span>: ${p.mnq_m3s || '–'}, MQ<span class="glossar-icon" data-glossar="MQ">i</span>: ${p.mq_m3s}, HQ<span class="glossar-icon" data-glossar="HQ">i</span>: ${p.hq_m3s || '–'} m³/s</div>`;
+      html += `<div class="popup-detail">📊 NQ<span class="glossar-icon" data-glossar="NQ">i</span>: ${escapeHtml(p.nq_m3s) || '–'}, MNQ<span class="glossar-icon" data-glossar="MNQ">i</span>: ${escapeHtml(p.mnq_m3s) || '–'}, MQ<span class="glossar-icon" data-glossar="MQ">i</span>: ${escapeHtml(p.mq_m3s)}, HQ<span class="glossar-icon" data-glossar="HQ">i</span>: ${escapeHtml(p.hq_m3s) || '–'} m³/s</div>`;
 
       // Calculate trend indicators if we have numerical values
       if (p.nq_m3s && p.mnq_m3s) {
-          const nqNum = parseFloat(p.nq_m3s.replace(',', '.'));
-          const mnqNum = parseFloat(p.mnq_m3s.replace(',', '.'));
+          const nqNum = parseFloat(String(p.nq_m3s).replace(',', '.'));
+          const mnqNum = parseFloat(String(p.mnq_m3s).replace(',', '.'));
 
           if (!isNaN(nqNum) && !isNaN(mnqNum)) {
               let trendColor = '#64748b'; // default gray
@@ -102,7 +113,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
               }
 
               html += `<div class="popup-detail" style="color: ${trendColor}; font-weight: 500; font-size: 11px; margin-top: 4px; padding: 4px; background: #f8fafc; border-radius: 4px; border: 1px solid #e2e8f0;">
-                  ${trendIcon} Niedrigwasser-Trend: ${trendText}
+                  ${trendIcon} Niedrigwasser-Trend: ${escapeHtml(trendText)}
               </div>`;
           }
       }
@@ -117,9 +128,9 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       const betriebeHinweis = p.upstream_betriebe_mit_wert > 0
         ? ` (${p.upstream_betriebe_mit_wert} Betrieb(e) mit Mengenangabe oberhalb)`
         : ' (keine quantifizierten Industrieeinleiter oberhalb gefunden)';
-      html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${p.mq_m3s} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${pctStr}% davon als Industrieabwasser ein${betriebeHinweis}.</div>`;
+      html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${escapeHtml(p.mq_m3s)} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${escapeHtml(pctStr)}% davon als Industrieabwasser ein${escapeHtml(betriebeHinweis)}.</div>`;
       if (p.upstream_betriebe_count > 0) {
-        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${p.pegel_nr}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
+        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${escapeHtml(p.pegel_nr)}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
       }
     }
 
@@ -138,14 +149,14 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // Feedback Link
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-      <a href="#" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', '${cfg.groupLabel}', '${p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || ''}', ${p.lat || p.latitutde || 0}, ${p.lng || p.longitude || p.lon || 0}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a>
+      <a href="#" onclick="openFeedbackModal('${escapeHtml(p.name || '').replace(/'/g, "\\'")}', '${escapeHtml(cfg.groupLabel)}', '${escapeHtml(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${p.lat || p.latitude || 0}, ${p.lng || p.longitude || p.lon || 0}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a>
     </div>`;
 
     // Footer
     const footer = cfg.footerTemplate
       ? cfg.footerTemplate(p)
       : 'Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0';
-    html += `<div style="font-size:10px;color:#94a3b8;margin-top:6px;">${footer}</div>`;
+    html += `<div style="font-size:10px;color:#94a3b8;margin-top:6px;">${escapeHtml(footer)}</div>`;
     html += `</div>`;
     return html;
   }
@@ -178,6 +189,9 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         .then(res => res.ok ? res.json() : Promise.reject())
         .then(data => {
           layerDataStore[cfg.id] = data;
+          if (!window.layerDataStore) window.layerDataStore = {};
+          window.layerDataStore[cfg.id] = data;
+          window.geojsonData = data;
           window[cfg.geoDataVar] = data;  // backward-compat global
           const markers = L.geoJSON(data, {
             pointToLayer: (feature, latlng) => {
@@ -239,6 +253,9 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     .then(res => res.ok ? res.json() : Promise.reject())
     .then(data => {
       layerDataStore[cfg.id] = data;
+      if (!window.layerDataStore) window.layerDataStore = {};
+      window.layerDataStore[cfg.id] = data;
+      window.geojsonData = data;
       window[cfg.geoDataVar] = data;  // backward-compat global
       L.geoJSON(data, {
         pointToLayer: (feature, latlng) => {

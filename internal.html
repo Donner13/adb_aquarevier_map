@@ -2394,9 +2394,11 @@
         const map = L.map('map', {
             zoomControl: false
         }).setView([51.15, 6.75], 9);
+        window.map = map;
 
         // Config-driven layer data store (populated by addGeoLayer via layers-loader.js)
         const layerDataStore = {};
+        window.layerDataStore = layerDataStore;
         // Backward-compat globals – layers-loader also sets window.xxx for existing references
         let klaeranlagenGeoData, pegelGeoData, stauanlagenGeoData, regenbeckenGeoData, querbauwerkeGeoData, gwmGeoData;
         let klaeranlagenLayer, pegelLayer, stauanlagenLayer, regenbeckenLayer, querbauwerkeLayer, gwmLayer;
@@ -3989,6 +3991,10 @@
                             document.getElementById('save-status').innerText = 'Anonymisierte Daten geladen (Vorschau-Modus).';
                         }
                     }
+                if (geojsonData) {
+                    window.geojsonData = geojsonData;
+                    if (!window.layerDataStore) window.layerDataStore = {};
+                    window.layerDataStore['akteure'] = geojsonData;
                 }
 
                 if (geojsonData.styleSettings) {
