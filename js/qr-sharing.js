@@ -9,7 +9,7 @@
      * Generates a deep-link URL capturing current map position & active layers.
      */
     window.generateCurrentMapDeepLink = function() {
-        if (typeof map === 'undefined') return window.location.href;
+        if (typeof map === 'undefined' || !map || typeof map.getCenter !== 'function') return window.location.href;
         const center = map.getCenter();
         const zoom = map.getZoom();
         
@@ -69,7 +69,7 @@
             <div style="background: #ffffff; width: 100%; max-width: 420px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden; text-align: center; font-size: 12px;">
                 <div style="background: #1e293b; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
                     <span style="font-size: 15px; font-weight: 700;">📱 QR-Code &amp; Deep-Link Teilen</span>
-                    <button type="button" onclick="closeQrShareModal()" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
+                    <button type="button" onclick="closeQrShareModal()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
                 </div>
                 
                 <div style="padding: 20px;">
@@ -104,8 +104,13 @@
         const input = document.getElementById('qr-deeplink-input');
         if (input) {
             input.select();
+            const msg = (window.currentLanguage === 'en') ? '✓ Link copied to clipboard!' : '✓ Link erfolgreich in die Zwischenablage kopiert!';
             navigator.clipboard.writeText(input.value).then(() => {
-                alert('Deep-Link erfolgreich kopiert!');
+                if (typeof window.showToast === 'function') {
+                    window.showToast(msg, '🔗');
+                } else {
+                    alert(msg);
+                }
             });
         }
     };

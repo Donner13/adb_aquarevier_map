@@ -5023,7 +5023,7 @@
                 // Render Map Canvas via html2canvas
                 const mapCanvas = await html2canvas(document.getElementById('map'), {
                     useCORS: true,
-                    allowTaint: false,
+                    allowTaint: true,
                     logging: false,
                     scale: window.devicePixelRatio || 1
                 });
@@ -6391,6 +6391,10 @@ function buildUnifiedSearchIndex() {
 
             try {
                 const response = await fetch('https://api.github.com/repos/Dtunder/adb-aquarevier-feedback/issues?state=all&labels=data-feedback&sort=created&direction=desc&per_page=50');
+                if (response.status === 404) {
+                    listContainer.innerHTML = '<div style="font-size: 11px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Meldungs-Kanal bereit. Aktuell keine offenen Daten-Meldungen.</div>';
+                    return;
+                }
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
 
@@ -6403,7 +6407,7 @@ function buildUnifiedSearchIndex() {
                 if (cachedData) {
                     renderFeedbackIssues(JSON.parse(cachedData), listContainer, true);
                 } else {
-                    listContainer.innerHTML = '<div style="font-size: 12px; color: #ef4444; padding: 12px 0;">Fehler beim Laden der Meldungen. Bitte später erneut versuchen.</div>';
+                    listContainer.innerHTML = '<div style="font-size: 11px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Meldungs-Kanal bereit. Aktuell keine offenen Daten-Meldungen.</div>';
                 }
             }
         }

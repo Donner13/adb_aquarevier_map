@@ -198,7 +198,7 @@
                         <div style="font-size: 16px; font-weight: 700;">🏛️ Gemeinde-Steckbrief: ${escapeHtml(dossier.name)}</div>
                         <div style="font-size: 11px; color: #94a3b8;">${escapeHtml(dossier.kreis)} • ${totalObj} registrierte Infrastruktur-Objekte</div>
                     </div>
-                    <button type="button" onclick="closeGemeindeDossier()" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
+                    <button type="button" onclick="closeGemeindeDossier()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
                 </div>
                 
                 <div style="padding: 16px; overflow-y: auto; flex: 1; font-size: 12px;">

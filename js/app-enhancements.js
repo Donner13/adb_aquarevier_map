@@ -697,6 +697,21 @@
                 }
             });
         });
+
+        // Global Escape key listener to close all open modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"]');
+                openModals.forEach(modal => {
+                    if (modal.id === 'onboarding-role-modal') return;
+                    const style = window.getComputedStyle(modal);
+                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
+                        modal.style.display = 'none';
+                        modal.classList.add('hidden');
+                    }
+                });
+            }
+        });
     }
 
     // --- 9. AUTO SYSTEM THEME SYNC ---
