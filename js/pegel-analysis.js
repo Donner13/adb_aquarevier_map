@@ -11,38 +11,37 @@ function initPegelAnalysisLayer() {
 }
 
 window.analyzePegel = function(pegelNr) {
-    initPegelAnalysisLayer();
+    if (typeof map === 'undefined' || !window.layerDataStore || !window.layerDataStore['pegel']) return;
+
+    const pegelData = window.layerDataStore['pegel'];
+    const p = (pegelData.features || []).map(f => f.properties).find(props => props.pegel_nr === pegelNr);
+    if (!p) return;
+
+    if (!window.activePegelLines) window.activePegelLines = L.layerGroup().addTo(map);
+    if (!window.activePegelMarkers) window.activePegelMarkers = L.layerGroup().addTo(map);
+
     window.activePegelLines.clearLayers();
     window.activePegelMarkers.clearLayers();
 
-    if (!window.pegelGeoData) return;
-
-    const pegelFeature = window.pegelGeoData.features.find(f => f.properties.pegel_nr === pegelNr);
-    if (!pegelFeature) return;
-
-    const p = pegelFeature.properties;
-    const pegelLatLng = [pegelFeature.geometry.coordinates[1], pegelFeature.geometry.coordinates[0]];
+    const pLatLng = [p.lat, p.lng];
+    const bounds = L.latLngBounds([pLatLng]);
 
     const betriebe = p.upstream_betriebe || [];
-
-    if (betriebe.length === 0) return;
-
-    let bounds = L.latLngBounds([pegelLatLng]);
-
     betriebe.forEach(betrieb => {
         const bLatLng = [betrieb.lat, betrieb.lng];
 
-        // Draw dashed polyline
-        const line = L.polyline([pegelLatLng, bLatLng], {
-            color: '#009E73',
-            weight: 3,
-            dashArray: '5, 10',
+        const line = L.polyline([pLatLng, bLatLng], {
+            color: '#D55E00',
+            weight: 2,
+            dashArray: '5, 5',
             className: 'pegel-analysis-line',
             opacity: 0.8
         });
         window.activePegelLines.addLayer(line);
 
-        // Add marker for betrieb
+        const safeName = escapeHtml(betrieb.name);
+        const safeMenge = escapeHtml(betrieb.total_m3a || 0);
+
         const marker = L.circleMarker(bLatLng, {
             radius: 8,
             fillColor: '#FFD700',
@@ -51,7 +50,7 @@ window.analyzePegel = function(pegelNr) {
             opacity: 1,
             fillOpacity: 0.8,
             className: 'pegel-analysis-marker'
-        }).bindTooltip(`<b>${betrieb.name}</b><br>Menge: ${betrieb.total_m3a || 0} m³/a`, {
+        }).bindTooltip(`<b>${safeName}</b><br>Menge: ${safeMenge} m³/a`, {
             direction: 'top',
             offset: [0, -10]
         });
@@ -64,7 +63,6 @@ window.analyzePegel = function(pegelNr) {
         map.flyToBounds(bounds, { padding: [50, 50], duration: 1.5 });
     }
 
-    // Populate and show side panel
     populatePegelAnalysisPanel(p);
 };
 
@@ -75,7 +73,6 @@ window.closePegelAnalysis = function() {
     const panel = document.getElementById('pegel-analysis-panel');
     if (panel) panel.classList.add('hidden');
 
-    // Also toggle the active class on the button if exists
     const btn = document.getElementById('btn-pegel-analysis');
     if (btn) btn.classList.remove('active');
 };
@@ -86,7 +83,6 @@ function populatePegelAnalysisPanel(p) {
 
     panel.classList.remove('hidden');
 
-    // Toggle button state if exists
     const btn = document.getElementById('btn-pegel-analysis');
     if (btn) btn.classList.add('active');
 
@@ -98,17 +94,17 @@ function populatePegelAnalysisPanel(p) {
             <button class="close-btn" onclick="window.closePegelAnalysis()">✖</button>
         </div>
         <div class="panel-content">
-            <h4>Pegel: ${p.name || 'Unbekannt'}</h4>
-            <p><strong>Gewässer:</strong> ${p.gewaesser || '-'}</p>
-            <p><strong>MQ (Median):</strong> ${p.mq_m3s || '-'} m³/s</p>
+            <h4>Pegel: ${escapeHtml(p.name || 'Unbekannt')}</h4>
+            <p><strong>Gewässer:</strong> ${escapeHtml(p.gewaesser || '-')}</p>
+            <p><strong>MQ (Median):</strong> ${escapeHtml(p.mq_m3s || '-')} m³/s</p>
 
             <div class="analysis-stats">
                 <div class="stat-box">
-                    <span class="stat-value">${pctStr}%</span>
+                    <span class="stat-value">${escapeHtml(pctStr)}%</span>
                     <span class="stat-label">Industrieabwasser-Anteil (Vol)</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-value">${p.upstream_betriebe_count || 0}</span>
+                    <span class="stat-value">${escapeHtml(p.upstream_betriebe_count || 0)}</span>
                     <span class="stat-label">Einleiter oberhalb</span>
                 </div>
             </div>
@@ -124,8 +120,8 @@ function populatePegelAnalysisPanel(p) {
         betriebe.forEach(b => {
             html += `
                 <li>
-                    <strong>${b.name}</strong><br>
-                    Menge: ${b.total_m3a ? b.total_m3a.toLocaleString('de-DE') + ' m³/a' : 'Keine Mengenangabe'}
+                    <strong>${escapeHtml(b.name)}</strong><br>
+                    Menge: ${b.total_m3a ? escapeHtml(b.total_m3a.toLocaleString('de-DE')) + ' m³/a' : 'Keine Mengenangabe'}
                 </li>
             `;
         });

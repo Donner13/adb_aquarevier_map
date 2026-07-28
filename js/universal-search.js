@@ -188,7 +188,7 @@
     // Attach search event listener to existing search inputs
     function initSearchInputs() {
         window.buildUniversalSearchIndex();
-        const searchInputs = document.querySelectorAll('#search-input, .universal-search-input');
+        const searchInputs = document.querySelectorAll('#usearch-input, .universal-search-input');
         searchInputs.forEach(input => {
             input.addEventListener('input', (e) => {
                 const q = e.target.value;

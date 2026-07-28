@@ -15,7 +15,7 @@
         "Heimbach", "Heinsberg", "Herzogenrath", "Hürtgenwald", "Inden", "Jülich", 
         "Kall", "Kerpen", "Kreuzau", "Langerwehe", "Linnich", "Mechernich", "Merzenich", 
         "Mönchengladbach", "Nettersheim", "Nideggen", "Niederzier", "Nörvenich", 
-        "Nörvenich", "Pulheim", "Roetgen", "Simmerath", "Stolberg", "Titz", 
+        "Pulheim", "Roetgen", "Rommerskirchen", "Simmerath", "Stolberg", "Titz", 
         "Übach-Palenberg", "Vettweiß", "Waldfeucht", "Wassenberg", "Wegberg", 
         "Wesseling", "Würselen", "Zülpich"
     ];

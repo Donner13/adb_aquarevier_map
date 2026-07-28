@@ -19,7 +19,15 @@
         params.set('z', zoom);
 
         const activeLayers = [];
-        if (window.activeOverlayLayers) {
+        const overlayMaps = window.overlayMaps || (typeof window.overlayMaps !== 'undefined' ? window.overlayMaps : null);
+        if (overlayMaps && typeof map !== 'undefined') {
+            Object.keys(overlayMaps).forEach(name => {
+                const layer = overlayMaps[name];
+                if (layer && map.hasLayer(layer)) {
+                    activeLayers.push(name);
+                }
+            });
+        } else if (window.activeOverlayLayers) {
             Object.keys(window.activeOverlayLayers).forEach(name => {
                 if (window.activeOverlayLayers[name]) activeLayers.push(name);
             });
