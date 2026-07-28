@@ -37,7 +37,7 @@ deployed = False
 email_sent = False
 password_sent = False
 
-while time.time() - start_time < 90:
+while time.time() - start_time < 180:
     # Read one character at a time to avoid blocking on newlines
     char = p.stdout.read(1)
     if not char:
@@ -71,7 +71,12 @@ while time.time() - start_time < 90:
     if "Success!" in buffer or "deployed to" in buffer:
         deployed = True
 
-p.terminate()
+p.poll()
+if p.returncode is None:
+    try:
+        p.wait(timeout=10)
+    except Exception:
+        p.terminate()
 
 if deployed:
     print("\n==============================================")

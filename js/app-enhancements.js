@@ -693,7 +693,7 @@
 
         function applyLanguage(lang) {
             currentLang = lang;
-            localStorage.setItem('aquarevier_lang', lang);
+            try { localStorage.setItem('aquarevier_lang', lang); } catch (e) { console.warn('Storage unavailable:', e); }
             const dict = I18N_DICT[lang];
             if (!dict) return;
 

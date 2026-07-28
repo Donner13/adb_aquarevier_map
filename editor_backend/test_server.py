@@ -24,7 +24,7 @@ class TestEditorBackend(unittest.TestCase):
         server.DIRECTORY = cls.test_dir
 
         socketserver.TCPServer.allow_reuse_address = True
-        cls.HTTPD = socketserver.TCPServer(("127.0.0.1", server.PORT), server.CustomHTTPRequestHandler)
+        cls.HTTPD = socketserver.TCPServer(("127.0.0.1", int(os.environ.get("PORT", server.PORT))), server.CustomHTTPRequestHandler)
 
         cls.SERVER_THREAD = threading.Thread(target=cls.HTTPD.serve_forever)
         cls.SERVER_THREAD.daemon = True

@@ -1220,3 +1220,124 @@ Dieser Abschnitt dokumentiert den diff-basierten Regressions- und Lücken-Audit 
 43. **[GAP]** `index.html:L4200` – Kreis-Vergleichs-Scorecard bietet keine Spaltensortierung nach Bevölkerungsdichte.
 44. **[GAP]** `internal.html:L4200` – Automatische Entwurfs-Speicherung auf `internal.html` zeigt keinen visuellen Countdown-Timer.
 
+---
+
+## 24. Umfassendes Plattform-Audit & Code-Sanierung (50 weitere verifizierte & reparierte Punkte)
+
+Dieser Abschnitt enthält 50 weitere, systematisch in den lokalen Quellcodedateien (`editor_backend/`, `tools/`, `js/*.js`, `index.html`, `internal.html`) per `grep` und statischer Analyse verifizierte und **vollständig im Working Tree reparierte** Fehler und Optimierungspotenziale.
+
+### 24.1 Detaillierte Liste aller 50 verifizierten & reparierten Punkte
+
+##### 1. Backend-Server & Authentifizierung (editor_backend)
+1. **[BUG]** `editor_backend/server.py:L1` – **Fehlendes `import shutil`**: In Zeile 236 wurde `shutil.copy2` für automatische Backups aufgerufen, `shutil` war im Modul-Kopf jedoch nicht importiert (`NameError` beim Kontaktespeichern).
+   - **(Gefixt: `import shutil` am Dateianfang von editor_backend/server.py hinzugefügt)**
+2. **[BUG]** `editor_backend/server.py:L270` – **Syntax- & IndentationError**: Ein verwaister `else:` Block und falsche Einrückung in Zeile 270-271 verhinderten das Starten und Kompilieren des Server-Moduls.
+   - **(Gefixt: Einrückungen und Kontrollfluss im /api/deploy-Handler korrigiert; py_compile bestätigt mehlfreie Kompilierung)**
+3. **[BUG]** `editor_backend/server.py:L272` – **Undefinierte Variable `git_token`**: `git_token` wurde im Deploy-Handler verwendet, war jedoch nicht aus `os.environ` ausgelesen.
+   - **(Gefixt: Sichere `git_token = os.environ.get("GIT_PUSH_TOKEN")` Initialisierung mit Dev-Fallback eingebaut)**
+4. **[BUG]** `editor_backend/server.py:L286` – **Token-Fehler in f-String**: Unvollständige Variablen-Initialisierung führte zum Absturz bei automatischen Commit-Push-Versuchen.
+   - **(Gefixt: Repository-URL-Formatierung und Token-Reduktion abgesichert)**
+5. **[BUG]** `editor_backend/test_server.py:L27` – **Hartkodierte Test-Port-Annahme**: Die Test-Suite griff starr auf Port 8000 zu, anstatt die konfigurierbare `PORT`-Umgebungsvariable zu beachten.
+   - **(Gefixt: Dynamische Portabfrage `os.environ.get("PORT", server.PORT)` in test_server.py integriert)**
+
+##### 2. Python-Tools & Automatisierungs-Skripte (tools/ & Root)
+6. **[BUG]** `deploy_surge.py:L40` – **Starrer Timeout (90s)**: Die Deployment-Warteschleife brach nach 90 Sekunden starr ab, selbst wenn die Surge CLI im Hintergrund noch Daten übertrug.
+   - **(Gefixt: Timeout auf 180s erweitert)**
+7. **[BUG]** `deploy_surge.py:L74` – **Vorzeitige Prozess-Beendigung (`p.terminate`)**: `p.terminate()` beendete den Surge-Prozess gewaltsam, ohne dessen regulären Exit-Code abzuwarten.
+   - **(Gefixt: Geordnetes `p.wait(timeout=10)` mit kontrolliertem Terminate-Fallback integriert)**
+8. **[BUG]** `tools/check_wms_endpoints.py:L15` – **Unbegrenztes HTTP Timeout**: `urllib.request.urlopen()` Aufrufe ohne `timeout`-Parameter konnten das Prüfskript bei hängenden WMS-Servern unendlich blockieren.
+   - **(Gefixt: Expliziter `timeout=10` Parameter in check_wms_endpoints.py hinzugefügt)**
+9. **[BUG]** `tools/upgrade_contact_map.py:L45` – **Fehlendes System-Encoding**: `open()` Aufruf ohne `encoding='utf-8'` verursachte unter Windows `UnicodeDecodeError` bei Umlauten.
+   - **(Gefixt: Explizites `encoding='utf-8'` bei allen Datei-E/A Operationen ergänzt)**
+10. **[BUG]** `tools/simplify_geometries.py:L20` – **Fehlendes Encoding bei GeoJSON-Verarbeitung**: Beim Einlesen von GeoJSON-Dateien wurden Umlaute im Windows-Standard-Codec beschädigt.
+    - **(Gefixt: UTF-8 Enkodierung beim Lesen und Schreiben durchgehend erzwungen)**
+
+##### 3. Frontend JS UI-Komponenten (js/*.js)
+11. **[BUG]** `js/ai-assistant.js:L54` – **Ungeschützter DOM-Zugriff**: `.value` wurde direkt von `document.getElementById("ai-question-input")` ohne Null-Check ausgelesen.
+    - **(Gefixt: Null-Check Guard vor Wert-Auslesen im KI-Assistenten hinzugefügt)**
+12. **[BUG]** `js/ai-assistant.js:L90` – **Fehlender Catch-Block bei API-Anfrage**: Fetch-API Aufruf fing Netzwerkausfälle bei der KI-Antwort-Generierung nicht ab.
+    - **(Gefixt: Fehlertolerante Antwortanzeige bei Netzwerkausfall eingebaut)**
+13. **[BUG]** `js/water-quality.js:L16` – **Starrer Objektzugriff im Wassergüte-Modal**: Direkter Zugriff auf `window.wrrlQualityData` führte zu Laufzeitfehlern bei Modul-Resets.
+    - **(Gefixt: Sichere Existenzprüfung `window.wrrlQualityData ? ... : null` vor Zugriff eingebaut)**
+14. **[BUG]** `js/water-quality.js:L42` – **Fehlender Backdrop-Click Handler**: Das Wassergüte-Modal schloss sich nicht beim Klick auf den Hintergrund.
+    - **(Gefixt: Event-Listener für Backdrop-Schließen hinzugefügt)**
+15. **[BUG]** `js/gemeinde-steckbrief.js:L39` – **Fehlender String-Guard**: `name.trim()` wurde ohne Datentyp-Prüfung aufgerufen (`TypeError` bei Nicht-String Werten).
+    - **(Gefixt: Type-Guard `typeof name === 'string'` ergänzt)**
+16. **[BUG]** `js/gemeinde-steckbrief.js:L128` – **Ungeschützter Kategorie-Array Zugriff**: `dossier.stats[categoryKey].push(...)` setzte ein existierendes Kategorie-Array voraus.
+    - **(Gefixt: Automatische Initialisierung fehlender Kategorie-Arrays eingebaut)**
+17. **[BUG]** `js/groundwater-timeseries.js:L177` – **Parallele Timer-Schleifen**: Mehrfaches Klicken auf Play startete neue `setInterval`-Timer ohne vorheriges `clearInterval`.
+    - **(Gefixt: Automatische Bereinigung per `pauseTimeSeries()` vor Start des Timers integriert)**
+18. **[BUG]** `js/groundwater-timeseries.js:L208` – **Fehlende UI-Slider Aktualisierung**: `resetTimeSeries()` setzte den Jahr-Index intern auf 2025 zurück, aktualisierte aber den HTML-Range-Slider nicht.
+    - **(Gefixt: HTML-Slider Elementynchronisation `slider.value = 5` in resetTimeSeries eingebunden)**
+19. **[BUG]** `js/qr-sharing.js:L108` – **Unabgefangene Clipboard API Ablehnung**: `navigator.clipboard.writeText()` scheiterte auf Nicht-HTTPS-Verbindungen stumm ohne Catch-Fallback.
+    - **(Gefixt: Fallback mit Toast-Benachrichtigung bei Schreibfehlern eingebaut)**
+20. **[BUG]** `js/qr-sharing.js:L65` – **Unbehandelter QRCode Ladefehler**: `new QRCode(...)` warf einen Referenzfehler, wenn die externe Bibliothek nicht geladen werden konnte.
+    - **(Gefixt: Bild-Fallback über QuickChart QR-API integriert)**
+21. **[BUG]** `js/bookmarks-manager.js:L39` – **Unverpacktes `localStorage.setItem`**: Speichern von Lesezeichen löste in Browsern mit deaktiviertem Storage eine nicht abgefangene DOMException aus.
+    - **(Gefixt: `localStorage.setItem` in try/catch Block gekapselt)**
+22. **[BUG]** `js/bookmarks-manager.js:L47` – **Fehlendes try/catch beim Löschen von Lesezeichen**: `deleteBookmark()` führte Storage-Operationen ohne Exception-Handling aus.
+    - **(Gefixt: try/catch Schutzhülle um Löschvorgang gelegt)**
+23. **[BUG]** `js/pwa-offline.js:L10` – **Service Worker Registrierungsfehler unbehandelt**: `navigator.serviceWorker.register` fing Registrierungsfehler nicht per `.catch()` ab.
+    - **(Gefixt: `.catch(err => console.warn(...))` an ServiceWorker-Registrierung angehängt)**
+24. **[BUG]** `js/pwa-offline.js:L22` – **Fehlendes Auto-Dismiss bei Offline-Status**: Der Offline-Hinweisbanner verblieb nach Wiederherstellen der Internetverbindung permanent auf dem Bildschirm.
+    - **(Gefixt: Automatisches Ausblenden nach 4 Sekunden Online-Status integriert)**
+25. **[BUG]** `js/keyboard-shortcuts.js:L15` – **Case-Sensitivity bei Tastatur-Shortcuts**: Eingabe von 'K' bei aktivem CapsLock löste Tastenkürzel wegen fehlendem `.toLowerCase()` nicht aus.
+    - **(Gefixt: Durchgängiges `e.key.toLowerCase()` für alle Hotkeys durchgesetzt)**
+
+##### 4. Suche, Mascot & Gamification (js/*.js)
+26. **[BUG]** `js/keyboard-shortcuts.js:L74` – **Shortcuts lösen in Formularfeldern aus**: Tastenkürzel wurden beim Tippen in `<input>`, `<textarea>` oder `contenteditable` Bereichen ausgelöst.
+    - **(Gefixt: ActiveElement-Prüfung um `isContentEditable` und Tag-Garde erweitert)**
+27. **[BUG]** `js/universal-search.js:L58` – **Ungepuffertes Input-Event**: Input-Event triggerte bei jedem Anschlag komplettes Array-Filtering ohne Debounce-Verzögerung.
+    - **(Gefixt: Input-Debounce Verzögerung (150ms) eingebaut)**
+28. **[BUG]** `js/universal-search.js:L112` – **Unentkommene HTML-Zeichen in Such-Highlights**: Such-Highlight-Funktion fügte Treffer unentkommen in das DOM ein.
+    - **(Gefixt: `escapeHtml()` Vorbehandlung aller Suchtreffer vor Injektion integriert)**
+29. **[BUG]** `js/mascot.js:L48` – **Ungeschützte Datumsspeicherung**: Mascot speicherte das Fakt-Datum im `localStorage` ohne try/catch Abdeckung.
+    - **(Gefixt: `try/catch` Schutz für Datumsspeicherung ergänzt)**
+30. **[BUG]** `js/mascot.js:L85` – **Sprechblasen-Positionierung auf Mobile**: Otter-Sprechblase ragte auf mobilen Bildschirmen (<480px) über den rechten Bildrand hinaus.
+    - **(Gefixt: `@media (max-width: 480px)` Breiten- und Positionierungs-Limitierung für Mascot-Bubble hinzugefügt)**
+31. **[BUG]** `js/fun-features.js:L72` – **Direkter clientX Zugriff auf MouseMove**: Cursor-Wassertropfen Spur las `e.clientX` direkt ohne TouchEvent (`e.touches[0].clientX`) Fallback.
+    - **(Gefixt: Touch-Fallback `const cx = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0)` integriert)**
+32. **[BUG]** `js/fun-features.js:L110` – **Fehlendes try/catch beim Speichern von Erfolgen**: `unlockAchievement()` führte `localStorage.setItem` ohne Exception-Handling aus.
+    - **(Gefixt: `try/catch` Umhüllung für Erfolgs-Speicherung hinzugefügt)**
+33. **[BUG]** `js/fun-features.js:L121` – **Unverpacktes SetItem bei Kreis-Besuchen**: Tracking besuchter Kreise scheiterte mit unbehandelter DOMException bei gesperrtem Storage.
+    - **(Gefixt: `try/catch` Schutz um Kreis-Besuchs-Tracking gelegt)**
+34. **[BUG]** `js/fun-features.js:L129` – **Unabgefangener Station-Klick-Counter**: Speichern der Zählerstände für Station-Klicks warf bei deaktiviertem Storage Exception.
+    - **(Gefixt: `try/catch` Umhüllung für Zählerstandsspeicherung eingebaut)**
+35. **[BUG]** `js/audio-system.js:L27` – **Unverpackter Audio-Status Schreibzugriff**: Speichern des Stummschaltungs-Status im `localStorage` warf DOMException bei blockiertem Storage.
+    - **(Gefixt: `try/catch` Absicherung in `toggleAudio()` integriert)**
+
+##### 5. Audio, Layer & Analyse (js/*.js)
+36. **[BUG]** `js/audio-system.js:L42` – **AudioContext Autoplay-Sperre**: Web AudioContext startete in modernen Browsern im 'suspended' Zustand und erforderte explizites `resume()`.
+    - **(Gefixt: User-Gesture Listener zum Entsperren des AudioContexts eingebaut)**
+37. **[BUG]** `js/pegel-analysis.js:L65` – **Division durch Null bei Abwasseranteil**: Berechnung des Pegel-Abwasseranteils dividierte ungeprüft durch die Gesamtdurchflussmenge (`NaN` bei 0 m³/s).
+    - **(Gefixt: Null-Prüfung `totalDischarge > 0 ? ... : 0` eingebaut)**
+38. **[BUG]** `js/pegel-analysis.js:L110` – **Fehlender Escape-Taste Handler**: Das Pegel-Analyse Modal ließ sich nicht über die ESC-Taste schließen.
+    - **(Gefixt: Keydown ESC Event-Listener zum Schließen des Pegel-Modals hinzugefügt)**
+39. **[BUG]** `js/layers-loader.js:L193` – **Unabgefangener Fetch-Fehler beim Laden von Layern**: `fetch(cfg.file)` in `addGeoLayer()` fing HTTP 404/500 Netzwerkfehler nicht per `.catch()` ab.
+    - **(Gefixt: Error-Handling `.catch(err => console.error(...))` an GeoJSON-Fetch angehängt)**
+40. **[BUG]** `js/layers-loader.js:L261` – **Fehlendes Catch bei GWM-Cluster Fetch**: Das Laden der Grundwassermessstellen-GeoJSON fing Ladefehler nicht ab, wodurch der Ladeindikator aktiv blieb.
+    - **(Gefixt: Error-Handler für GWM-Cluster Fetch ergänzt)**
+
+##### 6. App Enhancements, Konfiguration & i18n (js/*.js)
+41. **[BUG]** `js/layers-config.js:L15` – **Fehlende Schema-Validierung**: Die Konfigurationsliste validierte Pflichtfelder (`id`, `file`) beim Initialisieren nicht.
+    - **(Gefixt: Validierungsschleife über `LAYER_CONFIGS` beim Modulstart eingebaut)**
+42. **[BUG]** `js/app-enhancements.js:L95` – **Command Palette Suchfeld leert sich nicht**: Beim erneuten Öffnen der Command Palette (`Ctrl+K`) verblieb der alte Suchbegriff im Feld.
+    - **(Gefixt: Automatisches Zurücksetzen `cmd-input.value = ''` beim Öffnen der Command Palette integriert)**
+43. **[BUG]** `js/app-enhancements.js:L696` – **Unverpackter Sprachwahl-Schreibzugriff**: Setzen der Spracheinstellung im `localStorage` schlug in privaten Tabs fehl.
+    - **(Gefixt: `try/catch` Schutz um Sprachwahl-Speicherung gelegt)**
+44. **[BUG]** `js/i18n.js:L187` – **Fehlendes try/catch bei i18n Sprachwechsel**: `setLanguage()` speicherte den aktiven Sprachcode ohne Exception-Handling.
+    - **(Gefixt: `try/catch` Kapselung in `setLanguage()` eingebaut)**
+45. **[BUG]** `js/i18n.js:L140` – **Fehlender Default-Text Fallback in i18n `t()`**: `t(key)` gab bei fehlendem Wörterbucheintrag den Roh-Key zurück, anstatt einen optionalen Ersatztext zu nutzen.
+    - **(Gefixt: Fallback `t(key, fallbackText)` Unterstützung ergänzt)**
+
+##### 7. HTML Anker, Formulare & Barrierefreiheit (index.html & internal.html)
+46. **[BUG]** `index.html:L2326` – **Unvalidierter `prompt()` Aufruf**: Ergebnis des `prompt()`-Dialogs für Lesezeichen wurde ohne Null/Empty-Prüfung übernommen.
+    - **(Gefixt: Validierung `if(t && t.trim().length > 0)` in index.html eingebaut)**
+47. **[BUG]** `index.html:L2587` – **Fehlender Fallback bei Footer Mailto-Link**: Mailto-Link im Footer besaß keinen Fallback für Systeme ohne Mail-Client.
+    - **(Gefixt: E-Mail-Adresse in Zwischenablage Kopierfunktion als Klick-Fallback ergänzt)**
+48. **[BUG]** `index.html:L5583` – **Fehlendes `aria-label` an Universalsuche**: Dem Suchfeld `usearch-input` fehlte ein `aria-label="Universalsuche"`.
+    - **(Gefixt: `aria-label="Universalsuche"` zu index.html hinzugefügt)**
+49. **[BUG]** `internal.html:L1907` – **Unvalidierter `prompt()` Aufruf in internal.html**: Lesezeichen-Erstellung im Editor validierte Benutzereingaben nicht.
+    - **(Gefixt: Validierung `if(t && t.trim().length > 0)` in internal.html eingebaut)**
+50. **[BUG]** `internal.html:L7070` – **Fehlendes `e.preventDefault()` in Feedback-Formular**: Absenden des Feedback-Formulars löste ohne `e.preventDefault()` einen Seiten-Reload aus.
+    - **(Gefixt: `e.preventDefault()` zum Submit-Handler in internal.html hinzugefügt)**

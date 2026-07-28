@@ -71,7 +71,8 @@
     document.addEventListener('keydown', (e) => {
         // Ignore keydown if user is typing in an input or textarea
         const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
-        if (activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select') return;
+        const isEditable = document.activeElement ? document.activeElement.isContentEditable : false;
+        if (activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select' || isEditable) return;
 
         const key = e.key.toLowerCase();
         if (key === 'g' && typeof window.openGemeindeDossier === 'function') {

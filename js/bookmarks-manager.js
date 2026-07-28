@@ -36,7 +36,7 @@
         };
 
         bookmarks.push(newBookmark);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks)); } catch (e) { console.warn('Storage unavailable:', e); }
         window.renderBookmarksList();
         if (typeof window.showToast === 'function') window.showToast(`Lesezeichen "${title.trim()}" gespeichert`, "🔖");
     };
@@ -44,7 +44,7 @@
     window.deleteBookmark = function(id) {
         let bookmarks = window.getSavedBookmarks();
         bookmarks = bookmarks.filter(b => b.id !== id);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks)); } catch (e) { console.warn('Storage unavailable:', e); }
         window.renderBookmarksList();
     };
 

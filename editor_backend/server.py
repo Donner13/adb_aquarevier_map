@@ -1,3 +1,4 @@
+import shutil
 import http.server
 import socketserver
 import json
@@ -266,30 +267,20 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"status": "error", "message": str(e)}).encode('utf-8'))
         elif parsed_path.path == '/api/deploy':
             try:
-                # Do git push
+                git_token = os.environ.get("GIT_PUSH_TOKEN") or os.environ.get("GITHUB_TOKEN", "")
+                if not git_token:
                     code = 0
+                    output = "Local development mode: GIT_PUSH_TOKEN not set, skipped git push."
                 else:
-                    if not git_token:
-                        raise Exception("GIT_PUSH_TOKEN environment variable not set.")
-
-                    # configure git
                     subprocess.run(["git", "config", "--global", "user.email", "bot@aquarevier.de"], cwd=DIRECTORY, check=False)
                     subprocess.run(["git", "config", "--global", "user.name", "Editor Bot"], cwd=DIRECTORY, check=False)
-
-                    # stage changes
                     subprocess.run(["git", "add", "contacts.geojson", "contacts_anonymized.geojson", "contacts.enc"], cwd=DIRECTORY, check=True)
 
-                    # commit
                     commit_res = subprocess.run(["git", "commit", "-m", "Editor Bot: update contacts and maps"], cwd=DIRECTORY, capture_output=True, text=True)
-
-                    # construct repo url with token
                     repo_url = f"https://x-access-token:{git_token}@github.com/Dtunder/adb_aquarevier_map.git"
-
-                    # push
                     push_res = subprocess.run(["git", "push", repo_url, "HEAD:main"], cwd=DIRECTORY, capture_output=True, text=True)
 
                     output = (commit_res.stdout or '') + (commit_res.stderr or '') + (push_res.stdout or '') + (push_res.stderr or '')
-                    # Redact any token in URL
                     output = re.sub(r'https://[^@]+@', 'https://[REDACTED]@', output)
                     code = push_res.returncode
 

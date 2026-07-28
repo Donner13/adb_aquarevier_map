@@ -168,6 +168,7 @@
     window.toggleTimeSeriesPlay = function() {
         const btn = document.getElementById('btn-timeseries-play');
         if (!window.isTimeSeriesPlaying) {
+            window.pauseTimeSeries();
             window.isTimeSeriesPlaying = true;
             if (btn) {
                 btn.innerHTML = '⏸️ Pause';
@@ -212,6 +213,8 @@
             map.removeLayer(window.timeSeriesMarkersGroup);
             window.timeSeriesMarkersGroup = null;
         }
+        const slider = document.getElementById('timeseries-year-slider');
+        if (slider) slider.value = 5;
         window.setTimeSeriesYearIndex(5); // Reset to 2025
     };
 

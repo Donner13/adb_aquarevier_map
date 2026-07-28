@@ -19,13 +19,13 @@
         if (window.isDarkMode) {
             body.classList.remove('light-theme');
             body.classList.add('dark-theme');
-            localStorage.setItem('theme', 'dark');
-            localStorage.setItem('aquarevier_theme', 'dark');
+            try { localStorage.setItem('theme', 'dark'); } catch (e) { console.warn('Storage unavailable:', e); }
+            try { localStorage.setItem('aquarevier_theme', 'dark'); } catch (e) { console.warn('Storage unavailable:', e); }
         } else {
             body.classList.remove('dark-theme');
             body.classList.add('light-theme');
-            localStorage.setItem('theme', 'light');
-            localStorage.setItem('aquarevier_theme', 'light');
+            try { localStorage.setItem('theme', 'light'); } catch (e) { console.warn('Storage unavailable:', e); }
+            try { localStorage.setItem('aquarevier_theme', 'light'); } catch (e) { console.warn('Storage unavailable:', e); }
         }
 
         // Update all theme toggle buttons on the page
