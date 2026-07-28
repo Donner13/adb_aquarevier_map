@@ -13,7 +13,7 @@ PORT = int(os.environ.get("PORT", 8000))
 # the main directory where geojsons should be written (up one level from editor_backend)
 DIRECTORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-ENC_PASSWORD = 'AquaRevier2026'
+ENC_PASSWORD = os.environ.get("CONTACTS_ENCRYPTION_KEY") or os.environ.get("ENC_PASSWORD", "AquaRevier2026")
 
 # HTTP Basic Auth for the whole editor (this server publicly exposes contacts.geojson,
 # which contains names/emails/phone numbers - must never be reachable without login).

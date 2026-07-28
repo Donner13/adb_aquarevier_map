@@ -12,7 +12,7 @@ import hmac
 PORT = int(os.environ.get('PORT', 8000))
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
-ENC_PASSWORD = os.environ.get('ENC_PASSWORD', 'AquaRevier2026')
+ENC_PASSWORD = os.environ.get('CONTACTS_ENCRYPTION_KEY') or os.environ.get('ENC_PASSWORD', 'AquaRevier2026')
 EDITOR_USER = os.environ.get('EDITOR_USER', 'florian')
 EDITOR_PASSWORD = os.environ.get('EDITOR_PASSWORD', 'AquaRevier2026')
 
