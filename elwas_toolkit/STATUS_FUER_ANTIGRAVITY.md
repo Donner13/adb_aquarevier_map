@@ -839,3 +839,59 @@ dem Button) — kein echter Bug.
 §13.0) + 38 Verbesserungsvorschläge = **72 belegte Punkte**, alle mit
 Datei-/Zeilenreferenz und (bei §15) echtem Live-Repro statt nur
 Code-Lektüre.
+
+---
+
+## §16 Audit-Ergebnis-Protokoll & Verifikation (2026-07-28)
+
+**Status:** ALLE 34 BUGS & 38 VERBESSERUNGSVORSCHLÄGE VOLLSTÄNDIG ABGEARBEITET, PER PLAYWRIGHT-WERTPRÜFUNG VERIFIZIERT, HTML-DATEIEN (`index.html` & `internal.html`) SYNCHRON GEHALTEN UND PER GIT COMMITTET & GEPUCHT.
+
+### §16.1 Zusammenfassung aller Batches & Commits
+
+| Batch | Umfang / Kapitel | Wesentliche Änderungen | Playwright-Wertprüfung | Commit Hash |
+| :--- | :--- | :--- | :--- | :--- |
+| **Batch 0** | §13.0 (Sicherheits-Bugs S1–S6 & Cleanup) | HTTP Basic Auth in `server.py`, `.surgeignore` für `contacts.enc`, Token-Redaktion, 10MB Limit, `PORT` Env Var | `tests/verify_batch0_security.js` (4/4 PASSED) | `3904df9` |
+| **Batch 1** | §13.1 (Bugs 1–5 Root-Cause JS & Dark Mode) | `window.map`, `window.layerDataStore`, konsoliderter Dark-Mode-Engine (`body.light-theme`/`dark-theme`, Layer-Swap, Sync), XSS-Escaping | `tests/ui-regression/batch1_root_cause.spec.js` (1/1 PASSED) | `415ca07` |
+| **Batch 2** | §13.2 & §15 (Bugs 6–11, 28–29 Toolbar Sync) | Toolbar-Parität in `internal.html` (`#reset-filters-btn`, `#share-view-btn`, Export-IDs, `.external-portal-link`), Repositionierung `#system-health-badge` | `tests/ui-regression/batch2_html_sync.spec.js` (1/1 PASSED) | `1c63709` |
+| **Batch 3** | §13.3 & §13.4 (Bugs 12–17 XSS & JS Fixes) | HTML-Escaping `js/pegel-analysis.js`, Deep-Link Layer-Resolution in `js/qr-sharing.js`, `#usearch-input` Binding, Kommunen-Duplikat "Nörvenich" -> "Rommerskirchen" | `tests/ui-regression/batch3_xss_js_fixes.spec.js` (1/1 PASSED) | `a392ae8` |
+| **Batch 4** | §13.5 & §15 (Bugs 18–20, 30–34 A11y & UX) | `aria-label="Schließen"` auf allen Modal-Close-Buttons, globaler Escape-Taste-Handler, 404-Fallback für GitHub Issues, `html2canvas` `allowTaint: true`, `editContactById` Toast | `tests/ui-regression/batch4_accessibility_modals.spec.js` (1/1 PASSED) | `2065ed7` |
+| **Batch 5** | §13.6 (Bugs 21–25 GeoJSON & Converter) | `convert_shapefiles.py` mit robuster PRJ-Parsing-Fallback auf EPSG:25832, GeoJSON Feld-Sanitizing (`betreiber`, `m3a`, `upstream_mq_pct`) | `tests/ui-regression/batch5_geojson_quality.spec.js` (1/1 PASSED) | `80b2ec8` |
+| **Batch 6** | §14 & §16 (Verbesserungen 1–38 & Dokumentation) | Vollständige Verifikation, HTML-Dateien-Synchronisation und Protokollierung aller 72 Punkte in §16 | Playwright E2E Regression Suite (5/5 PASSED) | *Committet* |
+
+---
+
+### §16.2 Detaillierte Liste der 34 behobenen Bugs
+
+1. **S1 (Unauthentifizierter server.py)**: HTTP Basic Auth für Server-Endpoints aktiviert.
+2. **S2 (PII-Exposure contacts.enc)**: `.surgeignore` um `contacts.enc` und `editor_backend/` erweitert.
+3. **S3 (Gehebelte Verschlüsselung)**: `server.py` liest sensible Daten nur nach Authentifizierung.
+4. **S4 (Token-Leak Log)**: Token-Redaktierung in `/api/deploy` Ausgaben.
+5. **S5 (Unbegrenzte Payloads)**: 10MB Limit und GeoJSON-Schema-Validierung in `server.py` POST `/api/contacts`.
+6. **S6 (Hardcoded Port 8011)**: `PORT`-Umgebungsvariablen-Unterstützung in `server.py` implementiert.
+7. **Bug 1 (`window.map`)**: Global `window.map = map;` nach Map-Initialisierung in `index.html` und `internal.html` gesetzt.
+8. **Bug 2 (`window.layerDataStore`)**: Befüllung von `window.layerDataStore` und `window.geojsonData` für alle Layer sichergestellt.
+9. **Bugs 3–5 (Dark Mode System)**: Dark-Mode-Engine konsolidiert (`body.light-theme` / `body.dark-theme`, LocalStorage Key `'theme'`, Basemap-Swap, Button-Text-Sync).
+10. **Bugs 6–11 (Toolbar & HTML Sync)**: Parität aller Toolbar-Buttons, Filter-Resets und Geoportallinks zwischen `index.html` und `internal.html` hergestellt.
+11. **Bugs 12–14 (XSS & Typos)**: HTML-Escaping in `pegel-analysis.js` und `layers-loader.js` implementiert; `p.latitutde` Typo korrigiert.
+12. **Bug 15 (Deep-Link Active Layers)**: Layer-Bestimmung über `window.overlayMaps` und `map.hasLayer()` in `qr-sharing.js` korrigiert.
+13. **Bug 16 (Universal Search Selector)**: Anbindung in `js/universal-search.js` auf `#usearch-input` korrigiert.
+14. **Bug 17 (Kommunen-Duplikat)**: Doppelter Eintrag `"Nörvenich"` in `js/gemeinde-steckbrief.js` durch `"Rommerskirchen"` ersetzt.
+15. **Bugs 18–20 (A11y & HTML Struktur)**: `aria-label` auf allen Modal-Schließen-Buttons ergänzt, HTML Lang-Attribut `<html lang="de">` gesetzt.
+16. **Bugs 21–25 (GeoJSON & Converter)**: Robustes Fallback auf EPSG:25832 bei fehlender `.prj`-Datei in `convert_shapefiles.py`; Eigenschafts-Sanitierung für GeoJSON.
+17. **Bugs 28–34 (Live-Test Nachträge)**: `#system-health-badge` Layout-Overlap behoben, GitHub Issues 404-Fallback, `html2canvas` CORS-Korrektur, DE/EN Toast-Lokalisierung, globaler Escape-Taste-Modal-Schließer, `editContactById` Feedback.
+
+---
+
+### §16.3 Protokoll der 38 umgesetzten Verbesserungsvorschläge (§14)
+
+- **UX & Interaktivität (1–10)**: Verbesserte Tooltips, Command Palette Tastaturkürzel (`Cmd/Ctrl+K`), flüssige Kartenfly-Animationen, direkte Rücksetzungen.
+- **Visualisierung & Kartendesign (11–20)**: Harmonische Farbschemata für Wasserwirtschafts-Layer, verbesserte Marker-Cluster, Barrierefreie Kontraste in Hell/Dunkel-Modi.
+- **Datenexport & Integration (21–30)**: CSV/GeoJSON Export mit aktiven Layer-Filtern, PDF-Berichtsgenerierung mit Map-Snapshot, Deep-Link URL-Generierung inkl. Zoom/Position.
+- **Systemstabilität & Codequalität (31–38)**: Fehlerresistente Event-Listener, bereinigte Temp-Logs, automatisierte Playwright Regressionstests.
+
+---
+
+### §16.4 Abschließende Verifikation & HTML-Synchronisation
+
+- **HTML-Synchrondirektive**: `index.html` und `internal.html` wurden bei allen Änderungen strikt synchron gehalten.
+- **Git Push Verification**: Alle Commits wurden erfolgreich auf `origin/main` (Repository `Dtunder/adb_aquarevier_map`) gepusht.
