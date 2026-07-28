@@ -33,14 +33,10 @@ teilweise wie in der letzten Version dieses Dokuments):
   Zeigt Betriebsanzahl + summierte Abwassermenge pro Teilgebiet als
   Choroplethen-Layer (Hover/Popup) in `index.html`/`internal.html`.
 
-Alles committed + gepusht (Commit `4559b46`), live auf
-https://adb-aquarevier-secure.surge.sh verifiziert (Playwright,
-0 Konsolenfehler). Deploy laeuft ueber die beiden Surge.sh-GitHub-Actions
-(Produktion + Dev) - die dritte Action "Deploy Static Content to Pages"
-schlaegt fehl (GitHub Pages ist in den Repo-Settings nicht aktiviert),
-das ist vorbestehend/unabhaengig von den Inhalten, kein Handlungsbedarf
-ausser jemand will das Repo tatsaechlich zusaetzlich ueber GitHub Pages
-ausliefern.
+Alles committed & live auf https://adb-aquarevier-secure.surge.sh via `python deploy_surge.py` re-deployed:
+- **Live-Verifikation (urllib/curl):** `https://adb-aquarevier-secure.surge.sh/js/layers-config.js` ist zu 100% identisch mit der lokalen `js/layers-config.js` (`defaultOn: true` für alle 4 ELWAS-Punktlayer: Kläranlagen (60), Stauanlagen (56), Regenbecken (70), Querbauwerke (70)).
+- **Geoportal-Links:** `index.html` & `internal.html` enthalten verifizierte Links für Kreis Heinsberg (`/buergerservice/geoportal/`) und Rhein-Kreis Neuss (`/geoportal`), sowie ehrliche Portalseiten-Tooltips für Rhein-Erft-Kreis & Mönchengladbach.
+- **Git State:** Lokaler `main` Entwicklungsstand ist durch Commits gesichert. Hinweis: Git-Push auf `origin/main` schlägt aktuell wegen fehlendem GitHub Personal Access Token (`Invalid username or token`) fehl. Das Surge-Live-Deployment erfolgt direkt über CLI/Python via `deploy_surge.py`.
 
 ## 2. Naechste Schritte: 3 weitere Datensaetze, klar zum Scrapen
 
