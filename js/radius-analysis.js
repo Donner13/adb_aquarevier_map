@@ -79,8 +79,34 @@
         const radiusSelect = document.getElementById('radius-select');
         const radiusMeters = parseInt(radiusSelect ? radiusSelect.value : 5000, 10);
         
+        // Populate inputs for visibility
+        const latInput = document.getElementById('radius-manual-lat');
+        const lngInput = document.getElementById('radius-manual-lng');
+        if (latInput) latInput.value = latlng.lat.toFixed(4);
+        if (lngInput) lngInput.value = latlng.lng.toFixed(4);
+
         window.runRadiusAnalysis(latlng.lat, latlng.lng, radiusMeters);
         window.deactivateRadiusAnalysisMode();
+    };
+
+    /**
+     * Executes radius analysis using manual inputs.
+     */
+    window.runRadiusAnalysisFromInputs = function() {
+        const latInput = document.getElementById('radius-manual-lat');
+        const lngInput = document.getElementById('radius-manual-lng');
+        const radiusSelect = document.getElementById('radius-select');
+
+        const lat = parseFloat(latInput ? latInput.value : '');
+        const lng = parseFloat(lngInput ? lngInput.value : '');
+        const radiusMeters = parseInt(radiusSelect ? radiusSelect.value : 5000, 10);
+
+        if (isNaN(lat) || isNaN(lng)) {
+            if (typeof window.showToast === 'function') window.showToast("Bitte gültige Koordinaten (Breite/Länge) eingeben", "⚠️");
+            return;
+        }
+
+        window.runRadiusAnalysis(lat, lng, radiusMeters);
     };
 
     /**

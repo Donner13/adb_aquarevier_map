@@ -409,12 +409,14 @@
             border-radius: 8px;
             color: var(--text-primary);
             font-size: 13px;
-            outline: none;
-            transition: border-color 0.2s;
+            outline: 2px solid transparent;
+            transition: border-color 0.2s, outline-color 0.2s;
         }
 
         .search-box input:focus {
             border-color: var(--accent-primary);
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 1px;
         }
 
         /* Unified Search (all-layer search box, top-left on the map) */
@@ -437,11 +439,11 @@
             font-size: 13px;
             font-family: 'Inter', sans-serif;
             color: var(--text-primary);
-            outline: none;
+            outline: 2px solid transparent;
             box-shadow: 0 2px 10px rgba(0,0,0,0.25);
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, outline-color 0.2s;
         }
-        .usearch-box input:focus { border-color: var(--accent-primary); }
+        .usearch-box input:focus { border-color: var(--accent-primary); outline: 2px solid var(--accent-primary); outline-offset: 1px; }
         .usearch-box input::placeholder { color: var(--text-secondary); }
         .usearch-results {
             display: none;
@@ -1705,11 +1707,11 @@
                     </div>
                     <div class="filter-group">
                                                 <button class="filter-btn" data-layer-name="💧 Grundwassermessstellen (ELWAS, 3700+)" title="Messergebnisse zur Grundwasserqualität und Pegelständen (ELWAS)">
-                            <span class="filter-label">Grundwassermessstellen<span class="glossar-icon" data-glossar="GRUNDWASSERMESSSTELLE">i</span></span>
+                            <span class="filter-label"><span data-i18n-key="layer_gwm">Grundwassermessstellen</span><span class="glossar-icon" data-glossar="GRUNDWASSERMESSSTELLE">i</span></span>
                             <span class="counter-badge" id="cnt-layer-grundwassermessstellen">(0/0)</span>
                         </button>
                         <button class="filter-btn" data-layer-name="📈 Grundwasserwiederanstieg (Modell)" title="Interpolierte Konturen des erwarteten Grundwasserwiederanstiegs">
-                            <span class="filter-label">Grundwasserwiederanstieg<span class="glossar-icon" data-glossar="GRUNDWASSERWIEDERANSTIEG">i</span></span>
+                            <span class="filter-label"><span data-i18n-key="layer_gwwa">Grundwasserwiederanstieg</span><span class="glossar-icon" data-glossar="GRUNDWASSERWIEDERANSTIEG">i</span></span>
                             <span class="counter-badge" id="cnt-layer-gwwa">(0/0)</span>
                         </button>
                         <button id="btn-pegel-analysis" class="filter-btn" style="background-color: rgba(0, 158, 115, 0.1); border-color: #009E73;" title="Aktiviert die Analyse-Ansicht für Industrieabwasseranteile an Pegeln">
@@ -1717,28 +1719,28 @@
                         </button>
                         <button class="filter-btn active" data-layer-name="📏 Pegel (ELWAS)" title="Flusspegelstände und Durchflussmengen (ELWAS)">
                             <span class="swatch" style="background-color: #009E73;"></span>
-                            <span class="filter-label">Flusspegel<span class="glossar-icon" data-glossar="PEGEL">i</span></span>
+                            <span class="filter-label"><span data-i18n-key="layer_pegel">Flusspegel</span><span class="glossar-icon" data-glossar="PEGEL">i</span></span>
                             <span class="counter-badge" id="cnt-layer-pegel">(0/0)</span>
                         </button>
                         <button class="filter-btn active" data-layer-name="⛰️ Stauanlagen (ELWAS)" title="Talsperren, Wehre und Rückhaltebecken (ELWAS)">
                             <span class="swatch" style="background-color: #D55E00;"></span>
-                            <span class="filter-label">Stauanlagen<span class="glossar-icon" data-glossar="STAUANLAGE">i</span></span>
+                            <span class="filter-label"><span data-i18n-key="layer_stauanlagen">Stauanlagen</span><span class="glossar-icon" data-glossar="STAUANLAGE">i</span></span>
                             <span class="counter-badge" id="cnt-layer-stauanlagen">(0/0)</span>
                         </button>
                         <button class="filter-btn active" data-layer-name="🌧️ Regenbecken/-entlastungsanlagen (ELWAS)" title="Regenüberlaufbecken und Entlastungsanlagen (ELWAS)">
                             <span class="swatch" style="background-color: #CC79A7;"></span>
-                            <span class="filter-label">Regenbecken<span class="glossar-icon" data-glossar="REGENBECKEN">i</span></span>
+                            <span class="filter-label"><span data-i18n-key="layer_regenbecken">Regenbecken</span><span class="glossar-icon" data-glossar="REGENBECKEN">i</span></span>
                             <span class="counter-badge" id="cnt-layer-regenbecken">(0/0)</span>
                         </button>
                         <button class="filter-btn active" data-layer-name="🧱 Querbauwerke (ELWAS)" title="Wehre, Sohlgleiten und andere Wanderungsbarrieren (ELWAS)">
                             <span class="swatch" style="background-color: #E69F00;"></span>
-                            <span class="filter-label">Querbauwerke<span class="glossar-icon" data-glossar="QUERBAUWERK">i</span></span>
+                            <span class="filter-label"><span data-i18n-key="layer_querbauwerke">Querbauwerke</span><span class="glossar-icon" data-glossar="QUERBAUWERK">i</span></span>
                             <span class="counter-badge" id="cnt-layer-querbauwerke">(0/0)</span>
                             <span class="quality-badge" id="qbadge-layer-querbauwerke" title="" hidden>⚠️</span>
                         </button>
                         <button class="filter-btn" data-layer-name="⚡ H2-Industrie (Elektrolyseure NRW)" title="H2-herstellende Industrie (Elektrolyseure NRW)">
                             <span class="swatch" style="background-color: #F0E442;"></span>
-                            <span class="filter-label">H2-Industrie (NRW)</span>
+                            <span class="filter-label"><span data-i18n-key="layer_h2">H2-Industrie (NRW)</span></span>
                             <span class="counter-badge" id="cnt-layer-h2_elektrolyseure_nrw">(0/0)</span>
                         </button>
                         <button class="filter-btn" data-layer-name="🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)" title="Aggregierte Einleitungsstatistik pro Teileinzugsgebiet (Choroplethenkarte)">
@@ -1818,9 +1820,16 @@
                                 <option value="25000">25 km</option>
                             </select>
                         </div>
+                        <div style="display: flex; gap: 4px; margin-bottom: 8px; align-items: center;">
+                            <input type="number" id="radius-manual-lat" placeholder="Breite (z.B. 50.92)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px 4px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Breite für Radius-Analyse">
+                            <input type="number" id="radius-manual-lng" placeholder="Länge (z.B. 6.45)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px 4px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Länge für Radius-Analyse">
+                        </div>
                         <div style="display: flex; gap: 6px; margin-bottom: 8px;">
                             <button id="btn-radius-activate" type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: var(--bg-surface, #ffffff); border: 1px solid #3b82f6; color: #2563eb; font-weight: 600;" onclick="toggleRadiusAnalysis()">
                                 📍 Punkt wählen
+                            </button>
+                            <button id="btn-radius-manual-submit" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 6px;" onclick="if(window.runRadiusAnalysisFromInputs) window.runRadiusAnalysisFromInputs()">
+                                ⌨️ Berechnen
                             </button>
                             <button id="btn-radius-clear" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" onclick="clearRadiusAnalysis()" disabled>
                                 ❌ Reset
@@ -2277,11 +2286,11 @@
                 <div>
                     <div class="section-title">Institutionen Suchen</div>
                     <div class="search-box">
-                        <input type="text" id="search-input" placeholder="Nach Name oder Ort suchen...">
+                        <input type="text" id="search-input" data-i18n-key="search_placeholder" placeholder="Nach Name oder Ort suchen...">
                     </div>
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                         <div class="contacts-meta" id="contacts-count" aria-live="polite" style="margin-bottom: 0;">0 von 0 Kontakten angezeigt</div>
-                        <button id="reset-filters-btn" class="filter-btn" style="padding: 4px 8px; font-size: 10px;">Filter zurücksetzen</button>
+                        <button id="reset-filters-btn" class="filter-btn" data-i18n-key="reset_filters" style="padding: 4px 8px; font-size: 10px;">Filter zurücksetzen</button>
                     </div>
                     <button id="share-view-btn" class="filter-btn" style="width: 100%; margin-bottom: 12px; font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
                     <div class="contact-list" id="contact-list-container">
@@ -2585,7 +2594,7 @@
                                     <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'}</div>
                                     <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
                                     <div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.wsg_name || 'Unbekannt').replace(/'/g, "\\'")}', 'Wasserschutzgebiete', '${p.id || p.wsg_name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>
-                                    <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
+                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
                                 </div>
                             `;
                             layer.bindPopup(html);
@@ -2618,7 +2627,7 @@
                                     <div class="popup-title">${p.wsg_name || 'Unbekannt'}</div>
                                     <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'} (Fassungsbereich)</div>
                                     <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
-                                    <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
+                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
                                 </div>
                             `;
                             layer.bindPopup(html);
@@ -3145,7 +3154,7 @@
                     }
                     html += getZustaendigkeitHtml(p);
                     html += `
-                            <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Stand: Datenlizenz Deutschland - Namensnennung 2.0</div>
+                            <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Stand: Datenlizenz Deutschland - Namensnennung 2.0</div>
                         </div>
                     `;
                     layer.bindPopup(html);
@@ -3262,7 +3271,7 @@
                                     : '');
                             html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(title || '').replace(/'/g, "\\'")}', 'Einzugsgebiet-Statistik', '${p.id || title || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
                             html += `
-                                    <div style="font-size: 10px; color: #94a3b8; margin-top: 6px;">Spatial Join: ELWAS-WEB Industrieeinleiter × LANUV Teileinzugsgebiete (Rur)</div>
+                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Spatial Join: ELWAS-WEB Industrieeinleiter × LANUV Teileinzugsgebiete (Rur)</div>
                                 </div>
                             `;
                             layer.bindPopup(html);
@@ -6934,7 +6943,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
             window.open(url.toString(), '_blank');
             closeFeedbackModal();
 
-            alert("Ein neuer Tab mit vorausgefüllter Meldung wurde geöffnet. Bitte dort unten auf 'Submit new issue' klicken, um die Meldung endgültig abzuschicken.");
+            alert("Vorbereitete Meldung in neuem Tab geöffnet:\nBitte im geöffneten Tab unten auf 'Submit new issue' klicken, um das Feedback tatsächlich auf GitHub einzureichen.");
         }
 
         async function loadFeedbackIssues() {

@@ -59,10 +59,15 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
   function buildPopupHtml(p) {
     const glossarSpan = (key) =>
       key ? `<span class="glossar-icon" data-glossar="${escapeHtml(key)}">i</span>` : '';
+    // Feste deutsche Config-Strings (groupLabel/field.label) werden bei
+    // aktivem Englisch ueber ein DE->EN-Mapping angezeigt (siehe
+    // js/app-enhancements.js AQUAREVIER_I18N) - Fallback ist immer Deutsch,
+    // falls das i18n-Script (noch) nicht geladen ist.
+    const tLabel = (s) => window.AQUAREVIER_I18N ? window.AQUAREVIER_I18N.translatePopupLabel(s) : s;
 
     let html = `
       <div class="popup-card">
-        <div class="popup-group" style="color:${cfg.color}">${escapeHtml(cfg.groupLabel)}</div>
+        <div class="popup-group" style="color:${cfg.color}">${escapeHtml(tLabel(cfg.groupLabel))}</div>
         <div class="popup-title">${escapeHtml(p.name || 'Unbekannt')}</div>
     `;
 
@@ -80,7 +85,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       if (field.label === '📍') {
         html += `<div class="popup-detail">📍 ${safeVal}</div>`;
       } else {
-        html += `<div class="popup-detail">${escapeHtml(field.label)}${glossarSpan(field.glossar)}: ${safeVal}${escapeHtml(field.suffix || '')}</div>`;
+        html += `<div class="popup-detail">${escapeHtml(tLabel(field.label))}${glossarSpan(field.glossar)}: ${safeVal}${escapeHtml(field.suffix || '')}</div>`;
       }
     }
 
@@ -149,14 +154,14 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // Feedback Link
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-      <a href="#" onclick="openFeedbackModal('${escapeHtml(p.name || '').replace(/'/g, "\\'")}', '${escapeHtml(cfg.groupLabel)}', '${escapeHtml(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${p.lat || p.latitude || 0}, ${p.lng || p.longitude || p.lon || 0}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a>
+      <button type="button" onclick="openFeedbackModal('${escapeHtml(p.name || '').replace(/'/g, "\\'")}', '${escapeHtml(cfg.groupLabel)}', '${escapeHtml(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${p.lat || p.latitude || 0}, ${p.lng || p.longitude || p.lon || 0})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
     </div>`;
 
     // Footer
     const footer = cfg.footerTemplate
       ? cfg.footerTemplate(p)
       : 'Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0';
-    html += `<div style="font-size:10px;color:#94a3b8;margin-top:6px;">${escapeHtml(footer)}</div>`;
+    html += `<div style="font-size:10px;color:#475569;margin-top:6px;">${escapeHtml(footer)}</div>`;
     html += `</div>`;
     return html;
   }

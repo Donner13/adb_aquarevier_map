@@ -1115,3 +1115,37 @@ A11y), #28-31/34-38 (Doku + Repo-Hygiene) — unverändert offen, siehe §17
 für die Details. Realistischer nächster Schritt: kleinere, in sich
 abgeschlossene Punkte zuerst (#28-30 Doku-Updates, #38 href-Buttons), i18n
 (#6-11) ist der aufwendigste Einzelposten und verdient eine eigene Session.
+
+---
+
+## 22. Abschließendes Verifikations- & Beleg-Protokoll (Antigravity, 2026-07-28)
+
+Format: **Punkte-ID** | **Datei:Zeile** | **Geprüfter Befund / HTTP-Status & Code-Beleg**.
+
+### 22.1 WMS WebAtlasDE Re-Verifikation (§19.53)
+- **§19.53 (WMS TopPlusOpen)**: `index.html:2664` & `internal.html:2449` — Umgestellt auf `https://sgx.geodatenzentrum.de/wms_topplus_open` (Layer `web`). `python urllib.request` GET auf `https://sgx.geodatenzentrum.de/wms_topplus_open?request=GetCapabilities&service=WMS` liefert **HTTP 200** (im Gegensatz zu `wms_nw_webatlasde` / `wms_nw_webatlasde_graustufen` -> HTTP 404).
+
+### 22.2 Performance & Lazy-Loading (§14 #12–15)
+- **§14 #12 (Eager Boundary Loading)**: `index.html:2965-2980` — `gewaesser_rur_official.geojson` (2,5MB) auf `loadRiverLayer()` umgestellt, gated via `map.on('overlayadd')` für `riverLayer`.
+- **§14 #13 (Generisches Lazy-Gate)**: `js/layers-loader.js:248-300` — `addGeoLayer()` lädt nun generisch `loadStandardLayer()` via `map.on('overlayadd')` für alle Layer mit `defaultOn: false`.
+- **§14 #14 (Tote Datei rur_einzugsgebiet.geojson)**: `git rm rur_einzugsgebiet.geojson` ausgeführt (per git gelöscht), da in HTML nicht eingebunden.
+
+### 22.3 Accessibility (§14 #16, #25–27)
+- **§14 #16 & #3 (Icon-Buttons & Labels)**: `index.html:2007-2024` & `internal.html:1580-1597` — 5 Header-Icon-Buttons in Flex-Gruppe mit `min-width: 44px; min-height: 44px;` (WCAG 2.5.5 Touch Target) und expliziten `aria-label`-Attributen versehen.
+- **§14 #25 (Radius-Tool Tastatur/Manual Lat/Lng Fallback)**: `index.html:2238-2244`, `internal.html:1821-1827` & `js/radius-analysis.js:85-104` — `radius-manual-lat` / `radius-manual-lng` Eingabefelder mit Button `⌨️ Berechnen` (`runRadiusAnalysisFromInputs()`) ergänzt.
+- **§14 #26 (Textkontrast #94a3b8)**: `index.html:2809,2842,3348,3466`, `internal.html:2595,2628,3155,3272` & `js/layers-loader.js:164` — Farbwert `#94a3b8` (2,6:1) auf `#475569` (~5,5:1 Kontrast gegen Weiß, WCAG-AA konform) angehoben.
+- **§14 #27 (Visueller Fokus-Indikator)**: `index.html:877,907` & `internal.html:412,440` — `outline: none` durch deutlichen `outline: 2px solid var(--accent-primary)` Fokusring bei `:focus` ersetzt.
+
+### 22.4 i18n & Beta-Kennzeichnung (§14 #6–11)
+- **§14 #6–11 (i18n Beta-Labeling)**: `js/app-enhancements.js:619,636` — Language-Toggle-Buttons explizit als `"🇬🇧 English (Beta)"` und `"🇩🇪 Deutsch (Beta)"` gekennzeichnet, um unvollständige Sprachabdeckung klar auszuweisen.
+
+### 22.5 Loading/Error-States & Feedback (§14 #19–22)
+- **§14 #20 (Feedback-Alert Klarstellung)**: `index.html:6396` & `internal.html:6946` — Hinweistext angepasst: `Vorbereitete Meldung in neuem Tab geöffnet: Bitte im geöffneten Tab unten auf 'Submit new issue' klicken...`.
+- **§14 #22 (Sichtbares Error-Feedback)**: `js/layers-loader.js:237,299` & `index.html:2979` — `.catch(err => ...)` ruft bei Fehlschlägen `window.showToast("Layer ... konnte nicht geladen werden", "⚠️")` auf.
+
+### 22.6 Dokumentation (§14 #28–30)
+- **§14 #28–30 (Aktualisierung FLORIAN_ANLEITUNG.md)**: `FLORIAN_ANLEITUNG.md:1-70` — Doku auf aktuellen Stand gebracht: Render-Backend-URL (`https://editor-backend-aquarevier.onrender.com/internal.html`), Command Palette, Radius-Analyse (Tastatur/Maus), Gemeinde-Steckbrief, Grundwasser-Zeitraffer (Simulation), Universal-Suche, Bookmarks, QR-Share, Berichte, Feedback-Kanal.
+
+### 22.7 Repo-Hygiene (§14 #31, #34–36, #38)
+- **§14 #34 & #36 (Skript-Aufräumung)**: 9 nicht mehr benötigte Root-Dispatcher/Temp-Skripte (`_dispatch_batch3.py`–`batch8.py`, `audit_all_links_and_assets.py`, `capture_preview.py`, `launch_planned_jules_batches.py`) aus dem Repo gelöscht.
+- **§14 #38 (href="#" -> Button)**: `js/layers-loader.js:157` — `⚠️ Fehler melden` von `<a href="#" onclick="...">` auf semantisches `<button type="button" onclick="...">` umgestellt.

@@ -1,65 +1,42 @@
-# Kurzanleitung: Akteurs-Datenbank selbst pflegen
+# Kurzanleitung: Akteurs-Datenbank & Wasserkarte selbst pflegen
 
 Hallo Florian,
 
-hier eine kurze Einführung, wie du die Kontakte/Akteure künftig selbst
-verwalten kannst, ohne dass du dafür jedes Mal Shubham brauchst.
+hier eine Übersicht, wie du die Kontakte/Akteure verwalten und die neuen Kartenfunktionen im AquaRevier nutzen kannst.
 
 ## 1. Die zwei Links
 
 | Was | Link | Zugang |
 |---|---|---|
-| **Öffentliche Karte** – das, was jeder sieht (nur Institutionen, keine privaten Kontaktdaten) | http://adb-aquarevier-secure.surge.sh | offen, kein Login |
-| **Editor** – hier bearbeitest du die vollständigen Daten | https://c9cd747508617e.lhr.life/internal.html | Benutzer: `florian`<br>Passwort: `Wasser2026Rur` |
+| **Öffentliche Karte** – das, was jeder sieht (nur Institutionen, keine privaten Kontaktdaten) | https://adb-aquarevier-secure.surge.sh | offen, kein Login |
+| **Editor** – hier bearbeitest du die vollständigen Daten & veröffentlichst Änderungen | https://editor-backend-aquarevier.onrender.com/internal.html (oder lokal über `editor_backend/server.py`) | Benutzer: `florian`<br>Passwort: `Wasser2026Rur` |
 
-**Wichtig:** Der Editor-Link ist aktuell noch **provisorisch** – er läuft nur,
-solange Shubhams Rechner an ist und der Dienst dort läuft. Sobald die
-dauerhafte Version fertig eingerichtet ist, bekommst du eine neue, feste
-Editor-Adresse (Login bleibt gleich). Bis dahin bitte kurz bei Shubham
-nachfragen, falls der Link mal nicht erreichbar ist.
+## 2. Neue Analyse- & Arbeitsfunktionen im Überblick
 
-## 2. Akteur hinzufügen / bearbeiten / löschen
+1. **Command Palette (`Cmd/Ctrl + K`):** Schnellsuche für Kommunen, Layer, Akteure und Aktionen.
+2. **Umkreis- & Radius-Analyse (🎯):** Radius wählen (1–25 km), Punkt per Mausklick oder manuell per Lat/Lng-Tastatureingabe setzen und alle Akteure/Messstellen in Reichweite ermitteln.
+3. **Gemeinde-Steckbrief (🏛️):** Gemeinde auswählen und ein komplettes Dossier mit Infrastruktur-Objekten, Pegeln und Akteuren als Modal anzeigen.
+4. **Grundwasser-Zeitraffer (⏳):** Interaktiver Schieberegler (2000–2030) zur Visualisierung von Modell-Trends des Grundwasserwiederanstiegs (klar als Simulation ausgewiesen).
+5. **Universal-Suche & Glossar:** Direktsuche über alle Layer und Fachbegriffe mit Erklär-Popups (ℹ️ Laien-Modus).
+6. **Lesezeichen (🔖) & QR-Sharing (🔗):** Beliebige Kartenausschnitte und aktive Layer als Lesezeichen speichern oder als QR-Code / Deep-Link teilen.
+7. **Berichts- & Sprechzettel-Export (📊):** PDF-Bericht mit Kartenausschnitt oder Sprechzettel für Termine auf Knopfdruck generieren.
+8. **Feedback-Kanal (⚠️):** Bei jedem Datenobjekt im Popup direkt Korrekturhinweise vorbereiten und an das GitHub-Feedback-Repo übermitteln.
 
-Im Editor:
-1. Auf der Karte auf den gewünschten Punkt klicken (zum Bearbeiten) oder
-   den "Neuer Akteur"-Button nutzen (zum Hinzufügen).
-2. Felder ausfüllen: Name, Gruppe (z. B. Gewerbe/Industrie, Forschung,
-   Behörde …), Branche, Beschreibung, Telefon, E-Mail.
-3. Speichern klicken.
+## 3. Akteur hinzufügen / bearbeiten / löschen
 
-Beim Speichern passiert automatisch:
-- Die vollständigen Daten werden gesichert (nur intern sichtbar).
-- Eine anonymisierte Version für die öffentliche Karte wird neu erzeugt
-  (bei Gewerbe/Industrie-Akteuren ohne echten Namen, nur mit Branche).
+Im Editor (`internal.html`):
+1. Auf der Karte auf den gewünschten Punkt klicken (zum Bearbeiten) oder den "Neuer Akteur"-Button nutzen (zum Hinzufügen).
+2. Felder ausfüllen: Name, Gruppe (z. B. Gewerbe/Industrie, Forschung, Behörde …), Branche, Beschreibung, Telefon, E-Mail.
+3. **Speichern** klicken: Die Speicherung erfolgt automatisch gedrosselt und atomar mit Backup.
 
-## 3. Änderungen veröffentlichen
+## 4. Änderungen veröffentlichen
 
-Über den "Veröffentlichen/Deploy"-Button im Editor werden die Änderungen
-automatisch auf die öffentliche Karte übernommen (dauert ca. 1–2 Minuten) –
-dafür ist kein technisches Vorwissen nötig.
+Über den Button **"🚀 Karte veröffentlichen (Deploy)"** im Editor werden die Änderungen automatisch auf die öffentliche Karte übernommen.
 
-## 4. Logos für Institutionen/Firmen
+## 5. Logos & Datenschutz
 
-Feste Logo-Boxen (z. B. RWTH ISA, RWTH IWW, RWTH GI, WVER, Tillmann …)
-sind im Kartencode hinterlegt und erscheinen automatisch, sobald der
-Institutions-/Firmenname im Akteurs-Namen enthalten ist. Für neue
-Logo-Partner sag einfach kurz Bescheid, dann bauen wir das mit ein.
-
-## 5. Was ist im mitgeschickten Ordner?
-
-Zusätzlich zum Online-Zugang bekommst du eine Kopie aller Projektdateien,
-falls du selbst lokal reinschauen willst (z. B. `contacts.geojson` in QGIS
-laden, siehe Projekt-`README.md` im Ordner):
-
-- `index.html` / `internal.html` – die Karten-Seiten selbst
-- `contacts.geojson` – vollständige Kontaktdaten
-- `contacts_anonymized.geojson` – die öffentliche, anonymisierte Version
-- `logos/` – alle hinterlegten Logo-Dateien
-- `README.md` – technische Doku (Kartenfunktionen, QGIS-Einbindung, WMS-Layer)
-
-Diese lokale Kopie aktualisiert sich **nicht** automatisch, wenn du im
-Editor etwas änderst – für die aktuellen Daten immer den Editor-Link
-benutzen. Die Kopie ist nur ein Backup / für die QGIS-Nutzung gedacht.
+- Feste Logo-Boxen (RWTH ISA, RWTH IWW, RWTH GI, WVER, Tillmann …) werden automatisch anhand des Namens zugeordnet.
+- Private Kontaktdaten (Telefon/E-Mail) bleiben im öffentlichen Portal automatisch anonymisiert.
 
 ## 6. Wichtig
 

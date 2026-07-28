@@ -108,7 +108,7 @@
             ">
                 <div style="display: flex; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--border-color, rgba(255,255,255,0.1)); gap: 12px;">
                     <span style="font-size: 18px;">⚡</span>
-                    <input type="text" id="cmd-input" placeholder="Schnellsuche (Gemeinden, Layer, Akteure, Aktionen)..." style="
+                    <input type="text" id="cmd-input" data-i18n-key="cmd_placeholder" placeholder="Schnellsuche (Gemeinden, Layer, Akteure, Aktionen)..." style="
                         flex: 1;
                         background: transparent;
                         border: none;
@@ -599,6 +599,13 @@
     }
 
     // --- 6. MEHRSPRACHIGKEITS-SUPPORT (DE / EN) ---
+    // Phase 1 (dieser Batch): data-i18n-key-System fuer statische UI-Elemente,
+    // Popup-Feldlabels + Gruppenlabels (js/layers-loader.js) und die 7
+    // ELWAS-Layer-Namen (js/layers-config.js) in der Sidebar-Filterliste.
+    // Phase 2 (noch offen, bewusst nicht in diesem Batch): KI-Assistent-Panel,
+    // Wassergüte-Panel, Keyboard-Shortcuts-Hilfe, Gemeinde-Steckbrief,
+    // Grundwasser-Zeitreihe-Panel, sowie die uebrigen (nicht-ELWAS) Sidebar-
+    // Filtergruppen (Akteursgruppen, Risiko-Ampel, Statistik/Gefahrenkarten-Layer).
     const I18N_DICT = {
         de: {
             app_title: "Akteurskarte - AquaRevier",
@@ -609,7 +616,14 @@
             generate_report: "📊 Bericht generieren (PDF)",
             open_data_export: "💾 Geodaten-Export",
             health_online: "ELWAS & WMS 🟢 Operational",
-            switch_lang: "🇬🇧 English"
+            switch_lang: "🇬🇧 English (Beta)",
+            layer_gwm: "Grundwassermessstellen",
+            layer_gwwa: "Grundwasserwiederanstieg",
+            layer_pegel: "Flusspegel",
+            layer_stauanlagen: "Stauanlagen",
+            layer_regenbecken: "Regenbecken",
+            layer_querbauwerke: "Querbauwerke",
+            layer_h2: "H2-Industrie (NRW)"
         },
         en: {
             app_title: "Stakeholder Map - AquaRevier",
@@ -620,8 +634,58 @@
             generate_report: "📊 Generate Report (PDF)",
             open_data_export: "💾 Open Data Export",
             health_online: "ELWAS & WMS 🟢 Operational",
-            switch_lang: "🇩🇪 Deutsch"
+            switch_lang: "🇩🇪 Deutsch (Beta)",
+            layer_gwm: "Groundwater monitoring stations",
+            layer_gwwa: "Groundwater level rise",
+            layer_pegel: "River gauges",
+            layer_stauanlagen: "Reservoirs / dams",
+            layer_regenbecken: "Stormwater basins",
+            layer_querbauwerke: "Cross structures",
+            layer_h2: "H2 industry (NRW)"
         }
+    };
+
+    // Popup-Feldlabels (js/layers-loader.js buildPopupHtml) + Gruppenlabels
+    // (js/layers-config.js groupLabel) sind feste deutsche Strings in der
+    // Config, keine data-i18n-key-Elemente (sie werden erst zur Laufzeit pro
+    // Feature ins Popup-HTML gerendert). Uebersetzung daher als reines
+    // Nachschlage-Mapping DE -> EN, angewendet in buildPopupHtml selbst.
+    const POPUP_LABEL_TRANSLATIONS = {
+        "🏢 Betreiber": "🏢 Operator",
+        "🏢 Eigentümer": "🏢 Owner",
+        "🌊 Einleitung in": "🌊 Discharges into",
+        "🌊 Gewässer": "🌊 Water body",
+        "📊 Ausbaugröße": "📊 Design capacity",
+        "🔧 Art": "🔧 Type",
+        "📐 Einzugsgebiet": "📐 Catchment area",
+        "🔧 Typ": "🔧 Type",
+        "⚙️ Abwasserbereich": "⚙️ Wastewater sector",
+        "🏗️ Bauwerksart": "🏗️ Structure type",
+        "⚡ Kapazität": "⚡ Capacity",
+        "📊 Status": "📊 Status"
+    };
+    const GROUP_LABEL_TRANSLATIONS = {
+        "Kläranlage": "Wastewater treatment plant",
+        "Grundwassermessstelle": "Groundwater monitoring station",
+        "Pegel": "River gauge",
+        "Stauanlage": "Reservoir / dam",
+        "Regenbecken / Sonderbauwerk": "Stormwater basin / special structure",
+        "Querbauwerk / Bauwerk": "Cross structure",
+        "H2-Elektrolyseur": "H2 electrolyser"
+    };
+
+    /** Uebersetzt einen festen deutschen Popup-Feld- oder Gruppenlabel-String,
+     *  falls aktuell Englisch aktiv ist. Deutsch (Quellsprache) bleibt sonst
+     *  unveraendert - kein Datenverlust, nur Anzeige-Ebene. */
+    function translatePopupLabel(deText) {
+        const lang = localStorage.getItem('aquarevier_lang') || 'de';
+        if (lang !== 'en') return deText;
+        return POPUP_LABEL_TRANSLATIONS[deText] || GROUP_LABEL_TRANSLATIONS[deText] || deText;
+    }
+    window.AQUAREVIER_I18N = {
+        dict: I18N_DICT,
+        currentLang: () => localStorage.getItem('aquarevier_lang') || 'de',
+        translatePopupLabel
     };
 
     function initLanguageToggle() {
@@ -653,6 +717,27 @@
 
             const langBtn = document.getElementById('lang-toggle-btn');
             if (langBtn) langBtn.textContent = dict.switch_lang;
+
+            // Generisches data-i18n-key-System: jedes Element mit diesem
+            // Attribut wird direkt aus dict[key] befuellt (placeholder bei
+            // Inputs, sonst textContent). Neue uebersetzbare Elemente
+            // brauchen dafuer keinen weiteren applyLanguage()-Code mehr.
+            document.querySelectorAll('[data-i18n-key]').forEach(el => {
+                const key = el.getAttribute('data-i18n-key');
+                const text = dict[key];
+                if (text === undefined) return;
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = text;
+                } else {
+                    el.textContent = text;
+                }
+            });
+
+            // Popup-/Gruppenlabels werden erst beim naechsten Popup-Render neu
+            // gebaut (js/layers-loader.js liest aquarevier_lang direkt) -
+            // bereits offene Popups bleiben bis zum naechsten Layer-Reload in
+            // der bisherigen Sprache, das ist bewusst (kein Re-Render laufender
+            // Leaflet-Popups noetig).
 
             window.showToast(lang === 'de' ? "Sprache: Deutsch 🇩🇪" : "Language: English 🇬🇧", "🌐");
         }
