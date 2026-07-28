@@ -1,0 +1,613 @@
+{
+  "layer": "klaeranlagen",
+  "id_field": "anlagen_nr",
+  "run_timestamp": "2026-07-26T09-20-41Z",
+  "baseline": false,
+  "previous_count": 60,
+  "new_count": 60,
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "id": "222137",
+      "name": "Erkelenz-Mitte",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "47735"
+        }
+      }
+    },
+    {
+      "id": "222144",
+      "name": "Flahstrass",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "88178"
+        }
+      }
+    },
+    {
+      "id": "222146",
+      "name": "Kirchhoven",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "46100"
+        }
+      }
+    },
+    {
+      "id": "222148",
+      "name": "Dremmen",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "9840"
+        }
+      }
+    },
+    {
+      "id": "222149",
+      "name": "Hückelhoven-Ratheim",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "87908"
+        }
+      }
+    },
+    {
+      "id": "222153",
+      "name": "Frelenberg",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "143318"
+        }
+      }
+    },
+    {
+      "id": "222154",
+      "name": "Waldfeucht Haaren",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "27941"
+        }
+      }
+    },
+    {
+      "id": "222155",
+      "name": "Wassenberg",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "30896"
+        }
+      }
+    },
+    {
+      "id": "222156",
+      "name": "Wegberg-Mitte",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "55597"
+        }
+      }
+    },
+    {
+      "id": "222159",
+      "name": "Wegberg-Arsbeck/Dalheim",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "13305"
+        }
+      }
+    },
+    {
+      "id": "222598",
+      "name": "Mönchengladbach GWK I",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "420000"
+        }
+      }
+    },
+    {
+      "id": "222595",
+      "name": "Düsseldorf-Nord",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "558217"
+        }
+      }
+    },
+    {
+      "id": "222626",
+      "name": "Dormagen-Rheinfeld",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "87000"
+        }
+      }
+    },
+    {
+      "id": "222627",
+      "name": "Grevenbroich",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "71346"
+        }
+      }
+    },
+    {
+      "id": "222628",
+      "name": "Wevelinghoven",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "24991"
+        }
+      }
+    },
+    {
+      "id": "222631",
+      "name": "Glehn",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "29703"
+        }
+      }
+    },
+    {
+      "id": "222632",
+      "name": "Neuss-Ost",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "375501"
+        }
+      }
+    },
+    {
+      "id": "222633",
+      "name": "Neuss-Süd",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "90029"
+        }
+      }
+    },
+    {
+      "id": "222634",
+      "name": "Anstel",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "10590"
+        }
+      }
+    },
+    {
+      "id": "222644",
+      "name": "Kaarst- Nordkanal",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "68619"
+        }
+      }
+    },
+    {
+      "id": "22235",
+      "name": "Düren",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "469506"
+        }
+      }
+    },
+    {
+      "id": "22236",
+      "name": "Heimbach",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "7444"
+        }
+      }
+    },
+    {
+      "id": "22237",
+      "name": "Hausen-Blens",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "920"
+        }
+      }
+    },
+    {
+      "id": "22241",
+      "name": "Hürtgenwald-Gey",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "3815"
+        }
+      }
+    },
+    {
+      "id": "22244",
+      "name": "Schophoven",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "979"
+        }
+      }
+    },
+    {
+      "id": "22245",
+      "name": "Jülich",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "96082"
+        }
+      }
+    },
+    {
+      "id": "22254",
+      "name": "Langerwehe",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "10166"
+        }
+      }
+    },
+    {
+      "id": "22258",
+      "name": "Linnich",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "31723"
+        }
+      }
+    },
+    {
+      "id": "22263",
+      "name": "Schmidt",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "6365"
+        }
+      }
+    },
+    {
+      "id": "22264",
+      "name": "Nideggen-Embken",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "3759"
+        }
+      }
+    },
+    {
+      "id": "22279",
+      "name": "Kläranlage Kirspenich",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "21161"
+        }
+      }
+    },
+    {
+      "id": "22295",
+      "name": "Wald",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "1392"
+        }
+      }
+    },
+    {
+      "id": "22296",
+      "name": "Blankenheim",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "4519"
+        }
+      }
+    },
+    {
+      "id": "22297",
+      "name": "Freilingen",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "1203"
+        }
+      }
+    },
+    {
+      "id": "22298",
+      "name": "Ahrdorf",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "402"
+        }
+      }
+    },
+    {
+      "id": "22299",
+      "name": "Ahrhuette",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "853"
+        }
+      }
+    },
+    {
+      "id": "222100",
+      "name": "Reetz",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "410"
+        }
+      }
+    },
+    {
+      "id": "222101",
+      "name": "Huengersdorf",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "994"
+        }
+      }
+    },
+    {
+      "id": "222102",
+      "name": "Nonnenbach",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "66"
+        }
+      }
+    },
+    {
+      "id": "222103",
+      "name": "Rohr",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "516"
+        }
+      }
+    },
+    {
+      "id": "2221",
+      "name": "Aachen-Soers",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "424183"
+        }
+      }
+    },
+    {
+      "id": "2222",
+      "name": "Eilendorf",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "46613"
+        }
+      }
+    },
+    {
+      "id": "2223",
+      "name": "Aachen-Horbach",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "24133"
+        }
+      }
+    },
+    {
+      "id": "2226",
+      "name": "Aachen-Brand",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "32737"
+        }
+      }
+    },
+    {
+      "id": "2227",
+      "name": "Alsdorf-Broichtal",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "32574"
+        }
+      }
+    },
+    {
+      "id": "2228",
+      "name": "Bettendorf",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "42958"
+        }
+      }
+    },
+    {
+      "id": "2229",
+      "name": "Setterich",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "109251"
+        }
+      }
+    },
+    {
+      "id": "22212",
+      "name": "Eschweiler-Weisweiler-ZKA",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "82046"
+        }
+      }
+    },
+    {
+      "id": "22213",
+      "name": "Herzogenrath-Worm",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "34728"
+        }
+      }
+    },
+    {
+      "id": "22214",
+      "name": "Steinbusch",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "34508"
+        }
+      }
+    },
+    {
+      "id": "222475",
+      "name": "Bedburg Kaster",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "54723"
+        }
+      }
+    },
+    {
+      "id": "222477",
+      "name": "Bergheim Auenheim",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "18778"
+        }
+      }
+    },
+    {
+      "id": "222480",
+      "name": "Bergheim Glessen",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "7808"
+        }
+      }
+    },
+    {
+      "id": "222482",
+      "name": "Bergheim Kenten",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "109944"
+        }
+      }
+    },
+    {
+      "id": "222483",
+      "name": "Brühl",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "64158"
+        }
+      }
+    },
+    {
+      "id": "222485",
+      "name": "Elsdorf",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "16917"
+        }
+      }
+    },
+    {
+      "id": "222486",
+      "name": "Erftstadt",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "62470"
+        }
+      }
+    },
+    {
+      "id": "222487",
+      "name": "Frechen",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "47944"
+        }
+      }
+    },
+    {
+      "id": "222489",
+      "name": "KA Hürth Stotzheim",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "109136"
+        }
+      }
+    },
+    {
+      "id": "222490",
+      "name": "Pulheim",
+      "fields": {
+        "aktuelle_auslastung_ew": {
+          "old": null,
+          "new": "69000"
+        }
+      }
+    }
+  ],
+  "summary": "0 neu, 0 entfernt, 60 geändert (aktuelle_auslastung_ew)."
+}

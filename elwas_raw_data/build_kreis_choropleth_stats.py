@@ -54,6 +54,7 @@ def main():
     kreis_stats = defaultdict(lambda: {
         'anzahl_einleiter': 0,
         'klaeranlagen_kapazitaet_ew': 0,
+        'klaeranlagen_auslastung_ew': 0,
         'anzahl_messstellen': 0,
         'flaeche_km2': 0,
         'einwohner': 0,
@@ -82,9 +83,12 @@ def main():
         if normalized_name in kreis_map:
             klaeranlagen_counts[normalized_name] += 1
             kapazitaet_str = feature['properties'].get('ausbaugroesse_ew', '0')
-            # Tausenderpunkt entfernen und in Float umwandeln
-            kapazitaet = float(kapazitaet_str.replace('.', ''))
+            kapazitaet = float(kapazitaet_str.replace('.', '')) if kapazitaet_str else 0
             kreis_stats[normalized_name]['klaeranlagen_kapazitaet_ew'] += kapazitaet
+
+            auslastung_str = feature['properties'].get('aktuelle_auslastung_ew', '0')
+            auslastung = float(auslastung_str.replace('.', '')) if auslastung_str else 0
+            kreis_stats[normalized_name]['klaeranlagen_auslastung_ew'] += auslastung
         else:
             print(f"WARNUNG: Kläranlage in unbekanntem Kreis: {kreis_name_raw}")
     assert sum(klaeranlagen_counts.values()) == len(klaeranlagen_data['features']), \
@@ -125,6 +129,7 @@ def main():
         # Update stats
         kreis_stats[normalized_name]['flaeche_km2'] = flaeche_km2
         kreis_stats[normalized_name]['name'] = feature['properties']['GN'] # Originalname
+        kreis_stats[normalized_name]['freie_kapazitaet_ew'] = kreis_stats[normalized_name]['klaeranlagen_kapazitaet_ew'] - kreis_stats[normalized_name]['klaeranlagen_auslastung_ew']
         kreis_stats[normalized_name]['kn5'] = kn5
 
         # Berechne Bonus-Kennwert
@@ -167,6 +172,8 @@ def main():
         print(f"    Fläche (km²): {props['flaeche_km2']:.2f}")
         print(f"    Anzahl Einleiter: {props['anzahl_einleiter']}")
         print(f"    Kläranlagen Kapazität (EW): {props['klaeranlagen_kapazitaet_ew']:,}")
+        print(f"    Kläranlagen Auslastung (EW): {props['klaeranlagen_auslastung_ew']:,}")
+        print(f"    Freie Kapazität (EW): {props['klaeranlagen_kapazitaet_ew'] - props['klaeranlagen_auslastung_ew']:,}")
         print(f"    Anzahl Messstellen: {props['anzahl_messstellen']}")
         print(f"    Messstellendichte (Stellen/km²): {props['messstellendichte_km2']:.2f}")
         print(f"    Einleiter je 10.000 EW: {props['einleiter_je_10000ew']:.2f}")

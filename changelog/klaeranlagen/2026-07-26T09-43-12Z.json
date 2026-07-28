@@ -1,0 +1,12 @@
+{
+  "layer": "klaeranlagen",
+  "id_field": "anlagen_nr",
+  "run_timestamp": "2026-07-26T09-43-12Z",
+  "baseline": false,
+  "previous_count": 60,
+  "new_count": 60,
+  "added": [],
+  "removed": [],
+  "changed": [],
+  "summary": "0 neu, 0 entfernt, 0 geändert."
+}

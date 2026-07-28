@@ -1945,11 +1945,61 @@
             color: var(--text-primary) !important;
             margin-right: 5px;
         }
+
+        /* Mobile Sidebar Toggle CSS */
+        #mobile-sidebar-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2000;
+            padding: 12px 24px;
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            #mobile-sidebar-toggle {
+                display: flex !important;
+            }
+            body:not(.mobile-sidebar-open) #sidebar {
+                display: none !important;
+            }
+            body.mobile-sidebar-open #sidebar {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100% !important;
+                height: 100vh;
+                z-index: 1500;
+                display: flex;
+            }
+            body.mobile-sidebar-open #map {
+                /* Optionally hide or push map away so interaction doesn't bleed, but overlay is fine */
+                /* display: none !important; */
+            }
+        }
     </style>
 
 </head>
 <body class="light-theme">
     <div id="app-container">
+
+        <!-- Mobile Sidebar Toggle -->
+        <button id="mobile-sidebar-toggle">
+            <span class="icon" style="font-size:16px;">☰</span>
+            <span class="text">Filter & Daten</span>
+        </button>
+
+
         <!-- Sidebar -->
         <div id="sidebar">
             <div class="sidebar-header">
@@ -2120,7 +2170,8 @@
                             <label for="choroplethMetricSelect">Kennzahl:</label>
                             <select id="choroplethMetricSelect">
                                 <option value="anzahl_einleiter" selected>Industrieeinleiter (Anzahl)</option>
-                                <option value="klaeranlagen_kapazitaet_ew">Kläranlagen-Kapazität (EW)</option>
+                                <option value="klaeranlagen_kapazitaet_ew">Kläranlagen-Kapazität (Ausbaugröße EW)</option>
+                                <option value="freie_kapazitaet_ew">Freie Kapazität (EW)</option>
                                 <option value="messstellendichte_km2">Messstellendichte (Stellen/km²)</option>
                                 <option value="einwohner">Einwohner im Kreisgebiet</option>
                             </select>
@@ -3484,6 +3535,7 @@
                     <td>${p.flaeche_km2.toLocaleString('de-DE', {maximumFractionDigits: 1})}</td>
                     <td>${p.anzahl_einleiter} (${p.einleiter_je_10000ew.toLocaleString('de-DE', {maximumFractionDigits: 1})} / 10k EW)</td>
                     <td>${p.klaeranlagen_kapazitaet_ew.toLocaleString('de-DE')}</td>
+                    <td style="color: ${p.freie_kapazitaet_ew < 0 ? 'red' : 'green'};">${p.freie_kapazitaet_ew.toLocaleString('de-DE')}</td>
                     <td>${p.anzahl_messstellen}</td>
                     <td>${p.messstellendichte_km2.toLocaleString('de-DE', {maximumFractionDigits: 3})}</td>
                 `;
@@ -6429,6 +6481,7 @@ function buildUnifiedSearchIndex() {
                                 <th>Fläche (km²)</th>
                                 <th>Einleiter</th>
                                 <th>Klärkapazität (EW)</th>
+                                <th>Freie Kapazität (EW)</th>
                                 <th>Messstellen</th>
                                 <th>Dichte (St./km²)</th>
                             </tr>
@@ -6552,5 +6605,18 @@ function buildUnifiedSearchIndex() {
 
     <!-- Application Perfection & Enhancement Suite -->
     <script src="js/app-enhancements.js"></script>
+    <script>
+        // Mobile Sidebar Toggle Logic
+        const mobileSidebarToggle = document.getElementById('mobile-sidebar-toggle');
+        if (mobileSidebarToggle) {
+            mobileSidebarToggle.addEventListener('click', function() {
+                document.body.classList.toggle('mobile-sidebar-open');
+                const isOpen = document.body.classList.contains('mobile-sidebar-open');
+                this.innerHTML = isOpen
+                    ? '<span class="icon" style="font-size:16px;">✖</span><span class="text">Karte zeigen</span>'
+                    : '<span class="icon" style="font-size:16px;">☰</span><span class="text">Filter & Daten</span>';
+            });
+        }
+    </script>
 </body>
 </html>

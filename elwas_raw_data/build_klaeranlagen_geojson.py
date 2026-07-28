@@ -22,6 +22,21 @@ def main():
     with open(IN_PATH, encoding="utf-8") as f:
         data = json.load(f)
 
+    # Load old features for diffing and merging
+    old_features = []
+    old_props_map = {}
+    if os.path.exists(ROOT_COPY_PATH):
+        try:
+            with open(ROOT_COPY_PATH, "r", encoding="utf-8") as f:
+                old_data = json.load(f)
+                old_features = old_data.get("features", [])
+                for f_old in old_features:
+                    props = f_old.get("properties", {})
+                    if "anlagen_nr" in props:
+                        old_props_map[props["anlagen_nr"]] = props
+        except Exception as e:
+            print(f"Could not load old features: {e}")
+
     features = []
     skipped = []
     for anlagen_nr, v in data.items():
@@ -37,34 +52,38 @@ def main():
         except (ValueError, TypeError):
             skipped.append(anlagen_nr)
             continue
+
+        old_props = old_props_map.get(anlagen_nr, {})
+
         features.append({
             "type": "Feature",
             "geometry": {"type": "Point", "coordinates": [lon, lat]},
             "properties": {
                 "anlagen_nr": anlagen_nr,
-                "name": v.get("name"),
-                "gemeinde": v.get("gemeinde"),
-                "kreis": v.get("kreis"),
-                "betreiber": v.get("betreiber"),
-                "gewaesser": v.get("gewaesser"),
-                "ausbaugroesse_ew": v.get("ausbaugroesse_ew"),
+                "name": v.get("name") or old_props.get("name"),
+                "gemeinde": v.get("gemeinde") or old_props.get("gemeinde"),
+                "kreis": v.get("kreis") or old_props.get("kreis"),
+                "betreiber": v.get("betreiber") or old_props.get("betreiber"),
+                "gewaesser": v.get("gewaesser") or old_props.get("gewaesser"),
+                "ausbaugroesse_ew": v.get("ausbaugroesse_ew") or old_props.get("ausbaugroesse_ew"),
+                "aktuelle_auslastung_ew": v.get("aktuelle_auslastung_ew") or old_props.get("aktuelle_auslastung_ew"),
+                "zustaendigkeit_behoerde": old_props.get("zustaendigkeit_behoerde"),
+                "zustaendigkeit_amt": old_props.get("zustaendigkeit_amt"),
+                "zustaendigkeit_email": old_props.get("zustaendigkeit_email"),
+                "zustaendigkeit_telefon": old_props.get("zustaendigkeit_telefon"),
                 "quelle": "ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung - Version 2.0",
             },
         })
+
+        # Remove None values from properties
+        features[-1]["properties"] = {k: val for k, val in features[-1]["properties"].items() if val is not None}
+
 
     geojson = {"type": "FeatureCollection", "features": features}
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(geojson, f, indent=2, ensure_ascii=False, allow_nan=False)
 
-    # Load old features for diffing
-    old_features = []
-    if os.path.exists(ROOT_COPY_PATH):
-        try:
-            with open(ROOT_COPY_PATH, "r", encoding="utf-8") as f:
-                old_data = json.load(f)
-                old_features = old_data.get("features", [])
-        except Exception as e:
-            print(f"Could not load old features: {e}")
+
 
     # Write changelog
     write_changelog("klaeranlagen", "anlagen_nr", old_features, features, os.path.join(ROOT_PATH, "changelog"))

@@ -1,5 +1,59 @@
 [
   {
+    "file": "2026-07-26T12-25-16Z.json",
+    "run_timestamp": "2026-07-26T12-25-16Z",
+    "baseline": false,
+    "added_count": 0,
+    "removed_count": 0,
+    "changed_count": 0,
+    "summary": "0 neu, 0 entfernt, 0 geändert."
+  },
+  {
+    "file": "2026-07-26T09-43-12Z.json",
+    "run_timestamp": "2026-07-26T09-43-12Z",
+    "baseline": false,
+    "added_count": 0,
+    "removed_count": 0,
+    "changed_count": 0,
+    "summary": "0 neu, 0 entfernt, 0 geändert."
+  },
+  {
+    "file": "2026-07-26T09-20-41Z.json",
+    "run_timestamp": "2026-07-26T09-20-41Z",
+    "baseline": false,
+    "added_count": 0,
+    "removed_count": 0,
+    "changed_count": 60,
+    "summary": "0 neu, 0 entfernt, 60 geändert (aktuelle_auslastung_ew)."
+  },
+  {
+    "file": "2026-07-26T09-16-39Z.json",
+    "run_timestamp": "2026-07-26T09-16-39Z",
+    "baseline": false,
+    "added_count": 0,
+    "removed_count": 0,
+    "changed_count": 0,
+    "summary": "0 neu, 0 entfernt, 0 geändert."
+  },
+  {
+    "file": "2026-07-26T09-10-13Z.json",
+    "run_timestamp": "2026-07-26T09-10-13Z",
+    "baseline": false,
+    "added_count": 0,
+    "removed_count": 0,
+    "changed_count": 60,
+    "summary": "0 neu, 0 entfernt, 60 geändert (zustaendigkeit_amt, zustaendigkeit_behoerde, zustaendigkeit_email, zustaendigkeit_telefon)."
+  },
+  {
+    "file": "2026-07-26T08-23-42Z.json",
+    "run_timestamp": "2026-07-26T08-23-42Z",
+    "baseline": false,
+    "added_count": 0,
+    "removed_count": 0,
+    "changed_count": 60,
+    "summary": "0 neu, 0 entfernt, 60 geändert (aktuelle_auslastung_ew)."
+  },
+  {
     "file": "2026-07-18T16-29-39Z.json",
     "run_timestamp": "2026-07-18T16-29-39Z",
     "baseline": false,
