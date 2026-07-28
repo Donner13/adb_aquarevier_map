@@ -23,14 +23,14 @@
 
     <style>
         :root {
-            --bg-base: #0b0f19;
-            --bg-surface: rgba(17, 24, 39, 0.8);
-            --bg-surface-hover: rgba(31, 41, 55, 0.9);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
-            --accent-primary: #6366f1;
-            --accent-glow: rgba(99, 102, 241, 0.4);
+            --bg-base: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-surface-hover: #f1f5f9;
+            --border-color: #cbd5e1;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-primary: #2563eb;
+            --accent-glow: rgba(37, 99, 235, 0.2);
             
             /* Group Colors (Excluding Einzelakteure as they are filtered) */
             --color-behorde: #D55E00;
@@ -43,21 +43,21 @@
             --color-sonstige: #595959;
         }
 
-        body.light-theme {
-            --bg-base: #f1f5f9;
-            --bg-surface: rgba(255, 255, 255, 0.9);
-            --bg-surface-hover: rgba(226, 232, 240, 0.95);
-            --border-color: rgba(0, 0, 0, 0.08);
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --accent-primary: #4f46e5;
-            --accent-glow: rgba(79, 70, 229, 0.2);
+        body.dark-theme {
+            --bg-base: #0b0f19;
+            --bg-surface: rgba(17, 24, 39, 0.95);
+            --bg-surface-hover: rgba(31, 41, 55, 0.95);
+            --border-color: rgba(255, 255, 255, 0.12);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-primary: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.4);
         }
 
-        body.light-theme .search-box input {
-            background: #ffffff;
-            color: #0f172a;
-            border: 1px solid rgba(0, 0, 0, 0.15);
+        body.dark-theme .search-box input {
+            background: #1e293b;
+            color: #f8fafc;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         body.light-theme .leaflet-popup-content-wrapper {
@@ -2263,6 +2263,11 @@
                         <div id="bookmarks-list-container">
                             <!-- Dynamische Favoriten-Liste -->
                         </div>
+                        <div style="display: flex; gap: 4px; margin-top: 8px;">
+                            <button type="button" class="btn btn-sm btn-outline-dark" style="flex:1; font-size: 10px;" onclick="openAiAssistantModal()">🤖 KI-Assistent</button>
+                            <button type="button" class="btn btn-sm btn-outline-dark" style="flex:1; font-size: 10px;" onclick="openWrrlQualityModal()">🐟 WRRL-Güte</button>
+                            <button id="btn-toggle-theme" type="button" class="btn btn-sm btn-outline-dark" style="flex:1; font-size: 10px;" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+                        </div>
                     </div>
                 </div>
 
@@ -2464,6 +2469,10 @@
     <script src="js/qr-sharing.js"></script>
     <script src="js/bookmarks-manager.js"></script>
     <script src="js/pwa-offline.js"></script>
+    <script src="js/theme-darkmode.js"></script>
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/water-quality.js"></script>
+    <script src="js/keyboard-shortcuts.js"></script>
 
     <!-- jsPDF for PDF Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>

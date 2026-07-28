@@ -385,3 +385,457 @@ Volle Rohbefunde (alle 4 Agenten, mit genauen Zeilennummern/Messwerten):
   - Interaktives Zoomen durch den Klick auf Listeneinträge funktioniert.
   - Ruhige Reloads lösen kein Spam-Panel aus.
   - Theme Support (Light/Dark) und Responsivität verifiziert, und existierende UI-Toggle Events (wie Kläranlagen, Pegel Button Clicks) funktionieren unverändert (geprüft mittels Playwright und Regression-TestSuite).
+
+## 13. Umfassender Bug- & Verbesserungs-Audit (Claude, 2026-07-28)
+
+**Kontext:** 6 unabhängige, read-only Recherche-Agenten (Live-Interaktion,
+JS-Statik, HTML-Struktur/Konsistenz, Daten+Backend-Security, UX/A11y,
+CI/Repo-Hygiene) liefen parallel gegen den **aktuellen** Stand — inkl. dem
+heute uncommitteten Diff an `index.html`/`internal.html` und allen seit
+gestern hinzugekommenen, noch untracked JS-Dateien
+(`ai-assistant.js`, `keyboard-shortcuts.js`, `theme-darkmode.js`,
+`water-quality.js` u.a.). **`STATUS_BEFUND_AUDIT_2026_07_27.md` (gestern,
+"0 Console Errors / alles ✅") deckt diesen Stand nicht ab und ist an
+mehreren Stellen nachweislich falsch** (siehe §13.6) — nicht als Ground
+Truth verwenden, auch nicht für Bereiche, die dort als "OK" markiert sind.
+5 von 6 Agenten sind fertig; ein Live-Playwright-Klick-Test durch beide
+Seiten lief zum Zeitpunkt dieses Schreibens noch — falls relevante
+Zusatzfunde reinkommen, folgt ein §14-Nachtrag.
+
+**Vorgehen für Antigravity:** Reihenfolge unten (§13.0 → §13.7) ist nach
+Schweregrad sortiert, bitte so abarbeiten. Nach jedem committeten Batch:
+lokal mit Playwright testen (echte Wertprüfung der Popups/Panels, nicht
+nur "keine Konsolenfehler" — siehe §7 oben, derselbe Fehler wie damals
+würde hier wieder passieren), beide HTML-Dateien parallel halten, dann
+committen+pushen. Ergebnis unten in einem neuen §14 protokollieren
+(Datum, was gefixt, was getestet, was noch offen).
+
+### 13.0 KRITISCH — vor allem anderen: PII-Exposure + Verschlüsselung ausgehebelt
+
+- **S1.** `server.py` (Projekt-Root) hat **keinerlei Authentifizierung**.
+  `do_GET` liefert das komplette Projektverzeichnis aus — inkl.
+  `contacts.geojson`, dem unanonymisierten Datensatz mit echten Namen/
+  E-Mails/Telefonnummern. `do_POST` erlaubt unauthentifiziertes
+  Überschreiben von `/api/contacts` und unauthentifiziertes Auslösen von
+  `/api/deploy`. Dieser Server läuft laut `JULES_TASKS.md` TASK-21 /
+  `Aquarevier_Map_Backlog.md` Z.3149 gepaart mit `get_tunnel_url.py`
+  (öffentlicher Tunnel für Florian) — jeder mit der Tunnel-URL hat vollen
+  Lese-/Schreibzugriff auf die PII-Daten.
+- **S2.** `contacts.enc` ist in Git getrackt und **nicht** in
+  `.surgeignore` → wird live mit ausgeliefert. Das
+  Entschlüsselungspasswort `AquaRevier2026` (`ENC_PASSWORD`) ist
+  identisch hartkodiert in `server.py` UND `editor_backend/server.py`,
+  beide ebenfalls in Git. Falls `github.com/Dtunder/adb_aquarevier_map`
+  öffentlich ist, ist die Verschlüsselung wirkungslos (Ciphertext + Key
+  beide öffentlich erreichbar) — **bitte zuerst klären, ob das Repo
+  öffentlich ist**, falls ja: Passwort sofort rotieren und aus dem
+  Quellcode in eine Env-Var verschieben.
+- **S3.** `editor_backend/server.py:21-22` hat einen hartkodierten
+  Credential-Fallback `EDITOR_USER=florian` /
+  `EDITOR_PASSWORD=AquaRevier2026` im Quellcode (Default, falls die
+  Render-Env-Var fehlt). Render-Konfiguration markiert beide als
+  `sync: false`, aber der Fallback selbst ist eine Falle für jede
+  Fehlkonfiguration oder jeden anderen Kontext, in dem diese Datei läuft.
+- **S4.** Beide `server.py`-Varianten senden `Access-Control-Allow-Origin: *`
+  auch auf schreibenden Endpunkten.
+- **S5.** `/api/contacts` POST übernimmt den JSON-Body ohne
+  Schema-/Größenprüfung (Pfad-Traversal wurde geprüft und ausgeschlossen —
+  Dateipfade sind hartkodierte Konstanten, nicht aus dem Request
+  abgeleitet).
+- **S6.** `/api/deploy` (`editor_backend/server.py` ~Z.254-259) gibt bei
+  einem fehlgeschlagenen `git push` stdout+stderr **unverändert** im
+  HTTP-Response zurück — die Remote-URL mit eingebettetem
+  `GIT_PUSH_TOKEN` kann darüber leaken. Endpoint ist zwar hinter Basic
+  Auth, sollte den Output trotzdem vor dem Zurückgeben redigieren.
+
+**Empfehlung:** S1 hat oberste Priorität — entweder `server.py`+
+Tunnel-Workflow sofort stilllegen (der authentifizierte `editor_backend/`
+auf Render existiert bereits als Ersatz) oder minimal per Basic-Auth
+absichern, bis das entschieden ist.
+
+### 13.1 Bugs — Root-Cause, betrifft mehrere Features gleichzeitig
+
+1. **`window.map` wird nie gesetzt.** `js/app-enhancements.js:176,405,675`
+   greift auf `window.map` zu (jedes andere Modul nutzt korrekt den
+   bloßen Bezeichner `map`, der im gemeinsamen Top-Level-Scope
+   funktioniert). Folge: Command-Palette "📍 Zoom zu Gemeinde X" (Z.176)
+   ist No-Op; `exportActiveLayersData()` (Z.405) meldet immer "keine
+   aktiven Layer" auch wenn welche sichtbar sind; Klick auf einen
+   Starkregen-Portal-Link (Z.675) re-zentriert die Karte nie.
+2. **`window.geojsonData` / `window.layerDataStore` werden nirgends
+   gesetzt** (projektweiter Grep bestätigt: keine Zuweisung existiert).
+   Betroffen: `gemeinde-steckbrief.js:54,59-65,133,148`,
+   `radius-analysis.js:137,169`, `universal-search.js:33,61`,
+   `groundwater-timeseries.js:87`, `ai-assistant.js:88,96`. Folge:
+   Gemeinde-Steckbrief-Zählungen, Radius-Analyse-Trefferlisten,
+   Universal-Search-Index lassen Akteure + alle 6 ELWAS-Punktlayer aus;
+   der Grundwasser-Zeitschieber zeigt dauerhaft den Platzhalter statt
+   Daten; der KI-Assistent meldet immer seine hartkodierten
+   Fallback-Zahlen (60/46) statt echter Werte. Zum Vergleich:
+   `pegel-analysis.js` nutzt die älteren, tatsächlich befüllten Globals
+   `window.pegelGeoData`/`window.gwmGeoData` (gesetzt in
+   `layers-loader.js:181,242`) und funktioniert korrekt — die neueren
+   Module haben eine API adressiert, die nie verdrahtet wurde.
+3. **Zwei parallele, sich widersprechende Dark-Mode-Systeme.** Nativ
+   (`index.html:4740-4771`/analog `internal.html`): Button
+   `#theme-toggle`, localStorage-Key `theme`, toggelt nur die Klasse
+   `light-theme`, tauscht `baseLight`/`baseDark`-Tile-Layer.
+   `js/theme-darkmode.js`: Button `#btn-toggle-theme`, localStorage-Key
+   `aquarevier_theme` (Z.19-29), fügt nur `dark-theme` hinzu, entfernt
+   `light-theme` nie, mutiert die Tile-URL direkt (`layer.setUrl()`,
+   Z.35). Klick auf `#btn-toggle-theme` lässt `light-theme` UND
+   `dark-theme` gleichzeitig am `body` stehen — 30 CSS-Regeln, die nur
+   auf `.light-theme` scopen (Suchbox, Popups, Tabellen, Buttons,
+   `logo-box`, sogar der High-Contrast-Kombinator), bleiben hell,
+   während Basisfarben/Karten-Tiles dunkel werden.
+4. **`initAutoThemeSync()` (`app-enhancements.js:699-708`) prüft den
+   falschen localStorage-Key** (`aquarevier_theme` statt `theme`).
+   Konkretes Szenario: Erstbesucher mit OS-Dark-Mode, beide Keys unset →
+   natives Skript setzt `light-theme` (Default), lädt helle Tiles; danach
+   entfernt `initAutoThemeSync` (sieht `prefersDark=true`) die Klasse
+   `light-theme` wieder — `body` hat am Ende **weder** `light-theme` noch
+   `dark-theme`, UI ist halb gestylt (unstyled Popups/Controls) obwohl
+   die Karten-Tiles hell geblieben sind.
+5. **Command-Palette "🌓 Farbschema wechseln" sucht die falsche ID.**
+   `app-enhancements.js:230` macht
+   `document.getElementById('theme-toggle-btn')`, das echte Element heißt
+   überall `btn-toggle-theme` (`index.html:2269`/`internal.html:1852`) —
+   garantiertes No-Op.
+
+**Empfehlung zu 3-5:** vor dem nächsten Commit entscheiden — entweder
+`js/theme-darkmode.js` komplett auf das bestehende `#theme-toggle`/
+`theme`-System umstellen (kein zweites System einführen), oder umgekehrt
+das alte System entfernen und alle 30 `.light-theme`-Regeln auf das neue
+Schema migrieren. Nicht beide parallel lassen.
+
+### 13.2 Bugs — internal.html fehlt eine ganze Toolbar (ein fehlendes Root-Element kaskadiert)
+
+6. **`#reset-filters-btn` existiert nur in `index.html`.** Cascade-Effekt:
+   `initLanguageToggle()` (`app-enhancements.js:639-650`) hängt den
+   DE/EN-Switch-Button an `resetBtn.parentElement` — auf `internal.html`
+   ist `resetBtn` `null`, der Guard bricht ab, **der komplette
+   Sprachumschalter wird auf internal.html nie erzeugt**, obwohl die
+   ganze `I18N_DICT`-Maschinerie geteilt ist und auf index.html
+   funktioniert.
+7. **internal.htmls eigene Onboarding-Tour referenziert dasselbe fehlende
+   Element** (`internal.html:6556-6560`, `coachmarkSteps[3]`,
+   `targetSelector: '#reset-filters-btn'`). `positionCoachmark()`
+   (Z.6567-6574) bricht mit `if (!targetEl) return;` ab — Spotlight/
+   Tooltip bleiben beim vorherigen Schritt visuell stehen, während der
+   Tooltip-Text einen Button beschreibt, den es dort nicht gibt.
+8. **`#share-view-btn` ("🔗 Ansicht teilen") existiert nur in
+   `index.html`** — Command-Palette-Eintrag ist auf internal.html
+   garantiertes No-Op, kein Deep-Link-Sharing im Editor.
+9. **`#open-data-export-btn` existiert nur in `index.html`** — kein
+   Geodaten-Export im Editor (geringere Priorität als 6/8).
+10. **ID-Mismatch `generate-report-btn` (index.html) vs.
+    `btn-generate-report` (internal.html:1958).** Command-Palette und
+    i18n-Sync zielen auf `generate-report-btn` → No-Op auf internal.html;
+    das Feature selbst funktioniert dort trotzdem über einen eigenen,
+    separaten Listener (`internal.html:4298-4299`).
+11. **Klasse `.external-portal-link` fehlt komplett in internal.html**
+    (`grep -c`: index.html → 6, internal.html → 0).
+    `initPluvialKreisControls()` (`app-enhancements.js:658-680`) kann die
+    Kommunal-Buttons dort nie finden — externe Links öffnen zwar über
+    einen separaten `onclick="window.open(...)"`, aber Map-Recenter+Toast
+    feuern nie.
+
+### 13.3 Bugs — fehlendes HTML-Escaping (XSS-Risiko)
+
+12. **`js/pegel-analysis.js`** escaped an keiner Stelle Namen aus
+    Upstream-Betriebsdaten, die direkt in Tooltip/Panel-HTML
+    interpoliert werden (`Z.54,101,102,127`, z.B.
+    `` `<b>${betrieb.name}</b>...` ``). `js/radius-analysis.js` definiert
+    für dieselbe Art Daten bereits `escapeHtml()` — hier fehlt die
+    Anwendung.
+13. **`js/layers-loader.js` `buildPopupHtml()` (Z.49-151)** escaped
+    keinen einzigen Popup-Feldwert, für alle 6 ELWAS-Punktlayer
+    (Kläranlagen, Pegel, Stauanlagen, Regenbecken, Querbauwerke,
+    H2-Elektrolyseure). `p.name` und jeder konfigurierte Feldwert gehen
+    unescaped in `layer.bindPopup(...)`.
+
+### 13.4 Bugs — sonstige JS-Fehler
+
+14. `js/layers-loader.js:141` — Tippfehler `p.latitutde` statt
+    `p.latitude` im Feedback-Link-Fallback; die Fallback-Kette kollabiert
+    dadurch bei fehlendem `p.lat` immer auf `0`.
+15. `js/qr-sharing.js:22-26` liest `window.activeOverlayLayers`, das
+    projektweit nirgends gesetzt wird → generierte QR-Codes/Share-Links
+    enthalten nie den `layers=`-Parameter, obwohl der Docblock genau das
+    verspricht.
+16. `js/universal-search.js:191` hängt sich an
+    `#search-input, .universal-search-input` — das echte "Alles
+    durchsuchen"-Feld heißt `#usearch-input`
+    (`index.html:5486-5499`/`UnifiedSearchControl`) und matcht keinen der
+    beiden Selektoren. Ergebnis: Der eigentlich gewünschte Autosuggest
+    erscheint nie am richtigen Feld, während das alte Sidebar-Suchfeld
+    `#search-input` (hat bereits einen eigenen Listener,
+    `index.html:4736`) einen **zweiten, unabhängigen** Input-Listener
+    obendrauf bekommt — zwei Mechanismen feuern gleichzeitig beim
+    Tippen.
+17. `js/gemeinde-steckbrief.js:17-18` — `"Nörvenich"` steht doppelt im
+    hardcodierten `REVIER_GEMEINDEN`-Array; vermutlich fehlt dafür eine
+    andere Kreis-Düren-Gemeinde im Dropdown.
+
+### 13.5 Bugs — Accessibility (strukturell)
+
+18. 6 JS-generierte Modal-Close-Buttons ohne `aria-label`/`title` (nur
+    `✕`-Glyph): `water-quality.js:44`, `keyboard-shortcuts.js:31`,
+    `qr-sharing.js:64`, `ai-assistant.js:37`, `gemeinde-steckbrief.js:201`,
+    `bookmarks-manager.js:76`.
+19. `index.html`s `<html>`-Tag hat **kein** `lang`-Attribut
+    (`internal.html:2` hat korrekt `lang="de"`) — WCAG 3.1.1 auf der
+    öffentlichen Seite.
+20. `internal.html` überspringt eine Heading-Ebene: `h1` (Z.1530) →
+    direkt `h3` (Z.6961), kein `h2` dazwischen.
+
+### 13.6 Bugs — Daten (widerlegen `STATUS_BEFUND_AUDIT_2026_07_27.md` an mehreren Stellen)
+
+Unabhängig re-verifiziert per `Counter` über alle `properties`-Felder +
+Koordinaten-Bounds-Check — nicht nur das gestrige "✅ OK" übernommen:
+
+21. **`gewaesser_rur_official.geojson`**: 1251/1382 Features (90,5%) haben
+    `type="Bach"` und `size="small"` als reinen Platzhalter (`id`/
+    `river_catchment` = `null`); nur 131/1382 haben echte Werte. Gestrige
+    Behauptung "Hydrologie valide ✅" ist für 90% des Files falsch.
+22. **`querbauwerke.geojson`**: Feld `bauwerksart` ist bei **70/70**
+    Features `null` (totes Feld) — die echten Bauwerksart-Werte liegen
+    unter dem anderen Feldnamen `typ` (der ist korrekt befüllt).
+23. **`regenbecken.geojson`**: `gemeinde` und `abwasserbereich` sind bei
+    **70/70** Features `null`.
+24. **`regenbecken.geojson` + `querbauwerke.geojson`** zeigen beide exakt
+    10 Treffer pro Kreis (7×10=70) — starkes Indiz für einen
+    Pagination-/Ergebnis-Cap im Scraper. Zum Vergleich:
+    `stauanlagen.geojson` (56 Features, gleiche Kreis-Suche) zeigt eine
+    reale ungleiche Verteilung (3 bis 20 pro Kreis) — der exakte
+    10er-Deckel bei den anderen beiden ist vermutlich künstlich, nicht
+    real.
+25. **`h2_elektrolyseure_nrw.geojson`**: 2/5 Features (40%) liegen
+    außerhalb der 7 Revier-Kreise (Duisburg, Recklinghausen — Ruhrgebiet,
+    nicht Rheinisches Revier). Gestrige Behauptung "100% im Revier" ist
+    falsch.
+
+*(Geprüft und **nicht** bestätigt als Bugs — false-positive-Kandidaten
+ausgeschlossen: `kreise_scorecard.geojson`/`wasserschutzgebiete.geojson`
+konstante Felder sind legitime Scorecard-/INSPIRE-Metadaten;
+Mojibake-Verdacht in mehreren Files war nur ein Anzeigeartefakt des
+Prüf-Terminals, echte Bytes sind korrektes UTF-8;
+`grundwasserwiederanstieg.geojson`/`stauanlagen.geojson` sind sauber.)*
+
+### 13.7 Bugs/Risiken — CI & Repo
+
+26. `deploy-dev.yml` deployt bei jedem Push auf `main` nach
+    `adb-aquarevier-dev.surge.sh`, **ohne** die Playwright-UI-Regression-
+    Gate zu durchlaufen (nur `validate_geojson.py --all`) — im Gegensatz
+    zu `deploy-secure.yml`. Falls die Dark-Mode-Baustelle (§13.1) oder
+    ungetestete neue JS-Dateien gepusht werden, deployt Dev sie ungeprüft.
+27. `_extracted.js` (45KB) und `index.html.broken_backup` (65KB) sind in
+    Git getrackt (`git ls-files` bestätigt) — reine Debug-/Backup-
+    Artefakte in der Historie.
+
+---
+
+## 14. Verbesserungsvorschläge (Claude, 2026-07-28) — nicht kaputt, aber verbesserbar
+
+### Mobile / Responsive
+1. `#sidebar` ist fest `width: 440px` in beiden Dateien, ohne
+   Media-Query-Override — auf jedem Screen <440px verdrängt sie die
+   Karte komplett auf ~0 Breite. Größter Einzelbefund dieser Kategorie.
+2. Nur 3 `@media`-Regeln pro Datei insgesamt, keine deckt die
+   ~20-Layer-Legende oder die ~14 Feature-Modals ab — alle rendern in
+   fixer Desktop-Pixelgröße.
+3. Die 5 runden Header-Icon-Buttons sind 36×36px (unter dem
+   44px-Mindestmaß für Touch-Targets) mit nur 5-8px Abstand.
+4. `internal.html` hat dieselbe feste 440px-Sidebar — Florians Editor ist
+   von Tablet/Handy aus ebenso unbenutzbar.
+5. Radius-Query & andere maus-basierte Tools zeigen keine erkennbare
+   Touch-Anpassung.
+
+### i18n
+6. `I18N_DICT` (`app-enhancements.js:581`) hat nur 9 Keys, hartverdrahtet
+   auf 6 DOM-IDs, kein `data-i18n`-Attributsystem — jede neue
+   Übersetzung braucht manuellen Code an mehreren Stellen.
+7. Alle 20 Layer-Namen (`layers-config.js`) haben keine englische
+   Variante — Legende bleibt bei EN-Modus deutsch.
+8. Popup-Inhalte (Feldlabels, Quellenangabe, "Fehler melden"-Link) sind
+   zu 100% hartkodiert deutsch in `buildPopupHtml()` — jeder
+   Marker-Klick zeigt deutschen Text unabhängig von der Sprachwahl.
+9. Keines der neuesten Panels (KI-Assistent, Wassergüte,
+   Keyboard-Shortcuts, Gemeinde-Steckbrief, Grundwasser-Zeitreihe) ist an
+   `I18N_DICT`/`applyLanguage` angebunden.
+10. `js/theme-darkmode.js` Button-Label ist fest englisch ("☀️ Light
+    Mode"/"🌙 Dark Mode") — unabhängig von der App-Spracheinstellung.
+11. Backlog-Punkt "Mehrsprachigkeits-Support" ist nicht als ERLEDIGT
+    markiert — der Code bestätigt: aktuell nur ein Proof-of-Concept.
+    Entweder richtig fertigstellen (Attribut-getriebenes Wörterbuch über
+    Layer-Configs + Popup-Templates) oder als Beta kennzeichnen, damit es
+    nicht wie ein stiller Bug wirkt.
+
+### Performance
+12. `kreise_rr.geojson` (2,2MB), `untersuchungsgebiet.geojson` (1,1MB),
+    `rur_einzugsgebiet_outline.geojson` (428KB),
+    `gewaesser_rur_official.geojson` (2,5MB) laden alle **eager** beim
+    Seitenaufruf, ungegated — ~6,2MB ungefragter Netzwerk-/Parse-/
+    Render-Aufwand vor jeder Interaktion. (Die anderen Multi-MB-Layer wie
+    `wasserschutzgebiete.geojson`/`gsk3c_gew_kanal_plm.geojson` sind
+    bereits korrekt lazy — dieses Muster als Vorbild nehmen.)
+13. `addGeoLayer()` (`layers-loader.js:19`) gated Lazy-Loading nur über
+    `cfg.cluster === true`, nicht generisch über `defaultOn:false` — der
+    nächste konfigurierte, standardmäßig ausgeschaltete Layer könnte
+    versehentlich wieder eager laden. Empfehlung: generisch auf
+    `defaultOn:false` gaten.
+14. `rur_einzugsgebiet.geojson` (4,7MB, nicht zu verwechseln mit
+    `_outline`/`_stats`) wird von keiner der beiden HTML-Dateien
+    referenziert — vermutlich totes, aber weiterhin deployetes Artefakt,
+    kandidiert fürs Entfernen.
+15. Backlog-Punkt "Geometrie-Vereinfachung als Build-Step" ist offen —
+    würde die eager-geladenen Grenzlinien-Layer zusätzlich verkleinern.
+
+### IA / Auffindbarkeit
+16. 5 undifferenzierte Icon-Only-Header-Buttons ohne sichtbare Labels
+    oder Gruppierung — nur Emoji + Hover-Tooltip.
+17. Feature-Einstiegspunkte sind über mind. 4 unabhängige UI-Bereiche
+    verstreut (Header-Icons, Sidebar-Aktionsbuttons, Inline-Sidebar-
+    Buttons, flache Layer-Liste), obwohl die vorhandene Command Palette
+    (Ctrl+K) das bündeln könnte — nichts in der UI selbst weist außerhalb
+    der Onboarding-Tour darauf hin, dass sie existiert.
+18. Die ~20-Layer-Liste ist komplett flach ohne Kategorien
+    (Infrastruktur/Schutzgebiete/Statistik) — würde Scan-Aufwand senken
+    und nebenbei das Mobile-Sidebar-Problem mildern (weniger
+    gebräuchliche Gruppen könnten eingeklappt starten).
+
+### Loading- / Error-States
+19. `loadFeedbackIssues()` (`index.html:6316`) ist das einzige gute
+    Beispiel im Code (Ladeindikator + `try/catch` + 5-Min-Cache) — dieses
+    Muster wird nirgendwo sonst wiederverwendet.
+20. `submitFeedback()` (`index.html:6285`) zeigt einen unbedingten
+    Erfolgs-`alert()`, obwohl die eigentliche Übermittlung ein manueller
+    zweiter Schritt in einem neuen GitHub-Issue-Tab ist, den die App
+    nicht verifizieren kann.
+21. Keiner der WMS-Tile-Layer hat einen `tileerror`-Handler — ein toter/
+    grauer Layer bei Ausfall wirkt wie "keine Daten hier", nicht wie
+    "Ladefehler".
+22. Dominantes Fehlerbehandlungsmuster ist `.catch(err =>
+    console.log(...))` ohne jede UI-Rückmeldung (15+ Stellen in
+    `layers-loader.js`/`index.html`) — ein 404/CORS-Fehler wirkt für
+    Florian wie ein kaputter Checkbox-Klick, nicht wie ein Datenproblem.
+
+### Accessibility (interaktiv)
+23. Escape schließt nur 2 von ~14 Modal-Oberflächen (Kreis-Scorecard,
+    ein Handler in `app-enhancements.js:336`).
+24. Kein `role="dialog"`/`aria-modal="true"` und kein Focus-Trap in
+    irgendeinem Modal gefunden — Tab-Reihenfolge leckt vermutlich aus
+    offenen Modals in die Karte/Seite dahinter.
+25. Das Radius-Query-Tool ist nur per Mausklick auf die Karte bedienbar
+    (Status-Text: "🎯 Klicke auf Karte...") — keine Tastatur- oder
+    manuelle Lat/Lng-Eingabe als Fallback.
+26. Popup-Footer-Text (Quellenangabe, 9× pro Datei, `#94a3b8` bei ~10px)
+    hat ~2,6:1 Kontrast gegen Weiß — unter dem WCAG-AA-Minimum 4,5:1 für
+    kleinen Text.
+27. `outline: none` an 7 Stellen durch reinen Border-Color-Fokusindikator
+    ersetzt — Sichtbarkeit speziell im Dark Mode (Border/Surface-Farben
+    liegen dort nah beieinander) nicht verifiziert.
+
+### Dokumentation
+28. `FLORIAN_ANLEITUNG.md` deckt nur Kontakt-CRUD/Publish/Logo ab — keins
+    der ~14 seit dem 8. Juli hinzugekommenen Feature-Panels wird erwähnt;
+    Florian hat keinen dokumentierten Weg, sie in seinem eigenen Editor
+    zu entdecken.
+29. `FLORIAN_ANLEITUNG.md` zeigt eine explizit als provisorisch
+    markierte Tunnel-URL/Passwort als "aktuell" — nach ~3 Wochen und
+    vielen Feature-Commits vermutlich veraltet.
+30. `README.md` nennt nur "9 Akteursgruppen" und 5-6 WMS-Layer, keins der
+    seither verschifften gut ein Dutzend Features (Command Palette,
+    i18n, QR-Share, Bookmarks, PWA, Grundwasser-Zeitreihe, Gemeinde-
+    Dossiers, Radius-Query, Universal-Search, Update-Radar,
+    Feedback-Kanal, Risiko-Ampel, Barrierefreiheit/High-Contrast,
+    rollenbasiertes Onboarding) — deutlich veraltet gegenüber der
+    tatsächlichen App.
+
+### Repo-Hygiene & Security-Hardening (über die reinen Bugfixes aus §13.0 hinaus)
+31. Root-`server.py` + Tunnel-Workflow (`get_tunnel_url.py`) ganz
+    stilllegen, jetzt wo `editor_backend/` (Render, authentifiziert)
+    existiert — zwei parallele Zugriffswege auf dieselben PII-Daten sind
+    unnötiges Risiko.
+32. `GIT_PUSH_TOKEN` in der `/api/deploy`-Response auch im Fehlerfall
+    redigieren, nicht nur im Erfolgsfall.
+33. Klären, ob `github.com/Dtunder/adb_aquarevier_map` öffentlich ist —
+    falls ja, `ENC_PASSWORD` sofort rotieren (siehe Bug S2).
+34. ~33 unreferenzierte Root-Level-Skripte vom 07.07.
+    (`check_*`, `find_*`, `fetch_*_svgs`, `download_*`, `convert_*`, ...)
+    in ein `archive/`-Verzeichnis verschieben oder löschen.
+35. `test_all_frontend_layers.py`/`health_check_all_layers.py`
+    (Python-E2E-Suite) sind laut Kommentar in `regen-ui-baselines.yml`
+    bereits durch die JS-Playwright-Suite ersetzt — Duplikat entweder
+    entfernen oder Rolle klären, sonst laufen beide Suiten irgendwann
+    auseinander.
+36. Die sechs `_dispatch_batchN.py`-Skripte nach Abschluss ihrer Batches
+    konsolidieren/archivieren statt im Root anzusammeln.
+37. Lokale Scratch-Dateien aufräumen (`temp_script.js` 209KB,
+    `tunnel_temp*.log`, `editor_backend_run.log`, leere `test_out.log`)
+    — gitignored, aber `tunnel_temp*.log` könnte echte URLs enthalten.
+38. `href="#"` mit `onclick="...; return false;"`-Pattern (mehrere
+    Stellen, z.B. "⚠️ Fehler melden") semantisch als `<button>` statt
+    `<a>` umsetzen — kein Bug, aber saubereres Markup.
+
+**Zusammenfassung Stückzahl:** 27 Bugs (davon 6 unter §13.0 als kritisch/
+sicherheitsrelevant) + 38 Verbesserungsvorschläge = 65 Punkte, alle mit
+konkreter Datei-/Zeilenreferenz und Beleg (nicht spekulativ). Kein
+künstliches Auffüllen auf eine Zielzahl — das war die explizite Vorgabe
+an alle 6 Recherche-Agenten. Nachtrag aus dem 6. Agenten (Live-Klicktest)
+siehe §15.
+
+## 15. Nachtrag: Live-Interaktionstest (6. Agent, 2026-07-28)
+
+Playwright/Chromium hat beide Seiten auf einem lokalen Server tatsächlich
+durchgeklickt (nicht nur Code gelesen) — bestätigt mehrere Befunde aus
+§13 unabhängig per echtem Repro und deckt zusätzlich diese **neuen**
+Bugs auf, die aus reiner Code-Lektüre nicht sichtbar waren:
+
+28. **System-Health-Badge überlappt den "Filter zurücksetzen"-Button.**
+    `initSystemHealthBadge()` (`js/app-enhancements.js:476-524`) erzeugt
+    `#system-health-badge` mit `position: fixed; bottom: 24px; left: 24px;
+    z-index: 1000` — sitzt bei gescrollter Sidebar direkt auf dem
+    Reset-Button (beide Seiten, Screenshot-bestätigt).
+29. **internal.html fehlen zusätzlich `export-csv-btn`, `export-pdf-btn`,
+    `embed-open-btn`** (per `grep -c` bestätigt: 0 Treffer in
+    internal.html, je 1 in index.html) — ergänzt die bereits in §13.2
+    dokumentierte fehlende Toolbar um drei weitere Buttons.
+30. **Feedback-Kanal ist auf beiden Seiten komplett kaputt**: `loadFeedbackIssues()`
+    (`index.html:6337`/`internal.html:6879`) fetcht
+    `api.github.com/repos/Dtunder/adb-aquarevier-feedback/issues` — dieses
+    Repo existiert nicht (echter 404, live verifiziert), das
+    Melde-Panel bleibt für immer leer.
+31. **PDF-Berichtsgenerierung wirft CORS-Fehler bei 3 hotlinked
+    Partner-Logos.** `html2canvas(...)` (`index.html:4967`) versucht die
+    Karte zu rastern; die DivIcon-Logo-Marker von wver.de (Z.3755),
+    schoellershammer.de (Z.3771) und rlv.de (Z.3819) sind ohne
+    CORS-Header eingebunden — 3× `ERR_FAILED`, die drei Logos erscheinen
+    im exportierten PDF leer/kaputt.
+32. **Share-Bestätigungstoast "✓ Link kopiert!" ist hartkodiert deutsch**
+    (`index.html:4723`), ignoriert die aktive Sprache — Button-Label
+    selbst wechselt korrekt auf Englisch, die Bestätigung danach nicht.
+33. **Kein Modal außer der Command Palette schließt per Escape** — live
+    am Gemeinde-Dossier-Modal reproduziert (per `G`-Shortcut geöffnet,
+    Escape hat keine Wirkung, `display:flex` bleibt). Der einzige
+    globale Escape-Handler (`app-enhancements.js:325-338`) ist exklusiv
+    auf das Command-Palette-Element gescoped. Betrifft mindestens
+    `gemeinde-dossier-modal`, `qr-share-modal`, `wrrl-quality-modal`,
+    `ai-assistant-modal`, `shortcuts-help-modal` (jeweils nur ein reiner
+    "✕"-Onclick-Handler, kein Escape/Backdrop-Click). Ergänzt/präzisiert
+    die allgemeinere Beobachtung in Verbesserungsvorschlag Nr. 23.
+34. **`editContactById()` gibt keine Rückmeldung bei unbekannter Contact-ID**
+    (`internal.html:4129-4132`) — bei keinem Treffer passiert schlicht
+    nichts, das Formular bleibt im vorherigen Zustand, ohne Hinweis für
+    den Operator (Florian könnte denken, er bearbeitet den gesuchten
+    Kontakt).
+
+**Explizit als False-Positive geprüft und verworfen:** vermeintliche
+Klick-Timeouts bei `#open-data-export-btn`/`#generate-beschlussvorlage-btn`
+waren Artefakte des Testskripts (ein zuvor geöffnetes Modal lag noch über
+dem Button) — kein echter Bug.
+
+**Neue Gesamtsumme:** 34 Bugs (davon 6 kritisch/sicherheitsrelevant unter
+§13.0) + 38 Verbesserungsvorschläge = **72 belegte Punkte**, alle mit
+Datei-/Zeilenreferenz und (bei §15) echtem Live-Repro statt nur
+Code-Lektüre.
