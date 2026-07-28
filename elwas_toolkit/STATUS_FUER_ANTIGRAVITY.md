@@ -1026,3 +1026,92 @@ Format: **Punkte-ID** | **Datei:Zeile** | **Was geprüft / wie nachgewiesen wurd
 
 ### 20.3 §17 Tatsächlich offene Verbesserungspunkte (§14)
 - **Status-Hinweis zu den 32 offenen Punkte aus §14**: 4 Punkte sind nachweislich erledigt (§14.1, §14.4, §14.23, §14.32). Die verbleibenden Punkte (z. B. flache Layer-Liste, Touch-Targets, Eager-Loads) verbleiben als UX-/Performance-Refactorings im Backlog und wurden nicht fälschlich als erledigt markiert.
+
+## 21. Claude übernimmt — Antigravity-Quota war leer (2026-07-28, später am Tag)
+
+Antigravity ist mitten in der Bearbeitung von §17/§18 die Quota ausgegangen
+(uncommitted WIP im Working Tree vorgefunden: `index.html`, `internal.html`,
+`js/layers-loader.js` geändert, `rur_einzugsgebiet.geojson` zum Löschen
+vorgemerkt). Claude hat übernommen, das WIP geprüft, korrigiert, getestet
+und committet (`85fa0d2`, noch nicht gepusht).
+
+### 21.1 Kritischer Fund beim Review: internal.html war strukturell kaputt
+
+`internal.html` hatte in `loadContacts()` eine fehlende schließende `}`
+(vor dem alten `if (geojsonData) {`, ca. Zeile 4005) — dadurch konnte der
+komplette umschließende `&lt;script&gt;`-Block nicht geparst werden
+(`SyntaxError: Unexpected token 'catch'`). Das war **bereits im letzten
+Commit (`8bb5851`) vorhanden, nicht durch das WIP verursacht** — d.h.
+vermutlich seit einiger Zeit live/deployed. Playwright-Test vor dem Fix
+zeigte kaskadierende Fehler (`map.on is not a function` etc.), weil
+`loadContacts()` und alles danach im selben Script-Block schlicht nie
+ausgeführt wurde. **Florians Editor lud vermutlich seit dem letzten Deploy
+von `8bb5851` keine Akteure-Kontaktdaten mehr.** Gefixt, verifiziert: alle
+27 Script-Blöcke parsen jetzt sauber, `loadContacts()` lädt real 345
+Features, `window.layerDataStore` befüllt korrekt alle 6 Layer-Keys
+(inkl. `akteure`). Das war weder in §13-15 noch in §17-19 aufgefallen,
+weil keiner der vorherigen Live-Klicktests offenbar bis zu einer echten
+Interaktion kam, die diesen Codepfad ausgelöst hätte, bevor der Syntax-
+Fehler den ganzen Block stumm hätte scheitern lassen — genau die Art
+Lücke, die reine "0 Konsolenfehler"-Checks verpassen, wenn man nicht
+gezielt auf tatsächlich gesetzte Daten prüft.
+
+### 21.2 Antigravitys WIP geprüft, korrigiert, fertiggestellt
+
+- `js/layers-loader.js`: `addGeoLayer()` lädt jetzt generisch lazy basierend
+  auf `cfg.defaultOn` statt nur `cfg.cluster`, plus sichtbarer Toast bei
+  Ladefehler statt stillem `console.log`. **Korrekt umgesetzt, unverändert
+  übernommen** — löst §14 #13 und einen Teil von #22.
+- **Fehler in Antigravitys WIP korrigiert**: `riverLayer.hasLayer(map)`
+  war falsch herum (Argumente vertauscht), müsste `map.hasLayer(riverLayer)`
+  heißen. Harmlos in der Praxis (Leaflet ignoriert doppeltes `addTo`), aber
+  strukturell falsch — gefixt.
+- **Fachliche Korrektur an Antigravitys Ansatz für §14 #12**: Antigravity
+  hatte begonnen, `riverLayer` (`gewaesser_rur_official.geojson`, 2,5MB)
+  von eager auf `overlayadd`-gated umzustellen — das hätte den Layer aber
+  von **standardmäßig sichtbar auf standardmäßig unsichtbar** umgestellt
+  (die Checkbox "Eigene Gewässer mit Namen" ist von Anfang an aktiv). Das
+  ist eine sichtbare Verhaltensänderung, keine reine Performance-
+  Optimierung — nicht ohne Rücksprache entschieden. Zurückgestellt: Layer
+  lädt weiterhin sofort beim Seitenaufruf (wie vorher), Funktions-
+  extraktion + Toast-Fehlerbehandlung aus Antigravitys Refactor blieben
+  erhalten. `kreiseLayer`/`boundaryLayer` aus demselben Grund unverändert
+  gelassen. **Fazit zu §14 #12**: Diese 3 Boundary-Layer sind absichtlich
+  default-sichtbar, echtes Lazy-Loading würde die Standardkarte leerer
+  aussehen lassen als gewollt — der eigentliche Hebel für ihre Dateigröße
+  ist Geometrie-Vereinfachung (§14 #15), nicht verzögertes Laden. Punkt
+  #12 damit als "so nicht sauber lösbar ohne Produktentscheidung" markiert,
+  nicht als erledigt.
+- `rur_einzugsgebiet.geojson`-Löschung (§14 #14) **zurückgenommen**: Datei
+  ist Input für `elwas_raw_data/build_catchment_stats.py`
+  (`CATCHMENT_IN`), das den live genutzten `rur_einzugsgebiet_stats.geojson`
+  erzeugt. Löschen hätte die Nachbaubarkeit dieses Layers zerstört. §14
+  #14 damit als "kein echtes totes Gewicht, sondern Build-Dependency"
+  korrigiert — sinnvoller wäre höchstens ein Verschieben nach
+  `elwas_raw_data/` für Aufräum-Zwecke, keine Löschung.
+- **§19.53 (WMS WebAtlasDE) diesmal wirklich gefixt**: dritter Versuch,
+  jetzt auf BKG/Geodatenzentrum TopPlusOpen
+  (`https://sgx.geodatenzentrum.de/wms_topplus_open`, Layer `web`)
+  umgestellt — **live per curl verifiziert: HTTP 200** (die beiden
+  vorherigen NRW-Geobasis-Versuche lieferten beide weiterhin 404).
+- Header-Icon-Buttons (§14 #3 + Teil von #16): von 36×36px auf
+  44×44px-Touch-Targets, `aria-label` an allen 5 Buttons ergänzt, in
+  einem Flex-Container gruppiert — in beiden HTML-Dateien.
+
+### 21.3 Test & Commit
+
+Playwright gegen beide Seiten auf isoliertem lokalem Port (8947, nicht
+8000): 0 Konsolen-/Seitenfehler, alle 3 Boundary-Layer rendern mit Inhalt
+(nicht nur "kein Fehler" — tatsächliche Feature-Anzahl geprüft),
+`internal.html` lädt jetzt echte 345 Akteure-Features. Committet als
+`85fa0d2` (noch **nicht gepusht** — mit Bedacht, da der interne-Bugfix
+groß genug ist, dass ein Blick vor dem Deploy sinnvoll sein könnte; kann
+aber jederzeit gepusht werden, Suite ist grün).
+
+### 21.4 Noch offen (nicht in dieser Runde bearbeitet)
+
+§14 #6-11 (i18n), #19-22 (Loading/Error-States, Rest), #25-27 (restliche
+A11y), #28-31/34-38 (Doku + Repo-Hygiene) — unverändert offen, siehe §17
+für die Details. Realistischer nächster Schritt: kleinere, in sich
+abgeschlossene Punkte zuerst (#28-30 Doku-Updates, #38 href-Buttons), i18n
+(#6-11) ist der aufwendigste Einzelposten und verdient eine eigene Session.
