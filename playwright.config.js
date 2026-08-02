@@ -1,5 +1,9 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
+const { execFileSync } = require('child_process');
+
+const pythonExecutable = process.env.PYTHON_EXECUTABLE ||
+  execFileSync('python', ['-c', 'import sys; print(sys.executable)'], { encoding: 'utf8' }).trim();
 
 // See G:\Meine Ablage\Antigravity\10_Projects\Aquarevier_Map_Backlog.md item #8
 // ("Playwright-basierte UI-Regressionssuite") section 3 for the full
@@ -9,6 +13,7 @@ module.exports = defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
+  timeout: 60_000,
   // server.py uses a plain (non-threading) socketserver.TCPServer - one
   // connection at a time. Parallel workers hammering it concurrently causes
   // spurious ERR_CONNECTION_REFUSED under load (observed locally). Run
@@ -27,12 +32,19 @@ module.exports = defineConfig({
     baseURL: 'http://localhost:8000',
     viewport: { width: 1600, height: 1200 }, // matches elwas_client.py's scraper viewport
     trace: 'retain-on-failure',
+    // The internal editor deliberately protects contacts.geojson and all API
+    // endpoints with HTTP Basic Auth. Supplying the documented local
+    // credentials keeps UI tests aligned with that security contract.
+    httpCredentials: {
+      username: process.env.EDITOR_USER || 'florian',
+      password: process.env.EDITOR_PASSWORD || 'AquaRevier2026',
+    },
   },
   webServer: {
-    command: 'python server.py',
+    command: `"${pythonExecutable}" -u server.py`,
     url: 'http://localhost:8000',
-    reuseExistingServer: !process.env.CI,
-    timeout: 30_000,
+    reuseExistingServer: process.env.REUSE_EXISTING_SERVER === 'true',
+    timeout: 60_000,
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },

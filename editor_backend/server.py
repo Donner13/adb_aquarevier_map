@@ -156,6 +156,18 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         # We serve from the parent directory so `index.html` etc. are found if accessed directly.
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
+    def log_message(self, format, *args):
+        """Keep automated runs quiet unless access logging is explicitly requested."""
+        if os.environ.get('SERVER_ACCESS_LOG') == '1':
+            super().log_message(format, *args)
+
+    def copyfile(self, source, outputfile):
+        """Ignore normal disconnects when a browser cancels an in-flight request."""
+        try:
+            super().copyfile(source, outputfile)
+        except (BrokenPipeError, ConnectionAbortedError, ConnectionResetError):
+            pass
+
     def end_headers(self):
         # Enable CORS for convenience
         self.send_header('Access-Control-Allow-Origin', '*')
@@ -268,12 +280,16 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         elif parsed_path.path == '/api/deploy':
             try:
                 git_token = os.environ.get("GIT_PUSH_TOKEN") or os.environ.get("GITHUB_TOKEN", "")
-                if not git_token:
+                dry_run = os.environ.get("DRY_RUN", "").strip().lower() in {"1", "true", "yes"}
+                if dry_run:
+                    code = 0
+                    output = "DRY RUN: validated deploy request; no commit or push performed."
+                elif not git_token:
                     code = 0
                     output = "Local development mode: GIT_PUSH_TOKEN not set, skipped git push."
                 else:
-                    subprocess.run(["git", "config", "--global", "user.email", "bot@aquarevier.de"], cwd=DIRECTORY, check=False)
-                    subprocess.run(["git", "config", "--global", "user.name", "Editor Bot"], cwd=DIRECTORY, check=False)
+                    subprocess.run(["git", "config", "--local", "user.email", "bot@aquarevier.de"], cwd=DIRECTORY, check=False)
+                    subprocess.run(["git", "config", "--local", "user.name", "Editor Bot"], cwd=DIRECTORY, check=False)
                     subprocess.run(["git", "add", "contacts.geojson", "contacts_anonymized.geojson", "contacts.enc"], cwd=DIRECTORY, check=True)
 
                     commit_res = subprocess.run(["git", "commit", "-m", "Editor Bot: update contacts and maps"], cwd=DIRECTORY, capture_output=True, text=True)
@@ -305,9 +321,10 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 if __name__ == '__main__':
     # Allow port reuse to avoid 'Address already in use' errors
-    socketserver.TCPServer.allow_reuse_address = True
+    socketserver.ThreadingTCPServer.allow_reuse_address = True
 
-    with socketserver.TCPServer(("", PORT), CustomHTTPRequestHandler) as httpd:
+    with socketserver.ThreadingTCPServer(("", PORT), CustomHTTPRequestHandler) as httpd:
+        httpd.daemon_threads = True
         print(f"==================================================")
         print(f" Editor Backend Server Running!")
         print(f" URL: http://0.0.0.0:{PORT}")

@@ -223,9 +223,11 @@
         return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
+    // Initialize deterministically once the controls exist. A delayed reset
+    // used to overwrite real user input made during the first 600 ms.
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => setTimeout(() => window.setTimeSeriesYearIndex(5), 600));
+        document.addEventListener('DOMContentLoaded', () => window.setTimeSeriesYearIndex(5), { once: true });
     } else {
-        setTimeout(() => window.setTimeSeriesYearIndex(5), 600);
+        window.setTimeSeriesYearIndex(5);
     }
 })();

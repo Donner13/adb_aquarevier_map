@@ -126,10 +126,11 @@ def audit_wms_services():
         ("Wasserschutzgebiete", "https://www.wms.nrw.de/umwelt/wsg"),
         ("Tagebaue & Bergbaufelder", "https://www.wms.nrw.de/wms/bebu"),
         ("Flüsse & Gewässer GSK3e", "https://www.wms.nrw.de/umwelt/gsk3e"),
-        ("Hochwassergefahrenkarten (HQ100)", "https://www.wms.nrw.de/umwelt/hwgk"),
-        ("Starkregen Euskirchen (WMS/Feature)", "https://geoportal.euskirchen.de/arcgis/services/Starkregengefahrenkarte/Starkregengefahrenkarte_Euskirchen_WMS/MapServer/WMSServer")
+        ("Hochwassergefahrenkarten (HQ100)", "https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte"),
+        ("Starkregen Euskirchen (WMS/Feature)", "https://starkregen-euskirchen-v11.cismet.de/geoserver/wms")
     ]
 
+    all_ok = True
     for name, url in wms_urls:
         try:
             req = urllib.request.Request(f"{url}?SERVICE=WMS&REQUEST=GetCapabilities", headers={'User-Agent': 'Mozilla/5.0'})
@@ -140,11 +141,14 @@ def audit_wms_services():
                     print(f"✅ {name}: HTTP {status} ({content_type})")
                 else:
                     print(f"❌ {name}: HTTP {status}")
+                    all_ok = False
         except Exception as e:
             print(f"❌ {name} ({url}): Error: {e}")
+            all_ok = False
+    return all_ok
 
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding='utf-8')
     audit_geojson_files()
-    audit_wms_services()
+    sys.exit(0 if audit_wms_services() else 1)

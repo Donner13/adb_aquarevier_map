@@ -7,7 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "playwright test"
+    "vendor": "node tools/build_vendor_assets.js",
+    "check:links": "python tools/check_external_links.py",
+    "test": "npm run vendor && playwright test"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,14 @@
     "@playwright/test": "^1.61.1"
   },
   "dependencies": {
-    "playwright": "^1.61.1"
+    "@popperjs/core": "2.11.8",
+    "docx": "8.6.0",
+    "html2canvas": "1.4.1",
+    "jspdf": "4.2.1",
+    "jspdf-autotable": "5.0.8",
+    "leaflet": "1.9.4",
+    "leaflet.markercluster": "1.5.3",
+    "playwright": "^1.61.1",
+    "tippy.js": "6.3.7"
   }
 }

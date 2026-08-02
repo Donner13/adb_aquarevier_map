@@ -154,3 +154,8 @@ const LAYER_CONFIGS = [
     footerTemplate: p => `Quelle: ${p.source || 'Ministerium für Wirtschaft, Industrie, Klimaschutz und Energie NRW'} (CC0), Datenstand ${p.data_date || '08.06.2026'}`
   }
 ];
+
+// Explicitly publish the configuration for asynchronous inline handlers.
+// Relying on a classic script's top-level lexical binding caused rare
+// ReferenceErrors when counters ran during rapid page initialization.
+window.LAYER_CONFIGS = LAYER_CONFIGS;

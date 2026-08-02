@@ -153,6 +153,18 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
+    def log_message(self, format, *args):
+        """Keep automated runs quiet unless access logging is explicitly requested."""
+        if os.environ.get('SERVER_ACCESS_LOG') == '1':
+            super().log_message(format, *args)
+
+    def copyfile(self, source, outputfile):
+        """Ignore normal disconnects when a browser cancels an in-flight request."""
+        try:
+            super().copyfile(source, outputfile)
+        except (BrokenPipeError, ConnectionAbortedError, ConnectionResetError):
+            pass
+
     def check_auth(self):
         auth_header = self.headers.get('Authorization')
         if not auth_header or not auth_header.startswith('Basic '):
@@ -274,9 +286,10 @@ if __name__ == '__main__':
     os.chdir(DIRECTORY)
     
     # Allow port reuse to avoid 'Address already in use' errors
-    socketserver.TCPServer.allow_reuse_address = True
+    socketserver.ThreadingTCPServer.allow_reuse_address = True
     
-    with socketserver.TCPServer(("", PORT), CustomHTTPRequestHandler) as httpd:
+    with socketserver.ThreadingTCPServer(("", PORT), CustomHTTPRequestHandler) as httpd:
+        httpd.daemon_threads = True
         print(f"==================================================")
         print(f" Contact Map Visualizer Server Running!")
         print(f" URL: http://localhost:{PORT}")

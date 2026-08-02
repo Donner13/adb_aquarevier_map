@@ -5,20 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTERN - Akteurskarte Editor - AquaRevier</title>
     
-    <!-- Google Fonts: Inter & Outfit -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
     <!-- docx -->
-    <script src="https://unpkg.com/docx@8.6.0/build/index.umd.js"></script>
+    <script src="vendor/docx/index.umd.js"></script>
 
     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css"/>
 
     <!-- Leaflet.markercluster CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+    <link rel="stylesheet" href="vendor/leaflet-markercluster/MarkerCluster.css"/>
+    <link rel="stylesheet" href="vendor/leaflet-markercluster/MarkerCluster.Default.css"/>
 
     <style>
         :root {
@@ -169,6 +164,8 @@
         /* Sidebar Glassmorphism */
         #sidebar {
             width: 440px;
+            min-width: 0;
+            flex: 0 0 440px;
             height: 100vh;
             background: var(--bg-surface);
             backdrop-filter: blur(20px);
@@ -181,7 +178,8 @@
         }
 
         #map {
-            flex: 1;
+            flex: 1 1 0;
+            min-width: 0;
             height: 100vh;
             z-index: 1;
         }
@@ -2256,34 +2254,40 @@
                         </div>
                         <div style="font-size: 11px; color: #64748b; margin-top: 12px; margin-bottom: 8px; font-weight: 500;">Pluvial (Kommunen)</div>
                         <div class="filter-group">
-                            <button class="filter-btn external-portal-link" data-layer-name="Starkregen Euskirchen" title="Starkregengefahrenkarte Kreis Euskirchen">
+                            <button class="filter-btn" data-layer-name="Starkregen Euskirchen" title="Starkregengefahrenkarte Kreis Euskirchen">
                                 <span class="swatch" style="background: #7c3aed;"></span>
                                 <span>Kreis Euskirchen</span>
                             </button>
-                            <button class="filter-btn external-portal-link" onclick="window.open('https://starkregengefahrenkarten-staedteregion-aachen.cismet.de/', '_blank')" title="Starkregengefahrenkarte Städteregion Aachen (Extern)">
-                                <span class="swatch" style="background: #7c3aed;"></span>
-                                <span>🔗 Städteregion Aachen</span>
-                            </button>
-                            <button class="filter-btn external-portal-link" onclick="window.open('https://starkregengefahrenkarten-kreis-dueren.cismet.de/', '_blank')" title="Starkregengefahrenkarte Kreis Düren (Extern)">
-                                <span class="swatch" style="background: #7c3aed;"></span>
-                                <span>🔗 Kreis Düren</span>
-                            </button>
-                            <button class="filter-btn external-portal-link" onclick="window.open('https://www.kreis-heinsberg.de/buergerservice/geoportal/', '_blank')" title="Amtliches Geoportal Kreis Heinsberg (Extern)">
-                                <span class="swatch" style="background: #7c3aed;"></span>
-                                <span>🔗 Kreis Heinsberg</span>
-                            </button>
-                            <button class="filter-btn external-portal-link" onclick="window.open('https://www.rhein-erft-kreis.de/', '_blank')" title="Kreis-Website Rhein-Erft-Kreis (Extern)">
-                                <span class="swatch" style="background: #7c3aed;"></span>
-                                <span>🔗 Rhein-Erft-Kreis</span>
-                            </button>
-                            <button class="filter-btn external-portal-link" onclick="window.open('https://www.rhein-kreis-neuss.de/geoportal', '_blank')" title="Amtliches Geoportal Rhein-Kreis Neuss (Extern)">
-                                <span class="swatch" style="background: #7c3aed;"></span>
-                                <span>🔗 Rhein-Kreis Neuss</span>
-                            </button>
-                            <button class="filter-btn external-portal-link" onclick="window.open('https://www.moenchengladbach.de/', '_blank')" title="Stadt-Website Mönchengladbach (Extern)">
-                                <span class="swatch" style="background: #7c3aed;"></span>
-                                <span>🔗 Mönchengladbach</span>
-                            </button>
+                            <a href="https://geoportal.staedteregion-aachen.de/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="aachen" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche Geoportal der StädteRegion Aachen in einem neuen Tab">
+                                <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
+                                <span class="filter-label" style="margin-left: 6px;">🔗 Städteregion Aachen</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                            </a>
+                            <a href="https://gis.kreis-dueren.de/inkasportal/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="dueren" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche inkasPortal des Kreises Düren in einem neuen Tab">
+                                <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
+                                <span class="filter-label" style="margin-left: 6px;">🔗 Kreis Düren</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                            </a>
+                            <a href="https://geodienste.kreis-heinsberg.de/Portal/index.shtml" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="heinsberg" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche Geoportal des Kreises Heinsberg in einem neuen Tab">
+                                <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
+                                <span class="filter-label" style="margin-left: 6px;">🔗 Kreis Heinsberg</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                            </a>
+                            <a href="https://geo.rhein-erft-kreis.de/ASmobile/rekportal.html" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="rhein-erft" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche Geoportal des Rhein-Erft-Kreises in einem neuen Tab">
+                                <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
+                                <span class="filter-label" style="margin-left: 6px;">🔗 Rhein-Erft-Kreis</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                            </a>
+                            <a href="https://maps.rhein-kreis-neuss.de/geoportal/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="neuss" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche Geoportal des Rhein-Kreises Neuss in einem neuen Tab">
+                                <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
+                                <span class="filter-label" style="margin-left: 6px;">🔗 Rhein-Kreis Neuss</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                            </a>
+                            <a href="https://mapview.hydrotec.de/models/Starkregen-Simulation-MG-aussergewoehnliches-Ereignis/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="moenchengladbach" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet die interaktive Starkregengefahrenkarte Mönchengladbach in einem neuen Tab">
+                                <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
+                                <span class="filter-label" style="margin-left: 6px;">🔗 Mönchengladbach</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -2328,15 +2332,15 @@
     </div>
 
     <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="vendor/leaflet/leaflet.js"></script>
 
     <!-- Leaflet.markercluster JS -->
-    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="vendor/leaflet-markercluster/leaflet.markercluster.js"></script>
 
     <!-- Tippy.js für Glossar-Tooltips -->
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css"/>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link rel="stylesheet" href="vendor/tippy/tippy.css"/>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/tippy/tippy-bundle.umd.min.js"></script>
     <script src="glossar.js"></script>
     <script src="js/layers-config.js"></script>
     <script src="js/layers-loader.js"></script>
@@ -2354,11 +2358,11 @@
     <script src="js/keyboard-shortcuts.js"></script>
 
     <!-- jsPDF for PDF Export -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script src="vendor/jspdf/jspdf.umd.min.js"></script>
+    <script src="vendor/jspdf/jspdf.plugin.autotable.min.js"></script>
 
     <!-- html2canvas for map screenshot capturing -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="vendor/html2canvas/html2canvas.min.js"></script>
 
     <script>
         // Global Clipboard Copy Helper for Lower Water Authorities
@@ -3541,7 +3545,7 @@
         // ELWAS Punkt-Layer — Config-getrieben (Punkt 10 Refactor)
         // addGeoLayer() fügt jeden Layer selbst in overlayMaps ein.
         // ---------------------------------------------------------------
-        LAYER_CONFIGS.forEach(cfg => addGeoLayer(cfg, map, overlayMaps, layerDataStore));
+        window.LAYER_CONFIGS.forEach(cfg => addGeoLayer(cfg, map, overlayMaps, layerDataStore));
 
         const layerControl = L.control.layers(baseMaps, {}, { position: 'topright' }).addTo(map);
 
@@ -5430,7 +5434,7 @@
                 const layerName = btn.getAttribute('data-layer-name');
                 let geoData = null;
                 // Config-driven layers: look up by overlayLabel match
-                const cfgMatch = LAYER_CONFIGS.find(cfg =>
+                const cfgMatch = (window.LAYER_CONFIGS || []).find(cfg =>
                     layerName === cfg.overlayLabel ||
                     layerName.includes(cfg.name) ||
                     cfg.overlayLabel.includes(layerName)
@@ -7051,6 +7055,8 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
         // visit would reliably exhaust that quota and log a real browser-level
         // "Failed to load resource" console error for ordinary users.
         // --- End Feedback Logic ---
+        window.aquarevierCoreReady = true;
+        document.dispatchEvent(new CustomEvent('aquarevier:core-ready'));
 
 </script>
 
@@ -7161,7 +7167,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
     </div>
 
     <!-- Application Perfection & Enhancement Suite -->
-    <script src="js/app-enhancements.js"></script>
+    <script src="js/app-enhancements.js?v=20260729-linkfix"></script>
     <script>
         // Mobile Sidebar Toggle Logic
         const mobileSidebarToggle = document.getElementById('mobile-sidebar-toggle');

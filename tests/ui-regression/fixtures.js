@@ -74,10 +74,29 @@ const expect = base.expect;
 async function gotoPage(page, filename) {
   await page.addInitScript(() => {
     localStorage.setItem('aquarevier_onboarding_completed_v1', '1');
+    // Keep visual tests deterministic: the mascot's daily fact intentionally
+    // contains a random message and otherwise opens after 2.5 seconds.
+    localStorage.setItem('platschi_fact_date', new Date().toDateString());
   });
-  await page.goto(`/${filename}`);
+  try {
+    await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+  } catch (error) {
+    // Chromium can emit this once when the host network adapter changes
+    // while a localhost navigation is in flight. Retry only this classified
+    // transient; all application and HTTP failures still fail immediately.
+    if (!String(error).includes('ERR_NETWORK_CHANGED')) throw error;
+    await page.waitForTimeout(200);
+    await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+  }
   await page.waitForSelector('.filter-btn[data-layer-name]');
-  await page.waitForLoadState('networkidle');
+  // A Leaflet/WMS application may keep network activity alive indefinitely.
+  // The stable readiness contract is the initialized Leaflet map plus the
+  // rendered controls. Individual data-oriented tests await their own layer.
+  await page.waitForFunction(() =>
+    window.map &&
+    typeof window.map.hasLayer === 'function' &&
+    window.aquarevierCoreReady === true
+  );
 }
 
 function assertNoJsErrors(page) {

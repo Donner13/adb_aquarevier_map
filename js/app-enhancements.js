@@ -743,7 +743,9 @@
         }
 
         const resetBtn = document.getElementById('reset-filters-btn');
-        if (resetBtn && resetBtn.parentElement && !document.getElementById('lang-toggle-btn')) {
+        // index.html has a primary language switcher in the header. Only add
+        // the compact sidebar fallback on pages that do not have that control.
+        if (resetBtn && resetBtn.parentElement && !document.getElementById('lang-toggle-btn') && !document.getElementById('langToggleBtn')) {
             const langBtn = document.createElement('button');
             langBtn.id = 'lang-toggle-btn';
             langBtn.className = 'filter-btn';
@@ -763,23 +765,22 @@
     // --- 7. INTERACTIVE PLUVIAL KREIS MAP CONTROLS & MAP INTERACTION ---
     function initPluvialKreisControls() {
         const kreisData = {
-            "Städteregion Aachen": { lat: 50.7753, lng: 6.2000, zoom: 11, url: "https://starkregengefahrenkarten-staedteregion-aachen.cismet.de/" },
-            "Kreis Düren": { lat: 50.8022, lng: 6.4833, zoom: 11, url: "https://starkregengefahrenkarten-kreis-dueren.cismet.de/" },
-            "Kreis Euskirchen": { lat: 50.6606, lng: 6.7872, zoom: 11, url: "https://starkregen-euskirchen-v11.cismet.de/geoserver/wms" },
-            "Kreis Heinsberg": { lat: 51.0631, lng: 6.0964, zoom: 11, url: "https://www.kreis-heinsberg.de/" },
-            "Rhein-Erft-Kreis": { lat: 50.9577, lng: 6.6406, zoom: 11, url: "https://www.rhein-erft-kreis.de/" },
-            "Rhein-Kreis Neuss": { lat: 51.1983, lng: 6.6917, zoom: 11, url: "https://www.rhein-kreis-neuss.de/" },
-            "Mönchengladbach": { lat: 51.1912, lng: 6.4430, zoom: 11, url: "https://www.moenchengladbach.de/" }
+            "aachen": { lat: 50.7753, lng: 6.2000, zoom: 11 },
+            "dueren": { lat: 50.8022, lng: 6.4833, zoom: 11 },
+            "heinsberg": { lat: 51.0631, lng: 6.0964, zoom: 11 },
+            "rhein-erft": { lat: 50.9577, lng: 6.6406, zoom: 11 },
+            "neuss": { lat: 51.1983, lng: 6.6917, zoom: 11 },
+            "moenchengladbach": { lat: 51.1912, lng: 6.4430, zoom: 11 }
         };
 
         const pluvialLinks = document.querySelectorAll('.external-portal-link');
         pluvialLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                const text = link.textContent.replace('🔗', '').replace('↗', '').trim();
-                const info = kreisData[text];
+            link.addEventListener('click', () => {
+                const info = kreisData[link.dataset.portalKey];
                 if (info && window.map) {
                     window.map.flyTo([info.lat, info.lng], info.zoom, { duration: 1.2 });
-                    window.showToast(`🌊 Starkregen-Fokus: ${text} auf Karte zentriert!`, "📍");
+                    const label = link.querySelector('.filter-label')?.textContent.replace('🔗', '').trim() || '';
+                    window.showToast(`🌊 Starkregen-Fokus: ${label} auf Karte zentriert!`, "📍");
                 }
             });
         });
@@ -790,10 +791,11 @@
         const buttons = document.querySelectorAll('.filter-btn');
         buttons.forEach(btn => {
             if (!btn.hasAttribute('tabindex')) btn.setAttribute('tabindex', '0');
-            if (!btn.hasAttribute('role')) btn.setAttribute('role', 'button');
+            const isLink = btn.tagName === 'A';
+            if (!isLink && !btn.hasAttribute('role')) btn.setAttribute('role', 'button');
             
             btn.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
+                if ((!isLink && (e.key === 'Enter' || e.key === ' ')) || (isLink && e.key === ' ')) {
                     e.preventDefault();
                     btn.click();
                 }
@@ -842,17 +844,7 @@
     };
 
     // --- 5. INITIALIZE ALL ON DOM READY ---
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            applyLayerColorHarmony();
-            initCommandPalette();
-            initSystemHealthBadge();
-            initLanguageToggle();
-            initPluvialKreisControls();
-            initAccessibility();
-            initAutoThemeSync();
-        });
-    } else {
+    function initializeEnhancements() {
         applyLayerColorHarmony();
         initCommandPalette();
         initSystemHealthBadge();
@@ -860,6 +852,14 @@
         initPluvialKreisControls();
         initAccessibility();
         initAutoThemeSync();
+        window.aquarevierReady = true;
+        document.dispatchEvent(new CustomEvent('aquarevier:ready'));
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeEnhancements, { once: true });
+    } else {
+        initializeEnhancements();
     }
 
 })();

@@ -3,6 +3,22 @@ import time
 import sys
 import random
 import string
+from pathlib import Path
+
+root = Path(__file__).resolve().parent
+vendor_result = subprocess.run(
+    ['node', 'tools/build_vendor_assets.js'],
+    cwd=root,
+    capture_output=True,
+    text=True,
+    timeout=60
+)
+if vendor_result.returncode != 0:
+    print(vendor_result.stdout)
+    print(vendor_result.stderr)
+    print("Deployment stopped: vendor assets could not be prepared.")
+    sys.exit(1)
+print(vendor_result.stdout.strip())
 
 def generate_random_string(length=6):
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))

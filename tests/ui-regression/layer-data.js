@@ -57,9 +57,9 @@ const LAZY_LAYERS = {
 // instead of a same-origin geojson fetch (mocked in fixtures.js).
 const WMS_LAYERS = {
   'Tagebaue & Bergbaufelder (GD)': 'wms/bebu',
-  'HQ häufig (LANUV)': 'Tiefen_Ueberflutungsgebiet_nw',
+  'HQ häufig (LANUV)': 'Tiefen_Ueberflutungsgebiet_hw',
   'HQ100 (LANUV)': 'Tiefen_Ueberflutungsgebiet_mw',
-  'HQ extrem (LANUV)': 'Tiefen_Ueberflutungsgebiet_hw',
+  'HQ extrem (LANUV)': 'Tiefen_Ueberflutungsgebiet_nw',
   'Starkregen Euskirchen': 'L_T100_v1.1_depth3857',
 };
 

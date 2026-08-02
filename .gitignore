@@ -33,4 +33,5 @@ playwright-report/
 tools/watchdog_*.log
 tools/watchdog_*.jsonl
 tools/STOP_WATCHDOG
+wms_check_results.json
 venv/
