@@ -9,7 +9,10 @@ function setupLayerToggleLogic(map, overlayMaps, buttons, updateVisualStates, up
             const name = btn.getAttribute('data-layer-name');
             const layer = overlayMaps[name];
 
-            if (!layer) return;
+            if (!layer) {
+                console.warn(`Layer not found for data-layer-name: ${name}`);
+                return;
+            }
 
             if (map.hasLayer(layer)) {
                 map.removeLayer(layer);
