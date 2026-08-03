@@ -59,7 +59,13 @@
 
     // Restore user theme preference on load
     function initTheme() {
-        const savedTheme = window.StorageModule.getItem('aquarevier_theme');
+        // Migration: fallback to old 'theme' key if present and new key is absent
+        let savedTheme = window.StorageModule.getItem('aquarevier_theme');
+        if (!savedTheme && window.StorageModule.getItem('theme')) {
+            savedTheme = window.StorageModule.getItem('theme');
+            window.StorageModule.setItem('aquarevier_theme', savedTheme);
+            window.StorageModule.removeItem('theme');
+        }
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
 
