@@ -403,7 +403,6 @@
     // --- 3. OPEN DATA EXPORT (GEOJSON & CSV) ---
     window.exportActiveLayersData = function (format = 'geojson') {
         const activeFeatures = [];
-        let invalidFeaturesCount = 0;
 
         // Strict number check: Must be number, not NaN, not Infinity
         const isStrictNumber = (n) => typeof n === 'number' && Number.isFinite(n);
@@ -478,67 +477,61 @@
             assertValidGeometry(f.geometry);
         };
 
-        const processFeature = (f, key) => {
-            try {
-                // Type Assertions
-                assertValidFeature(f);
-
-                const featCopy = JSON.parse(JSON.stringify(f));
-                if (!featCopy.properties || featCopy.properties === null) {
-                    featCopy.properties = {};
-                }
-                featCopy.properties._layer_name = String(key);
-                activeFeatures.push(featCopy);
-            } catch (e) {
-                // Feature fails assertion, skip it
-                invalidFeaturesCount++;
-                console.warn('Skipping invalid GeoJSON feature during export:', e.message);
-            }
-        };
-
-        let hasActiveOverlay = false;
-        const processedStoreKeys = new Set();
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
-                    hasActiveOverlay = true;
                     // Match overlay layer to dataStore entry
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
-                        // If multiple overlays map to the SAME window.layerDataStore key (often happens),
-                        // we shouldn't add features multiple times and create duplicates in the export.
-                        if (storeData && Array.isArray(storeData.features) && !processedStoreKeys.has(key)) {
-                            processedStoreKeys.add(key);
-                            storeData.features.forEach(f => processFeature(f, key));
+                        if (storeData && Array.isArray(storeData.features)) {
+                            storeData.features.forEach(f => {
+                                try {
+                                    // Type Assertions
+                                    assertValidFeature(f);
+
+                                    const featCopy = JSON.parse(JSON.stringify(f));
+                                    if (!featCopy.properties || featCopy.properties === null) {
+                                        featCopy.properties = {};
+                                    }
+                                    featCopy.properties._layer_name = String(key);
+                                    activeFeatures.push(featCopy);
+                                } catch (e) {
+                                    // Ignore parsing errors for individual circular or bad features
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+        // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly
+        if (activeFeatures.length === 0 && window.layerDataStore) {
+            Object.keys(window.layerDataStore).forEach(key => {
+                const storeData = window.layerDataStore[key];
+                if (storeData && Array.isArray(storeData.features)) {
+                    storeData.features.forEach(f => {
+                        try {
+                            // Type Assertions
+                            assertValidFeature(f);
+
+                            const featCopy = JSON.parse(JSON.stringify(f));
+                            if (!featCopy.properties || featCopy.properties === null) {
+                                featCopy.properties = {};
+                            }
+                            featCopy.properties._layer_name = String(key);
+                            activeFeatures.push(featCopy);
+                        } catch (e) {
+                            // Ignore parsing errors for individual circular or bad features
                         }
                     });
                 }
             });
         }
 
-        // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly
-        if (!hasActiveOverlay && window.layerDataStore) {
-            Object.keys(window.layerDataStore).forEach(key => {
-                const storeData = window.layerDataStore[key];
-                if (storeData && Array.isArray(storeData.features) && !processedStoreKeys.has(key)) {
-                    processedStoreKeys.add(key);
-                    storeData.features.forEach(f => processFeature(f, key));
-                }
-            });
-        }
-
         if (activeFeatures.length === 0) {
-            if (invalidFeaturesCount > 0) {
-                window.showToast(`Keine gültigen Objekte gefunden. ${invalidFeaturesCount} ungültige Objekte wurden übersprungen.`, "⚠️");
-            } else {
-                window.showToast("Keine aktiven Fachdaten-Layer auf der Karte sichtbar", "⚠️");
-            }
+            window.showToast("Keine aktiven Fachdaten-Layer auf der Karte sichtbar", "⚠️");
             return;
-        }
-
-        if (invalidFeaturesCount > 0) {
-            window.showToast(`${invalidFeaturesCount} fehlerhafte Objekte wurden beim Export übersprungen.`, "⚠️");
         }
 
         const dateStr = new Date().toISOString().split('T')[0];
