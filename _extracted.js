@@ -768,29 +768,29 @@
                         const bg = b.getAttribute('data-group');
                         if (bg === 'all') return;
                         if (isAnyInactive) {
-                            b.classList.add('active');
+                            b.classList.add('active'); b.classList.remove('inactive'); b.setAttribute('aria-pressed', 'true');
                             activeFilters.add(bg);
                         } else {
-                            b.classList.remove('active');
+                            b.classList.remove('active'); b.classList.add('inactive'); b.setAttribute('aria-pressed', 'false');
                             activeFilters.delete(bg);
                         }
                     });
                 } else {
                     if (activeFilters.has(group)) {
                         activeFilters.delete(group);
-                        btn.classList.remove('active');
+                        btn.classList.remove('active'); btn.classList.add('inactive'); btn.setAttribute('aria-pressed', 'false');
                     } else {
                         activeFilters.add(group);
-                        btn.classList.add('active');
+                        btn.classList.add('active'); btn.classList.remove('inactive'); btn.setAttribute('aria-pressed', 'true');
                     }
                 }
                 
                 // Update All btn active state
                 const allBtn = document.querySelector('.filter-btn[data-group="all"]');
                 if (activeFilters.size === Object.keys(groupColors).length) {
-                    allBtn.classList.add('active');
+                    allBtn.classList.add('active'); allBtn.classList.remove('inactive'); allBtn.setAttribute('aria-pressed', 'true');
                 } else {
-                    allBtn.classList.remove('active');
+                    allBtn.classList.remove('active'); allBtn.classList.add('inactive'); allBtn.setAttribute('aria-pressed', 'false');
                 }
 
                 renderMapAndSidebar();
