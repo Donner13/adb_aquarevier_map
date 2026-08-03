@@ -446,7 +446,6 @@
 
             if (geom.type === 'GeometryCollection') {
                 if (!Array.isArray(geom.geometries)) throw new TypeError('GeometryCollection must have a geometries array');
-                if (geom.geometries.length === 0) throw new TypeError('GeometryCollection must not be empty'); // Strict empty check
                 geom.geometries.forEach(g => assertValidGeometry(g, true)); // Deep validation, elements cannot be null
             } else {
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
