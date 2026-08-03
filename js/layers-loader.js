@@ -16,6 +16,49 @@
  *   exposiert, damit bestehende Referenzen (search, events) weiter funktionieren.
  */
 
+
+// Setup reusable web worker for GeoJSON parsing to unblock main thread
+const geojsonWorkerCode = `
+  self.onmessage = function(e) {
+    const { url, id } = e.data;
+    fetch(url)
+      .then(res => {
+        if (!res.ok) throw new Error("HTTP " + res.status + " when loading " + url);
+        // Using response.json() natively parses in the worker thread
+        return res.json();
+      })
+      .then(data => self.postMessage({ id: id, data: data, success: true }))
+      .catch(err => self.postMessage({ id: id, error: err.message, success: false }));
+  };
+`;
+const geojsonWorkerBlob = new Blob([geojsonWorkerCode], { type: 'application/javascript' });
+const geojsonWorkerUrl = URL.createObjectURL(geojsonWorkerBlob);
+
+// Instantiate a single shared worker to avoid overhead of creating a new worker per request
+const sharedGeojsonWorker = new Worker(geojsonWorkerUrl);
+let workerMsgId = 0;
+const workerCallbacks = {};
+
+sharedGeojsonWorker.onmessage = function(e) {
+  const { id, success, data, error } = e.data;
+  if (workerCallbacks[id]) {
+    if (success) {
+      workerCallbacks[id].resolve(data);
+    } else {
+      workerCallbacks[id].reject(new Error(error));
+    }
+    delete workerCallbacks[id];
+  }
+};
+
+function fetchGeoJSONWorker(url) {
+  return new Promise((resolve, reject) => {
+    const id = ++workerMsgId;
+    workerCallbacks[id] = { resolve, reject };
+    sharedGeojsonWorker.postMessage({ url: new URL(url, window.location.href).href, id: id });
+  });
+}
+
 function escapeHtml(str) {
   if (str === null || str === undefined) return '';
   return String(str)
@@ -190,8 +233,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     function loadClusterLayer() {
       if (loaded) return;
       loaded = true;
-      fetch(cfg.file)
-        .then(res => res.ok ? res.json() : Promise.reject())
+      fetchGeoJSONWorker(cfg.file)
         .then(data => {
           layerDataStore[cfg.id] = data;
           if (!window.layerDataStore) window.layerDataStore = {};
@@ -258,11 +300,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
   function loadStandardLayer() {
     if (loadedStandard) return;
     loadedStandard = true;
-    fetch(cfg.file)
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status} when loading ${cfg.file}`);
-        return res.json();
-      })
+    fetchGeoJSONWorker(cfg.file)
       .then(data => {
         layerDataStore[cfg.id] = data;
         if (!window.layerDataStore) window.layerDataStore = {};
