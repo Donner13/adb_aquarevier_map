@@ -403,6 +403,38 @@
     // --- 3. OPEN DATA EXPORT (GEOJSON & CSV) ---
     window.exportActiveLayersData = function (format = 'geojson') {
         const activeFeatures = [];
+
+        const isFeatureValidGeoJSON = (f) => {
+            if (typeof f !== 'object' || f === null) return false;
+            if (f.type !== 'Feature') return false;
+            if (f.geometry !== null) {
+                if (typeof f.geometry !== 'object') return false;
+                if (!f.geometry.type) return false;
+                const validTypes = ['Point', 'MultiPoint', 'LineString', 'MultiLineString', 'Polygon', 'MultiPolygon', 'GeometryCollection'];
+                if (!validTypes.includes(f.geometry.type)) return false;
+                if (f.geometry.type === 'GeometryCollection') {
+                    if (!Array.isArray(f.geometry.geometries)) return false;
+                } else {
+                    if (!Array.isArray(f.geometry.coordinates)) return false;
+                }
+            }
+            return true;
+        };
+
+        const processFeature = (f, key) => {
+            if (!isFeatureValidGeoJSON(f)) return;
+            try {
+                const featCopy = JSON.parse(JSON.stringify(f));
+                if (typeof featCopy.properties !== 'object' || featCopy.properties === null) {
+                    featCopy.properties = {};
+                }
+                featCopy.properties._layer_name = String(key);
+                activeFeatures.push(featCopy);
+            } catch (e) {
+                // Ignore parsing errors for individual circular or bad features
+            }
+        };
+
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
@@ -411,25 +443,7 @@
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
                         if (storeData && Array.isArray(storeData.features)) {
-                            storeData.features.forEach(f => {
-                                // Type Assertions
-                                if (typeof f !== 'object' || f === null) return;
-                                if (f.type !== 'Feature') return;
-                                if (f.geometry !== null && typeof f.geometry !== 'object') return;
-                                if (f.geometry !== null && !f.geometry.type) return; // Must have geometry.type if not null
-                                if (f.geometry !== null && f.geometry.type !== 'GeometryCollection' && !Array.isArray(f.geometry.coordinates)) return; // Valid geometry checks
-
-                                try {
-                                    const featCopy = JSON.parse(JSON.stringify(f));
-                                    if (typeof featCopy.properties !== 'object' || featCopy.properties === null) {
-                                        featCopy.properties = {};
-                                    }
-                                    featCopy.properties._layer_name = String(key);
-                                    activeFeatures.push(featCopy);
-                                } catch (e) {
-                                    return; // Skip circular or invalid JSON
-                                }
-                            });
+                            storeData.features.forEach(f => processFeature(f, key));
                         }
                     });
                 }
@@ -440,25 +454,7 @@
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
                 if (storeData && Array.isArray(storeData.features)) {
-                    storeData.features.forEach(f => {
-                        // Type Assertions
-                        if (typeof f !== 'object' || f === null) return;
-                        if (f.type !== 'Feature') return;
-                        if (f.geometry !== null && typeof f.geometry !== 'object') return;
-                        if (f.geometry !== null && !f.geometry.type) return;
-                        if (f.geometry !== null && f.geometry.type !== 'GeometryCollection' && !Array.isArray(f.geometry.coordinates)) return;
-
-                        try {
-                            const featCopy = JSON.parse(JSON.stringify(f));
-                            if (typeof featCopy.properties !== 'object' || featCopy.properties === null) {
-                                featCopy.properties = {};
-                            }
-                            featCopy.properties._layer_name = String(key);
-                            activeFeatures.push(featCopy);
-                        } catch (e) {
-                            return; // Skip circular or invalid JSON
-                        }
-                    });
+                    storeData.features.forEach(f => processFeature(f, key));
                 }
             });
         }
