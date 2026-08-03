@@ -9,7 +9,7 @@ Es gibt nun zwei Versionen der Web-Karte:
 
 ## 🏗️ Architektur & Datenfluss (Frontend)
 
-Die Anwendung ist als reine Frontend-Applikation (Single Page Application) konzipiert, die Geodaten clientseitig lädt und visualisiert.
+Die Anwendung ist als reine Frontend-Applikation konzipiert, die Geodaten clientseitig lädt und visualisiert.
 
 ```mermaid
 graph TD
