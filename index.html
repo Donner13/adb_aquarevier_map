@@ -2056,6 +2056,8 @@
 </head>
 <body class="light-theme">
     <div id="app-container">
+        <!-- A11y Live Region for Filters -->
+        <div id="filter-live-region" class="sr-only" aria-live="polite"></div>
 
         <!-- Mobile Sidebar Toggle -->
         <button id="mobile-sidebar-toggle">
@@ -3405,9 +3407,11 @@
                 } else {
                     if (elwasActiveRisks.has(riskVal)) {
                         elwasActiveRisks.delete(riskVal);
+                    announceFilterState(riskVal, false);
                         btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
                     } else {
                         elwasActiveRisks.add(riskVal);
+                    announceFilterState(riskVal, true);
                         btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                     }
                 }
@@ -4216,6 +4220,23 @@
             updateSidebarCounters();
         }
 
+
+        // Helper to announce filter state changes for screen readers
+        function announceFilterState(filterName, isActive) {
+            const liveRegion = document.getElementById('filter-live-region');
+            if (liveRegion) {
+                const state = isActive ? 'aktiviert' : 'deaktiviert';
+                liveRegion.textContent = `Filter ${filterName} ${state}`;
+            }
+        }
+
+        function announceQuickAction(actionName) {
+            const liveRegion = document.getElementById('filter-live-region');
+            if (liveRegion) {
+                liveRegion.textContent = `Schnellaktion: ${actionName}`;
+            }
+        }
+
         // Helper to update active/inactive button states
 
         // Legend: Hochwasser- & Starkregengefahren
@@ -4609,8 +4630,10 @@
                 const group = btn.getAttribute('data-group');
                 if (activeFilters.has(group)) {
                     activeFilters.delete(group);
+                    announceFilterState(group, false);
                 } else {
                     activeFilters.add(group);
+                    announceFilterState(group, true);
                 }
                 updateButtonVisualStates();
                 renderMapAndSidebar();
@@ -4623,8 +4646,10 @@
                 const riskVal = btn.getAttribute('data-risk');
                 if (elwasActiveRisks.has(riskVal)) {
                     elwasActiveRisks.delete(riskVal);
+                    announceFilterState(riskVal, false);
                 } else {
                     elwasActiveRisks.add(riskVal);
+                    announceFilterState(riskVal, true);
                 }
                 updateButtonVisualStates();
                 renderElwasLayer();
@@ -4639,9 +4664,11 @@
                 if (map.hasLayer(layer)) {
                     map.removeLayer(layer);
                     map.fire('overlayremove', { layer: layer, name: name });
+                    announceFilterState(name, false);
                 } else {
                     map.addLayer(layer);
                     map.fire('overlayadd', { layer: layer, name: name });
+                    announceFilterState(name, true);
                 }
                 updateButtonVisualStates();
                 updateSidebarCounters();
@@ -4650,6 +4677,7 @@
 
         // Quick Action: Regionale Akteure - Alle an
         document.getElementById('btn-actors-all').addEventListener('click', () => {
+            announceQuickAction('Regionale Akteure - Alle an');
             Object.keys(groupColors).forEach(g => activeFilters.add(g));
             updateButtonVisualStates();
             renderMapAndSidebar();
@@ -4657,6 +4685,7 @@
 
         // Quick Action: Regionale Akteure - Alle aus
         document.getElementById('btn-actors-none').addEventListener('click', () => {
+            announceQuickAction('Regionale Akteure - Alle aus');
             activeFilters.clear();
             updateButtonVisualStates();
             renderMapAndSidebar();
@@ -4664,6 +4693,7 @@
 
         // Quick Action: Industrie-Branchen - Alle an
         document.getElementById('btn-branches-all').addEventListener('click', () => {
+            announceQuickAction('Industrie-Branchen - Alle an');
             Object.keys(elwasRiskColors).forEach(b => elwasActiveRisks.add(b));
             updateButtonVisualStates();
             renderElwasLayer();
@@ -4671,6 +4701,7 @@
 
         // Quick Action: Industrie-Branchen - Alle aus
         document.getElementById('btn-branches-none').addEventListener('click', () => {
+            announceQuickAction('Industrie-Branchen - Alle aus');
             elwasActiveRisks.clear();
             updateButtonVisualStates();
             renderElwasLayer();
@@ -4679,6 +4710,7 @@
         // Quick Action: Fachdaten & Layer - Alle an
         // Quick Action: Hazard & Starkregen - Alle an
         document.getElementById('btn-hazard-all').addEventListener('click', () => {
+            announceQuickAction('Hochwasser & Starkregen - Alle an');
             const container = document.getElementById('hazard-layer-group');
             const btns = container.querySelectorAll('.filter-btn[data-layer-name]');
             btns.forEach(btn => {
@@ -4694,6 +4726,7 @@
 
         // Quick Action: Hazard & Starkregen - Alle aus
         document.getElementById('btn-hazard-none').addEventListener('click', () => {
+            announceQuickAction('Hochwasser & Starkregen - Alle aus');
             const container = document.getElementById('hazard-layer-group');
             const btns = container.querySelectorAll('.filter-btn[data-layer-name]');
             btns.forEach(btn => {
@@ -4702,6 +4735,7 @@
                 if (map.hasLayer(layer)) {
                     map.removeLayer(layer);
                     map.fire('overlayremove', { layer: layer, name: name });
+                    announceFilterState(name, false);
                 }
             });
             updateButtonVisualStates();
@@ -4709,6 +4743,7 @@
 
 
         document.getElementById('btn-layers-all').addEventListener('click', () => {
+            announceQuickAction('Fachdaten & Layer - Alle an');
             Array.from(document.querySelectorAll('.filter-btn[data-layer-name]')).filter(b => !b.closest('#hazard-layer-group')).forEach(btn => {
                 const name = btn.getAttribute('data-layer-name');
                 const layer = overlayMaps[name];
@@ -4723,12 +4758,14 @@
 
         // Quick Action: Fachdaten & Layer - Alle aus
         document.getElementById('btn-layers-none').addEventListener('click', () => {
+            announceQuickAction('Fachdaten & Layer - Alle aus');
             Array.from(document.querySelectorAll('.filter-btn[data-layer-name]')).filter(b => !b.closest('#hazard-layer-group')).forEach(btn => {
                 const name = btn.getAttribute('data-layer-name');
                 const layer = overlayMaps[name];
                 if (map.hasLayer(layer)) {
                     map.removeLayer(layer);
                     map.fire('overlayremove', { layer: layer, name: name });
+                    announceFilterState(name, false);
                 }
             });
             updateButtonVisualStates();
@@ -5231,6 +5268,7 @@
 
         // Filter Reset Logic
         document.getElementById('reset-filters-btn').addEventListener('click', () => {
+            announceQuickAction('Filter zurückgesetzt');
             document.getElementById('search-input').value = '';
 
             activeFilters = new Set(Object.keys(groupColors));
