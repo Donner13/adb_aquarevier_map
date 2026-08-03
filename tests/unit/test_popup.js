@@ -48,6 +48,9 @@ test.describe('Popup Component Unit Tests', () => {
             };
 
             window.fetch = (url) => {
+                if (window._expectedFetchUrl && url !== window._expectedFetchUrl) {
+                    return Promise.reject(new Error("Unexpected fetch URL: " + url + " expected: " + window._expectedFetchUrl));
+                }
                 const p = Promise.resolve({
                     ok: true,
                     json: () => Promise.resolve({
