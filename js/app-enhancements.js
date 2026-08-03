@@ -407,16 +407,28 @@
         // Strict number check: Must be number, not NaN, not Infinity
         const isStrictNumber = (n) => typeof n === 'number' && Number.isFinite(n);
 
-        // A position is an array of at least two strict numbers
-        const isNumericArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isStrictNumber);
+        // A position is an array of at least two strict numbers (usually [lon, lat])
+        const isPositionArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isStrictNumber);
 
-        // A LineString/MultiPoint must have at least one position (usually 2 for LineString, but minimum 1 to not be empty)
-        const isPositionArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isNumericArray);
+        // A MultiPoint is an array of positions
+        const isMultiPointArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPositionArray);
 
-        // A Polygon/MultiLineString must have at least one ring/line
-        const isPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPositionArray);
+        // A LineString must have at least two positions to form a line
+        const isLineStringArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isPositionArray);
 
-        // A MultiPolygon must have at least one polygon
+        // A MultiLineString is an array of LineString coordinate arrays
+        const isMultiLineStringArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLineStringArray);
+
+        // A LinearRing must have at least four positions, and the first and last must be identical
+        // We do a loose identity check (start vs end coordinates roughly match or just length >= 4)
+        // RFC 7946 requires at least 4 positions for a LinearRing
+        const isLinearRing = (arr) => Array.isArray(arr) && arr.length >= 4 && arr.every(isPositionArray) &&
+                                      arr[0][0] === arr[arr.length - 1][0] && arr[0][1] === arr[arr.length - 1][1];
+
+        // A Polygon is an array of LinearRing coordinate arrays
+        const isPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLinearRing);
+
+        // A MultiPolygon is an array of Polygon coordinate arrays
         const isMultiPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPolygonArray);
 
         const assertValidGeometry = (geom, isCollectionItem = false) => {
@@ -435,10 +447,12 @@
                 geom.geometries.forEach(g => assertValidGeometry(g, true)); // Deep validation, elements cannot be null
             } else {
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
-                // Basic coordinate depth and emptiness validation
-                if (geom.type === 'Point' && !isNumericArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
-                if ((geom.type === 'MultiPoint' || geom.type === 'LineString') && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint/LineString coordinates');
-                if ((geom.type === 'MultiLineString' || geom.type === 'Polygon') && !isPolygonArray(geom.coordinates)) throw new TypeError('Invalid MultiLineString/Polygon coordinates');
+                // Strict coordinate depth and validity assertions per RFC 7946
+                if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
+                if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
+                if (geom.type === 'LineString' && !isLineStringArray(geom.coordinates)) throw new TypeError('Invalid LineString coordinates');
+                if (geom.type === 'MultiLineString' && !isMultiLineStringArray(geom.coordinates)) throw new TypeError('Invalid MultiLineString coordinates');
+                if (geom.type === 'Polygon' && !isPolygonArray(geom.coordinates)) throw new TypeError('Invalid Polygon coordinates');
                 if (geom.type === 'MultiPolygon' && !isMultiPolygonArray(geom.coordinates)) throw new TypeError('Invalid MultiPolygon coordinates');
             }
         };
