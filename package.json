@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/Dtunder/adb_aquarevier_map#readme",
   "devDependencies": {
-    "@playwright/test": "^1.61.1"
+    "@playwright/test": "^1.62.1"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
