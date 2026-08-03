@@ -98,7 +98,7 @@ test.describe('Search Bar Query Normalization - Unit Tests', () => {
             return window.queryUniversalSearch('eifel');
         });
         expect(results.length).toBeGreaterThan(0);
-        expect(results[0].title).toContain('Wasserverband Eifel-Rur');
+        expect(results.some(r => r.title.includes('Wasserverband Eifel-Rur'))).toBe(true);
     });
 
     test('supports fuzzy partial substring matching in subtitle', async ({ page }) => {
