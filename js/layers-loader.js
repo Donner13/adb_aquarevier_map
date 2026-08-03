@@ -425,7 +425,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
   if (cfg.defaultOn) {
     loadStandardLayer();
   } else {
-    map.on("overlayadd", function(e) {
+    map.once("overlayadd", function(e) {
       if (e.layer === layerGroup) loadStandardLayer();
     });
   }
