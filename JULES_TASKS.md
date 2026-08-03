@@ -68,7 +68,7 @@ Ermögliche den Export der vollständigen, nicht-anonymisierten Kontaktdaten (in
 #### [ ] TASK-20: Stapelverarbeitung (Batch Edit / Delete)
 Füge Checkboxen in die Akteursliste der Sidebar ein, um mehrere Akteure gleichzeitig auszuwählen und gemeinsam zu löschen oder einer anderen Gruppe zuzuweisen.
 
-#### [ ] TASK-21: Editor-Backend permanent hosten (kein localhost + SSH-Tunnel mehr)
+#### [x] TASK-21: Editor-Backend permanent hosten (kein localhost + SSH-Tunnel mehr)
 **Problem:** `internal.html` speichert Änderungen über `POST /api/contacts` und deployed über `POST /api/deploy` gegen `server.py` (`http.server`, Port 8000). Das läuft nur lokal auf einem Entwickler-Rechner; öffentlicher Zugriff geht bisher nur über einen provisorischen, kurzlebigen SSH-Tunnel (`get_tunnel_url.py` → localhost.run). Ziel: eine dauerhaft erreichbare, im Repo versionierte Editor-Instanz, die genauso funktioniert wie `server.py` lokal, aber permanent über eine feste URL läuft.
 
 **Aufgabe:**
