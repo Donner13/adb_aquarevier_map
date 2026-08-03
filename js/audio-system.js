@@ -7,7 +7,7 @@
 
     class AquaAudioSystem {
         constructor() {
-            this.audioEnabled = localStorage.getItem('aquarevier_audio') === 'true';
+            this.audioEnabled = window.AppStorage.getItem('aquarevier_audio') === 'true';
             this.ctx = null;
             this.ambientNode = null;
         }
@@ -24,7 +24,7 @@
 
         toggleAudio() {
             this.audioEnabled = !this.audioEnabled;
-            try { localStorage.setItem('aquarevier_audio', this.audioEnabled.toString()); } catch (e) { console.warn('Storage unavailable:', e); }
+            window.AppStorage.setItem('aquarevier_audio', this.audioEnabled.toString());
             this.updateButtonUI();
 
             if (this.audioEnabled) {

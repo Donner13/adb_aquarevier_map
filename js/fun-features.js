@@ -8,9 +8,9 @@
 
     class AquaFunSuite {
         constructor() {
-            this.achievements = JSON.parse(localStorage.getItem('aquarevier_achievements') || '{}');
-            this.visitedDistricts = new Set(JSON.parse(localStorage.getItem('aquarevier_visited_districts') || '[]'));
-            this.clickedStationsCount = parseInt(localStorage.getItem('aquarevier_clicked_stations') || '0', 10);
+            this.achievements = JSON.parse(window.AppStorage.getItem('aquarevier_achievements') || '{}');
+            this.visitedDistricts = new Set(JSON.parse(window.AppStorage.getItem('aquarevier_visited_districts') || '[]'));
+            this.clickedStationsCount = parseInt(window.AppStorage.getItem('aquarevier_clicked_stations') || '0', 10);
             this.activeLayerCombo = 0;
             this.initKonamiCode();
             this.initCursorTrail();
@@ -109,7 +109,7 @@
         unlockAchievement(id, title) {
             if (this.achievements[id]) return;
             this.achievements[id] = true;
-            try { localStorage.setItem('aquarevier_achievements', JSON.stringify(this.achievements)); } catch (e) { console.warn('Storage unavailable:', e); }
+            window.AppStorage.setItem('aquarevier_achievements', JSON.stringify(this.achievements));
 
             if (window.AquaMascot) {
                 window.AquaMascot.showText(`🏆 ABWECHSLUNG! Erfolg freigeschaltet: ${title}`, 7000);
@@ -120,7 +120,7 @@
 
         recordDistrictVisit(districtName) {
             this.visitedDistricts.add(districtName);
-            try { localStorage.setItem('aquarevier_visited_districts', JSON.stringify([...this.visitedDistricts])); } catch (e) { console.warn('Storage unavailable:', e); }
+            window.AppStorage.setItem('aquarevier_visited_districts', JSON.stringify([...this.visitedDistricts]));
             if (this.visitedDistricts.size >= 7) {
                 this.unlockAchievement('visited_all_7', 'Revierexperte (Alle 7 Kreise besucht)');
             }
@@ -128,7 +128,7 @@
 
         recordStationClick() {
             this.clickedStationsCount++;
-            try { localStorage.setItem('aquarevier_clicked_stations', this.clickedStationsCount.toString()); } catch (e) { console.warn('Storage unavailable:', e); }
+            window.AppStorage.setItem('aquarevier_clicked_stations', this.clickedStationsCount.toString());
             if (this.clickedStationsCount >= 60) {
                 this.unlockAchievement('clicked_60_stations', 'Wassermeister (60 Stationen angeklickt)');
             }

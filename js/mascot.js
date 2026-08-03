@@ -103,10 +103,10 @@
 
             // Trigger random fun fact on first daily load
             setTimeout(() => {
-                const hasSeenToday = localStorage.getItem('platschi_fact_date') === new Date().toDateString();
+                const hasSeenToday = window.AppStorage.getItem('platschi_fact_date') === new Date().toDateString();
                 if (!hasSeenToday) {
                     this.showRandomFact();
-                    try { localStorage.setItem('platschi_fact_date', new Date().toDateString()); } catch (e) { console.warn('Storage unavailable:', e); }
+                    window.AppStorage.setItem('platschi_fact_date', new Date().toDateString());
                 }
             }, 2500);
         }
