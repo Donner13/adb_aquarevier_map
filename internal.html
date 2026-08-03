@@ -4887,7 +4887,29 @@
         }
 
         // Render Sidebar and Markers
-        function renderMapAndSidebar() {
+                function buildMarkerTooltipHtml(institution, group, people, color, tooltipPref) {
+            if (tooltipPref === 'none' || !tooltipPref) {
+                return '';
+            }
+            let tooltipHtml = '';
+            if (tooltipPref === 'name') {
+                tooltipHtml = `<b>${institution}</b>`;
+            } else if (tooltipPref === 'name_group') {
+                tooltipHtml = `<b>${institution}</b><br><span style="font-size:10px;color:${color}">${group}</span>`;
+            } else if (tooltipPref === 'all') {
+                tooltipHtml = `<b>${institution}</b><br><span style="font-size:10px;color:${color}">${group}</span>`;
+                const pNames = people.map(p => {
+                    let n = p.name.split('(')[0].trim() || p.name;
+                    return n;
+                });
+                if (pNames.length > 0) {
+                     tooltipHtml += `<br><span style="font-size:10px;">👤 ${pNames.join(', ')}</span>`;
+                }
+            }
+            return tooltipHtml;
+        }
+
+function renderMapAndSidebar() {
             markersLayer.clearLayers();
             const listContainer = document.getElementById('contact-list-container');
             listContainer.innerHTML = '';
@@ -5009,22 +5031,8 @@
 
                 // Add Marker Tooltip based on styleSettings
                 const tooltipPref = styleSettings.markerTooltip || 'name_group';
-                if (tooltipPref !== 'none') {
-                    let tooltipHtml = '';
-                    if (tooltipPref === 'name') {
-                        tooltipHtml = `<b>${institution}</b>`;
-                    } else if (tooltipPref === 'name_group') {
-                        tooltipHtml = `<b>${institution}</b><br><span style="font-size:10px;color:${color}">${group}</span>`;
-                    } else if (tooltipPref === 'all') {
-                        tooltipHtml = `<b>${institution}</b><br><span style="font-size:10px;color:${color}">${group}</span>`;
-                        const pNames = people.map(p => {
-                            let n = p.name.split('(')[0].trim() || p.name;
-                            return n;
-                        });
-                        if (pNames.length > 0) {
-                             tooltipHtml += `<br><span style="font-size:10px;">👤 ${pNames.join(', ')}</span>`;
-                        }
-                    }
+                const tooltipHtml = buildMarkerTooltipHtml(institution, group, people, color, tooltipPref);
+                if (tooltipHtml) {
                     marker.bindTooltip(tooltipHtml, { sticky: true });
                 }
 
