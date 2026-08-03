@@ -857,7 +857,7 @@
 
     // --- 9. AUTO SYSTEM THEME SYNC ---
     function initAutoThemeSync() {
-        if (!window.StorageModule.getItem('aquarevier_theme') && !window.StorageModule.getItem('theme')) {
+        if (!window.StorageModule.getItem('aquarevier_theme')) {
             const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
             if (prefersDark) {
                 document.body.classList.remove('light-theme');
