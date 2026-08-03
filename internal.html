@@ -2401,6 +2401,7 @@
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/tippy/tippy-bundle.umd.min.js"></script>
     <script src="glossar.js"></script>
+    <script src="js/layer_control.js"></script>
     <script src="js/layers-config.js"></script>
     <script src="js/layers-loader.js"></script>
     <script src="js/pegel-analysis.js"></script>
@@ -5566,21 +5567,11 @@
         });
 
         // Toggle listeners for Layer buttons
-        document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const name = btn.getAttribute('data-layer-name');
-                const layer = overlayMaps[name];
-                if (map.hasLayer(layer)) {
-                    map.removeLayer(layer);
-                    map.fire('overlayremove', { layer: layer, name: name });
-                } else {
-                    map.addLayer(layer);
-                    map.fire('overlayadd', { layer: layer, name: name });
-                }
-                updateButtonVisualStates();
-                updateSidebarCounters();
-            });
-        });
+        if (typeof setupLayerToggleLogic === 'function') {
+            setupLayerToggleLogic(map, overlayMaps, document.querySelectorAll('.filter-btn[data-layer-name]'), updateButtonVisualStates, updateSidebarCounters);
+        } else {
+            console.error('setupLayerToggleLogic is not defined');
+        }
 
         // Quick Action: Regionale Akteure - Alle an
         document.getElementById('btn-actors-all').addEventListener('click', () => {
