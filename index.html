@@ -2594,6 +2594,7 @@
     <script src="js/modules/storage.js"></script>
     <script src="glossar.js"></script>
     <script src="js/modules/wms_loader.js"></script>
+    <script src="webgl_check.js"></script>
     <script src="js/layers-config.js"></script>
     <script src="js/layers-loader.js"></script>
     <script src="js/pegel-analysis.js"></script>
@@ -3082,6 +3083,7 @@
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
                 L.geoJSON(data, {
+                            renderer: window.AQUAREVIER_CUSTOM_RENDERER,
                     style: {
                         color: "#2563eb", // Blue border
                         weight: 2,
@@ -3105,6 +3107,7 @@
             .then(res => res.ok ? res.json() : Promise.reject())
             .then(data => {
                 L.geoJSON(data, {
+                            renderer: window.AQUAREVIER_CUSTOM_RENDERER,
                     style: {
                         color: "#10b981", // Green border
                         weight: 2,
@@ -3181,6 +3184,7 @@
                 .then(res => res.ok ? res.json() : Promise.reject())
                 .then(data => {
                     L.geoJSON(data, {
+                            renderer: window.AQUAREVIER_CUSTOM_RENDERER,
                         style: {
                             color: "#2563eb",
                             weight: 1,
@@ -3207,6 +3211,7 @@
                 .then(res => res.ok ? res.json() : Promise.reject())
                 .then(data => {
                     L.geoJSON(data, {
+                            renderer: window.AQUAREVIER_CUSTOM_RENDERER,
                         style: {
                             color: "#06b6d4", // Cyan
                             weight: 1.5,
@@ -3450,6 +3455,7 @@
                 .then(data => {
                     statsGeoData = data;
                     L.geoJSON(data, {
+                            renderer: window.AQUAREVIER_CUSTOM_RENDERER,
                         style: function(feature) {
                             const v = feature.properties.gesamtabwasser_a;
                             return {
