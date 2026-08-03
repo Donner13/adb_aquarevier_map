@@ -4319,16 +4319,7 @@
                 return;
             }
 
-            // Extract all unique property keys from features dynamically
-            const propertyKeys = new Set();
-            features.forEach(feature => {
-                if (feature.properties) {
-                    Object.keys(feature.properties).forEach(key => propertyKeys.add(key));
-                }
-            });
-
-            const propArray = Array.from(propertyKeys);
-            const headers = [...propArray, 'Breitengrad', 'Längengrad', 'Lizenz', 'Exportdatum'];
+            const headers = ['Name', 'Gruppe', 'Beschreibung', 'Telefon', 'E-Mail', 'Logo', 'Breitengrad', 'Längengrad', 'Lizenz', 'Exportdatum'];
             const csvRows = [headers.join(';')];
 
             const today = new Date().toISOString().split('T')[0];
@@ -4340,15 +4331,18 @@
                 const lat = geom && geom.coordinates ? geom.coordinates[1] : '';
                 const lng = geom && geom.coordinates ? geom.coordinates[0] : '';
 
-                const rowVals = propArray.map(key => props[key] !== undefined && props[key] !== null ? props[key] : '');
-
                 const row = [
-                    ...rowVals,
+                    props.name || '',
+                    props.group || '',
+                    props.description || '',
+                    props.phone || '',
+                    props.email || '',
+                    props.logo || '',
                     lat,
                     lng,
                     license,
                     today
-                ].map(val => `"${val.toString().replace(/"/g, '""')}"`);
+                ].map(val => `"${val.toString().replace(/"/g, '""').replace(/\n/g, ' ')}"`);
                 csvRows.push(row.join(';'));
             });
 
