@@ -219,7 +219,14 @@
     <script>
         // Set initial theme based on localStorage
         const themeToggle = document.getElementById('theme-toggle');
-        let isDarkMode = localStorage.getItem('aquarevier_theme') === 'dark';
+        // Migration: fallback to old 'theme' key
+        let tVal = localStorage.getItem('aquarevier_theme');
+        if (tVal === null && localStorage.getItem('theme') !== null) {
+            tVal = localStorage.getItem('theme');
+            localStorage.setItem('aquarevier_theme', tVal);
+            localStorage.removeItem('theme');
+        }
+        let isDarkMode = tVal === 'dark';
 
         function updateThemeUI() {
             if (isDarkMode) {
