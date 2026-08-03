@@ -9,7 +9,7 @@
     --accent-primary: #2563eb;
     --accent-glow: rgba(37, 99, 235, 0.2);
 
-    /* Group Colors (Excluding Einzelakteure as they are filtered) */
+    /* Group Colors */
     --color-behorde: #D55E00;
     --color-forschung: #0072B2;
     --color-gebietskorperschaft: #E69F00;
@@ -18,8 +18,6 @@
     --color-netzwerk: #56B4E9;
     --color-entsorger: #F0E442;
     --color-sonstige: #595959;
-    --color-einzelakteure: #A8A8A8;
-    --color-konsortium: #000000;
 
     /* Spacing Scale */
     --space-1: 0.25rem; /* 4px */
