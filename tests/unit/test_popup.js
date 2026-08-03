@@ -28,9 +28,14 @@ test.describe('Popup Component Unit Tests', () => {
             window.layerDataStore = {};
             window._lastPopupHtml = null;
 
-            window.fetch = () => Promise.resolve({ ok: true, json: () => Promise.resolve({
-                features: [{ properties: window._testProperties || {} }]
-            })});
+            window.fetchPromises = [];
+            window.fetch = () => {
+                const p = Promise.resolve({ ok: true, json: () => Promise.resolve({
+                    features: [{ properties: window._testProperties || {} }]
+                })});
+                window.fetchPromises.push(p);
+                return p;
+            };
 
             window.AQUAREVIER_I18N = null;
         });
@@ -52,8 +57,9 @@ test.describe('Popup Component Unit Tests', () => {
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
-            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
-            await new Promise(r => setTimeout(r, 0));
+            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
+            await Promise.all(window.fetchPromises);
+            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
  // wait for mocked fetch
             return window._lastPopupHtml;
         });
@@ -80,8 +86,9 @@ test.describe('Popup Component Unit Tests', () => {
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
-            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
-            await new Promise(r => setTimeout(r, 0));
+            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
+            await Promise.all(window.fetchPromises);
+            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
 
             return window._lastPopupHtml;
         });
@@ -105,8 +112,9 @@ test.describe('Popup Component Unit Tests', () => {
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
-            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
-            await new Promise(r => setTimeout(r, 0));
+            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
+            await Promise.all(window.fetchPromises);
+            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
 
             return window._lastPopupHtml;
         });
@@ -133,8 +141,9 @@ test.describe('Popup Component Unit Tests', () => {
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
-            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
-            await new Promise(r => setTimeout(r, 0));
+            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
+            await Promise.all(window.fetchPromises);
+            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
 
             return window._lastPopupHtml;
         });
@@ -160,8 +169,9 @@ test.describe('Popup Component Unit Tests', () => {
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
-            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
-            await new Promise(r => setTimeout(r, 0));
+            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
+            await Promise.all(window.fetchPromises);
+            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
 
             return window._lastPopupHtml;
         });
@@ -189,8 +199,9 @@ test.describe('Popup Component Unit Tests', () => {
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
-            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
-            await new Promise(r => setTimeout(r, 0));
+            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
+            await Promise.all(window.fetchPromises);
+            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
 
             return window._lastPopupHtml;
         });
@@ -219,8 +230,9 @@ test.describe('Popup Component Unit Tests', () => {
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
-            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
-            await new Promise(r => setTimeout(r, 0));
+            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
+            await Promise.all(window.fetchPromises);
+            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
 
             return window._lastPopupHtml;
         });
@@ -238,8 +250,9 @@ test.describe('Popup Component Unit Tests', () => {
             const cfg = { id: 'test', file: 'test.geojson', color: '#000', groupLabel: 'Test' };
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
-            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
-            await new Promise(r => setTimeout(r, 0));
+            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
+            await Promise.all(window.fetchPromises);
+            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
 
             return window._lastPopupHtml;
         });
@@ -259,8 +272,9 @@ test.describe('Popup Component Unit Tests', () => {
             };
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
-            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
-            await new Promise(r => setTimeout(r, 0));
+            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
+            await Promise.all(window.fetchPromises);
+            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
 
             return window._lastPopupHtml;
         });
@@ -281,8 +295,9 @@ test.describe('Popup Component Unit Tests', () => {
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
-            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
-            await new Promise(r => setTimeout(r, 0));
+            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
+            await Promise.all(window.fetchPromises);
+            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
 
             return window._lastPopupHtml;
         });
