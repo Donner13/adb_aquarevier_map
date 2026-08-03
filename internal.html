@@ -6995,7 +6995,9 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
             // Migration: migrate old feedback cache
             if (localStorage.getItem(cacheKey) === null && localStorage.getItem('feedback-issues-cache') !== null) {
                 localStorage.setItem(cacheKey, localStorage.getItem('feedback-issues-cache'));
-                localStorage.setItem(cacheTimeKey, localStorage.getItem('feedback-issues-cache-time'));
+                if (localStorage.getItem('feedback-issues-cache-time') !== null) {
+                    localStorage.setItem(cacheTimeKey, localStorage.getItem('feedback-issues-cache-time'));
+                }
                 localStorage.removeItem('feedback-issues-cache');
                 localStorage.removeItem('feedback-issues-cache-time');
             }
