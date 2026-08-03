@@ -4,68 +4,53 @@ test.describe('Popup Component Unit Tests', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('about:blank');
 
-        await page.evaluate(() => {
-
-            window.L = {
-                marker: () => ({ on: () => {}, getElement: () => document.createElement('div'), bindPopup: (html) => window._lastPopupHtml = html }),
-                layerGroup: () => ({ addTo: () => ({}), addLayer: () => {} }),
-                geoJSON: (data, opts) => {
-                    if (data.features) {
-                        data.features.forEach(f => {
-                           if (opts.onEachFeature) {
-                               const layer = { bindPopup: (html) => window._lastPopupHtml = html, on: () => {} };
-                               opts.onEachFeature(f, layer);
-                           }
-                        });
-                    }
-                    return { eachLayer: () => {} };
-                },
-                divIcon: () => {},
-                markerClusterGroup: () => ({ addLayers: () => {} })
-            };
-            window.map = { on: () => {} };
-            window.overlayMaps = {};
-            window.layerDataStore = {};
-            window._lastPopupHtml = null;
-
-            window.fetchPromises = [];
-            window.fetch = () => {
-                const p = Promise.resolve({ ok: true, json: () => Promise.resolve({
-                    features: [{ properties: window._testProperties || {} }]
-                })});
-                window.fetchPromises.push(p);
-                return p;
-            };
-
-            window.AQUAREVIER_I18N = null;
-        });
-
+        // We will read layers-loader.js and extract JUST buildPopupHtml and escapeHtml
+        // to test pure template rendering without mocked Leaflet/fetch!
         const scriptContent = require('fs').readFileSync('./js/layers-loader.js', 'utf-8');
-        await page.addScriptTag({ content: scriptContent });
+
+        // We evaluate this in the page to create a window.renderPopup(p, cfg) function
+        await page.evaluate((scriptStr) => {
+            // Extract escapeHtml
+            const escapeMatch = scriptStr.match(/function escapeHtml[\s\S]*?\n\}/);
+
+            // Extract buildPopupHtml
+            // We need to pass cfg to it since it uses cfg from outer scope.
+            // We will rewrite the function slightly to accept (p, cfg)
+
+            let buildPopupStr = scriptStr.substring(
+                scriptStr.indexOf('function buildPopupHtml(p) {'),
+                scriptStr.indexOf('// --- GWM special case')
+            );
+
+            // Replace the function signature to accept cfg
+            buildPopupStr = buildPopupStr.replace('function buildPopupHtml(p) {', 'function buildPopupHtml(p, cfg) {');
+
+            // Add global execution block
+            const executableStr = `
+                ${escapeMatch[0]}
+                ${buildPopupStr}
+                window.renderPopup = buildPopupHtml;
+                window.AQUAREVIER_I18N = null;
+                window.getZustaendigkeitHtml = undefined;
+            `;
+
+            // Evaluate dynamically
+            const scriptEl = document.createElement('script');
+            scriptEl.textContent = executableStr;
+            document.head.appendChild(scriptEl);
+        }, scriptContent);
     });
 
     test('generates basic popup HTML with correct structure', async ({ page }) => {
-        const popupHtml = await page.evaluate(async () => {
-            window._testProperties = { name: 'Test Name', feld: 'Wert' };
+        const popupHtml = await page.evaluate(() => {
             const cfg = {
                 id: 'test',
-                file: 'test.geojson',
                 color: '#ff0000',
                 groupLabel: 'Test Group',
                 popupFields: [{ label: '📍', field: 'feld' }]
             };
-
-            window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-
-            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
-            let retries = 0;
-            while (!window._lastPopupHtml && retries < 10) {
-                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
-                retries++;
-            }
- // wait for mocked fetch
-            return window._lastPopupHtml;
+            const p = { name: 'Test Name', feld: 'Wert' };
+            return window.renderPopup(p, cfg);
         });
 
         expect(popupHtml).toContain('<div class="popup-card">');
@@ -75,30 +60,18 @@ test.describe('Popup Component Unit Tests', () => {
     });
 
     test('sanitizes inputs in popup generation to prevent XSS', async ({ page }) => {
-        const popupHtml = await page.evaluate(async () => {
-            window._testProperties = {
-                name: '<img src=x onerror=alert(1)>',
-                feld: '<script>alert(2)</script>'
-            };
+        const popupHtml = await page.evaluate(() => {
             const cfg = {
                 id: 'test',
-                file: 'test.geojson',
                 color: '#ff0000',
                 groupLabel: 'Test Group',
                 popupFields: [{ label: '📍', field: 'feld' }]
             };
-
-            window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-
-            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
-            let retries = 0;
-            while (!window._lastPopupHtml && retries < 10) {
-                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
-                retries++;
-            }
-
-            return window._lastPopupHtml;
+            const p = {
+                name: '<img src=x onerror=alert(1)>',
+                feld: '<script>alert(2)</script>'
+            };
+            return window.renderPopup(p, cfg);
         });
 
         expect(popupHtml).not.toContain('<img');
@@ -108,41 +81,24 @@ test.describe('Popup Component Unit Tests', () => {
     });
 
     test('uses fallback string for missing names', async ({ page }) => {
-        const popupHtml = await page.evaluate(async () => {
-            window._testProperties = { feld: 'Wert' };
+        const popupHtml = await page.evaluate(() => {
             const cfg = {
                 id: 'test',
-                file: 'test.geojson',
                 color: '#ff0000',
                 groupLabel: 'Test Group',
                 popupFields: [{ label: '📍', field: 'feld' }]
             };
-
-            window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-
-            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
-            let retries = 0;
-            while (!window._lastPopupHtml && retries < 10) {
-                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
-                retries++;
-            }
-
-            return window._lastPopupHtml;
+            const p = { feld: 'Wert' };
+            return window.renderPopup(p, cfg);
         });
 
         expect(popupHtml).toContain('<div class="popup-title">Unbekannt</div>');
     });
 
     test('evaluates function expressions in popup fields', async ({ page }) => {
-        const popupHtml = await page.evaluate(async () => {
-            window._testProperties = {
-                val1: 'A',
-                val2: 'B'
-            };
+        const popupHtml = await page.evaluate(() => {
             const cfg = {
                 id: 'test',
-                file: 'test.geojson',
                 color: '#000000',
                 groupLabel: 'Test',
                 popupFields: [{
@@ -150,31 +106,19 @@ test.describe('Popup Component Unit Tests', () => {
                     expr: (p) => p.val1 + p.val2
                 }]
             };
+            const p = { val1: 'A', val2: 'B' };
 
-            window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-
-            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
-            let retries = 0;
-            while (!window._lastPopupHtml && retries < 10) {
-                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
-                retries++;
-            }
-
-            return window._lastPopupHtml;
+            // To pass a function via evaluate, we have to define it inside evaluate
+            return window.renderPopup(p, cfg);
         });
 
         expect(popupHtml).toContain('Expr: AB');
     });
 
     test('ignores missing values for popup fields', async ({ page }) => {
-        const popupHtml = await page.evaluate(async () => {
-            window._testProperties = {
-                feld1: 'Wert1'
-            };
+        const popupHtml = await page.evaluate(() => {
             const cfg = {
                 id: 'test',
-                file: 'test.geojson',
                 color: '#000000',
                 groupLabel: 'Test',
                 popupFields: [
@@ -182,18 +126,8 @@ test.describe('Popup Component Unit Tests', () => {
                     { label: 'Feld2', field: 'feld2' }
                 ]
             };
-
-            window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-
-            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
-            let retries = 0;
-            while (!window._lastPopupHtml && retries < 10) {
-                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
-                retries++;
-            }
-
-            return window._lastPopupHtml;
+            const p = { feld1: 'Wert1' };
+            return window.renderPopup(p, cfg);
         });
 
         expect(popupHtml).toContain('Feld1');
@@ -201,33 +135,21 @@ test.describe('Popup Component Unit Tests', () => {
     });
 
     test('renders pegel stats and drought trends correctly', async ({ page }) => {
-        const popupHtml = await page.evaluate(async () => {
-            window._testProperties = {
+        const popupHtml = await page.evaluate(() => {
+            const cfg = {
+                id: 'pegel',
+                color: '#000000',
+                groupLabel: 'Pegel',
+                pegelStats: true
+            };
+            const p = {
                 name: 'Pegel Test',
                 mq_m3s: '1.5',
                 nq_m3s: '0.1',
                 mnq_m3s: '0.5',
                 hq_m3s: '10.0'
             };
-            const cfg = {
-                id: 'pegel',
-                file: 'pegel.geojson',
-                color: '#000000',
-                groupLabel: 'Pegel',
-                pegelStats: true
-            };
-
-            window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-
-            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
-            let retries = 0;
-            while (!window._lastPopupHtml && retries < 10) {
-                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
-                retries++;
-            }
-
-            return window._lastPopupHtml;
+            return window.renderPopup(p, cfg);
         });
 
         expect(popupHtml).toContain('📊 NQ');
@@ -239,30 +161,18 @@ test.describe('Popup Component Unit Tests', () => {
     });
 
     test('renders energy efficiency correctly based on ausbaugroesse_ew and id', async ({ page }) => {
-        const popupHtml = await page.evaluate(async () => {
-            window._testProperties = {
+        const popupHtml = await page.evaluate(() => {
+            const cfg = {
+                id: 'klaeranlagen',
+                color: '#000000',
+                groupLabel: 'Kläranlage'
+            };
+            const p = {
                 name: 'Kläranlage Test',
                 anlagen_nr: '10',
                 ausbaugroesse_ew: 200000
             };
-            const cfg = {
-                id: 'klaeranlagen',
-                file: 'klaeranlagen.geojson',
-                color: '#000000',
-                groupLabel: 'Kläranlage'
-            };
-
-            window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-
-            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
-            let retries = 0;
-            while (!window._lastPopupHtml && retries < 10) {
-                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
-                retries++;
-            }
-
-            return window._lastPopupHtml;
+            return window.renderPopup(p, cfg);
         });
 
         expect(popupHtml).toContain('⚡ Energieeffizienz');
@@ -271,75 +181,41 @@ test.describe('Popup Component Unit Tests', () => {
     });
 
     test('incorporates getZustaendigkeitHtml if defined globally', async ({ page }) => {
-        const popupHtml = await page.evaluate(async () => {
-            window._testProperties = { name: 'Test' };
+        const popupHtml = await page.evaluate(() => {
             window.getZustaendigkeitHtml = () => '<div class="zustaendigkeit-mock">Mocked Zustaendigkeit</div>';
-
-            const cfg = { id: 'test', file: 'test.geojson', color: '#000', groupLabel: 'Test' };
-            window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-
-            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
-            let retries = 0;
-            while (!window._lastPopupHtml && retries < 10) {
-                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
-                retries++;
-            }
-
-            return window._lastPopupHtml;
+            const cfg = { id: 'test', color: '#000', groupLabel: 'Test' };
+            const p = { name: 'Test' };
+            return window.renderPopup(p, cfg);
         });
 
         expect(popupHtml).toContain('<div class="zustaendigkeit-mock">Mocked Zustaendigkeit</div>');
     });
 
     test('renders custom footer template', async ({ page }) => {
-        const popupHtml = await page.evaluate(async () => {
-            window._testProperties = { name: 'Test' };
+        const popupHtml = await page.evaluate(() => {
             const cfg = {
                 id: 'test',
-                file: 'test.geojson',
                 color: '#000',
                 groupLabel: 'Test',
                 footerTemplate: (p) => `Custom Footer for ${p.name}`
             };
-            window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-
-            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
-            let retries = 0;
-            while (!window._lastPopupHtml && retries < 10) {
-                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
-                retries++;
-            }
-
-            return window._lastPopupHtml;
+            const p = { name: 'Test' };
+            return window.renderPopup(p, cfg);
         });
 
         expect(popupHtml).toContain('Custom Footer for Test');
     });
 
     test('renders glossar icons and suffixes', async ({ page }) => {
-        const popupHtml = await page.evaluate(async () => {
-            window._testProperties = { feld: '100' };
+        const popupHtml = await page.evaluate(() => {
             const cfg = {
                 id: 'test',
-                file: 'test.geojson',
                 color: '#ff0000',
                 groupLabel: 'Test Group',
                 popupFields: [{ label: 'Wert', field: 'feld', glossar: 'TEST_GLOSSAR', suffix: ' kg' }]
             };
-
-            window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-
-            // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
-            let retries = 0;
-            while (!window._lastPopupHtml && retries < 10) {
-                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
-                retries++;
-            }
-
-            return window._lastPopupHtml;
+            const p = { feld: '100' };
+            return window.renderPopup(p, cfg);
         });
 
         expect(popupHtml).toContain('<span class="glossar-icon" data-glossar="TEST_GLOSSAR">i</span>');
