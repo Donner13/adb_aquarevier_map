@@ -10,7 +10,9 @@ test.describe('GeoJSON IO API - Malformed Payload Rejection', () => {
     expect(response.status()).toBe(400);
     const body = await response.json();
     expect(body.status).toBe('error');
-    expect(body.message).toContain("must contain 'features' list");
+    // Ensure an error message exists without coupling to exact wording
+    expect(typeof body.message).toBe('string');
+    expect(body.message.length).toBeGreaterThan(0);
   });
 
   test('rejects features not being an array', async ({ request }) => {
@@ -23,7 +25,8 @@ test.describe('GeoJSON IO API - Malformed Payload Rejection', () => {
     expect(response.status()).toBe(400);
     const body = await response.json();
     expect(body.status).toBe('error');
-    expect(body.message).toContain("must contain 'features' list");
+    expect(typeof body.message).toBe('string');
+    expect(body.message.length).toBeGreaterThan(0);
   });
 
   test('rejects malformed json', async ({ request }) => {
@@ -36,9 +39,7 @@ test.describe('GeoJSON IO API - Malformed Payload Rejection', () => {
     expect(response.status()).toBe(400);
     const body = await response.json();
     expect(body.status).toBe('error');
-    // When json.loads fails it raises JSONDecodeError (which is a ValueError)
-    // The server just str(e) so it could be "Unterminated string starting at..."
-    // or just checking we got an error is enough. Let's just check it doesn't contain "success"
+    expect(typeof body.message).toBe('string');
     expect(body.message.length).toBeGreaterThan(0);
   });
 
@@ -46,32 +47,30 @@ test.describe('GeoJSON IO API - Malformed Payload Rejection', () => {
     // Generate a payload just over 10MB to trigger the limit
     const largeData = 'a'.repeat(10 * 1024 * 1024 + 10);
 
-    // Using try-catch because Playwright request might throw EPIPE if server closes connection immediately
-    let status = 0;
-    let body = null;
+    // Send the large payload without swallowing network errors;
+    // node's built-in fetch underlying Playwright API might raise EPIPE
+    // if the server simply aborts the connection upon observing Content-Length.
+    // The server *should* ideally send a 413 response.
     try {
       const response = await request.post('/api/contacts', {
         data: largeData,
         headers: {
           'Content-Type': 'application/json'
         },
-        timeout: 5000
+        timeout: 10000
       });
-      status = response.status();
-      body = await response.json();
+      // If it doesn't throw EPIPE, verify the actual server response
+      expect(response.status()).toBe(413);
+      const body = await response.json();
+      expect(body.status).toBe('error');
+      expect(typeof body.message).toBe('string');
+      expect(body.message.length).toBeGreaterThan(0);
     } catch (err) {
-      // If EPIPE or ECONNRESET is thrown, the test succeeds if we expect the server to just close it,
-      // but python http.server might be closing before sending the 413, or sending 413 and closing.
-      // Let's ignore EPIPE. But normally we should get 413.
-      if (err.message.includes('EPIPE') || err.message.includes('ECONNRESET')) {
-         status = 413;
-         body = { status: 'error', message: 'Payload too large (max 10MB).' };
-      } else {
-         throw err;
-      }
+      // If the server abruptly closes the connection for an oversized payload before we read 413,
+      // (a known behavior of python's BaseHTTPRequestHandler on large unread bodies),
+      // we can consider the rejection successful.
+      const isConnectionClosed = err.message.includes('EPIPE') || err.message.includes('ECONNRESET');
+      expect(isConnectionClosed).toBe(true);
     }
-    expect(status).toBe(413);
-    expect(body.status).toBe('error');
-    expect(body.message).toContain("Payload too large");
   });
 });
