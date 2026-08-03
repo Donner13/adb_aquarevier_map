@@ -52,7 +52,8 @@ try {
 let workerMsgId = 0;
 const workerCallbacks = {};
 
-sharedGeojsonWorker.onmessage = function(e) {
+if (sharedGeojsonWorker) {
+  sharedGeojsonWorker.onmessage = function(e) {
   const { id, success, data, error } = e.data;
   if (workerCallbacks[id]) {
     if (success) {
@@ -63,6 +64,7 @@ sharedGeojsonWorker.onmessage = function(e) {
     delete workerCallbacks[id];
   }
 };
+}
 
 function fetchGeoJSONWorker(url) {
   if (!sharedGeojsonWorker) {
