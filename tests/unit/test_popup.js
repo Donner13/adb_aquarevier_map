@@ -58,8 +58,12 @@ test.describe('Popup Component Unit Tests', () => {
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
             // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            await Promise.all(window.fetchPromises);
-            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
+            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
+            let retries = 0;
+            while (!window._lastPopupHtml && retries < 10) {
+                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
+                retries++;
+            }
  // wait for mocked fetch
             return window._lastPopupHtml;
         });
@@ -87,8 +91,12 @@ test.describe('Popup Component Unit Tests', () => {
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
             // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            await Promise.all(window.fetchPromises);
-            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
+            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
+            let retries = 0;
+            while (!window._lastPopupHtml && retries < 10) {
+                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
+                retries++;
+            }
 
             return window._lastPopupHtml;
         });
@@ -113,8 +121,12 @@ test.describe('Popup Component Unit Tests', () => {
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
             // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            await Promise.all(window.fetchPromises);
-            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
+            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
+            let retries = 0;
+            while (!window._lastPopupHtml && retries < 10) {
+                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
+                retries++;
+            }
 
             return window._lastPopupHtml;
         });
@@ -142,8 +154,12 @@ test.describe('Popup Component Unit Tests', () => {
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
             // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            await Promise.all(window.fetchPromises);
-            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
+            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
+            let retries = 0;
+            while (!window._lastPopupHtml && retries < 10) {
+                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
+                retries++;
+            }
 
             return window._lastPopupHtml;
         });
@@ -170,8 +186,12 @@ test.describe('Popup Component Unit Tests', () => {
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
             // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            await Promise.all(window.fetchPromises);
-            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
+            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
+            let retries = 0;
+            while (!window._lastPopupHtml && retries < 10) {
+                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
+                retries++;
+            }
 
             return window._lastPopupHtml;
         });
@@ -200,8 +220,12 @@ test.describe('Popup Component Unit Tests', () => {
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
             // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            await Promise.all(window.fetchPromises);
-            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
+            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
+            let retries = 0;
+            while (!window._lastPopupHtml && retries < 10) {
+                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
+                retries++;
+            }
 
             return window._lastPopupHtml;
         });
@@ -231,8 +255,12 @@ test.describe('Popup Component Unit Tests', () => {
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
             // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            await Promise.all(window.fetchPromises);
-            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
+            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
+            let retries = 0;
+            while (!window._lastPopupHtml && retries < 10) {
+                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
+                retries++;
+            }
 
             return window._lastPopupHtml;
         });
@@ -251,8 +279,12 @@ test.describe('Popup Component Unit Tests', () => {
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
             // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            await Promise.all(window.fetchPromises);
-            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
+            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
+            let retries = 0;
+            while (!window._lastPopupHtml && retries < 10) {
+                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
+                retries++;
+            }
 
             return window._lastPopupHtml;
         });
@@ -273,8 +305,12 @@ test.describe('Popup Component Unit Tests', () => {
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
             // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            await Promise.all(window.fetchPromises);
-            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
+            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
+            let retries = 0;
+            while (!window._lastPopupHtml && retries < 10) {
+                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
+                retries++;
+            }
 
             return window._lastPopupHtml;
         });
@@ -296,8 +332,12 @@ test.describe('Popup Component Unit Tests', () => {
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
 
             // Wait deterministically for the layer loader's fetch and subsequent promises to settle
-            await Promise.all(window.fetchPromises);
-            await new Promise(r => setTimeout(r, 0)); // Yield to allow then() blocks in loadStandardLayer to execute
+            // Poll deterministically for the layer loader's fetch and subsequent promises to settle
+            let retries = 0;
+            while (!window._lastPopupHtml && retries < 10) {
+                await new Promise(r => setTimeout(r, 10)); // tiny yield loop
+                retries++;
+            }
 
             return window._lastPopupHtml;
         });
