@@ -119,7 +119,7 @@
                 right: 0;
                 z-index: 10009;
                 background: #ffffff;
-                border: 1px solid #cbd5e1;
+                border: 1px solid #94a3b8;
                 border-radius: 6px;
                 box-shadow: 0 10px 25px rgba(0,0,0,0.15);
                 max-height: 280px;
@@ -146,7 +146,7 @@
                         <div style="font-weight: 600; font-size: 11.5px; color: #0f172a;">${escapeHtml(item.title)}</div>
                         <div style="font-size: 10px; color: #64748b;">${escapeHtml(item.subtitle)}</div>
                     </div>
-                    <span class="badge bg-light text-dark" style="font-size: 9.5px; border: 1px solid #cbd5e1;">${item.category}</span>
+                    <span class="badge bg-light text-dark" style="font-size: 9.5px; border: 1px solid #94a3b8;">${item.category}</span>
                 </div>
             `;
         });

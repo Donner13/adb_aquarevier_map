@@ -35,7 +35,7 @@
                         padding: 12px 14px;
                         color: var(--text-primary, #0f172a);
                         background: var(--bg-surface, #fff);
-                        border: 1px solid var(--border-color, #cbd5e1);
+                        border: 1px solid var(--border-color, #94a3b8);
                         border-left: 4px solid #0284c7;
                         border-radius: 8px;
                         box-shadow: 0 10px 30px rgba(15, 23, 42, .2);

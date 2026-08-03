@@ -112,7 +112,7 @@
                         flex: 1;
                         background: transparent;
                         border: none;
-                        outline: none;
+                        outline: 2px solid transparent;
                         font-size: 15px;
                         color: var(--text-primary, #f3f4f6);
                         font-family: 'Inter', sans-serif;

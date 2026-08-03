@@ -356,7 +356,7 @@
         }
         if (statusInfo) {
             statusInfo.style.background = '#f8fafc';
-            statusInfo.style.borderColor = '#cbd5e1';
+            statusInfo.style.borderColor = '#94a3b8';
             statusInfo.style.color = '#475569';
             statusInfo.innerHTML = 'Klicke auf "📍 Punkt wählen" und danach auf einen Ort in der Karte.';
         }

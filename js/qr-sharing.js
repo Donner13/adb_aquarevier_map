@@ -82,7 +82,7 @@
                     </div>
 
                     <div style="margin-bottom: 14px;">
-                        <input type="text" id="qr-deeplink-input" value="${escapeHtml(deepLink)}" readonly style="width: 100%; font-size: 11px; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 4px; background: #f1f5f9; text-align: center;">
+                        <input type="text" id="qr-deeplink-input" value="${escapeHtml(deepLink)}" readonly style="width: 100%; font-size: 11px; padding: 6px 8px; border: 1px solid #94a3b8; border-radius: 4px; background: #f1f5f9; text-align: center;">
                     </div>
 
                     <button type="button" class="btn btn-sm btn-primary" style="width: 100%; font-size: 12px; padding: 6px;" onclick="copyDeepLinkToClipboard()">
