@@ -32,7 +32,9 @@ test.describe('Search Bar Query Normalization - Unit Tests', () => {
         });
 
         // Inject the script content
-        const scriptContent = require('fs').readFileSync('./js/universal-search.js', 'utf-8');
+        const path = require('path');
+        const scriptPath = path.resolve(__dirname, '../../js/universal-search.js');
+        const scriptContent = require('fs').readFileSync(scriptPath, 'utf-8');
         await page.addScriptTag({ content: scriptContent });
     });
 
