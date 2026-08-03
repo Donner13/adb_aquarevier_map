@@ -24,7 +24,7 @@
                 position: fixed;
                 inset: 0;
                 z-index: 10012;
-                background: var(--modal-backdrop);
+                background: var(--modal-backdrop, rgba(0, 0, 0, 0.6));
                 backdrop-filter: blur(5px);
                 display: flex;
                 align-items: center;
@@ -48,7 +48,7 @@
         }
 
         modal.innerHTML = `
-            <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 480px; border-radius: 12px; box-shadow: var(--modal-shadow); overflow: hidden; font-size: 12px;">
+            <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 480px; border-radius: 12px; box-shadow: var(--modal-shadow, 0 10px 30px rgba(0, 0, 0, 0.5)); overflow: hidden; font-size: 12px;">
                 <div style="background: #0284c7; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div style="font-size: 15px; font-weight: 700;">🐟 WRRL-Gewässergüte: ${escapeHtml(name)}</div>

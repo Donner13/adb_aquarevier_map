@@ -14,7 +14,7 @@
                 position: fixed;
                 inset: 0;
                 z-index: 10013;
-                background: var(--modal-backdrop);
+                background: var(--modal-backdrop, rgba(0, 0, 0, 0.6));
                 backdrop-filter: blur(5px);
                 display: flex;
                 align-items: center;
@@ -25,7 +25,7 @@
         }
 
         modal.innerHTML = `
-            <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 440px; border-radius: 12px; box-shadow: var(--modal-shadow); overflow: hidden; font-size: 12px;">
+            <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 440px; border-radius: 12px; box-shadow: var(--modal-shadow, 0 10px 30px rgba(0, 0, 0, 0.5)); overflow: hidden; font-size: 12px;">
                 <div style="background: #1e293b; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
                     <span style="font-size: 15px; font-weight: 700;">⌨️ Tastatur-Shortcuts &amp; Hotkeys</span>
                     <button type="button" onclick="closeShortcutsHelpModal()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
