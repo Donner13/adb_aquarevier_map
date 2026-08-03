@@ -3757,7 +3757,7 @@
             persistLocal();
         }
 
-                function applyWmsSettingsToLayers() {
+        function applyWmsSettingsToLayers() {
             Object.keys(wmsLayersMap).forEach(wmsName => {
                 const layer = wmsLayersMap[wmsName];
                 const settings = styleSettings.wmsSettings[wmsName];
@@ -3767,10 +3767,7 @@
                     } else if (typeof layer.eachLayer === 'function') {
                         layer.eachLayer(l => {
                             if (typeof l.setStyle === 'function') {
-                                // Extract current style to maintain ratio if needed, or just set explicitly
-                                // Given Wasserschutzgebiete has zone I (0.5), II (0.3), III (0.15) fillOpacity initially.
-                                // But simply overriding works for the customizer intent, or we can use the value directly.
-                                let fillOpacity = settings.opacity * 0.5; // default scale
+                                let fillOpacity = settings.opacity * (0.25 / 0.8);
                                 if (l.feature && l.feature.properties) {
                                     const zone = String(l.feature.properties.wsg_zone || '').toUpperCase();
                                     if (zone.includes("III") || zone.includes("3")) {
@@ -3787,9 +3784,6 @@
                     }
                     if (typeof layer.setZIndex === 'function') {
                         layer.setZIndex(settings.zIndex);
-                    } else if (typeof layer.eachLayer === 'function') {
-                        // GeoJSON LayerGroups use panes for z-index typically, or bringing to front/back.
-                        // However, setting z-index on paths is not standard Leaflet, but we can try if there's a pane or just skip for vectors.
                     }
                 }
             });
