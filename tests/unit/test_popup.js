@@ -5,7 +5,7 @@ test.describe('Popup Component Unit Tests', () => {
         await page.goto('about:blank');
 
         await page.evaluate(() => {
-            window.capturedOnEachFeature = null;
+            window._lastPopupHtml = null;
 
             window.L = {
                 marker: () => ({ on: () => {}, getElement: () => document.createElement('div'), bindPopup: (html) => window._lastPopupHtml = html }),
@@ -47,7 +47,7 @@ test.describe('Popup Component Unit Tests', () => {
 
     const renderPopupHtml = async (page, p, cfg) => {
         return await page.evaluate(async (args) => {
-            window.capturedOnEachFeature = null;
+            window._lastPopupHtml = null;
             window.fetchPromises = [];
             window._testProperties = args.p;
             window._expectedFetchUrl = args.cfg.file;
@@ -93,6 +93,7 @@ test.describe('Popup Component Unit Tests', () => {
         expect(popupHtml).toContain('&lt;script&gt;alert(&quot;group&quot;)&lt;/script&gt;');
         expect(popupHtml).toContain('&lt;img src=x onerror=a()&gt;');
         expect(popupHtml).toContain('&lt;svg onload=b()&gt;');
+
     });
 
     test('uses fallback string for missing names', async ({ page }) => {
@@ -104,7 +105,7 @@ test.describe('Popup Component Unit Tests', () => {
 
     test('evaluates function expressions in popup fields', async ({ page }) => {
         const popupHtml = await page.evaluate(async () => {
-            window.capturedOnEachFeature = null;
+            window._lastPopupHtml = null;
             window.fetchPromises = [];
             window._testProperties = { val1: 'A', val2: 'B' };
             window._expectedFetchUrl = 'test.geojson';
@@ -150,7 +151,7 @@ test.describe('Popup Component Unit Tests', () => {
     test('incorporates getZustaendigkeitHtml if defined globally', async ({ page }) => {
         const popupHtml = await page.evaluate(async () => {
             window.getZustaendigkeitHtml = () => '<div class="zustaendigkeit-mock">Mocked Zustaendigkeit</div>';
-            window.capturedOnEachFeature = null;
+            window._lastPopupHtml = null;
             window.fetchPromises = [];
             window._testProperties = { name: 'Test' };
             window._expectedFetchUrl = 'test.geojson';
@@ -166,7 +167,7 @@ test.describe('Popup Component Unit Tests', () => {
 
     test('renders custom footer template', async ({ page }) => {
         const popupHtml = await page.evaluate(async () => {
-            window.capturedOnEachFeature = null;
+            window._lastPopupHtml = null;
             window.fetchPromises = [];
             window._testProperties = { name: 'Test' };
             window._expectedFetchUrl = 'test.geojson';
