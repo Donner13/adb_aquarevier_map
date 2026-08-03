@@ -473,8 +473,8 @@
         const assertValidFeature = (f) => {
             if (!isPlainObject(f)) throw new TypeError('Feature must be an object');
             if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
-            // properties MUST be an object or null per RFC 7946, not undefined
-            if (f.properties !== null && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object or null');
+            // properties MUST be an object or null per RFC 7946, it can also be strictly missing, so we allow undefined
+            if ('properties' in f && f.properties !== null && f.properties !== undefined && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object, null, or undefined');
             assertValidGeometry(f.geometry);
         };
 
@@ -484,7 +484,7 @@
                 assertValidFeature(f);
 
                 const featCopy = JSON.parse(JSON.stringify(f));
-                if (featCopy.properties === null) {
+                if (!featCopy.properties || featCopy.properties === null) {
                     featCopy.properties = {};
                 }
                 featCopy.properties._layer_name = String(key);
@@ -496,26 +496,33 @@
             }
         };
 
-        // Reverting exact layerDataStore extraction logic strictly back to its original state (from before any iterations):
+        let hasActiveOverlay = false;
+        const processedStoreKeys = new Set();
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
+                    hasActiveOverlay = true;
                     // Match overlay layer to dataStore entry
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
-                        if (storeData && Array.isArray(storeData.features)) {
+                        // If multiple overlays map to the SAME window.layerDataStore key (often happens),
+                        // we shouldn't add features multiple times and create duplicates in the export.
+                        if (storeData && Array.isArray(storeData.features) && !processedStoreKeys.has(key)) {
+                            processedStoreKeys.add(key);
                             storeData.features.forEach(f => processFeature(f, key));
                         }
                     });
                 }
             });
         }
+
         // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly
-        if (activeFeatures.length === 0 && window.layerDataStore) {
+        if (!hasActiveOverlay && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
-                if (storeData && Array.isArray(storeData.features)) {
+                if (storeData && Array.isArray(storeData.features) && !processedStoreKeys.has(key)) {
+                    processedStoreKeys.add(key);
                     storeData.features.forEach(f => processFeature(f, key));
                 }
             });
