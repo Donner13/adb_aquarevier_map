@@ -473,7 +473,8 @@
         const assertValidFeature = (f) => {
             if (!isPlainObject(f)) throw new TypeError('Feature must be an object');
             if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
-            if ('properties' in f && f.properties !== null && f.properties !== undefined && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object, null, or undefined');
+            // Relaxing properties check to allow any object including Dates/Arrays if they somehow sneak in as per loose implementation requests
+            if ('properties' in f && f.properties !== null && f.properties !== undefined && typeof f.properties !== 'object') throw new TypeError('Properties must be an object, null, or undefined');
             assertValidGeometry(f.geometry);
         };
 
@@ -495,10 +496,12 @@
             }
         };
 
+        let anyOverlayActive = false;
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
+                    anyOverlayActive = true;
                     // Match overlay layer to dataStore entry
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
@@ -510,8 +513,8 @@
             });
         }
 
-        // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly
-        if (activeFeatures.length === 0 && window.layerDataStore) {
+        // Fallback: Only run if NO overlay was ever found to be active (original intent of fallback)
+        if (!anyOverlayActive && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
                 if (storeData && Array.isArray(storeData.features)) {
