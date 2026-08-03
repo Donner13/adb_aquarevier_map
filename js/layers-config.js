@@ -60,6 +60,7 @@ const LAYER_CONFIGS = [
     color: '#009E73',
     className: 'pegel-marker',
     groupLabel: 'Pegel',
+    iconAnchor: [11, 22],
     defaultOn: true,
     cluster: false,
     geoDataVar: 'pegelGeoData',
