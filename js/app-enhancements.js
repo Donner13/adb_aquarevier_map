@@ -407,29 +407,39 @@
         // Strict number check: Must be number, not NaN, not Infinity
         const isStrictNumber = (n) => typeof n === 'number' && Number.isFinite(n);
 
-        // A position is an array of at least two strict numbers (usually [lon, lat])
+        // A position is an array of at least two strict numbers (usually [lon, lat, ?elevation, ?m])
         const isPositionArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isStrictNumber);
 
-        // A MultiPoint is an array of positions
-        const isMultiPointArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPositionArray);
+        // A MultiPoint is an array of positions (can be empty per RFC 7946 for empty geometry)
+        const isMultiPointArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isPositionArray));
 
-        // A LineString must have at least two positions to form a line
-        const isLineStringArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isPositionArray);
+        // A LineString is an array of at least 2 positions (or 0 for empty geometry)
+        const isLineStringArray = (arr) => Array.isArray(arr) && (arr.length === 0 || (arr.length >= 2 && arr.every(isPositionArray)));
 
-        // A MultiLineString is an array of LineString coordinate arrays
-        const isMultiLineStringArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLineStringArray);
+        // A MultiLineString is an array of LineString coordinate arrays (can be empty)
+        const isMultiLineStringArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isLineStringArray));
 
-        // A LinearRing must have at least four positions, and the first and last must be identical
-        // We do a loose identity check (start vs end coordinates roughly match or just length >= 4)
-        // RFC 7946 requires at least 4 positions for a LinearRing
-        const isLinearRing = (arr) => Array.isArray(arr) && arr.length >= 4 && arr.every(isPositionArray) &&
-                                      arr[0][0] === arr[arr.length - 1][0] && arr[0][1] === arr[arr.length - 1][1];
+        // A LinearRing must have at least four positions, and the first and last must be fully identical
+        const isLinearRing = (arr) => {
+            if (!Array.isArray(arr)) return false;
+            if (arr.length === 0) return true; // allow empty as part of empty polygon
+            if (arr.length < 4) return false;
+            if (!arr.every(isPositionArray)) return false;
 
-        // A Polygon is an array of LinearRing coordinate arrays
-        const isPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLinearRing);
+            const first = arr[0];
+            const last = arr[arr.length - 1];
+            if (first.length !== last.length) return false;
+            for (let i = 0; i < first.length; i++) {
+                if (first[i] !== last[i]) return false;
+            }
+            return true;
+        };
 
-        // A MultiPolygon is an array of Polygon coordinate arrays
-        const isMultiPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPolygonArray);
+        // A Polygon is an array of LinearRing coordinate arrays (can be empty)
+        const isPolygonArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isLinearRing));
+
+        // A MultiPolygon is an array of Polygon coordinate arrays (can be empty)
+        const isMultiPolygonArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isPolygonArray));
 
         const assertValidGeometry = (geom, isCollectionItem = false) => {
             if (geom === null) {
@@ -447,6 +457,10 @@
                 geom.geometries.forEach(g => assertValidGeometry(g, true)); // Deep validation, elements cannot be null
             } else {
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
+
+                // Allow completely empty coordinates array as equivalent to empty geometry representation in some implementations
+                if (geom.coordinates.length === 0) return;
+
                 // Strict coordinate depth and validity assertions per RFC 7946
                 if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
                 if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
