@@ -416,11 +416,19 @@
                                 if (typeof f !== 'object' || f === null) return;
                                 if (f.type !== 'Feature') return;
                                 if (f.geometry !== null && typeof f.geometry !== 'object') return;
+                                if (f.geometry !== null && !f.geometry.type) return; // Must have geometry.type if not null
+                                if (f.geometry !== null && f.geometry.type !== 'GeometryCollection' && !Array.isArray(f.geometry.coordinates)) return; // Valid geometry checks
 
-                                const featCopy = JSON.parse(JSON.stringify(f));
-                                featCopy.properties = featCopy.properties || {};
-                                featCopy.properties._layer_name = String(key);
-                                activeFeatures.push(featCopy);
+                                try {
+                                    const featCopy = JSON.parse(JSON.stringify(f));
+                                    if (typeof featCopy.properties !== 'object' || featCopy.properties === null) {
+                                        featCopy.properties = {};
+                                    }
+                                    featCopy.properties._layer_name = String(key);
+                                    activeFeatures.push(featCopy);
+                                } catch (e) {
+                                    return; // Skip circular or invalid JSON
+                                }
                             });
                         }
                     });
@@ -437,11 +445,19 @@
                         if (typeof f !== 'object' || f === null) return;
                         if (f.type !== 'Feature') return;
                         if (f.geometry !== null && typeof f.geometry !== 'object') return;
+                        if (f.geometry !== null && !f.geometry.type) return;
+                        if (f.geometry !== null && f.geometry.type !== 'GeometryCollection' && !Array.isArray(f.geometry.coordinates)) return;
 
-                        const featCopy = JSON.parse(JSON.stringify(f));
-                        featCopy.properties = featCopy.properties || {};
-                        featCopy.properties._layer_name = String(key);
-                        activeFeatures.push(featCopy);
+                        try {
+                            const featCopy = JSON.parse(JSON.stringify(f));
+                            if (typeof featCopy.properties !== 'object' || featCopy.properties === null) {
+                                featCopy.properties = {};
+                            }
+                            featCopy.properties._layer_name = String(key);
+                            activeFeatures.push(featCopy);
+                        } catch (e) {
+                            return; // Skip circular or invalid JSON
+                        }
                     });
                 }
             });
