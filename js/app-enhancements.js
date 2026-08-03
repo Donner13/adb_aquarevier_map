@@ -460,7 +460,8 @@
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
 
                 // Strict coordinate depth and validity assertions per RFC 7946
-                if (geom.type === 'Point' && !isPositionArray(geom.coordinates) && geom.coordinates.length !== 0) throw new TypeError('Invalid Point coordinates');
+                // A Point MUST be a single position. It cannot be an empty array.
+                if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
                 if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
                 if (geom.type === 'LineString' && !isLineStringArray(geom.coordinates)) throw new TypeError('Invalid LineString coordinates');
                 if (geom.type === 'MultiLineString' && !isMultiLineStringArray(geom.coordinates)) throw new TypeError('Invalid MultiLineString coordinates');
@@ -521,7 +522,11 @@
         }
 
         if (activeFeatures.length === 0) {
-            window.showToast("Keine aktiven Fachdaten-Layer auf der Karte sichtbar", "⚠️");
+            if (invalidFeaturesCount > 0) {
+                window.showToast(`Keine gültigen Objekte gefunden. ${invalidFeaturesCount} ungültige Objekte wurden übersprungen.`, "⚠️");
+            } else {
+                window.showToast("Keine aktiven Fachdaten-Layer auf der Karte sichtbar", "⚠️");
+            }
             return;
         }
 
