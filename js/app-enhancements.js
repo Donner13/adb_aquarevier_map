@@ -458,9 +458,6 @@
             } else {
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
 
-                // Allow completely empty coordinates array as equivalent to empty geometry representation in some implementations
-                if (geom.coordinates.length === 0) return;
-
                 // Strict coordinate depth and validity assertions per RFC 7946
                 if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
                 if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
@@ -471,10 +468,12 @@
             }
         };
 
+        const isPlainObject = (obj) => typeof obj === 'object' && obj !== null && !Array.isArray(obj);
+
         const assertValidFeature = (f) => {
-            if (typeof f !== 'object' || f === null) throw new TypeError('Feature must be an object');
+            if (!isPlainObject(f)) throw new TypeError('Feature must be an object');
             if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
-            if (f.properties !== null && typeof f.properties !== 'object') throw new TypeError('Properties must be an object or null');
+            if (f.properties !== null && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object or null');
             assertValidGeometry(f.geometry);
         };
 
