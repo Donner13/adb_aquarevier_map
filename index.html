@@ -188,15 +188,15 @@
 
         #presentation-bar .controls {
             display: flex;
-            gap: 10px;
-            margin-top: 10px;
+            gap: var(--spacing-base);
+            margin-top: var(--spacing-base);
         }
 
         #presentation-bar .controls button {
             background: var(--accent-primary);
             color: white;
             border: none;
-            padding: 10px var(--spacing-xl);
+            padding: var(--spacing-base) var(--spacing-xl);
             border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
@@ -227,7 +227,7 @@
         /* Responsive adjustments for presentation bar */
         @media (max-width: 768px) {
             #presentation-bar {
-                padding: 10px 15px;
+                padding: var(--spacing-base) var(--spacing-md-lg);
                 top: 5px;
             }
             #presentation-bar .title {
@@ -238,7 +238,7 @@
                 font-size: 14px;
             }
             #presentation-bar .controls button {
-                padding: var(--spacing-sm) 15px;
+                padding: var(--spacing-sm) var(--spacing-md-lg);
                 font-size: 14px;
                 min-width: 90px;
                 height: 40px;
@@ -304,7 +304,7 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 30px;
+            padding: var(--spacing-3xl);
             width: 90%;
             max-width: 900px;
             max-height: 90vh;
@@ -324,7 +324,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: var(--spacing-xl);
-            padding-bottom: 15px;
+            padding-bottom: var(--spacing-md-lg);
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -366,7 +366,7 @@
 
         .scorecard-table th, .scorecard-table td {
             text-align: left;
-            padding: var(--spacing-md) 15px;
+            padding: var(--spacing-md) var(--spacing-md-lg);
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -410,9 +410,9 @@
 
         /* Dropdown for Choropleth Metric */
         .choropleth-controls {
-            padding: 15px;
+            padding: var(--spacing-md-lg);
             border-top: 1px solid var(--border-color);
-            margin-top: 10px;
+            margin-top: var(--spacing-base);
         }
 
         .choropleth-controls label {
@@ -424,7 +424,7 @@
 
         .choropleth-controls select {
             width: 100%;
-            padding: 10px var(--spacing-md);
+            padding: var(--spacing-base) var(--spacing-md);
             border-radius: 8px;
             border: 1px solid var(--border-color);
             background-color: var(--bg-surface-hover);
@@ -516,7 +516,7 @@
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 10px;
+            padding: var(--spacing-base);
             z-index: 1000;
             font-size: 11px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -722,7 +722,7 @@
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--text-secondary);
-            margin-bottom: 10px;
+            margin-bottom: var(--spacing-base);
             font-weight: 600;
         }
 
@@ -730,13 +730,13 @@
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-bottom: 10px;
+            margin-bottom: var(--spacing-base);
         }
 
         .filter-btn {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
-            padding: 5px 10px;
+            padding: 5px var(--spacing-base);
             border-radius: 6px;
             color: var(--text-secondary);
             font-size: 11px;
@@ -829,7 +829,7 @@
             color: var(--accent-primary);
             font-size: 10px;
             cursor: pointer;
-            padding: 2px var(--spacing-xs);
+            padding: var(--spacing-xxs) var(--spacing-xs);
             font-weight: 500;
         }
         .filter-block-actions button:hover {
@@ -867,7 +867,7 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
-            padding: 10px 14px;
+            padding: var(--spacing-base) 14px;
             border-radius: 8px;
             color: var(--text-primary);
             font-size: 13px;
@@ -883,7 +883,7 @@
 
         /* Unified Search (all-layer search box, top-left on the map) */
         .unified-search-control {
-            margin: 10px 0 0 10px !important;
+            margin: var(--spacing-base) 0 0 var(--spacing-base) !important;
         }
         .usearch-box {
             position: relative;
@@ -897,7 +897,7 @@
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 10px 14px;
+            padding: var(--spacing-base) 14px;
             font-size: 13px;
             font-family: 'Inter', sans-serif;
             color: var(--text-primary);
@@ -941,7 +941,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.03em;
-            padding: 2px 6px;
+            padding: var(--spacing-xxs) 6px;
             border-radius: 4px;
             white-space: nowrap;
         }
@@ -1016,13 +1016,13 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 10px;
+            gap: var(--spacing-base);
         }
 
         .contact-group-badge {
             font-size: 9px;
             font-weight: 700;
-            padding: 2px 6px;
+            padding: var(--spacing-xxs) 6px;
             border-radius: 4px;
             text-transform: uppercase;
             white-space: nowrap;
@@ -1111,7 +1111,7 @@
         }
 
         .popup-body {
-            margin-top: 10px;
+            margin-top: var(--spacing-base);
             display: flex;
             flex-direction: column;
             gap: 6px;
@@ -1160,7 +1160,7 @@
         .copy-contact-btn {
             display: inline-block;
             margin-top: var(--spacing-sm);
-            padding: var(--spacing-xs) 10px;
+            padding: var(--spacing-xs) var(--spacing-base);
             background-color: var(--accent-primary);
             color: #fff;
             text-decoration: none;
@@ -1191,7 +1191,7 @@
             font-size: 12px;
             color: var(--text-secondary);
             text-align: center;
-            padding: 10px;
+            padding: var(--spacing-base);
             background: rgba(255, 255, 255, 0.02);
             border-radius: 8px;
             border: 1px dashed var(--border-color);
@@ -1310,7 +1310,7 @@
             font-size: 12px;
             letter-spacing: 0.05em;
             color: #1e3a8a;
-            margin-top: -2px;
+            margin-top: -var(--spacing-xxs);
         }
 
         .logo-rlv-box {
@@ -1335,7 +1335,7 @@
             border-radius: 4px;
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: var(--spacing-xxs);
         }
         .logo-combined-row {
             display: flex;
@@ -1362,7 +1362,7 @@
             color: var(--text-primary);
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 6px 10px;
+            padding: 6px var(--spacing-base);
             font-size: 13px;
             outline: none;
             cursor: pointer;
@@ -1444,7 +1444,7 @@
             color: var(--text-primary);
             background: rgba(99, 102, 241, 0.08);
             border-left: 4px solid var(--accent-primary);
-            padding: 10px 14px;
+            padding: var(--spacing-base) 14px;
             border-radius: 0 8px 8px 0;
         }
         .scorecard-table-wrapper {
@@ -1655,15 +1655,15 @@
         }
         #pegel-analysis-panel .analysis-stats {
             display: flex;
-            gap: 10px;
-            margin: 15px 0;
+            gap: var(--spacing-base);
+            margin: var(--spacing-md-lg) 0;
         }
         #pegel-analysis-panel .stat-box {
             flex: 1;
             background: rgba(0, 158, 115, 0.1);
             border: 1px solid rgba(0, 158, 115, 0.3);
             border-radius: 6px;
-            padding: 10px;
+            padding: var(--spacing-base);
             text-align: center;
         }
         #pegel-analysis-panel .stat-value {
@@ -1711,7 +1711,7 @@
         .feedback-badge {
             display: inline-flex;
             align-items: center;
-            padding: 2px 6px;
+            padding: var(--spacing-xxs) 6px;
             border-radius: 9999px;
             font-size: 10px;
             font-weight: 600;
@@ -1766,7 +1766,7 @@
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 30px;
+            padding: var(--spacing-3xl);
             max-width: 800px;
             width: 90%;
             color: var(--text-primary);
@@ -1794,7 +1794,7 @@
             transform: translateY(-2px);
         }
         .onboarding-role-card h3 {
-            margin: 0 0 10px 0;
+            margin: 0 0 var(--spacing-base) 0;
             font-size: 16px;
         }
         .onboarding-role-card p {
@@ -1904,7 +1904,7 @@
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 15px;
+            padding: var(--spacing-md-lg);
             width: 250px;
             color: var(--text-primary);
             pointer-events: auto;
@@ -1916,7 +1916,7 @@
             font-size: 14px;
         }
         #coachmark-tooltip p {
-            margin: 0 0 15px 0;
+            margin: 0 0 var(--spacing-md-lg) 0;
             font-size: 13px;
             line-height: 1.4;
         }
@@ -1933,7 +1933,7 @@
             background: var(--accent-primary);
             color: white;
             border: none;
-            padding: 5px 10px;
+            padding: 5px var(--spacing-base);
             border-radius: 4px;
             cursor: pointer;
             font-size: 12px;
@@ -2007,8 +2007,8 @@
                     <p>Regionale Institutionen im Untersuchungsgebiet</p>
                 </div>
                 <div style="display: flex; gap: 6px; align-items: center;">
-                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px 10px; font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" onclick="window.AquaI18n.toggleLanguage()">EN</button>
-                    <button id="audioToggleBtn" class="filter-btn" style="padding: 6px 10px; font-size: 13px;" title="Ton an/aus" aria-label="Audio Switcher" onclick="window.AquaAudio.toggleAudio()">🔇 Ton aus</button>
+                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px var(--spacing-base); font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" onclick="window.AquaI18n.toggleLanguage()">EN</button>
+                    <button id="audioToggleBtn" class="filter-btn" style="padding: 6px var(--spacing-base); font-size: 13px;" title="Ton an/aus" aria-label="Audio Switcher" onclick="window.AquaAudio.toggleAudio()">🔇 Ton aus</button>
                     <button id="laien-mode-btn" class="filter-btn" style="padding: var(--spacing-sm); border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
                         ℹ️
                     </button>
@@ -2222,13 +2222,13 @@
                     <div class="filter-block-header">
                         <div class="section-title" style="margin-bottom: 0;">🎯 Umkreis- & Radius-Analyse</div>
                     </div>
-                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: var(--spacing-base); margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
                         <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: var(--spacing-sm);">
                             Ermittle alle Akteure, Messstellen &amp; Fachdaten in einem definierten Umkreis.
                         </div>
                         <div style="display: flex; gap: 6px; align-items: center; margin-bottom: var(--spacing-sm);">
                             <label for="radius-select" style="font-size: 11px; font-weight: 600; white-space: nowrap; margin: 0;">Radius:</label>
-                            <select id="radius-select" class="form-select form-select-sm" style="font-size: 11px; padding: 2px 6px; border-radius: 4px; flex: 1;">
+                            <select id="radius-select" class="form-select form-select-sm" style="font-size: 11px; padding: var(--spacing-xxs) 6px; border-radius: 4px; flex: 1;">
                                 <option value="1000">1 km</option>
                                 <option value="2000">2 km</option>
                                 <option value="5000" selected>5 km</option>
@@ -2265,7 +2265,7 @@
                     <div class="filter-block-header">
                         <div class="section-title" style="margin-bottom: 0;">🏛️ Gemeinde-Steckbrief</div>
                     </div>
-                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: var(--spacing-base); margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
                         <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: var(--spacing-sm);">
                             Wähle eine Gemeinde aus, um alle lokalen Akteure &amp; Wasser-Objekte auszuwerten:
                         </div>
@@ -2280,7 +2280,7 @@
                     <div class="filter-block-header">
                         <div class="section-title" style="margin-bottom: 0;">⏳ Grundwasser-Zeitraffer</div>
                     </div>
-                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: var(--spacing-base); margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-sm);">
                             <span style="font-size: 11px; color: var(--text-secondary, #64748b);">Jahr:</span>
                             <span id="timeseries-year-display" style="font-size: 16px; font-weight: 700; color: #2563eb;">2025</span>
@@ -2310,9 +2310,9 @@
                 <div style="margin-top: var(--spacing-lg);">
                     <div class="filter-block-header">
                         <div class="section-title" style="margin-bottom: 0;">⭐ Favoriten &amp; Teilen</div>
-                        <span id="network-status-badge" style="font-size: 10px; padding: 2px 6px; border-radius: 10px; border: 1px solid #cbd5e1; background: #f1f5f9;">🟢 Online</span>
+                        <span id="network-status-badge" style="font-size: 10px; padding: var(--spacing-xxs) 6px; border-radius: 10px; border: 1px solid #cbd5e1; background: #f1f5f9;">🟢 Online</span>
                     </div>
-                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: var(--spacing-base); margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
                         <div style="display: flex; gap: 6px; margin-bottom: var(--spacing-sm);">
                             <button type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: #3b82f6; color: white; border-color: #2563eb; font-weight: 600;" onclick="const t = prompt('Name für diesen Favoriten:'); if(t) saveBookmark(t);">
                                 ➕ Favorit speichern
@@ -2429,7 +2429,7 @@
                 </div>
 
                 <!-- Export Section -->
-                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: var(--spacing-sm);">
+                <div style="margin-top: auto; padding-top: var(--spacing-md-lg); border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: var(--spacing-sm);">
                     <div style="display: flex; gap: var(--spacing-sm);">
                         <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;">📄 CSV Export</button>
                         <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;">📑 PDF Export</button>
@@ -2571,14 +2571,14 @@
             
             return `
                 <div class="popup-zustaendigkeit" style="margin-top: var(--spacing-sm); padding-top: var(--spacing-sm); border-top: 1px solid var(--border-color); font-size: 11px;">
-                    <div style="font-weight: 600; color: var(--accent-primary); margin-bottom: 2px;">🛡️ Zuständige Behörde:</div>
+                    <div style="font-weight: 600; color: var(--accent-primary); margin-bottom: var(--spacing-xxs);">🛡️ Zuständige Behörde:</div>
                     <div style="color: var(--text-primary); font-weight: 500;">${p.zustaendigkeit_behoerde}</div>
                     <div style="color: var(--text-secondary); font-size: 10px;">${p.zustaendigkeit_amt}</div>
-                    <div style="margin-top: var(--spacing-xs); display: flex; flex-direction: column; gap: 2px; color: var(--text-secondary);">
+                    <div style="margin-top: var(--spacing-xs); display: flex; flex-direction: column; gap: var(--spacing-xxs); color: var(--text-secondary);">
                         ${p.zustaendigkeit_email ? `<span>✉️ <a href="mailto:${p.zustaendigkeit_email}" style="color: var(--accent-primary); text-decoration: none;">${p.zustaendigkeit_email}</a></span>` : ''}
                         ${p.zustaendigkeit_telefon ? `<span>📞 ${p.zustaendigkeit_telefon}</span>` : ''}
                     </div>
-                    <button class="filter-btn" style="margin-top: 6px; padding: 2px 6px; font-size: 9px; width: 100%; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-secondary); cursor: pointer;" 
+                    <button class="filter-btn" style="margin-top: 6px; padding: var(--spacing-xxs) 6px; font-size: 9px; width: 100%; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-secondary); cursor: pointer;"
                             onclick="copyContactToClipboard('${escapedContact}', this)">📋 Kontakt kopieren</button>
                 </div>
             `;
@@ -3773,7 +3773,7 @@
                         border: ${border}px solid #ffffff;
                         transform: rotate(45deg);
                         box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
-                        margin: 2px;
+                        margin: var(--spacing-xxs);
                     "></div>
                 `;
             } else if (group === 'Forschung' || group === 'Netzwerk/ Multiplikator' || group === 'Ver-/ Entsorger') {
@@ -4218,11 +4218,11 @@
             div.style.color = '#1e293b';
             div.innerHTML = `
                 <div style="font-weight:700; margin-bottom:var(--spacing-xs); font-size:12.5px;">Gefahrenkarten</div>
-                <div style="font-size:11px; color:#64748b; margin-bottom:2px;">Fluvial (LANUV)</div>
+                <div style="font-size:11px; color:#64748b; margin-bottom:var(--spacing-xxs);">Fluvial (LANUV)</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#fde047; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #ca8a04;"></span>HQ häufig</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#f97316; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #c2410c;"></span>HQ 100</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#dc2626; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #991b1b;"></span>HQ extrem</div>
-                <div style="font-size:11px; color:#64748b; margin-top:6px; margin-bottom:2px;">Pluvial (Kommunen)</div>
+                <div style="font-size:11px; color:#64748b; margin-top:6px; margin-bottom:var(--spacing-xxs);">Pluvial (Kommunen)</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#7c3aed; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #5b21b6;"></span>Starkregen</div>
             `;
             return div;
@@ -5573,7 +5573,7 @@ function buildUnifiedSearchIndex() {
                         <div class="usearch-box" style="position: relative;">
                             <input type="text" id="usearch-input" aria-label="Universalsuche" autocomplete="off" spellcheck="false"
                                    placeholder="🔍 Alles durchsuchen (Akteure, ELWAS, Orte...)" style="padding-right: 60px;">
-                            <span class="cmd-shortcut-hint" onclick="if(window.toggleCommandPalette) window.toggleCommandPalette()" title="Command Palette öffnen (Ctrl+K)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 10px; font-weight: 600; padding: 2px 5px; background: rgba(99, 102, 241, 0.15); border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px; color: var(--accent-primary, #6366f1); cursor: pointer; user-select: none;">Ctrl+K</span>
+                            <span class="cmd-shortcut-hint" onclick="if(window.toggleCommandPalette) window.toggleCommandPalette()" title="Command Palette öffnen (Ctrl+K)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 10px; font-weight: 600; padding: var(--spacing-xxs) 5px; background: rgba(99, 102, 241, 0.15); border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px; color: var(--accent-primary, #6366f1); cursor: pointer; user-select: none;">Ctrl+K</span>
                             <div id="usearch-results" class="usearch-results"></div>
                         </div>
                     `;
@@ -6627,11 +6627,11 @@ function buildUnifiedSearchIndex() {
                 <div class="scorecard-title" id="textGeneratorTitle">Text generieren</div>
                 <button class="scorecard-close" id="textGeneratorClose">&times;</button>
             </div>
-            <div class="scorecard-body" style="display: flex; flex-direction: column; flex: 1; overflow: hidden; padding: var(--spacing-xl); gap: 15px;">
+            <div class="scorecard-body" style="display: flex; flex-direction: column; flex: 1; overflow: hidden; padding: var(--spacing-xl); gap: var(--spacing-md-lg);">
                 <div id="textGeneratorHint" style="font-size: 14px; color: var(--text-secondary); flex-shrink: 0;"></div>
                 <textarea id="textGeneratorContent" style="flex: 1; min-height: 250px; width: 100%; resize: none; background: rgba(0,0,0,0.2); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: var(--spacing-md); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5;"></textarea>
 
-                <div id="textGeneratorActions" style="display: flex; gap: 10px; flex-shrink: 0;">
+                <div id="textGeneratorActions" style="display: flex; gap: var(--spacing-base); flex-shrink: 0;">
                     <button id="btn-textgen-copy" class="filter-btn" style="flex: 1; justify-content: center; display: none;">📋 In Zwischenablage kopieren</button>
                     <button id="btn-textgen-txt" class="filter-btn" style="flex: 1; justify-content: center; display: none;">💾 Als .txt herunterladen</button>
                     <button id="btn-textgen-docx" class="filter-btn" style="flex: 1; justify-content: center; display: none;">💾 Als .docx herunterladen</button>
