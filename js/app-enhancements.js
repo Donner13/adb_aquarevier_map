@@ -462,10 +462,14 @@
             }
         };
 
-        const isPlainObject = (obj) => typeof obj === 'object' && obj !== null && !Array.isArray(obj);
+        const isPlainObject = (obj) => {
+            if (typeof obj !== 'object' || obj === null) return false;
+            const proto = Object.getPrototypeOf(obj);
+            return proto === Object.prototype || proto === null;
+        };
 
         const assertValidFeature = (f) => {
-            if (typeof f !== 'object' || f === null || Array.isArray(f)) throw new TypeError('Feature must be an object');
+            if (!isPlainObject(f)) throw new TypeError('Feature must be an object');
             if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
             if ('properties' in f && f.properties !== null && f.properties !== undefined && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object, null, or undefined');
             assertValidGeometry(f.geometry);
@@ -473,13 +477,13 @@
 
         const uniqueFeatures = new Set();
         const processFeature = (f, key) => {
+            // Deduplicate by object identity *before* assertion to prevent multiple counting of errors on the same invalid feature
+            if (uniqueFeatures.has(f)) return;
+            uniqueFeatures.add(f);
+
             try {
                 // Type Assertions
                 assertValidFeature(f);
-
-                // Deduplicate by object identity (since window.layerDataStore contains the same objects memory-wise)
-                if (uniqueFeatures.has(f)) return;
-                uniqueFeatures.add(f);
 
                 const featCopy = JSON.parse(JSON.stringify(f));
                 if (!featCopy.properties || featCopy.properties === null) {
