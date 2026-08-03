@@ -404,12 +404,26 @@
     window.exportActiveLayersData = function (format = 'geojson') {
         const activeFeatures = [];
 
-        const isNumericArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(n => typeof n === 'number');
-        const isPositionArray = (arr) => Array.isArray(arr) && arr.every(isNumericArray);
-        const isPolygonArray = (arr) => Array.isArray(arr) && arr.every(isPositionArray);
+        // Strict number check: Must be number, not NaN, not Infinity
+        const isStrictNumber = (n) => typeof n === 'number' && Number.isFinite(n);
 
-        const assertValidGeometry = (geom) => {
-            if (geom === null) return; // Valid according to GeoJSON spec
+        // A position is an array of at least two strict numbers
+        const isNumericArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isStrictNumber);
+
+        // A LineString/MultiPoint must have at least one position (usually 2 for LineString, but minimum 1 to not be empty)
+        const isPositionArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isNumericArray);
+
+        // A Polygon/MultiLineString must have at least one ring/line
+        const isPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPositionArray);
+
+        // A MultiPolygon must have at least one polygon
+        const isMultiPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPolygonArray);
+
+        const assertValidGeometry = (geom, isCollectionItem = false) => {
+            if (geom === null) {
+                if (isCollectionItem) throw new TypeError('GeometryCollection element cannot be null');
+                return; // Valid for Feature geometry
+            }
             if (typeof geom !== 'object') throw new TypeError('Geometry must be an object or null');
             if (!geom.type || typeof geom.type !== 'string') throw new TypeError('Geometry must have a type string');
 
@@ -418,14 +432,14 @@
 
             if (geom.type === 'GeometryCollection') {
                 if (!Array.isArray(geom.geometries)) throw new TypeError('GeometryCollection must have a geometries array');
-                geom.geometries.forEach(g => assertValidGeometry(g)); // Deep validation
+                geom.geometries.forEach(g => assertValidGeometry(g, true)); // Deep validation, elements cannot be null
             } else {
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
-                // Basic coordinate depth validation
+                // Basic coordinate depth and emptiness validation
                 if (geom.type === 'Point' && !isNumericArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
                 if ((geom.type === 'MultiPoint' || geom.type === 'LineString') && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint/LineString coordinates');
                 if ((geom.type === 'MultiLineString' || geom.type === 'Polygon') && !isPolygonArray(geom.coordinates)) throw new TypeError('Invalid MultiLineString/Polygon coordinates');
-                if (geom.type === 'MultiPolygon' && !(Array.isArray(geom.coordinates) && geom.coordinates.every(isPolygonArray))) throw new TypeError('Invalid MultiPolygon coordinates');
+                if (geom.type === 'MultiPolygon' && !isMultiPolygonArray(geom.coordinates)) throw new TypeError('Invalid MultiPolygon coordinates');
             }
         };
 
