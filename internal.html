@@ -6991,6 +6991,15 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
 
             const cacheKey = 'aquarevier_feedback_issues_cache';
             const cacheTimeKey = 'aquarevier_feedback_issues_cache_time';
+
+            // Migration: migrate old feedback cache
+            if (localStorage.getItem(cacheKey) === null && localStorage.getItem('feedback-issues-cache') !== null) {
+                localStorage.setItem(cacheKey, localStorage.getItem('feedback-issues-cache'));
+                localStorage.setItem(cacheTimeKey, localStorage.getItem('feedback-issues-cache-time'));
+                localStorage.removeItem('feedback-issues-cache');
+                localStorage.removeItem('feedback-issues-cache-time');
+            }
+
             const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
             listContainer.innerHTML = '<div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Lädt Meldungen...</div>';

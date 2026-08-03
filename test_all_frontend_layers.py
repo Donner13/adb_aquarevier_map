@@ -48,7 +48,7 @@ async def run_playwright_layer_audit():
 
                 # Bypass onboarding modal by injecting localStorage pre-navigation or clicking skip
                 await page.goto(url, wait_until="commit")
-                await page.evaluate("() => { localStorage.setItem('aquarevier_user_role', 'all'); localStorage.setItem('aquarevier_onboarding_completed', 'true'); }")
+                await page.evaluate("() => { localStorage.setItem('aquarevier_user_role', 'all'); localStorage.setItem('aquarevier_onboarding_completed_v1', '1'); }")
                 await page.goto(url, wait_until="networkidle", timeout=30000)
                 await page.wait_for_timeout(1000)
 

@@ -18,7 +18,7 @@ for (const filename of PAGES) {
       // We replicate the necessary initialization and readiness checks here.
       await page.addInitScript(() => {
         localStorage.setItem('aquarevier_onboarding_completed_v1', '1');
-        localStorage.setItem('platschi_fact_date', new Date().toDateString());
+        localStorage.setItem('aquarevier_platschi_fact_date', new Date().toDateString());
       });
       await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
 
