@@ -497,22 +497,58 @@
             }
         };
 
+        let hasActiveOverlay = false;
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
+                    hasActiveOverlay = true;
                     // Match overlay layer to dataStore entry
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
+                        // Avoid duplicates if multiple overlays match the same logic - in the original it dumped the WHOLE store per overlay
+                        // Here we keep original behavior of matching all store keys per active overlay if needed,
+                        // but actually we only process if this data is present
                         if (storeData && Array.isArray(storeData.features)) {
-                            storeData.features.forEach(f => processFeature(f, key));
+                            // Actually it seems the original had a bug where it processed ALL layerDataStore keys for EACH active overlay!
+                            // To be safer and fix the duplications without changing too much meaning:
+                            // We assume the layer has a connection to the key. In original code:
+                            // It iterated ALL window.layerDataStore keys for each active overlay!
+                            // Wait, let's fix it by tracking processed store keys.
                         }
                     });
                 }
             });
         }
-        // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly
-        if (activeFeatures.length === 0 && window.layerDataStore) {
+
+        // Refactored Collection Logic to fix duplications AND double-counting fallbacks
+        const processedStoreKeys = new Set();
+        if (window.layerDataStore && window.overlayMaps && window.map) {
+            Object.keys(window.overlayMaps).forEach(label => {
+                const layer = window.overlayMaps[label];
+                if (layer && window.map.hasLayer(layer)) {
+                    hasActiveOverlay = true;
+                    // Note: original logic looped all keys in layerDataStore per active overlay.
+                    // This creates duplicated features. We collect all active data exactly once.
+                    Object.keys(window.layerDataStore).forEach(key => {
+                         processedStoreKeys.add(key);
+                    });
+                }
+            });
+        }
+
+        // If we found active overlays, we process all store keys exactly once
+        if (hasActiveOverlay) {
+             processedStoreKeys.forEach(key => {
+                 const storeData = window.layerDataStore[key];
+                 if (storeData && Array.isArray(storeData.features)) {
+                      storeData.features.forEach(f => processFeature(f, key));
+                 }
+             });
+        }
+
+        // Fallback: If no overlayMaps matched, check window.layerDataStore directly
+        if (!hasActiveOverlay && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
                 if (storeData && Array.isArray(storeData.features)) {
