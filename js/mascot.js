@@ -63,7 +63,7 @@
                         padding: 14px 38px 14px 14px;
                         color: var(--text-primary, #0f172a);
                         background: var(--bg-surface, #fff);
-                        border: 1px solid var(--border-color, #cbd5e1);
+                        border: 1px solid var(--border-color, #94a3b8);
                         border-radius: 12px;
                         box-shadow: 0 12px 32px rgba(15,23,42,.25);
                         line-height: 1.45;

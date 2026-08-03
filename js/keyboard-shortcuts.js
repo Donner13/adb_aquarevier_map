@@ -33,27 +33,27 @@
 
                 <div style="padding: 18px;">
                     <div style="display: grid; grid-template-columns: 80px 1fr; gap: 8px; align-items: center; margin-bottom: 8px;">
-                        <kbd style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 6px; text-align: center; font-weight: 700; color: #0f172a;">G</kbd>
+                        <kbd style="background: #f1f5f9; border: 1px solid #94a3b8; border-radius: 4px; padding: 3px 6px; text-align: center; font-weight: 700; color: #0f172a;">G</kbd>
                         <span>Gemeinde-Steckbrief öffnen</span>
                     </div>
                     <div style="display: grid; grid-template-columns: 80px 1fr; gap: 8px; align-items: center; margin-bottom: 8px;">
-                        <kbd style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 6px; text-align: center; font-weight: 700; color: #0f172a;">R</kbd>
+                        <kbd style="background: #f1f5f9; border: 1px solid #94a3b8; border-radius: 4px; padding: 3px 6px; text-align: center; font-weight: 700; color: #0f172a;">R</kbd>
                         <span>Umkreis- &amp; Radius-Analyse umschalten</span>
                     </div>
                     <div style="display: grid; grid-template-columns: 80px 1fr; gap: 8px; align-items: center; margin-bottom: 8px;">
-                        <kbd style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 6px; text-align: center; font-weight: 700; color: #0f172a;">T</kbd>
+                        <kbd style="background: #f1f5f9; border: 1px solid #94a3b8; border-radius: 4px; padding: 3px 6px; text-align: center; font-weight: 700; color: #0f172a;">T</kbd>
                         <span>Grundwasser-Zeitraffer abspielen / stoppen</span>
                     </div>
                     <div style="display: grid; grid-template-columns: 80px 1fr; gap: 8px; align-items: center; margin-bottom: 8px;">
-                        <kbd style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 6px; text-align: center; font-weight: 700; color: #0f172a;">D</kbd>
+                        <kbd style="background: #f1f5f9; border: 1px solid #94a3b8; border-radius: 4px; padding: 3px 6px; text-align: center; font-weight: 700; color: #0f172a;">D</kbd>
                         <span>Dark Mode / Light Mode umschalten</span>
                     </div>
                     <div style="display: grid; grid-template-columns: 80px 1fr; gap: 8px; align-items: center; margin-bottom: 8px;">
-                        <kbd style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 6px; text-align: center; font-weight: 700; color: #0f172a;">Q</kbd>
+                        <kbd style="background: #f1f5f9; border: 1px solid #94a3b8; border-radius: 4px; padding: 3px 6px; text-align: center; font-weight: 700; color: #0f172a;">Q</kbd>
                         <span>QR-Code &amp; Deep-Link Teilen modal</span>
                     </div>
                     <div style="display: grid; grid-template-columns: 80px 1fr; gap: 8px; align-items: center; margin-bottom: 8px;">
-                        <kbd style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 6px; text-align: center; font-weight: 700; color: #0f172a;">?</kbd>
+                        <kbd style="background: #f1f5f9; border: 1px solid #94a3b8; border-radius: 4px; padding: 3px 6px; text-align: center; font-weight: 700; color: #0f172a;">?</kbd>
                         <span>Diese Hilfe anzeigen</span>
                     </div>
                 </div>

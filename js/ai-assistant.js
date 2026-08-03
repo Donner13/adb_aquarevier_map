@@ -50,11 +50,11 @@
                     </div>
 
                     <div style="display: flex; gap: 6px; margin-bottom: 14px;">
-                        <input type="text" id="ai-question-input" placeholder="Z. B. 'Wo sind die wichtigsten Industrieeinleiter?'" style="flex: 1; font-size: 11.5px; padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px;" onkeydown="if(event.key==='Enter') askAiQuestion(this.value)">
+                        <input type="text" id="ai-question-input" placeholder="Z. B. 'Wo sind die wichtigsten Industrieeinleiter?'" style="flex: 1; font-size: 11.5px; padding: 6px 10px; border: 1px solid #94a3b8; border-radius: 6px;" onkeydown="if(event.key==='Enter') askAiQuestion(this.value)">
                         <button type="button" class="btn btn-primary btn-sm" style="font-size: 11.5px;" onclick="askAiQuestion(document.getElementById('ai-question-input').value)">Fragen</button>
                     </div>
 
-                    <div id="ai-answer-box" style="display: none; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px; font-size: 11.5px;">
+                    <div id="ai-answer-box" style="display: none; background: #f8fafc; border: 1px solid #94a3b8; border-radius: 8px; padding: 12px; font-size: 11.5px;">
                         <!-- Dynamische Antwort -->
                     </div>
                 </div>
