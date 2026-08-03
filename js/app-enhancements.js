@@ -802,18 +802,51 @@
             });
         });
 
+
+    let lastTriggerElement = null;
+
+    // Track last active element before a modal is opened
+    document.addEventListener('focusin', (e) => {
+        const isInsideModal = e.target.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop');
+        if (!isInsideModal) {
+            lastTriggerElement = e.target;
+        }
+    }, true);
+
+    document.addEventListener('click', (e) => {
+        const isInsideModal = e.target.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop');
+        if (!isInsideModal) {
+            // Also update on click, in case element is clicked but not focused (e.g. mouse click on div)
+            // or for buttons that don't steal focus perfectly in all browsers
+            const trigger = e.target.closest('button, a, [role="button"], input, select, textarea');
+            if (trigger) {
+                lastTriggerElement = trigger;
+            }
+        }
+    }, true);
+
         // Global Escape key listener to close all open modals
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"]');
+                let closedAny = false;
+                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop');
                 openModals.forEach(modal => {
                     if (modal.id === 'onboarding-role-modal') return;
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
+
                         modal.style.display = 'none';
-                        modal.classList.add('hidden');
+                            modal.classList.add('hidden');
+                        closedAny = true;
                     }
                 });
+
+                if (closedAny && lastTriggerElement && document.body.contains(lastTriggerElement)) {
+                    if (typeof lastTriggerElement.focus === 'function') {
+                        // Small delay to allow modal display to clear before restoring focus
+                        setTimeout(() => lastTriggerElement.focus(), 10);
+                    }
+                }
             }
         });
     }
