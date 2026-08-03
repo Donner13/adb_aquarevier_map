@@ -152,6 +152,23 @@ const LAYER_CONFIGS = [
       { label: '📅 Projektstatus', field: 'status' }
     ],
     footerTemplate: p => `Quelle: ${p.source || 'Ministerium für Wirtschaft, Industrie, Klimaschutz und Energie NRW'} (CC0), Datenstand ${p.data_date || '08.06.2026'}`
+  },
+  {
+    id: 'vogelbeobachtungsgebiete',
+    file: 'vogelbeobachtungsgebiete.geojson',
+    name: 'Vogelbeobachtungs-Gebiete',
+    overlayLabel: '🔭 Vogelbeobachtungs-Gebiete',
+    icon: '🔭',
+    color: '#8B5CF6',
+    className: 'vogel-marker',
+    groupLabel: 'Vogelbeobachtungs-Gebiet',
+    defaultOn: false,
+    cluster: false,
+    geoDataVar: 'vogelGeoData',
+    layerVar: 'vogelLayer',
+    popupFields: [
+      { label: '🔗 eBird-Profil', expr: p => '<a href="' + p.ebird_url + '" target="_blank" rel="noopener noreferrer">In eBird ansehen</a>' }
+    ]
   }
 ];
 
