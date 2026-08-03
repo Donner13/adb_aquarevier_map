@@ -19,13 +19,13 @@
         if (window.isDarkMode) {
             body.classList.remove('light-theme');
             body.classList.add('dark-theme');
-            try { localStorage.setItem('theme', 'dark'); } catch (e) { console.warn('Storage unavailable:', e); }
-            try { localStorage.setItem('aquarevier_theme', 'dark'); } catch (e) { console.warn('Storage unavailable:', e); }
+            window.StorageModule.setItem('theme', 'dark');
+            window.StorageModule.setItem('aquarevier_theme', 'dark');
         } else {
             body.classList.remove('dark-theme');
             body.classList.add('light-theme');
-            try { localStorage.setItem('theme', 'light'); } catch (e) { console.warn('Storage unavailable:', e); }
-            try { localStorage.setItem('aquarevier_theme', 'light'); } catch (e) { console.warn('Storage unavailable:', e); }
+            window.StorageModule.setItem('theme', 'light');
+            window.StorageModule.setItem('aquarevier_theme', 'light');
         }
 
         // Update all theme toggle buttons on the page
@@ -61,7 +61,7 @@
 
     // Restore user theme preference on load
     function initTheme() {
-        const savedTheme = localStorage.getItem('theme') || localStorage.getItem('aquarevier_theme');
+        const savedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
 

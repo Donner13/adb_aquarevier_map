@@ -678,22 +678,22 @@
      *  falls aktuell Englisch aktiv ist. Deutsch (Quellsprache) bleibt sonst
      *  unveraendert - kein Datenverlust, nur Anzeige-Ebene. */
     function translatePopupLabel(deText) {
-        const lang = localStorage.getItem('aquarevier_lang') || 'de';
+        const lang = window.StorageModule.getItem('aquarevier_lang') || 'de';
         if (lang !== 'en') return deText;
         return POPUP_LABEL_TRANSLATIONS[deText] || GROUP_LABEL_TRANSLATIONS[deText] || deText;
     }
     window.AQUAREVIER_I18N = {
         dict: I18N_DICT,
-        currentLang: () => localStorage.getItem('aquarevier_lang') || 'de',
+        currentLang: () => window.StorageModule.getItem('aquarevier_lang') || 'de',
         translatePopupLabel
     };
 
     function initLanguageToggle() {
-        let currentLang = localStorage.getItem('aquarevier_lang') || 'de';
+        let currentLang = window.StorageModule.getItem('aquarevier_lang') || 'de';
 
         function applyLanguage(lang) {
             currentLang = lang;
-            try { localStorage.setItem('aquarevier_lang', lang); } catch (e) { console.warn('Storage unavailable:', e); }
+            window.StorageModule.setItem('aquarevier_lang', lang);
             const dict = I18N_DICT[lang];
             if (!dict) return;
 
@@ -820,7 +820,7 @@
 
     // --- 9. AUTO SYSTEM THEME SYNC ---
     function initAutoThemeSync() {
-        if (!localStorage.getItem('theme') && !localStorage.getItem('aquarevier_theme')) {
+        if (!window.StorageModule.getItem('theme') && !window.StorageModule.getItem('aquarevier_theme')) {
             const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
             if (prefersDark) {
                 document.body.classList.remove('light-theme');
