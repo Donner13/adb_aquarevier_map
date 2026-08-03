@@ -411,10 +411,10 @@
         // A position is an array of at least two strict numbers (usually [lon, lat, ?elevation, ?m])
         const isPositionArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isStrictNumber);
 
-        // Multigeometries and Polygons can technically be empty [] representing empty geometries in some implementations
-        const isMultiPointArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isPositionArray));
-        const isLineStringArray = (arr) => Array.isArray(arr) && (arr.length === 0 || (arr.length >= 2 && arr.every(isPositionArray)));
-        const isMultiLineStringArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isLineStringArray));
+        // Multigeometries and Polygons cannot be empty per strict validation request
+        const isMultiPointArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPositionArray);
+        const isLineStringArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isPositionArray);
+        const isMultiLineStringArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLineStringArray);
 
         const isLinearRing = (arr) => {
             if (!Array.isArray(arr)) return false;
@@ -430,8 +430,8 @@
             return true;
         };
 
-        const isPolygonArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isLinearRing));
-        const isMultiPolygonArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isPolygonArray));
+        const isPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLinearRing);
+        const isMultiPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPolygonArray);
 
         const assertValidGeometry = (geom, isCollectionItem = false) => {
             if (geom === null) {
@@ -450,12 +450,8 @@
             } else {
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
 
-                // Point cannot have an empty coordinate array
+                // Strict coordinate depth and validity assertions per RFC 7946, explicitly denying empty geometry arrays
                 if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
-
-                // Allow empty coordinates for empty geometries explicitly ONLY for non-point geometries
-                if (geom.type !== 'Point' && geom.coordinates.length === 0) return;
-
                 if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
                 if (geom.type === 'LineString' && !isLineStringArray(geom.coordinates)) throw new TypeError('Invalid LineString coordinates');
                 if (geom.type === 'MultiLineString' && !isMultiLineStringArray(geom.coordinates)) throw new TypeError('Invalid MultiLineString coordinates');
@@ -473,11 +469,11 @@
         const assertValidFeature = (f) => {
             if (!isPlainObject(f)) throw new TypeError('Feature must be an object');
             if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
-            // Relaxing properties check to allow any object including Dates/Arrays if they somehow sneak in as per loose implementation requests
-            if ('properties' in f && f.properties !== null && f.properties !== undefined && typeof f.properties !== 'object') throw new TypeError('Properties must be an object, null, or undefined');
+            if ('properties' in f && f.properties !== null && f.properties !== undefined && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object, null, or undefined');
             assertValidGeometry(f.geometry);
         };
 
+        const uniqueFeatures = new Set();
         const processFeature = (f, key) => {
             try {
                 // Type Assertions
@@ -496,29 +492,36 @@
             }
         };
 
-        let anyOverlayActive = false;
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
-                    anyOverlayActive = true;
                     // Match overlay layer to dataStore entry
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
                         if (storeData && Array.isArray(storeData.features)) {
-                            storeData.features.forEach(f => processFeature(f, key));
+                            storeData.features.forEach(f => {
+                                // Deduplicate by object identity *before* assertion to prevent multiple counting of errors on the same invalid feature
+                                if (uniqueFeatures.has(f)) return;
+                                uniqueFeatures.add(f);
+                                processFeature(f, key);
+                            });
                         }
                     });
                 }
             });
         }
 
-        // Fallback: Only run if NO overlay was ever found to be active (original intent of fallback)
-        if (!anyOverlayActive && window.layerDataStore) {
+        // Fallback: If no overlayMaps matched OR no valid active features were parsed, check window.geojsonData / window.layerDataStore directly
+        if (activeFeatures.length === 0 && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
                 if (storeData && Array.isArray(storeData.features)) {
-                    storeData.features.forEach(f => processFeature(f, key));
+                    storeData.features.forEach(f => {
+                        if (uniqueFeatures.has(f)) return;
+                        uniqueFeatures.add(f);
+                        processFeature(f, key);
+                    });
                 }
             });
         }
