@@ -12,6 +12,26 @@
     
     <link rel="stylesheet" href="css/style.css"/>
     <style>
+        :root {
+            --bg-base: #0b0f19;
+            --bg-surface: rgba(17, 24, 39, 0.8);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-primary: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.4);
+        }
+
+        body.light-theme {
+            --bg-base: #f1f5f9;
+            --bg-surface: rgba(255, 255, 255, 0.9);
+            --border-color: rgba(0, 0, 0, 0.08);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-primary: #4f46e5;
+            --accent-glow: rgba(79, 70, 229, 0.2);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -185,7 +205,7 @@
         }
     </style>
 </head>
-<body class="dark-theme">
+<body class="light-theme">
     <div class="container">
         <div class="nav-header">
             <a href="index.html" class="back-link">← Zurück zur Karte</a>
