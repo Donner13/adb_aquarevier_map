@@ -3003,9 +3003,8 @@
         // NICHT erst bei Toggle. Der overlayadd-Listener unten bleibt als Re-Trigger-
         // Absicherung (z.B. nach programmatischem removeLayer/addLayer), ist wegen des
         // riverLoaded-Guards aber ein No-Op im Normalfall.
-        loadRiverLayer();
-
         let riverLayerCache = null;
+        loadRiverLayer();
 
         function drawRivers() {
             if (!riverGeoJson) return;
