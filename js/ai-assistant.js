@@ -14,7 +14,7 @@
                 position: fixed;
                 inset: 0;
                 z-index: 10011;
-                background: rgba(0, 0, 0, 0.65);
+                background: var(--modal-backdrop);
                 backdrop-filter: blur(5px);
                 display: flex;
                 align-items: center;
@@ -25,7 +25,7 @@
         }
 
         modal.innerHTML = `
-            <div style="background: #ffffff; width: 100%; max-width: 540px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column; max-height: 80vh; font-size: 12px;">
+            <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 540px; border-radius: 12px; box-shadow: var(--modal-shadow); overflow: hidden; display: flex; flex-direction: column; max-height: 80vh; font-size: 12px;">
                 <div style="background: #1e293b; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <span style="font-size: 18px;">🤖</span>

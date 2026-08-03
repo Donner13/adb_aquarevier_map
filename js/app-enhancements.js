@@ -41,7 +41,7 @@
             color: var(--text-primary, #f3f4f6);
             border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15));
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 15px var(--accent-glow, rgba(99, 102, 241, 0.3));
+            box-shadow: var(--modal-shadow), 0 0 15px var(--accent-glow, rgba(99, 102, 241, 0.3));
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             font-family: 'Inter', sans-serif;
@@ -81,7 +81,7 @@
             position: fixed;
             inset: 0;
             z-index: 10005;
-            background: rgba(0, 0, 0, 0.65);
+            background: var(--modal-backdrop);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             display: none;
@@ -100,7 +100,7 @@
                 color: var(--text-primary, #f3f4f6);
                 border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15));
                 border-radius: 16px;
-                box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 25px var(--accent-glow, rgba(99, 102, 241, 0.3));
+                box-shadow: var(--modal-shadow, 0 25px 60px rgba(0, 0, 0, 0.5)), 0 0 25px var(--accent-glow, rgba(99, 102, 241, 0.3));
                 overflow: hidden;
                 display: flex;
                 flex-direction: column;
