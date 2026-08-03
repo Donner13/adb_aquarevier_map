@@ -24,6 +24,8 @@ def run_tests():
             
             # Load local index.html
             page.goto(f"http://localhost:{port}/index.html")
+            page.evaluate("localStorage.setItem('aquarevier_onboarding_completed_v1', '1');")
+            page.reload()
             page.wait_for_timeout(1000)
 
             print("--- Running Sidebar Filters Playwright Tests ---")
