@@ -9,7 +9,7 @@
 
     window.getSavedBookmarks = function() {
         try {
-            const raw = localStorage.getItem(STORAGE_KEY);
+            const raw = window.StorageModule.getItem(STORAGE_KEY);
             return raw ? JSON.parse(raw) : [];
         } catch (e) {
             return [];
@@ -36,7 +36,7 @@
         };
 
         bookmarks.push(newBookmark);
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks)); } catch (e) { console.warn('Storage unavailable:', e); }
+        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
         window.renderBookmarksList();
         if (typeof window.showToast === 'function') window.showToast(`Lesezeichen "${title.trim()}" gespeichert`, "🔖");
     };
@@ -44,7 +44,7 @@
     window.deleteBookmark = function(id) {
         let bookmarks = window.getSavedBookmarks();
         bookmarks = bookmarks.filter(b => b.id !== id);
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks)); } catch (e) { console.warn('Storage unavailable:', e); }
+        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
         window.renderBookmarksList();
     };
 
