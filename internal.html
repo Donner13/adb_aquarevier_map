@@ -3560,12 +3560,8 @@
             'Flüsse & Gewässer (LANUV)': wmsRivers,
             'Gewässernetz Detailliert (LANUV)': wmsDetailedRivers,
             'Einzugsgebiete Hydrologisch (LANUV)': wmsCatchments,
-            'Tagebaue & Bergbaufelder (GD)': wmsMining
-            // NOTE: 'Wasserschutzgebiete (LANUV)' (wsgLayer) is deliberately NOT
-            // listed here — it's an L.layerGroup() of geoJSON polygons, not an
-            // L.tileLayer.wms(), so it has no .setOpacity()/.setZIndex(). It used
-            // to be included and threw a TypeError on every page load via
-            // applyWmsSettingsToLayers() (called from loadContacts()).
+            'Tagebaue & Bergbaufelder (GD)': wmsMining,
+            'Wasserschutzgebiete (LANUV)': wsgLayer
         };
 
         // Legend: Grenzen & Gebiete
@@ -3657,7 +3653,8 @@
                 'Flüsse & Gewässer (LANUV)': { opacity: 0.8, zIndex: 10 },
                 'Gewässernetz Detailliert (LANUV)': { opacity: 0.8, zIndex: 10 },
                 'Einzugsgebiete Hydrologisch (LANUV)': { opacity: 0.4, zIndex: 5 },
-                'Tagebaue & Bergbaufelder (GD)': { opacity: 0.5, zIndex: 5 }
+                'Tagebaue & Bergbaufelder (GD)': { opacity: 0.5, zIndex: 5 },
+                'Wasserschutzgebiete (LANUV)': { opacity: 0.8, zIndex: 5 }
             },
             customWMS: [],
             searchFields: ['name', 'group'],
@@ -3767,8 +3764,29 @@
                 const layer = wmsLayersMap[wmsName];
                 const settings = styleSettings.wmsSettings[wmsName];
                 if (settings && layer) {
-                    layer.setOpacity(settings.opacity);
-                    layer.setZIndex(settings.zIndex);
+                    if (typeof layer.setOpacity === 'function') {
+                        layer.setOpacity(settings.opacity);
+                    } else if (typeof layer.eachLayer === 'function') {
+                        layer.eachLayer(l => {
+                            if (typeof l.setStyle === 'function') {
+                                let fillOpacity = settings.opacity * (0.25 / 0.8);
+                                if (l.feature && l.feature.properties) {
+                                    const zone = String(l.feature.properties.wsg_zone || '').toUpperCase();
+                                    if (zone.includes("III") || zone.includes("3")) {
+                                        fillOpacity = settings.opacity * (0.15 / 0.8);
+                                    } else if (zone.includes("II") || zone.includes("2")) {
+                                        fillOpacity = settings.opacity * (0.3 / 0.8);
+                                    } else if (zone === "1" || zone === "1A" || zone === "1B" || zone === "I") {
+                                        fillOpacity = settings.opacity * (0.5 / 0.8);
+                                    }
+                                }
+                                l.setStyle({ fillOpacity: fillOpacity, opacity: settings.opacity });
+                            }
+                        });
+                    }
+                    if (typeof layer.setZIndex === 'function') {
+                        layer.setZIndex(settings.zIndex);
+                    }
                 }
             });
         }
