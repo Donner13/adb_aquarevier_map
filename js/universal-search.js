@@ -84,29 +84,6 @@
         window.universalSearchIndex = index;
     };
 
-    // Basic Levenshtein distance for true fuzzy matching
-    function levenshteinDistance(a, b) {
-        if (a.length === 0) return b.length;
-        if (b.length === 0) return a.length;
-        const matrix = [];
-        for (let i = 0; i <= b.length; i++) matrix[i] = [i];
-        for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
-        for (let i = 1; i <= b.length; i++) {
-            for (let j = 1; j <= a.length; j++) {
-                if (b.charAt(i - 1) === a.charAt(j - 1)) {
-                    matrix[i][j] = matrix[i - 1][j - 1];
-                } else {
-                    matrix[i][j] = Math.min(
-                        matrix[i - 1][j - 1] + 1,
-                        matrix[i][j - 1] + 1,
-                        matrix[i - 1][j] + 1
-                    );
-                }
-            }
-        }
-        return matrix[b.length][a.length];
-    }
-
     /**
      * Performs fuzzy search against index.
      */
@@ -119,24 +96,9 @@
         }
 
         const results = window.universalSearchIndex.filter(item => {
-            const t = item.title.toLowerCase();
-            const s = item.subtitle.toLowerCase();
-            const c = item.category.toLowerCase();
-
-            // Direct substring match
-            if (t.includes(q) || s.includes(q) || c.includes(q)) return true;
-
-            // Simple fuzzy match (allow 1 typo for queries > 4 chars, 2 typos for > 7 chars)
-            const allowedTypos = q.length > 7 ? 2 : (q.length > 4 ? 1 : 0);
-            if (allowedTypos > 0) {
-                const words = [...t.split(/\s+/), ...s.split(/\s+/)];
-                for (const word of words) {
-                    if (Math.abs(word.length - q.length) <= allowedTypos) {
-                        if (levenshteinDistance(word, q) <= allowedTypos) return true;
-                    }
-                }
-            }
-            return false;
+            return item.title.toLowerCase().includes(q) ||
+                   item.subtitle.toLowerCase().includes(q) ||
+                   item.category.toLowerCase().includes(q);
         });
 
         return results.slice(0, 15); // Top 15 matches
