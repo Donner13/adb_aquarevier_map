@@ -450,10 +450,12 @@
             } else {
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
 
-                // Allow empty coordinates for empty geometries explicitly (even for point to be fully permissive for edge cases)
-                if (geom.coordinates.length === 0) return;
-
+                // Point cannot have an empty coordinate array
                 if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
+
+                // Allow empty coordinates for empty geometries explicitly ONLY for non-point geometries
+                if (geom.type !== 'Point' && geom.coordinates.length === 0) return;
+
                 if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
                 if (geom.type === 'LineString' && !isLineStringArray(geom.coordinates)) throw new TypeError('Invalid LineString coordinates');
                 if (geom.type === 'MultiLineString' && !isMultiLineStringArray(geom.coordinates)) throw new TypeError('Invalid MultiLineString coordinates');
@@ -475,53 +477,57 @@
             assertValidGeometry(f.geometry);
         };
 
-        const uniqueFeatures = new Set();
-        const processFeature = (f, key) => {
-            // Deduplicate by object identity *before* assertion to prevent multiple counting of errors on the same invalid feature
-            if (uniqueFeatures.has(f)) return;
-            uniqueFeatures.add(f);
-
-            try {
-                // Type Assertions
-                assertValidFeature(f);
-
-                const featCopy = JSON.parse(JSON.stringify(f));
-                if (!featCopy.properties || featCopy.properties === null) {
-                    featCopy.properties = {};
-                }
-                featCopy.properties._layer_name = String(key);
-                activeFeatures.push(featCopy);
-            } catch (e) {
-                // Feature fails assertion, skip it
-                invalidFeaturesCount++;
-                console.warn('Skipping invalid GeoJSON feature during export:', e.message);
-            }
-        };
+        // Track layers directly mapped to avoid missing fallback behavior
+        const matchedKeys = new Set();
+        let anyOverlayActive = false;
 
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
-                    // Match overlay layer to dataStore entry
+                    anyOverlayActive = true;
+                    // Find all dataset keys that are active
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
+                        // Just map the store keys based on the existing logic
                         if (storeData && Array.isArray(storeData.features)) {
-                            storeData.features.forEach(f => processFeature(f, key));
+                            matchedKeys.add(key);
                         }
                     });
                 }
             });
         }
 
-        // Fallback: If no overlayMaps matched OR no valid active features were parsed, check window.geojsonData / window.layerDataStore directly
-        if (activeFeatures.length === 0 && window.layerDataStore) {
+        // Only run fallback if NO overlays are active AT ALL
+        if (!anyOverlayActive && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
                 if (storeData && Array.isArray(storeData.features)) {
-                    storeData.features.forEach(f => processFeature(f, key));
+                    matchedKeys.add(key);
                 }
             });
         }
+
+        // Process strictly deduplicated store keys to guarantee each feature array is extracted exactly once per key mapping
+        matchedKeys.forEach(key => {
+            const storeData = window.layerDataStore[key];
+            if (storeData && Array.isArray(storeData.features)) {
+                storeData.features.forEach(f => {
+                    try {
+                        assertValidFeature(f);
+                        const featCopy = JSON.parse(JSON.stringify(f));
+                        if (!featCopy.properties || featCopy.properties === null) {
+                            featCopy.properties = {};
+                        }
+                        featCopy.properties._layer_name = String(key);
+                        activeFeatures.push(featCopy);
+                    } catch (e) {
+                        invalidFeaturesCount++;
+                        console.warn('Skipping invalid GeoJSON feature during export:', e.message);
+                    }
+                });
+            }
+        });
 
         if (activeFeatures.length === 0) {
             if (invalidFeaturesCount > 0) {
