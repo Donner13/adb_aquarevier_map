@@ -404,26 +404,33 @@
     window.exportActiveLayersData = function (format = 'geojson') {
         const activeFeatures = [];
 
-        const isFeatureValidGeoJSON = (f) => {
-            if (typeof f !== 'object' || f === null) return false;
-            if (f.type !== 'Feature') return false;
-            if (f.geometry !== null) {
-                if (typeof f.geometry !== 'object') return false;
-                if (!f.geometry.type) return false;
-                const validTypes = ['Point', 'MultiPoint', 'LineString', 'MultiLineString', 'Polygon', 'MultiPolygon', 'GeometryCollection'];
-                if (!validTypes.includes(f.geometry.type)) return false;
-                if (f.geometry.type === 'GeometryCollection') {
-                    if (!Array.isArray(f.geometry.geometries)) return false;
-                } else {
-                    if (!Array.isArray(f.geometry.coordinates)) return false;
-                }
+        const assertValidGeometry = (geom) => {
+            if (geom === null) return; // Valid according to GeoJSON spec
+            if (typeof geom !== 'object') throw new TypeError('Geometry must be an object or null');
+            if (!geom.type || typeof geom.type !== 'string') throw new TypeError('Geometry must have a type string');
+
+            const validTypes = ['Point', 'MultiPoint', 'LineString', 'MultiLineString', 'Polygon', 'MultiPolygon', 'GeometryCollection'];
+            if (!validTypes.includes(geom.type)) throw new TypeError('Invalid geometry type');
+
+            if (geom.type === 'GeometryCollection') {
+                if (!Array.isArray(geom.geometries)) throw new TypeError('GeometryCollection must have a geometries array');
+                geom.geometries.forEach(g => assertValidGeometry(g)); // Deep validation
+            } else {
+                if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
             }
-            return true;
+        };
+
+        const assertValidFeature = (f) => {
+            if (typeof f !== 'object' || f === null) throw new TypeError('Feature must be an object');
+            if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
+            assertValidGeometry(f.geometry);
         };
 
         const processFeature = (f, key) => {
-            if (!isFeatureValidGeoJSON(f)) return;
             try {
+                // Type Assertions
+                assertValidFeature(f);
+
                 const featCopy = JSON.parse(JSON.stringify(f));
                 if (typeof featCopy.properties !== 'object' || featCopy.properties === null) {
                     featCopy.properties = {};
@@ -431,7 +438,8 @@
                 featCopy.properties._layer_name = String(key);
                 activeFeatures.push(featCopy);
             } catch (e) {
-                // Ignore parsing errors for individual circular or bad features
+                // Feature fails assertion, skip it
+                console.warn('Skipping invalid GeoJSON feature during export:', e.message);
             }
         };
 
