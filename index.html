@@ -3498,7 +3498,14 @@
 
 
         const contrastToggle = document.getElementById('contrast-toggle');
-        let highContrast = localStorage.getItem('aquarevier_high_contrast') === 'true';
+        // Migration: fallback to old 'aquarevier-high-contrast' key
+        let hcVal = localStorage.getItem('aquarevier_high_contrast');
+        if (hcVal === null && localStorage.getItem('aquarevier-high-contrast') !== null) {
+            hcVal = localStorage.getItem('aquarevier-high-contrast');
+            localStorage.setItem('aquarevier_high_contrast', hcVal);
+            localStorage.removeItem('aquarevier-high-contrast');
+        }
+        let highContrast = hcVal === 'true';
         function applyContrastMode() {
             document.body.classList.toggle('high-contrast', highContrast);
             if (contrastToggle) {
@@ -5886,7 +5893,14 @@ function buildUnifiedSearchIndex() {
             });
 
             // ===== Laien-Glossar-Modus =====
-            let laienModeActive = localStorage.getItem('aquarevier_laien_mode_active') === 'true';
+            // Migration: fallback to old 'laien-mode-active' key
+            let lVal = localStorage.getItem('aquarevier_laien_mode_active');
+            if (lVal === null && localStorage.getItem('laien-mode-active') !== null) {
+                lVal = localStorage.getItem('laien-mode-active');
+                localStorage.setItem('aquarevier_laien_mode_active', lVal);
+                localStorage.removeItem('laien-mode-active');
+            }
+            let laienModeActive = lVal === 'true';
 
             function initGlossarTippy(root) {
                 if (typeof tippy === 'undefined') return;

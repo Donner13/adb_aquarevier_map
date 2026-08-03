@@ -103,7 +103,13 @@
 
             // Trigger random fun fact on first daily load
             setTimeout(() => {
-                const hasSeenToday = window.StorageModule.getItem('aquarevier_platschi_fact_date') === new Date().toDateString();
+                let fDate = window.StorageModule.getItem('aquarevier_platschi_fact_date');
+                if (!fDate && window.StorageModule.getItem('platschi_fact_date')) {
+                    fDate = window.StorageModule.getItem('platschi_fact_date');
+                    window.StorageModule.setItem('aquarevier_platschi_fact_date', fDate);
+                    window.StorageModule.removeItem('platschi_fact_date');
+                }
+                const hasSeenToday = fDate === new Date().toDateString();
                 if (!hasSeenToday) {
                     this.showRandomFact();
                     window.StorageModule.setItem('aquarevier_platschi_fact_date', new Date().toDateString());
