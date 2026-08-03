@@ -411,19 +411,18 @@
         // A position is an array of at least two strict numbers (usually [lon, lat, ?elevation, ?m])
         const isPositionArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isStrictNumber);
 
-        // A MultiPoint is an array of positions (can be empty per RFC 7946 for empty geometry)
-        const isMultiPointArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isPositionArray));
+        // A MultiPoint is an array of positions (RFC 7946 forbids empty coordinates for all multigeometries without explicitly defining a fallback, strictly rejecting empty array is safer for validity)
+        const isMultiPointArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPositionArray);
 
-        // A LineString is an array of at least 2 positions (or 0 for empty geometry)
-        const isLineStringArray = (arr) => Array.isArray(arr) && (arr.length === 0 || (arr.length >= 2 && arr.every(isPositionArray)));
+        // A LineString is an array of at least 2 positions
+        const isLineStringArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isPositionArray);
 
-        // A MultiLineString is an array of LineString coordinate arrays (can be empty)
-        const isMultiLineStringArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isLineStringArray));
+        // A MultiLineString is an array of LineString coordinate arrays
+        const isMultiLineStringArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLineStringArray);
 
         // A LinearRing must have at least four positions, and the first and last must be fully identical
         const isLinearRing = (arr) => {
             if (!Array.isArray(arr)) return false;
-            if (arr.length === 0) return true; // allow empty as part of empty polygon
             if (arr.length < 4) return false;
             if (!arr.every(isPositionArray)) return false;
 
@@ -436,11 +435,11 @@
             return true;
         };
 
-        // A Polygon is an array of LinearRing coordinate arrays (can be empty)
-        const isPolygonArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isLinearRing));
+        // A Polygon is an array of LinearRing coordinate arrays
+        const isPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLinearRing);
 
-        // A MultiPolygon is an array of Polygon coordinate arrays (can be empty)
-        const isMultiPolygonArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isPolygonArray));
+        // A MultiPolygon is an array of Polygon coordinate arrays
+        const isMultiPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPolygonArray);
 
         const assertValidGeometry = (geom, isCollectionItem = false) => {
             if (geom === null) {
@@ -459,8 +458,7 @@
             } else {
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
 
-                // Strict coordinate depth and validity assertions per RFC 7946
-                // A Point MUST be a single position. It cannot be an empty array.
+                // Strict coordinate depth and validity assertions per RFC 7946 (strictly rejecting empty arrays now as well)
                 if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
                 if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
                 if (geom.type === 'LineString' && !isLineStringArray(geom.coordinates)) throw new TypeError('Invalid LineString coordinates');
@@ -475,7 +473,8 @@
         const assertValidFeature = (f) => {
             if (!isPlainObject(f)) throw new TypeError('Feature must be an object');
             if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
-            if (f.properties !== null && f.properties !== undefined && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object, null, or undefined');
+            // properties MUST be an object or null per RFC 7946, not undefined
+            if (f.properties !== null && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object or null');
             assertValidGeometry(f.geometry);
         };
 
@@ -485,7 +484,7 @@
                 assertValidFeature(f);
 
                 const featCopy = JSON.parse(JSON.stringify(f));
-                if (featCopy.properties === null || featCopy.properties === undefined) {
+                if (featCopy.properties === null) {
                     featCopy.properties = {};
                 }
                 featCopy.properties._layer_name = String(key);
@@ -497,31 +496,23 @@
             }
         };
 
-        let hasActiveOverlay = false;
+        // Reverting exact layerDataStore extraction logic strictly back to its original state (from before any iterations):
         if (window.layerDataStore && window.overlayMaps && window.map) {
-            // Find overlay matched data keys instead of duplicating
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
-                    hasActiveOverlay = true;
-                    // The original codebase matches EVERY storeKey unconditionally!
-                    // This was a bug in original implementation that duplicates the entire dataset for each active overlay!
+                    // Match overlay layer to dataStore entry
+                    Object.keys(window.layerDataStore).forEach(key => {
+                        const storeData = window.layerDataStore[key];
+                        if (storeData && Array.isArray(storeData.features)) {
+                            storeData.features.forEach(f => processFeature(f, key));
+                        }
+                    });
                 }
             });
         }
-
-        // Refactored: Only process store keys ONCE to prevent exponential duplication
-        if (hasActiveOverlay) {
-             Object.keys(window.layerDataStore).forEach(key => {
-                 const storeData = window.layerDataStore[key];
-                 if (storeData && Array.isArray(storeData.features)) {
-                      storeData.features.forEach(f => processFeature(f, key));
-                 }
-             });
-        }
-
-        // Fallback: If no overlayMaps matched, check window.layerDataStore directly
-        if (!hasActiveOverlay && window.layerDataStore) {
+        // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly
+        if (activeFeatures.length === 0 && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
                 if (storeData && Array.isArray(storeData.features)) {
