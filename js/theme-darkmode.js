@@ -61,7 +61,7 @@
     function initTheme() {
         // Migration: fallback to old 'theme' key if present and new key is absent
         let savedTheme = window.StorageModule.getItem('aquarevier_theme');
-        if (!savedTheme && window.StorageModule.getItem('theme')) {
+        if (savedTheme === null && window.StorageModule.getItem('theme') !== null) {
             savedTheme = window.StorageModule.getItem('theme');
             window.StorageModule.setItem('aquarevier_theme', savedTheme);
             window.StorageModule.removeItem('theme');

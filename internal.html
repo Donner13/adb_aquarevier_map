@@ -3637,7 +3637,7 @@
         const LOCAL_STORAGE_KEY = 'aquarevier_contacts_local_full';
 
         // Migration: migrate old 'contacts_local_full' to the new namespace
-        if (localStorage.getItem('contacts_local_full') && !localStorage.getItem(LOCAL_STORAGE_KEY)) {
+        if (localStorage.getItem('contacts_local_full') !== null && localStorage.getItem(LOCAL_STORAGE_KEY) === null) {
             localStorage.setItem(LOCAL_STORAGE_KEY, localStorage.getItem('contacts_local_full'));
             localStorage.removeItem('contacts_local_full');
         }

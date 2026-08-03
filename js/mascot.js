@@ -104,7 +104,7 @@
             // Trigger random fun fact on first daily load
             setTimeout(() => {
                 let fDate = window.StorageModule.getItem('aquarevier_platschi_fact_date');
-                if (!fDate && window.StorageModule.getItem('platschi_fact_date')) {
+                if (fDate === null && window.StorageModule.getItem('platschi_fact_date') !== null) {
                     fDate = window.StorageModule.getItem('platschi_fact_date');
                     window.StorageModule.setItem('aquarevier_platschi_fact_date', fDate);
                     window.StorageModule.removeItem('platschi_fact_date');
