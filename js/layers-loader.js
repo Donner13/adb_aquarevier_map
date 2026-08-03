@@ -35,7 +35,20 @@ const geojsonWorkerBlob = new Blob([geojsonWorkerCode], { type: 'application/jav
 const geojsonWorkerUrl = URL.createObjectURL(geojsonWorkerBlob);
 
 // Instantiate a single shared worker to avoid overhead of creating a new worker per request
-const sharedGeojsonWorker = new Worker(geojsonWorkerUrl);
+let sharedGeojsonWorker = null;
+try {
+  sharedGeojsonWorker = new Worker(geojsonWorkerUrl);
+  sharedGeojsonWorker.onerror = function(e) {
+    console.error("Worker error:", e);
+    // reject all pending promises
+    for (const id in workerCallbacks) {
+       workerCallbacks[id].reject(new Error("Worker error occurred"));
+       delete workerCallbacks[id];
+    }
+  };
+} catch(e) {
+  console.error("Could not instantiate Web Worker, falling back to main thread:", e);
+}
 let workerMsgId = 0;
 const workerCallbacks = {};
 
@@ -52,6 +65,13 @@ sharedGeojsonWorker.onmessage = function(e) {
 };
 
 function fetchGeoJSONWorker(url) {
+  if (!sharedGeojsonWorker) {
+    // Fallback if worker creation failed (e.g. CSP)
+    return fetch(url).then(res => {
+      if(!res.ok) throw new Error("HTTP " + res.status + " when loading " + url);
+      return res.json();
+    });
+  }
   return new Promise((resolve, reject) => {
     const id = ++workerMsgId;
     workerCallbacks[id] = { resolve, reject };
