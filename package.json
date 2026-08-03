@@ -1,7 +1,7 @@
 {
   "name": "contact_map",
   "version": "1.0.0",
-  "description": "Dieses Tool visualisiert die Akteure aus dem Excel-Datensatz `ADB_AquaRevier` auf einer interaktiven Karte sowie in **QGIS**. Es beinhaltet zusätzlich amtliche Geodaten des Landes NRW (Grenzen, Landkreise, Flüsse und Gewässer).",
+  "description": "Dieses Tool visualisiert die Akteure aus dem Excel-Datensatz `ADB_AquaRevier` auf einer interaktiven Karte sowie in **QGIS**. Es beinhaltet zus\u00e4tzlich amtliche Geodaten des Landes NRW (Grenzen, Landkreise, Fl\u00fcsse und Gew\u00e4sser).",
   "main": "add_css.js",
   "directories": {
     "test": "tests"
@@ -9,7 +9,8 @@
   "scripts": {
     "vendor": "node tools/build_vendor_assets.js",
     "check:links": "python tools/check_external_links.py",
-    "test": "npm run vendor && playwright test"
+    "test": "npm run vendor && npm run test:unit && playwright test",
+    "test:unit": "node tests/unit/test_layer_control.js"
   },
   "repository": {
     "type": "git",

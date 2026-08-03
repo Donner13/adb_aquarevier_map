@@ -117,6 +117,20 @@ function runTests() {
     assert.ok(map.hasLayer(mockLayerA) && map.hasLayer(mockLayerB), 'Map should have both layers.');
     console.log('✓ Test 3 Passed: Independent layer toggles function correctly');
 
+    // Test Case 4: Invalid layer silently returns (no events, no updates)
+    map.events = [];
+    const btnInvalid = new MockElement('button');
+    btnInvalid.setAttribute('data-layer-name', 'UnknownLayer');
+    setupLayerToggleLogic(map, overlayMaps, [btnInvalid], updateVisualStates, updateCounters);
+    visualStatesUpdated = 0;
+    countersUpdated = 0;
+
+    btnInvalid.click();
+    assert.strictEqual(map.events.length, 0, 'No map events should fire for unknown layer');
+    assert.strictEqual(visualStatesUpdated, 0, 'Visual states should not update if layer is unknown');
+    assert.strictEqual(countersUpdated, 0, 'Counters should not update if layer is unknown');
+    console.log('✓ Test 4 Passed: Invalid layer returns silently without updates');
+
     console.log('\n=========================================');
     console.log('ALL LAYER CONTROL UNIT TESTS PASSED!');
     console.log('=========================================\n');
