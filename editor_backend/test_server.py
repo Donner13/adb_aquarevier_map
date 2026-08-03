@@ -20,6 +20,11 @@ class TestEditorBackend(unittest.TestCase):
 
         # Write dummy initial files so encrypt_geojson_file can read contacts.geojson if needed, though POST overwrites it
 
+        with open(os.path.join(cls.test_dir, 'contacts.geojson'), 'w') as f:
+            f.write("{}")
+        with open(os.path.join(cls.test_dir, 'encrypt_contacts.js'), 'w') as f:
+            f.write("const fs = require('fs'); fs.writeFileSync('contacts.enc', 'dummy');")
+
         # Monkeypatch the server's DIRECTORY
         server.DIRECTORY = cls.test_dir
 
