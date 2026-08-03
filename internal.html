@@ -5171,7 +5171,7 @@
 
             document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
                 const name = btn.getAttribute('data-layer-name');
-                const hasLayer = map.hasLayer(overlayMaps[name]);
+                const hasLayer = map.hasLayer(window.overlayMaps[name] || overlayMaps[name]);
                 if (hasLayer) {
                     btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                     btn.classList.remove('inactive');
@@ -5512,22 +5512,15 @@
             });
         });
 
-        // Toggle listeners for Layer buttons
-        document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const name = btn.getAttribute('data-layer-name');
-                const layer = overlayMaps[name];
-                if (map.hasLayer(layer)) {
-                    map.removeLayer(layer);
-                    map.fire('overlayremove', { layer: layer, name: name });
-                } else {
-                    map.addLayer(layer);
-                    map.fire('overlayadd', { layer: layer, name: name });
-                }
-                updateButtonVisualStates();
-                updateSidebarCounters();
-            });
-        });
+        // --- Modularized Layer Controls ---
+
+        if (typeof window.initLayerControls === "function") {
+
+            window.initLayerControls(map, overlayMaps, updateButtonVisualStates, updateSidebarCounters);
+
+        }
+
+
 
         // Quick Action: Regionale Akteure - Alle an
         document.getElementById('btn-actors-all').addEventListener('click', () => {
@@ -5555,65 +5548,6 @@
             elwasActiveRisks.clear();
             updateButtonVisualStates();
             renderElwasLayer();
-        });
-
-        // Quick Action: Fachdaten & Layer - Alle an
-        // Quick Action: Hazard & Starkregen - Alle an
-        document.getElementById('btn-hazard-all').addEventListener('click', () => {
-            const container = document.getElementById('hazard-layer-group');
-            const btns = container.querySelectorAll('.filter-btn[data-layer-name]');
-            btns.forEach(btn => {
-                const name = btn.getAttribute('data-layer-name');
-                const layer = overlayMaps[name];
-                if (!map.hasLayer(layer)) {
-                    map.addLayer(layer);
-                    map.fire('overlayadd', { layer: layer, name: name });
-                }
-            });
-            updateButtonVisualStates();
-        });
-
-        // Quick Action: Hazard & Starkregen - Alle aus
-        document.getElementById('btn-hazard-none').addEventListener('click', () => {
-            const container = document.getElementById('hazard-layer-group');
-            const btns = container.querySelectorAll('.filter-btn[data-layer-name]');
-            btns.forEach(btn => {
-                const name = btn.getAttribute('data-layer-name');
-                const layer = overlayMaps[name];
-                if (map.hasLayer(layer)) {
-                    map.removeLayer(layer);
-                    map.fire('overlayremove', { layer: layer, name: name });
-                }
-            });
-            updateButtonVisualStates();
-        });
-
-
-        document.getElementById('btn-layers-all').addEventListener('click', () => {
-            Array.from(document.querySelectorAll('.filter-btn[data-layer-name]')).filter(b => !b.closest('#hazard-layer-group')).forEach(btn => {
-                const name = btn.getAttribute('data-layer-name');
-                const layer = overlayMaps[name];
-                if (!map.hasLayer(layer)) {
-                    map.addLayer(layer);
-                    map.fire('overlayadd', { layer: layer, name: name });
-                }
-            });
-            updateButtonVisualStates();
-            updateSidebarCounters();
-        });
-
-        // Quick Action: Fachdaten & Layer - Alle aus
-        document.getElementById('btn-layers-none').addEventListener('click', () => {
-            Array.from(document.querySelectorAll('.filter-btn[data-layer-name]')).filter(b => !b.closest('#hazard-layer-group')).forEach(btn => {
-                const name = btn.getAttribute('data-layer-name');
-                const layer = overlayMaps[name];
-                if (map.hasLayer(layer)) {
-                    map.removeLayer(layer);
-                    map.fire('overlayremove', { layer: layer, name: name });
-                }
-            });
-            updateButtonVisualStates();
-            updateSidebarCounters();
         });
 
         // Initial visual states update
@@ -7167,6 +7101,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
     </div>
 
     <!-- Application Perfection & Enhancement Suite -->
+    <script src="js/modules/layer_control.js"></script>
     <script src="js/app-enhancements.js?v=20260729-linkfix"></script>
     <script>
         // Mobile Sidebar Toggle Logic
