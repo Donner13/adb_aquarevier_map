@@ -1,6 +1,0 @@
-==================================================
- Contact Map Visualizer Server Running!
- URL: http://localhost:8000
- Serving directory: /app
- Press Ctrl+C to stop the server.
-==================================================
