@@ -5,15 +5,6 @@ test.describe('Popup Component Unit Tests', () => {
         await page.goto('about:blank');
 
         await page.evaluate(() => {
-            window.escapeHtml = function(str) {
-                if (str === null || str === undefined) return '';
-                return String(str)
-                    .replace(/&/g, '&amp;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;')
-                    .replace(/"/g, '&quot;')
-                    .replace(/'/g, '&#039;');
-            };
 
             window.L = {
                 marker: () => ({ on: () => {}, getElement: () => document.createElement('div'), bindPopup: (html) => window._lastPopupHtml = html }),
@@ -60,7 +51,10 @@ test.describe('Popup Component Unit Tests', () => {
             };
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-            await new Promise(r => setTimeout(r, 100)); // wait for mocked fetch
+
+            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
+            await new Promise(r => setTimeout(r, 0));
+ // wait for mocked fetch
             return window._lastPopupHtml;
         });
 
@@ -85,7 +79,10 @@ test.describe('Popup Component Unit Tests', () => {
             };
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-            await new Promise(r => setTimeout(r, 100));
+
+            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
+            await new Promise(r => setTimeout(r, 0));
+
             return window._lastPopupHtml;
         });
 
@@ -107,7 +104,10 @@ test.describe('Popup Component Unit Tests', () => {
             };
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-            await new Promise(r => setTimeout(r, 100));
+
+            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
+            await new Promise(r => setTimeout(r, 0));
+
             return window._lastPopupHtml;
         });
 
@@ -132,7 +132,10 @@ test.describe('Popup Component Unit Tests', () => {
             };
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-            await new Promise(r => setTimeout(r, 100));
+
+            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
+            await new Promise(r => setTimeout(r, 0));
+
             return window._lastPopupHtml;
         });
 
@@ -156,7 +159,10 @@ test.describe('Popup Component Unit Tests', () => {
             };
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-            await new Promise(r => setTimeout(r, 100));
+
+            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
+            await new Promise(r => setTimeout(r, 0));
+
             return window._lastPopupHtml;
         });
 
@@ -182,7 +188,10 @@ test.describe('Popup Component Unit Tests', () => {
             };
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-            await new Promise(r => setTimeout(r, 100));
+
+            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
+            await new Promise(r => setTimeout(r, 0));
+
             return window._lastPopupHtml;
         });
 
@@ -209,7 +218,10 @@ test.describe('Popup Component Unit Tests', () => {
             };
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-            await new Promise(r => setTimeout(r, 100));
+
+            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
+            await new Promise(r => setTimeout(r, 0));
+
             return window._lastPopupHtml;
         });
 
@@ -225,7 +237,10 @@ test.describe('Popup Component Unit Tests', () => {
 
             const cfg = { id: 'test', file: 'test.geojson', color: '#000', groupLabel: 'Test' };
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-            await new Promise(r => setTimeout(r, 100));
+
+            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
+            await new Promise(r => setTimeout(r, 0));
+
             return window._lastPopupHtml;
         });
 
@@ -243,7 +258,10 @@ test.describe('Popup Component Unit Tests', () => {
                 footerTemplate: (p) => `Custom Footer for ${p.name}`
             };
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-            await new Promise(r => setTimeout(r, 100));
+
+            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
+            await new Promise(r => setTimeout(r, 0));
+
             return window._lastPopupHtml;
         });
 
@@ -262,7 +280,10 @@ test.describe('Popup Component Unit Tests', () => {
             };
 
             window.addGeoLayer(cfg, window.map, window.overlayMaps, window.layerDataStore);
-            await new Promise(r => setTimeout(r, 100));
+
+            // Since we mocked fetch as a synchronous resolved promise, we wait for the microtask queue to empty
+            await new Promise(r => setTimeout(r, 0));
+
             return window._lastPopupHtml;
         });
 
