@@ -2,14 +2,14 @@ services:
   - type: web
     name: aquarevier-editor-backend
     env: docker
-    dockerfilePath: editor_backend/Dockerfile
     dockerContext: .
+    dockerfilePath: editor_backend/Dockerfile
     envVars:
-      - key: PORT
-        value: 8000
-      - key: GIT_PUSH_TOKEN
-        sync: false
       - key: EDITOR_USER
-        sync: false
+        value: florian
       - key: EDITOR_PASSWORD
+        generateValue: true
+      - key: ENC_PASSWORD
+        generateValue: true
+      - key: GIT_PUSH_TOKEN
         sync: false

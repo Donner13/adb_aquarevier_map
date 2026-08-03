@@ -4,14 +4,15 @@ RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY editor_backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# We copy the editor backend into its directory
-COPY editor_backend /app/editor_backend
-# The server operates on the parent directory, so we should copy the whole repo or expect it to be mounted.
-# Since it's Render, Render will clone the whole repo into the working directory.
-# We will assume Render context is the root of the repo.
-# So WORKDIR is /app, Render clones repo into /app, we can just run `python editor_backend/server.py`.
+# We mount or copy the entire repository because the backend serves static files from the root
+# and updates files in the root.
+COPY . .
 
-CMD ["python", "editor_backend/server.py"]
+# Setting the working directory to editor_backend for uvicorn
+WORKDIR /app/editor_backend
+
+# Use shell form so environment variables like $PORT are expanded.
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}

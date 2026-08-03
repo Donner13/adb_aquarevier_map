@@ -1,0 +1,7 @@
+.git
+.github
+__pycache__
+vendor
+node_modules
+.pytest_cache
+editor_backend/__pycache__
