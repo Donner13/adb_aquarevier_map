@@ -19,12 +19,10 @@
         if (window.isDarkMode) {
             body.classList.remove('light-theme');
             body.classList.add('dark-theme');
-            window.StorageModule.setItem('theme', 'dark');
             window.StorageModule.setItem('aquarevier_theme', 'dark');
         } else {
             body.classList.remove('dark-theme');
             body.classList.add('light-theme');
-            window.StorageModule.setItem('theme', 'light');
             window.StorageModule.setItem('aquarevier_theme', 'light');
         }
 
@@ -61,7 +59,7 @@
 
     // Restore user theme preference on load
     function initTheme() {
-        const savedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
+        const savedTheme = window.StorageModule.getItem('aquarevier_theme');
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
 

@@ -3498,7 +3498,7 @@
 
 
         const contrastToggle = document.getElementById('contrast-toggle');
-        let highContrast = localStorage.getItem('aquarevier-high-contrast') === 'true';
+        let highContrast = localStorage.getItem('aquarevier_high_contrast') === 'true';
         function applyContrastMode() {
             document.body.classList.toggle('high-contrast', highContrast);
             if (contrastToggle) {
@@ -3510,7 +3510,7 @@
         if (contrastToggle) {
             contrastToggle.addEventListener('click', () => {
                 highContrast = !highContrast;
-                localStorage.setItem('aquarevier-high-contrast', String(highContrast));
+                localStorage.setItem('aquarevier_high_contrast', String(highContrast));
                 applyContrastMode();
             });
         }
@@ -4829,7 +4829,7 @@
         baseMaps["Helles Design"] = baseLight;
 
         const themeToggle = document.getElementById('theme-toggle');
-        let isDarkMode = localStorage.getItem('theme') === 'dark';
+        let isDarkMode = localStorage.getItem('aquarevier_theme') === 'dark';
 
         // Apply saved theme state on load
         if (isDarkMode) {
@@ -4847,7 +4847,7 @@
 
         themeToggle.addEventListener('click', () => {
             isDarkMode = !isDarkMode;
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            localStorage.setItem('aquarevier_theme', isDarkMode ? 'dark' : 'light');
             if (isDarkMode) {
                 document.body.classList.remove('light-theme');
                 themeToggle.innerText = '☀️';
@@ -5886,7 +5886,7 @@ function buildUnifiedSearchIndex() {
             });
 
             // ===== Laien-Glossar-Modus =====
-            let laienModeActive = localStorage.getItem('laien-mode-active') === 'true';
+            let laienModeActive = localStorage.getItem('aquarevier_laien_mode_active') === 'true';
 
             function initGlossarTippy(root) {
                 if (typeof tippy === 'undefined') return;
@@ -5906,7 +5906,7 @@ function buildUnifiedSearchIndex() {
 
             function toggleLaienMode() {
                 laienModeActive = !laienModeActive;
-                localStorage.setItem('laien-mode-active', laienModeActive);
+                localStorage.setItem('aquarevier_laien_mode_active', laienModeActive);
                 updateLaienModeVisuals();
             }
 
@@ -6414,8 +6414,8 @@ function buildUnifiedSearchIndex() {
             const listContainer = document.getElementById('feedback-issues-list');
             if (!listContainer) return;
 
-            const cacheKey = 'feedback-issues-cache';
-            const cacheTimeKey = 'feedback-issues-cache-time';
+            const cacheKey = 'aquarevier_feedback_issues_cache';
+            const cacheTimeKey = 'aquarevier_feedback_issues_cache_time';
             const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
             listContainer.innerHTML = '<div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Lädt Meldungen...</div>';
