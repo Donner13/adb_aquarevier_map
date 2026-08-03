@@ -91,20 +91,7 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-// Perf Task 12: WebGL Context Fallback Guard
-let customRenderer = null;
-
 function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
-    if (!customRenderer) {
-        let supportsWebGL = false;
-        try {
-            const canvas = document.createElement('canvas');
-            supportsWebGL = !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
-        } catch (e) {
-            console.warn("WebGL support check failed, falling back to default SVG renderer.", e);
-        }
-        customRenderer = supportsWebGL ? L.canvas() : L.svg();
-    }
   const size = cfg.cluster ? 10 : 22;
 
   /** Baut das divIcon für normale (nicht-Cluster) Marker */
@@ -319,7 +306,6 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
           if (cfg.id === 'contacts' || cfg.id === 'akteure') window.geojsonData = data;
           window[cfg.geoDataVar] = data;  // backward-compat global
           const markers = L.geoJSON(data, {
-            renderer: customRenderer,
             pointToLayer: (feature, latlng) => {
               const marker = L.marker(latlng, { icon: buildIcon() });
               // Safely extract name from nested blocks like Stammdaten or Lage if they exist
@@ -388,7 +374,6 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         window[cfg.geoDataVar] = data;  // backward-compat global
 
         const geoLayer = L.geoJSON(data, {
-          renderer: customRenderer,
           pointToLayer: (feature, latlng) => {
             const marker = L.marker(latlng, { icon: buildIcon() });
             let extractedName = '';
