@@ -15,7 +15,7 @@ from playwright.async_api import async_playwright
 async def run_playwright_layer_audit():
     sys.stdout.reconfigure(encoding='utf-8')
     print("=== STARTING PLAYWRIGHT FRONTEND LAYER AUDIT ===")
-    
+
     # Start local HTTP server
     server = subprocess.Popen([sys.executable, "-m", "http.server", "8888"], cwd=".")
     time.sleep(2)
@@ -71,7 +71,7 @@ async def run_playwright_layer_audit():
                     is_visible = await btn.is_visible()
                     if not is_visible:
                         continue
-                    
+
                     try:
                         # Click to activate layer
                         await btn.click(force=True, timeout=3000)

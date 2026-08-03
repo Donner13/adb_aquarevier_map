@@ -18,10 +18,10 @@ def run_tests():
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True)
             page = browser.new_page()
-            
+
             # Print page console messages
             page.on("console", lambda msg: print(f"BROWSER CONSOLE: {msg.text}"))
-            
+
             # Load local index.html
             page.goto(f"http://localhost:{port}/index.html")
             page.evaluate("localStorage.setItem('aquarevier_onboarding_completed_v1', '1');")

@@ -756,46 +756,8 @@
             });
         }
 
-        // Filter button toggle logic
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const group = btn.getAttribute('data-group');
-                if (!group) return;
+/* neutralised duplicate filter-btn listener */
 
-                if (group === 'all') {
-                    const isAnyInactive = activeFilters.size < Object.keys(groupColors).length;
-                    document.querySelectorAll('.filter-btn[data-group]').forEach(b => {
-                        const bg = b.getAttribute('data-group');
-                        if (bg === 'all') return;
-                        if (isAnyInactive) {
-                            b.classList.add('active');
-                            activeFilters.add(bg);
-                        } else {
-                            b.classList.remove('active');
-                            activeFilters.delete(bg);
-                        }
-                    });
-                } else {
-                    if (activeFilters.has(group)) {
-                        activeFilters.delete(group);
-                        btn.classList.remove('active');
-                    } else {
-                        activeFilters.add(group);
-                        btn.classList.add('active');
-                    }
-                }
-                
-                // Update All btn active state
-                const allBtn = document.querySelector('.filter-btn[data-group="all"]');
-                if (activeFilters.size === Object.keys(groupColors).length) {
-                    allBtn.classList.add('active');
-                } else {
-                    allBtn.classList.remove('active');
-                }
-
-                renderMapAndSidebar();
-            });
-        });
 
         // Search trigger
         document.getElementById('search-input').addEventListener('input', renderMapAndSidebar);
