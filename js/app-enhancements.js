@@ -404,6 +404,10 @@
     window.exportActiveLayersData = function (format = 'geojson') {
         const activeFeatures = [];
 
+        const isNumericArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(n => typeof n === 'number');
+        const isPositionArray = (arr) => Array.isArray(arr) && arr.every(isNumericArray);
+        const isPolygonArray = (arr) => Array.isArray(arr) && arr.every(isPositionArray);
+
         const assertValidGeometry = (geom) => {
             if (geom === null) return; // Valid according to GeoJSON spec
             if (typeof geom !== 'object') throw new TypeError('Geometry must be an object or null');
@@ -417,12 +421,18 @@
                 geom.geometries.forEach(g => assertValidGeometry(g)); // Deep validation
             } else {
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
+                // Basic coordinate depth validation
+                if (geom.type === 'Point' && !isNumericArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
+                if ((geom.type === 'MultiPoint' || geom.type === 'LineString') && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint/LineString coordinates');
+                if ((geom.type === 'MultiLineString' || geom.type === 'Polygon') && !isPolygonArray(geom.coordinates)) throw new TypeError('Invalid MultiLineString/Polygon coordinates');
+                if (geom.type === 'MultiPolygon' && !(Array.isArray(geom.coordinates) && geom.coordinates.every(isPolygonArray))) throw new TypeError('Invalid MultiPolygon coordinates');
             }
         };
 
         const assertValidFeature = (f) => {
             if (typeof f !== 'object' || f === null) throw new TypeError('Feature must be an object');
             if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
+            if (f.properties !== null && typeof f.properties !== 'object') throw new TypeError('Properties must be an object or null');
             assertValidGeometry(f.geometry);
         };
 
@@ -432,7 +442,7 @@
                 assertValidFeature(f);
 
                 const featCopy = JSON.parse(JSON.stringify(f));
-                if (typeof featCopy.properties !== 'object' || featCopy.properties === null) {
+                if (featCopy.properties === null) {
                     featCopy.properties = {};
                 }
                 featCopy.properties._layer_name = String(key);
