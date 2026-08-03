@@ -103,6 +103,14 @@ test.describe('Search Bar Query Normalization - Unit Tests', () => {
         expect(results.some(r => r.title.includes('Wasserverband Eifel-Rur'))).toBe(true);
     });
 
+    test('supports typo-tolerant fuzzy matching', async ({ page }) => {
+        const results = await page.evaluate(() => {
+            return window.queryUniversalSearch('Achen'); // Typo for Aachen (missing 'a')
+        });
+        expect(results.length).toBeGreaterThan(0);
+        expect(results.some(r => r.title === 'Aachen')).toBe(true);
+    });
+
     test('supports fuzzy partial substring matching in subtitle', async ({ page }) => {
         const results = await page.evaluate(() => {
             return window.queryUniversalSearch('ür'); // Partial match for 'Düren'
