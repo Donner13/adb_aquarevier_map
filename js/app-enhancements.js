@@ -403,6 +403,7 @@
     // --- 3. OPEN DATA EXPORT (GEOJSON & CSV) ---
     window.exportActiveLayersData = function (format = 'geojson') {
         const activeFeatures = [];
+        let invalidFeaturesCount = 0;
 
         // Strict number check: Must be number, not NaN, not Infinity
         const isStrictNumber = (n) => typeof n === 'number' && Number.isFinite(n);
@@ -459,7 +460,7 @@
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
 
                 // Strict coordinate depth and validity assertions per RFC 7946
-                if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
+                if (geom.type === 'Point' && !isPositionArray(geom.coordinates) && geom.coordinates.length !== 0) throw new TypeError('Invalid Point coordinates');
                 if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
                 if (geom.type === 'LineString' && !isLineStringArray(geom.coordinates)) throw new TypeError('Invalid LineString coordinates');
                 if (geom.type === 'MultiLineString' && !isMultiLineStringArray(geom.coordinates)) throw new TypeError('Invalid MultiLineString coordinates');
@@ -473,7 +474,7 @@
         const assertValidFeature = (f) => {
             if (!isPlainObject(f)) throw new TypeError('Feature must be an object');
             if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
-            if (f.properties !== null && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object or null');
+            if (f.properties !== null && f.properties !== undefined && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object, null, or undefined');
             assertValidGeometry(f.geometry);
         };
 
@@ -483,13 +484,14 @@
                 assertValidFeature(f);
 
                 const featCopy = JSON.parse(JSON.stringify(f));
-                if (featCopy.properties === null) {
+                if (featCopy.properties === null || featCopy.properties === undefined) {
                     featCopy.properties = {};
                 }
                 featCopy.properties._layer_name = String(key);
                 activeFeatures.push(featCopy);
             } catch (e) {
                 // Feature fails assertion, skip it
+                invalidFeaturesCount++;
                 console.warn('Skipping invalid GeoJSON feature during export:', e.message);
             }
         };
@@ -521,6 +523,10 @@
         if (activeFeatures.length === 0) {
             window.showToast("Keine aktiven Fachdaten-Layer auf der Karte sichtbar", "⚠️");
             return;
+        }
+
+        if (invalidFeaturesCount > 0) {
+            window.showToast(`${invalidFeaturesCount} fehlerhafte Objekte wurden beim Export übersprungen.`, "⚠️");
         }
 
         const dateStr = new Date().toISOString().split('T')[0];
