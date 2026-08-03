@@ -103,7 +103,7 @@ test.describe('Search Bar Query Normalization - Unit Tests', () => {
 
     test('supports fuzzy partial substring matching in subtitle', async ({ page }) => {
         const results = await page.evaluate(() => {
-            return window.queryUniversalSearch('düren');
+            return window.queryUniversalSearch('ür'); // Partial match for 'Düren'
         });
         expect(results.length).toBeGreaterThan(0);
         expect(results.some(r => r.subtitle.includes('Düren'))).toBe(true);
@@ -111,7 +111,7 @@ test.describe('Search Bar Query Normalization - Unit Tests', () => {
 
     test('supports fuzzy partial substring matching in category', async ({ page }) => {
         const results = await page.evaluate(() => {
-            return window.queryUniversalSearch('pegel');
+            return window.queryUniversalSearch('egel'); // Partial match for 'Pegel'
         });
         expect(results.length).toBeGreaterThan(0);
         expect(results.some(r => r.category.includes('Pegel'))).toBe(true);
@@ -125,7 +125,7 @@ test.describe('Search Bar Query Normalization - Unit Tests', () => {
             }));
             const orig = window.getAvailableGemeinden;
             window.getAvailableGemeinden = () => [...orig(), ...extraGemeinden];
-            window.universalSearchIndex = []; // Reset index to force rebuild
+            window.buildUniversalSearchIndex(); // Reset index to force rebuild
         });
 
         const results = await page.evaluate(() => {
