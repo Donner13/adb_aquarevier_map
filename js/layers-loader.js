@@ -51,7 +51,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       ">${cfg.icon}</div>`,
       className: cfg.className,
       iconSize: [size, size],
-      iconAnchor: [size / 2, size / 2]
+      iconAnchor: cfg.iconAnchor || [size / 2, size / 2]
     });
   }
 
