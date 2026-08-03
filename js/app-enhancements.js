@@ -403,7 +403,6 @@
     // --- 3. OPEN DATA EXPORT (GEOJSON & CSV) ---
     window.exportActiveLayersData = function (format = 'geojson') {
         const activeFeatures = [];
-        let invalidFeaturesCount = 0;
 
         // Strict number check: Must be number, not NaN, not Infinity
         const isStrictNumber = (n) => typeof n === 'number' && Number.isFinite(n);
@@ -462,80 +461,64 @@
             }
         };
 
-        const isPlainObject = (obj) => typeof obj === 'object' && obj !== null && !Array.isArray(obj);
-
         const assertValidFeature = (f) => {
-            if (!isPlainObject(f)) throw new TypeError('Feature must be an object');
+            if (typeof f !== 'object' || f === null || Array.isArray(f)) throw new TypeError('Feature must be an object');
             if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
-            // properties MUST be an object or null per RFC 7946, it can also be strictly missing, so we allow undefined
-            if ('properties' in f && f.properties !== null && f.properties !== undefined && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object, null, or undefined');
             assertValidGeometry(f.geometry);
         };
-
-        const processFeature = (f, key) => {
-            try {
-                // Type Assertions
-                assertValidFeature(f);
-
-                const featCopy = JSON.parse(JSON.stringify(f));
-                if (!featCopy.properties || featCopy.properties === null) {
-                    featCopy.properties = {};
-                }
-                featCopy.properties._layer_name = String(key);
-                activeFeatures.push(featCopy);
-            } catch (e) {
-                // Feature fails assertion, skip it
-                invalidFeaturesCount++;
-                console.warn('Skipping invalid GeoJSON feature during export:', e.message);
-            }
-        };
-
-        // Track already exported layers to prevent duplicating datasets
-        // This is a direct fix for the original bug while maintaining intended scoping logic
-        const exportedStores = new Set();
-        let anyOverlayActive = false;
 
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
-                    anyOverlayActive = true;
-                    // Note: This logic matches how the codebase originally linked overlays.
-                    // By checking exportedStores, we fix the issue where it repeatedly dumps the
-                    // whole store for each overlay.
+                    // Match overlay layer to dataStore entry
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
-                        if (storeData && Array.isArray(storeData.features) && !exportedStores.has(key)) {
-                            exportedStores.add(key);
-                            storeData.features.forEach(f => processFeature(f, key));
+                        if (storeData && Array.isArray(storeData.features)) {
+                            storeData.features.forEach(f => {
+                                try {
+                                    // Type Assertions
+                                    assertValidFeature(f);
+
+                                    const featCopy = JSON.parse(JSON.stringify(f));
+                                    featCopy.properties = featCopy.properties || {};
+                                    featCopy.properties._layer_name = String(key);
+                                    activeFeatures.push(featCopy);
+                                } catch (e) {
+                                    // Feature fails assertion, skip it
+                                }
+                            });
                         }
                     });
                 }
             });
         }
 
-        // Fallback: If no overlayMaps matched at all, check window.geojsonData / window.layerDataStore directly
-        if (!anyOverlayActive && window.layerDataStore) {
+        // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly
+        if (activeFeatures.length === 0 && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
-                if (storeData && Array.isArray(storeData.features) && !exportedStores.has(key)) {
-                    exportedStores.add(key);
-                    storeData.features.forEach(f => processFeature(f, key));
+                if (storeData && Array.isArray(storeData.features)) {
+                    storeData.features.forEach(f => {
+                        try {
+                            // Type Assertions
+                            assertValidFeature(f);
+
+                            const featCopy = JSON.parse(JSON.stringify(f));
+                            featCopy.properties = featCopy.properties || {};
+                            featCopy.properties._layer_name = String(key);
+                            activeFeatures.push(featCopy);
+                        } catch (e) {
+                            // Feature fails assertion, skip it
+                        }
+                    });
                 }
             });
         }
 
         if (activeFeatures.length === 0) {
-            if (invalidFeaturesCount > 0) {
-                window.showToast(`Keine gültigen Objekte gefunden. ${invalidFeaturesCount} ungültige Objekte wurden übersprungen.`, "⚠️");
-            } else {
-                window.showToast("Keine aktiven Fachdaten-Layer auf der Karte sichtbar", "⚠️");
-            }
+            window.showToast("Keine aktiven Fachdaten-Layer auf der Karte sichtbar", "⚠️");
             return;
-        }
-
-        if (invalidFeaturesCount > 0) {
-            window.showToast(`${invalidFeaturesCount} fehlerhafte Objekte wurden beim Export übersprungen.`, "⚠️");
         }
 
         const dateStr = new Date().toISOString().split('T')[0];
