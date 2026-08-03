@@ -8,8 +8,8 @@
 
     class AquaFunSuite {
         constructor() {
-            this.achievements = JSON.parse(window.AppStorage.getItem('aquarevier_achievements') || '{}');
-            this.visitedDistricts = new Set(JSON.parse(window.AppStorage.getItem('aquarevier_visited_districts') || '[]'));
+            try { this.achievements = JSON.parse(window.AppStorage.getItem('aquarevier_achievements') || '{}'); } catch(e) { this.achievements = {}; }
+            try { this.visitedDistricts = new Set(JSON.parse(window.AppStorage.getItem('aquarevier_visited_districts') || '[]')); } catch(e) { this.visitedDistricts = new Set(); }
             this.clickedStationsCount = parseInt(window.AppStorage.getItem('aquarevier_clicked_stations') || '0', 10);
             this.activeLayerCombo = 0;
             this.initKonamiCode();
