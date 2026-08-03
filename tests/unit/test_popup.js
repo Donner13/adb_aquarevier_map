@@ -40,13 +40,15 @@ test.describe('Popup Component Unit Tests', () => {
             };
         });
 
-        const scriptContent = require('fs').readFileSync('./js/layers-loader.js', 'utf-8');
+        const path = require('path');
+        const scriptContent = require('fs').readFileSync(path.resolve(__dirname, '../../js/layers-loader.js'), 'utf-8');
         await page.addScriptTag({ content: scriptContent });
     });
 
     const renderPopupHtml = async (page, p, cfg) => {
         return await page.evaluate(async (args) => {
             window.capturedOnEachFeature = null;
+            window.fetchPromises = [];
             window._testProperties = args.p;
             window._expectedFetchUrl = args.cfg.file;
 
@@ -58,7 +60,9 @@ test.describe('Popup Component Unit Tests', () => {
             if (!window.capturedOnEachFeature) throw new Error("Failed to capture onEachFeature callback.");
 
             let generatedHtml = null;
-            window.capturedOnEachFeature({ properties: args.p }, { bindPopup: (h) => generatedHtml = h, on: () => {} });
+            // To prove the popup generation uses the fetched properties, we execute the callback using exactly what fetch provided.
+            const featurePassedToGeoJSON = { properties: window._testProperties };
+            window.capturedOnEachFeature(featurePassedToGeoJSON, { bindPopup: (h) => generatedHtml = h, on: () => {} });
 
             if (generatedHtml === null) throw new Error("Popup HTML was not generated.");
             return generatedHtml;
@@ -98,6 +102,7 @@ test.describe('Popup Component Unit Tests', () => {
     test('evaluates function expressions in popup fields', async ({ page }) => {
         const popupHtml = await page.evaluate(async () => {
             window.capturedOnEachFeature = null;
+            window.fetchPromises = [];
             window._testProperties = { val1: 'A', val2: 'B' };
             window._expectedFetchUrl = 'test.geojson';
             const cfg = { id: 'test', file: 'test.geojson', color: '#000', groupLabel: 'Test', popupFields: [{ label: 'Expr', expr: (prop) => prop.val1 + prop.val2 }] };
@@ -105,7 +110,7 @@ test.describe('Popup Component Unit Tests', () => {
             await Promise.all(window.fetchPromises);
             await new Promise(r => setTimeout(r, 0));
             let generatedHtml = null;
-            window.capturedOnEachFeature({ properties: { val1: 'A', val2: 'B' } }, { bindPopup: (h) => generatedHtml = h, on: () => {} });
+            window.capturedOnEachFeature({ properties: window._testProperties }, { bindPopup: (h) => generatedHtml = h, on: () => {} });
             return generatedHtml;
         });
         expect(popupHtml).toContain('Expr: AB');
@@ -143,13 +148,14 @@ test.describe('Popup Component Unit Tests', () => {
         const popupHtml = await page.evaluate(async () => {
             window.getZustaendigkeitHtml = () => '<div class="zustaendigkeit-mock">Mocked Zustaendigkeit</div>';
             window.capturedOnEachFeature = null;
+            window.fetchPromises = [];
             window._testProperties = { name: 'Test' };
             window._expectedFetchUrl = 'test.geojson';
             window.addGeoLayer({ id: 'test', file: 'test.geojson', color: '#000', groupLabel: 'Test' }, window.map, window.overlayMaps, window.layerDataStore);
             await Promise.all(window.fetchPromises);
             await new Promise(r => setTimeout(r, 0));
             let generatedHtml = null;
-            window.capturedOnEachFeature({ properties: { name: 'Test' } }, { bindPopup: (h) => generatedHtml = h, on: () => {} });
+            window.capturedOnEachFeature({ properties: window._testProperties }, { bindPopup: (h) => generatedHtml = h, on: () => {} });
             return generatedHtml;
         });
         expect(popupHtml).toContain('<div class="zustaendigkeit-mock">Mocked Zustaendigkeit</div>');
@@ -158,6 +164,7 @@ test.describe('Popup Component Unit Tests', () => {
     test('renders custom footer template', async ({ page }) => {
         const popupHtml = await page.evaluate(async () => {
             window.capturedOnEachFeature = null;
+            window.fetchPromises = [];
             window._testProperties = { name: 'Test' };
             window._expectedFetchUrl = 'test.geojson';
             const cfg = { id: 'test', file: 'test.geojson', color: '#000', groupLabel: 'Test', footerTemplate: (prop) => `Custom Footer for ${prop.name}` };
@@ -165,7 +172,7 @@ test.describe('Popup Component Unit Tests', () => {
             await Promise.all(window.fetchPromises);
             await new Promise(r => setTimeout(r, 0));
             let generatedHtml = null;
-            window.capturedOnEachFeature({ properties: { name: 'Test' } }, { bindPopup: (h) => generatedHtml = h, on: () => {} });
+            window.capturedOnEachFeature({ properties: window._testProperties }, { bindPopup: (h) => generatedHtml = h, on: () => {} });
             return generatedHtml;
         });
         expect(popupHtml).toContain('Custom Footer for Test');
