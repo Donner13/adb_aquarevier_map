@@ -2809,67 +2809,75 @@
             document.documentElement.style.setProperty('--river-shadow-color-light', rl.shadowLight);
         }
 
+        let riverLayerCache = null;
+
         function drawRivers() {
             if (!riverGeoJson) return;
             riverLayer.clearLayers();
-            const labeledRivers = new Set();
-            const sortedFeatures = [...riverGeoJson.features].sort((a, b) => {
-                const lenA = a.geometry && a.geometry.coordinates ? a.geometry.coordinates.length : 0;
-                const lenB = b.geometry && b.geometry.coordinates ? b.geometry.coordinates.length : 0;
-                return lenB - lenA;
-            });
+            const currentZoom = map.getZoom();
+
+            if (!riverLayerCache) {
+                const labeledRivers = new Set();
+                const sortedFeatures = [...riverGeoJson.features].sort((a, b) => {
+                    const lenA = a.geometry && a.geometry.coordinates ? a.geometry.coordinates.length : 0;
+                    const lenB = b.geometry && b.geometry.coordinates ? b.geometry.coordinates.length : 0;
+                    return lenB - lenA;
+                });
+
+                riverLayerCache = L.geoJSON({ type: "FeatureCollection", features: sortedFeatures }, {
+                    onEachFeature: function (feature, layer) {
+                        let name = "";
+                        if (feature.properties) {
+                            name = feature.properties.name || "";
+                        }
+                        if (name && name !== "None" && name !== "undefined") {
+                            if (!labeledRivers.has(name)) {
+                                layer.bindTooltip(name, {
+                                    permanent: true,
+                                    direction: "center",
+                                    className: "river-label",
+                                    pane: "riverLabelPane"
+                                });
+                                labeledRivers.add(name);
+                            }
+                        }
+                    }
+                });
+            }
 
             const r = styleSettings.rivers || { color: '#2563eb', weightOverview: 3.0, weightDetail: 2.5, opacity: 0.85 };
 
-            L.geoJSON({ type: "FeatureCollection", features: sortedFeatures }, {
-                filter: function(feature) {
-                    const name = feature.properties ? (feature.properties.name || "") : "";
-                    const nameLower = name.toLowerCase().trim();
-                    const isMainRiver = nameLower === 'rur' || nameLower === 'roer' || 
-                                        nameLower === 'inde' || 
-                                        nameLower === 'wurm' || 
-                                        nameLower === 'erft' || 
-                                        nameLower === 'maas' || 
-                                        nameLower === 'rhein';
-                    const isSmallStream = feature.properties && feature.properties.size === 'small';
-                    
-                    const currentZoom = map.getZoom();
-                    if (currentZoom < 11) {
-                        return isMainRiver; // Only show main rivers in overview mode
-                    }
-                    if (currentZoom >= 11 && currentZoom < 13) {
-                        return !isSmallStream; // Show all standard rivers, hide small streams
-                    }
-                    return true; // Show all when zoomed in (>= 13)
-                },
-                style: function(feature) {
-                    const currentZoom = map.getZoom();
+            riverLayerCache.eachLayer(layer => {
+                const feature = layer.feature;
+                const name = feature.properties ? (feature.properties.name || "") : "";
+                const nameLower = name.toLowerCase().trim();
+                const isMainRiver = nameLower === 'rur' || nameLower === 'roer' ||
+                                    nameLower === 'inde' ||
+                                    nameLower === 'wurm' ||
+                                    nameLower === 'erft' ||
+                                    nameLower === 'maas' ||
+                                    nameLower === 'rhein';
+                const isSmallStream = feature.properties && feature.properties.size === 'small';
+
+                let show = false;
+                if (currentZoom < 11) {
+                    show = isMainRiver;
+                } else if (currentZoom >= 11 && currentZoom < 13) {
+                    show = !isSmallStream;
+                } else {
+                    show = true;
+                }
+
+                if (show) {
                     const isZoomedOut = currentZoom < 11;
-                    const isSmallStream = feature.properties && feature.properties.size === 'small';
-                    return {
+                    layer.setStyle({
                         color: r.color,
                         weight: isZoomedOut ? r.weightOverview : (isSmallStream ? 1.5 : r.weightDetail),
                         opacity: r.opacity
-                    };
-                },
-                onEachFeature: function (feature, layer) {
-                    let name = "";
-                    if (feature.properties) {
-                        name = feature.properties.name || "";
-                    }
-                    if (name && name !== "None" && name !== "undefined") {
-                        if (!labeledRivers.has(name)) {
-                            layer.bindTooltip(name, {
-                                permanent: true,
-                                direction: "center",
-                                className: "river-label",
-                                pane: "riverLabelPane"
-                            });
-                            labeledRivers.add(name);
-                        }
-                    }
+                    });
+                    riverLayer.addLayer(layer);
                 }
-            }).addTo(riverLayer);
+            });
         }
 
         fetch('gewaesser_rur_official.geojson')
@@ -3096,92 +3104,103 @@
             "99": "❓"
         };
         let elwasGeoData = null;
+        let elwasLayerCache = null;
         let elwasActiveRisks = new Set(Object.keys(elwasRiskColors));
         const elwasLayer = L.layerGroup().addTo(map);
 
         function renderElwasLayer() {
             elwasLayer.clearLayers();
             if (!elwasGeoData) return;
-            L.geoJSON(elwasGeoData, {
-                filter: function(feature) {
-                    const risk = getEinleiterRisk(feature);
-                    return elwasActiveRisks.has(risk);
-                },
-                pointToLayer: function(feature, latlng) {
-                    const anhang_codes = feature.properties.anhang_codes || [];
-                    const primary = anhang_codes[0] ? anhang_codes[0].toString() : "99";
-                    const risk = getEinleiterRisk(feature);
-                    const color = elwasRiskColors[risk] || "#999999";
-                    const emoji = elwasAnhangIcons[primary] || "🏭";
-                    const size = 26;
-                    let pulseRing = '';
-                    if (feature.properties.wsg_zone) {
-                        pulseRing = '<div class="wsg-pulse-ring"></div>';
-                    }
-                    const html = `
-                        <div style="
-                            position: relative;
-                            width: ${size}px;
-                            height: ${size}px;
-                            background-color: ${color};
-                            border: 2px solid #ffffff;
-                            border-radius: 50%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            font-size: 13px;
-                            box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
-                        ">${emoji}${pulseRing}</div>
-                    `;
-                    const icon = L.divIcon({
-                        html: html,
-                        className: 'elwas-marker',
-                        iconSize: [size, size],
-                        iconAnchor: [size / 2, size / 2]
-                    });
-                    return L.marker(latlng, { icon: icon });
-                },
-                onEachFeature: function(feature, layer) {
-                    const p = feature.properties;
-                    const anhang_codes = p.anhang_codes || [];
-                    const risk = getEinleiterRisk(feature);
-                    const primaryColor = elwasRiskColors[risk] || "#999999";
-                    let html = `
-                        <div class="popup-card">
-                            <div class="popup-group" style="color: ${primaryColor}">Industrieeinleiter</div>
-                            <div class="popup-title">${p.name || 'Unbekannt'}</div>
-                            <div class="popup-detail">🏭 AbwV Anhang<span class="glossar-icon" data-glossar="ABWV_ANHANG">i</span>: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div>
-                            <div class="popup-detail">💧 Einleitungsart<span class="glossar-icon" data-glossar="EINLEITUNGSART">i</span>: ${p.einleitungsart || '–'}</div>
-                            <div class="popup-detail">🚦 Risikoklasse: <strong style="color: ${primaryColor};">${risk}</strong></div>
-                            <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
-                    `;
-                    if (p.wsg_zone) {
-                        html += `<div class="popup-detail" style="color: #dc2626; font-weight: bold; background: rgba(220, 38, 38, 0.1); padding: 4.5px 8px; border-radius: 6px; margin-top: 5px; display: flex; align-items: center; gap: 4px;">⚠️ Liegt in Trinkwasserschutzzone: ${p.wsg_zone} (${p.wsg_status || '–'})</div>`;
-                    }
-                    if (p.mengen_text) {
-                        html += `<div class="popup-detail">📊 Abwassermenge: ${p.mengen_text}</div>`;
-                    }
-                    if (p.gewaesser_liste) {
-                        html += `<div class="popup-detail">🌊 Einleitung in<span class="glossar-icon" data-glossar="GEWAESSER_EINLEITUNG">i</span>: ${p.gewaesser_liste}</div>`;
-                    }
-                    html += getZustaendigkeitHtml(p);
-                    html += `
-                            <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Stand: Datenlizenz Deutschland - Namensnennung 2.0</div>
-                        </div>
-                    `;
-                    layer.bindPopup(html);
 
-                    // Verbindungslinie(n) zum Gewaesser, in das eingeleitet wird
-                    (p.einleitungen || []).forEach(function(e) {
-                        L.polyline([layer.getLatLng(), [e.lat, e.lon]], {
-                            color: primaryColor,
-                            weight: 1.5,
-                            dashArray: '4,4',
-                            opacity: 0.7
-                        }).bindTooltip('🌊 ' + e.gewaesser, { sticky: true }).addTo(elwasLayer);
-                    });
+            if (!elwasLayerCache) {
+                elwasLayerCache = L.geoJSON(elwasGeoData, {
+                    pointToLayer: function(feature, latlng) {
+                        const anhang_codes = feature.properties.anhang_codes || [];
+                        const primary = anhang_codes[0] ? anhang_codes[0].toString() : "99";
+                        const risk = getEinleiterRisk(feature);
+                        const color = elwasRiskColors[risk] || "#999999";
+                        const emoji = elwasAnhangIcons[primary] || "🏭";
+                        const size = 26;
+                        let pulseRing = '';
+                        if (feature.properties.wsg_zone) {
+                            pulseRing = '<div class="wsg-pulse-ring"></div>';
+                        }
+                        const html = `
+                            <div style="
+                                position: relative;
+                                width: ${size}px;
+                                height: ${size}px;
+                                background-color: ${color};
+                                border: 2px solid #ffffff;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 13px;
+                                box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                            ">${emoji}${pulseRing}</div>
+                        `;
+                        const icon = L.divIcon({
+                            html: html,
+                            className: 'elwas-marker',
+                            iconSize: [size, size],
+                            iconAnchor: [size / 2, size / 2]
+                        });
+                        return L.marker(latlng, { icon: icon });
+                    },
+                    onEachFeature: function(feature, layer) {
+                        const p = feature.properties;
+                        const anhang_codes = p.anhang_codes || [];
+                        const risk = getEinleiterRisk(feature);
+                        const primaryColor = elwasRiskColors[risk] || "#999999";
+                        let html = `
+                            <div class="popup-card">
+                                <div class="popup-group" style="color: ${primaryColor}">Industrieeinleiter</div>
+                                <div class="popup-title">${p.name || 'Unbekannt'}</div>
+                                <div class="popup-detail">🏭 AbwV Anhang<span class="glossar-icon" data-glossar="ABWV_ANHANG">i</span>: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div>
+                                <div class="popup-detail">💧 Einleitungsart<span class="glossar-icon" data-glossar="EINLEITUNGSART">i</span>: ${p.einleitungsart || '–'}</div>
+                                <div class="popup-detail">🚦 Risikoklasse: <strong style="color: ${primaryColor};">${risk}</strong></div>
+                                <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
+                        `;
+                        if (p.wsg_zone) {
+                            html += `<div class="popup-detail" style="color: #dc2626; font-weight: bold; background: rgba(220, 38, 38, 0.1); padding: 4.5px 8px; border-radius: 6px; margin-top: 5px; display: flex; align-items: center; gap: 4px;">⚠️ Liegt in Trinkwasserschutzzone: ${p.wsg_zone} (${p.wsg_status || '–'})</div>`;
+                        }
+                        if (p.mengen_text) {
+                            html += `<div class="popup-detail">📊 Abwassermenge: ${p.mengen_text}</div>`;
+                        }
+                        if (p.gewaesser_liste) {
+                            html += `<div class="popup-detail">🌊 Einleitung in<span class="glossar-icon" data-glossar="GEWAESSER_EINLEITUNG">i</span>: ${p.gewaesser_liste}</div>`;
+                        }
+                        html += getZustaendigkeitHtml(p);
+                        html += `
+                                <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Stand: Datenlizenz Deutschland - Namensnennung 2.0</div>
+                            </div>
+                        `;
+                        layer.bindPopup(html);
+
+                        layer._einleiterLines = [];
+                        (p.einleitungen || []).forEach(function(e) {
+                            const line = L.polyline([layer.getLatLng(), [e.lat, e.lon]], {
+                                color: primaryColor,
+                                weight: 1.5,
+                                dashArray: '4,4',
+                                opacity: 0.7
+                            }).bindTooltip('🌊 ' + e.gewaesser, { sticky: true });
+                            layer._einleiterLines.push(line);
+                        });
+                    }
+                });
+            }
+
+            elwasLayerCache.eachLayer(layer => {
+                const risk = getEinleiterRisk(layer.feature);
+                if (elwasActiveRisks.has(risk)) {
+                    elwasLayer.addLayer(layer);
+                    if (layer._einleiterLines) {
+                        layer._einleiterLines.forEach(line => elwasLayer.addLayer(line));
+                    }
                 }
-            }).addTo(elwasLayer);
+            });
         }
 
         fetch('elwas_einleiter.geojson')
