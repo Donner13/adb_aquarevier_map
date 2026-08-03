@@ -10,16 +10,35 @@ Es gibt nun zwei Versionen der Web-Karte:
 
 ## 🚀 Schnellstart
 
-### 1. Server starten
+### 1. Abhängigkeiten installieren
+Vor dem ersten Start müssen die nötigen Pakete installiert werden:
+
+```bash
+npm install
+```
+
+### 2. Server starten
 Falls der Server nicht bereits im Hintergrund läuft, starte den Webserver im Projektverzeichnis:
 
-```powershell
-python C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\server.py
+```bash
+python server.py
 ```
 
 Öffne anschließend deinen Browser unter:
 👉 Öffentliche Karte: **[http://localhost:8000](http://localhost:8000)**
 👉 Interne Verwaltungskarte: **[http://localhost:8000/internal.html](http://localhost:8000/internal.html)**
+
+### 3. Tests ausführen
+Um die Funktionsfähigkeit sicherzustellen, können die folgenden Tests ausgeführt werden:
+
+- **Playwright UI-Regressionstests:**
+  ```bash
+  npm run test
+  ```
+- **Sidebar-Filter-Tests:**
+  ```bash
+  python3 test_filters.py
+  ```
 
 ---
 
