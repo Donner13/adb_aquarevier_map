@@ -11,8 +11,8 @@ Die Codebasis wurde auf grundlegende Integritätsprobleme geprüft:
 - **GeoJSON Schema:** `test_geojson_schema.py` erfolgreich ausgeführt (valide GeoJSON Eigenschaften und Geometrien).
 
 ## 2. Implementierte Minimal-Korrekturen
+- **TileError Event Bindings:** Die Bindings in `js/app.js` wurden korrigiert, um das `tileerror` Event nun auch sicher für dynamisch hinzukommende WMS-Ebenen zu registrieren (inklusive Vermeidung von Doppel-Bindings).
 
 ## 3. Bekannte nicht-kritische Defects (Follow-Up)
 1. **WMS Layer 404:** Der Layer "Tagebaue & Bergbaufelder" (GD) erzeugt 404-Fehler für externe HTTP-Anfragen, da der WMS Pfad möglicherweise veraltet ist.
 2. **TileError Toast:** Eine Toast-Benachrichtigung für Ladefehler beim Nachladen von TileLayers fehlt aktuell (`tests/ui-regression/batch60_layer5_tile_error.spec.js` bestätigt dies als "missing feature").
-3. **TileError Event Bindings:** Die Bindings in `js/app.js` registrieren das `tileerror` Event nur für Layer, die bereits initial in der Map geladen wurden, jedoch nicht für dynamisch hinzukommende WMS-Ebenen.
