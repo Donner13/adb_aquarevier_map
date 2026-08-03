@@ -6,7 +6,64 @@ Es gibt nun zwei Versionen der Web-Karte:
 1. 🌐 **Öffentliche Version (Anonymisiert)**: `index.html` (lädt `contacts_anonymized.geojson`, zeigt nur Institutionen ohne persönliche Details, fasst geografische Überschneidungen zusammen).
 2. 🔒 **Interne Version (Vollzugriff & Editor)**: `internal.html` (lädt `contacts.geojson`, zeigt alle Kontaktdetails und ermöglicht das Hinzufügen, Bearbeiten und Löschen von Akteuren).
 
+
+## 🏗️ Architektur & Datenfluss (Frontend)
+
+Die Anwendung ist als reine Frontend-Applikation (Single Page Application) konzipiert, die Geodaten clientseitig lädt und visualisiert.
+
+```mermaid
+graph TD
+    %% Styling
+    classDef ui fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef logic fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef data fill:#dfd,stroke:#333,stroke-width:2px;
+    classDef external fill:#fcf,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+
+    %% Nodes
+    subgraph UI_Ansichten [UI & Einstiegspunkte]
+        Index[index.html<br>Öffentliche Karte]:::ui
+        Internal[internal.html<br>Interne Karte & Editor]:::ui
+    end
+
+    subgraph Core_Logic [Javascript Core (js/)]
+        LayersConfig[layers-config.js<br>Layer-Definitionen]:::logic
+        LayersLoader[layers-loader.js<br>Lazy Loading & Rendering]:::logic
+        Features[Feature-Module<br>Suche, Export, KI, etc.]:::logic
+    end
+
+    subgraph Data_Sources [Lokale Datenquellen]
+        ContactsAnon[contacts_anonymized.geojson]:::data
+        ContactsFull[contacts.geojson]:::data
+        GeoData[Lokale GeoJSONs<br>Flüsse, Kreise, etc.]:::data
+        ElwasData[elwas_einleiter.geojson<br>Kläranlagen etc.]:::data
+    end
+
+    subgraph External_Sources [Externe WMS Feeds]
+        WMS_LANUV[LANUV NRW<br>Pegel, WSG, HWGK]:::external
+        WMS_GD[Geologischer Dienst<br>Tagebaue]:::external
+        WMS_Geobasis[Geobasis NRW<br>Grenzen]:::external
+    end
+
+    %% Connections
+    Index -->|Lädt| ContactsAnon
+    Internal -->|Lädt| ContactsFull
+
+    Index & Internal -->|Nutzt| LayersConfig
+    Index & Internal -->|Nutzt| Features
+    LayersConfig -->|Steuert| LayersLoader
+
+    LayersLoader -.->|Lädt asynchron| GeoData
+    LayersLoader -.->|Lädt asynchron| ElwasData
+    LayersLoader -.->|Zieht Kacheln| External_Sources
+
+    %% Engine
+    Leaflet((Leaflet.js<br>Karten-Engine)):::logic
+    LayersLoader ===>|Rendert auf| Leaflet
+    Features -.->|Manipuliert| Leaflet
+```
+
 ---
+
 
 ## 🚀 Schnellstart
 
