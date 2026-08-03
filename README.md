@@ -8,6 +8,49 @@ Es gibt nun zwei Versionen der Web-Karte:
 
 ---
 
+## 🏗️ Systemarchitektur & Datenfluss
+
+```mermaid
+graph TD
+    subgraph Frontend
+        Index["index.html<br/>(Öffentliche Karte)"]
+        Internal["internal.html<br/>(Interne Verwaltung & Editor)"]
+    end
+
+    subgraph Lokale Daten
+        ContactsAnon[("contacts_anonymized.geojson")]
+        ContactsFull[("contacts.geojson")]
+        OtherGeoJSON[("ELWAS & NRW Geodaten<br/>(z.B. klaeranlagen.geojson)")]
+    end
+
+    subgraph Externe Dienste
+        WMS["NRW WMS Services<br/>(Geobasis, LANUV, GD NRW)"]
+    end
+
+    subgraph Backend / API
+        API_Contacts["POST /api/contacts<br/>(Speichern)"]
+        API_Deploy["POST /api/deploy<br/>(Veröffentlichen)"]
+    end
+
+    %% Lesezugriffe (Frontend)
+    Index -->|fetch| ContactsAnon
+    Index -->|fetch| OtherGeoJSON
+    Index -->|WMS Overlay| WMS
+
+    Internal -->|fetch| ContactsFull
+    Internal -->|fetch| OtherGeoJSON
+    Internal -->|WMS Overlay| WMS
+
+    %% Schreibzugriffe & Deployment (Editor)
+    Internal -.->|Änderungen speichern| API_Contacts
+    Internal -.->|Live-Deploy anstoßen| API_Deploy
+
+    API_Contacts -.->|aktualisiert| ContactsAnon
+    API_Contacts -.->|aktualisiert| ContactsFull
+```
+
+---
+
 ## 🚀 Schnellstart
 
 ### 1. Server starten
