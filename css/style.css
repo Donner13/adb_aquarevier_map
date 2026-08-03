@@ -1,0 +1,50 @@
+:root {
+    --bg-base: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-hover: #f1f5f9;
+    --border-color: #cbd5e1;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent-primary: #2563eb;
+    --accent-glow: rgba(37, 99, 235, 0.2);
+
+    /* Group Colors (Excluding Einzelakteure as they are filtered) */
+    --color-behorde: #D55E00;
+    --color-forschung: #0072B2;
+    --color-gebietskorperschaft: #E69F00;
+    --color-gewerbe: #CC79A7;
+    --color-landwirtschaft: #009E73;
+    --color-netzwerk: #56B4E9;
+    --color-entsorger: #F0E442;
+    --color-sonstige: #595959;
+    --color-einzelakteure: #A8A8A8;
+    --color-konsortium: #000000;
+
+    /* Spacing Scale */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+}
+
+body.dark-theme {
+    --bg-base: #0b0f19;
+    --bg-surface: rgba(17, 24, 39, 0.95);
+    --bg-surface-hover: rgba(31, 41, 55, 0.95);
+    --border-color: rgba(255, 255, 255, 0.12);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --accent-primary: #6366f1;
+    --accent-glow: rgba(99, 102, 241, 0.4);
+}
+
+body.light-theme {
+    --bg-base: #f1f5f9;
+    --bg-surface: rgba(255, 255, 255, 0.9);
+    --border-color: rgba(0, 0, 0, 0.08);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent-primary: #4f46e5;
+    --accent-glow: rgba(79, 70, 229, 0.2);
+}
