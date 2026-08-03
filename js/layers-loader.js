@@ -422,6 +422,11 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       });
   }
 
-  loadStandardLayer();
+  if (cfg.defaultOn) {
+    loadStandardLayer();
+  }
+  map.on("overlayadd", function(e) {
+    if (e.layer === layerGroup) loadStandardLayer();
+  });
 }
 
