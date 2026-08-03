@@ -495,57 +495,30 @@
             }
         };
 
-        // Track layers directly mapped to avoid missing fallback behavior
-        const matchedKeys = new Set();
-        let anyOverlayActive = false;
-
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
-                    anyOverlayActive = true;
-                    // Find all dataset keys that are active
+                    // Match overlay layer to dataStore entry
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
-                        // Just map the store keys based on the existing logic
                         if (storeData && Array.isArray(storeData.features)) {
-                            matchedKeys.add(key);
+                            storeData.features.forEach(f => processFeature(f, key));
                         }
                     });
                 }
             });
         }
 
-        // Only run fallback if NO overlays are active AT ALL
-        if (!anyOverlayActive && window.layerDataStore) {
+        // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly
+        if (activeFeatures.length === 0 && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
                 if (storeData && Array.isArray(storeData.features)) {
-                    matchedKeys.add(key);
+                    storeData.features.forEach(f => processFeature(f, key));
                 }
             });
         }
-
-        // Process strictly deduplicated store keys to guarantee each feature array is extracted exactly once per key mapping
-        matchedKeys.forEach(key => {
-            const storeData = window.layerDataStore[key];
-            if (storeData && Array.isArray(storeData.features)) {
-                storeData.features.forEach(f => {
-                    try {
-                        assertValidFeature(f);
-                        const featCopy = JSON.parse(JSON.stringify(f));
-                        if (!featCopy.properties || featCopy.properties === null) {
-                            featCopy.properties = {};
-                        }
-                        featCopy.properties._layer_name = String(key);
-                        activeFeatures.push(featCopy);
-                    } catch (e) {
-                        invalidFeaturesCount++;
-                        console.warn('Skipping invalid GeoJSON feature during export:', e.message);
-                    }
-                });
-            }
-        });
 
         if (activeFeatures.length === 0) {
             if (invalidFeaturesCount > 0) {
