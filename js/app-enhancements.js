@@ -490,16 +490,23 @@
             }
         };
 
-        let hasActiveOverlay = false;
+        // Track already exported layers to prevent duplicating datasets
+        // This is a direct fix for the original bug while maintaining intended scoping logic
+        const exportedStores = new Set();
+        let anyOverlayActive = false;
+
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
-                    hasActiveOverlay = true;
-                    // Match overlay layer to dataStore entry
+                    anyOverlayActive = true;
+                    // Note: This logic matches how the codebase originally linked overlays.
+                    // By checking exportedStores, we fix the issue where it repeatedly dumps the
+                    // whole store for each overlay.
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
-                        if (storeData && Array.isArray(storeData.features)) {
+                        if (storeData && Array.isArray(storeData.features) && !exportedStores.has(key)) {
+                            exportedStores.add(key);
                             storeData.features.forEach(f => processFeature(f, key));
                         }
                     });
@@ -507,11 +514,12 @@
             });
         }
 
-        // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly
-        if (!hasActiveOverlay && window.layerDataStore) {
+        // Fallback: If no overlayMaps matched at all, check window.geojsonData / window.layerDataStore directly
+        if (!anyOverlayActive && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
-                if (storeData && Array.isArray(storeData.features)) {
+                if (storeData && Array.isArray(storeData.features) && !exportedStores.has(key)) {
+                    exportedStores.add(key);
                     storeData.features.forEach(f => processFeature(f, key));
                 }
             });
