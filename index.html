@@ -2587,6 +2587,7 @@
     <script src="vendor/tippy/tippy-bundle.umd.min.js"></script>
     <script src="glossar.js"></script>
     <script src="js/layers-config.js"></script>
+    <script src="js/modules/wms_loader.js"></script>
     <script src="js/layers-loader.js"></script>
     <script src="js/pegel-analysis.js"></script>
     <script src="js/radius-analysis.js"></script>
@@ -2737,61 +2738,26 @@
         });
 
         // 3. Base Map: TopPlusOpen (Offizielle Deutschlandkarte BKG / Geodatenzentrum)
-        const baseWebAtlas = L.tileLayer.wms("https://sgx.geodatenzentrum.de/wms_topplus_open", {
-            layers: 'web',
-            format: 'image/png',
-            transparent: false,
-            attribution: "&copy; BKG / Geodatenzentrum"
-        });
+        const baseWebAtlas = window.createWmsLayer("baseWebAtlas");
 
         // 4. Overlays: NRW Administrative Boundaries (Landkreisgrenzen & Landesgrenze)
-        const wmsBorders = L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_dvg", {
-            layers: 'nw_dvg_la,nw_dvg_k', // Landesgrenze (la) und Kreisgrenzen (k)
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.6,
-            attribution: "Geobasis NRW"
-        });
+        const wmsBorders = window.createWmsLayer("wmsBorders");
         // Standardmäßig aus: die eigenen Vektor-Kreisgrenzen (kreiseLayer, schwarz gestrichelt,
         // s.u.) übernehmen das schon farblich kontrollierbar; dieses WMS-Raster liefert nur
         // das feste graue NRW-Rendering und lässt sich nicht umfärben.
 
         // 5. Overlays: NRW Rivers and Lakes (Gewässernetz)
-        const wmsRivers = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
-            layers: 'gsk3e_hauptgewaesser_seen,gsk3e_hauptgewaesser_linien',
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.8,
-            attribution: "LANUV NRW"
-        }); // Disabled by default
+        const wmsRivers = window.createWmsLayer("wmsRivers"); // Disabled by default
 
         // 5b. Overlays: Detailed Rivers (LANUV WMS showing minor/piped streams)
-        const wmsDetailedRivers = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
-            layers: '2,3,4,5,6,8,9,10',
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.8,
-            attribution: "LANUV NRW"
-        }); // Disabled by default
+        const wmsDetailedRivers = window.createWmsLayer("wmsDetailedRivers"); // Disabled by default
 
         // 5c. Overlays: Hydrological Catchments (LANUV WMS showing exact watersheds)
-        const wmsCatchments = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
-            layers: '0,11',
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.4,
-            attribution: "LANUV NRW"
-        }); // Disabled by default
+        const wmsCatchments = window.createWmsLayer("wmsCatchments"); // Disabled by default
 
         // 6. Overlays: Tagebaue / Bergbauberechtigungen Gewinnung (GD NRW)
         // Scope changed from 'nur aktive Berechtigungen' (nw_bergbauberechtigungen_gewinnend) to 'alle Berechtigungen' (19) as the new WMS service no longer provides this subdivision.
-        const wmsMining = L.tileLayer.wms("https://www.wms.nrw.de/wms/bebu", {
-            layers: '19',
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.5,
-            attribution: "GD NRW"
-        });
+        const wmsMining = window.createWmsLayer("wmsMining");
 
         // 7. Overlays: Wasserschutzgebiete gesamt (LANUV NRW) - Local GeoJSON with styling
         const wsgLayer = L.layerGroup();
@@ -2933,38 +2899,14 @@
         // hw = Hohe Wahrscheinlichkeit (HQ häufig)
         // mw = Mittlere Wahrscheinlichkeit (HQ100)
         // nw = Niedrige Wahrscheinlichkeit (HQ extrem)
-        const wmsHwgkHaeufig = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
-            layers: 'Tiefen_Ueberflutungsgebiet_hw',
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.6,
-            attribution: "LANUV NRW"
-        });
+        const wmsHwgkHaeufig = window.createWmsLayer("wmsHwgkHaeufig");
 
-        const wmsHwgkHq100 = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
-            layers: 'Tiefen_Ueberflutungsgebiet_mw',
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.6,
-            attribution: "LANUV NRW"
-        });
+        const wmsHwgkHq100 = window.createWmsLayer("wmsHwgkHq100");
 
-        const wmsHwgkExtrem = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
-            layers: 'Tiefen_Ueberflutungsgebiet_nw',
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.6,
-            attribution: "LANUV NRW"
-        });
+        const wmsHwgkExtrem = window.createWmsLayer("wmsHwgkExtrem");
 
         // 8b. Kommunale Starkregengefahrenkarten (Pluvial)
-        const wmsStarkregenEuskirchen = L.tileLayer.wms("https://starkregen-euskirchen-v11.cismet.de/geoserver/wms", {
-            layers: 'starkregen:L_T100_v1.1_depth3857',
-            format: 'image/png',
-            transparent: true,
-            opacity: 0.6,
-            attribution: "Kreis Euskirchen / cismet GmbH"
-        });
+        const wmsStarkregenEuskirchen = window.createWmsLayer("wmsStarkregenEuskirchen");
 
         // 9. Custom Boundary: Untersuchungsgebiet (Landkreise als Hintergrund)
         const boundaryLayer = L.layerGroup().addTo(map);
