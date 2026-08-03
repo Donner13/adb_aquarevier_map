@@ -177,7 +177,7 @@
 
         /* Header */
         .sidebar-header {
-            padding: 20px 24px;
+            padding: var(--spacing-xl) var(--spacing-xxl);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
@@ -206,12 +206,12 @@
             padding: var(--spacing-xl);
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: var(--spacing-xl);
         }
 
         /* Sidebar Footer for Impressum & Datenschutz */
         .sidebar-footer {
-            padding: 12px 24px;
+            padding: var(--spacing-md) var(--spacing-xxl);
             border-top: 1px solid var(--border-color);
             display: flex;
             gap: var(--spacing-sm);
@@ -332,7 +332,7 @@
             font-family: monospace;
             background: rgba(255, 255, 255, 0.1);
             color: var(--text-secondary);
-            padding: 1px 4px;
+            padding: 1px var(--spacing-xs);
             border-radius: 4px;
             margin-left: 6px;
             flex-shrink: 0;
@@ -348,7 +348,7 @@
             align-items: center;
             margin-bottom: var(--spacing-sm);
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 4px;
+            padding-bottom: var(--spacing-xs);
         }
         .filter-block-actions {
             display: flex;
@@ -360,7 +360,7 @@
             color: var(--accent-primary);
             font-size: 10px;
             cursor: pointer;
-            padding: 2px 4px;
+            padding: 2px var(--spacing-xs);
             font-weight: 500;
         }
         .filter-block-actions button:hover {
@@ -460,7 +460,7 @@
             display: flex;
             align-items: center;
             gap: var(--spacing-sm);
-            padding: 9px 12px;
+            padding: 9px var(--spacing-md);
             cursor: pointer;
             border-bottom: 1px solid var(--border-color);
             font-size: 12.5px;
@@ -530,7 +530,7 @@
         .contact-item {
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid var(--border-color);
-            padding: 12px 16px;
+            padding: var(--spacing-md) var(--spacing-lg);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
@@ -586,7 +586,7 @@
             border: 1px solid var(--border-color) !important;
             color: var(--text-primary) !important;
             border-radius: 12px !important;
-            padding: 8px;
+            padding: var(--spacing-sm);
         }
 
         .leaflet-popup-tip {
@@ -640,7 +640,7 @@
             border: 1px solid var(--border-color) !important;
             color: var(--text-primary) !important;
             border-radius: 8px !important;
-            padding: 8px !important;
+            padding: var(--spacing-sm) !important;
         }
         .leaflet-control-layers-toggle {
             filter: invert(1);
@@ -666,7 +666,7 @@
             background: #ffffff;
             border: 1.5px solid #cbd5e1;
             border-radius: 6px;
-            padding: 6px 12px;
+            padding: 6px var(--spacing-md);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
@@ -784,7 +784,7 @@
 
         /* Choropleth select styling */
         .choropleth-select-container {
-            margin: 8px 12px;
+            margin: var(--spacing-sm) var(--spacing-md);
             display: flex;
             flex-direction: column;
             gap: var(--spacing-xs);
@@ -839,7 +839,7 @@
             to { opacity: 1; transform: scale(1); }
         }
         .scorecard-header {
-            padding: 16px 20px;
+            padding: var(--spacing-lg) var(--spacing-xl);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
@@ -857,7 +857,7 @@
             color: var(--text-secondary);
             font-size: 20px;
             cursor: pointer;
-            padding: 4px;
+            padding: var(--spacing-xs);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -873,7 +873,7 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: var(--spacing-lg);
         }
         .scorecard-kpi-narration {
             font-size: 14px;
@@ -896,7 +896,7 @@
             text-align: left;
         }
         .scorecard-table th, .scorecard-table td {
-            padding: 12px 14px;
+            padding: var(--spacing-md) 14px;
             border-bottom: 1px solid var(--border-color);
         }
         .scorecard-table th {
@@ -1008,7 +1008,7 @@
             background: var(--accent-primary);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px var(--spacing-xl);
             border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
@@ -1050,7 +1050,7 @@
                 font-size: 14px;
             }
             #presentation-bar .controls button {
-                padding: 8px 15px;
+                padding: var(--spacing-sm) 15px;
                 font-size: 14px;
                 min-width: 90px;
                 height: 40px;
@@ -1070,7 +1070,7 @@
             font-size: 9px;
             font-weight: 700;
             cursor: help;
-            margin-left: 4px;
+            margin-left: var(--spacing-xs);
             vertical-align: middle;
             transition: all 0.2s ease;
         }
@@ -1089,7 +1089,7 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             border-radius: 8px;
             font-size: 12px;
-            padding: 4px;
+            padding: var(--spacing-xs);
             backdrop-filter: blur(10px);
         }
         .tippy-box[data-theme~='aquarevier'] .tippy-arrow {
@@ -1199,7 +1199,7 @@
             display: none;
         }
         #pegel-analysis-panel .panel-header {
-            padding: 12px 16px;
+            padding: var(--spacing-md) var(--spacing-lg);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
@@ -1255,7 +1255,7 @@
             margin: 0;
         }
         #pegel-analysis-panel .betrieb-list li {
-            padding: 8px 0;
+            padding: var(--spacing-sm) 0;
             border-bottom: 1px solid var(--border-color);
         }
         #pegel-analysis-panel .betrieb-list li:last-child {
@@ -1293,7 +1293,7 @@
         .feedback-badge.abgelehnt { background-color: #f1f5f9; color: #475569; }
 
         .feedback-item {
-            padding: 8px;
+            padding: var(--spacing-sm);
             border-bottom: 1px solid var(--border-color, #e2e8f0);
             font-size: 12px;
         }
@@ -1347,7 +1347,7 @@
         .onboarding-role-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: var(--spacing-xl);
             margin-top: 25px;
             margin-bottom: 25px;
         }
@@ -1415,7 +1415,7 @@
             color: var(--text-primary);
         }
         .update-radar-content {
-            padding: 8px 0;
+            padding: var(--spacing-sm) 0;
             overflow-y: auto;
             flex: 1;
         }
@@ -1524,7 +1524,7 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 2000;
-            padding: 12px 24px;
+            padding: var(--spacing-md) var(--spacing-xxl);
             background: var(--bg-surface);
             color: var(--text-primary);
             border: 1px solid var(--border-color);
@@ -1578,17 +1578,17 @@
                     <p>Volle Daten, direkt bearbeitbar</p>
                 </div>
                 <div style="display: flex; gap: 6px; align-items: center;">
-                    <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
+                    <button id="laien-mode-btn" class="filter-btn" style="padding: var(--spacing-sm); border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
                         ℹ️
                     </button>
-                    <button id="presentation-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Präsentationsmodus starten (Beamer)" aria-label="Präsentationsmodus starten">
+                    <button id="presentation-mode-btn" class="filter-btn" style="padding: var(--spacing-sm); border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Präsentationsmodus starten (Beamer)" aria-label="Präsentationsmodus starten">
                         🎥
                     </button>
-                    <button id="contrast-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
+                    <button id="contrast-toggle" class="filter-btn" style="padding: var(--spacing-sm); border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
                         ◐
                     </button>
-                    <button id="replay-tour-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Tour erneut starten" aria-label="Einführungstour erneut starten" onclick="showRoleModal()">🎓</button>
-                    <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln" aria-label="Farbschema umschalten">
+                    <button id="replay-tour-btn" class="filter-btn" style="padding: var(--spacing-sm); border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Tour erneut starten" aria-label="Einführungstour erneut starten" onclick="showRoleModal()">🎓</button>
+                    <button id="theme-toggle" class="filter-btn" style="padding: var(--spacing-sm); border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln" aria-label="Farbschema umschalten">
                         🌙
                     </button>
                 </div>
@@ -1816,21 +1816,21 @@
                             </select>
                         </div>
                         <div style="display: flex; gap: var(--spacing-xs); margin-bottom: var(--spacing-sm); align-items: center;">
-                            <input type="number" id="radius-manual-lat" placeholder="Breite (z.B. 50.92)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px 4px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Breite für Radius-Analyse">
-                            <input type="number" id="radius-manual-lng" placeholder="Länge (z.B. 6.45)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px 4px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Länge für Radius-Analyse">
+                            <input type="number" id="radius-manual-lat" placeholder="Breite (z.B. 50.92)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px var(--spacing-xs); border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Breite für Radius-Analyse">
+                            <input type="number" id="radius-manual-lng" placeholder="Länge (z.B. 6.45)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px var(--spacing-xs); border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Länge für Radius-Analyse">
                         </div>
                         <div style="display: flex; gap: 6px; margin-bottom: var(--spacing-sm);">
                             <button id="btn-radius-activate" type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: var(--bg-surface, #ffffff); border: 1px solid #3b82f6; color: #2563eb; font-weight: 600;" onclick="toggleRadiusAnalysis()">
                                 📍 Punkt wählen
                             </button>
-                            <button id="btn-radius-manual-submit" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 6px;" onclick="if(window.runRadiusAnalysisFromInputs) window.runRadiusAnalysisFromInputs()">
+                            <button id="btn-radius-manual-submit" type="button" class="filter-btn" style="font-size: 11px; padding: var(--spacing-xs) 6px;" onclick="if(window.runRadiusAnalysisFromInputs) window.runRadiusAnalysisFromInputs()">
                                 ⌨️ Berechnen
                             </button>
                             <button id="btn-radius-clear" type="button" class="filter-btn" style="font-size: 11px; padding: var(--spacing-xs) var(--spacing-sm);" onclick="clearRadiusAnalysis()" disabled>
                                 ❌ Reset
                             </button>
                         </div>
-                        <div id="radius-status-info" style="font-size: 10.5px; color: #475569; background: #f8fafc; padding: 6px 8px; border-radius: 4px; border: 1px dashed #cbd5e1; text-align: center;">
+                        <div id="radius-status-info" style="font-size: 10.5px; color: #475569; background: #f8fafc; padding: 6px var(--spacing-sm); border-radius: 4px; border: 1px dashed #cbd5e1; text-align: center;">
                             Klicke auf "📍 Punkt wählen" &amp; danach auf die Karte.
                         </div>
                         <div id="radius-results-container" style="display: none; margin-top: var(--spacing-sm); max-height: 250px; overflow-y: auto; font-size: 11px;">
@@ -1848,7 +1848,7 @@
                         <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: var(--spacing-sm);">
                             Wähle eine Gemeinde aus, um alle lokalen Akteure &amp; Wasser-Objekte auszuwerten:
                         </div>
-                        <select class="form-select form-select-sm gemeinde-dossier-select" style="font-size: 11px; padding: 4px 6px; border-radius: 4px; width: 100%; margin-bottom: var(--spacing-sm);" onchange="if(this.value) openGemeindeDossier(this.value)">
+                        <select class="form-select form-select-sm gemeinde-dossier-select" style="font-size: 11px; padding: var(--spacing-xs) 6px; border-radius: 4px; width: 100%; margin-bottom: var(--spacing-sm);" onchange="if(this.value) openGemeindeDossier(this.value)">
                             <option value="">-- Gemeinde wählen --</option>
                         </select>
                     </div>
@@ -1919,8 +1919,8 @@
                             <button id="btn-refresh-feedback" type="button" onclick="loadFeedbackIssues()">🔄 Aktualisieren</button>
                         </div>
                     </div>
-                    <div id="feedback-issues-list" style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; padding: 8px; max-height: 250px; overflow-y: auto;">
-                        <div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Auf 🔄 Aktualisieren klicken, um Meldungen zu laden.</div>
+                    <div id="feedback-issues-list" style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; padding: var(--spacing-sm); max-height: 250px; overflow-y: auto;">
+                        <div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: var(--spacing-md) 0;">Auf 🔄 Aktualisieren klicken, um Meldungen zu laden.</div>
                     </div>
                 </div>
 
@@ -1954,9 +1954,9 @@
                 <div>
                     <div class="section-title">Akteur bearbeiten</div>
                     <div class="glass-panel" id="editor-panel" style="padding: 10px; border-radius: 8px; margin-bottom: 10px; background: var(--bg-surface); border: 1px solid var(--border-color);">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:var(--spacing-sm);">
                             <strong id="form-action-title" style="font-size:12px;">Neuen Akteur erstellen</strong>
-                            <button class="filter-btn" id="btn-cancel-edit" style="display:none; padding: 2px 8px; font-size:10px;">Abbrechen</button>
+                            <button class="filter-btn" id="btn-cancel-edit" style="display:none; padding: 2px var(--spacing-sm); font-size:10px;">Abbrechen</button>
                         </div>
                         <input type="hidden" id="contact-id">
                         <div class="form-row" style="margin-bottom:6px;">
@@ -1997,7 +1997,7 @@
                             <label style="font-size:10px;">E-Mail</label>
                             <input type="email" id="contact-email" style="width:100%; box-sizing:border-box;">
                         </div>
-                        <div class="form-row" style="margin-bottom:8px;">
+                        <div class="form-row" style="margin-bottom:var(--spacing-sm);">
                             <label style="font-size:10px;">Logo (Bild-URL)</label>
                             <input type="text" id="contact-logo" placeholder="https://..." style="width:100%; box-sizing:border-box;">
                         </div>
@@ -2060,7 +2060,7 @@
                             </div>
                         </div>
 
-                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: var(--spacing-sm) 0;">
 
                         <!-- Boundaries styling -->
                         <div style="margin-bottom: 10px;">
@@ -2124,7 +2124,7 @@
                             </div>
                         </div>
 
-                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: var(--spacing-sm) 0;">
 
                         <!-- WMS Overlay Adjustments -->
                         <div style="margin-bottom: 10px;">
@@ -2134,7 +2134,7 @@
                             </div>
                         </div>
 
-                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: var(--spacing-sm) 0;">
 
                         <!-- Custom WMS Servers -->
                         <div style="margin-bottom: 10px;">
@@ -2148,24 +2148,24 @@
                             <div class="form-row" style="margin-bottom: 6px;">
                                 <input type="text" id="custom-wms-layers" placeholder="Layer-Namen (kommagetrennt)" style="font-size: 10px; width: 100%; box-sizing: border-box;">
                             </div>
-                            <button class="filter-btn active" id="btn-add-custom-wms" style="width: 100%; justify-content: center; font-size: 10px; padding: 4px;" onclick="addCustomWMS()">➕ WMS hinzufügen</button>
+                            <button class="filter-btn active" id="btn-add-custom-wms" style="width: 100%; justify-content: center; font-size: 10px; padding: var(--spacing-xs);" onclick="addCustomWMS()">➕ WMS hinzufügen</button>
 
                             <div id="custom-wms-list" style="margin-top: 6px; display: flex; flex-direction: column; gap: var(--spacing-xs); max-height: 100px; overflow-y: auto;">
                                 <!-- Custom WMS listed here -->
                             </div>
                         </div>
 
-                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: var(--spacing-sm) 0;">
 
                         <!-- Group Colors & Names Customizer -->
                         <div style="margin-bottom: 10px;">
                             <strong style="font-size: 11px; display: block; margin-bottom: var(--spacing-xs);">Gruppen, Aliase & Logos</strong>
-                            <div id="group-customizer-container" style="max-height: 180px; overflow-y: auto; padding-right: 4px; display: flex; flex-direction: column; gap: 6px;">
+                            <div id="group-customizer-container" style="max-height: 180px; overflow-y: auto; padding-right: var(--spacing-xs); display: flex; flex-direction: column; gap: 6px;">
                                 <!-- Dynamically populated -->
                             </div>
                         </div>
 
-                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: var(--spacing-sm) 0;">
 
                         <!-- UI Theme Configurator -->
                         <div style="margin-bottom: 10px;">
@@ -2184,7 +2184,7 @@
                             </div>
                         </div>
 
-                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: var(--spacing-sm) 0;">
 
                         <!-- Search Index Configurator -->
                         <div style="margin-bottom: 10px;">
@@ -2198,7 +2198,7 @@
                             </div>
                         </div>
 
-                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: var(--spacing-sm) 0;">
 
                         <!-- GeoJSON Layer Importer -->
                         <div>
@@ -2210,7 +2210,7 @@
                                 <input type="text" id="import-layer-name" placeholder="Layer Name" style="font-size: 10px; width: 60%; padding: 2px;">
                                 <input type="color" id="import-layer-color" value="#10b981" style="width: 30px; height: 20px;">
                             </div>
-                            <button class="filter-btn active" id="btn-import-layer" style="width: 100%; justify-content: center; font-size: 10px; padding: 4px;">📥 Layer laden</button>
+                            <button class="filter-btn active" id="btn-import-layer" style="width: 100%; justify-content: center; font-size: 10px; padding: var(--spacing-xs);">📥 Layer laden</button>
                             <div id="import-status" style="font-size: 9px; color: var(--text-secondary); margin-top: var(--spacing-xs);"></div>
                         </div>
 
@@ -2252,32 +2252,32 @@
                             <a href="https://geoportal.staedteregion-aachen.de/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="aachen" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche Geoportal der StädteRegion Aachen in einem neuen Tab">
                                 <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
                                 <span class="filter-label" style="margin-left: 6px;">🔗 Städteregion Aachen</span>
-                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: var(--spacing-xs);">↗</span>
                             </a>
                             <a href="https://gis.kreis-dueren.de/inkasportal/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="dueren" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche inkasPortal des Kreises Düren in einem neuen Tab">
                                 <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
                                 <span class="filter-label" style="margin-left: 6px;">🔗 Kreis Düren</span>
-                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: var(--spacing-xs);">↗</span>
                             </a>
                             <a href="https://geodienste.kreis-heinsberg.de/Portal/index.shtml" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="heinsberg" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche Geoportal des Kreises Heinsberg in einem neuen Tab">
                                 <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
                                 <span class="filter-label" style="margin-left: 6px;">🔗 Kreis Heinsberg</span>
-                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: var(--spacing-xs);">↗</span>
                             </a>
                             <a href="https://geo.rhein-erft-kreis.de/ASmobile/rekportal.html" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="rhein-erft" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche Geoportal des Rhein-Erft-Kreises in einem neuen Tab">
                                 <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
                                 <span class="filter-label" style="margin-left: 6px;">🔗 Rhein-Erft-Kreis</span>
-                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: var(--spacing-xs);">↗</span>
                             </a>
                             <a href="https://maps.rhein-kreis-neuss.de/geoportal/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="neuss" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche Geoportal des Rhein-Kreises Neuss in einem neuen Tab">
                                 <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
                                 <span class="filter-label" style="margin-left: 6px;">🔗 Rhein-Kreis Neuss</span>
-                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: var(--spacing-xs);">↗</span>
                             </a>
                             <a href="https://mapview.hydrotec.de/models/Starkregen-Simulation-MG-aussergewoehnliches-Ereignis/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="moenchengladbach" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet die interaktive Starkregengefahrenkarte Mönchengladbach in einem neuen Tab">
                                 <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
                                 <span class="filter-label" style="margin-left: 6px;">🔗 Mönchengladbach</span>
-                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: var(--spacing-xs);">↗</span>
                             </a>
                         </div>
                     </div>
@@ -2383,7 +2383,7 @@
             const escapedContact = btoa(unescape(encodeURIComponent(contactText)));
             
             return `
-                <div class="popup-zustaendigkeit" style="margin-top: var(--spacing-sm); padding-top: 8px; border-top: 1px solid var(--border-color); font-size: 11px;">
+                <div class="popup-zustaendigkeit" style="margin-top: var(--spacing-sm); padding-top: var(--spacing-sm); border-top: 1px solid var(--border-color); font-size: 11px;">
                     <div style="font-weight: 600; color: var(--accent-primary); margin-bottom: 2px;">🛡️ Zuständige Behörde:</div>
                     <div style="color: var(--text-primary); font-weight: 500;">${p.zustaendigkeit_behoerde}</div>
                     <div style="color: var(--text-secondary); font-size: 10px;">${p.zustaendigkeit_amt}</div>
@@ -2953,7 +2953,7 @@
                                 <div class="popup-group" style="color: #94a3b8">Akteur (Stand 2025)</div>
                                 <div class="popup-title">${props.name}</div>
                         `;
-                        if (props.abbreviation) popupContent += `<div style="font-size: 11px; margin-top:-4px; margin-bottom:6px; color:#cbd5e1">${props.abbreviation}</div>`;
+                        if (props.abbreviation) popupContent += `<div style="font-size: 11px; margin-top:-var(--spacing-xs); margin-bottom:6px; color:#cbd5e1">${props.abbreviation}</div>`;
                         popupContent += `<div class="popup-detail">💼 Gruppe: ${props.group}</div>`;
                         if (props.sector) popupContent += `<div class="popup-detail">🏢 Branche: ${props.sector}</div>`;
                         if (props.address) popupContent += `<div class="popup-detail">📍 Adresse: ${props.address}</div>`;
@@ -3145,7 +3145,7 @@
                             <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
                     `;
                     if (p.wsg_zone) {
-                        html += `<div class="popup-detail" style="color: #dc2626; font-weight: bold; background: rgba(220, 38, 38, 0.1); padding: 4.5px 8px; border-radius: 6px; margin-top: 5px; display: flex; align-items: center; gap: var(--spacing-xs);">⚠️ Liegt in Trinkwasserschutzzone: ${p.wsg_zone} (${p.wsg_status || '–'})</div>`;
+                        html += `<div class="popup-detail" style="color: #dc2626; font-weight: bold; background: rgba(220, 38, 38, 0.1); padding: 4.5px var(--spacing-sm); border-radius: 6px; margin-top: 5px; display: flex; align-items: center; gap: var(--spacing-xs);">⚠️ Liegt in Trinkwasserschutzzone: ${p.wsg_zone} (${p.wsg_status || '–'})</div>`;
                     }
                     if (p.mengen_text) {
                         html += `<div class="popup-detail">📊 Abwassermenge: ${p.mengen_text}</div>`;
@@ -3569,7 +3569,7 @@
             div.style.lineHeight = '1.7';
             div.style.color = '#1e293b';
             div.innerHTML = `
-                <div style="font-weight:700; margin-bottom:4px; font-size:12.5px;">Grenzen & Gebiete</div>
+                <div style="font-weight:700; margin-bottom:var(--spacing-xs); font-size:12.5px;">Grenzen & Gebiete</div>
                 <div><span style="display:inline-block; width:22px; border-top:2.4px solid #000000; vertical-align:middle; margin-right:6px;"></span>Landkreisgrenzen (Rheinisches Revier)</div>
                 <div><span style="display:inline-block; width:22px; border-top:2.4px dashed #000000; vertical-align:middle; margin-right:6px;"></span>Kreisgrenzen (7 Kreise)</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#3b82f6; opacity:0.5; vertical-align:middle; margin-right:6px; border:1px solid #1e3a8a;"></span>Rur Einzugsgebiet (Hydrologisch)</div>
@@ -3594,7 +3594,7 @@
             div.style.overflowY = 'auto';
             const dot = (color) => `<span style="display:inline-block; width:11px; height:11px; border-radius:50%; background:${color}; border:1.2px solid #1e293b; vertical-align:middle; margin-right:6px;"></span>`;
             div.innerHTML = `
-                <div style="font-weight:700; margin-bottom:4px; font-size:12px;">Marker-Legende</div>
+                <div style="font-weight:700; margin-bottom:var(--spacing-xs); font-size:12px;">Marker-Legende</div>
                 <div>${dot('#D55E00')}Akteure/Institutionen (Farbe = Kategorie)</div>
                 <div>${dot('#595959')}🏭 Industrieeinleiter (ELWAS)</div>
                 <div>${dot('#0072B2')}🚰 Kläranlage (ELWAS)</div>
@@ -3687,11 +3687,11 @@
                 row.innerHTML = `
                     <div style="display:flex; align-items:center; gap:6px;">
                         <input type="color" value="${color}" style="width: 24px; height: 18px; border:none; padding:0; cursor:pointer;" onchange="updateGroupColor('${group}', this.value)">
-                        <input type="text" value="${name}" placeholder="Alias Name" style="font-size: 10px; flex-grow: 1; padding: 2px 4px; box-sizing: border-box;" onchange="updateGroupName('${group}', this.value)">
+                        <input type="text" value="${name}" placeholder="Alias Name" style="font-size: 10px; flex-grow: 1; padding: 2px var(--spacing-xs); box-sizing: border-box;" onchange="updateGroupName('${group}', this.value)">
                     </div>
                     <div style="display:flex; align-items:center; gap:6px;">
                         <span style="font-size:9px; color:var(--text-secondary); width:24px; text-align:center;">Logo</span>
-                        <input type="text" value="${logo}" placeholder="Bild-URL für Gruppe" style="font-size: 10px; flex-grow: 1; padding: 2px 4px; box-sizing: border-box;" onchange="updateGroupLogo('${group}', this.value)">
+                        <input type="text" value="${logo}" placeholder="Bild-URL für Gruppe" style="font-size: 10px; flex-grow: 1; padding: 2px var(--spacing-xs); box-sizing: border-box;" onchange="updateGroupLogo('${group}', this.value)">
                     </div>
                 `;
                 container.appendChild(row);
@@ -4677,7 +4677,7 @@
             if (customLogoUrl) {
                 dx = 0; dy = -50;
                 logoHtml = `
-                    <div class="logo-box" style="left: ${ax + dx - 50}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 100px; height: 40px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                    <div class="logo-box" style="left: ${ax + dx - 50}px; top: ${ay + dy}px; padding: var(--spacing-xs); background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 100px; height: 40px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
                         <img src="${customLogoUrl}" alt="${name}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                     </div>
                 `;
@@ -4693,7 +4693,7 @@
                 // CENTRAL: WVER (waves writing)
                 dx = -75; dy = -50;
                 logoHtml = `
-                    <div class="logo-box logo-wver-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                    <div class="logo-box logo-wver-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: var(--spacing-xs); background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
                         <img src="https://wver.de/wp-content/uploads/2025/08/wver-logo.png" alt="WVER">
                     </div>
                 `;
@@ -4709,7 +4709,7 @@
                 // CENTRAL RIGHT: SCHOELLERSHAMMER (Official logo)
                 dx = 30; dy = -50;
                 logoHtml = `
-                    <div class="logo-box logo-schoellershammer-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 130px; height: 42px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                    <div class="logo-box logo-schoellershammer-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: var(--spacing-xs); background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 130px; height: 42px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
                         <img src="https://www.schoellershammer.de/wp-content/themes/schoellershammer/assets/images/logo.png" alt="SCHOELLERSHAMMER">
                     </div>
                 `;
@@ -4725,7 +4725,7 @@
                 // EAST: Smurfit Westrock (Official logo)
                 dx = 30; dy = -20;
                 logoHtml = `
-                    <div class="logo-box logo-smurfit-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 130px; height: 40px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                    <div class="logo-box logo-smurfit-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: var(--spacing-xs); background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 130px; height: 40px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
                         <img src="logos/smurfit_westrock.svg" alt="Smurfit Westrock">
                     </div>
                 `;
@@ -4757,7 +4757,7 @@
                 // NORTH: RLV (Official logo)
                 dx = -120; dy = -20;
                 logoHtml = `
-                    <div class="logo-box logo-rlv-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                    <div class="logo-box logo-rlv-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: var(--spacing-xs); background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
                         <img src="https://www.rlv.de/wp-content/themes/rlv_template_final/assets/img/logo_rlv.png" alt="RLV">
                     </div>
                 `;
@@ -4773,7 +4773,7 @@
                 // WEST ABOVE: Stadt Eschweiler (only logo image)
                 dx = -80; dy = -30;
                 logoHtml = `
-                    <div class="logo-box logo-eschweiler-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 60px; height: 50px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                    <div class="logo-box logo-eschweiler-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: var(--spacing-xs); background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 60px; height: 50px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
                         <img src="logos/stadt_eschweiler.jpg" alt="Stadt Eschweiler">
                     </div>
                 `;
@@ -4985,7 +4985,7 @@
                             ${p.description ? `<div>📝 ${p.description}</div>` : ''}
                             ${p.phone ? `<div>📞 ${p.phone}</div>` : ''}
                             ${p.email ? `<div>✉️ ${p.email}</div>` : ''}
-                            <button onclick="editContactById('${p.id}')" style="margin-top:4px; width:100%; padding:4px; border-radius:5px; border:1px solid ${color}; background:transparent; color:${color}; cursor:pointer; font-size:10px;">✏️ Bearbeiten</button>
+                            <button onclick="editContactById('${p.id}')" style="margin-top:var(--spacing-xs); width:100%; padding:var(--spacing-xs); border-radius:5px; border:1px solid ${color}; background:transparent; color:${color}; cursor:pointer; font-size:10px;">✏️ Bearbeiten</button>
                         </div>
                     `;
                 };
@@ -5102,7 +5102,7 @@
             div.style.lineHeight = '1.7';
             div.style.color = '#1e293b';
             div.innerHTML = `
-                <div style="font-weight:700; margin-bottom:4px; font-size:12.5px;">Gefahrenkarten</div>
+                <div style="font-weight:700; margin-bottom:var(--spacing-xs); font-size:12.5px;">Gefahrenkarten</div>
                 <div style="font-size:11px; color:#64748b; margin-bottom:2px;">Fluvial (LANUV)</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#fde047; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #ca8a04;"></span>HQ häufig</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#f97316; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #c2410c;"></span>HQ 100</div>
@@ -6526,13 +6526,13 @@
                                     map.setView([record.lat, record.lng], targetZoom);
                                     flashPoints([[record.lat, record.lng]], diff.config.color);
 
-                                    let popupHtml = `<div class="popup-title">${record._name}</div><div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">${diff.config.label}</div>`;
+                                    let popupHtml = `<div class="popup-title">${record._name}</div><div style="font-size:12px;color:var(--text-secondary);margin-top:var(--spacing-xs);">${diff.config.label}</div>`;
                                     if (diff.type === 'changed') {
-                                        popupHtml += `<div style="margin-top:8px;font-size:12px;color:#f59e0b;">Status geändert</div>`;
+                                        popupHtml += `<div style="margin-top:var(--spacing-sm);font-size:12px;color:#f59e0b;">Status geändert</div>`;
                                     } else if (diff.type === 'removed') {
-                                        popupHtml += `<div style="margin-top:8px;font-size:12px;color:#ef4444;">Wurde entfernt</div>`;
+                                        popupHtml += `<div style="margin-top:var(--spacing-sm);font-size:12px;color:#ef4444;">Wurde entfernt</div>`;
                                     } else if (diff.type === 'new') {
-                                        popupHtml += `<div style="margin-top:8px;font-size:12px;color:#10b981;">Neu erfasst</div>`;
+                                        popupHtml += `<div style="margin-top:var(--spacing-sm);font-size:12px;color:#10b981;">Neu erfasst</div>`;
                                     }
                                     openStandalonePopup(record.lat, record.lng, popupHtml);
                                 }
@@ -6855,7 +6855,7 @@
                     <div style="border-bottom: 1px solid var(--border-color); padding: 5px 0;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
                             <strong>${date}</strong>
-                            <span style="font-size: 0.7em; padding: 1px 4px; border-radius: 3px; ${badgeStyle}">${badgeText}</span>
+                            <span style="font-size: 0.7em; padding: 1px var(--spacing-xs); border-radius: 3px; ${badgeStyle}">${badgeText}</span>
                         </div>
                         <div style="color: var(--text-primary); margin-bottom: 2px;">${entry.summary}</div>
                         <div style="color: var(--text-secondary); font-size: 0.9em; cursor: pointer; text-decoration: underline;" onclick="loadAuditDetail('${layer}', '${entry.file}')">Details ansehen</div>
@@ -6956,7 +6956,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
             const cacheTimeKey = 'feedback-issues-cache-time';
             const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
-            listContainer.innerHTML = '<div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Lädt Meldungen...</div>';
+            listContainer.innerHTML = '<div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: var(--spacing-md) 0;">Lädt Meldungen...</div>';
 
             const now = Date.now();
             const cachedTime = localStorage.getItem(cacheTimeKey);
@@ -6970,7 +6970,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
             try {
                 const response = await fetch('https://api.github.com/repos/Dtunder/adb-aquarevier-feedback/issues?state=all&labels=data-feedback&sort=created&direction=desc&per_page=50');
                 if (response.status === 404) {
-                    listContainer.innerHTML = '<div style="font-size: 11px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Meldungs-Kanal bereit. Aktuell keine offenen Daten-Meldungen.</div>';
+                    listContainer.innerHTML = '<div style="font-size: 11px; color: var(--text-secondary, #64748b); text-align: center; padding: var(--spacing-md) 0;">Meldungs-Kanal bereit. Aktuell keine offenen Daten-Meldungen.</div>';
                     return;
                 }
                 if (!response.ok) throw new Error('Network response was not ok');
@@ -6985,14 +6985,14 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
                 if (cachedData) {
                     renderFeedbackIssues(JSON.parse(cachedData), listContainer, true);
                 } else {
-                    listContainer.innerHTML = '<div style="font-size: 11px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Meldungs-Kanal bereit. Aktuell keine offenen Daten-Meldungen.</div>';
+                    listContainer.innerHTML = '<div style="font-size: 11px; color: var(--text-secondary, #64748b); text-align: center; padding: var(--spacing-md) 0;">Meldungs-Kanal bereit. Aktuell keine offenen Daten-Meldungen.</div>';
                 }
             }
         }
 
         function renderFeedbackIssues(issues, container, fromCache) {
             if (issues.length === 0) {
-                container.innerHTML = '<div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Keine gemeldeten Probleme vorhanden.</div>';
+                container.innerHTML = '<div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: var(--spacing-md) 0;">Keine gemeldeten Probleme vorhanden.</div>';
                 return;
             }
 
@@ -7070,7 +7070,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
 
                 <div>
                     <label for="feedback-category" style="display: block; font-size: 13px; font-weight: 500; margin-bottom: var(--spacing-xs); color: var(--text-primary, #0f172a);">Kategorie *</label>
-                    <select id="feedback-category" required style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);">
+                    <select id="feedback-category" required style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);">
                         <option value="">-- Bitte wählen --</option>
                         <option value="falscher-wert">Falscher Wert</option>
                         <option value="position">Falsche Position / Koordinaten</option>
@@ -7081,7 +7081,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
 
                 <div>
                     <label for="feedback-text" style="display: block; font-size: 13px; font-weight: 500; margin-bottom: var(--spacing-xs); color: var(--text-primary, #0f172a);">Was ist falsch? *</label>
-                    <textarea id="feedback-text" required minlength="10" rows="4" style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; resize: vertical; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);"></textarea>
+                    <textarea id="feedback-text" required minlength="10" rows="4" style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; resize: vertical; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);"></textarea>
                     <div id="feedback-error" style="color: #ef4444; font-size: 11px; margin-top: var(--spacing-xs); display: none;">Bitte füllen Sie alle Pflichtfelder aus (mind. 10 Zeichen im Text).</div>
                 </div>
 

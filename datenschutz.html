@@ -47,7 +47,7 @@
             display: flex;
             flex-direction: column;
             overflow-y: auto;
-            padding: 20px;
+            padding: var(--spacing-xl);
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -93,7 +93,7 @@
         .theme-btn {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
-            padding: 8px;
+            padding: var(--spacing-sm);
             border-radius: 50%;
             font-size: 14px;
             width: 36px;
@@ -116,7 +116,7 @@
             font-family: 'Outfit', sans-serif;
             font-size: 32px;
             font-weight: 700;
-            margin-bottom: 24px;
+            margin-bottom: var(--spacing-xxl);
             background: linear-gradient(135deg, #a5b4fc, #6366f1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -153,19 +153,19 @@
         .content hr {
             border: 0;
             border-top: 1px solid var(--border-color);
-            margin: 24px 0;
+            margin: var(--spacing-xxl) 0;
         }
 
         .content ul {
             margin-bottom: var(--spacing-lg);
-            padding-left: 20px;
+            padding-left: var(--spacing-xl);
         }
 
         .content li {
             font-size: 14px;
             line-height: 1.6;
             color: var(--text-secondary);
-            margin-bottom: 8px;
+            margin-bottom: var(--spacing-sm);
         }
 
         .content a {
@@ -185,7 +185,7 @@
             border-radius: 8px;
             font-size: 14px;
             line-height: 1.5;
-            margin-top: 20px;
+            margin-top: var(--spacing-xl);
         }
 
         .error-message a {
@@ -196,7 +196,7 @@
 
         @media (max-width: 640px) {
             .container {
-                padding: 24px;
+                padding: var(--spacing-xxl);
                 margin: 10px auto;
             }
             .content h1 {
