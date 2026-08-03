@@ -4605,7 +4605,18 @@
             reader.readAsText(file);
         });
 
-        // Custom marker generator
+// Custom marker generator
+        function makeMarkerAccessible(marker, label) {
+            marker.on('add', () => {
+                const el = marker.getElement();
+                if (el) {
+                    el.setAttribute('role', 'button');
+                    el.setAttribute('aria-label', label);
+                }
+            });
+            return marker;
+        }
+
         function createCustomMarker(lat, lng, color, name, group) {
             const size = styleSettings.markerSize || 14;
             const border = styleSettings.markerBorder !== undefined ? styleSettings.markerBorder : 2.0;
@@ -4666,8 +4677,8 @@
                 iconAnchor: [(size + 4) / 2, (size + 4) / 2]
             });
 
-            return L.marker([lat, lng], { icon: icon });
-        }
+            return makeMarkerAccessible(L.marker([lat, lng], { icon: icon }), `${name}, ${group}`);
+        }}
 
         // Custom Logo Callout Marker generator
         function createLogoCalloutMarker(lat, lng, name, color, customLogoUrl = null) {
@@ -5146,22 +5157,18 @@
             document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
                 const g = btn.getAttribute('data-group');
                 if (activeFilters.has(g)) {
-                    btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
-                    btn.classList.remove('inactive');
+                    btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true'); btn.classList.remove('inactive');
                 } else {
-                    btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
-                    btn.classList.add('inactive');
+                    btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false'); btn.classList.add('inactive');
                 }
             });
 
             document.querySelectorAll('.filter-btn[data-risk]').forEach(btn => {
                 const b = btn.getAttribute('data-risk');
                 if (elwasActiveRisks.has(b)) {
-                    btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
-                    btn.classList.remove('inactive');
+                    btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true'); btn.classList.remove('inactive');
                 } else {
-                    btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
-                    btn.classList.add('inactive');
+                    btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false'); btn.classList.add('inactive');
                 }
             });
 
@@ -5169,11 +5176,9 @@
                 const name = btn.getAttribute('data-layer-name');
                 const hasLayer = map.hasLayer(overlayMaps[name]);
                 if (hasLayer) {
-                    btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
-                    btn.classList.remove('inactive');
+                    btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true'); btn.classList.remove('inactive');
                 } else {
-                    btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
-                    btn.classList.add('inactive');
+                    btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false'); btn.classList.add('inactive');
                 }
             });
         }
@@ -5486,8 +5491,10 @@
                 const group = btn.getAttribute('data-group');
                 if (activeFilters.has(group)) {
                     activeFilters.delete(group);
+                    btn.classList.remove('active'); btn.classList.add('inactive'); btn.setAttribute('aria-pressed', 'false');
                 } else {
                     activeFilters.add(group);
+                    btn.classList.add('active'); btn.classList.remove('inactive'); btn.setAttribute('aria-pressed', 'true');
                 }
                 updateButtonVisualStates();
                 renderMapAndSidebar();

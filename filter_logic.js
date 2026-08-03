@@ -60,15 +60,15 @@ const initUpdateStr = `        // Initial Load parsing URL
                     const bg = btn.getAttribute('data-group');
                     if (bg === 'all') {
                         if (activeFilters.size === Object.keys(groupColors).length) {
-                            btn.classList.add('active');
+                            btn.classList.add('active'); btn.classList.remove('inactive'); btn.setAttribute('aria-pressed', 'true');
                         } else {
-                            btn.classList.remove('active');
+                            btn.classList.remove('active'); btn.classList.add('inactive'); btn.setAttribute('aria-pressed', 'false');
                         }
                     } else {
                         if (activeFilters.has(bg)) {
-                            btn.classList.add('active');
+                            btn.classList.add('active'); btn.classList.remove('inactive'); btn.setAttribute('aria-pressed', 'true');
                         } else {
-                            btn.classList.remove('active');
+                            btn.classList.remove('active'); btn.classList.add('inactive'); btn.setAttribute('aria-pressed', 'false');
                         }
                     }
                 });
@@ -83,7 +83,7 @@ const initUpdateStr = `        // Initial Load parsing URL
 
             activeFilters = new Set(Object.keys(groupColors));
             document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
-                btn.classList.add('active');
+                btn.classList.add('active'); btn.classList.remove('inactive'); btn.setAttribute('aria-pressed', 'true');
             });
 
             renderMapAndSidebar();
