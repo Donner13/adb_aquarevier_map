@@ -54,10 +54,13 @@ test.describe('Popup Component Unit Tests', () => {
 
             window.addGeoLayer(args.cfg, window.map, window.overlayMaps, window.layerDataStore);
 
-            await Promise.all(window.fetchPromises);
-            await new Promise(r => setTimeout(r, 0));
-
-            if (!window.capturedOnEachFeature) throw new Error("Failed to capture onEachFeature callback.");
+            // Wait robustly for the layer load to finish and the callback to be registered
+            let retries = 0;
+            while (!window.capturedOnEachFeature && retries < 50) {
+                await new Promise(r => setTimeout(r, 10)); // Yield heavily
+                retries++;
+            }
+            if (!window.capturedOnEachFeature) throw new Error("Failed to capture onEachFeature callback within 500ms.");
 
             let generatedHtml = null;
             // To prove the popup generation uses the fetched properties, we execute the callback using exactly what fetch provided.
