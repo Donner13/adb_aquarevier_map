@@ -450,12 +450,10 @@
             } else {
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
 
-                // Strict coordinate depth and validity assertions per RFC 7946 (strictly rejecting empty arrays for point now as well)
+                // Allow empty coordinates for empty geometries explicitly (even for point to be fully permissive for edge cases)
+                if (geom.coordinates.length === 0) return;
+
                 if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
-
-                // Allow empty coordinates for empty geometries explicitly ONLY for non-point geometries
-                if (geom.type !== 'Point' && geom.coordinates.length === 0) return;
-
                 if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
                 if (geom.type === 'LineString' && !isLineStringArray(geom.coordinates)) throw new TypeError('Invalid LineString coordinates');
                 if (geom.type === 'MultiLineString' && !isMultiLineStringArray(geom.coordinates)) throw new TypeError('Invalid MultiLineString coordinates');
@@ -473,10 +471,15 @@
             assertValidGeometry(f.geometry);
         };
 
+        const uniqueFeatures = new Set();
         const processFeature = (f, key) => {
             try {
                 // Type Assertions
                 assertValidFeature(f);
+
+                // Deduplicate by object identity (since window.layerDataStore contains the same objects memory-wise)
+                if (uniqueFeatures.has(f)) return;
+                uniqueFeatures.add(f);
 
                 const featCopy = JSON.parse(JSON.stringify(f));
                 if (!featCopy.properties || featCopy.properties === null) {
@@ -491,12 +494,10 @@
             }
         };
 
-        let hasActiveOverlay = false;
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
-                    hasActiveOverlay = true;
                     // Match overlay layer to dataStore entry
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
@@ -508,8 +509,8 @@
             });
         }
 
-        // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly
-        if (!hasActiveOverlay && window.layerDataStore) {
+        // Fallback: If no overlayMaps matched OR no valid active features were parsed, check window.geojsonData / window.layerDataStore directly
+        if (activeFeatures.length === 0 && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
                 if (storeData && Array.isArray(storeData.features)) {
