@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="vendor/leaflet-markercluster/MarkerCluster.css"/>
     <link rel="stylesheet" href="vendor/leaflet-markercluster/MarkerCluster.Default.css"/>
 
+    <link rel="stylesheet" href="css/style.css"/>
     <style>
         :root {
             --bg-base: #f8fafc;
@@ -26,16 +27,8 @@
             --text-secondary: #475569;
             --accent-primary: #2563eb;
             --accent-glow: rgba(37, 99, 235, 0.2);
-            
-            /* Group Colors (Excluding Einzelakteure as they are filtered) */
-            --color-behorde: #D55E00;
-            --color-forschung: #0072B2;
-            --color-gebietskorperschaft: #E69F00;
-            --color-gewerbe: #CC79A7;
-            --color-landwirtschaft: #009E73;
-            --color-netzwerk: #56B4E9;
-            --color-entsorger: #F0E442;
-            --color-sonstige: #595959;
+
+
         }
 
         body.dark-theme {
@@ -170,11 +163,11 @@
             backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 12px 20px;
+            padding: var(--spacing-md) var(--spacing-xl);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: var(--spacing-sm);
             z-index: 1000;
             color: var(--text-primary);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -195,7 +188,7 @@
             font-size: 28px;
             font-weight: 700;
             color: var(--accent-primary);
-            margin-bottom: 4px;
+            margin-bottom: var(--spacing-xs);
         }
 
         #presentation-bar .step-counter {
@@ -205,21 +198,21 @@
 
         #presentation-bar .caption {
             font-size: 16px;
-            margin-top: 4px;
+            margin-top: var(--spacing-xs);
             color: var(--text-primary);
         }
 
         #presentation-bar .controls {
             display: flex;
-            gap: 10px;
-            margin-top: 10px;
+            gap: var(--spacing-base);
+            margin-top: var(--spacing-base);
         }
 
         #presentation-bar .controls button {
             background: var(--accent-primary);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: var(--spacing-base) var(--spacing-xl);
             border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
@@ -250,7 +243,7 @@
         /* Responsive adjustments for presentation bar */
         @media (max-width: 768px) {
             #presentation-bar {
-                padding: 10px 15px;
+                padding: var(--spacing-base) var(--spacing-md-lg);
                 top: 5px;
             }
             #presentation-bar .title {
@@ -261,7 +254,7 @@
                 font-size: 14px;
             }
             #presentation-bar .controls button {
-                padding: 8px 15px;
+                padding: var(--spacing-sm) var(--spacing-md-lg);
                 font-size: 14px;
                 min-width: 90px;
                 height: 40px;
@@ -327,7 +320,7 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 30px;
+            padding: var(--spacing-3xl);
             width: 90%;
             max-width: 900px;
             max-height: 90vh;
@@ -346,8 +339,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-md-lg);
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -384,12 +377,12 @@
         .scorecard-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: var(--spacing-xl);
         }
 
         .scorecard-table th, .scorecard-table td {
             text-align: left;
-            padding: 12px 15px;
+            padding: var(--spacing-md) var(--spacing-md-lg);
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -433,21 +426,21 @@
 
         /* Dropdown for Choropleth Metric */
         .choropleth-controls {
-            padding: 15px;
+            padding: var(--spacing-md-lg);
             border-top: 1px solid var(--border-color);
-            margin-top: 10px;
+            margin-top: var(--spacing-base);
         }
 
         .choropleth-controls label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: var(--spacing-sm);
             font-size: 0.95em;
             color: var(--text-secondary);
         }
 
         .choropleth-controls select {
             width: 100%;
-            padding: 10px 12px;
+            padding: var(--spacing-base) var(--spacing-md);
             border-radius: 8px;
             border: 1px solid var(--border-color);
             background-color: var(--bg-surface-hover);
@@ -539,13 +532,13 @@
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 10px;
+            padding: var(--spacing-base);
             z-index: 1000;
             font-size: 11px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             display: none;
             flex-direction: column;
-            gap: 4px;
+            gap: var(--spacing-xs);
         }
         body.embed-mode .embed-mini-legend {
             display: flex;
@@ -590,20 +583,20 @@
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 24px;
+            padding: var(--spacing-xxl);
             width: 800px;
             max-width: 90vw;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: var(--spacing-lg);
         }
         .embed-modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 12px;
+            padding-bottom: var(--spacing-md);
         }
         .embed-modal-header h2 {
             margin: 0;
@@ -623,13 +616,13 @@
         }
         .embed-controls {
             display: flex;
-            gap: 20px;
+            gap: var(--spacing-xl);
             align-items: center;
         }
         .embed-controls label {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: var(--spacing-sm);
             color: var(--text-primary);
             font-size: 14px;
         }
@@ -637,7 +630,7 @@
             background: rgba(255,255,255,0.05);
             border: 1px solid var(--border-color);
             color: var(--text-primary);
-            padding: 4px 8px;
+            padding: var(--spacing-xs) var(--spacing-sm);
             border-radius: 4px;
             width: 80px;
         }
@@ -647,7 +640,7 @@
             background: rgba(0,0,0,0.2);
             border: 1px solid var(--border-color);
             color: var(--text-primary);
-            padding: 8px;
+            padding: var(--spacing-sm);
             border-radius: 4px;
             font-family: monospace;
             resize: none;
@@ -669,7 +662,7 @@
 
         /* Header */
         .sidebar-header {
-            padding: 20px 24px;
+            padding: var(--spacing-xl) var(--spacing-xxl);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
@@ -683,7 +676,7 @@
             background: linear-gradient(135deg, #a5b4fc, #6366f1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 4px;
+            margin-bottom: var(--spacing-xs);
         }
 
         .sidebar-header p {
@@ -695,18 +688,18 @@
         .sidebar-content {
             flex: 1;
             overflow-y: auto;
-            padding: 20px;
+            padding: var(--spacing-xl);
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: var(--spacing-xl);
         }
 
         /* Sidebar Footer for Impressum & Datenschutz */
         .sidebar-footer {
-            padding: 12px 24px;
+            padding: var(--spacing-md) var(--spacing-xxl);
             border-top: 1px solid var(--border-color);
             display: flex;
-            gap: 8px;
+            gap: var(--spacing-sm);
             justify-content: center;
             align-items: center;
             font-size: 11px;
@@ -745,7 +738,7 @@
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--text-secondary);
-            margin-bottom: 10px;
+            margin-bottom: var(--spacing-base);
             font-weight: 600;
         }
 
@@ -753,13 +746,13 @@
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-bottom: 10px;
+            margin-bottom: var(--spacing-base);
         }
 
         .filter-btn {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
-            padding: 5px 10px;
+            padding: 5px var(--spacing-base);
             border-radius: 6px;
             color: var(--text-secondary);
             font-size: 11px;
@@ -788,7 +781,7 @@
             position: relative;
             width: 100%;
             justify-content: flex-start;
-            padding: 8px 12px;
+            padding: var(--spacing-sm) var(--spacing-md);
             box-sizing: border-box;
         }
         .filter-btn.inactive {
@@ -824,7 +817,7 @@
             font-family: monospace;
             background: rgba(255, 255, 255, 0.1);
             color: var(--text-secondary);
-            padding: 1px 4px;
+            padding: 1px var(--spacing-xs);
             border-radius: 4px;
             margin-left: 6px;
             flex-shrink: 0;
@@ -838,13 +831,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: var(--spacing-sm);
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 4px;
+            padding-bottom: var(--spacing-xs);
         }
         .filter-block-actions {
             display: flex;
-            gap: 4px;
+            gap: var(--spacing-xs);
         }
         .filter-block-actions button {
             background: none;
@@ -852,7 +845,7 @@
             color: var(--accent-primary);
             font-size: 10px;
             cursor: pointer;
-            padding: 2px 4px;
+            padding: var(--spacing-xxs) var(--spacing-xs);
             font-weight: 500;
         }
         .filter-block-actions button:hover {
@@ -883,14 +876,14 @@
         /* Search Box */
         .search-box {
             position: relative;
-            margin-bottom: 12px;
+            margin-bottom: var(--spacing-md);
         }
 
         .search-box input {
             width: 100%;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
-            padding: 10px 14px;
+            padding: var(--spacing-base) 14px;
             border-radius: 8px;
             color: var(--text-primary);
             font-size: 13px;
@@ -906,7 +899,7 @@
 
         /* Unified Search (all-layer search box, top-left on the map) */
         .unified-search-control {
-            margin: 10px 0 0 10px !important;
+            margin: var(--spacing-base) 0 0 var(--spacing-base) !important;
         }
         .usearch-box {
             position: relative;
@@ -920,7 +913,7 @@
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 10px 14px;
+            padding: var(--spacing-base) 14px;
             font-size: 13px;
             font-family: 'Inter', sans-serif;
             color: var(--text-primary);
@@ -949,8 +942,8 @@
         .usearch-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 9px 12px;
+            gap: var(--spacing-sm);
+            padding: 9px var(--spacing-md);
             cursor: pointer;
             border-bottom: 1px solid var(--border-color);
             font-size: 12.5px;
@@ -964,7 +957,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.03em;
-            padding: 2px 6px;
+            padding: var(--spacing-xxs) 6px;
             border-radius: 4px;
             white-space: nowrap;
         }
@@ -985,7 +978,7 @@
             white-space: nowrap;
         }
         .usearch-empty {
-            padding: 12px;
+            padding: var(--spacing-md);
             font-size: 12px;
             color: var(--text-secondary);
             text-align: center;
@@ -997,14 +990,14 @@
         .contacts-meta {
             font-size: 11px;
             color: var(--text-secondary);
-            margin-bottom: 12px;
+            margin-bottom: var(--spacing-md);
         }
 
         /* List Scroll Area */
         .contact-list {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: var(--spacing-sm);
             max-height: 48vh;
             overflow-y: auto;
         }
@@ -1020,7 +1013,7 @@
         .contact-item {
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid var(--border-color);
-            padding: 12px 16px;
+            padding: var(--spacing-md) var(--spacing-lg);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
@@ -1039,13 +1032,13 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 10px;
+            gap: var(--spacing-base);
         }
 
         .contact-group-badge {
             font-size: 9px;
             font-weight: 700;
-            padding: 2px 6px;
+            padding: var(--spacing-xxs) 6px;
             border-radius: 4px;
             text-transform: uppercase;
             white-space: nowrap;
@@ -1065,7 +1058,7 @@
             color: var(--text-secondary);
             margin-top: 6px;
             display: flex;
-            gap: 12px;
+            gap: var(--spacing-md);
         }
 
         /* Map Controls Popup Styling */
@@ -1076,7 +1069,7 @@
             border: 1px solid var(--border-color) !important;
             color: var(--text-primary) !important;
             border-radius: 12px !important;
-            padding: 8px;
+            padding: var(--spacing-sm);
         }
 
         .leaflet-popup-tip {
@@ -1108,7 +1101,7 @@
         .popup-detail {
             font-size: 11px;
             color: var(--text-secondary);
-            margin-top: 8px;
+            margin-top: var(--spacing-sm);
             display: flex;
             align-items: center;
             gap: 6px;
@@ -1119,7 +1112,7 @@
         .extended-popup {
             max-height: 350px;
             overflow-y: auto;
-            padding-right: 4px;
+            padding-right: var(--spacing-xs);
         }
 
         .extended-popup::-webkit-scrollbar {
@@ -1134,7 +1127,7 @@
         }
 
         .popup-body {
-            margin-top: 10px;
+            margin-top: var(--spacing-base);
             display: flex;
             flex-direction: column;
             gap: 6px;
@@ -1143,7 +1136,7 @@
         .popup-detail strong {
             color: var(--text-primary);
             font-weight: 600;
-            margin-right: 4px;
+            margin-right: var(--spacing-xs);
         }
 
         .popup-detail a {
@@ -1162,8 +1155,8 @@
         }
 
         .popup-footer {
-            margin-top: 12px;
-            padding-top: 12px;
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-md);
             border-top: 1px solid var(--border-color);
         }
 
@@ -1172,7 +1165,7 @@
             text-align: center;
             background: var(--accent-primary);
             color: #ffffff;
-            padding: 8px;
+            padding: var(--spacing-sm);
             border-radius: 6px;
             text-decoration: none;
             font-size: 12px;
@@ -1182,8 +1175,8 @@
 
         .copy-contact-btn {
             display: inline-block;
-            margin-top: 8px;
-            padding: 4px 10px;
+            margin-top: var(--spacing-sm);
+            padding: var(--spacing-xs) var(--spacing-base);
             background-color: var(--accent-primary);
             color: #fff;
             text-decoration: none;
@@ -1214,7 +1207,7 @@
             font-size: 12px;
             color: var(--text-secondary);
             text-align: center;
-            padding: 10px;
+            padding: var(--spacing-base);
             background: rgba(255, 255, 255, 0.02);
             border-radius: 8px;
             border: 1px dashed var(--border-color);
@@ -1226,7 +1219,7 @@
             border: 1px solid var(--border-color) !important;
             color: var(--text-primary) !important;
             border-radius: 8px !important;
-            padding: 8px !important;
+            padding: var(--spacing-sm) !important;
         }
         .leaflet-control-layers-toggle {
             filter: invert(1);
@@ -1252,11 +1245,11 @@
             background: #ffffff;
             border: 1.5px solid #cbd5e1;
             border-radius: 6px;
-            padding: 6px 12px;
+            padding: 6px var(--spacing-md);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: var(--spacing-sm);
             white-space: nowrap;
             z-index: 10;
             pointer-events: auto;
@@ -1333,7 +1326,7 @@
             font-size: 12px;
             letter-spacing: 0.05em;
             color: #1e3a8a;
-            margin-top: -2px;
+            margin-top: -var(--spacing-xxs);
         }
 
         .logo-rlv-box {
@@ -1354,11 +1347,11 @@
         .logo-combined-box {
             background: #ffffff;
             border: 1.5px solid #94a3b8;
-            padding: 4px 8px;
+            padding: var(--spacing-xs) var(--spacing-sm);
             border-radius: 4px;
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: var(--spacing-xxs);
         }
         .logo-combined-row {
             display: flex;
@@ -1370,10 +1363,10 @@
 
         /* Choropleth select styling */
         .choropleth-select-container {
-            margin: 8px 12px;
+            margin: var(--spacing-sm) var(--spacing-md);
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: var(--spacing-xs);
         }
         .choropleth-select-container label {
             font-size: 11px;
@@ -1385,7 +1378,7 @@
             color: var(--text-primary);
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 6px 10px;
+            padding: 6px var(--spacing-base);
             font-size: 13px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -1424,7 +1417,7 @@
             to { opacity: 1; transform: scale(1); }
         }
         .scorecard-header {
-            padding: 16px 20px;
+            padding: var(--spacing-lg) var(--spacing-xl);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
@@ -1442,7 +1435,7 @@
             color: var(--text-secondary);
             font-size: 20px;
             cursor: pointer;
-            padding: 4px;
+            padding: var(--spacing-xs);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1454,11 +1447,11 @@
             color: var(--text-primary);
         }
         .scorecard-body {
-            padding: 20px;
+            padding: var(--spacing-xl);
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: var(--spacing-lg);
         }
         .scorecard-kpi-narration {
             font-size: 14px;
@@ -1466,7 +1459,7 @@
             color: var(--text-primary);
             background: rgba(99, 102, 241, 0.08);
             border-left: 4px solid var(--accent-primary);
-            padding: 10px 14px;
+            padding: var(--spacing-base) 14px;
             border-radius: 0 8px 8px 0;
         }
         .scorecard-table-wrapper {
@@ -1481,7 +1474,7 @@
             text-align: left;
         }
         .scorecard-table th, .scorecard-table td {
-            padding: 12px 14px;
+            padding: var(--spacing-md) 14px;
             border-bottom: 1px solid var(--border-color);
         }
         .scorecard-table th {
@@ -1505,7 +1498,7 @@
         .scorecard-source {
             font-size: 11px;
             color: var(--text-secondary);
-            margin-top: 4px;
+            margin-top: var(--spacing-xs);
         }
 
         /* Glossar / Laien-Modus */
@@ -1521,7 +1514,7 @@
             font-size: 9px;
             font-weight: 700;
             cursor: help;
-            margin-left: 4px;
+            margin-left: var(--spacing-xs);
             vertical-align: middle;
             transition: all 0.2s ease;
         }
@@ -1540,7 +1533,7 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             border-radius: 8px;
             font-size: 12px;
-            padding: 4px;
+            padding: var(--spacing-xs);
             backdrop-filter: blur(10px);
         }
         .tippy-box[data-theme~='aquarevier'] .tippy-arrow {
@@ -1666,7 +1659,7 @@
             display: none;
         }
         #pegel-analysis-panel .panel-header {
-            padding: 12px 16px;
+            padding: var(--spacing-md) var(--spacing-lg);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
@@ -1686,22 +1679,22 @@
             font-size: 16px;
         }
         #pegel-analysis-panel .panel-content {
-            padding: 16px;
+            padding: var(--spacing-lg);
             overflow-y: auto;
             color: var(--text-primary);
             font-size: 13px;
         }
         #pegel-analysis-panel .analysis-stats {
             display: flex;
-            gap: 10px;
-            margin: 15px 0;
+            gap: var(--spacing-base);
+            margin: var(--spacing-md-lg) 0;
         }
         #pegel-analysis-panel .stat-box {
             flex: 1;
             background: rgba(0, 158, 115, 0.1);
             border: 1px solid rgba(0, 158, 115, 0.3);
             border-radius: 6px;
-            padding: 10px;
+            padding: var(--spacing-base);
             text-align: center;
         }
         #pegel-analysis-panel .stat-value {
@@ -1714,7 +1707,7 @@
             display: block;
             font-size: 10px;
             color: var(--text-secondary);
-            margin-top: 4px;
+            margin-top: var(--spacing-xs);
         }
         #pegel-analysis-panel .betrieb-list {
             list-style: none;
@@ -1722,7 +1715,7 @@
             margin: 0;
         }
         #pegel-analysis-panel .betrieb-list li {
-            padding: 8px 0;
+            padding: var(--spacing-sm) 0;
             border-bottom: 1px solid var(--border-color);
         }
         #pegel-analysis-panel .betrieb-list li:last-child {
@@ -1749,7 +1742,7 @@
         .feedback-badge {
             display: inline-flex;
             align-items: center;
-            padding: 2px 6px;
+            padding: var(--spacing-xxs) 6px;
             border-radius: 9999px;
             font-size: 10px;
             font-weight: 600;
@@ -1760,7 +1753,7 @@
         .feedback-badge.abgelehnt { background-color: #f1f5f9; color: #475569; }
 
         .feedback-item {
-            padding: 8px;
+            padding: var(--spacing-sm);
             border-bottom: 1px solid var(--border-color, #e2e8f0);
             font-size: 12px;
         }
@@ -1770,7 +1763,7 @@
         .feedback-title {
             font-weight: 500;
             color: var(--text-primary, #0f172a);
-            margin-bottom: 4px;
+            margin-bottom: var(--spacing-xs);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1804,7 +1797,7 @@
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 30px;
+            padding: var(--spacing-3xl);
             max-width: 800px;
             width: 90%;
             color: var(--text-primary);
@@ -1814,7 +1807,7 @@
         .onboarding-role-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: var(--spacing-xl);
             margin-top: 25px;
             margin-bottom: 25px;
         }
@@ -1822,7 +1815,7 @@
             background: var(--bg-surface);
             border: 2px solid var(--border-color);
             border-radius: 8px;
-            padding: 20px;
+            padding: var(--spacing-xl);
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: left;
@@ -1832,7 +1825,7 @@
             transform: translateY(-2px);
         }
         .onboarding-role-card h3 {
-            margin: 0 0 10px 0;
+            margin: 0 0 var(--spacing-base) 0;
             font-size: 16px;
         }
         .onboarding-role-card p {
@@ -1863,7 +1856,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px;
+            padding: var(--spacing-md);
             border-bottom: 1px solid var(--border-color);
             background: rgba(255, 255, 255, 0.05);
             font-weight: 600;
@@ -1882,12 +1875,12 @@
             color: var(--text-primary);
         }
         .update-radar-content {
-            padding: 8px 0;
+            padding: var(--spacing-sm) 0;
             overflow-y: auto;
             flex: 1;
         }
         .update-radar-item {
-            padding: 8px 12px;
+            padding: var(--spacing-sm) var(--spacing-md);
             cursor: pointer;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             font-size: 13px;
@@ -1942,7 +1935,7 @@
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 15px;
+            padding: var(--spacing-md-lg);
             width: 250px;
             color: var(--text-primary);
             pointer-events: auto;
@@ -1954,7 +1947,7 @@
             font-size: 14px;
         }
         #coachmark-tooltip p {
-            margin: 0 0 15px 0;
+            margin: 0 0 var(--spacing-md-lg) 0;
             font-size: 13px;
             line-height: 1.4;
         }
@@ -1971,7 +1964,7 @@
             background: var(--accent-primary);
             color: white;
             border: none;
-            padding: 5px 10px;
+            padding: 5px var(--spacing-base);
             border-radius: 4px;
             cursor: pointer;
             font-size: 12px;
@@ -1991,7 +1984,7 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 2000;
-            padding: 12px 24px;
+            padding: var(--spacing-md) var(--spacing-xxl);
             background: var(--bg-surface);
             color: var(--text-primary);
             border: 1px solid var(--border-color);
@@ -1999,7 +1992,7 @@
             font-weight: bold;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             align-items: center;
-            gap: 8px;
+            gap: var(--spacing-sm);
             cursor: pointer;
         }
 
@@ -2068,19 +2061,19 @@
                     <p>Regionale Institutionen im Untersuchungsgebiet</p>
                 </div>
                 <div style="display: flex; gap: 6px; align-items: center;">
-                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px 10px; font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" onclick="window.AquaI18n.toggleLanguage()">EN</button>
-                    <button id="audioToggleBtn" class="filter-btn" style="padding: 6px 10px; font-size: 13px;" title="Ton an/aus" aria-label="Audio Switcher" onclick="window.AquaAudio.toggleAudio()">🔇 Ton aus</button>
-                    <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
+                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px var(--spacing-base); font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" onclick="window.AquaI18n.toggleLanguage()">EN</button>
+                    <button id="audioToggleBtn" class="filter-btn" style="padding: 6px var(--spacing-base); font-size: 13px;" title="Ton an/aus" aria-label="Audio Switcher" onclick="window.AquaAudio.toggleAudio()">🔇 Ton aus</button>
+                    <button id="laien-mode-btn" class="filter-btn" style="padding: var(--spacing-sm); border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
                         ℹ️
                     </button>
-                    <button id="presentation-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Präsentationsmodus starten (Beamer)" aria-label="Präsentationsmodus starten">
+                    <button id="presentation-mode-btn" class="filter-btn" style="padding: var(--spacing-sm); border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Präsentationsmodus starten (Beamer)" aria-label="Präsentationsmodus starten">
                         🎥
                     </button>
-                    <button id="contrast-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
+                    <button id="contrast-toggle" class="filter-btn" style="padding: var(--spacing-sm); border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
                         ◐
                     </button>
-                    <button id="replay-tour-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Tour erneut starten" aria-label="Einführungstour erneut starten" onclick="showRoleModal()">🎓</button>
-                    <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln" aria-label="Farbschema umschalten">
+                    <button id="replay-tour-btn" class="filter-btn" style="padding: var(--spacing-sm); border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Tour erneut starten" aria-label="Einführungstour erneut starten" onclick="showRoleModal()">🎓</button>
+                    <button id="theme-toggle" class="filter-btn" style="padding: var(--spacing-sm); border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln" aria-label="Farbschema umschalten">
                         🌙
                     </button>
                 </div>
@@ -2284,17 +2277,17 @@
                 </div>
 
                 <!-- Block: Umkreis- & Radius-Analyse -->
-                <div style="margin-top: 16px;">
+                <div style="margin-top: var(--spacing-lg);">
                     <div class="filter-block-header">
                         <div class="section-title" style="margin-bottom: 0;">🎯 Umkreis- & Radius-Analyse</div>
                     </div>
-                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                        <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: 8px;">
+                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: var(--spacing-base); margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: var(--spacing-sm);">
                             Ermittle alle Akteure, Messstellen &amp; Fachdaten in einem definierten Umkreis.
                         </div>
-                        <div style="display: flex; gap: 6px; align-items: center; margin-bottom: 8px;">
+                        <div style="display: flex; gap: 6px; align-items: center; margin-bottom: var(--spacing-sm);">
                             <label for="radius-select" style="font-size: 11px; font-weight: 600; white-space: nowrap; margin: 0;">Radius:</label>
-                            <select id="radius-select" class="form-select form-select-sm" style="font-size: 11px; padding: 2px 6px; border-radius: 4px; flex: 1;">
+                            <select id="radius-select" class="form-select form-select-sm" style="font-size: 11px; padding: var(--spacing-xxs) 6px; border-radius: 4px; flex: 1;">
                                 <option value="1000">1 km</option>
                                 <option value="2000">2 km</option>
                                 <option value="5000" selected>5 km</option>
@@ -2302,67 +2295,67 @@
                                 <option value="25000">25 km</option>
                             </select>
                         </div>
-                        <div style="display: flex; gap: 4px; margin-bottom: 8px; align-items: center;">
-                            <input type="number" id="radius-manual-lat" placeholder="Breite (z.B. 50.92)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px 4px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Breite für Radius-Analyse">
-                            <input type="number" id="radius-manual-lng" placeholder="Länge (z.B. 6.45)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px 4px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Länge für Radius-Analyse">
+                        <div style="display: flex; gap: var(--spacing-xs); margin-bottom: var(--spacing-sm); align-items: center;">
+                            <input type="number" id="radius-manual-lat" placeholder="Breite (z.B. 50.92)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px var(--spacing-xs); border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Breite für Radius-Analyse">
+                            <input type="number" id="radius-manual-lng" placeholder="Länge (z.B. 6.45)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px var(--spacing-xs); border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Länge für Radius-Analyse">
                         </div>
-                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                        <div style="display: flex; gap: 6px; margin-bottom: var(--spacing-sm);">
                             <button id="btn-radius-activate" type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: var(--bg-surface, #ffffff); border: 1px solid #3b82f6; color: #2563eb; font-weight: 600;" onclick="toggleRadiusAnalysis()">
                                 📍 Punkt wählen
                             </button>
-                            <button id="btn-radius-manual-submit" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 6px;" onclick="if(window.runRadiusAnalysisFromInputs) window.runRadiusAnalysisFromInputs()">
+                            <button id="btn-radius-manual-submit" type="button" class="filter-btn" style="font-size: 11px; padding: var(--spacing-xs) 6px;" onclick="if(window.runRadiusAnalysisFromInputs) window.runRadiusAnalysisFromInputs()">
                                 ⌨️ Berechnen
                             </button>
-                            <button id="btn-radius-clear" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" onclick="clearRadiusAnalysis()" disabled>
+                            <button id="btn-radius-clear" type="button" class="filter-btn" style="font-size: 11px; padding: var(--spacing-xs) var(--spacing-sm);" onclick="clearRadiusAnalysis()" disabled>
                                 ❌ Reset
                             </button>
                         </div>
-                        <div id="radius-status-info" style="font-size: 10.5px; color: #475569; background: #f8fafc; padding: 6px 8px; border-radius: 4px; border: 1px dashed #cbd5e1; text-align: center;">
+                        <div id="radius-status-info" style="font-size: 10.5px; color: #475569; background: #f8fafc; padding: 6px var(--spacing-sm); border-radius: 4px; border: 1px dashed #cbd5e1; text-align: center;">
                             Klicke auf "📍 Punkt wählen" &amp; danach auf die Karte.
                         </div>
-                        <div id="radius-results-container" style="display: none; margin-top: 8px; max-height: 250px; overflow-y: auto; font-size: 11px;">
+                        <div id="radius-results-container" style="display: none; margin-top: var(--spacing-sm); max-height: 250px; overflow-y: auto; font-size: 11px;">
                             <!-- Dynamische Ergebnisse -->
                         </div>
                     </div>
                 </div>
 
                 <!-- Block: Gemeinde-Steckbrief -->
-                <div style="margin-top: 16px;">
+                <div style="margin-top: var(--spacing-lg);">
                     <div class="filter-block-header">
                         <div class="section-title" style="margin-bottom: 0;">🏛️ Gemeinde-Steckbrief</div>
                     </div>
-                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                        <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: 8px;">
+                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: var(--spacing-base); margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: var(--spacing-sm);">
                             Wähle eine Gemeinde aus, um alle lokalen Akteure &amp; Wasser-Objekte auszuwerten:
                         </div>
-                        <select class="form-select form-select-sm gemeinde-dossier-select" style="font-size: 11px; padding: 4px 6px; border-radius: 4px; width: 100%; margin-bottom: 8px;" onchange="if(this.value) openGemeindeDossier(this.value)">
+                        <select class="form-select form-select-sm gemeinde-dossier-select" style="font-size: 11px; padding: var(--spacing-xs) 6px; border-radius: 4px; width: 100%; margin-bottom: var(--spacing-sm);" onchange="if(this.value) openGemeindeDossier(this.value)">
                             <option value="">-- Gemeinde wählen --</option>
                         </select>
                     </div>
                 </div>
 
                 <!-- Block: Grundwasser-Zeitraffer -->
-                <div style="margin-top: 16px;">
+                <div style="margin-top: var(--spacing-lg);">
                     <div class="filter-block-header">
                         <div class="section-title" style="margin-bottom: 0;">⏳ Grundwasser-Zeitraffer</div>
                     </div>
-                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: var(--spacing-base); margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-sm);">
                             <span style="font-size: 11px; color: var(--text-secondary, #64748b);">Jahr:</span>
                             <span id="timeseries-year-display" style="font-size: 16px; font-weight: 700; color: #2563eb;">2025</span>
                         </div>
-                        <input type="range" id="timeseries-slider" min="0" max="6" step="1" value="5" style="width: 100%; margin-bottom: 8px; cursor: pointer;" oninput="setTimeSeriesYearIndex(parseInt(this.value, 10))">
-                        <div style="display: flex; justify-content: space-between; font-size: 9.5px; color: #64748b; margin-bottom: 8px;">
+                        <input type="range" id="timeseries-slider" min="0" max="6" step="1" value="5" style="width: 100%; margin-bottom: var(--spacing-sm); cursor: pointer;" oninput="setTimeSeriesYearIndex(parseInt(this.value, 10))">
+                        <div style="display: flex; justify-content: space-between; font-size: 9.5px; color: #64748b; margin-bottom: var(--spacing-sm);">
                             <span>2000</span>
                             <span>2010</span>
                             <span>2020</span>
                             <span>2030 (Prog.)</span>
                         </div>
-                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                        <div style="display: flex; gap: 6px; margin-bottom: var(--spacing-sm);">
                             <button id="btn-timeseries-play" type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: #16a34a; border: 1px solid #15803d; color: white; font-weight: 600;" onclick="toggleTimeSeriesPlay()">
                                 ▶️ Play
                             </button>
-                            <button id="btn-timeseries-reset" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" onclick="resetTimeSeries()">
+                            <button id="btn-timeseries-reset" type="button" class="filter-btn" style="font-size: 11px; padding: var(--spacing-xs) var(--spacing-sm);" onclick="resetTimeSeries()">
                                 🔄 Reset
                             </button>
                         </div>
@@ -2373,24 +2366,24 @@
                 </div>
 
                 <!-- Block: Favoriten & Teilen -->
-                <div style="margin-top: 16px;">
+                <div style="margin-top: var(--spacing-lg);">
                     <div class="filter-block-header">
                         <div class="section-title" style="margin-bottom: 0;">⭐ Favoriten &amp; Teilen</div>
-                        <span id="network-status-badge" style="font-size: 10px; padding: 2px 6px; border-radius: 10px; border: 1px solid #cbd5e1; background: #f1f5f9;">🟢 Online</span>
+                        <span id="network-status-badge" style="font-size: 10px; padding: var(--spacing-xxs) 6px; border-radius: 10px; border: 1px solid #cbd5e1; background: #f1f5f9;">🟢 Online</span>
                     </div>
-                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: var(--spacing-base); margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="display: flex; gap: 6px; margin-bottom: var(--spacing-sm);">
                             <button type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: #3b82f6; color: white; border-color: #2563eb; font-weight: 600;" onclick="const t = prompt('Name für diesen Favoriten:'); if(t) saveBookmark(t);">
                                 ➕ Favorit speichern
                             </button>
-                            <button type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px; background: #8b5cf6; color: white; border-color: #7c3aed; font-weight: 600;" onclick="openQrShareModal()">
+                            <button type="button" class="filter-btn" style="font-size: 11px; padding: var(--spacing-xs) var(--spacing-sm); background: #8b5cf6; color: white; border-color: #7c3aed; font-weight: 600;" onclick="openQrShareModal()">
                                 📱 QR-Code
                             </button>
                         </div>
                         <div id="bookmarks-list-container">
                             <!-- Dynamische Favoriten-Liste -->
                         </div>
-                        <div style="display: flex; gap: 4px; margin-top: 8px;">
+                        <div style="display: flex; gap: var(--spacing-xs); margin-top: var(--spacing-sm);">
                             <button type="button" class="btn btn-sm btn-outline-dark" style="flex:1; font-size: 10px;" onclick="openAiAssistantModal()">🤖 KI-Assistent</button>
                             <button type="button" class="btn btn-sm btn-outline-dark" style="flex:1; font-size: 10px;" onclick="openWrrlQualityModal()">🐟 WRRL-Güte</button>
                             <button id="btn-toggle-theme" type="button" class="btn btn-sm btn-outline-dark" style="flex:1; font-size: 10px;" onclick="toggleDarkMode()">🌙 Dark Mode</button>
@@ -2406,8 +2399,8 @@
                             <button id="btn-refresh-feedback" type="button" onclick="loadFeedbackIssues()">🔄 Aktualisieren</button>
                         </div>
                     </div>
-                    <div id="feedback-issues-list" style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; padding: 8px; max-height: 250px; overflow-y: auto;">
-                        <div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Auf 🔄 Aktualisieren klicken, um Meldungen zu laden.</div>
+                    <div id="feedback-issues-list" style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; padding: var(--spacing-sm); max-height: 250px; overflow-y: auto;">
+                        <div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: var(--spacing-md) 0;">Auf 🔄 Aktualisieren klicken, um Meldungen zu laden.</div>
                     </div>
                 </div>
 
@@ -2422,7 +2415,7 @@
                         </div>
                     </div>
                     <div id="hazard-layer-group">
-                        <div style="font-size: 11px; color: #64748b; margin-bottom: 8px; font-weight: 500;">Fluvial (LANUV)</div>
+                        <div style="font-size: 11px; color: #64748b; margin-bottom: var(--spacing-sm); font-weight: 500;">Fluvial (LANUV)</div>
                         <div class="filter-group">
                             <button class="filter-btn" data-layer-name="HQ häufig (LANUV)" title="LANUV Hochwassergefahrenkarte">
                                 <span class="swatch" style="background: #fde047;"></span>
@@ -2437,7 +2430,7 @@
                                 <span>HQ extrem (LANUV)</span>
                             </button>
                         </div>
-                        <div style="font-size: 11px; color: #64748b; margin-top: 12px; margin-bottom: 8px; font-weight: 500;">Pluvial (Kommunen)</div>
+                        <div style="font-size: 11px; color: #64748b; margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm); font-weight: 500;">Pluvial (Kommunen)</div>
                         <div class="filter-group">
                             <button class="filter-btn" data-layer-name="Starkregen Euskirchen" title="Starkregengefahrenkarte Kreis Euskirchen (WMS Karte)">
                                 <span class="swatch" style="background: #7c3aed;"></span>
@@ -2446,32 +2439,32 @@
                             <a href="https://geoportal.staedteregion-aachen.de/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="aachen" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche Geoportal der StädteRegion Aachen in einem neuen Tab">
                                 <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
                                 <span class="filter-label" style="margin-left: 6px;">🔗 Städteregion Aachen</span>
-                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: var(--spacing-xs);">↗</span>
                             </a>
                             <a href="https://gis.kreis-dueren.de/inkasportal/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="dueren" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche inkasPortal des Kreises Düren in einem neuen Tab">
                                 <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
                                 <span class="filter-label" style="margin-left: 6px;">🔗 Kreis Düren</span>
-                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: var(--spacing-xs);">↗</span>
                             </a>
                             <a href="https://geodienste.kreis-heinsberg.de/Portal/index.shtml" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="heinsberg" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche Geoportal des Kreises Heinsberg in einem neuen Tab">
                                 <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
                                 <span class="filter-label" style="margin-left: 6px;">🔗 Kreis Heinsberg</span>
-                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: var(--spacing-xs);">↗</span>
                             </a>
                             <a href="https://geo.rhein-erft-kreis.de/ASmobile/rekportal.html" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="rhein-erft" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche Geoportal des Rhein-Erft-Kreises in einem neuen Tab">
                                 <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
                                 <span class="filter-label" style="margin-left: 6px;">🔗 Rhein-Erft-Kreis</span>
-                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: var(--spacing-xs);">↗</span>
                             </a>
                             <a href="https://maps.rhein-kreis-neuss.de/geoportal/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="neuss" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet das amtliche Geoportal des Rhein-Kreises Neuss in einem neuen Tab">
                                 <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
                                 <span class="filter-label" style="margin-left: 6px;">🔗 Rhein-Kreis Neuss</span>
-                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: var(--spacing-xs);">↗</span>
                             </a>
                             <a href="https://mapview.hydrotec.de/models/Starkregen-Simulation-MG-aussergewoehnliches-Ereignis/" target="_blank" rel="noopener noreferrer" class="filter-btn external-portal-link" data-portal-key="moenchengladbach" style="text-decoration:none; display:flex; align-items:center;" title="Öffnet die interaktive Starkregengefahrenkarte Mönchengladbach in einem neuen Tab">
                                 <span class="swatch" style="background: transparent; border: 1.2px dashed #7c3aed;"></span>
                                 <span class="filter-label" style="margin-left: 6px;">🔗 Mönchengladbach</span>
-                                <span style="font-size: 10px; opacity: 0.7; margin-left: 4px;">↗</span>
+                                <span style="font-size: 10px; opacity: 0.7; margin-left: var(--spacing-xs);">↗</span>
                             </a>
                         </div>
                     </div>
@@ -2484,23 +2477,23 @@
                         <input type="text" id="search-input" data-i18n-key="search_placeholder" placeholder="Nach Name oder Ort suchen...">
                     </div>
                     
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-md);">
                         <div class="contacts-meta" id="contacts-count" aria-live="polite" style="margin-bottom: 0;">0 von 0 Kontakten angezeigt</div>
-                        <button id="reset-filters-btn" class="filter-btn" data-i18n-key="reset_filters" style="padding: 4px 8px; font-size: 10px;">Filter zurücksetzen</button>
+                        <button id="reset-filters-btn" class="filter-btn" data-i18n-key="reset_filters" style="padding: var(--spacing-xs) var(--spacing-sm); font-size: 10px;">Filter zurücksetzen</button>
                     </div>
-                    <button id="share-view-btn" class="filter-btn" data-i18n-key="share_view" style="width: 100%; margin-bottom: 12px; font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
+                    <button id="share-view-btn" class="filter-btn" data-i18n-key="share_view" style="width: 100%; margin-bottom: var(--spacing-md); font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
                     <div class="contact-list" id="contact-list-container">
                         <!-- Filled by JS -->
                     </div>
                 </div>
 
                 <!-- Export Section -->
-                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
-                    <div style="display: flex; gap: 8px;">
+                <div style="margin-top: auto; padding-top: var(--spacing-md-lg); border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: var(--spacing-sm);">
+                    <div style="display: flex; gap: var(--spacing-sm);">
                         <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;">📄 CSV Export</button>
                         <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;">📑 PDF Export</button>
                     </div>
-                    <div style="display: flex; gap: 8px;">
+                    <div style="display: flex; gap: var(--spacing-sm);">
                         <button id="embed-open-btn" class="filter-btn" style="flex: 1; justify-content: center;">🔗 Karte einbetten</button>
                         <button id="open-data-export-btn" class="filter-btn" data-i18n-key="open_data_export" style="flex: 1; justify-content: center;" onclick="window.exportActiveLayersData('geojson')" title="Exportiert alle aktiven Karten-Layer als Open-Data GeoJSON">💾 Geodaten-Export</button>
                     </div>
@@ -2554,7 +2547,7 @@
 
                 <button id="embed-copy-btn" class="filter-btn active" style="width: fit-content; background: #10b981; border-color: #10b981; font-weight: 600; color: white;">📋 Code kopieren</button>
 
-                <div style="font-size: 14px; font-weight: 600; color: var(--text-primary); margin-top: 8px;">Live-Vorschau</div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--text-primary); margin-top: var(--spacing-sm);">Live-Vorschau</div>
                 <div class="embed-preview-container">
                     <iframe id="embed-preview-iframe" src="" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
                 </div>
@@ -2638,15 +2631,15 @@
             const escapedContact = btoa(unescape(encodeURIComponent(contactText)));
             
             return `
-                <div class="popup-zustaendigkeit" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border-color); font-size: 11px;">
-                    <div style="font-weight: 600; color: var(--accent-primary); margin-bottom: 2px;">🛡️ Zuständige Behörde:</div>
+                <div class="popup-zustaendigkeit" style="margin-top: var(--spacing-sm); padding-top: var(--spacing-sm); border-top: 1px solid var(--border-color); font-size: 11px;">
+                    <div style="font-weight: 600; color: var(--accent-primary); margin-bottom: var(--spacing-xxs);">🛡️ Zuständige Behörde:</div>
                     <div style="color: var(--text-primary); font-weight: 500;">${p.zustaendigkeit_behoerde}</div>
                     <div style="color: var(--text-secondary); font-size: 10px;">${p.zustaendigkeit_amt}</div>
-                    <div style="margin-top: 4px; display: flex; flex-direction: column; gap: 2px; color: var(--text-secondary);">
+                    <div style="margin-top: var(--spacing-xs); display: flex; flex-direction: column; gap: var(--spacing-xxs); color: var(--text-secondary);">
                         ${p.zustaendigkeit_email ? `<span>✉️ <a href="mailto:${p.zustaendigkeit_email}" style="color: var(--accent-primary); text-decoration: none;">${p.zustaendigkeit_email}</a></span>` : ''}
                         ${p.zustaendigkeit_telefon ? `<span>📞 ${p.zustaendigkeit_telefon}</span>` : ''}
                     </div>
-                    <button class="filter-btn" style="margin-top: 6px; padding: 2px 6px; font-size: 9px; width: 100%; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-secondary); cursor: pointer;" 
+                    <button class="filter-btn" style="margin-top: 6px; padding: var(--spacing-xxs) 6px; font-size: 9px; width: 100%; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-secondary); cursor: pointer;"
                             onclick="copyContactToClipboard('${escapedContact}', this)">📋 Kontakt kopieren</button>
                 </div>
             `;
@@ -2839,7 +2832,7 @@
                                     <div class="popup-title">${p.wsg_name || 'Unbekannt'}</div>
                                     <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'}</div>
                                     <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
-                                    <div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.wsg_name || 'Unbekannt').replace(/'/g, "\\'")}', 'Wasserschutzgebiete', '${p.id || p.wsg_name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>
+                                    <div style="margin-top: var(--spacing-sm); border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.wsg_name || 'Unbekannt').replace(/'/g, "\\'")}', 'Wasserschutzgebiete', '${p.id || p.wsg_name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: var(--spacing-xs);">⚠️ Fehler melden</a></div>
                                     <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
                                 </div>
                             `;
@@ -3151,13 +3144,13 @@
                                 <div class="popup-group" style="color: #94a3b8">Akteur (Stand 2025)</div>
                                 <div class="popup-title">${props.name}</div>
                         `;
-                        if (props.abbreviation) popupContent += `<div style="font-size: 11px; margin-top:-4px; margin-bottom:6px; color:#cbd5e1">${props.abbreviation}</div>`;
+                        if (props.abbreviation) popupContent += `<div style="font-size: 11px; margin-top:-var(--spacing-xs); margin-bottom:6px; color:#cbd5e1">${props.abbreviation}</div>`;
                         popupContent += `<div class="popup-detail">💼 Gruppe: ${props.group}</div>`;
                         if (props.sector) popupContent += `<div class="popup-detail">🏢 Branche: ${props.sector}</div>`;
                         if (props.address) popupContent += `<div class="popup-detail">📍 Adresse: ${props.address}</div>`;
                         if (props.common_projects) popupContent += `<div class="popup-detail">🤝 Projekte: ${props.common_projects}</div>`;
                         const latlng = layer.getLatLng ? layer.getLatLng() : {lat:0, lng:0};
-                        popupContent += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(props.name || '').replace(/'/g, "\\'")}', 'Akteur 2025', '${props.id || props.name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
+                        popupContent += `<div style="margin-top: var(--spacing-sm); border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(props.name || '').replace(/'/g, "\\'")}', 'Akteur 2025', '${props.id || props.name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: var(--spacing-xs);">⚠️ Fehler melden</a></div>`;
                         popupContent += `</div>`;
                         layer.bindPopup(popupContent);
                     }
@@ -3343,7 +3336,7 @@
                             <div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>
                     `;
                     if (p.wsg_zone) {
-                        html += `<div class="popup-detail" style="color: #dc2626; font-weight: bold; background: rgba(220, 38, 38, 0.1); padding: 4.5px 8px; border-radius: 6px; margin-top: 5px; display: flex; align-items: center; gap: 4px;">⚠️ Liegt in Trinkwasserschutzzone: ${p.wsg_zone} (${p.wsg_status || '–'})</div>`;
+                        html += `<div class="popup-detail" style="color: #dc2626; font-weight: bold; background: rgba(220, 38, 38, 0.1); padding: 4.5px var(--spacing-sm); border-radius: 6px; margin-top: 5px; display: flex; align-items: center; gap: var(--spacing-xs);">⚠️ Liegt in Trinkwasserschutzzone: ${p.wsg_zone} (${p.wsg_status || '–'})</div>`;
                     }
                     if (p.mengen_text) {
                         html += `<div class="popup-detail">📊 Abwassermenge: ${p.mengen_text}</div>`;
@@ -3353,7 +3346,7 @@
                     }
                     html += getZustaendigkeitHtml(p);
                     const latlng = layer.getLatLng ? layer.getLatLng() : {lat:0, lng:0};
-                    html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', 'Industrieeinleiter', '${p.betriebs_nr || p.name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
+                    html += `<div style="margin-top: var(--spacing-sm); border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', 'Industrieeinleiter', '${p.betriebs_nr || p.name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: var(--spacing-xs);">⚠️ Fehler melden</a></div>`;
                     html += `
                             <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
                         </div>
@@ -3471,7 +3464,7 @@
                                 : (p.anzahl_betriebe > 0
                                     ? `<div class="popup-detail">💧 Keine Mengenangabe für die Betriebe hier verfügbar</div>`
                                     : '');
-                            html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(title || '').replace(/'/g, "\\'")}', 'Einzugsgebiet-Statistik', '${p.id || title || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
+                            html += `<div style="margin-top: var(--spacing-sm); border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(title || '').replace(/'/g, "\\'")}', 'Einzugsgebiet-Statistik', '${p.id || title || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: var(--spacing-xs);">⚠️ Fehler melden</a></div>`;
                             html += `
                                     <div style="font-size: 10px; color: #475569; margin-top: 6px;">Spatial Join: ELWAS-WEB Industrieeinleiter × LANUV Teileinzugsgebiete (Rur)</div>
                                 </div>
@@ -3782,7 +3775,7 @@
                         border: ${border}px solid #ffffff;
                         transform: rotate(45deg);
                         box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
-                        margin: 2px;
+                        margin: var(--spacing-xxs);
                     "></div>
                 `;
             } else if (group === 'Forschung' || group === 'Netzwerk/ Multiplikator' || group === 'Ver-/ Entsorger') {
@@ -3842,7 +3835,7 @@
                 // CENTRAL: WVER (waves writing)
                 dx = -75; dy = -50;
                 logoHtml = `
-                    <div class="logo-box logo-wver-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                    <div class="logo-box logo-wver-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: var(--spacing-xs); background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
                         <img src="https://wver.de/wp-content/uploads/2025/08/wver-logo.png" alt="WVER">
                     </div>
                 `;
@@ -3858,7 +3851,7 @@
                 // CENTRAL RIGHT: SCHOELLERSHAMMER (Official logo)
                 dx = 30; dy = -50;
                 logoHtml = `
-                    <div class="logo-box logo-schoellershammer-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 130px; height: 42px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                    <div class="logo-box logo-schoellershammer-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: var(--spacing-xs); background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 130px; height: 42px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
                         <img src="https://www.schoellershammer.de/wp-content/themes/schoellershammer/assets/images/logo.png" alt="SCHOELLERSHAMMER">
                     </div>
                 `;
@@ -3874,7 +3867,7 @@
                 // EAST: Smurfit Westrock (Official logo)
                 dx = 30; dy = -20;
                 logoHtml = `
-                    <div class="logo-box logo-smurfit-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 130px; height: 40px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                    <div class="logo-box logo-smurfit-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: var(--spacing-xs); background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 130px; height: 40px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
                         <img src="logos/smurfit_westrock.svg" alt="Smurfit Westrock">
                     </div>
                 `;
@@ -3906,7 +3899,7 @@
                 // NORTH: RLV (Official logo)
                 dx = -120; dy = -20;
                 logoHtml = `
-                    <div class="logo-box logo-rlv-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                    <div class="logo-box logo-rlv-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: var(--spacing-xs); background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
                         <img src="https://www.rlv.de/wp-content/themes/rlv_template_final/assets/img/logo_rlv.png" alt="RLV">
                     </div>
                 `;
@@ -3922,7 +3915,7 @@
                 // WEST ABOVE: Stadt Eschweiler (only logo image)
                 dx = -80; dy = -30;
                 logoHtml = `
-                    <div class="logo-box logo-eschweiler-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px; background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 60px; height: 50px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
+                    <div class="logo-box logo-eschweiler-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: var(--spacing-xs); background: #ffffff; border: 1.2px solid ${color}; display: flex; align-items: center; justify-content: center; width: 60px; height: 50px; box-sizing: border-box; box-shadow: 0 1.5px 5px rgba(0,0,0,0.15); border-radius: 4px;">
                         <img src="logos/stadt_eschweiler.jpg" alt="Stadt Eschweiler">
                     </div>
                 `;
@@ -4153,7 +4146,7 @@
                     `;
                 }
 
-                popupContent += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(props.name || '').replace(/'/g, "\\'")}', 'Akteur', '${props.id || props.name || ''}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
+                popupContent += `<div style="margin-top: var(--spacing-sm); border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(props.name || '').replace(/'/g, "\\'")}', 'Akteur', '${props.id || props.name || ''}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: var(--spacing-xs);">⚠️ Fehler melden</a></div>`;
 
                 popupContent += `</div>`;
 
@@ -4226,12 +4219,12 @@
             div.style.lineHeight = '1.7';
             div.style.color = '#1e293b';
             div.innerHTML = `
-                <div style="font-weight:700; margin-bottom:4px; font-size:12.5px;">Gefahrenkarten</div>
-                <div style="font-size:11px; color:#64748b; margin-bottom:2px;">Fluvial (LANUV)</div>
+                <div style="font-weight:700; margin-bottom:var(--spacing-xs); font-size:12.5px;">Gefahrenkarten</div>
+                <div style="font-size:11px; color:#64748b; margin-bottom:var(--spacing-xxs);">Fluvial (LANUV)</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#fde047; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #ca8a04;"></span>HQ häufig</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#f97316; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #c2410c;"></span>HQ 100</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#dc2626; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #991b1b;"></span>HQ extrem</div>
-                <div style="font-size:11px; color:#64748b; margin-top:6px; margin-bottom:2px;">Pluvial (Kommunen)</div>
+                <div style="font-size:11px; color:#64748b; margin-top:6px; margin-bottom:var(--spacing-xxs);">Pluvial (Kommunen)</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#7c3aed; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #5b21b6;"></span>Starkregen</div>
             `;
             return div;
@@ -5351,7 +5344,7 @@ function buildUnifiedSearchIndex() {
                                 cat: 'einleiter', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng, color,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">💧 Einleitungsart: ${p.einleitungsart || '–'}</div><div class="popup-detail">🚦 Risikoklasse: <strong style="color: ${color};">${risk}</strong></div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}${getZustaendigkeitHtml(p)}<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', 'Industrieeinleiter', '${p.betriebs_nr || p.name || ''}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div></div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">💧 Einleitungsart: ${p.einleitungsart || '–'}</div><div class="popup-detail">🚦 Risikoklasse: <strong style="color: ${color};">${risk}</strong></div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}${getZustaendigkeitHtml(p)}<div style="margin-top: var(--spacing-sm); border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', 'Industrieeinleiter', '${p.betriebs_nr || p.name || ''}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: var(--spacing-xs);">⚠️ Fehler melden</a></div></div>`
                             });
                             if (p.gemeinde) { addAgg(gemeindeAgg, p.gemeinde, lat, lng); addAggDetailed(gemeindeDetailAgg, p.gemeinde, { cat: 'einleiter', lat, lng, props: p }); }
                             (p.gewaesser_liste || '').split(',').map(s => s.trim()).filter(Boolean).forEach(g => addAgg(gewaesserAgg, g, lat, lng));
@@ -5582,7 +5575,7 @@ function buildUnifiedSearchIndex() {
                         <div class="usearch-box" style="position: relative;">
                             <input type="text" id="usearch-input" aria-label="Universalsuche" autocomplete="off" spellcheck="false"
                                    placeholder="🔍 Alles durchsuchen (Akteure, ELWAS, Orte...)" style="padding-right: 60px;">
-                            <span class="cmd-shortcut-hint" onclick="if(window.toggleCommandPalette) window.toggleCommandPalette()" title="Command Palette öffnen (Ctrl+K)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 10px; font-weight: 600; padding: 2px 5px; background: rgba(99, 102, 241, 0.15); border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px; color: var(--accent-primary, #6366f1); cursor: pointer; user-select: none;">Ctrl+K</span>
+                            <span class="cmd-shortcut-hint" onclick="if(window.toggleCommandPalette) window.toggleCommandPalette()" title="Command Palette öffnen (Ctrl+K)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 10px; font-weight: 600; padding: var(--spacing-xxs) 5px; background: rgba(99, 102, 241, 0.15); border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px; color: var(--accent-primary, #6366f1); cursor: pointer; user-select: none;">Ctrl+K</span>
                             <div id="usearch-results" class="usearch-results"></div>
                             <div id="usearch-live-region" class="sr-only" aria-live="polite"></div>
                         </div>
@@ -6120,13 +6113,13 @@ function buildUnifiedSearchIndex() {
                                     map.setView([record.lat, record.lng], targetZoom);
                                     flashPoints([[record.lat, record.lng]], diff.config.color);
 
-                                    let popupHtml = `<div class="popup-title">${record._name}</div><div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">${diff.config.label}</div>`;
+                                    let popupHtml = `<div class="popup-title">${record._name}</div><div style="font-size:12px;color:var(--text-secondary);margin-top:var(--spacing-xs);">${diff.config.label}</div>`;
                                     if (diff.type === 'changed') {
-                                        popupHtml += `<div style="margin-top:8px;font-size:12px;color:#f59e0b;">Status geändert</div>`;
+                                        popupHtml += `<div style="margin-top:var(--spacing-sm);font-size:12px;color:#f59e0b;">Status geändert</div>`;
                                     } else if (diff.type === 'removed') {
-                                        popupHtml += `<div style="margin-top:8px;font-size:12px;color:#ef4444;">Wurde entfernt</div>`;
+                                        popupHtml += `<div style="margin-top:var(--spacing-sm);font-size:12px;color:#ef4444;">Wurde entfernt</div>`;
                                     } else if (diff.type === 'new') {
-                                        popupHtml += `<div style="margin-top:8px;font-size:12px;color:#10b981;">Neu erfasst</div>`;
+                                        popupHtml += `<div style="margin-top:var(--spacing-sm);font-size:12px;color:#10b981;">Neu erfasst</div>`;
                                     }
                                     openStandalonePopup(record.lat, record.lng, popupHtml);
                                 }
@@ -6418,7 +6411,7 @@ function buildUnifiedSearchIndex() {
             const cacheTimeKey = 'feedback-issues-cache-time';
             const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
-            listContainer.innerHTML = '<div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Lädt Meldungen...</div>';
+            listContainer.innerHTML = '<div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: var(--spacing-md) 0;">Lädt Meldungen...</div>';
 
             const now = Date.now();
             const cachedTime = localStorage.getItem(cacheTimeKey);
@@ -6432,7 +6425,7 @@ function buildUnifiedSearchIndex() {
             try {
                 const response = await fetch('https://api.github.com/repos/Dtunder/adb-aquarevier-feedback/issues?state=all&labels=data-feedback&sort=created&direction=desc&per_page=50');
                 if (response.status === 404) {
-                    listContainer.innerHTML = '<div style="font-size: 11px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Meldungs-Kanal bereit. Aktuell keine offenen Daten-Meldungen.</div>';
+                    listContainer.innerHTML = '<div style="font-size: 11px; color: var(--text-secondary, #64748b); text-align: center; padding: var(--spacing-md) 0;">Meldungs-Kanal bereit. Aktuell keine offenen Daten-Meldungen.</div>';
                     return;
                 }
                 if (!response.ok) throw new Error('Network response was not ok');
@@ -6447,18 +6440,18 @@ function buildUnifiedSearchIndex() {
                 if (cachedData) {
                     renderFeedbackIssues(JSON.parse(cachedData), listContainer, true);
                 } else {
-                    listContainer.innerHTML = '<div style="font-size: 11px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Meldungs-Kanal bereit. Aktuell keine offenen Daten-Meldungen.</div>';
+                    listContainer.innerHTML = '<div style="font-size: 11px; color: var(--text-secondary, #64748b); text-align: center; padding: var(--spacing-md) 0;">Meldungs-Kanal bereit. Aktuell keine offenen Daten-Meldungen.</div>';
                 }
             }
         }
 
         function renderFeedbackIssues(issues, container, fromCache) {
             if (issues.length === 0) {
-                container.innerHTML = '<div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Keine gemeldeten Probleme vorhanden.</div>';
+                container.innerHTML = '<div style="font-size: 12px; color: var(--text-secondary, #64748b); text-align: center; padding: var(--spacing-md) 0;">Keine gemeldeten Probleme vorhanden.</div>';
                 return;
             }
 
-            let html = fromCache ? '<div style="font-size: 10px; color: var(--text-secondary, #64748b); text-align: right; margin-bottom: 4px;">(Gecachte Ansicht)</div>' : '';
+            let html = fromCache ? '<div style="font-size: 10px; color: var(--text-secondary, #64748b); text-align: right; margin-bottom: var(--spacing-xs);">(Gecachte Ansicht)</div>' : '';
 
             issues.forEach(issue => {
                 let status = 'offen';
@@ -6552,23 +6545,23 @@ function buildUnifiedSearchIndex() {
 
     <!-- Feedback Modal -->
     <div id="feedback-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center;">
-        <div class="modal-content" style="background: var(--bg-surface, #ffffff); width: 400px; max-width: 90%; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+        <div class="modal-content" style="background: var(--bg-surface, #ffffff); width: 400px; max-width: 90%; border-radius: 8px; padding: var(--spacing-xl); box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-md);">
                 <div>
                     <h3 id="feedback-modal-title" style="margin: 0; font-size: 16px; color: var(--text-primary, #0f172a);">Fehler melden</h3>
-                    <div id="feedback-modal-layer" style="font-size: 12px; color: var(--text-secondary, #64748b); margin-top: 4px;">Layer: -</div>
+                    <div id="feedback-modal-layer" style="font-size: 12px; color: var(--text-secondary, #64748b); margin-top: var(--spacing-xs);">Layer: -</div>
                 </div>
                 <button type="button" onclick="closeFeedbackModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-secondary, #64748b);">&times;</button>
             </div>
 
-            <form id="feedback-form" onsubmit="submitFeedback(event)" style="display: flex; flex-direction: column; gap: 12px;">
+            <form id="feedback-form" onsubmit="submitFeedback(event)" style="display: flex; flex-direction: column; gap: var(--spacing-md);">
                 <input type="hidden" id="feedback-feature-id">
                 <input type="hidden" id="feedback-lat">
                 <input type="hidden" id="feedback-lng">
 
                 <div>
-                    <label for="feedback-category" style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; color: var(--text-primary, #0f172a);">Kategorie *</label>
-                    <select id="feedback-category" required style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);">
+                    <label for="feedback-category" style="display: block; font-size: 13px; font-weight: 500; margin-bottom: var(--spacing-xs); color: var(--text-primary, #0f172a);">Kategorie *</label>
+                    <select id="feedback-category" required style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);">
                         <option value="">-- Bitte wählen --</option>
                         <option value="falscher-wert">Falscher Wert</option>
                         <option value="position">Falsche Position / Koordinaten</option>
@@ -6578,14 +6571,14 @@ function buildUnifiedSearchIndex() {
                 </div>
 
                 <div>
-                    <label for="feedback-text" style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; color: var(--text-primary, #0f172a);">Was ist falsch? *</label>
-                    <textarea id="feedback-text" required minlength="10" rows="4" style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; resize: vertical; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);"></textarea>
-                    <div id="feedback-error" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: none;">Bitte füllen Sie alle Pflichtfelder aus (mind. 10 Zeichen im Text).</div>
+                    <label for="feedback-text" style="display: block; font-size: 13px; font-weight: 500; margin-bottom: var(--spacing-xs); color: var(--text-primary, #0f172a);">Was ist falsch? *</label>
+                    <textarea id="feedback-text" required minlength="10" rows="4" style="width: 100%; padding: var(--spacing-sm); border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; resize: vertical; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);"></textarea>
+                    <div id="feedback-error" style="color: #ef4444; font-size: 11px; margin-top: var(--spacing-xs); display: none;">Bitte füllen Sie alle Pflichtfelder aus (mind. 10 Zeichen im Text).</div>
                 </div>
 
-                <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px;">
-                    <button type="button" onclick="closeFeedbackModal()" style="padding: 8px 12px; border: 1px solid var(--border-color, #e2e8f0); background: transparent; border-radius: 4px; cursor: pointer; color: var(--text-primary, #0f172a);">Abbrechen</button>
-                    <button type="submit" style="padding: 8px 12px; border: none; background: var(--accent-primary, #0ea5e9); color: white; border-radius: 4px; cursor: pointer; font-weight: 500;">Meldung erstellen</button>
+                <div style="display: flex; justify-content: flex-end; gap: var(--spacing-sm); margin-top: var(--spacing-sm);">
+                    <button type="button" onclick="closeFeedbackModal()" style="padding: var(--spacing-sm) var(--spacing-md); border: 1px solid var(--border-color, #e2e8f0); background: transparent; border-radius: 4px; cursor: pointer; color: var(--text-primary, #0f172a);">Abbrechen</button>
+                    <button type="submit" style="padding: var(--spacing-sm) var(--spacing-md); border: none; background: var(--accent-primary, #0ea5e9); color: white; border-radius: 4px; cursor: pointer; font-weight: 500;">Meldung erstellen</button>
                 </div>
             </form>
         </div>
@@ -6641,11 +6634,11 @@ function buildUnifiedSearchIndex() {
                 <div class="scorecard-title" id="textGeneratorTitle">Text generieren</div>
                 <button class="scorecard-close" id="textGeneratorClose">&times;</button>
             </div>
-            <div class="scorecard-body" style="display: flex; flex-direction: column; flex: 1; overflow: hidden; padding: 20px; gap: 15px;">
+            <div class="scorecard-body" style="display: flex; flex-direction: column; flex: 1; overflow: hidden; padding: var(--spacing-xl); gap: var(--spacing-md-lg);">
                 <div id="textGeneratorHint" style="font-size: 14px; color: var(--text-secondary); flex-shrink: 0;"></div>
-                <textarea id="textGeneratorContent" style="flex: 1; min-height: 250px; width: 100%; resize: none; background: rgba(0,0,0,0.2); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 12px; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5;"></textarea>
+                <textarea id="textGeneratorContent" style="flex: 1; min-height: 250px; width: 100%; resize: none; background: rgba(0,0,0,0.2); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: var(--spacing-md); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5;"></textarea>
 
-                <div id="textGeneratorActions" style="display: flex; gap: 10px; flex-shrink: 0;">
+                <div id="textGeneratorActions" style="display: flex; gap: var(--spacing-base); flex-shrink: 0;">
                     <button id="btn-textgen-copy" class="filter-btn" style="flex: 1; justify-content: center; display: none;">📋 In Zwischenablage kopieren</button>
                     <button id="btn-textgen-txt" class="filter-btn" style="flex: 1; justify-content: center; display: none;">💾 Als .txt herunterladen</button>
                     <button id="btn-textgen-docx" class="filter-btn" style="flex: 1; justify-content: center; display: none;">💾 Als .docx herunterladen</button>

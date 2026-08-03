@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="css/style.css"/>
     <style>
         :root {
             --bg-base: #0b0f19;
@@ -46,7 +47,7 @@
             display: flex;
             flex-direction: column;
             overflow-y: auto;
-            padding: 20px;
+            padding: var(--spacing-xl);
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -70,8 +71,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
+            margin-bottom: var(--spacing-3xl);
+            padding-bottom: var(--spacing-md-lg);
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -92,7 +93,7 @@
         .theme-btn {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
-            padding: 8px;
+            padding: var(--spacing-sm);
             border-radius: 50%;
             font-size: 14px;
             width: 36px;
@@ -115,7 +116,7 @@
             font-family: 'Outfit', sans-serif;
             font-size: 32px;
             font-weight: 700;
-            margin-bottom: 24px;
+            margin-bottom: var(--spacing-xxl);
             background: linear-gradient(135deg, #a5b4fc, #6366f1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -138,7 +139,7 @@
         .content h3 {
             font-size: 16px;
             font-weight: 600;
-            margin: 18px 0 10px 0;
+            margin: 18px 0 var(--spacing-base) 0;
             color: var(--text-primary);
         }
 
@@ -146,25 +147,25 @@
             font-size: 14px;
             line-height: 1.6;
             color: var(--text-secondary);
-            margin-bottom: 16px;
+            margin-bottom: var(--spacing-lg);
         }
 
         .content hr {
             border: 0;
             border-top: 1px solid var(--border-color);
-            margin: 24px 0;
+            margin: var(--spacing-xxl) 0;
         }
 
         .content ul {
-            margin-bottom: 16px;
-            padding-left: 20px;
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-xl);
         }
 
         .content li {
             font-size: 14px;
             line-height: 1.6;
             color: var(--text-secondary);
-            margin-bottom: 8px;
+            margin-bottom: var(--spacing-sm);
         }
 
         .content a {
@@ -180,11 +181,11 @@
             background: rgba(239, 68, 68, 0.1);
             border: 1px solid rgba(239, 68, 68, 0.2);
             color: #f87171;
-            padding: 16px;
+            padding: var(--spacing-lg);
             border-radius: 8px;
             font-size: 14px;
             line-height: 1.5;
-            margin-top: 20px;
+            margin-top: var(--spacing-xl);
         }
 
         .error-message a {
@@ -195,8 +196,8 @@
 
         @media (max-width: 640px) {
             .container {
-                padding: 24px;
-                margin: 10px auto;
+                padding: var(--spacing-xxl);
+                margin: var(--spacing-base) auto;
             }
             .content h1 {
                 font-size: 26px;

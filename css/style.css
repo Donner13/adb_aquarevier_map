@@ -1,0 +1,23 @@
+/* Group Colors */
+:root {
+    --color-behorde: #D55E00;
+    --color-forschung: #0072B2;
+    --color-gebietskorperschaft: #E69F00;
+    --color-gewerbe: #CC79A7;
+    --color-landwirtschaft: #009E73;
+    --color-netzwerk: #56B4E9;
+    --color-entsorger: #F0E442;
+    --color-sonstige: #595959;
+
+    /* Spacing Scale */
+    --spacing-xxs: 2px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-base: 10px;
+    --spacing-md: 12px;
+    --spacing-md-lg: 15px;
+    --spacing-lg: 16px;
+    --spacing-xl: 20px;
+    --spacing-xxl: 24px;
+    --spacing-3xl: 30px;
+}
