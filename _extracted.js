@@ -756,46 +756,8 @@
             });
         }
 
-        // Filter button toggle logic
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const group = btn.getAttribute('data-group');
-                if (!group) return;
+/* neutralised duplicate filter-btn listener */
 
-                if (group === 'all') {
-                    const isAnyInactive = activeFilters.size < Object.keys(groupColors).length;
-                    document.querySelectorAll('.filter-btn[data-group]').forEach(b => {
-                        const bg = b.getAttribute('data-group');
-                        if (bg === 'all') return;
-                        if (isAnyInactive) {
-                            b.classList.add('active'); b.classList.remove('inactive'); b.setAttribute('aria-pressed', 'true');
-                            activeFilters.add(bg);
-                        } else {
-                            b.classList.remove('active'); b.classList.add('inactive'); b.setAttribute('aria-pressed', 'false');
-                            activeFilters.delete(bg);
-                        }
-                    });
-                } else {
-                    if (activeFilters.has(group)) {
-                        activeFilters.delete(group);
-                        btn.classList.remove('active'); btn.classList.add('inactive'); btn.setAttribute('aria-pressed', 'false');
-                    } else {
-                        activeFilters.add(group);
-                        btn.classList.add('active'); btn.classList.remove('inactive'); btn.setAttribute('aria-pressed', 'true');
-                    }
-                }
-                
-                // Update All btn active state
-                const allBtn = document.querySelector('.filter-btn[data-group="all"]');
-                if (activeFilters.size === Object.keys(groupColors).length) {
-                    allBtn.classList.add('active'); allBtn.classList.remove('inactive'); allBtn.setAttribute('aria-pressed', 'true');
-                } else {
-                    allBtn.classList.remove('active'); allBtn.classList.add('inactive'); allBtn.setAttribute('aria-pressed', 'false');
-                }
-
-                renderMapAndSidebar();
-            });
-        });
 
         // Search trigger
         document.getElementById('search-input').addEventListener('input', renderMapAndSidebar);
