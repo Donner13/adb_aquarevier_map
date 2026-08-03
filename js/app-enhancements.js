@@ -410,10 +410,16 @@
                     // Match overlay layer to dataStore entry
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
-                        if (storeData && storeData.features) {
+                        if (storeData && Array.isArray(storeData.features)) {
                             storeData.features.forEach(f => {
+                                // Type Assertions
+                                if (typeof f !== 'object' || f === null) return;
+                                if (f.type !== 'Feature') return;
+                                if (f.geometry !== null && typeof f.geometry !== 'object') return;
+
                                 const featCopy = JSON.parse(JSON.stringify(f));
-                                featCopy.properties._layer_name = key;
+                                featCopy.properties = featCopy.properties || {};
+                                featCopy.properties._layer_name = String(key);
                                 activeFeatures.push(featCopy);
                             });
                         }
@@ -425,10 +431,16 @@
         if (activeFeatures.length === 0 && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
-                if (storeData && storeData.features) {
+                if (storeData && Array.isArray(storeData.features)) {
                     storeData.features.forEach(f => {
+                        // Type Assertions
+                        if (typeof f !== 'object' || f === null) return;
+                        if (f.type !== 'Feature') return;
+                        if (f.geometry !== null && typeof f.geometry !== 'object') return;
+
                         const featCopy = JSON.parse(JSON.stringify(f));
-                        featCopy.properties._layer_name = key;
+                        featCopy.properties = featCopy.properties || {};
+                        featCopy.properties._layer_name = String(key);
                         activeFeatures.push(featCopy);
                     });
                 }
