@@ -8,18 +8,53 @@ Es gibt nun zwei Versionen der Web-Karte:
 
 ---
 
+## 🏗️ Frontend Data Flow Architecture
+
+```mermaid
+graph TD
+    A[GeoJSON Files<br>contacts.geojson, etc.] -->|Fetch| B(js/layers-loader.js)
+    B -->|Parse & Build Layers| C{Leaflet Map}
+    C -->|Render| D[Browser UI]
+
+    E[js/layers-config.js] -->|Configuration| B
+
+    F[User Interactions<br>Search, Filter] -->|Events| G[js/app.js / Universal Search]
+    G -->|Update Map| C
+
+    H[External WMS Services<br>LANUV, Geobasis NRW] -->|WMS Tiles| C
+```
+
 ## 🚀 Schnellstart
 
-### 1. Server starten
+### 1. Abhängigkeiten installieren
+Vor dem ersten Start müssen die nötigen Pakete installiert werden:
+
+```bash
+npm install
+```
+
+### 2. Server starten
 Falls der Server nicht bereits im Hintergrund läuft, starte den Webserver im Projektverzeichnis:
 
-```powershell
-python C:\Users\user\.gemini\antigravity-ide\scratch\contact_map\server.py
+```bash
+python server.py
 ```
 
 Öffne anschließend deinen Browser unter:
 👉 Öffentliche Karte: **[http://localhost:8000](http://localhost:8000)**
 👉 Interne Verwaltungskarte: **[http://localhost:8000/internal.html](http://localhost:8000/internal.html)**
+
+### 3. Tests ausführen
+Um die Funktionsfähigkeit sicherzustellen, können die folgenden Tests ausgeführt werden:
+
+- **Playwright UI-Regressionstests:**
+  ```bash
+  npm run test
+  ```
+- **Sidebar-Filter-Tests:**
+  ```bash
+  python3 test_filters.py
+  ```
 
 ---
 
