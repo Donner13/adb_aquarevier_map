@@ -132,5 +132,6 @@ test.describe('Search Bar Query Normalization - Unit Tests', () => {
             return window.queryUniversalSearch('test');
         });
         expect(results.length).toBe(15);
+        expect(results.every(r => r.title.startsWith('TestGemeinde'))).toBe(true);
     });
 });
