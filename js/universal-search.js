@@ -130,14 +130,30 @@
             if (inputElem.parentNode) {
                 inputElem.parentNode.style.position = 'relative';
                 inputElem.parentNode.appendChild(dropdown);
+
+                let liveRegion = document.getElementById('universal-search-live-region');
+                if (!liveRegion) {
+                    liveRegion = document.createElement('div');
+                    liveRegion.id = 'universal-search-live-region';
+                    liveRegion.className = 'sr-only';
+                    liveRegion.setAttribute('aria-live', 'polite');
+                    liveRegion.style.cssText = 'position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;';
+                    inputElem.parentNode.appendChild(liveRegion);
+                }
             }
         }
 
         if (!results || results.length === 0) {
             dropdown.style.display = 'none';
+            const liveRegion = document.getElementById('universal-search-live-region');
+            if (liveRegion) liveRegion.textContent = inputElem.value.trim().length >= 2 ? "Keine Treffer gefunden" : "";
             return;
         }
 
+        const liveRegion = document.getElementById('universal-search-live-region');
+        if (liveRegion) {
+            liveRegion.textContent = results.length + " Ergebnisse gefunden";
+        }
         let html = '';
         results.forEach((item, idx) => {
             html += `

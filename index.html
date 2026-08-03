@@ -1993,6 +1993,18 @@
                 /* display: none !important; */
             }
         }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
     </style>
 
 </head>
@@ -5582,6 +5594,7 @@ function buildUnifiedSearchIndex() {
                                    placeholder="🔍 Alles durchsuchen (Akteure, ELWAS, Orte...)" style="padding-right: 60px;">
                             <span class="cmd-shortcut-hint" onclick="if(window.toggleCommandPalette) window.toggleCommandPalette()" title="Command Palette öffnen (Ctrl+K)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 10px; font-weight: 600; padding: 2px 5px; background: rgba(99, 102, 241, 0.15); border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px; color: var(--accent-primary, #6366f1); cursor: pointer; user-select: none;">Ctrl+K</span>
                             <div id="usearch-results" class="usearch-results"></div>
+                            <div id="usearch-live-region" class="sr-only" aria-live="polite"></div>
                         </div>
                     `;
                     L.DomEvent.disableClickPropagation(container);
@@ -5630,12 +5643,16 @@ function buildUnifiedSearchIndex() {
             }
 
             function renderResults(matches) {
+                const liveRegion = document.getElementById('usearch-live-region');
                 if (!matches.length) {
                     const q = usearchInput.value.trim();
                     usearchResults.innerHTML = q.length >= 2 ? `<div class="usearch-empty">Keine Treffer für „${q}"</div>` : '';
                     usearchResults.style.display = q.length >= 2 ? 'block' : 'none';
+                    if (liveRegion && q.length >= 2) liveRegion.textContent = "Keine Treffer gefunden";
+                    else if (liveRegion) liveRegion.textContent = "";
                     return;
                 }
+                if (liveRegion) liveRegion.textContent = matches.length + " Ergebnisse gefunden";
                 usearchResults.innerHTML = matches.map((r, i) => `
                     <div class="usearch-item" data-idx="${i}">
                         <span class="usearch-tag" style="background:${r.color}22; color:${r.color}">${r.catLabel}</span>
