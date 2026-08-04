@@ -52,7 +52,62 @@ def get_coordinates(geometry):
 
     return flatten(geometry.get('coordinates'))
 
+def check_geometry_schema(geometry, feature_id, feature_index):
+    """
+    Recursively check geometry schemas, specifically supporting nested GeometryCollections.
+    Returns a list of error dictionaries.
+    """
+    errors = []
+
+    if not isinstance(geometry, dict):
+        errors.append({
+            'feature_index': feature_index,
+            'feature_id': feature_id,
+            'message': 'Missing or invalid geometry structure'
+        })
+        return errors
+
+    geom_type = geometry.get('type')
+
+    if geom_type not in VALID_GEOMETRY_TYPES:
+        errors.append({
+             'feature_index': feature_index,
+             'feature_id': feature_id,
+             'message': f"Invalid geometry type: {geom_type}"
+         })
+    elif geom_type == 'GeometryCollection':
+         if 'geometries' not in geometry or not isinstance(geometry['geometries'], list):
+             errors.append({
+                 'feature_index': feature_index,
+                 'feature_id': feature_id,
+                 'message': 'GeometryCollection missing or invalid geometries array'
+             })
+         elif len(geometry['geometries']) == 0:
+             errors.append({
+                 'feature_index': feature_index,
+                 'feature_id': feature_id,
+                 'message': 'GeometryCollection contains empty geometries array'
+             })
+         else:
+             for geom in geometry['geometries']:
+                 # Recursively check each inner geometry, allowing nested GeometryCollections
+                 errors.extend(check_geometry_schema(geom, feature_id, feature_index))
+    else:
+        # Standard geometries need a valid coordinates array
+        if 'coordinates' not in geometry or not isinstance(geometry['coordinates'], list) or len(geometry['coordinates']) == 0:
+            errors.append({
+                 'feature_index': feature_index,
+                 'feature_id': feature_id,
+                 'message': f"Invalid geometry coordinates format for {geom_type}"
+             })
+
+    return errors
+
+
 def generate_html_report(results, report_path):
+    # Calculate features with errors (unique feature indices)
+    features_with_errors = set(err.get('feature_index') for err in results.get('errors', []) if err.get('feature_index') is not None)
+
     html_content = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -69,7 +124,7 @@ th {{ background-color: #f2f2f2; }}
 <body>
 <h1>GeoJSON Data Quality Report</h1>
 <p>Total features checked: <strong>{results.get('total_features', 0)}</strong></p>
-<p>Features with errors: <strong>{len(results.get('errors', []))}</strong></p>
+<p>Features with errors: <strong>{len(features_with_errors)}</strong> (Total error messages: <strong>{len(results.get('errors', []))}</strong>)</p>
 """
     if results.get('errors'):
         html_content += """
@@ -187,56 +242,20 @@ def main():
 
         # Geometry schema and NRW Bounding Box check
         geometry = feature.get('geometry')
+
+        # 1. Structural Validation (handles GeometryCollection natively via recursion)
+        geom_errors = check_geometry_schema(geometry, feature_id, i)
+        results['errors'].extend(geom_errors)
+
+        # 2. Coordinate Extraction & Validation
         if isinstance(geometry, dict):
-            geom_type = geometry.get('type')
-
-            if geom_type not in VALID_GEOMETRY_TYPES:
-                results['errors'].append({
-                     'feature_index': i,
-                     'feature_id': feature_id,
-                     'message': f"Invalid geometry type: {geom_type}"
-                 })
-            elif geom_type == 'GeometryCollection':
-                 if 'geometries' not in geometry or not isinstance(geometry['geometries'], list):
-                     results['errors'].append({
-                         'feature_index': i,
-                         'feature_id': feature_id,
-                         'message': 'GeometryCollection missing or invalid geometries array'
-                     })
-                 elif len(geometry['geometries']) == 0:
-                     results['errors'].append({
-                         'feature_index': i,
-                         'feature_id': feature_id,
-                         'message': 'GeometryCollection contains empty geometries array'
-                     })
-                 else:
-                     for geom in geometry['geometries']:
-                         if not isinstance(geom, dict) or geom.get('type') not in VALID_GEOMETRY_TYPES or geom.get('type') == 'GeometryCollection':
-                              results['errors'].append({
-                                 'feature_index': i,
-                                 'feature_id': feature_id,
-                                 'message': 'GeometryCollection contains invalid geometry'
-                             })
-                         elif 'coordinates' not in geom or not isinstance(geom['coordinates'], list) or len(geom['coordinates']) == 0:
-                              results['errors'].append({
-                                 'feature_index': i,
-                                 'feature_id': feature_id,
-                                 'message': 'GeometryCollection contains geometry with invalid or empty coordinates'
-                             })
-            elif 'coordinates' not in geometry or not isinstance(geometry['coordinates'], list) or len(geometry['coordinates']) == 0:
-                results['errors'].append({
-                     'feature_index': i,
-                     'feature_id': feature_id,
-                     'message': 'Invalid geometry coordinates format'
-                 })
-
-            # Proceed with bounding box check if no prior schema errors for this feature
-            has_schema_error = any(e['feature_index'] == i and 'Invalid geometry' in e['message'] for e in results['errors'])
-
             coords = get_coordinates(geometry)
-            if not coords and geom_type != 'GeometryCollection':
-                # Empty coordinates array (or nested empty arrays) should be flagged if not already
-                if not any(e['feature_index'] == i and 'coordinates' in e['message'] for e in results['errors']):
+
+            # If coordinates are entirely missing or empty, and it wasn't already caught by structural validation
+            # (e.g., deeply nested empty arrays like [[[]]])
+            if not coords:
+                # We only want to flag this if it's not a generic GeometryCollection issue already caught
+                if geometry.get('type') != 'GeometryCollection' and not any(e['feature_index'] == i and 'coordinates' in e['message'] for e in geom_errors):
                     results['errors'].append({
                         'feature_index': i,
                         'feature_id': feature_id,
@@ -268,11 +287,12 @@ def main():
                         'message': f"Coordinates outside NRW Bounding Box: {out_of_bounds[0]} (and possibly others)"
                     })
         else:
-             results['errors'].append({
-                 'feature_index': i,
-                 'feature_id': feature_id,
-                 'message': 'Missing or invalid geometry'
-             })
+            if not any(e['feature_index'] == i and 'Missing or invalid geometry' in e['message'] for e in geom_errors):
+                 results['errors'].append({
+                     'feature_index': i,
+                     'feature_id': feature_id,
+                     'message': 'Missing or invalid geometry'
+                 })
 
     generate_html_report(results, args.html_report)
     generate_json_report(results, args.json_report)
