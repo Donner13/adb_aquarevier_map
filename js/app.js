@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span id="stakeholder-metric-gewerbe">Keine Daten verfügbar</span>
             </div>
 
-            <button onclick="window.print()" style="margin-top: 16px; padding: 8px 16px; background: #0ea5e9; color: white; border: none; border-radius: 4px; cursor: pointer;" class="print-btn">Steckbrief drucken</button>
+            <button class="print-btn" style="margin-top: 16px; padding: 8px 16px; background: #0ea5e9; color: white; border: none; border-radius: 4px; cursor: pointer;">Steckbrief drucken</button>
         `;
 
         modalOverlay.appendChild(modalContent);
@@ -65,72 +65,63 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalOverlay.style.display = 'none';
             }
         });
+
+        // Print event (fixes CSP issue)
+        modalContent.querySelector('.print-btn').addEventListener('click', () => {
+            window.print();
+        });
     }
 
     // Show modal function
     window.openStakeholderModal = function(gemeindeName) {
-        document.getElementById('stakeholder-modal-title').textContent = \`Gemeinde-Steckbrief: \${gemeindeName}\`;
-
-        // Within js/app.js, we don't have access to real metrics for these
-        // constraints requested "no dummy data", so they remain default "Keine Daten verfügbar".
-
+        document.getElementById('stakeholder-modal-title').textContent = `Gemeinde-Steckbrief: ${gemeindeName}`;
         modalOverlay.style.display = 'flex';
     };
 
-    // Global Click Hook for "Gemeinde" Layers on the map
-    map.on('click', (e) => {
-        // If clicking on a Gemeinde-Polygon or similar marker that passes the name
-        // we'd want to find the feature. Wait, standard leaflet clicks on map don't give the feature.
-        // We can hook into popupopen or layer click if any.
-        // Leaflet layer click events are propagated to the map if not stopped.
-    });
-
-    // Better hook: intercept popup opens to see if it's a Gemeinde.
-    // Wait, the prompt says "bei Gemeinde-Klick".
-    // We can iterate layers and attach click events if they look like a Gemeinde,
-    // or just listen to map layer clicks broadly.
+    // Better global click hook to catch all layers including MarkerClusters or Groups
+    // We listen to the map's popupopen event, which fires reliably when a feature is clicked
+    // and a popup is shown.
     map.on('popupopen', (e) => {
-        // Try to infer gemeinde name from popup if it has one, or feature properties
         const layer = e.popup._source;
         if (layer && layer.feature && layer.feature.properties) {
             const props = layer.feature.properties;
-
-            // Check if it's a Gemeinde polygon or has 'gemeinde' in properties
-            // If the layer is specifically representing a Gemeinde:
             if (props.cat === 'gemeinde' || props.GN || props.gemeinde) {
-                const gemeindeName = props.GN || props.gemeinde || props.name || 'Unbekannt';
-
-                // Add a button to the popup to open the stakeholder modal?
-                // The task says "bei Gemeinde-Klick", which might mean directly opening it.
-                // But opening it over a popup might be annoying. Let's just hook the click directly.
+                const name = props.GN || props.gemeinde || props.name || 'Unbekannt';
+                // Delay opening to not interfere with map panning
+                setTimeout(() => {
+                    window.openStakeholderModal(name);
+                }, 300);
             }
         }
     });
 
-    // Let's hook into layer clicks directly for anything that looks like a Gemeinde
-    map.eachLayer((layer) => {
+    // We also attach to existing and new layers directly in case they don't have popups
+    function attachGemeindeClick(layer) {
         if (layer.feature && layer.feature.properties) {
             const props = layer.feature.properties;
-            // Best guess for a Gemeinde-layer based on typical NRW properties (GN = Gemeindename)
-            if (props.cat === 'gemeinde' || (props.GN && !props.kreis)) {
-                layer.on('click', (e) => {
+            if (props.cat === 'gemeinde' || props.GN) {
+                layer.on('click', () => {
                     window.openStakeholderModal(props.GN || props.name || 'Unbekannt');
                 });
             }
         }
+    }
+
+    map.eachLayer((layer) => {
+        // If it's a layer group or marker cluster, iterate its layers
+        if (layer.eachLayer) {
+            layer.eachLayer(attachGemeindeClick);
+        } else {
+            attachGemeindeClick(layer);
+        }
     });
 
-    // Also listen for new layers added to the map to attach the hook dynamically
     map.on('layeradd', (e) => {
         const layer = e.layer;
-        if (layer && layer.feature && layer.feature.properties) {
-            const props = layer.feature.properties;
-            // Hook if the feature represents a Gemeinde
-            if (props.cat === 'gemeinde' || props.GN) {
-                layer.on('click', (event) => {
-                    window.openStakeholderModal(props.GN || props.name || 'Unbekannt');
-                });
-            }
+        if (layer.eachLayer) {
+            layer.eachLayer(attachGemeindeClick);
+        } else {
+            attachGemeindeClick(layer);
         }
     });
 
