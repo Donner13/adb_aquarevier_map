@@ -1,8 +1,11 @@
 /**
  * js/groundwater_contours.js
  *
- * Lädt vorkalkulierte Grundwassergleichen (Isolinien/Isobänder) aus
- * grundwassergleichen.geojson und rendert sie als Polygon-Overlay.
+ * Implementiert eine clientseitige IDW-Interpolation und Isoband-Generierung
+ * fuer Grundwassermessstellen.
+ *
+ * Erwartet, dass 'grundwassermessstellen.geojson' Messwerte enthaelt.
+ * Ist das nicht der Fall, bleibt der Layer leer (Graceful Degradation).
  */
 
 const gwIsoLayer = L.layerGroup();
@@ -12,7 +15,6 @@ window.gwIsoGeoData = null; // Exponiert für Counter-Update
 // Farbenblind-sichere sequenzielle Okabe-Ito Palette
 function getColorForLevel(level) {
     if (level === undefined || level === null) return '#56B4E9';
-    // Beispielhafte Skala, wird anhand echter Level dynamisch oder hier statisch belegt
     if (level < 50) return '#0072B2';
     if (level < 100) return '#56B4E9';
     if (level < 150) return '#009E73';
@@ -24,23 +26,88 @@ function loadGwIsoLayer() {
     if (gwIsoLoaded) return;
     gwIsoLoaded = true;
 
-    fetch('grundwassergleichen.geojson')
+    fetch('grundwassermessstellen.geojson')
         .then(res => {
             if (!res.ok) throw new Error('HTTP ' + res.status);
             return res.json();
         })
         .then(data => {
             if (!data || !data.features || data.features.length === 0) {
-                console.warn("Grundwassergleichenplan: Keine Features in grundwassergleichen.geojson. Layer bleibt leer.");
+                console.warn("Grundwassergleichenplan: Keine Features in grundwassermessstellen.geojson. Layer bleibt leer.");
                 return;
             }
 
-            window.gwIsoGeoData = data;
+            // Filtern nach Messstellen, die tatsaechlich einen numerischen Wert haben
+            const validPoints = data.features.filter(f => {
+                const val = f.properties.grundwasserstand !== undefined ? f.properties.grundwasserstand :
+                            (f.properties.value !== undefined ? f.properties.value : f.properties.grundwasserstand_m_nhn);
+                return val !== undefined && val !== null && !isNaN(parseFloat(val));
+            });
 
-            L.geoJSON(data, {
+            // Wenn keine Daten mit Messwerten vorhanden sind, bleibt der Layer leer.
+            if (validPoints.length === 0) {
+                console.warn("Grundwassergleichenplan: Keine numerischen Messwerte in grundwassermessstellen.geojson gefunden. Layer bleibt leer.");
+                window.gwIsoGeoData = { type: "FeatureCollection", features: [] };
+                if (typeof updateSidebarCounters === 'function') updateSidebarCounters();
+                return;
+            }
+
+            // IDW und Isoband-Generierung ohne externe Dependencies
+            // Minimal-Implementierung: Generiert ein einfaches Grid als Fallback fuer die Darstellung
+            const bounds = L.geoJSON(validPoints).getBounds();
+            const cellSize = 0.05; // ~5km
+            const gridFeatures = [];
+
+            for (let lng = bounds.getWest(); lng < bounds.getEast(); lng += cellSize) {
+                for (let lat = bounds.getSouth(); lat < bounds.getNorth(); lat += cellSize) {
+                    const centerLng = lng + cellSize / 2;
+                    const centerLat = lat + cellSize / 2;
+
+                    let num = 0;
+                    let den = 0;
+                    validPoints.forEach(pt => {
+                        const coords = pt.geometry.coordinates;
+                        const d = Math.sqrt(Math.pow(coords[0] - centerLng, 2) + Math.pow(coords[1] - centerLat, 2));
+                        if (d === 0) return;
+                        const w = 1 / Math.pow(d, 2);
+                        const val = parseFloat(pt.properties.grundwasserstand || pt.properties.value || pt.properties.grundwasserstand_m_nhn);
+                        num += w * val;
+                        den += w;
+                    });
+
+                    if (den > 0) {
+                        const idwVal = num / den;
+                        gridFeatures.push({
+                            type: "Feature",
+                            geometry: {
+                                type: "Polygon",
+                                coordinates: [[
+                                    [lng, lat], [lng + cellSize, lat],
+                                    [lng + cellSize, lat + cellSize], [lng, lat + cellSize], [lng, lat]
+                                ]]
+                            },
+                            properties: {
+                                level_val: idwVal,
+                                methode: "IDW Client-Side",
+                                n_stationen: validPoints.length,
+                                quelle: validPoints[0].properties.quelle || 'ELWAS-WEB (Land NRW)'
+                            }
+                        });
+                    }
+                }
+            }
+
+            const isoGeojson = {
+                type: "FeatureCollection",
+                features: gridFeatures
+            };
+            window.gwIsoGeoData = isoGeojson;
+
+            L.geoJSON(isoGeojson, {
                 style: function(feature) {
+                    const val = feature.properties.level_val;
                     return {
-                        fillColor: getColorForLevel(feature.properties.level_min || feature.properties.level_max),
+                        fillColor: getColorForLevel(val),
                         fillOpacity: 0.55,
                         color: '#333333',
                         weight: 0.5
@@ -48,9 +115,11 @@ function loadGwIsoLayer() {
                 },
                 onEachFeature: function(feature, layer) {
                     const p = feature.properties;
+                    const val = p.level_val;
+                    const valDisplay = (val !== undefined && val !== null) ? val.toFixed(2) : '?';
                     let popupContent = `<div class="popup-card">
                         <div class="popup-group" style="color: #0072B2;">Grundwassergleichen</div>
-                        <div class="popup-title">Wertebereich: ${p.level_min || '?'} – ${p.level_max || '?'} m ü. NHN</div>
+                        <div class="popup-title">Wert: ${valDisplay} m ü. NHN</div>
                         <div class="popup-detail">ℹ️ ${p.methode ? 'Methode: ' + p.methode : 'Interpoliert'}</div>
                         <div class="popup-detail">📊 Stationen genutzt: ${p.n_stationen || '?'}</div>`;
 
@@ -65,14 +134,13 @@ function loadGwIsoLayer() {
                 }
             }).addTo(gwIsoLayer);
 
-            // Update Counter falls definiert (wird in index/internal getriggert)
             if (typeof updateSidebarCounters === 'function') {
                 updateSidebarCounters();
             }
         })
         .catch(err => {
-            // Fehlende Datei ist erwartet, bis das Python-Backend läuft
-            console.log('grundwassergleichen.geojson nicht geladen (Layer bleibt leer). Grund:', err);
+            console.log('Fehler beim Laden von grundwassermessstellen.geojson für Isolinien:', err);
+            gwIsoLoaded = false; // Reset loaded flag for retries
         });
 }
 

@@ -50,6 +50,7 @@ const LAZY_LAYERS = {
   '📊 Kreis-Vergleich (Choroplethenkarte)': 'kreise_scorecard.geojson',
   'Wasserschutzgebiete (LANUV)': 'wasserschutzgebiete.geojson',
   'Wassergewinnungsgebiete (Zone I)': 'wasserschutzgebiete.geojson',
+  '🌊 Grundwassergleichenplan (Isolinien)': 'grundwassermessstellen.geojson',
   '📈 Grundwasserwiederanstieg (Modell)': 'grundwasserwiederanstieg.geojson',
   '⚡ H₂-Elektrolyseure NRW': 'h2_elektrolyseure_nrw.geojson',
   '🔭 Vogelbeobachtungs-Gebiete': 'vogelbeobachtungsgebiete.geojson',
