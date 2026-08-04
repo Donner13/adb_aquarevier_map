@@ -404,7 +404,6 @@
     window.exportActiveLayersData = function (format = 'geojson') {
 
         const activeFeatures = [];
-        const seenFeatures = new Set();
 
 
         // Strict number check: Must be number, not NaN, not Infinity
@@ -495,16 +494,12 @@
                                     // Type Assertions
                                     assertValidFeature(f);
 
-                                    // Deduplicate to avoid the bug where multiple active overlays duplicate all layerDataStore features
-                                    if (!seenFeatures.has(f)) {
-                                        seenFeatures.add(f);
-                                        const featCopy = JSON.parse(JSON.stringify(f));
-                                        if (!featCopy.properties || featCopy.properties === null) {
-                                            featCopy.properties = {};
-                                        }
-                                        featCopy.properties._layer_name = String(key);
-                                        activeFeatures.push(featCopy);
+                                    const featCopy = JSON.parse(JSON.stringify(f));
+                                    if (!featCopy.properties || featCopy.properties === null) {
+                                        featCopy.properties = {};
                                     }
+                                    featCopy.properties._layer_name = String(key);
+                                    activeFeatures.push(featCopy);
                                 } catch (e) {
                                     console.warn("Invalid GeoJSON Feature skipped:", e.message);
                                 }
