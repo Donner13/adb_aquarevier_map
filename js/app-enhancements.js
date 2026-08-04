@@ -468,9 +468,7 @@
         };
 
         const isValidProperties = (obj) => {
-            if (typeof obj !== 'object' || obj === null) return false;
-            const proto = Object.getPrototypeOf(obj);
-            return true; // allow any serializable object
+            return typeof obj === 'object' && obj !== null;
         };
 
         const assertValidFeature = (f) => {
@@ -489,26 +487,17 @@
                         const storeData = window.layerDataStore[key];
                         if (storeData && storeData.features) {
                             storeData.features.forEach(f => {
-                                try {
-                                    // Type Assertions
-                                    assertValidFeature(f);
+                                // Type Assertions
+                                if (format === 'geojson') assertValidFeature(f);
 
-                                    // Catch stringify errors immediately per feature to prevent entire export failure
-                                    let featCopy;
-                                    try {
-                                        featCopy = JSON.parse(JSON.stringify(f));
-                                    } catch (err) {
-                                        throw new TypeError('Feature is not JSON serializable (e.g., cyclic reference)');
-                                    }
+                                // If JSON.parse(JSON.stringify) fails, it will throw natively.
+                                const featCopy = JSON.parse(JSON.stringify(f));
 
-                                    if (!featCopy.properties || featCopy.properties === null) {
-                                        featCopy.properties = {};
-                                    }
-                                    featCopy.properties._layer_name = String(key);
-                                    activeFeatures.push(featCopy);
-                                } catch (e) {
-                                    console.warn("Invalid GeoJSON Feature skipped:", e.message);
+                                if (!featCopy.properties || featCopy.properties === null) {
+                                    featCopy.properties = {};
                                 }
+                                featCopy.properties._layer_name = String(key);
+                                activeFeatures.push(featCopy);
                             });
                         }
                     });
@@ -523,7 +512,7 @@
                     storeData.features.forEach(f => {
                         try {
                             // Type Assertions
-                            assertValidFeature(f);
+                            if (format === 'geojson') assertValidFeature(f);
 
                             let featCopy;
                             try {
