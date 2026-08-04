@@ -3,6 +3,7 @@ import argparse
 import sys
 import os
 import html
+import math
 from datetime import datetime
 
 # NRW Bounding Box (approximate)
@@ -18,6 +19,8 @@ def check_coords_in_bbox(lon, lat):
     if not isinstance(lon, (int, float)) or not isinstance(lat, (int, float)):
         return False
     if isinstance(lon, bool) or isinstance(lat, bool):
+        return False
+    if math.isnan(lon) or math.isinf(lon) or math.isnan(lat) or math.isinf(lat):
         return False
     return (NRW_BBOX["min_lon"] <= lon <= NRW_BBOX["max_lon"]) and (NRW_BBOX["min_lat"] <= lat <= NRW_BBOX["max_lat"])
 
@@ -58,16 +61,21 @@ def check_geometry(geometry, feature_id, results):
             results["errors"].append(f"Feature {feature_id}: Coordinates too short: {pt}.")
             results["valid"] = False
             return False
-        # GeoJSON permits additional elements (e.g. altitude) but they must be numeric.
+        # GeoJSON permits additional elements (e.g. altitude) but they must be numeric and finite.
         for i, val in enumerate(pt):
-            if i >= 2 and (not isinstance(val, (int, float)) or isinstance(val, bool)):
-                 results["errors"].append(f"Feature {feature_id}: Extra coordinate value at index {i} is not a valid number: {val}.")
-                 results["valid"] = False
-                 return False
+            if i >= 2:
+                if not isinstance(val, (int, float)) or isinstance(val, bool):
+                     results["errors"].append(f"Feature {feature_id}: Extra coordinate value at index {i} is not a valid number: {val}.")
+                     results["valid"] = False
+                     return False
+                if math.isnan(val) or math.isinf(val):
+                     results["errors"].append(f"Feature {feature_id}: Extra coordinate value at index {i} is not finite: {val}.")
+                     results["valid"] = False
+                     return False
 
         lon, lat = pt[0], pt[1]
         if not check_coords_in_bbox(lon, lat):
-            results["errors"].append(f"Feature {feature_id}: Coordinates [{lon}, {lat}] outside NRW bounding box or invalid type.")
+            results["errors"].append(f"Feature {feature_id}: Coordinates [{lon}, {lat}] outside NRW bounding box or invalid type/value.")
             results["valid"] = False
             return False
         return True
@@ -165,6 +173,10 @@ def check_geometry(geometry, feature_id, results):
         results["errors"].append(f"Feature {feature_id}: Unknown or unsupported geometry type '{geom_type}'.")
         results["valid"] = False
 
+def is_empty_value(val):
+    if val is None: return True
+    if isinstance(val, str) and not val.strip(): return True
+    return False
 
 def validate_geojson(filepath):
     results = {
@@ -182,8 +194,9 @@ def validate_geojson(filepath):
         return results
 
     try:
+        # allow_nan=False strictly prevents parsing non-standard JSON NaN/Infinity values.
         with open(filepath, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+            data = json.load(f, parse_constant=lambda c: None if c in ('NaN', 'Infinity', '-Infinity') else c)
     except json.JSONDecodeError as e:
         results["valid"] = False
         results["errors"].append(f"Invalid JSON: {str(e)}")
@@ -241,20 +254,23 @@ def validate_geojson(filepath):
         geometry = feature.get("geometry")
 
         # 'id' check - it can be at the root of the Feature or in properties
-        if feature_root_id is None and "id" not in properties:
-             results["errors"].append(f"Feature at index {i}: Missing 'id' at root or in properties.")
+        if feature_root_id is None and ("id" not in properties or is_empty_value(properties.get("id"))):
+             results["errors"].append(f"Feature at index {i}: Missing or empty 'id' at root or in properties.")
              results["valid"] = False
 
-        # name is a mandatory field in properties
-        if "name" not in properties:
-             results["errors"].append(f"Feature {feature_id}: Missing 'name' in properties.")
+        # name is a mandatory field in properties and cannot be empty
+        if "name" not in properties or is_empty_value(properties.get("name")):
+             results["errors"].append(f"Feature {feature_id}: Missing or empty 'name' in properties.")
              results["valid"] = False
 
-        # Check explicitly for category OR group. Either one satisfies the requirement.
-        if "category" not in properties and "group" not in properties:
-            results["errors"].append(f"Feature {feature_id}: Missing 'category' or 'group' in properties.")
+        # Check explicitly for category OR group. Either one satisfies the requirement, but cannot be empty
+        has_category = "category" in properties and not is_empty_value(properties.get("category"))
+        has_group = "group" in properties and not is_empty_value(properties.get("group"))
+
+        if not has_category and not has_group:
+            results["errors"].append(f"Feature {feature_id}: Missing or empty 'category'/'group' in properties.")
             results["valid"] = False
-        elif "group" in properties and "category" not in properties:
+        elif has_group and not has_category:
             results["warnings"].append(f"Feature {feature_id}: Uses 'group' instead of the standard 'category'.")
 
         if geometry is None:
