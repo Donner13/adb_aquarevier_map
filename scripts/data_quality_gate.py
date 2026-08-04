@@ -38,10 +38,6 @@ def check_geometry(geometry, feature_id, results):
             results["errors"].append(f"Feature {feature_id}: GeometryCollection missing or invalid 'geometries' array.")
             results["valid"] = False
             return
-        if len(geometries) == 0:
-            results["errors"].append(f"Feature {feature_id}: GeometryCollection cannot be empty.")
-            results["valid"] = False
-            return
         for geom in geometries:
              check_geometry(geom, feature_id, results)
         return
@@ -268,15 +264,12 @@ def validate_geojson(filepath):
              results["errors"].append(f"Feature {feature_id}: Missing or empty 'name' in properties.")
              results["valid"] = False
 
-        # Check explicitly for category OR group. Either one satisfies the requirement, but cannot be empty
-        has_category = "category" in properties and not is_empty_value(properties.get("category"))
-        has_group = "group" in properties and not is_empty_value(properties.get("group"))
-
-        if not has_category and not has_group:
-            results["errors"].append(f"Feature {feature_id}: Missing or empty 'category'/'group' in properties.")
-            results["valid"] = False
-        elif has_group and not has_category:
-            results["warnings"].append(f"Feature {feature_id}: Uses 'group' instead of the standard 'category'.")
+        # 'category' is strictly required per task spec. Group alone is not sufficient.
+        if "category" not in properties or is_empty_value(properties.get("category")):
+             results["errors"].append(f"Feature {feature_id}: Missing or empty 'category' in properties.")
+             results["valid"] = False
+             if "group" in properties and not is_empty_value(properties.get("group")):
+                  results["warnings"].append(f"Feature {feature_id}: Uses 'group' but 'category' is explicitly missing.")
 
         if geometry is None:
             results["errors"].append(f"Feature {feature_id}: Missing geometry.")
