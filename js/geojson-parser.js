@@ -1,6 +1,9 @@
 /**
  * Parses a GeoJSON Feature and validates its coordinates.
  * This is Layer 1 of the GeoJSON validation.
+ *
+ * @param {any} input
+ * @returns {any}
  */
 function parseFeature(input) {
     if (input === null || input === undefined) {
