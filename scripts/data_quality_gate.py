@@ -13,6 +13,8 @@ NRW_MAX_LAT = 52.6
 MANDATORY_FIELDS = ["id", "name", "category"]
 
 def check_bbox(lon, lat):
+    if not isinstance(lon, (int, float)) or not isinstance(lat, (int, float)):
+        return False
     return NRW_MIN_LON <= lon <= NRW_MAX_LON and NRW_MIN_LAT <= lat <= NRW_MAX_LAT
 
 def validate_geometry(geom):
@@ -23,8 +25,23 @@ def validate_geometry(geom):
     geom_type = geom.get("type")
     coords = geom.get("coordinates")
 
-    if not geom_type or not coords:
-        return ["Geometry missing type or coordinates"]
+    if not geom_type:
+        return ["Geometry missing type"]
+
+    valid_types = ["Point", "LineString", "Polygon", "MultiPoint", "MultiLineString", "MultiPolygon", "GeometryCollection"]
+    if geom_type not in valid_types:
+        return [f"Unknown geometry type: {geom_type}"]
+
+    if geom_type == "GeometryCollection":
+        geometries = geom.get("geometries")
+        if not isinstance(geometries, list):
+            return ["GeometryCollection missing or invalid geometries array"]
+        for g in geometries:
+            errors.extend(validate_geometry(g))
+        return errors
+
+    if coords is None or not isinstance(coords, list):
+        return ["Geometry missing valid coordinates"]
 
     if geom_type == "Point":
         if not isinstance(coords, list) or len(coords) < 2:
@@ -38,23 +55,40 @@ def validate_geometry(geom):
             if isinstance(coord, list) and len(coord) >= 2:
                 if not check_bbox(coord[0], coord[1]):
                     errors.append(f"Coordinates ({coord[0]}, {coord[1]}) outside NRW bounding box")
+            else:
+                errors.append("Invalid coordinate structure in LineString/MultiPoint")
 
     elif geom_type in ["Polygon", "MultiLineString"]:
         for ring in coords:
+            if not isinstance(ring, list):
+                errors.append("Invalid ring/line structure")
+                continue
             for coord in ring:
                 if isinstance(coord, list) and len(coord) >= 2:
                     if not check_bbox(coord[0], coord[1]):
                         errors.append(f"Coordinates ({coord[0]}, {coord[1]}) outside NRW bounding box")
                         break # One error per ring is enough to not spam
+                else:
+                    errors.append("Invalid coordinate structure in Polygon/MultiLineString")
+                    break
 
     elif geom_type == "MultiPolygon":
         for poly in coords:
+            if not isinstance(poly, list):
+                errors.append("Invalid polygon structure")
+                continue
             for ring in poly:
+                if not isinstance(ring, list):
+                    errors.append("Invalid ring structure in MultiPolygon")
+                    continue
                 for coord in ring:
                     if isinstance(coord, list) and len(coord) >= 2:
                         if not check_bbox(coord[0], coord[1]):
                             errors.append(f"Coordinates ({coord[0]}, {coord[1]}) outside NRW bounding box")
                             break
+                    else:
+                        errors.append("Invalid coordinate structure in MultiPolygon")
+                        break
 
     return errors
 
@@ -165,7 +199,7 @@ def generate_html_report(results_list, output_path):
         errors_html += "</ul>"
 
         html_lines.append("<tr>")
-        html_lines.append(f"<td>{res['file']}</td>")
+        html_lines.append(f"<td>{html_lib.escape(res['file'])}</td>")
         html_lines.append(f"<td>{status}</td>")
         html_lines.append(f"<td>{res['feature_count']}</td>")
         html_lines.append(f"<td>{res['invalid_features']}</td>")
@@ -190,6 +224,7 @@ def main():
     for filepath in args.files:
         if not os.path.exists(filepath):
             print(f"File not found: {filepath}")
+            all_valid = False
             continue
 
         print(f"Validating {filepath}...")
