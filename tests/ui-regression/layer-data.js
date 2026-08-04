@@ -40,6 +40,7 @@ const EAGER_LAYERS = {
   // fetched eagerly for the cross-entity search index (buildUnifiedSearchIndex),
   // even though the *map rendering* of this one is lazy - see GWM_NAME below.
   '💧 Grundwassermessstellen (ELWAS, 3700+)': 'grundwassermessstellen.geojson',
+  '⚡ H₂-Elektrolyseure NRW': 'h2_elektrolyseure_nrw.geojson',
 };
 
 // geojson fetched only the first time the layer is switched on
@@ -50,8 +51,6 @@ const LAZY_LAYERS = {
   'Wasserschutzgebiete (LANUV)': 'wasserschutzgebiete.geojson',
   'Wassergewinnungsgebiete (Zone I)': 'wasserschutzgebiete.geojson',
   '📈 Grundwasserwiederanstieg (Modell)': 'grundwasserwiederanstieg.geojson',
-  '⚡ H₂-Elektrolyseure NRW': 'h2_elektrolyseure_nrw.geojson',
-  '🔭 Vogelbeobachtungs-Gebiete': 'vogelbeobachtungsgebiete.geojson',
 };
 
 // same lazy-on-first-toggle shape, but an external WMS tile request
@@ -118,8 +117,8 @@ function realFeatureCount(geojsonFile) {
   return JSON.parse(raw).features.length;
 }
 
-if (Object.keys(ALL_LAYERS).length !== 21) {
-  throw new Error(`Expected exactly 21 sidebar layer-toggle buttons, got ${Object.keys(ALL_LAYERS).length}`);
+if (Object.keys(ALL_LAYERS).length !== 20) {
+  throw new Error(`Expected exactly 20 sidebar layer-toggle buttons, got ${Object.keys(ALL_LAYERS).length}`);
 }
 for (const name of DEFAULT_ON) {
   if (!(name in ALL_LAYERS)) throw new Error(`DEFAULT_ON contains an unknown layer name: ${name}`);

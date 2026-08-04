@@ -79,7 +79,6 @@ const initUpdateStr = `        // Initial Load parsing URL
 
         // Filter Reset Logic
         document.getElementById('reset-filters-btn').addEventListener('click', () => {
-            if (typeof announceQuickAction === 'function') { announceQuickAction('Filter zurückgesetzt'); }
             document.getElementById('search-input').value = '';
 
             activeFilters = new Set(Object.keys(groupColors));

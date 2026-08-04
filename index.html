@@ -26,8 +26,6 @@
             --text-secondary: #475569;
             --accent-primary: #2563eb;
             --accent-glow: rgba(37, 99, 235, 0.2);
-            --modal-backdrop: rgba(0, 0, 0, 0.6);
-            --modal-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             
             /* Group Colors (Excluding Einzelakteure as they are filtered) */
             --color-behorde: #D55E00;
@@ -49,8 +47,6 @@
             --text-secondary: #9ca3af;
             --accent-primary: #6366f1;
             --accent-glow: rgba(99, 102, 241, 0.4);
-            --modal-backdrop: rgba(0, 0, 0, 0.7);
-            --modal-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
 
 
@@ -584,7 +580,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: var(--modal-backdrop);
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(5px);
             z-index: 9999;
             align-items: center;
@@ -597,7 +593,7 @@
             padding: 24px;
             width: 800px;
             max-width: 90vw;
-            box-shadow: var(--modal-shadow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -1402,7 +1398,7 @@
         .scorecard-backdrop {
             position: fixed;
             inset: 0;
-            background: var(--modal-backdrop);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(4px);
             z-index: 9999;
             display: flex;
@@ -1412,7 +1408,7 @@
         .scorecard-modal {
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
-            box-shadow: var(--modal-shadow);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
             border-radius: 12px;
             width: 90%;
             max-width: 750px;
@@ -1799,7 +1795,7 @@
             position: fixed;
             inset: 0;
             z-index: 10001;
-            background: var(--modal-backdrop);
+            background: rgba(0, 0, 0, 0.6);
             display: none;
             justify-content: center;
             align-items: center;
@@ -1812,7 +1808,7 @@
             max-width: 800px;
             width: 90%;
             color: var(--text-primary);
-            box-shadow: var(--modal-shadow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             text-align: center;
         }
         .onboarding-role-grid {
@@ -2056,8 +2052,6 @@
 </head>
 <body class="light-theme">
     <div id="app-container">
-        <!-- A11y Live Region for Filters -->
-        <div id="filter-live-region" class="sr-only" aria-live="polite"></div>
 
         <!-- Mobile Sidebar Toggle -->
         <button id="mobile-sidebar-toggle">
@@ -3407,11 +3401,9 @@
                 } else {
                     if (elwasActiveRisks.has(riskVal)) {
                         elwasActiveRisks.delete(riskVal);
-                    announceFilterState(riskVal, false);
                         btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
                     } else {
                         elwasActiveRisks.add(riskVal);
-                    announceFilterState(riskVal, true);
                         btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                     }
                 }
@@ -4220,23 +4212,6 @@
             updateSidebarCounters();
         }
 
-
-        // Helper to announce filter state changes for screen readers
-        function announceFilterState(filterName, isActive) {
-            const liveRegion = document.getElementById('filter-live-region');
-            if (liveRegion) {
-                const state = isActive ? 'aktiviert' : 'deaktiviert';
-                liveRegion.textContent = `Filter ${filterName} ${state}`;
-            }
-        }
-
-        function announceQuickAction(actionName) {
-            const liveRegion = document.getElementById('filter-live-region');
-            if (liveRegion) {
-                liveRegion.textContent = `Schnellaktion: ${actionName}`;
-            }
-        }
-
         // Helper to update active/inactive button states
 
         // Legend: Hochwasser- & Starkregengefahren
@@ -4630,10 +4605,8 @@
                 const group = btn.getAttribute('data-group');
                 if (activeFilters.has(group)) {
                     activeFilters.delete(group);
-                    announceFilterState(group, false);
                 } else {
                     activeFilters.add(group);
-                    announceFilterState(group, true);
                 }
                 updateButtonVisualStates();
                 renderMapAndSidebar();
@@ -4646,10 +4619,8 @@
                 const riskVal = btn.getAttribute('data-risk');
                 if (elwasActiveRisks.has(riskVal)) {
                     elwasActiveRisks.delete(riskVal);
-                    announceFilterState(riskVal, false);
                 } else {
                     elwasActiveRisks.add(riskVal);
-                    announceFilterState(riskVal, true);
                 }
                 updateButtonVisualStates();
                 renderElwasLayer();
@@ -4664,11 +4635,9 @@
                 if (map.hasLayer(layer)) {
                     map.removeLayer(layer);
                     map.fire('overlayremove', { layer: layer, name: name });
-                    announceFilterState(name, false);
                 } else {
                     map.addLayer(layer);
                     map.fire('overlayadd', { layer: layer, name: name });
-                    announceFilterState(name, true);
                 }
                 updateButtonVisualStates();
                 updateSidebarCounters();
@@ -4677,7 +4646,6 @@
 
         // Quick Action: Regionale Akteure - Alle an
         document.getElementById('btn-actors-all').addEventListener('click', () => {
-            announceQuickAction('Regionale Akteure - Alle an');
             Object.keys(groupColors).forEach(g => activeFilters.add(g));
             updateButtonVisualStates();
             renderMapAndSidebar();
@@ -4685,7 +4653,6 @@
 
         // Quick Action: Regionale Akteure - Alle aus
         document.getElementById('btn-actors-none').addEventListener('click', () => {
-            announceQuickAction('Regionale Akteure - Alle aus');
             activeFilters.clear();
             updateButtonVisualStates();
             renderMapAndSidebar();
@@ -4693,7 +4660,6 @@
 
         // Quick Action: Industrie-Branchen - Alle an
         document.getElementById('btn-branches-all').addEventListener('click', () => {
-            announceQuickAction('Industrie-Branchen - Alle an');
             Object.keys(elwasRiskColors).forEach(b => elwasActiveRisks.add(b));
             updateButtonVisualStates();
             renderElwasLayer();
@@ -4701,7 +4667,6 @@
 
         // Quick Action: Industrie-Branchen - Alle aus
         document.getElementById('btn-branches-none').addEventListener('click', () => {
-            announceQuickAction('Industrie-Branchen - Alle aus');
             elwasActiveRisks.clear();
             updateButtonVisualStates();
             renderElwasLayer();
@@ -4710,7 +4675,6 @@
         // Quick Action: Fachdaten & Layer - Alle an
         // Quick Action: Hazard & Starkregen - Alle an
         document.getElementById('btn-hazard-all').addEventListener('click', () => {
-            announceQuickAction('Hochwasser & Starkregen - Alle an');
             const container = document.getElementById('hazard-layer-group');
             const btns = container.querySelectorAll('.filter-btn[data-layer-name]');
             btns.forEach(btn => {
@@ -4726,7 +4690,6 @@
 
         // Quick Action: Hazard & Starkregen - Alle aus
         document.getElementById('btn-hazard-none').addEventListener('click', () => {
-            announceQuickAction('Hochwasser & Starkregen - Alle aus');
             const container = document.getElementById('hazard-layer-group');
             const btns = container.querySelectorAll('.filter-btn[data-layer-name]');
             btns.forEach(btn => {
@@ -4735,7 +4698,6 @@
                 if (map.hasLayer(layer)) {
                     map.removeLayer(layer);
                     map.fire('overlayremove', { layer: layer, name: name });
-                    announceFilterState(name, false);
                 }
             });
             updateButtonVisualStates();
@@ -4743,7 +4705,6 @@
 
 
         document.getElementById('btn-layers-all').addEventListener('click', () => {
-            announceQuickAction('Fachdaten & Layer - Alle an');
             Array.from(document.querySelectorAll('.filter-btn[data-layer-name]')).filter(b => !b.closest('#hazard-layer-group')).forEach(btn => {
                 const name = btn.getAttribute('data-layer-name');
                 const layer = overlayMaps[name];
@@ -4758,14 +4719,12 @@
 
         // Quick Action: Fachdaten & Layer - Alle aus
         document.getElementById('btn-layers-none').addEventListener('click', () => {
-            announceQuickAction('Fachdaten & Layer - Alle aus');
             Array.from(document.querySelectorAll('.filter-btn[data-layer-name]')).filter(b => !b.closest('#hazard-layer-group')).forEach(btn => {
                 const name = btn.getAttribute('data-layer-name');
                 const layer = overlayMaps[name];
                 if (map.hasLayer(layer)) {
                     map.removeLayer(layer);
                     map.fire('overlayremove', { layer: layer, name: name });
-                    announceFilterState(name, false);
                 }
             });
             updateButtonVisualStates();
@@ -5268,7 +5227,6 @@
 
         // Filter Reset Logic
         document.getElementById('reset-filters-btn').addEventListener('click', () => {
-            announceQuickAction('Filter zurückgesetzt');
             document.getElementById('search-input').value = '';
 
             activeFilters = new Set(Object.keys(groupColors));
@@ -6593,8 +6551,8 @@ function buildUnifiedSearchIndex() {
 
 
     <!-- Feedback Modal -->
-    <div id="feedback-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: var(--modal-backdrop); z-index: 2000; justify-content: center; align-items: center;">
-        <div class="modal-content" style="background: var(--bg-surface, #ffffff); width: 400px; max-width: 90%; border-radius: 8px; padding: 20px; box-shadow: var(--modal-shadow); display: flex; flex-direction: column;">
+    <div id="feedback-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center;">
+        <div class="modal-content" style="background: var(--bg-surface, #ffffff); width: 400px; max-width: 90%; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
                 <div>
                     <h3 id="feedback-modal-title" style="margin: 0; font-size: 16px; color: var(--text-primary, #0f172a);">Fehler melden</h3>

@@ -182,7 +182,7 @@
                 position: fixed;
                 inset: 0;
                 z-index: 10008;
-                background: var(--modal-backdrop, rgba(0, 0, 0, 0.6));
+                background: rgba(0, 0, 0, 0.6);
                 backdrop-filter: blur(5px);
                 display: flex;
                 align-items: center;
@@ -195,7 +195,7 @@
         const totalObj = Object.values(dossier.stats).reduce((acc, arr) => acc + arr.length, 0);
 
         modal.innerHTML = `
-            <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 620px; border-radius: 12px; box-shadow: var(--modal-shadow, 0 10px 30px rgba(0, 0, 0, 0.5)); overflow: hidden; display: flex; flex-direction: column; max-height: 85vh;">
+            <div style="background: #ffffff; width: 100%; max-width: 620px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column; max-height: 85vh;">
                 <div style="background: #1e293b; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div style="font-size: 16px; font-weight: 700;">🏛️ Gemeinde-Steckbrief: ${escapeHtml(dossier.name)}</div>
