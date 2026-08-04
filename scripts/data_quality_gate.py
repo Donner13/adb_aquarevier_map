@@ -7,7 +7,7 @@ import math
 
 # NRW Bounding Box roughly: [5.8, 50.3, 9.5, 52.6]
 # (min_lon, min_lat, max_lon, max_lat)
-NRW_BBOX = (5.7, 50.3, 9.5, 52.6)
+NRW_BBOX = (5.8, 50.3, 9.5, 52.6)
 
 VALID_GEOMETRY_TYPES = {
     'Point', 'MultiPoint', 'LineString', 'MultiLineString',
@@ -237,15 +237,20 @@ def generate_json_report(results, report_path):
     with open(report_path, 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
 
-def is_valid_string_property(val):
+def is_valid_property_value(val):
     """
-    Ensure the property value is explicitly a valid string for mandatory fields.
-    Rejects numbers, booleans, empty strings, whitespace-only strings, dicts, and lists.
+    Ensure the property value is explicitly a valid scalar for mandatory fields.
+    Accepts strings (non-empty/non-whitespace), integers, and floats.
+    Rejects booleans (which inherit from int), empty strings, whitespace-only strings, dicts, and lists.
     """
-    if not isinstance(val, str):
+    if type(val) is bool:
         return False
-    # Only accept non-empty strings (after stripping)
-    return val.strip() != ""
+    if isinstance(val, (int, float)):
+        return True
+    if isinstance(val, str):
+        # Only accept non-empty strings (after stripping)
+        return val.strip() != ""
+    return False
 
 def strict_parse_float(s):
     f = float(s)
@@ -339,9 +344,9 @@ def main():
                  properties = {}
 
             # For identification in the report, use properties.id if valid, else Feature.id, else Unknown
-            if is_valid_string_property(properties.get('id')):
+            if is_valid_property_value(properties.get('id')):
                  feature_id = properties['id']
-            elif is_valid_string_property(feature.get('id')):
+            elif is_valid_property_value(feature.get('id')):
                  feature_id = feature['id']
             else:
                  feature_id = 'Unknown'
@@ -354,14 +359,14 @@ def main():
 
         # Ensure mandatory ID, Name, Category exist explicitly inside 'properties'
         for field in ['id', 'name', 'category']:
-            if not is_valid_string_property(properties.get(field)):
+            if not is_valid_property_value(properties.get(field)):
                 missing_fields.append(field)
 
         if missing_fields:
             results['errors'].append({
                 'feature_index': i,
                 'feature_id': feature_id,
-                'message': f"Missing or invalid string for mandatory fields in properties: {', '.join(missing_fields)}"
+                'message': f"Missing or invalid value for mandatory fields in properties: {', '.join(missing_fields)}"
             })
 
         # Geometry schema and NRW Bounding Box check
