@@ -22,6 +22,12 @@ def check_bbox(lon, lat):
     except (ValueError, TypeError):
         return False
 
+def is_valid_number(val):
+    """
+    Ensure the value is strictly an int or float, and NOT a bool (since bool is a subclass of int in Python).
+    """
+    return type(val) in (int, float)
+
 def get_coordinates(geometry):
     if not isinstance(geometry, dict):
         return []
@@ -43,7 +49,7 @@ def get_coordinates(geometry):
             return []
 
         # Check if the list contains number types representing a coordinate pair
-        if len(coords) >= 2 and isinstance(coords[0], (int, float)) and isinstance(coords[1], (int, float)):
+        if len(coords) >= 2 and is_valid_number(coords[0]) and is_valid_number(coords[1]):
              # Even if it has more than 2 elements, we take the first two as lon/lat for bbox checking
              return [coords]
 
@@ -62,10 +68,10 @@ def get_coordinates(geometry):
     return flatten(geometry.get('coordinates'))
 
 def is_valid_position(coord):
-    """A valid GeoJSON position is an array of at least 2 numbers."""
+    """A valid GeoJSON position is an array of at least 2 strictly numerical values."""
     if not isinstance(coord, list) or len(coord) < 2:
         return False
-    return all(isinstance(c, (int, float)) for c in coord)
+    return all(is_valid_number(c) for c in coord)
 
 def check_geometry_schema(geometry, feature_id, feature_index):
     """
@@ -230,8 +236,11 @@ def main():
 
     with open(args.input_file, 'r', encoding='utf-8') as f:
         try:
-            data = json.load(f)
-        except json.JSONDecodeError as e:
+            # parse_constant is used to raise ValueError on non-compliant JSON constants like NaN, Infinity, -Infinity
+            def reject_special_float(x):
+                raise ValueError(f"Strict JSON requires valid finite numbers, found: {x}")
+            data = json.load(f, parse_constant=reject_special_float)
+        except (json.JSONDecodeError, ValueError) as e:
             results = {
                 'total_features': 0,
                 'errors': [{'message': f"Error: Invalid JSON file. {e}"}]
@@ -321,7 +330,7 @@ def main():
                 for coord in coords:
                     if isinstance(coord, list) and len(coord) >= 2:
                         lon, lat = coord[0], coord[1]
-                        if not isinstance(lon, (int, float)) or not isinstance(lat, (int, float)):
+                        if not is_valid_number(lon) or not is_valid_number(lat):
                             invalid_coords.append(coord)
                         elif not check_bbox(lon, lat):
                             out_of_bounds.append(coord)
