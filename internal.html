@@ -5172,7 +5172,7 @@
 
             document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
                 const name = btn.getAttribute('data-layer-name');
-                const hasLayer = map.hasLayer(window.overlayMaps[name] || overlayMaps[name]);
+                const hasLayer = map.hasLayer(overlayMaps[name]);
                 if (hasLayer) {
                     btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                     btn.classList.remove('inactive');

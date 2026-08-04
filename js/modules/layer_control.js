@@ -13,7 +13,10 @@ window.initLayerControls = function(map, overlayMaps, updateButtonVisualStates, 
         btn.addEventListener('click', (e) => {
             const name = btn.getAttribute('data-layer-name');
             const layer = overlayMaps[name];
-            if (!layer) return;
+            if (!layer) {
+                console.error(`Layer "${name}" not found in overlayMaps`);
+                return;
+            }
 
             if (map.hasLayer(layer)) {
                 map.removeLayer(layer);
