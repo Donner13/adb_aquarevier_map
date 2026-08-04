@@ -28,8 +28,18 @@ def check_geometry(geometry, feature_id, results):
         return
 
     geom_type = geometry.get("type")
-    coords = geometry.get("coordinates")
 
+    if geom_type == "GeometryCollection":
+        geometries = geometry.get("geometries")
+        if not isinstance(geometries, list):
+            results["errors"].append(f"Feature {feature_id}: GeometryCollection missing or invalid 'geometries' array.")
+            results["valid"] = False
+            return
+        for geom in geometries:
+             check_geometry(geom, feature_id, results)
+        return
+
+    coords = geometry.get("coordinates")
     if not geom_type or coords is None:
         results["errors"].append(f"Feature {feature_id}: Invalid geometry structure.")
         results["valid"] = False
@@ -129,6 +139,9 @@ def check_geometry(geometry, feature_id, results):
                  results["valid"] = False
             for poly in coords:
                 if isinstance(poly, (list, tuple)):
+                    if len(poly) == 0:
+                        results["errors"].append(f"Feature {feature_id}: Polygon within MultiPolygon cannot be empty.")
+                        results["valid"] = False
                     for ring in poly:
                         check_linear_ring(ring, "MultiPolygon")
                 else:
@@ -194,21 +207,26 @@ def validate_geojson(filepath):
             results["errors"].append(f"Feature at index {i} has invalid type: expected 'Feature', got '{feature.get('type')}'.")
             results["valid"] = False
 
-        feature_id = feature.get("id", f"index_{i}")
+        # Support 'id' at the root of the Feature object as per GeoJSON spec, fallback to properties.id
+        feature_root_id = feature.get("id")
         properties = feature.get("properties")
 
         if not isinstance(properties, dict):
-             results["errors"].append(f"Feature {feature_id}: Missing or invalid 'properties'.")
+             results["errors"].append(f"Feature at index {i}: Missing or invalid 'properties'.")
              results["valid"] = False
              properties = {}
 
+        # Extract feature ID for logging, defaulting to index if not found
+        feature_id = feature_root_id if feature_root_id is not None else properties.get("id", f"index_{i}")
+
         geometry = feature.get("geometry")
 
-        # As per the task prompt, `id` and `name` are mandatory fields. If they are in `properties` we consider them valid.
-        if "id" not in properties:
-            results["errors"].append(f"Feature {feature_id}: Missing 'id' in properties.")
-            results["valid"] = False
+        # 'id' check - it can be at the root of the Feature or in properties
+        if feature_root_id is None and "id" not in properties:
+             results["errors"].append(f"Feature at index {i}: Missing 'id' at root or in properties.")
+             results["valid"] = False
 
+        # name and category are still expected in properties for this specific app
         if "name" not in properties:
              results["errors"].append(f"Feature {feature_id}: Missing 'name' in properties.")
              results["valid"] = False
