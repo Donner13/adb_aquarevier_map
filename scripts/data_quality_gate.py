@@ -68,10 +68,10 @@ th {{ background-color: #f2f2f2; }}
 </head>
 <body>
 <h1>GeoJSON Data Quality Report</h1>
-<p>Total features checked: <strong>{results['total_features']}</strong></p>
-<p>Features with errors: <strong>{len(results['errors'])}</strong></p>
+<p>Total features checked: <strong>{results.get('total_features', 0)}</strong></p>
+<p>Features with errors: <strong>{len(results.get('errors', []))}</strong></p>
 """
-    if results['errors']:
+    if results.get('errors'):
         html_content += """
         <h2>Errors:</h2>
         <table>
@@ -83,8 +83,11 @@ th {{ background-color: #f2f2f2; }}
         """
         for err in results['errors']:
             safe_id = html.escape(str(err.get('feature_id', 'N/A')))
-            safe_msg = html.escape(str(err['message']))
-            html_content += f"<tr><td>{err['feature_index']}</td><td>{safe_id}</td><td class='error'>{safe_msg}</td></tr>"
+            safe_msg = html.escape(str(err.get('message', 'Unknown error')))
+            feature_idx = err.get('feature_index')
+            if feature_idx is None:
+                feature_idx = 'N/A'
+            html_content += f"<tr><td>{feature_idx}</td><td>{safe_id}</td><td class='error'>{safe_msg}</td></tr>"
         html_content += "</table>"
     else:
         html_content += "<p class='success'>All checks passed successfully!</p>"
@@ -107,6 +110,12 @@ def main():
     args = parser.parse_args()
 
     if not os.path.exists(args.input_file):
+        results = {
+            'total_features': 0,
+            'errors': [{'message': f"Error: File {args.input_file} not found."}]
+        }
+        generate_html_report(results, args.html_report)
+        generate_json_report(results, args.json_report)
         print(f"Error: File {args.input_file} not found.")
         sys.exit(1)
 
@@ -114,11 +123,23 @@ def main():
         try:
             data = json.load(f)
         except json.JSONDecodeError as e:
+            results = {
+                'total_features': 0,
+                'errors': [{'message': f"Error: Invalid JSON file. {e}"}]
+            }
+            generate_html_report(results, args.html_report)
+            generate_json_report(results, args.json_report)
             print(f"Error: Invalid JSON file. {e}")
             sys.exit(1)
 
     # GeoJSON Schema Validation (Basic)
     if not isinstance(data, dict) or data.get('type') != 'FeatureCollection' or not isinstance(data.get('features'), list):
+        results = {
+            'total_features': 0,
+            'errors': [{'message': "Error: Invalid GeoJSON schema. Root object must be a FeatureCollection with a 'features' array."}]
+        }
+        generate_html_report(results, args.html_report)
+        generate_json_report(results, args.json_report)
         print("Error: Invalid GeoJSON schema. Root object must be a FeatureCollection with a 'features' array.")
         sys.exit(1)
 
@@ -196,6 +217,12 @@ def main():
                                  'feature_id': feature_id,
                                  'message': 'GeometryCollection contains invalid geometry'
                              })
+                         elif 'coordinates' not in geom or not isinstance(geom['coordinates'], list) or len(geom['coordinates']) == 0:
+                              results['errors'].append({
+                                 'feature_index': i,
+                                 'feature_id': feature_id,
+                                 'message': 'GeometryCollection contains geometry with invalid or empty coordinates'
+                             })
             elif 'coordinates' not in geometry or not isinstance(geometry['coordinates'], list) or len(geometry['coordinates']) == 0:
                 results['errors'].append({
                      'feature_index': i,
@@ -203,9 +230,19 @@ def main():
                      'message': 'Invalid geometry coordinates format'
                  })
 
-            # Proceed with bounding box check if no prior schema errors (we can just check what get_coordinates returns)
+            # Proceed with bounding box check if no prior schema errors for this feature
+            has_schema_error = any(e['feature_index'] == i and 'Invalid geometry' in e['message'] for e in results['errors'])
+
             coords = get_coordinates(geometry)
-            if coords:
+            if not coords and geom_type != 'GeometryCollection':
+                # Empty coordinates array (or nested empty arrays) should be flagged if not already
+                if not any(e['feature_index'] == i and 'coordinates' in e['message'] for e in results['errors']):
+                    results['errors'].append({
+                        'feature_index': i,
+                        'feature_id': feature_id,
+                        'message': 'Empty coordinates structure'
+                    })
+            elif coords:
                 out_of_bounds = []
                 invalid_coords = []
                 for coord in coords:
