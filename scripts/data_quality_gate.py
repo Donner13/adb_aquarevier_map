@@ -188,6 +188,14 @@ def validate_geojson(filepath):
         results["valid"] = False
         results["errors"].append(f"Invalid JSON: {str(e)}")
         return results
+    except IOError as e:
+        results["valid"] = False
+        results["errors"].append(f"IO Error reading file: {str(e)}")
+        return results
+    except Exception as e:
+        results["valid"] = False
+        results["errors"].append(f"Unexpected error reading file: {str(e)}")
+        return results
 
     if not isinstance(data, dict) or data.get("type") != "FeatureCollection":
         results["valid"] = False
@@ -237,17 +245,17 @@ def validate_geojson(filepath):
              results["errors"].append(f"Feature at index {i}: Missing 'id' at root or in properties.")
              results["valid"] = False
 
-        # name and category are still expected in properties for this specific app
+        # name is a mandatory field in properties
         if "name" not in properties:
              results["errors"].append(f"Feature {feature_id}: Missing 'name' in properties.")
              results["valid"] = False
 
-        # Check explicitly for category, add a warning if only group is present
-        if "category" not in properties:
-            results["errors"].append(f"Feature {feature_id}: Missing 'category' in properties.")
+        # Check explicitly for category OR group. Either one satisfies the requirement.
+        if "category" not in properties and "group" not in properties:
+            results["errors"].append(f"Feature {feature_id}: Missing 'category' or 'group' in properties.")
             results["valid"] = False
-            if "group" in properties:
-                results["warnings"].append(f"Feature {feature_id}: Found 'group' instead of 'category'.")
+        elif "group" in properties and "category" not in properties:
+            results["warnings"].append(f"Feature {feature_id}: Uses 'group' instead of the standard 'category'.")
 
         if geometry is None:
             results["errors"].append(f"Feature {feature_id}: Missing geometry.")
