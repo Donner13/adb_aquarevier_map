@@ -40,6 +40,7 @@ const EAGER_LAYERS = {
   // fetched eagerly for the cross-entity search index (buildUnifiedSearchIndex),
   // even though the *map rendering* of this one is lazy - see GWM_NAME below.
   '💧 Grundwassermessstellen (ELWAS, 3700+)': 'grundwassermessstellen.geojson',
+  '🌊 Grundwassergleichenplan (Isolinien)': 'grundwassergleichen.geojson',
 };
 
 // geojson fetched only the first time the layer is switched on
@@ -109,6 +110,7 @@ const DEFAULT_ON = new Set([
 // (backlog #8 explicitly warns the counts drift on every re-scrape).
 const MANDATORY_COUNT_LAYERS = {
   '💧 Grundwassermessstellen (ELWAS, 3700+)': 'grundwassermessstellen.geojson',
+  '🌊 Grundwassergleichenplan (Isolinien)': 'grundwassergleichen.geojson',
   '⛰️ Stauanlagen (ELWAS)': 'stauanlagen.geojson',
   '🌧️ Regenbecken/-entlastungsanlagen (ELWAS)': 'regenbecken.geojson',
 };
@@ -118,7 +120,7 @@ function realFeatureCount(geojsonFile) {
   return JSON.parse(raw).features.length;
 }
 
-if (Object.keys(ALL_LAYERS).length !== 21) {
+if (Object.keys(ALL_LAYERS).length !== 22) {
   throw new Error(`Expected exactly 21 sidebar layer-toggle buttons, got ${Object.keys(ALL_LAYERS).length}`);
 }
 for (const name of DEFAULT_ON) {
