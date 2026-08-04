@@ -51,6 +51,68 @@ def validate_geometry(geom):
             errors.append(f"Coordinates ({lon}, {lat}) outside NRW bounding box")
 
     elif geom_type in ["LineString", "MultiPoint"]:
+        if len(coords) < (2 if geom_type == "LineString" else 1):
+            errors.append(f"{geom_type} has too few coordinates")
+        for coord in coords:
+            if isinstance(coord, list) and len(coord) >= 2:
+                if not check_bbox(coord[0], coord[1]):
+                    errors.append(f"Coordinates ({coord[0]}, {coord[1]}) outside NRW bounding box")
+            else:
+                errors.append("Invalid coordinate structure in LineString/MultiPoint")
+
+    elif geom_type in ["Polygon", "MultiLineString"]:
+        if len(coords) == 0:
+            errors.append(f"Empty {geom_type}")
+        for ring in coords:
+            if not isinstance(ring, list) or len(ring) < (4 if geom_type == "Polygon" else 2):
+                errors.append(f"Invalid ring/line structure or too few points for {geom_type}")
+                continue
+            if geom_type == "Polygon" and ring[0] != ring[-1]:
+                errors.append("Polygon ring must be closed (first and last coordinates must match)")
+            for coord in ring:
+                if isinstance(coord, list) and len(coord) >= 2:
+                    if not check_bbox(coord[0], coord[1]):
+                        errors.append(f"Coordinates ({coord[0]}, {coord[1]}) outside NRW bounding box")
+                        break
+                else:
+                    errors.append("Invalid coordinate structure in Polygon/MultiLineString")
+                    break
+
+    elif geom_type == "MultiPolygon":
+        if len(coords) == 0:
+            errors.append("Empty MultiPolygon")
+        for poly in coords:
+            if not isinstance(poly, list) or len(poly) == 0:
+                errors.append("Invalid or empty polygon structure in MultiPolygon")
+                continue
+            for ring in poly:
+                if not isinstance(ring, list) or len(ring) < 4:
+                    errors.append("Invalid ring structure or too few points in MultiPolygon")
+                    continue
+                if ring[0] != ring[-1]:
+                    errors.append("Polygon ring in MultiPolygon must be closed")
+                for coord in ring:
+                    if isinstance(coord, list) and len(coord) >= 2:
+                        if not check_bbox(coord[0], coord[1]):
+                            errors.append(f"Coordinates ({coord[0]}, {coord[1]}) outside NRW bounding box")
+                            break
+                    else:
+                        errors.append("Invalid coordinate structure in MultiPolygon")
+                        break
+
+    return errors
+
+    if coords is None or not isinstance(coords, list):
+        return ["Geometry missing valid coordinates"]
+
+    if geom_type == "Point":
+        if not isinstance(coords, list) or len(coords) < 2:
+            return ["Point coordinates invalid"]
+        lon, lat = coords[0], coords[1]
+        if not check_bbox(lon, lat):
+            errors.append(f"Coordinates ({lon}, {lat}) outside NRW bounding box")
+
+    elif geom_type in ["LineString", "MultiPoint"]:
         for coord in coords:
             if isinstance(coord, list) and len(coord) >= 2:
                 if not check_bbox(coord[0], coord[1]):
@@ -145,6 +207,8 @@ def validate_geojson(filepath):
             for field in MANDATORY_FIELDS:
                 if field not in props:
                     feature_errors.append(f"Missing mandatory property: {field}")
+                elif props[field] is None or str(props[field]).strip() == "":
+                    feature_errors.append(f"Mandatory property '{field}' cannot be empty or null")
 
         geom = feature.get("geometry")
         if geom is not None: # geometry can be null in GeoJSON, but if present it should be valid
@@ -225,6 +289,13 @@ def main():
         if not os.path.exists(filepath):
             print(f"File not found: {filepath}")
             all_valid = False
+            results.append({
+                "file": filepath,
+                "valid": False,
+                "errors": ["File not found"],
+                "feature_count": 0,
+                "invalid_features": 0
+            })
             continue
 
         print(f"Validating {filepath}...")
