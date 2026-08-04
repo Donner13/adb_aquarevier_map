@@ -24,7 +24,7 @@
                 position: fixed;
                 inset: 0;
                 z-index: 10012;
-                background: rgba(0, 0, 0, 0.65);
+                background: var(--modal-backdrop, rgba(0, 0, 0, 0.6));
                 backdrop-filter: blur(5px);
                 display: flex;
                 align-items: center;
@@ -36,7 +36,7 @@
 
         if (!data) {
             modal.innerHTML = `
-                <div style="background: #ffffff; width: 100%; max-width: 440px; border-radius: 12px; padding: 20px; text-align: center;">
+                <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 440px; border-radius: 12px; padding: 20px; text-align: center;">
                     <div style="font-size: 24px; margin-bottom: 8px;">⚠️</div>
                     <div style="font-weight: 700; color: #dc2626; margin-bottom: 4px;">Wassergüte-Daten nicht verfügbar</div>
                     <div style="font-size: 11px; color: #64748b; margin-bottom: 14px;">Die Messwerte für '${escapeHtml(name)}' konnten vom Server nicht geladen werden.</div>
@@ -48,7 +48,7 @@
         }
 
         modal.innerHTML = `
-            <div style="background: #ffffff; width: 100%; max-width: 480px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden; font-size: 12px;">
+            <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 480px; border-radius: 12px; box-shadow: var(--modal-shadow, 0 10px 30px rgba(0, 0, 0, 0.5)); overflow: hidden; font-size: 12px;">
                 <div style="background: #0284c7; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div style="font-size: 15px; font-weight: 700;">🐟 WRRL-Gewässergüte: ${escapeHtml(name)}</div>

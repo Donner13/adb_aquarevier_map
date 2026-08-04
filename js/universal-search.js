@@ -206,10 +206,14 @@
         window.buildUniversalSearchIndex();
         const searchInputs = document.querySelectorAll('#usearch-input, .universal-search-input');
         searchInputs.forEach(input => {
+            let debounceTimer;
             input.addEventListener('input', (e) => {
-                const q = e.target.value;
-                const results = window.queryUniversalSearch(q);
-                window.renderSearchDropdown(input, results);
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    const q = e.target.value;
+                    const results = window.queryUniversalSearch(q);
+                    window.renderSearchDropdown(input, results);
+                }, 150);
             });
         });
     }
