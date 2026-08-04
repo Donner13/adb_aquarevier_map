@@ -2,6 +2,7 @@ import json
 import argparse
 import sys
 import os
+import html
 from datetime import datetime
 
 # NRW Bounding Box (approximate)
@@ -13,37 +14,85 @@ NRW_BBOX = {
 }
 
 def check_coords_in_bbox(lon, lat):
+    if not isinstance(lon, (int, float)) or not isinstance(lat, (int, float)):
+        return False
     return (NRW_BBOX["min_lon"] <= lon <= NRW_BBOX["max_lon"]) and (NRW_BBOX["min_lat"] <= lat <= NRW_BBOX["max_lat"])
 
 def check_geometry(geometry, feature_id, results):
     geom_type = geometry.get("type")
     coords = geometry.get("coordinates")
 
-    if not geom_type or not coords:
+    if not geom_type or coords is None:
         results["errors"].append(f"Feature {feature_id}: Invalid geometry structure.")
         results["valid"] = False
         return
 
-    def check_point(lon, lat):
+    def check_point(pt):
+        if not isinstance(pt, (list, tuple)):
+            results["errors"].append(f"Feature {feature_id}: Malformed coordinates, expected array.")
+            results["valid"] = False
+            return
+        if len(pt) < 2:
+            results["errors"].append(f"Feature {feature_id}: Coordinates too short: {pt}.")
+            results["valid"] = False
+            return
+        lon, lat = pt[0], pt[1]
         if not check_coords_in_bbox(lon, lat):
             results["errors"].append(f"Feature {feature_id}: Coordinates [{lon}, {lat}] outside NRW bounding box.")
             results["valid"] = False
 
     if geom_type == "Point":
-        if len(coords) >= 2:
-            check_point(coords[0], coords[1])
-    elif geom_type == "LineString" or geom_type == "MultiPoint":
-        for pt in coords:
-            if len(pt) >= 2: check_point(pt[0], pt[1])
-    elif geom_type == "Polygon" or geom_type == "MultiLineString":
-        for ring in coords:
-            for pt in ring:
-                if len(pt) >= 2: check_point(pt[0], pt[1])
+        if isinstance(coords, (list, tuple)):
+            if len(coords) < 2:
+                results["errors"].append(f"Feature {feature_id}: Point coordinates too short: {coords}.")
+                results["valid"] = False
+            else:
+                check_point(coords)
+        else:
+            results["errors"].append(f"Feature {feature_id}: Invalid Point coordinates structure.")
+            results["valid"] = False
+
+    elif geom_type in ("LineString", "MultiPoint"):
+        if isinstance(coords, (list, tuple)):
+            for pt in coords:
+                check_point(pt)
+        else:
+             results["errors"].append(f"Feature {feature_id}: Invalid {geom_type} coordinates structure.")
+             results["valid"] = False
+
+    elif geom_type in ("Polygon", "MultiLineString"):
+        if isinstance(coords, (list, tuple)):
+            for ring in coords:
+                if isinstance(ring, (list, tuple)):
+                    for pt in ring:
+                        check_point(pt)
+                else:
+                    results["errors"].append(f"Feature {feature_id}: Invalid ring in {geom_type}.")
+                    results["valid"] = False
+        else:
+            results["errors"].append(f"Feature {feature_id}: Invalid {geom_type} coordinates structure.")
+            results["valid"] = False
+
     elif geom_type == "MultiPolygon":
-        for poly in coords:
-            for ring in poly:
-                for pt in ring:
-                    if len(pt) >= 2: check_point(pt[0], pt[1])
+        if isinstance(coords, (list, tuple)):
+            for poly in coords:
+                if isinstance(poly, (list, tuple)):
+                    for ring in poly:
+                        if isinstance(ring, (list, tuple)):
+                            for pt in ring:
+                                check_point(pt)
+                        else:
+                            results["errors"].append(f"Feature {feature_id}: Invalid ring in MultiPolygon.")
+                            results["valid"] = False
+                else:
+                    results["errors"].append(f"Feature {feature_id}: Invalid polygon in MultiPolygon.")
+                    results["valid"] = False
+        else:
+            results["errors"].append(f"Feature {feature_id}: Invalid MultiPolygon coordinates structure.")
+            results["valid"] = False
+    else:
+        results["errors"].append(f"Feature {feature_id}: Unknown or unsupported geometry type '{geom_type}'.")
+        results["valid"] = False
 
 def validate_geojson(filepath):
     results = {
@@ -68,32 +117,51 @@ def validate_geojson(filepath):
         results["errors"].append(f"Invalid JSON: {str(e)}")
         return results
 
-    if data.get("type") != "FeatureCollection":
+    if not isinstance(data, dict) or data.get("type") != "FeatureCollection":
         results["valid"] = False
         results["errors"].append("GeoJSON must be a FeatureCollection")
         return results
 
     features = data.get("features", [])
+    if not isinstance(features, list):
+         results["valid"] = False
+         results["errors"].append("GeoJSON 'features' must be an array.")
+         return results
+
     results["total_features"] = len(features)
 
     for i, feature in enumerate(features):
+        if not isinstance(feature, dict):
+            results["errors"].append(f"Feature at index {i} is not a valid object.")
+            results["valid"] = False
+            continue
+
         feature_id = feature.get("id", f"index_{i}")
-        properties = feature.get("properties", {})
-        geometry = feature.get("geometry", {})
+        properties = feature.get("properties")
+
+        if not isinstance(properties, dict):
+             results["errors"].append(f"Feature {feature_id}: Missing or invalid 'properties'.")
+             results["valid"] = False
+             properties = {}
+
+        geometry = feature.get("geometry")
 
         if "id" not in properties and "id" not in feature:
-             results["errors"].append(f"Feature at index {i}: Missing 'id'.")
+             results["errors"].append(f"Feature {feature_id}: Missing 'id'.")
              results["valid"] = False
 
         if "name" not in properties:
-             results["errors"].append(f"Feature at index {i}: Missing 'name' in properties.")
+             results["errors"].append(f"Feature {feature_id}: Missing 'name' in properties.")
              results["valid"] = False
 
-        if "category" not in properties and "group" not in properties:
-            results["errors"].append(f"Feature at index {i}: Missing 'category' (or 'group') in properties.")
+        # Check explicitly for category, add a warning if only group is present
+        if "category" not in properties:
+            results["errors"].append(f"Feature {feature_id}: Missing 'category' in properties.")
             results["valid"] = False
+            if "group" in properties:
+                results["warnings"].append(f"Feature {feature_id}: Found 'group' instead of 'category'.")
 
-        if not geometry:
+        if geometry is None:
             results["errors"].append(f"Feature {feature_id}: Missing geometry.")
             results["valid"] = False
             continue
@@ -107,7 +175,11 @@ def generate_json_report(results, output_path):
         json.dump(results, f, indent=2, ensure_ascii=False)
 
 def generate_html_report(results, output_path):
-    html = f"""<!DOCTYPE html>
+    # Escape user input to prevent HTML injection
+    filepath_safe = html.escape(str(results['filepath']))
+    timestamp_safe = html.escape(str(results['timestamp']))
+
+    html_content = f"""<!DOCTYPE html>
 <html>
 <head>
     <title>Data Quality Gate Report</title>
@@ -125,40 +197,40 @@ def generate_html_report(results, output_path):
     <h1>Data Quality Gate Report</h1>
 
     <div class="summary">
-        <p><strong>File:</strong> {results['filepath']}</p>
-        <p><strong>Timestamp:</strong> {results['timestamp']}</p>
+        <p><strong>File:</strong> {filepath_safe}</p>
+        <p><strong>Timestamp:</strong> {timestamp_safe}</p>
         <p><strong>Total Features:</strong> {results['total_features']}</p>
         <p><strong>Status:</strong> <span class="{'success' if results['valid'] else 'error'}">{'PASSED' if results['valid'] else 'FAILED'}</span></p>
     </div>
 """
 
     if results['errors']:
-        html += f"""
+        html_content += f"""
     <h2>Errors ({len(results['errors'])})</h2>
     <ul>
 """
         for err in results['errors']:
-            html += f"        <li><span class='error'>Error:</span> {err}</li>\n"
-        html += "    </ul>\n"
+            html_content += f"        <li><span class='error'>Error:</span> {html.escape(str(err))}</li>\n"
+        html_content += "    </ul>\n"
 
     if results['warnings']:
-        html += f"""
+        html_content += f"""
     <h2>Warnings ({len(results['warnings'])})</h2>
     <ul>
 """
         for warn in results['warnings']:
-            html += f"        <li><span class='warning'>Warning:</span> {warn}</li>\n"
-        html += "    </ul>\n"
+            html_content += f"        <li><span class='warning'>Warning:</span> {html.escape(str(warn))}</li>\n"
+        html_content += "    </ul>\n"
 
     if not results['errors'] and not results['warnings']:
-        html += "<p>No errors or warnings found.</p>\n"
+        html_content += "<p>No errors or warnings found.</p>\n"
 
-    html += """
+    html_content += """
 </body>
 </html>
 """
     with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(html)
+        f.write(html_content)
 
 def main():
     parser = argparse.ArgumentParser(description="Automatisiertes GeoJSON Datenqualitaets-Gate (Pre- und Post-Scrape)")
@@ -176,6 +248,8 @@ def main():
     print(f"Validation for {args.input_file}: {'PASSED' if results['valid'] else 'FAILED'}")
     if results['errors']:
         print(f"Found {len(results['errors'])} errors.")
+    if results['warnings']:
+        print(f"Found {len(results['warnings'])} warnings.")
 
     print(f"Reports generated: {args.json_report}, {args.html_report}")
 
