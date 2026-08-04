@@ -1,58 +1,81 @@
 /**
  * js/groundwater_contours.js
  *
- * Implementiert eine clientseitige IDW-Interpolation und Isoband-Generierung
- * fuer Grundwassermessstellen.
- *
- * Erwartet, dass 'grundwassermessstellen.geojson' Messwerte enthaelt.
- * Ist das nicht der Fall, bleibt der Layer leer (Graceful Degradation).
+ * Lädt vorkalkulierte Grundwassergleichen (Isolinien/Isobänder) aus
+ * grundwassergleichen.geojson und rendert sie als Polygon-Overlay.
  */
 
 const gwIsoLayer = L.layerGroup();
 let gwIsoLoaded = false;
-let gwIsoGeoData = null;
+window.gwIsoGeoData = null; // Exponiert für Counter-Update
+
+// Farbenblind-sichere sequenzielle Okabe-Ito Palette
+function getColorForLevel(level) {
+    if (level === undefined || level === null) return '#56B4E9';
+    // Beispielhafte Skala, wird anhand echter Level dynamisch oder hier statisch belegt
+    if (level < 50) return '#0072B2';
+    if (level < 100) return '#56B4E9';
+    if (level < 150) return '#009E73';
+    if (level < 200) return '#E69F00';
+    return '#D55E00';
+}
 
 function loadGwIsoLayer() {
     if (gwIsoLoaded) return;
     gwIsoLoaded = true;
 
-    fetch('grundwassermessstellen.geojson')
+    fetch('grundwassergleichen.geojson')
         .then(res => {
             if (!res.ok) throw new Error('HTTP ' + res.status);
             return res.json();
         })
         .then(data => {
             if (!data || !data.features || data.features.length === 0) {
+                console.warn("Grundwassergleichenplan: Keine Features in grundwassergleichen.geojson. Layer bleibt leer.");
                 return;
             }
 
-            // Filtern nach Messstellen, die tatsaechlich einen numerischen Wert haben
-            const validPoints = data.features.filter(f => {
-                const val = f.properties.grundwasserstand || f.properties.value || f.properties.grundwasserstand_m_nhn;
-                return val !== undefined && val !== null && !isNaN(parseFloat(val));
-            });
+            window.gwIsoGeoData = data;
 
-            // Wenn keine Daten mit Messwerten vorhanden sind (aktueller Stand), bleibt der Layer leer
-            if (validPoints.length === 0) {
-                console.warn("Grundwassergleichenplan: Keine numerischen Messwerte in grundwassermessstellen.geojson gefunden. Layer bleibt leer.");
-                return;
+            L.geoJSON(data, {
+                style: function(feature) {
+                    return {
+                        fillColor: getColorForLevel(feature.properties.level_min || feature.properties.level_max),
+                        fillOpacity: 0.55,
+                        color: '#333333',
+                        weight: 0.5
+                    };
+                },
+                onEachFeature: function(feature, layer) {
+                    const p = feature.properties;
+                    let popupContent = `<div class="popup-card">
+                        <div class="popup-group" style="color: #0072B2;">Grundwassergleichen</div>
+                        <div class="popup-title">Wertebereich: ${p.level_min || '?'} – ${p.level_max || '?'} m ü. NHN</div>
+                        <div class="popup-detail">ℹ️ ${p.methode ? 'Methode: ' + p.methode : 'Interpoliert'}</div>
+                        <div class="popup-detail">📊 Stationen genutzt: ${p.n_stationen || '?'}</div>`;
+
+                    if (p.stand_datum) {
+                        popupContent += `<div class="popup-detail">📅 Stand: ${p.stand_datum}</div>`;
+                    }
+                    if (p.quelle) {
+                        popupContent += `<div style="font-size: 0.85em; color: #666; margin-top: 8px;">Quelle: ${p.quelle}</div>`;
+                    }
+                    popupContent += `</div>`;
+                    layer.bindPopup(popupContent);
+                }
+            }).addTo(gwIsoLayer);
+
+            // Update Counter falls definiert (wird in index/internal getriggert)
+            if (typeof updateSidebarCounters === 'function') {
+                updateSidebarCounters();
             }
-
-            // IDW und Isoband-Generierung (Minimal-Implementierung fuer den Fall, dass Daten vorhanden waeren)
-            // Hier wuerde eine Raster-Berechnung + Marching Squares stattfinden.
-            // Da wir keine externen Dependencies laden sollen und keine Daten vorhanden sind,
-            // belassen wir es bei der Daten-Validierung und einem leeren Layer-Fallback.
-            // Sobald Daten vorhanden sind, wuerde dieser Block die Geometrien auf gwIsoLayer addieren.
-
-            // Dummy: Wenn wir Daten haetten, wuerden wir hier L.geoJSON(...) aufrufen
-            // const isoGeojson = calculateContours(validPoints);
-            // L.geoJSON(isoGeojson, { style: ... }).addTo(gwIsoLayer);
         })
         .catch(err => {
-            console.error('Fehler beim Laden von grundwassermessstellen.geojson fuer Isolinien:', err);
+            // Fehlende Datei ist erwartet, bis das Python-Backend läuft
+            console.log('grundwassergleichen.geojson nicht geladen (Layer bleibt leer). Grund:', err);
         });
 }
 
-// Global verfuegbar machen fuer index.html
+// Global verfügbar machen
 window.gwIsoLayer = gwIsoLayer;
 window.loadGwIsoLayer = loadGwIsoLayer;

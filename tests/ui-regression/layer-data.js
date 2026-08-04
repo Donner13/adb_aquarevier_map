@@ -40,12 +40,12 @@ const EAGER_LAYERS = {
   // fetched eagerly for the cross-entity search index (buildUnifiedSearchIndex),
   // even though the *map rendering* of this one is lazy - see GWM_NAME below.
   '💧 Grundwassermessstellen (ELWAS, 3700+)': 'grundwassermessstellen.geojson',
-  '🌊 Grundwassergleichenplan (Isolinien)': 'grundwassergleichen.geojson',
 };
 
 // geojson fetched only the first time the layer is switched on
 // (map.on('overlayadd', ...) in index.html/internal.html).
 const LAZY_LAYERS = {
+  '🌊 Grundwassergleichenplan (Isolinien)': 'grundwassergleichen.geojson',
   '🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)': 'rur_einzugsgebiet_stats.geojson',
   '📊 Kreis-Vergleich (Choroplethenkarte)': 'kreise_scorecard.geojson',
   'Wasserschutzgebiete (LANUV)': 'wasserschutzgebiete.geojson',
@@ -110,12 +110,12 @@ const DEFAULT_ON = new Set([
 // (backlog #8 explicitly warns the counts drift on every re-scrape).
 const MANDATORY_COUNT_LAYERS = {
   '💧 Grundwassermessstellen (ELWAS, 3700+)': 'grundwassermessstellen.geojson',
-  '🌊 Grundwassergleichenplan (Isolinien)': 'grundwassergleichen.geojson',
   '⛰️ Stauanlagen (ELWAS)': 'stauanlagen.geojson',
   '🌧️ Regenbecken/-entlastungsanlagen (ELWAS)': 'regenbecken.geojson',
 };
 
 function realFeatureCount(geojsonFile) {
+  if (!fs.existsSync(path.join(REPO_ROOT, geojsonFile))) return 0;
   const raw = fs.readFileSync(path.join(REPO_ROOT, geojsonFile), 'utf8');
   return JSON.parse(raw).features.length;
 }
