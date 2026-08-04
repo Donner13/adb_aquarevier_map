@@ -411,13 +411,14 @@
         const isPositionArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isStrictNumber);
 
         // Multigeometries and Polygons can technically be empty [] representing empty geometries in some implementations per RFC 7946
-        const isMultiPointArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPositionArray);
-        const isLineStringArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isPositionArray);
-        const isMultiLineStringArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLineStringArray);
+        const isMultiPointArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isPositionArray));
+        const isLineStringArray = (arr) => Array.isArray(arr) && (arr.length === 0 || (arr.length >= 2 && arr.every(isPositionArray)));
+        const isMultiLineStringArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isLineStringArray));
 
         const isLinearRing = (arr) => {
             if (!Array.isArray(arr)) return false;
 
+            if (arr.length === 0) return true;
             if (arr.length < 4) return false;
             if (!arr.every(isPositionArray)) return false;
 
@@ -430,8 +431,8 @@
             return true;
         };
 
-        const isPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLinearRing);
-        const isMultiPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPolygonArray);
+        const isPolygonArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isLinearRing));
+        const isMultiPolygonArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isPolygonArray));
 
         const assertValidGeometry = (geom, isCollectionItem = false) => {
             if (geom === null) {
@@ -556,19 +557,14 @@
                 features: activeFeatures
             };
 
-            try {
-                const blob = new Blob([JSON.stringify(geojsonOutput, null, 2)], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `aquarevier_geodata_export_${dateStr}.geojson`;
-                a.click();
-                URL.revokeObjectURL(url);
-                window.showToast(`${activeFeatures.length} Objekte als GeoJSON exportiert`, "💾");
-            } catch (err) {
-                console.error("Failed to stringify and export GeoJSON:", err);
-                window.showToast("Fehler beim Exportieren (ungültige Daten)", "❌");
-            }
+            const blob = new Blob([JSON.stringify(geojsonOutput, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `aquarevier_geodata_export_${dateStr}.geojson`;
+            a.click();
+            URL.revokeObjectURL(url);
+            window.showToast(`${activeFeatures.length} Objekte als GeoJSON exportiert`, "💾");
         } else if (format === 'csv') {
             // Flatten properties to CSV with semicolon delimiter and UTF-8 BOM
             const allKeys = new Set();
