@@ -66,6 +66,17 @@
     color: #111;
 }
 
+
+.print-btn {
+    margin-top: 16px;
+    padding: 8px 16px;
+    background: #0ea5e9;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 /* Printable Stakeholder Modal */
 @media print {
     body * {
@@ -100,5 +111,9 @@
     .modal-metric {
         border-left: 2px solid #000;
         background: none;
+    }
+
+    .print-btn {
+        display: none;
     }
 }

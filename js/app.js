@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span id="stakeholder-metric-gewerbe">Keine Daten verfügbar</span>
             </div>
 
-            <button class="print-btn" style="margin-top: 16px; padding: 8px 16px; background: #0ea5e9; color: white; border: none; border-radius: 4px; cursor: pointer;">Steckbrief drucken</button>
+            <button class="print-btn">Steckbrief drucken</button>
         `;
 
         modalOverlay.appendChild(modalContent);
@@ -95,34 +95,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // We also attach to existing and new layers directly in case they don't have popups
-    function attachGemeindeClick(layer) {
-        if (layer.feature && layer.feature.properties) {
-            const props = layer.feature.properties;
-            if (props.cat === 'gemeinde' || props.GN) {
-                layer.on('click', () => {
-                    window.openStakeholderModal(props.GN || props.name || 'Unbekannt');
-                });
-            }
-        }
-    }
-
-    map.eachLayer((layer) => {
-        // If it's a layer group or marker cluster, iterate its layers
-        if (layer.eachLayer) {
-            layer.eachLayer(attachGemeindeClick);
-        } else {
-            attachGemeindeClick(layer);
-        }
-    });
-
-    map.on('layeradd', (e) => {
-        const layer = e.layer;
-        if (layer.eachLayer) {
-            layer.eachLayer(attachGemeindeClick);
-        } else {
-            attachGemeindeClick(layer);
-        }
-    });
-
-});
