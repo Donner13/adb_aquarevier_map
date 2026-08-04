@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---------- Stakeholder Gemeinde-Steckbrief Modal ----------
 
-    // Create the modal overlay in the DOM if it doesn't exist
     let modalOverlay = document.getElementById('stakeholder-modal-overlay');
     if (!modalOverlay) {
         modalOverlay = document.createElement('div');
@@ -35,17 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <div class="modal-metric">
                 <strong>Wasserversorgungsrisiko</strong>
-                <span id="stakeholder-metric-wasser">Keine Daten verfügbar</span>
+                <span id="stakeholder-metric-wasser"></span>
             </div>
 
             <div class="modal-metric">
                 <strong>Pegeldaten</strong>
-                <span id="stakeholder-metric-pegel">Keine Daten verfügbar</span>
+                <span id="stakeholder-metric-pegel"></span>
             </div>
 
             <div class="modal-metric">
                 <strong>Gewerbegebiete</strong>
-                <span id="stakeholder-metric-gewerbe">Keine Daten verfügbar</span>
+                <span id="stakeholder-metric-gewerbe"></span>
             </div>
 
             <button class="print-btn">Steckbrief drucken</button>
@@ -54,64 +53,51 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.appendChild(modalContent);
         document.body.appendChild(modalOverlay);
 
-        // Close event
         modalContent.querySelector('.close-btn').addEventListener('click', () => {
             modalOverlay.style.display = 'none';
         });
 
-        // Hide on overlay click
         modalOverlay.addEventListener('click', (e) => {
             if (e.target === modalOverlay) {
                 modalOverlay.style.display = 'none';
             }
         });
 
-        // Print event (fixes CSP issue)
         modalContent.querySelector('.print-btn').addEventListener('click', () => {
             window.print();
         });
     }
 
-    // Show modal function (local scope only)
-    function openStakeholderModal(gemeindeName) {
+    function openStakeholderModal(props) {
+        const gemeindeName = props.GN || props.gemeinde || props.name || 'Unbekannt';
         document.getElementById('stakeholder-modal-title').textContent = `Gemeinde-Steckbrief: ${gemeindeName}`;
+
+        document.getElementById('stakeholder-metric-wasser').textContent = props.wasserversorgungsrisiko || 'Keine Daten verfügbar';
+        document.getElementById('stakeholder-metric-pegel').textContent = props.pegeldaten || 'Keine Daten verfügbar';
+        document.getElementById('stakeholder-metric-gewerbe').textContent = props.gewerbegebiete || 'Keine Daten verfügbar';
+
         modalOverlay.style.display = 'flex';
     }
 
     function handleGemeindeClick(e) {
         if (e.target && e.target.feature && e.target.feature.properties) {
-            const props = e.target.feature.properties;
-            const name = props.GN || props.gemeinde || props.name || 'Unbekannt';
-            openStakeholderModal(name);
+            openStakeholderModal(e.target.feature.properties);
         }
     }
 
     function attachGemeindeClick(layer) {
-        if (layer.feature && layer.feature.properties) {
+        if (layer.eachLayer) {
+            layer.eachLayer(attachGemeindeClick); // Recursive binding
+        } else if (layer.feature && layer.feature.properties) {
             const props = layer.feature.properties;
             if (props.cat === 'gemeinde' || props.GN || props.gemeinde) {
-                // Remove previous listener to prevent duplicates on layeradd
                 layer.off('click', handleGemeindeClick);
                 layer.on('click', handleGemeindeClick);
             }
         }
     }
 
-    map.eachLayer((layer) => {
-        if (layer.eachLayer) {
-            layer.eachLayer(attachGemeindeClick);
-        } else {
-            attachGemeindeClick(layer);
-        }
-    });
-
-    map.on('layeradd', (e) => {
-        const layer = e.layer;
-        if (layer.eachLayer) {
-            layer.eachLayer(attachGemeindeClick);
-        } else {
-            attachGemeindeClick(layer);
-        }
-    });
+    map.eachLayer(attachGemeindeClick);
+    map.on('layeradd', (e) => attachGemeindeClick(e.layer));
 
 });
