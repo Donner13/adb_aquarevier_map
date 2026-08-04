@@ -403,6 +403,58 @@
     // --- 3. OPEN DATA EXPORT (GEOJSON & CSV) ---
     window.exportActiveLayersData = function (format = 'geojson') {
         const activeFeatures = [];
+
+        const isStrictNumber = (n) => typeof n === 'number' && Number.isFinite(n);
+        const isPositionArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isStrictNumber);
+        const isMultiPointArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPositionArray);
+        const isLineStringArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isPositionArray);
+        const isMultiLineStringArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLineStringArray);
+
+        const isLinearRing = (arr) => {
+            if (!Array.isArray(arr)) return false;
+
+            if (arr.length < 4) return false;
+            if (!arr.every(isPositionArray)) return false;
+            const first = arr[0], last = arr[arr.length - 1];
+            if (first.length !== last.length) return false;
+            for (let i = 0; i < first.length; i++) if (first[i] !== last[i]) return false;
+            return true;
+        };
+        const isPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLinearRing);
+        const isMultiPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPolygonArray);
+
+        const assertValidGeometry = (geom, isCollectionItem = false) => {
+            if (geom === null) {
+                if (isCollectionItem) throw new TypeError('GeometryCollection element cannot be null');
+                return;
+            }
+            if (typeof geom !== 'object') throw new TypeError('Geometry must be an object or null');
+            if (!geom.type || typeof geom.type !== 'string') throw new TypeError('Geometry must have a type string');
+            const validTypes = ['Point', 'MultiPoint', 'LineString', 'MultiLineString', 'Polygon', 'MultiPolygon', 'GeometryCollection'];
+            if (!validTypes.includes(geom.type)) throw new TypeError('Invalid geometry type');
+
+            if (geom.type === 'GeometryCollection') {
+                if (!Array.isArray(geom.geometries)) throw new TypeError('GeometryCollection must have a geometries array');
+                geom.geometries.forEach(g => assertValidGeometry(g, true));
+            } else {
+                if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
+                if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
+
+                if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
+                if (geom.type === 'LineString' && !isLineStringArray(geom.coordinates)) throw new TypeError('Invalid LineString coordinates');
+                if (geom.type === 'MultiLineString' && !isMultiLineStringArray(geom.coordinates)) throw new TypeError('Invalid MultiLineString coordinates');
+                if (geom.type === 'Polygon' && !isPolygonArray(geom.coordinates)) throw new TypeError('Invalid Polygon coordinates');
+                if (geom.type === 'MultiPolygon' && !isMultiPolygonArray(geom.coordinates)) throw new TypeError('Invalid MultiPolygon coordinates');
+            }
+        };
+
+        const assertValidFeature = (f) => {
+            if (typeof f !== 'object' || f === null || Array.isArray(f)) throw new TypeError('Feature must be an object');
+            if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
+            if (!('properties' in f)) throw new TypeError('Feature must have properties member');
+            if (f.properties !== null && (typeof f.properties !== 'object' || Array.isArray(f.properties))) throw new TypeError('Properties must be an object or null');
+            assertValidGeometry(f.geometry);
+        };
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
@@ -412,7 +464,9 @@
                         const storeData = window.layerDataStore[key];
                         if (storeData && storeData.features) {
                             storeData.features.forEach(f => {
+                                if (format === 'geojson') assertValidFeature(f);
                                 const featCopy = JSON.parse(JSON.stringify(f));
+                                if (!featCopy.properties) featCopy.properties = {};
                                 featCopy.properties._layer_name = key;
                                 activeFeatures.push(featCopy);
                             });
@@ -427,7 +481,9 @@
                 const storeData = window.layerDataStore[key];
                 if (storeData && storeData.features) {
                     storeData.features.forEach(f => {
+                        if (format === 'geojson') assertValidFeature(f);
                         const featCopy = JSON.parse(JSON.stringify(f));
+                        if (!featCopy.properties) featCopy.properties = {};
                         featCopy.properties._layer_name = key;
                         activeFeatures.push(featCopy);
                     });
