@@ -14,11 +14,19 @@ NRW_BBOX = {
 }
 
 def check_coords_in_bbox(lon, lat):
+    # Ensure they are numeric, but strictly exclude booleans which are a subclass of int in Python
     if not isinstance(lon, (int, float)) or not isinstance(lat, (int, float)):
+        return False
+    if isinstance(lon, bool) or isinstance(lat, bool):
         return False
     return (NRW_BBOX["min_lon"] <= lon <= NRW_BBOX["max_lon"]) and (NRW_BBOX["min_lat"] <= lat <= NRW_BBOX["max_lat"])
 
 def check_geometry(geometry, feature_id, results):
+    if not isinstance(geometry, dict):
+        results["errors"].append(f"Feature {feature_id}: Geometry is not an object.")
+        results["valid"] = False
+        return
+
     geom_type = geometry.get("type")
     coords = geometry.get("coordinates")
 
@@ -38,7 +46,7 @@ def check_geometry(geometry, feature_id, results):
             return
         lon, lat = pt[0], pt[1]
         if not check_coords_in_bbox(lon, lat):
-            results["errors"].append(f"Feature {feature_id}: Coordinates [{lon}, {lat}] outside NRW bounding box.")
+            results["errors"].append(f"Feature {feature_id}: Coordinates [{lon}, {lat}] outside NRW bounding box or invalid type.")
             results["valid"] = False
 
     if geom_type == "Point":
@@ -94,6 +102,7 @@ def check_geometry(geometry, feature_id, results):
         results["errors"].append(f"Feature {feature_id}: Unknown or unsupported geometry type '{geom_type}'.")
         results["valid"] = False
 
+
 def validate_geojson(filepath):
     results = {
         "filepath": filepath,
@@ -136,6 +145,10 @@ def validate_geojson(filepath):
             results["valid"] = False
             continue
 
+        if feature.get("type") != "Feature":
+            results["errors"].append(f"Feature at index {i} has invalid type: expected 'Feature', got '{feature.get('type')}'.")
+            results["valid"] = False
+
         feature_id = feature.get("id", f"index_{i}")
         properties = feature.get("properties")
 
@@ -146,9 +159,10 @@ def validate_geojson(filepath):
 
         geometry = feature.get("geometry")
 
-        if "id" not in properties and "id" not in feature:
-             results["errors"].append(f"Feature {feature_id}: Missing 'id'.")
-             results["valid"] = False
+        # As per the task prompt, `id` and `name` are mandatory fields. If they are in `properties` we consider them valid.
+        if "id" not in properties:
+            results["errors"].append(f"Feature {feature_id}: Missing 'id' in properties.")
+            results["valid"] = False
 
         if "name" not in properties:
              results["errors"].append(f"Feature {feature_id}: Missing 'name' in properties.")
