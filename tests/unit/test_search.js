@@ -113,10 +113,17 @@ test.describe('Search Bar Query Normalization - Unit Tests', () => {
 
     test('supports substring matching in category', async ({ page }) => {
         const results = await page.evaluate(() => {
-            return window.queryUniversalSearch('egel'); // Partial match for 'Pegel'
+            // Search for "äranl", which matches category '🚰 Kläranlage' but is not in any title/subtitle
+            window.layerDataStore['klaeranlagen'] = {
+                features: [
+                    { properties: { name: 'KA Aachen', gewaesser: 'Wurm' }, geometry: { type: 'Point', coordinates: [6.1, 50.8] } }
+                ]
+            };
+            window.buildUniversalSearchIndex();
+            return window.queryUniversalSearch('äranl');
         });
         expect(results.length).toBeGreaterThan(0);
-        expect(results.some(r => r.category.includes('Pegel'))).toBe(true);
+        expect(results.some(r => r.category.includes('Kläranlage'))).toBe(true);
     });
 
     test('limits results to a maximum of 15', async ({ page }) => {
