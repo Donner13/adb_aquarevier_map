@@ -41,20 +41,36 @@ def get_coordinates(geometry):
     def flatten(coords):
         if not isinstance(coords, list) or not coords:
             return []
-        # If it's a list of numbers, it's a coordinate pair
-        if isinstance(coords[0], (int, float)):
-            return [coords]
 
+        # Check if the list contains number types representing a coordinate pair
+        if len(coords) >= 2 and isinstance(coords[0], (int, float)) and isinstance(coords[1], (int, float)):
+             # Even if it has more than 2 elements, we take the first two as lon/lat for bbox checking
+             return [coords]
+
+        # If it's a list but the first elements aren't numbers, we must recurse.
+        # If we hit string/null elements instead of lists, we just return them and let the caller handle it.
         result = []
         for item in coords:
-            result.extend(flatten(item))
+            if isinstance(item, list):
+                result.extend(flatten(item))
+            else:
+                 # It's an invalid element (not a list, not a paired number at the parent level)
+                 # We return it wrapped to trigger the "Invalid coordinate format" error later
+                 result.append([item])
         return result
 
     return flatten(geometry.get('coordinates'))
 
+def is_valid_position(coord):
+    """A valid GeoJSON position is an array of at least 2 numbers."""
+    if not isinstance(coord, list) or len(coord) < 2:
+        return False
+    return all(isinstance(c, (int, float)) for c in coord)
+
 def check_geometry_schema(geometry, feature_id, feature_index):
     """
-    Recursively check geometry schemas, specifically supporting nested GeometryCollections.
+    Recursively check geometry schemas, specifically supporting nested GeometryCollections,
+    and enforcing GeoJSON structure rules for coordinates.
     Returns a list of error dictionaries.
     """
     errors = []
@@ -90,7 +106,6 @@ def check_geometry_schema(geometry, feature_id, feature_index):
              })
          else:
              for geom in geometry['geometries']:
-                 # Recursively check each inner geometry, allowing nested GeometryCollections
                  errors.extend(check_geometry_schema(geom, feature_id, feature_index))
     else:
         # Standard geometries need a valid coordinates array
@@ -100,6 +115,40 @@ def check_geometry_schema(geometry, feature_id, feature_index):
                  'feature_id': feature_id,
                  'message': f"Invalid geometry coordinates format for {geom_type}"
              })
+            return errors
+
+        coords = geometry['coordinates']
+
+        # Deep structural validation based on GeoJSON spec
+        if geom_type == 'Point':
+            if not is_valid_position(coords):
+                errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"Invalid Point coordinates"})
+        elif geom_type in ('MultiPoint', 'LineString'):
+            if not coords or not all(is_valid_position(c) for c in coords):
+                errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"Invalid {geom_type} coordinates"})
+            if geom_type == 'LineString' and len(coords) < 2:
+                 errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"LineString requires at least 2 positions"})
+        elif geom_type in ('MultiLineString', 'Polygon'):
+            if not coords or not all(isinstance(line, list) and all(is_valid_position(c) for c in line) for line in coords):
+                 errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"Invalid {geom_type} coordinates"})
+            if geom_type == 'Polygon':
+                 for ring in coords:
+                     if len(ring) < 4:
+                          errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"Polygon ring requires at least 4 positions"})
+                     elif ring[0] != ring[-1]:
+                          errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"Polygon ring must be closed (first and last position identical)"})
+        elif geom_type == 'MultiPolygon':
+            if not coords or not all(isinstance(poly, list) and all(isinstance(ring, list) and all(is_valid_position(c) for c in ring) for ring in poly) for poly in coords):
+                 errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"Invalid MultiPolygon coordinates"})
+            # Check rings within MultiPolygon
+            for poly in coords:
+                if isinstance(poly, list):
+                    for ring in poly:
+                        if isinstance(ring, list):
+                             if len(ring) < 4:
+                                  errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"MultiPolygon ring requires at least 4 positions"})
+                             elif ring[0] != ring[-1]:
+                                  errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"MultiPolygon ring must be closed"})
 
     return errors
 
