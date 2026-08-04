@@ -357,8 +357,14 @@ def main():
         # Mandatory fields check
         missing_fields = []
 
-        # Ensure mandatory ID, Name, Category exist explicitly inside 'properties'
-        for field in ['id', 'name', 'category']:
+        # Check ID (can be top level or in properties)
+        has_top_level_id = feature.get('id') is not None and is_valid_property_value(feature.get('id'))
+        has_prop_id = properties.get('id') is not None and is_valid_property_value(properties.get('id'))
+        if not has_top_level_id and not has_prop_id:
+             missing_fields.append('id')
+
+        # Ensure mandatory Name, Category exist explicitly inside 'properties'
+        for field in ['name', 'category']:
             if not is_valid_property_value(properties.get(field)):
                 missing_fields.append(field)
 
@@ -366,7 +372,7 @@ def main():
             results['errors'].append({
                 'feature_index': i,
                 'feature_id': feature_id,
-                'message': f"Missing or invalid value for mandatory fields in properties: {', '.join(missing_fields)}"
+                'message': f"Missing or invalid value for mandatory fields: {', '.join(missing_fields)}"
             })
 
         # Geometry schema and NRW Bounding Box check
