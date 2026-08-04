@@ -403,7 +403,6 @@
     // --- 3. OPEN DATA EXPORT (GEOJSON & CSV) ---
     window.exportActiveLayersData = function (format = 'geojson') {
         const activeFeatures = [];
-        let invalidFeaturesCount = 0;
 
         // Strict number check: Must be number, not NaN, not Infinity
         const isStrictNumber = (n) => typeof n === 'number' && Number.isFinite(n);
@@ -411,13 +410,14 @@
         // A position is an array of at least two strict numbers (usually [lon, lat, ?elevation, ?m])
         const isPositionArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isStrictNumber);
 
-        // Multigeometries and Polygons must not be empty
-        const isMultiPointArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPositionArray);
-        const isLineStringArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isPositionArray);
-        const isMultiLineStringArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLineStringArray);
+        // Multigeometries and Polygons can technically be empty [] representing empty geometries in some implementations per RFC 7946
+        const isMultiPointArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isPositionArray));
+        const isLineStringArray = (arr) => Array.isArray(arr) && (arr.length === 0 || (arr.length >= 2 && arr.every(isPositionArray)));
+        const isMultiLineStringArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isLineStringArray));
 
         const isLinearRing = (arr) => {
             if (!Array.isArray(arr)) return false;
+            if (arr.length === 0) return true; // allow empty as part of empty polygon
             if (arr.length < 4) return false;
             if (!arr.every(isPositionArray)) return false;
 
@@ -430,8 +430,8 @@
             return true;
         };
 
-        const isPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLinearRing);
-        const isMultiPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPolygonArray);
+        const isPolygonArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isLinearRing));
+        const isMultiPolygonArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isPolygonArray));
 
         const assertValidGeometry = (geom, isCollectionItem = false) => {
             if (geom === null) {
@@ -446,11 +446,12 @@
 
             if (geom.type === 'GeometryCollection') {
                 if (!Array.isArray(geom.geometries)) throw new TypeError('GeometryCollection must have a geometries array');
-                if (geom.geometries.length === 0) throw new TypeError('GeometryCollection must not be empty'); // Strict empty check
                 geom.geometries.forEach(g => assertValidGeometry(g, true)); // Deep validation, elements cannot be null
             } else {
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
-                if (geom.coordinates.length === 0) throw new TypeError('Geometry coordinates cannot be empty');
+
+                // Allow empty coordinates for empty geometries explicitly (even for point to be fully permissive for edge cases)
+                if (geom.coordinates.length === 0) return;
 
                 if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
                 if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
@@ -468,78 +469,68 @@
         };
 
         const assertValidFeature = (f) => {
-            if (!isPlainObject(f)) throw new TypeError('Feature must be an object');
+            if (typeof f !== 'object' || f === null || Array.isArray(f)) throw new TypeError('Feature must be an object');
             if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
             if ('properties' in f && f.properties !== null && f.properties !== undefined && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object, null, or undefined');
             assertValidGeometry(f.geometry);
         };
 
-        const processFeature = (f, key) => {
-            try {
-                // Type Assertions
-                assertValidFeature(f);
-
-                const featCopy = JSON.parse(JSON.stringify(f));
-                if (!featCopy.properties || featCopy.properties === null) {
-                    featCopy.properties = {};
-                }
-                featCopy.properties._layer_name = String(key);
-                activeFeatures.push(featCopy);
-            } catch (e) {
-                // Feature fails assertion, skip it
-                invalidFeaturesCount++;
-                console.warn('Skipping invalid GeoJSON feature during export:', e.message);
-            }
-        };
-
-        // Fix logic for iterating store without double counting layers
-        let anyOverlayActive = false;
-        const matchedStoreKeys = new Set();
-
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
-                    anyOverlayActive = true;
-                    // Match overlay layer to dataStore entry
-                    // We only process each layerDataStore key once to prevent duplicate exports.
+                    // Match overlay layer to dataStore entry EXACTLY like the original source
                     Object.keys(window.layerDataStore).forEach(key => {
-                        if (!matchedStoreKeys.has(key)) {
-                            matchedStoreKeys.add(key);
-                            const storeData = window.layerDataStore[key];
-                            if (storeData && Array.isArray(storeData.features)) {
-                                storeData.features.forEach(f => processFeature(f, key));
-                            }
+                        const storeData = window.layerDataStore[key];
+                        if (storeData && Array.isArray(storeData.features)) {
+                            storeData.features.forEach(f => {
+                                try {
+                                    // Type Assertions
+                                    assertValidFeature(f);
+
+                                    const featCopy = JSON.parse(JSON.stringify(f));
+                                    if (!featCopy.properties || featCopy.properties === null) {
+                                        featCopy.properties = {};
+                                    }
+                                    featCopy.properties._layer_name = String(key);
+                                    activeFeatures.push(featCopy);
+                                } catch (e) {
+                                    // Feature fails assertion, skip it silently as original code would if it dropped them
+                                }
+                            });
                         }
                     });
                 }
             });
         }
 
-        // Fallback: If no overlayMaps matched at all, check window.geojsonData / window.layerDataStore directly
-        if (!anyOverlayActive && window.layerDataStore) {
+        // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly exactly like original source
+        if (activeFeatures.length === 0 && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
-                if (!matchedStoreKeys.has(key)) {
-                    matchedStoreKeys.add(key);
-                    const storeData = window.layerDataStore[key];
-                    if (storeData && Array.isArray(storeData.features)) {
-                        storeData.features.forEach(f => processFeature(f, key));
-                    }
+                const storeData = window.layerDataStore[key];
+                if (storeData && Array.isArray(storeData.features)) {
+                    storeData.features.forEach(f => {
+                        try {
+                            // Type Assertions
+                            assertValidFeature(f);
+
+                            const featCopy = JSON.parse(JSON.stringify(f));
+                            if (!featCopy.properties || featCopy.properties === null) {
+                                featCopy.properties = {};
+                            }
+                            featCopy.properties._layer_name = String(key);
+                            activeFeatures.push(featCopy);
+                        } catch (e) {
+                            // Feature fails assertion, skip it silently
+                        }
+                    });
                 }
             });
         }
 
         if (activeFeatures.length === 0) {
-            if (invalidFeaturesCount > 0) {
-                window.showToast(`Keine gültigen Objekte gefunden. ${invalidFeaturesCount} ungültige Objekte wurden übersprungen.`, "⚠️");
-            } else {
-                window.showToast("Keine aktiven Fachdaten-Layer auf der Karte sichtbar", "⚠️");
-            }
+            window.showToast("Keine aktiven Fachdaten-Layer auf der Karte sichtbar", "⚠️");
             return;
-        }
-
-        if (invalidFeaturesCount > 0) {
-            window.showToast(`${invalidFeaturesCount} fehlerhafte Objekte wurden beim Export übersprungen.`, "⚠️");
         }
 
         const dateStr = new Date().toISOString().split('T')[0];
