@@ -82,7 +82,11 @@ def check_geometry_schema(geometry, feature_id, feature_index):
     errors = []
 
     if geometry is None:
-        # geometry: null is valid in GeoJSON
+        errors.append({
+            'feature_index': feature_index,
+            'feature_id': feature_id,
+            'message': 'Missing or invalid geometry (null geometry is not allowed for map data)'
+        })
         return errors
 
     if not isinstance(geometry, dict):
@@ -305,6 +309,8 @@ def main():
 
             # ID can be a top-level feature member or in properties in GeoJSON.
             feature_id = feature.get('id', properties.get('id', 'Unknown'))
+            if feature_id is None or str(feature_id).strip() == "":
+                feature_id = 'Unknown'
 
         if not is_feature_valid:
              continue
@@ -313,7 +319,9 @@ def main():
         missing_fields = []
 
         # Check ID (can be top level or in properties)
-        if feature.get('id') is None and (properties.get('id') is None or str(properties.get('id')).strip() == ""):
+        has_top_level_id = feature.get('id') is not None and str(feature.get('id')).strip() != ""
+        has_prop_id = properties.get('id') is not None and str(properties.get('id')).strip() != ""
+        if not has_top_level_id and not has_prop_id:
              missing_fields.append('id')
 
         for field in ['name', 'category']:
@@ -329,13 +337,13 @@ def main():
             })
 
         # Geometry schema and NRW Bounding Box check
-        # Geometry can be missing from the JSON or explicitly null. Both are invalid for a map gate,
-        # but null is valid GeoJSON. Our gate requires it, so we will fail if it's missing or null.
+        # Geometry can be missing from the JSON entirely, which is an error.
+        # It can also be explicitly null, which we now reject as an error per the data gate requirements.
         if 'geometry' not in feature:
             results['errors'].append({
                 'feature_index': i,
                 'feature_id': feature_id,
-                'message': 'Missing or invalid geometry'
+                'message': 'Missing geometry field'
             })
             continue
 
@@ -385,13 +393,13 @@ def main():
                         'message': f"Coordinates outside NRW Bounding Box: {out_of_bounds[0]} (and possibly others)"
                     })
         elif geometry is None:
-             pass # Explicitly allowed by GeoJSON schema check, we skip coordinate checking
+             pass # Already flagged by check_geometry_schema
         else:
-            if not any(e['feature_index'] == i and 'Missing or invalid geometry' in e['message'] for e in geom_errors):
+            if not any(e['feature_index'] == i and 'Missing or invalid geometry structure' in e['message'] for e in geom_errors):
                  results['errors'].append({
                      'feature_index': i,
                      'feature_id': feature_id,
-                     'message': 'Missing or invalid geometry'
+                     'message': 'Invalid geometry structure'
                  })
 
     generate_html_report(results, args.html_report)
