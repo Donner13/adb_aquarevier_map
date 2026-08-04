@@ -450,10 +450,14 @@
             } else {
                 if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
 
-                // Allow empty coordinates for empty geometries explicitly (even for point to be fully permissive for edge cases)
+                if (geom.type === 'Point') {
+                    if (!isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
+                    return; // Point cannot be empty in RFC 7946, while others can be
+                }
+
+                // Allow empty coordinates for empty geometries explicitly for types other than Point
                 if (geom.coordinates.length === 0) return;
 
-                if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
                 if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
                 if (geom.type === 'LineString' && !isLineStringArray(geom.coordinates)) throw new TypeError('Invalid LineString coordinates');
                 if (geom.type === 'MultiLineString' && !isMultiLineStringArray(geom.coordinates)) throw new TypeError('Invalid MultiLineString coordinates');
@@ -495,7 +499,7 @@
                                     featCopy.properties._layer_name = String(key);
                                     activeFeatures.push(featCopy);
                                 } catch (e) {
-                                    // Feature fails assertion, skip it silently as original code would if it dropped them
+                                    console.warn("Invalid GeoJSON Feature skipped:", e.message);
                                 }
                             });
                         }
@@ -521,7 +525,7 @@
                             featCopy.properties._layer_name = String(key);
                             activeFeatures.push(featCopy);
                         } catch (e) {
-                            // Feature fails assertion, skip it silently
+                            console.warn("Invalid GeoJSON Feature skipped:", e.message);
                         }
                     });
                 }
