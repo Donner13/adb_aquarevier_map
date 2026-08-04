@@ -81,6 +81,10 @@ def check_geometry_schema(geometry, feature_id, feature_index):
     """
     errors = []
 
+    if geometry is None:
+        # geometry: null is valid in GeoJSON
+        return errors
+
     if not isinstance(geometry, dict):
         errors.append({
             'feature_index': feature_index,
@@ -267,31 +271,52 @@ def main():
     }
 
     for i, feature in enumerate(data['features']):
+        is_feature_valid = True
+        feature_id = 'Unknown'
+
         if not isinstance(feature, dict):
              results['errors'].append({
                 'feature_index': i,
                 'feature_id': 'Unknown',
                 'message': 'Invalid GeoJSON: Feature object missing or incorrect type'
             })
+             is_feature_valid = False
+
+        properties = {}
+        if is_feature_valid:
+            if feature.get('type') != 'Feature':
+                results['errors'].append({
+                    'feature_index': i,
+                    'feature_id': 'Unknown',
+                    'message': 'Invalid GeoJSON: Feature object missing or incorrect type'
+                })
+                is_feature_valid = False
+
+            properties = feature.get('properties')
+            if properties is None:
+                properties = {}
+            elif not isinstance(properties, dict):
+                 results['errors'].append({
+                    'feature_index': i,
+                    'feature_id': 'Unknown',
+                    'message': 'Invalid GeoJSON: properties must be an object or null'
+                })
+                 properties = {}
+
+            # ID can be a top-level feature member or in properties in GeoJSON.
+            feature_id = feature.get('id', properties.get('id', 'Unknown'))
+
+        if not is_feature_valid:
              continue
-
-        properties = feature.get('properties')
-        if not isinstance(properties, dict):
-            properties = {}
-
-        feature_id = properties.get('id', 'Unknown')
-
-        if feature.get('type') != 'Feature':
-            results['errors'].append({
-                'feature_index': i,
-                'feature_id': feature_id,
-                'message': 'Invalid GeoJSON: Feature object missing or incorrect type'
-            })
-            continue
 
         # Mandatory fields check
         missing_fields = []
-        for field in ['id', 'name', 'category']:
+
+        # Check ID (can be top level or in properties)
+        if feature.get('id') is None and (properties.get('id') is None or str(properties.get('id')).strip() == ""):
+             missing_fields.append('id')
+
+        for field in ['name', 'category']:
             # We treat empty string as missing too, based on standard data quality checks
             if field not in properties or properties[field] is None or str(properties[field]).strip() == "":
                 missing_fields.append(field)
@@ -304,6 +329,16 @@ def main():
             })
 
         # Geometry schema and NRW Bounding Box check
+        # Geometry can be missing from the JSON or explicitly null. Both are invalid for a map gate,
+        # but null is valid GeoJSON. Our gate requires it, so we will fail if it's missing or null.
+        if 'geometry' not in feature:
+            results['errors'].append({
+                'feature_index': i,
+                'feature_id': feature_id,
+                'message': 'Missing or invalid geometry'
+            })
+            continue
+
         geometry = feature.get('geometry')
 
         # 1. Structural Validation (handles GeometryCollection natively via recursion)
@@ -349,6 +384,8 @@ def main():
                         'feature_id': feature_id,
                         'message': f"Coordinates outside NRW Bounding Box: {out_of_bounds[0]} (and possibly others)"
                     })
+        elif geometry is None:
+             pass # Explicitly allowed by GeoJSON schema check, we skip coordinate checking
         else:
             if not any(e['feature_index'] == i and 'Missing or invalid geometry' in e['message'] for e in geom_errors):
                  results['errors'].append({
