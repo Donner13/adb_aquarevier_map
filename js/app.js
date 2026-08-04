@@ -78,20 +78,35 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.style.display = 'flex';
     };
 
-    // Better global click hook to catch all layers including MarkerClusters or Groups
-    // We listen to the map's popupopen event, which fires reliably when a feature is clicked
-    // and a popup is shown.
-    map.on('popupopen', (e) => {
-        const layer = e.popup._source;
-        if (layer && layer.feature && layer.feature.properties) {
+    function attachGemeindeClick(layer) {
+        if (layer.feature && layer.feature.properties) {
             const props = layer.feature.properties;
             if (props.cat === 'gemeinde' || props.GN || props.gemeinde) {
                 const name = props.GN || props.gemeinde || props.name || 'Unbekannt';
-                // Delay opening to not interfere with map panning
-                setTimeout(() => {
+                // Attach directly to the layer click instead of popupopen
+                layer.on('click', (e) => {
                     window.openStakeholderModal(name);
-                }, 300);
+                    // Prevent default popup if possible, or let it happen alongside
+                });
             }
+        }
+    }
+
+    map.eachLayer((layer) => {
+        if (layer.eachLayer) {
+            layer.eachLayer(attachGemeindeClick);
+        } else {
+            attachGemeindeClick(layer);
         }
     });
 
+    map.on('layeradd', (e) => {
+        const layer = e.layer;
+        if (layer.eachLayer) {
+            layer.eachLayer(attachGemeindeClick);
+        } else {
+            attachGemeindeClick(layer);
+        }
+    });
+
+});
