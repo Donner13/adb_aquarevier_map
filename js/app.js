@@ -72,22 +72,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Show modal function
-    window.openStakeholderModal = function(gemeindeName) {
+    // Show modal function (local scope only)
+    function openStakeholderModal(gemeindeName) {
         document.getElementById('stakeholder-modal-title').textContent = `Gemeinde-Steckbrief: ${gemeindeName}`;
         modalOverlay.style.display = 'flex';
-    };
+    }
+
+    function handleGemeindeClick(e) {
+        if (e.target && e.target.feature && e.target.feature.properties) {
+            const props = e.target.feature.properties;
+            const name = props.GN || props.gemeinde || props.name || 'Unbekannt';
+            openStakeholderModal(name);
+        }
+    }
 
     function attachGemeindeClick(layer) {
         if (layer.feature && layer.feature.properties) {
             const props = layer.feature.properties;
             if (props.cat === 'gemeinde' || props.GN || props.gemeinde) {
-                const name = props.GN || props.gemeinde || props.name || 'Unbekannt';
-                // Attach directly to the layer click instead of popupopen
-                layer.on('click', (e) => {
-                    window.openStakeholderModal(name);
-                    // Prevent default popup if possible, or let it happen alongside
-                });
+                // Remove previous listener to prevent duplicates on layeradd
+                layer.off('click', handleGemeindeClick);
+                layer.on('click', handleGemeindeClick);
             }
         }
     }
