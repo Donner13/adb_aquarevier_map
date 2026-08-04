@@ -3,7 +3,13 @@
  * Centralized configuration and creation of external WMS (Web Map Service) layers.
  */
 
+/**
+ * @namespace window.WMSLoader
+ */
 window.WMSLoader = {
+    /**
+     * @returns {any}
+     */
     createBaseWebAtlas: function() {
         return L.tileLayer.wms("https://sgx.geodatenzentrum.de/wms_topplus_open", {
             layers: 'web',
@@ -12,7 +18,9 @@ window.WMSLoader = {
             attribution: "&copy; BKG / Geodatenzentrum"
         });
     },
-
+    /**
+     * @returns {any}
+     */
     createWmsBorders: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_dvg", {
             layers: 'nw_dvg_la,nw_dvg_k', // Landesgrenze (la) und Kreisgrenzen (k)
@@ -22,7 +30,9 @@ window.WMSLoader = {
             attribution: "Geobasis NRW"
         });
     },
-
+    /**
+     * @returns {any}
+     */
     createWmsRivers: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
             layers: 'gsk3e_hauptgewaesser_seen,gsk3e_hauptgewaesser_linien',
@@ -32,7 +42,9 @@ window.WMSLoader = {
             attribution: "LANUV NRW"
         });
     },
-
+    /**
+     * @returns {any}
+     */
     createWmsDetailedRivers: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
             layers: '2,3,4,5,6,8,9,10',
@@ -42,7 +54,9 @@ window.WMSLoader = {
             attribution: "LANUV NRW"
         });
     },
-
+    /**
+     * @returns {any}
+     */
     createWmsCatchments: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
             layers: '0,11',
@@ -52,7 +66,9 @@ window.WMSLoader = {
             attribution: "LANUV NRW"
         });
     },
-
+    /**
+     * @returns {any}
+     */
     createWmsMining: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/wms/bebu", {
             layers: '19',
@@ -62,7 +78,9 @@ window.WMSLoader = {
             attribution: "GD NRW"
         });
     },
-
+    /**
+     * @returns {any}
+     */
     createWmsHwgkHaeufig: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
             layers: 'Tiefen_Ueberflutungsgebiet_hw',
@@ -72,7 +90,9 @@ window.WMSLoader = {
             attribution: "LANUV NRW"
         });
     },
-
+    /**
+     * @returns {any}
+     */
     createWmsHwgkHq100: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
             layers: 'Tiefen_Ueberflutungsgebiet_mw',
@@ -82,7 +102,9 @@ window.WMSLoader = {
             attribution: "LANUV NRW"
         });
     },
-
+    /**
+     * @returns {any}
+     */
     createWmsHwgkExtrem: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
             layers: 'Tiefen_Ueberflutungsgebiet_nw',
@@ -92,7 +114,9 @@ window.WMSLoader = {
             attribution: "LANUV NRW"
         });
     },
-
+    /**
+     * @returns {any}
+     */
     createWmsStarkregenEuskirchen: function() {
         return L.tileLayer.wms("https://starkregen-euskirchen-v11.cismet.de/geoserver/wms", {
             layers: 'starkregen:L_T100_v1.1_depth3857',
