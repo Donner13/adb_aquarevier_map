@@ -6,15 +6,7 @@
 (function(window) {
     'use strict';
 
-    /**
-     * @class StorageModule
-     */
     class StorageModule {
-
-        /**
-         * @param {string} key
-         * @returns {string|null}
-         */
         getItem(key) {
             try {
                 return localStorage.getItem(key);
@@ -24,11 +16,6 @@
             }
         }
 
-        /**
-         * @param {string} key
-         * @param {string} value
-         * @returns {boolean}
-         */
         setItem(key, value) {
             try {
                 localStorage.setItem(key, value);
@@ -39,10 +26,6 @@
             }
         }
 
-        /**
-         * @param {string} key
-         * @returns {boolean}
-         */
         removeItem(key) {
             try {
                 localStorage.removeItem(key);
