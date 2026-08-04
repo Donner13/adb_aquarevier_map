@@ -129,26 +129,31 @@ def check_geometry_schema(geometry, feature_id, feature_index):
             if geom_type == 'LineString' and len(coords) < 2:
                  errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"LineString requires at least 2 positions"})
         elif geom_type in ('MultiLineString', 'Polygon'):
-            if not coords or not all(isinstance(line, list) and all(is_valid_position(c) for c in line) for line in coords):
+            # Must be array of arrays of positions. And the inner arrays cannot be empty.
+            if not coords or not all(isinstance(line, list) and len(line) > 0 and all(is_valid_position(c) for c in line) for line in coords):
                  errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"Invalid {geom_type} coordinates"})
-            if geom_type == 'Polygon':
+            elif geom_type == 'Polygon':
                  for ring in coords:
                      if len(ring) < 4:
                           errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"Polygon ring requires at least 4 positions"})
                      elif ring[0] != ring[-1]:
                           errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"Polygon ring must be closed (first and last position identical)"})
+            elif geom_type == 'MultiLineString':
+                 for line in coords:
+                      if len(line) < 2:
+                           errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"MultiLineString sub-line requires at least 2 positions"})
         elif geom_type == 'MultiPolygon':
-            if not coords or not all(isinstance(poly, list) and all(isinstance(ring, list) and all(is_valid_position(c) for c in ring) for ring in poly) for poly in coords):
+            # Must be array of polygons, where polygon is array of rings, where ring is array of positions. Inner arrays cannot be empty.
+            if not coords or not all(isinstance(poly, list) and len(poly) > 0 and all(isinstance(ring, list) and len(ring) > 0 and all(is_valid_position(c) for c in ring) for ring in poly) for poly in coords):
                  errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"Invalid MultiPolygon coordinates"})
-            # Check rings within MultiPolygon
-            for poly in coords:
-                if isinstance(poly, list):
+            else:
+                # Check rings within MultiPolygon
+                for poly in coords:
                     for ring in poly:
-                        if isinstance(ring, list):
-                             if len(ring) < 4:
-                                  errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"MultiPolygon ring requires at least 4 positions"})
-                             elif ring[0] != ring[-1]:
-                                  errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"MultiPolygon ring must be closed"})
+                         if len(ring) < 4:
+                              errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"MultiPolygon ring requires at least 4 positions"})
+                         elif ring[0] != ring[-1]:
+                              errors.append({'feature_index': feature_index, 'feature_id': feature_id, 'message': f"MultiPolygon ring must be closed"})
 
     return errors
 
