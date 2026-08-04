@@ -413,13 +413,13 @@
         const isPositionArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isStrictNumber);
 
         // Multigeometries and Polygons can technically be empty [] representing empty geometries in some implementations per RFC 7946
-        const isMultiPointArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isPositionArray));
-        const isLineStringArray = (arr) => Array.isArray(arr) && (arr.length === 0 || (arr.length >= 2 && arr.every(isPositionArray)));
-        const isMultiLineStringArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isLineStringArray));
+        const isMultiPointArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPositionArray);
+        const isLineStringArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isPositionArray);
+        const isMultiLineStringArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLineStringArray);
 
         const isLinearRing = (arr) => {
             if (!Array.isArray(arr)) return false;
-            if (arr.length === 0) return true; // allow empty as part of empty polygon
+
             if (arr.length < 4) return false;
             if (!arr.every(isPositionArray)) return false;
 
@@ -432,8 +432,8 @@
             return true;
         };
 
-        const isPolygonArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isLinearRing));
-        const isMultiPolygonArray = (arr) => Array.isArray(arr) && (arr.length === 0 || arr.every(isPolygonArray));
+        const isPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLinearRing);
+        const isMultiPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPolygonArray);
 
         const assertValidGeometry = (geom, isCollectionItem = false) => {
             if (geom === null) {
@@ -457,8 +457,7 @@
                     return; // Point cannot be empty in RFC 7946, while others can be
                 }
 
-                // Allow empty coordinates for empty geometries explicitly for types other than Point
-                if (geom.coordinates.length === 0) return;
+
 
                 if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
                 if (geom.type === 'LineString' && !isLineStringArray(geom.coordinates)) throw new TypeError('Invalid LineString coordinates');
@@ -485,10 +484,22 @@
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
-                    // Match overlay layer to dataStore entry EXACTLY like the original source
-                    Object.keys(window.layerDataStore).forEach(key => {
-                        const storeData = window.layerDataStore[key];
-                        if (storeData && storeData.features) {
+                    // Find the corresponding config to get the correct dataStore key
+                    let matchedKey = null;
+                    if (window.LAYER_CONFIGS) {
+                        const cfg = window.LAYER_CONFIGS.find(c => c.name === label || c.overlayLabel === label);
+                        if (cfg) matchedKey = cfg.id;
+                    }
+
+                    // Fallback heuristics if LAYER_CONFIGS doesn't cover it
+                    if (!matchedKey) {
+                        // some labels might just be identical to the key or closely match
+                        matchedKey = Object.keys(window.layerDataStore).find(k => label.toLowerCase().includes(k.toLowerCase())) || null;
+                    }
+
+                    if (matchedKey && window.layerDataStore[matchedKey]) {
+                        const storeData = window.layerDataStore[matchedKey];
+                        if (storeData && Array.isArray(storeData.features)) {
                             storeData.features.forEach(f => {
                                 try {
                                     // Type Assertions
@@ -498,14 +509,14 @@
                                     if (!featCopy.properties || featCopy.properties === null) {
                                         featCopy.properties = {};
                                     }
-                                    featCopy.properties._layer_name = String(key);
+                                    featCopy.properties._layer_name = String(matchedKey);
                                     activeFeatures.push(featCopy);
                                 } catch (e) {
                                     console.warn("Invalid GeoJSON Feature skipped:", e.message);
                                 }
                             });
                         }
-                    });
+                    }
                 }
             });
         }
@@ -554,14 +565,19 @@
                 features: activeFeatures
             };
 
-            const blob = new Blob([JSON.stringify(geojsonOutput, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `aquarevier_geodata_export_${dateStr}.geojson`;
-            a.click();
-            URL.revokeObjectURL(url);
-            window.showToast(`${activeFeatures.length} Objekte als GeoJSON exportiert`, "💾");
+            try {
+                const blob = new Blob([JSON.stringify(geojsonOutput, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `aquarevier_geodata_export_${dateStr}.geojson`;
+                a.click();
+                URL.revokeObjectURL(url);
+                window.showToast(`${activeFeatures.length} Objekte als GeoJSON exportiert`, "💾");
+            } catch (err) {
+                console.error("Failed to stringify and export GeoJSON:", err);
+                window.showToast("Fehler beim Exportieren (ungültige Daten)", "❌");
+            }
         } else if (format === 'csv') {
             // Flatten properties to CSV with semicolon delimiter and UTF-8 BOM
             const allKeys = new Set();
