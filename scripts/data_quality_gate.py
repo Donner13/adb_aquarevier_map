@@ -13,7 +13,7 @@ NRW_MAX_LAT = 52.6
 MANDATORY_FIELDS = ["id", "name", "category"]
 
 def check_bbox(lon, lat):
-    if not isinstance(lon, (int, float)) or not isinstance(lat, (int, float)):
+    if type(lon) not in (int, float) or type(lat) not in (int, float):
         return False
     return NRW_MIN_LON <= lon <= NRW_MAX_LON and NRW_MIN_LAT <= lat <= NRW_MAX_LAT
 
@@ -102,58 +102,6 @@ def validate_geometry(geom):
 
     return errors
 
-    if coords is None or not isinstance(coords, list):
-        return ["Geometry missing valid coordinates"]
-
-    if geom_type == "Point":
-        if not isinstance(coords, list) or len(coords) < 2:
-            return ["Point coordinates invalid"]
-        lon, lat = coords[0], coords[1]
-        if not check_bbox(lon, lat):
-            errors.append(f"Coordinates ({lon}, {lat}) outside NRW bounding box")
-
-    elif geom_type in ["LineString", "MultiPoint"]:
-        for coord in coords:
-            if isinstance(coord, list) and len(coord) >= 2:
-                if not check_bbox(coord[0], coord[1]):
-                    errors.append(f"Coordinates ({coord[0]}, {coord[1]}) outside NRW bounding box")
-            else:
-                errors.append("Invalid coordinate structure in LineString/MultiPoint")
-
-    elif geom_type in ["Polygon", "MultiLineString"]:
-        for ring in coords:
-            if not isinstance(ring, list):
-                errors.append("Invalid ring/line structure")
-                continue
-            for coord in ring:
-                if isinstance(coord, list) and len(coord) >= 2:
-                    if not check_bbox(coord[0], coord[1]):
-                        errors.append(f"Coordinates ({coord[0]}, {coord[1]}) outside NRW bounding box")
-                        break # One error per ring is enough to not spam
-                else:
-                    errors.append("Invalid coordinate structure in Polygon/MultiLineString")
-                    break
-
-    elif geom_type == "MultiPolygon":
-        for poly in coords:
-            if not isinstance(poly, list):
-                errors.append("Invalid polygon structure")
-                continue
-            for ring in poly:
-                if not isinstance(ring, list):
-                    errors.append("Invalid ring structure in MultiPolygon")
-                    continue
-                for coord in ring:
-                    if isinstance(coord, list) and len(coord) >= 2:
-                        if not check_bbox(coord[0], coord[1]):
-                            errors.append(f"Coordinates ({coord[0]}, {coord[1]}) outside NRW bounding box")
-                            break
-                    else:
-                        errors.append("Invalid coordinate structure in MultiPolygon")
-                        break
-
-    return errors
-
 def validate_geojson(filepath):
     results = {
         "file": filepath,
@@ -211,7 +159,9 @@ def validate_geojson(filepath):
                     feature_errors.append(f"Mandatory property '{field}' cannot be empty or null")
 
         geom = feature.get("geometry")
-        if geom is not None: # geometry can be null in GeoJSON, but if present it should be valid
+        if geom is None:
+            feature_errors.append("Feature is missing a mandatory geometry (null or undefined)")
+        else:
             geom_errors = validate_geometry(geom)
             feature_errors.extend(geom_errors)
 
