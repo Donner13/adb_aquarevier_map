@@ -9,24 +9,31 @@ import html
 NRW_BBOX = (5.7, 50.3, 9.5, 52.6)
 
 def check_bbox(lon, lat):
-    min_lon, min_lat, max_lon, max_lat = NRW_BBOX
-    return min_lon <= lon <= max_lon and min_lat <= lat <= max_lat
+    try:
+        lon_f = float(lon)
+        lat_f = float(lat)
+        min_lon, min_lat, max_lon, max_lat = NRW_BBOX
+        return min_lon <= lon_f <= max_lon and min_lat <= lat_f <= max_lat
+    except (ValueError, TypeError):
+        return False
 
 def get_coordinates(geometry):
-    if not geometry:
+    if not isinstance(geometry, dict):
         return []
 
     if geometry.get('type') == 'GeometryCollection':
         coords = []
-        for geom in geometry.get('geometries', []):
-            coords.extend(get_coordinates(geom))
+        geometries = geometry.get('geometries', [])
+        if isinstance(geometries, list):
+            for geom in geometries:
+                coords.extend(get_coordinates(geom))
         return coords
 
     if 'coordinates' not in geometry:
         return []
 
     def flatten(coords):
-        if not coords:
+        if not isinstance(coords, list) or not coords:
             return []
         # If it's a list of numbers, it's a coordinate pair
         if isinstance(coords[0], (int, float)):
@@ -37,7 +44,7 @@ def get_coordinates(geometry):
             result.extend(flatten(item))
         return result
 
-    return flatten(geometry['coordinates'])
+    return flatten(geometry.get('coordinates'))
 
 def generate_html_report(results, report_path):
     html_content = f"""<!DOCTYPE html>
@@ -105,7 +112,7 @@ def main():
             sys.exit(1)
 
     # GeoJSON Schema Validation (Basic)
-    if not isinstance(data, dict) or data.get('type') != 'FeatureCollection' or 'features' not in data:
+    if not isinstance(data, dict) or data.get('type') != 'FeatureCollection' or not isinstance(data.get('features'), list):
         print("Error: Invalid GeoJSON schema. Root object must be a FeatureCollection with a 'features' array.")
         sys.exit(1)
 
@@ -115,17 +122,27 @@ def main():
     }
 
     for i, feature in enumerate(data['features']):
-        feature_id = feature.get('properties', {}).get('id', 'Unknown')
+        if not isinstance(feature, dict):
+             results['errors'].append({
+                'feature_index': i,
+                'feature_id': 'Unknown',
+                'message': 'Invalid GeoJSON: Feature object missing or incorrect type'
+            })
+             continue
 
-        if not isinstance(feature, dict) or feature.get('type') != 'Feature':
+        properties = feature.get('properties')
+        if not isinstance(properties, dict):
+            properties = {}
+
+        feature_id = properties.get('id', 'Unknown')
+
+        if feature.get('type') != 'Feature':
             results['errors'].append({
                 'feature_index': i,
                 'feature_id': feature_id,
                 'message': 'Invalid GeoJSON: Feature object missing or incorrect type'
             })
             continue
-
-        properties = feature.get('properties', {})
 
         # Mandatory fields check
         missing_fields = []
@@ -143,26 +160,59 @@ def main():
 
         # NRW Bounding Box check
         geometry = feature.get('geometry')
-        if geometry:
-            coords = get_coordinates(geometry)
-            out_of_bounds = []
-            for coord in coords:
-                if len(coord) >= 2:
-                    lon, lat = coord[0], coord[1]
-                    if not check_bbox(lon, lat):
-                        out_of_bounds.append(coord)
-
-            if out_of_bounds:
+        if isinstance(geometry, dict):
+            if 'coordinates' in geometry and not isinstance(geometry['coordinates'], list):
                 results['errors'].append({
-                    'feature_index': i,
-                    'feature_id': feature_id,
-                    'message': f"Coordinates outside NRW Bounding Box: {out_of_bounds[0]} (and possibly others)"
-                })
+                     'feature_index': i,
+                     'feature_id': feature_id,
+                     'message': 'Invalid geometry coordinates format'
+                 })
+            else:
+                coords = get_coordinates(geometry)
+                if not coords and geometry.get('type') != 'GeometryCollection':
+                    # Only append missing coordinates if we couldn't parse them. GeometryCollection coords parse separately.
+                    if geometry.get('type') == 'GeometryCollection' and 'geometries' not in geometry:
+                         results['errors'].append({
+                             'feature_index': i,
+                             'feature_id': feature_id,
+                             'message': 'GeometryCollection missing geometries array'
+                         })
+                    elif geometry.get('type') != 'GeometryCollection':
+                         results['errors'].append({
+                             'feature_index': i,
+                             'feature_id': feature_id,
+                             'message': 'Missing or empty geometry coordinates'
+                         })
+                else:
+                    out_of_bounds = []
+                    invalid_coords = []
+                    for coord in coords:
+                        if isinstance(coord, list) and len(coord) >= 2:
+                            lon, lat = coord[0], coord[1]
+                            if not isinstance(lon, (int, float)) or not isinstance(lat, (int, float)):
+                                invalid_coords.append(coord)
+                            elif not check_bbox(lon, lat):
+                                out_of_bounds.append(coord)
+                        else:
+                            invalid_coords.append(coord)
+
+                    if invalid_coords:
+                        results['errors'].append({
+                            'feature_index': i,
+                            'feature_id': feature_id,
+                            'message': f"Invalid coordinate format: {invalid_coords[0]} (and possibly others)"
+                        })
+                    elif out_of_bounds:
+                        results['errors'].append({
+                            'feature_index': i,
+                            'feature_id': feature_id,
+                            'message': f"Coordinates outside NRW Bounding Box: {out_of_bounds[0]} (and possibly others)"
+                        })
         else:
              results['errors'].append({
                  'feature_index': i,
                  'feature_id': feature_id,
-                 'message': 'Missing geometry'
+                 'message': 'Missing or invalid geometry'
              })
 
     generate_html_report(results, args.html_report)
