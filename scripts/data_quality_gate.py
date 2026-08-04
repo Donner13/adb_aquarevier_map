@@ -178,6 +178,9 @@ def is_empty_value(val):
     if isinstance(val, str) and not val.strip(): return True
     return False
 
+def raise_on_non_standard_json(c):
+    raise ValueError(f"Strict JSON violation: non-standard constant '{c}' encountered.")
+
 def validate_geojson(filepath):
     results = {
         "filepath": filepath,
@@ -194,9 +197,13 @@ def validate_geojson(filepath):
         return results
 
     try:
-        # allow_nan=False strictly prevents parsing non-standard JSON NaN/Infinity values.
+        # Strictly prevent parsing non-standard JSON NaN/Infinity values by throwing an error.
         with open(filepath, 'r', encoding='utf-8') as f:
-            data = json.load(f, parse_constant=lambda c: None if c in ('NaN', 'Infinity', '-Infinity') else c)
+            data = json.load(f, parse_constant=raise_on_non_standard_json)
+    except ValueError as e:
+        results["valid"] = False
+        results["errors"].append(str(e))
+        return results
     except json.JSONDecodeError as e:
         results["valid"] = False
         results["errors"].append(f"Invalid JSON: {str(e)}")
@@ -239,7 +246,6 @@ def validate_geojson(filepath):
             results["errors"].append(f"Feature at index {i} has invalid type: expected 'Feature', got '{feature.get('type')}'.")
             results["valid"] = False
 
-        # Support 'id' at the root of the Feature object as per GeoJSON spec, fallback to properties.id
         feature_root_id = feature.get("id")
         properties = feature.get("properties")
 
@@ -248,13 +254,15 @@ def validate_geojson(filepath):
              results["valid"] = False
              properties = {}
 
-        # Extract feature ID for logging, defaulting to index if not found
         feature_id = feature_root_id if feature_root_id is not None else properties.get("id", f"index_{i}")
 
         geometry = feature.get("geometry")
 
-        # 'id' check - it can be at the root of the Feature or in properties
-        if feature_root_id is None and ("id" not in properties or is_empty_value(properties.get("id"))):
+        # 'id' check - it can be at the root of the Feature or in properties, but must not be empty
+        root_id_empty = feature_root_id is None or is_empty_value(feature_root_id)
+        prop_id_empty = "id" not in properties or is_empty_value(properties.get("id"))
+
+        if root_id_empty and prop_id_empty:
              results["errors"].append(f"Feature at index {i}: Missing or empty 'id' at root or in properties.")
              results["valid"] = False
 
