@@ -113,6 +113,12 @@ def check_geometry_schema(geometry, feature_id, feature_index):
              'message': f"Invalid geometry type: {geom_type}"
          })
     elif geom_type == 'GeometryCollection':
+         if 'coordinates' in geometry:
+             errors.append({
+                 'feature_index': feature_index,
+                 'feature_id': feature_id,
+                 'message': 'GeometryCollection should not contain a coordinates member'
+             })
          if 'geometries' not in geometry or not isinstance(geometry['geometries'], list):
              errors.append({
                  'feature_index': feature_index,
@@ -233,18 +239,13 @@ def generate_json_report(results, report_path):
 
 def is_valid_string_property(val):
     """
-    Ensure the property value is a valid string for mandatory fields.
-    Rejects empty strings, whitespace-only strings, dicts, and lists.
-    Numbers and booleans will be converted to string, so they are generally acceptable
-    unless they evaluate to whitespace (which they don't natively).
+    Ensure the property value is explicitly a valid string for mandatory fields.
+    Rejects numbers, booleans, empty strings, whitespace-only strings, dicts, and lists.
     """
-    if val is None:
-        return False
-    if isinstance(val, (dict, list)):
+    if not isinstance(val, str):
         return False
     # Only accept non-empty strings (after stripping)
-    return str(val).strip() != ""
-
+    return val.strip() != ""
 
 def strict_parse_float(s):
     f = float(s)
@@ -360,7 +361,7 @@ def main():
             results['errors'].append({
                 'feature_index': i,
                 'feature_id': feature_id,
-                'message': f"Missing or empty mandatory fields in properties: {', '.join(missing_fields)}"
+                'message': f"Missing or invalid string for mandatory fields in properties: {', '.join(missing_fields)}"
             })
 
         # Geometry schema and NRW Bounding Box check
@@ -380,14 +381,15 @@ def main():
         results['errors'].extend(geom_errors)
 
         # 2. Coordinate Extraction & Validation
-        if isinstance(geometry, dict):
+        # Only proceed to coordinate extraction if there were no structural errors (to prevent misleading follow-on errors)
+        if not geom_errors and isinstance(geometry, dict):
             coords = get_coordinates(geometry)
 
             # If coordinates are entirely missing or empty, and it wasn't already caught by structural validation
             # (e.g., deeply nested empty arrays like [[[]]])
             if not coords:
                 # We only want to flag this if it's not a generic GeometryCollection issue already caught
-                if geometry.get('type') != 'GeometryCollection' and not any(e['feature_index'] == i and 'coordinates' in e['message'] for e in geom_errors):
+                if geometry.get('type') != 'GeometryCollection':
                     results['errors'].append({
                         'feature_index': i,
                         'feature_id': feature_id,
@@ -418,15 +420,13 @@ def main():
                         'feature_id': feature_id,
                         'message': f"Coordinates outside NRW Bounding Box: {out_of_bounds[0]} (and possibly others)"
                     })
-        elif geometry is None:
-             pass # Already flagged by check_geometry_schema
-        else:
-            if not any(e['feature_index'] == i and 'Missing or invalid geometry structure' in e['message'] for e in geom_errors):
-                 results['errors'].append({
-                     'feature_index': i,
-                     'feature_id': feature_id,
-                     'message': 'Invalid geometry structure'
-                 })
+        elif not geom_errors and geometry is not None:
+             # Should be unreachable because check_geometry_schema catches this, but kept for safety
+             results['errors'].append({
+                 'feature_index': i,
+                 'feature_id': feature_id,
+                 'message': 'Invalid geometry structure'
+             })
 
     generate_html_report(results, args.html_report)
     generate_json_report(results, args.json_report)
