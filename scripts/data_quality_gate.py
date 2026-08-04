@@ -224,6 +224,20 @@ def generate_json_report(results, report_path):
     with open(report_path, 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
 
+def is_valid_string_property(val):
+    """
+    Ensure the property value is a valid string for mandatory fields.
+    Rejects empty strings, whitespace-only strings, dicts, and lists.
+    Numbers and booleans will be converted to string, so they are generally acceptable
+    unless they evaluate to whitespace (which they don't natively).
+    """
+    if val is None:
+        return False
+    if isinstance(val, (dict, list)):
+        return False
+    # Only accept non-empty strings (after stripping)
+    return str(val).strip() != ""
+
 def main():
     parser = argparse.ArgumentParser(description="GeoJSON Data Quality Gate")
     parser.add_argument('input_file', help="Path to input GeoJSON file")
@@ -309,7 +323,7 @@ def main():
 
             # ID can be a top-level feature member or in properties in GeoJSON.
             feature_id = feature.get('id', properties.get('id', 'Unknown'))
-            if feature_id is None or str(feature_id).strip() == "":
+            if feature_id is None or not is_valid_string_property(feature_id):
                 feature_id = 'Unknown'
 
         if not is_feature_valid:
@@ -319,14 +333,13 @@ def main():
         missing_fields = []
 
         # Check ID (can be top level or in properties)
-        has_top_level_id = feature.get('id') is not None and str(feature.get('id')).strip() != ""
-        has_prop_id = properties.get('id') is not None and str(properties.get('id')).strip() != ""
+        has_top_level_id = feature.get('id') is not None and is_valid_string_property(feature.get('id'))
+        has_prop_id = properties.get('id') is not None and is_valid_string_property(properties.get('id'))
         if not has_top_level_id and not has_prop_id:
              missing_fields.append('id')
 
         for field in ['name', 'category']:
-            # We treat empty string as missing too, based on standard data quality checks
-            if field not in properties or properties[field] is None or str(properties[field]).strip() == "":
+            if not is_valid_string_property(properties.get(field)):
                 missing_fields.append(field)
 
         if missing_fields:
