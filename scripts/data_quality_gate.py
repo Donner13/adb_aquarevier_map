@@ -245,12 +245,6 @@ def is_valid_string_property(val):
     # Only accept non-empty strings (after stripping)
     return str(val).strip() != ""
 
-class StrictJSONDecoder(json.JSONDecoder):
-    def decode(self, s, _w=json.decoder.WHITESPACE.match):
-        # We subclass JSONDecoder. `parse_constant` handles `NaN` and `Infinity` explicitly
-        # but `1e999` might evaluate to float('inf') after parsing instead of being a constant token.
-        obj = super().decode(s, _w)
-        return obj
 
 def strict_parse_float(s):
     f = float(s)
