@@ -4,12 +4,11 @@
  */
 
 /**
- * Configuration and factory methods for Web Map Service (WMS) tile layers.
+ * @namespace window.WMSLoader
  */
 window.WMSLoader = {
     /**
-     * Creates the Base WebAtlas layer.
-     * @returns {L.TileLayer.WMS} The initialized WMS tile layer.
+     * @returns {any}
      */
     createBaseWebAtlas: function() {
         return L.tileLayer.wms("https://sgx.geodatenzentrum.de/wms_topplus_open", {
@@ -19,10 +18,8 @@ window.WMSLoader = {
             attribution: "&copy; BKG / Geodatenzentrum"
         });
     },
-
     /**
-     * Creates the WMS Borders layer.
-     * @returns {L.TileLayer.WMS} The initialized WMS tile layer.
+     * @returns {any}
      */
     createWmsBorders: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_dvg", {
@@ -33,10 +30,8 @@ window.WMSLoader = {
             attribution: "Geobasis NRW"
         });
     },
-
     /**
-     * Creates the WMS Rivers layer.
-     * @returns {L.TileLayer.WMS} The initialized WMS tile layer.
+     * @returns {any}
      */
     createWmsRivers: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
@@ -47,10 +42,8 @@ window.WMSLoader = {
             attribution: "LANUV NRW"
         });
     },
-
     /**
-     * Creates the WMS DetailedRivers layer.
-     * @returns {L.TileLayer.WMS} The initialized WMS tile layer.
+     * @returns {any}
      */
     createWmsDetailedRivers: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
@@ -61,10 +54,8 @@ window.WMSLoader = {
             attribution: "LANUV NRW"
         });
     },
-
     /**
-     * Creates the WMS Catchments layer.
-     * @returns {L.TileLayer.WMS} The initialized WMS tile layer.
+     * @returns {any}
      */
     createWmsCatchments: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
@@ -75,10 +66,8 @@ window.WMSLoader = {
             attribution: "LANUV NRW"
         });
     },
-
     /**
-     * Creates the WMS Mining layer.
-     * @returns {L.TileLayer.WMS} The initialized WMS tile layer.
+     * @returns {any}
      */
     createWmsMining: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/wms/bebu", {
@@ -89,10 +78,8 @@ window.WMSLoader = {
             attribution: "GD NRW"
         });
     },
-
     /**
-     * Creates the WMS HwgkHaeufig layer.
-     * @returns {L.TileLayer.WMS} The initialized WMS tile layer.
+     * @returns {any}
      */
     createWmsHwgkHaeufig: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
@@ -103,10 +90,8 @@ window.WMSLoader = {
             attribution: "LANUV NRW"
         });
     },
-
     /**
-     * Creates the WMS HwgkHq100 layer.
-     * @returns {L.TileLayer.WMS} The initialized WMS tile layer.
+     * @returns {any}
      */
     createWmsHwgkHq100: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
@@ -117,10 +102,8 @@ window.WMSLoader = {
             attribution: "LANUV NRW"
         });
     },
-
     /**
-     * Creates the WMS HwgkExtrem layer.
-     * @returns {L.TileLayer.WMS} The initialized WMS tile layer.
+     * @returns {any}
      */
     createWmsHwgkExtrem: function() {
         return L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
@@ -131,10 +114,8 @@ window.WMSLoader = {
             attribution: "LANUV NRW"
         });
     },
-
     /**
-     * Creates the WMS StarkregenEuskirchen layer.
-     * @returns {L.TileLayer.WMS} The initialized WMS tile layer.
+     * @returns {any}
      */
     createWmsStarkregenEuskirchen: function() {
         return L.tileLayer.wms("https://starkregen-euskirchen-v11.cismet.de/geoserver/wms", {

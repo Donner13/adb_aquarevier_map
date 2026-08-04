@@ -7,16 +7,13 @@
     'use strict';
 
     /**
-     * Wrapper class for local storage operations.
-     * Provides safe access to localStorage with error handling.
+     * @class StorageModule
      */
     class StorageModule {
 
         /**
-         * Retrieves an item from local storage by key.
-         *
-         * @param {string} key - The key of the item to retrieve.
-         * @returns {string|null} The value associated with the key, or null if the key does not exist or storage is unavailable.
+         * @param {string} key
+         * @returns {string|null}
          */
         getItem(key) {
             try {
@@ -28,11 +25,9 @@
         }
 
         /**
-         * Sets an item in local storage.
-         *
-         * @param {string} key - The key under which to store the value.
-         * @param {string} value - The value to store.
-         * @returns {boolean} True if the item was successfully stored, false if storage is unavailable.
+         * @param {string} key
+         * @param {string} value
+         * @returns {boolean}
          */
         setItem(key, value) {
             try {
@@ -45,10 +40,8 @@
         }
 
         /**
-         * Removes an item from local storage by key.
-         *
-         * @param {string} key - The key of the item to remove.
-         * @returns {boolean} True if the item was successfully removed (or if it didn't exist), false if storage is unavailable.
+         * @param {string} key
+         * @returns {boolean}
          */
         removeItem(key) {
             try {
