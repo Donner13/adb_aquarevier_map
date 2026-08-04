@@ -39,15 +39,41 @@ def check_geometry(geometry, feature_id, results):
         if not isinstance(pt, (list, tuple)):
             results["errors"].append(f"Feature {feature_id}: Malformed coordinates, expected array.")
             results["valid"] = False
-            return
+            return False
         if len(pt) < 2:
             results["errors"].append(f"Feature {feature_id}: Coordinates too short: {pt}.")
             results["valid"] = False
-            return
+            return False
         lon, lat = pt[0], pt[1]
         if not check_coords_in_bbox(lon, lat):
             results["errors"].append(f"Feature {feature_id}: Coordinates [{lon}, {lat}] outside NRW bounding box or invalid type.")
             results["valid"] = False
+            return False
+        return True
+
+    def check_linear_ring(ring, geom_context):
+        if not isinstance(ring, (list, tuple)):
+            results["errors"].append(f"Feature {feature_id}: Invalid ring in {geom_context}.")
+            results["valid"] = False
+            return False
+        if len(ring) < 4:
+            results["errors"].append(f"Feature {feature_id}: LinearRing in {geom_context} has fewer than 4 positions.")
+            results["valid"] = False
+            return False
+        first_pt = ring[0]
+        last_pt = ring[-1]
+        if not (isinstance(first_pt, (list, tuple)) and isinstance(last_pt, (list, tuple)) and
+                len(first_pt) >= 2 and len(last_pt) >= 2 and
+                first_pt[0] == last_pt[0] and first_pt[1] == last_pt[1]):
+            results["errors"].append(f"Feature {feature_id}: LinearRing in {geom_context} is not closed.")
+            results["valid"] = False
+            return False
+        all_valid = True
+        for pt in ring:
+            if not check_point(pt):
+                all_valid = False
+        return all_valid
+
 
     if geom_type == "Point":
         if isinstance(coords, (list, tuple)):
@@ -62,6 +88,12 @@ def check_geometry(geometry, feature_id, results):
 
     elif geom_type in ("LineString", "MultiPoint"):
         if isinstance(coords, (list, tuple)):
+            if geom_type == "LineString" and len(coords) < 2:
+                 results["errors"].append(f"Feature {feature_id}: LineString coordinates must have at least 2 positions.")
+                 results["valid"] = False
+            elif geom_type == "MultiPoint" and len(coords) == 0:
+                 results["errors"].append(f"Feature {feature_id}: MultiPoint coordinates cannot be empty.")
+                 results["valid"] = False
             for pt in coords:
                 check_point(pt)
         else:
@@ -70,12 +102,21 @@ def check_geometry(geometry, feature_id, results):
 
     elif geom_type in ("Polygon", "MultiLineString"):
         if isinstance(coords, (list, tuple)):
-            for ring in coords:
-                if isinstance(ring, (list, tuple)):
-                    for pt in ring:
-                        check_point(pt)
+            if len(coords) == 0:
+                 results["errors"].append(f"Feature {feature_id}: {geom_type} coordinates cannot be empty.")
+                 results["valid"] = False
+            for line_or_ring in coords:
+                if isinstance(line_or_ring, (list, tuple)):
+                    if geom_type == "Polygon":
+                        check_linear_ring(line_or_ring, "Polygon")
+                    else: # MultiLineString
+                        if len(line_or_ring) < 2:
+                             results["errors"].append(f"Feature {feature_id}: LineString in MultiLineString must have at least 2 positions.")
+                             results["valid"] = False
+                        for pt in line_or_ring:
+                            check_point(pt)
                 else:
-                    results["errors"].append(f"Feature {feature_id}: Invalid ring in {geom_type}.")
+                    results["errors"].append(f"Feature {feature_id}: Invalid structure in {geom_type}.")
                     results["valid"] = False
         else:
             results["errors"].append(f"Feature {feature_id}: Invalid {geom_type} coordinates structure.")
@@ -83,15 +124,13 @@ def check_geometry(geometry, feature_id, results):
 
     elif geom_type == "MultiPolygon":
         if isinstance(coords, (list, tuple)):
+            if len(coords) == 0:
+                 results["errors"].append(f"Feature {feature_id}: MultiPolygon coordinates cannot be empty.")
+                 results["valid"] = False
             for poly in coords:
                 if isinstance(poly, (list, tuple)):
                     for ring in poly:
-                        if isinstance(ring, (list, tuple)):
-                            for pt in ring:
-                                check_point(pt)
-                        else:
-                            results["errors"].append(f"Feature {feature_id}: Invalid ring in MultiPolygon.")
-                            results["valid"] = False
+                        check_linear_ring(ring, "MultiPolygon")
                 else:
                     results["errors"].append(f"Feature {feature_id}: Invalid polygon in MultiPolygon.")
                     results["valid"] = False
@@ -131,7 +170,13 @@ def validate_geojson(filepath):
         results["errors"].append("GeoJSON must be a FeatureCollection")
         return results
 
-    features = data.get("features", [])
+    # Ensure 'features' is explicitly present and is an array
+    if "features" not in data:
+         results["valid"] = False
+         results["errors"].append("GeoJSON 'features' array is missing.")
+         return results
+
+    features = data["features"]
     if not isinstance(features, list):
          results["valid"] = False
          results["errors"].append("GeoJSON 'features' must be an array.")
