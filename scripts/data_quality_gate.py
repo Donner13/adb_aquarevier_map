@@ -3,6 +3,7 @@ import argparse
 import sys
 import os
 import html
+import math
 
 # NRW Bounding Box roughly: [5.8, 50.3, 9.5, 52.6]
 # (min_lon, min_lat, max_lon, max_lat)
@@ -24,9 +25,13 @@ def check_bbox(lon, lat):
 
 def is_valid_number(val):
     """
-    Ensure the value is strictly an int or float, and NOT a bool (since bool is a subclass of int in Python).
+    Ensure the value is strictly an int or float, NOT a bool, and NOT infinity or NaN.
     """
-    return type(val) in (int, float)
+    if type(val) not in (int, float):
+        return False
+    if isinstance(val, float) and (math.isnan(val) or math.isinf(val)):
+        return False
+    return True
 
 def get_coordinates(geometry):
     if not isinstance(geometry, dict):
@@ -81,6 +86,8 @@ def check_geometry_schema(geometry, feature_id, feature_index):
     """
     errors = []
 
+    # In GeoJSON geometry CAN be null. But for a data quality gate intended for mapping NRW,
+    # we explicitly flag it as an error because we need mappable features.
     if geometry is None:
         errors.append({
             'feature_index': feature_index,
@@ -238,6 +245,19 @@ def is_valid_string_property(val):
     # Only accept non-empty strings (after stripping)
     return str(val).strip() != ""
 
+class StrictJSONDecoder(json.JSONDecoder):
+    def decode(self, s, _w=json.decoder.WHITESPACE.match):
+        # We subclass JSONDecoder. `parse_constant` handles `NaN` and `Infinity` explicitly
+        # but `1e999` might evaluate to float('inf') after parsing instead of being a constant token.
+        obj = super().decode(s, _w)
+        return obj
+
+def strict_parse_float(s):
+    f = float(s)
+    if math.isnan(f) or math.isinf(f):
+         raise ValueError(f"Strict JSON requires valid finite numbers, found: {s}")
+    return f
+
 def main():
     parser = argparse.ArgumentParser(description="GeoJSON Data Quality Gate")
     parser.add_argument('input_file', help="Path to input GeoJSON file")
@@ -261,7 +281,9 @@ def main():
             # parse_constant is used to raise ValueError on non-compliant JSON constants like NaN, Infinity, -Infinity
             def reject_special_float(x):
                 raise ValueError(f"Strict JSON requires valid finite numbers, found: {x}")
-            data = json.load(f, parse_constant=reject_special_float)
+
+            # We also pass parse_float to ensure things like 1e999 are caught and rejected as inf
+            data = json.load(f, parse_constant=reject_special_float, parse_float=strict_parse_float)
         except (json.JSONDecodeError, ValueError) as e:
             results = {
                 'total_features': 0,
@@ -321,10 +343,13 @@ def main():
                 })
                  properties = {}
 
-            # ID can be a top-level feature member or in properties in GeoJSON.
-            feature_id = feature.get('id', properties.get('id', 'Unknown'))
-            if feature_id is None or not is_valid_string_property(feature_id):
-                feature_id = 'Unknown'
+            # For identification in the report, use properties.id if valid, else Feature.id, else Unknown
+            if is_valid_string_property(properties.get('id')):
+                 feature_id = properties['id']
+            elif is_valid_string_property(feature.get('id')):
+                 feature_id = feature['id']
+            else:
+                 feature_id = 'Unknown'
 
         if not is_feature_valid:
              continue
@@ -332,13 +357,8 @@ def main():
         # Mandatory fields check
         missing_fields = []
 
-        # Check ID (can be top level or in properties)
-        has_top_level_id = feature.get('id') is not None and is_valid_string_property(feature.get('id'))
-        has_prop_id = properties.get('id') is not None and is_valid_string_property(properties.get('id'))
-        if not has_top_level_id and not has_prop_id:
-             missing_fields.append('id')
-
-        for field in ['name', 'category']:
+        # Ensure mandatory ID, Name, Category exist explicitly inside 'properties'
+        for field in ['id', 'name', 'category']:
             if not is_valid_string_property(properties.get(field)):
                 missing_fields.append(field)
 
@@ -346,12 +366,11 @@ def main():
             results['errors'].append({
                 'feature_index': i,
                 'feature_id': feature_id,
-                'message': f"Missing or empty mandatory fields: {', '.join(missing_fields)}"
+                'message': f"Missing or empty mandatory fields in properties: {', '.join(missing_fields)}"
             })
 
         # Geometry schema and NRW Bounding Box check
         # Geometry can be missing from the JSON entirely, which is an error.
-        # It can also be explicitly null, which we now reject as an error per the data gate requirements.
         if 'geometry' not in feature:
             results['errors'].append({
                 'feature_index': i,
