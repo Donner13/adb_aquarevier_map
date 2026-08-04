@@ -402,7 +402,10 @@
 
     // --- 3. OPEN DATA EXPORT (GEOJSON & CSV) ---
     window.exportActiveLayersData = function (format = 'geojson') {
+
         const activeFeatures = [];
+        const seenFeatures = new Set();
+
 
         // Strict number check: Must be number, not NaN, not Infinity
         const isStrictNumber = (n) => typeof n === 'number' && Number.isFinite(n);
@@ -486,18 +489,22 @@
                     // Match overlay layer to dataStore entry EXACTLY like the original source
                     Object.keys(window.layerDataStore).forEach(key => {
                         const storeData = window.layerDataStore[key];
-                        if (storeData && Array.isArray(storeData.features)) {
+                        if (storeData && storeData.features) {
                             storeData.features.forEach(f => {
                                 try {
                                     // Type Assertions
                                     assertValidFeature(f);
 
-                                    const featCopy = JSON.parse(JSON.stringify(f));
-                                    if (!featCopy.properties || featCopy.properties === null) {
-                                        featCopy.properties = {};
+                                    // Deduplicate to avoid the bug where multiple active overlays duplicate all layerDataStore features
+                                    if (!seenFeatures.has(f)) {
+                                        seenFeatures.add(f);
+                                        const featCopy = JSON.parse(JSON.stringify(f));
+                                        if (!featCopy.properties || featCopy.properties === null) {
+                                            featCopy.properties = {};
+                                        }
+                                        featCopy.properties._layer_name = String(key);
+                                        activeFeatures.push(featCopy);
                                     }
-                                    featCopy.properties._layer_name = String(key);
-                                    activeFeatures.push(featCopy);
                                 } catch (e) {
                                     console.warn("Invalid GeoJSON Feature skipped:", e.message);
                                 }
@@ -512,7 +519,7 @@
         if (activeFeatures.length === 0 && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
-                if (storeData && Array.isArray(storeData.features)) {
+                if (storeData && storeData.features) {
                     storeData.features.forEach(f => {
                         try {
                             // Type Assertions
