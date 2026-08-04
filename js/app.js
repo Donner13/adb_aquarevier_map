@@ -72,9 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const gemeindeName = props.GN || props.gemeinde || props.name || 'Unbekannt';
         document.getElementById('stakeholder-modal-title').textContent = `Gemeinde-Steckbrief: ${gemeindeName}`;
 
-        document.getElementById('stakeholder-metric-wasser').textContent = props.wasserversorgungsrisiko || 'Keine Daten verfügbar';
-        document.getElementById('stakeholder-metric-pegel').textContent = props.pegeldaten || 'Keine Daten verfügbar';
-        document.getElementById('stakeholder-metric-gewerbe').textContent = props.gewerbegebiete || 'Keine Daten verfügbar';
+        document.getElementById('stakeholder-metric-wasser').textContent = props.wasserversorgungsrisiko ?? 'Keine Daten verfügbar';
+        document.getElementById('stakeholder-metric-pegel').textContent = props.pegeldaten ?? 'Keine Daten verfügbar';
+        document.getElementById('stakeholder-metric-gewerbe').textContent = props.gewerbegebiete ?? 'Keine Daten verfügbar';
 
         modalOverlay.style.display = 'flex';
     }
