@@ -230,12 +230,18 @@ th {{ background-color: #f2f2f2; }}
 
     html_content += """</body>
 </html>"""
-    with open(report_path, 'w', encoding='utf-8') as f:
-        f.write(html_content)
+    try:
+        with open(report_path, 'w', encoding='utf-8') as f:
+            f.write(html_content)
+    except Exception as e:
+        print(f"Warning: Failed to write HTML report to {report_path}: {e}", file=sys.stderr)
 
 def generate_json_report(results, report_path):
-    with open(report_path, 'w', encoding='utf-8') as f:
-        json.dump(results, f, indent=2, ensure_ascii=False)
+    try:
+        with open(report_path, 'w', encoding='utf-8') as f:
+            json.dump(results, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        print(f"Warning: Failed to write JSON report to {report_path}: {e}", file=sys.stderr)
 
 def is_valid_property_value(val):
     """
