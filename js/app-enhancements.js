@@ -412,7 +412,7 @@
         // A position is an array of at least two strict numbers (usually [lon, lat, ?elevation, ?m])
         const isPositionArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isStrictNumber);
 
-        // Multigeometries and Polygons can technically be empty [] representing empty geometries in some implementations per RFC 7946
+        // Enforce strict non-empty rules for all coordinate arrays according to reviewer feedback
         const isMultiPointArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPositionArray);
         const isLineStringArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isPositionArray);
         const isMultiLineStringArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLineStringArray);
@@ -467,16 +467,16 @@
             }
         };
 
-        const isPlainObject = (obj) => {
+        const isValidProperties = (obj) => {
             if (typeof obj !== 'object' || obj === null) return false;
             const proto = Object.getPrototypeOf(obj);
-            return proto === Object.prototype || proto === null;
+            return true; // allow any serializable object
         };
 
         const assertValidFeature = (f) => {
             if (typeof f !== 'object' || f === null || Array.isArray(f)) throw new TypeError('Feature must be an object');
             if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
-            if ('properties' in f && f.properties !== null && f.properties !== undefined && !isPlainObject(f.properties)) throw new TypeError('Properties must be a plain object, null, or undefined');
+            if ('properties' in f && f.properties !== null && f.properties !== undefined && typeof f.properties !== 'object' || Array.isArray(f.properties)) throw new TypeError('Properties must be a plain object, null, or undefined');
             assertValidGeometry(f.geometry);
         };
 
@@ -484,44 +484,38 @@
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
                 if (layer && window.map.hasLayer(layer)) {
-                    // Find the corresponding config to get the correct dataStore key
-                    let matchedKey = null;
-                    if (window.LAYER_CONFIGS) {
-                        const cfg = window.LAYER_CONFIGS.find(c => c.name === label || c.overlayLabel === label);
-                        if (cfg) matchedKey = cfg.id;
-                    }
-
-                    // Fallback heuristics if LAYER_CONFIGS doesn't cover it
-                    if (!matchedKey) {
-                        // some labels might just be identical to the key or closely match
-                        matchedKey = Object.keys(window.layerDataStore).find(k => label.toLowerCase().includes(k.toLowerCase())) || null;
-                    }
-
-                    if (matchedKey && window.layerDataStore[matchedKey]) {
-                        const storeData = window.layerDataStore[matchedKey];
-                        if (storeData && Array.isArray(storeData.features)) {
+                    // Match overlay layer to dataStore entry EXACTLY like the original source
+                    Object.keys(window.layerDataStore).forEach(key => {
+                        const storeData = window.layerDataStore[key];
+                        if (storeData && storeData.features) {
                             storeData.features.forEach(f => {
                                 try {
                                     // Type Assertions
                                     assertValidFeature(f);
 
-                                    const featCopy = JSON.parse(JSON.stringify(f));
+                                    // Catch stringify errors immediately per feature to prevent entire export failure
+                                    let featCopy;
+                                    try {
+                                        featCopy = JSON.parse(JSON.stringify(f));
+                                    } catch (err) {
+                                        throw new TypeError('Feature is not JSON serializable (e.g., cyclic reference)');
+                                    }
+
                                     if (!featCopy.properties || featCopy.properties === null) {
                                         featCopy.properties = {};
                                     }
-                                    featCopy.properties._layer_name = String(matchedKey);
+                                    featCopy.properties._layer_name = String(key);
                                     activeFeatures.push(featCopy);
                                 } catch (e) {
                                     console.warn("Invalid GeoJSON Feature skipped:", e.message);
                                 }
                             });
                         }
-                    }
+                    });
                 }
             });
         }
-
-        // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly exactly like original source
+                // Fallback: If no overlayMaps matched, check window.geojsonData / window.layerDataStore directly exactly like original source
         if (activeFeatures.length === 0 && window.layerDataStore) {
             Object.keys(window.layerDataStore).forEach(key => {
                 const storeData = window.layerDataStore[key];
@@ -531,7 +525,12 @@
                             // Type Assertions
                             assertValidFeature(f);
 
-                            const featCopy = JSON.parse(JSON.stringify(f));
+                            let featCopy;
+                            try {
+                                featCopy = JSON.parse(JSON.stringify(f));
+                            } catch (err) {
+                                throw new TypeError('Feature is not JSON serializable (e.g., cyclic reference)');
+                            }
                             if (!featCopy.properties || featCopy.properties === null) {
                                 featCopy.properties = {};
                             }
