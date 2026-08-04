@@ -35,6 +35,10 @@ def check_geometry(geometry, feature_id, results):
             results["errors"].append(f"Feature {feature_id}: GeometryCollection missing or invalid 'geometries' array.")
             results["valid"] = False
             return
+        if len(geometries) == 0:
+            results["errors"].append(f"Feature {feature_id}: GeometryCollection cannot be empty.")
+            results["valid"] = False
+            return
         for geom in geometries:
              check_geometry(geom, feature_id, results)
         return
@@ -54,6 +58,13 @@ def check_geometry(geometry, feature_id, results):
             results["errors"].append(f"Feature {feature_id}: Coordinates too short: {pt}.")
             results["valid"] = False
             return False
+        # GeoJSON permits additional elements (e.g. altitude) but they must be numeric.
+        for i, val in enumerate(pt):
+            if i >= 2 and (not isinstance(val, (int, float)) or isinstance(val, bool)):
+                 results["errors"].append(f"Feature {feature_id}: Extra coordinate value at index {i} is not a valid number: {val}.")
+                 results["valid"] = False
+                 return False
+
         lon, lat = pt[0], pt[1]
         if not check_coords_in_bbox(lon, lat):
             results["errors"].append(f"Feature {feature_id}: Coordinates [{lon}, {lat}] outside NRW bounding box or invalid type.")
