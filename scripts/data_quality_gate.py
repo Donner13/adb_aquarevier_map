@@ -7,7 +7,7 @@ import math
 
 # NRW Bounding Box roughly: [5.8, 50.3, 9.5, 52.6]
 # (min_lon, min_lat, max_lon, max_lat)
-NRW_BBOX = (5.8, 50.3, 9.5, 52.6)
+NRW_BBOX = (5.7, 50.3, 9.5, 52.6)
 
 VALID_GEOMETRY_TYPES = {
     'Point', 'MultiPoint', 'LineString', 'MultiLineString',
@@ -20,7 +20,7 @@ def check_bbox(lon, lat):
         lat_f = float(lat)
         min_lon, min_lat, max_lon, max_lat = NRW_BBOX
         return min_lon <= lon_f <= max_lon and min_lat <= lat_f <= max_lat
-    except (ValueError, TypeError):
+    except (ValueError, TypeError, OverflowError):
         return False
 
 def is_valid_number(val):

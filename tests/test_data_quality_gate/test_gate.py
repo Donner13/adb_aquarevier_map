@@ -110,5 +110,24 @@ class TestDataQualityGate(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertTrue(any("null geometry is not allowed" in err['message'] for err in report['errors']))
 
+    def test_extreme_large_integer_coordinates(self):
+        # Extremely large integers are valid in JSON but could overflow float conversion
+        # The parser will parse it as a large int.
+        large_int = 10**400
+        data = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {"id": "1", "name": "Valid", "category": "Test"},
+                    "geometry": {"type": "Point", "coordinates": [large_int, large_int]}
+                }
+            ]
+        }
+        code, report = self.run_gate(data)
+        self.assertEqual(code, 1)
+        # Should gracefully fail bounding box check, not crash
+        self.assertTrue(any("Coordinates outside NRW Bounding Box" in err['message'] for err in report['errors']))
+
 if __name__ == '__main__':
     unittest.main()
