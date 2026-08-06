@@ -45,10 +45,12 @@ const EAGER_LAYERS = {
 // geojson fetched only the first time the layer is switched on
 // (map.on('overlayadd', ...) in index.html/internal.html).
 const LAZY_LAYERS = {
+  '🌊 Grundwassergleichenplan (Isolinien)': 'grundwassergleichen.geojson',
   '🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)': 'rur_einzugsgebiet_stats.geojson',
   '📊 Kreis-Vergleich (Choroplethenkarte)': 'kreise_scorecard.geojson',
   'Wasserschutzgebiete (LANUV)': 'wasserschutzgebiete.geojson',
   'Wassergewinnungsgebiete (Zone I)': 'wasserschutzgebiete.geojson',
+  '🌊 Grundwassergleichenplan (Isolinien)': 'grundwassermessstellen.geojson',
   '📈 Grundwasserwiederanstieg (Modell)': 'grundwasserwiederanstieg.geojson',
   '⚡ H₂-Elektrolyseure NRW': 'h2_elektrolyseure_nrw.geojson',
   '🔭 Vogelbeobachtungs-Gebiete': 'vogelbeobachtungsgebiete.geojson',
@@ -114,11 +116,12 @@ const MANDATORY_COUNT_LAYERS = {
 };
 
 function realFeatureCount(geojsonFile) {
+  if (!fs.existsSync(path.join(REPO_ROOT, geojsonFile))) return 0;
   const raw = fs.readFileSync(path.join(REPO_ROOT, geojsonFile), 'utf8');
   return JSON.parse(raw).features.length;
 }
 
-if (Object.keys(ALL_LAYERS).length !== 21) {
+if (Object.keys(ALL_LAYERS).length !== 22) {
   throw new Error(`Expected exactly 21 sidebar layer-toggle buttons, got ${Object.keys(ALL_LAYERS).length}`);
 }
 for (const name of DEFAULT_ON) {

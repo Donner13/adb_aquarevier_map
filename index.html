@@ -2193,6 +2193,11 @@
                             <span class="filter-label"><span data-i18n-key="layer_gwm">Grundwassermessstellen</span><span class="glossar-icon" data-glossar="GRUNDWASSERMESSSTELLE">i</span></span>
                             <span class="counter-badge" id="cnt-layer-grundwassermessstellen">(0/0)</span>
                         </button>
+                        <button class="filter-btn" data-layer-name="🌊 Grundwassergleichenplan (Isolinien)" title="Interpolierter Grundwasserstand als Flächenkarte (IDW/Kriging auf ELWAS-Messstellen)">
+                            <span class="swatch" style="background: linear-gradient(90deg, #56B4E9, #0072B2); width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 5px;"></span>
+                            <span class="filter-label">Grundwassergleichen</span>
+                            <span class="counter-badge" id="cnt-layer-gwiso">(0/0)</span>
+                        </button>
                         <button class="filter-btn" data-layer-name="📈 Grundwasserwiederanstieg (Modell)" title="Interpolierte Konturen des erwarteten Grundwasserwiederanstiegs">
                             <span class="filter-label"><span data-i18n-key="layer_gwwa">Grundwasserwiederanstieg</span><span class="glossar-icon" data-glossar="GRUNDWASSERWIEDERANSTIEG">i</span></span>
                             <span class="counter-badge" id="cnt-layer-gwwa">(0/0)</span>
@@ -2596,6 +2601,7 @@
     <script src="js/modules/wms_loader.js"></script>
     <script src="js/layers-config.js"></script>
     <script src="js/layers-loader.js"></script>
+    <script src="js/groundwater_contours.js"></script>
     <script src="js/pegel-analysis.js"></script>
     <script src="js/radius-analysis.js"></script>
     <script src="js/gemeinde-steckbrief.js"></script>
@@ -2897,6 +2903,7 @@
             if (e.layer === wsgLayer) loadWsgLayer();
             if (e.layer === wsgGewinnungLayer) loadWsgLayer();
             if (e.layer === gwwaLayer) loadGwwaLayer();
+            if (e.layer === gwIsoLayer) loadGwIsoLayer();
         });
 
 
@@ -3735,6 +3742,7 @@
             "Tagebaue & Bergbaufelder (GD)": wmsMining,
             "Wasserschutzgebiete (LANUV)": wsgLayer,
             "Wassergewinnungsgebiete (Zone I)": wsgGewinnungLayer,
+            "🌊 Grundwassergleichenplan (Isolinien)": gwIsoLayer,
             "📈 Grundwasserwiederanstieg (Modell)": gwwaLayer,
             "🏭 Industrieeinleiter (ELWAS)": elwasLayer,
             "🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)": catchmentStatsLayer,
