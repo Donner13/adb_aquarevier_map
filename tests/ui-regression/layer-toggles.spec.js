@@ -58,7 +58,6 @@ for (const filename of PAGES) {
     test('default state matches config', async ({ page }) => {
       await gotoPage(page, filename);
       for (const name of Object.keys(ALL_LAYERS)) {
-      if (name === '🌊 Grundwassergleichenplan (Isolinien)') continue;
         const expected = DEFAULT_ON.has(name);
         expect(await isButtonActive(page, name), `${name}: wrong initial button class`).toBe(expected);
         expect(await mapHasLayer(page, name), `${name}: wrong initial map layer state`).toBe(expected);
@@ -67,7 +66,6 @@ for (const filename of PAGES) {
     });
 
     for (const name of Object.keys(ALL_LAYERS)) {
-      if (name === '🌊 Grundwassergleichenplan (Isolinien)') continue;
       test(`toggle flips visual and map state: ${name}`, async ({ page }) => {
         await gotoPage(page, filename);
         const startActive = await isButtonActive(page, name);
@@ -105,7 +103,6 @@ for (const filename of PAGES) {
     test('eager layers are already fetched at page load', async ({ page }) => {
       await gotoPage(page, filename);
       for (const [name, geojsonFile] of Object.entries(EAGER_LAYERS)) {
-        if (name === '🌊 Grundwassergleichenplan (Isolinien)') continue;
         const seen = page.requests.some((url) => url.includes(geojsonFile));
         expect(seen, `${name}: expected ${geojsonFile} to be fetched at page load`).toBe(true);
       }
@@ -194,7 +191,6 @@ for (const filename of PAGES) {
     test('all layers ON: state + screenshot', async ({ page }) => {
       await gotoPage(page, filename);
       for (const name of Object.keys(ALL_LAYERS)) {
-      if (name === '🌊 Grundwassergleichenplan (Isolinien)') continue;
         const active = await isButtonActive(page, name);
         if (!active) {
           await layerButton(page, name).click();
@@ -203,7 +199,6 @@ for (const filename of PAGES) {
       await page.waitForLoadState('networkidle');
 
       for (const name of Object.keys(ALL_LAYERS)) {
-      if (name === '🌊 Grundwassergleichenplan (Isolinien)') continue;
         expect(await isButtonActive(page, name), `${name}: expected ON after all-on sweep`).toBe(true);
         expect(await mapHasLayer(page, name), `${name}: map layer missing after all-on sweep`).toBe(true);
       }
@@ -216,14 +211,12 @@ for (const filename of PAGES) {
     test('all layers OFF: state + screenshot', async ({ page }) => {
       await gotoPage(page, filename);
       for (const name of Object.keys(ALL_LAYERS)) {
-      if (name === '🌊 Grundwassergleichenplan (Isolinien)') continue;
         const active = await isButtonActive(page, name);
         if (!active) {
           await layerButton(page, name).click();
         }
       }
       for (const name of Object.keys(ALL_LAYERS)) {
-      if (name === '🌊 Grundwassergleichenplan (Isolinien)') continue;
         const active = await isButtonActive(page, name);
         if (active) {
           await layerButton(page, name).click();
@@ -232,7 +225,6 @@ for (const filename of PAGES) {
       await page.waitForLoadState('networkidle');
 
       for (const name of Object.keys(ALL_LAYERS)) {
-      if (name === '🌊 Grundwassergleichenplan (Isolinien)') continue;
         expect(await isButtonActive(page, name), `${name}: expected OFF after all-off sweep`).toBe(false);
         expect(await mapHasLayer(page, name), `${name}: map layer still present after all-off sweep`).toBe(false);
       }
