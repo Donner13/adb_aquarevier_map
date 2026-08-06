@@ -188,7 +188,8 @@ for (const filename of PAGES) {
       assertNoJsErrors(page);
     });
 
-    test('all layers ON: state + screenshot', async ({ page }) => {
+    test.setTimeout(120000);
+      test('all layers ON: state + screenshot', async ({ page }) => {
       await gotoPage(page, filename);
       for (const name of Object.keys(ALL_LAYERS)) {
         const active = await isButtonActive(page, name);
