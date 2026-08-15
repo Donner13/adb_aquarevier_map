@@ -205,153 +205,153 @@
         }
 
         /* Embed Mode */
-        body.embed-mode #sidebar {
-            display: none !important;
-        }
-        body.embed-mode .unified-search-container {
-            display: none !important;
-        }
-        body.embed-mode #map {
-            width: 100vw !important;
-            flex: none !important;
-        }
+body.embed-mode #sidebar {
+    display: none !important;
+}
+body.embed-mode .unified-search-container {
+    display: none !important;
+}
+body.embed-mode #map {
+    width: 100vw !important;
+    flex: none !important;
+}
 
-        .embed-mini-legend {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: var(--bg-surface);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 10px;
-            z-index: 1000;
-            font-size: 11px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-        }
-        body.embed-mode .embed-mini-legend {
-            display: flex;
-        }
-        .embed-mini-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .embed-mini-legend-color {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-        .embed-back-link {
-            font-size: 11px;
-            color: var(--accent-primary);
-            text-decoration: none;
-            margin-bottom: 6px;
-            display: inline-block;
-        }
-        .embed-back-link:hover {
-            text-decoration: underline;
-        }
+.embed-mini-legend {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: var(--bg-surface);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1000;
+    font-size: 11px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+}
+body.embed-mode .embed-mini-legend {
+    display: flex;
+}
+.embed-mini-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.embed-mini-legend-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.embed-back-link {
+    font-size: 11px;
+    color: var(--accent-primary);
+    text-decoration: none;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+.embed-back-link:hover {
+    text-decoration: underline;
+}
 
-        /* Embed Modal */
-        #embed-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: var(--modal-backdrop);
-            backdrop-filter: blur(5px);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-        }
-        .embed-modal-content {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-            width: 800px;
-            max-width: 90vw;
-            box-shadow: var(--modal-shadow);
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .embed-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 12px;
-        }
-        .embed-modal-header h2 {
-            margin: 0;
-            font-size: 18px;
-            color: var(--text-primary);
-        }
-        .embed-modal-close {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 24px;
-            cursor: pointer;
-            line-height: 1;
-        }
-        .embed-modal-close:hover {
-            color: var(--text-primary);
-        }
-        .embed-controls {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-        .embed-controls label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-primary);
-            font-size: 14px;
-        }
-        .embed-controls input[type="number"] {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 4px 8px;
-            border-radius: 4px;
-            width: 80px;
-        }
-        #embed-snippet-output {
-            width: 100%;
-            height: 60px;
-            background: rgba(0,0,0,0.2);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 8px;
-            border-radius: 4px;
-            font-family: monospace;
-            resize: none;
-        }
-        .embed-preview-container {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f0f0f0;
-            height: 400px;
-        }
-        .embed-info-text {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
+/* Embed Modal */
+#embed-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--modal-backdrop);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+.embed-modal-content {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    width: 800px;
+    max-width: 90vw;
+    box-shadow: var(--modal-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.embed-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+}
+.embed-modal-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+.embed-modal-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+}
+.embed-modal-close:hover {
+    color: var(--text-primary);
+}
+.embed-controls {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.embed-controls label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+.embed-controls input[type="number"] {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    width: 80px;
+}
+#embed-snippet-output {
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    resize: none;
+}
+.embed-preview-container {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    height: 400px;
+}
+.embed-info-text {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
         /* Header */
         .sidebar-header {
             padding: 20px 24px;
@@ -1796,6 +1796,8 @@
                     <p>Volle Daten, direkt bearbeitbar</p>
                 </div>
                 <div style="display: flex; gap: 6px; align-items: center;">
+                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px 10px; font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" onclick="window.AquaI18n.toggleLanguage()">EN</button>
+                    <button id="audioToggleBtn" class="filter-btn" style="padding: 6px 10px; font-size: 13px;" title="Ton an/aus" aria-label="Audio Switcher" onclick="window.AquaAudio.toggleAudio()">🔇 Ton aus</button>
                     <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
                         ℹ️
                     </button>
@@ -2579,7 +2581,6 @@
             </div>
         </div>
 
-
         <div id="pegel-analysis-panel" class="hidden"></div>
 
         <div id="presentation-bar">
@@ -2712,31 +2713,6 @@
             position: 'bottomright'
         }).addTo(map);
 
-        // Check Embed Mode URL Parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('embed') === '1') {
-            document.body.classList.add('embed-mode');
-
-            // Build Mini Legend
-            const miniLegendContainer = document.getElementById('embed-mini-legend-items');
-            for (const [group, color] of Object.entries(groupColors)) {
-                if (group !== 'Konsortium') {
-                    const item = document.createElement('div');
-                    item.className = 'embed-mini-legend-item';
-                    item.innerHTML = `<span class="embed-mini-legend-color" style="background-color: ${color}"></span><span>${group}</span>`;
-                    miniLegendContainer.appendChild(item);
-                }
-            }
-
-            // Set dynamic back link
-            const currentUrl = new URL(window.location.href);
-            currentUrl.searchParams.delete('embed');
-            document.getElementById('embed-back-link').href = currentUrl.toString();
-
-            // Handle Map Resize for iframes
-            window.addEventListener('resize', () => map.invalidateSize());
-            setTimeout(() => map.invalidateSize(), 300);
-        }
         // Base Maps
         const baseLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -7331,67 +7307,6 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
         // visit would reliably exhaust that quota and log a real browser-level
         // "Failed to load resource" console error for ordinary users.
         // --- End Feedback Logic ---
-        // Embed Modal Logic
-        const embedModal = document.getElementById('embed-modal');
-        const embedOpenBtn = document.getElementById('embed-open-btn');
-        const embedCloseBtn = document.getElementById('embed-close-btn');
-        const embedWidthRadios = document.querySelectorAll('input[name="embed-width-type"]');
-        const embedWidthPx = document.getElementById('embed-width-px');
-        const embedHeight = document.getElementById('embed-height');
-        const embedSnippetOutput = document.getElementById('embed-snippet-output');
-        const embedPreviewIframe = document.getElementById('embed-preview-iframe');
-        const embedCopyBtn = document.getElementById('embed-copy-btn');
-
-        function generateEmbedSnippet() {
-            const baseUrl = window.location.origin + window.location.pathname;
-            const embedUrl = baseUrl + '?embed=1';
-            const widthType = document.querySelector('input[name="embed-width-type"]:checked').value;
-            const width = widthType === 'responsive' ? '100%' : embedWidthPx.value + 'px';
-            const height = embedHeight.value + 'px';
-
-            const snippet = `<iframe src="${embedUrl}" width="${width}" height="${height}" style="border:0;" loading="lazy" title="AquaRevier Akteurskarte"></iframe>`;
-            embedSnippetOutput.value = snippet;
-            embedPreviewIframe.src = embedUrl;
-            embedPreviewIframe.style.width = width;
-            embedPreviewIframe.style.height = height;
-        }
-
-        if (embedOpenBtn) {
-            embedOpenBtn.addEventListener('click', () => {
-                embedModal.style.display = 'flex';
-                generateEmbedSnippet();
-            });
-        }
-
-        if (embedCloseBtn) {
-            embedCloseBtn.addEventListener('click', () => {
-                embedModal.style.display = 'none';
-            });
-        }
-
-        embedWidthRadios.forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                embedWidthPx.disabled = e.target.value === 'responsive';
-                generateEmbedSnippet();
-            });
-        });
-
-        embedWidthPx.addEventListener('input', generateEmbedSnippet);
-        embedHeight.addEventListener('input', generateEmbedSnippet);
-
-        embedCopyBtn.addEventListener('click', () => {
-                        navigator.clipboard.writeText(embedSnippetOutput.value).then(() => {
-                const originalText = embedCopyBtn.innerText;
-                embedCopyBtn.innerText = '✅ Kopiert!';
-                setTimeout(() => {
-                    embedCopyBtn.innerText = originalText;
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                alert('Kopieren fehlgeschlagen. Bitte manuell kopieren.');
-            });
-        });
-
         window.aquarevierCoreReady = true;
         document.dispatchEvent(new CustomEvent('aquarevier:core-ready'));
 
