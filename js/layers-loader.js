@@ -24,8 +24,11 @@ const geojsonWorkerCode = `
     fetch(url)
       .then(res => {
         if (!res.ok) throw new Error("HTTP " + res.status + " when loading " + url);
-        // Using response.json() natively parses in the worker thread
-        return res.json();
+        return res.text();
+      })
+      .then(text => {
+        const cleanText = text.replace(/^\\uFEFF/, '');
+        return JSON.parse(cleanText);
       })
       .then(data => self.postMessage({ id: id, data: data, success: true }))
       .catch(err => self.postMessage({ id: id, error: err.message, success: false }));
@@ -71,7 +74,10 @@ function fetchGeoJSONWorker(url) {
     // Fallback if worker creation failed (e.g. CSP)
     return fetch(url).then(res => {
       if(!res.ok) throw new Error("HTTP " + res.status + " when loading " + url);
-      return res.json();
+      return res.text();
+    }).then(text => {
+      const cleanText = text.replace(/^\uFEFF/, '');
+      return JSON.parse(cleanText);
     });
   }
   return new Promise((resolve, reject) => {
