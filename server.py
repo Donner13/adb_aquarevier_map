@@ -153,6 +153,18 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
+    def translate_path(self, path):
+        translated_path = super().translate_path(path)
+        resolved_target = os.path.abspath(translated_path)
+        resolved_dir = os.path.abspath(self.directory)
+
+        # Ensure the resolved target is within the intended directory
+        if not (resolved_target == resolved_dir or resolved_target.startswith(resolved_dir + os.sep)):
+            # Return a non-existent path to trigger a 404 Not Found
+            return os.path.join(resolved_dir, ".invalid_path_traversal")
+
+        return translated_path
+
     def log_message(self, format, *args):
         """Keep automated runs quiet unless access logging is explicitly requested."""
         if os.environ.get('SERVER_ACCESS_LOG') == '1':
