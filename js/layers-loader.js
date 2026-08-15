@@ -271,7 +271,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // Feedback Link
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-      <button type="button" onclick="openFeedbackModal('${escapeHtml(p.name || '').replace(/'/g, "\\'")}', '${escapeHtml(cfg.groupLabel)}', '${escapeHtml(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${p.lat || p.latitude || 0}, ${p.lng || p.longitude || p.lon || 0})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
+      <button type="button" onclick="openFeedbackModal('${escapeHtml(String(p.name || '').replace(/'/g, "\\'"))}', '${escapeHtml(String(cfg.groupLabel || '').replace(/'/g, "\\'"))}', '${escapeHtml(String(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '').replace(/'/g, "\\'"))}', ${Number(p.lat || p.latitude || 0)}, ${Number(p.lng || p.longitude || p.lon || 0)})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
     </div>`;
 
     // Footer
