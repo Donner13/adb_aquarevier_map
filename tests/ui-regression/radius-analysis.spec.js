@@ -65,5 +65,71 @@ for (const filename of PAGES) {
       assertNoJsErrors(page);
     });
 
+
+  test('debounce prevents extra runs and clears properly', async ({ page }) => {
+    await gotoPage(page, 'internal.html');
+
+    // Close modal if present
+    await page.evaluate(() => {
+      const m = document.getElementById('onboarding-role-modal');
+      if(m) m.style.display = 'none';
+    });
+
+    await page.click('#btn-radius-activate');
+
+    await page.evaluate(() => {
+        window.runRadiusAnalysis(50, 6, 1000);
+    });
+    await page.waitForFunction(() => window.lastRadiusResults && window.lastRadiusResults.center);
+
+
+    // Evaluate to mock the run function and track calls
+    await page.evaluate(() => {
+        window.analysisCallCount = 0;
+        const originalRun = window.runRadiusAnalysis;
+        window.runRadiusAnalysis = function(lat, lng, radius) {
+            window.analysisCallCount++;
+            originalRun(lat, lng, radius);
+        };
+    });
+
+    const slider = page.locator('#radius-slider');
+
+    // trigger input multiple times fast instantly
+    await page.evaluate(() => {
+        const sl = document.getElementById('radius-slider');
+        sl.value = '3';
+        sl.dispatchEvent(new Event('input', { bubbles: true }));
+        sl.value = '4';
+        sl.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+
+    // Verify count before debounce triggers
+    let countBefore = await page.evaluate(() => window.analysisCallCount);
+    expect(countBefore).toBe(0);
+
+    // Wait for debounce
+    await page.waitForTimeout(200);
+
+    // Verify count is 1 (debounced)
+    let countAfter = await page.evaluate(() => window.analysisCallCount);
+    expect(countAfter).toBe(1);
+
+    // Now test clear
+    await page.evaluate(() => {
+        const sl = document.getElementById('radius-slider');
+        sl.value = '1';
+        sl.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+
+    // Click clear immediately
+    await page.evaluate(() => document.getElementById('btn-radius-clear').click());
+
+    await page.waitForTimeout(200);
+
+    // Should still be 1 (because the timer was cleared)
+    let countFinal = await page.evaluate(() => window.analysisCallCount);
+    expect(countFinal).toBe(1);
   });
+});
 }

@@ -77,7 +77,8 @@
         if (!window.radiusAnalysisActive) return;
         const latlng = e.latlng;
         const radiusSlider = document.getElementById('radius-slider');
-        const radiusMeters = parseInt(radiusSlider ? radiusSlider.value : 5000, 10);
+        const sliderVal = parseInt(radiusSlider ? radiusSlider.value : 2, 10);
+        const radiusMeters = radiusValues[sliderVal] || 5000;
         
         // Populate inputs for visibility
         const latInput = document.getElementById('radius-manual-lat');
@@ -99,7 +100,8 @@
 
         const lat = parseFloat(latInput ? latInput.value : '');
         const lng = parseFloat(lngInput ? lngInput.value : '');
-        const radiusMeters = parseInt(radiusSlider ? radiusSlider.value : 5000, 10);
+        const sliderVal = parseInt(radiusSlider ? radiusSlider.value : 2, 10);
+        const radiusMeters = radiusValues[sliderVal] || 5000;
 
         if (isNaN(lat) || isNaN(lng)) {
             if (typeof window.showToast === 'function') window.showToast("Bitte gültige Koordinaten (Breite/Länge) eingeben", "⚠️");
@@ -110,14 +112,16 @@
     };
 
 
-    let radiusDebounceTimer = null;
+    window.radiusDebounceTimer = null;
+    const radiusValues = [1000, 2000, 5000, 10000, 25000];
 
     /**
      * Handles slider input events. Updates display value immediately and
      * debounces the actual point-in-polygon analysis.
      */
     window.handleRadiusSliderInput = function(val) {
-        const radiusMeters = parseInt(val, 10);
+        const index = parseInt(val, 10);
+        const radiusMeters = radiusValues[index] || 5000;
 
         // Update display text
         const valSpan = document.getElementById('radius-slider-val');
@@ -127,13 +131,15 @@
 
         // Only run analysis if a center is already defined
         if (!window.lastRadiusResults || !window.lastRadiusResults.center) return;
-        const center = window.lastRadiusResults.center;
 
         // Clear existing timer
-        if (radiusDebounceTimer) clearTimeout(radiusDebounceTimer);
+        if (window.radiusDebounceTimer) clearTimeout(window.radiusDebounceTimer);
 
         // Set new timer for 150ms
-        radiusDebounceTimer = setTimeout(() => {
+        window.radiusDebounceTimer = setTimeout(() => {
+            // Check again inside timeout in case it was cleared
+            if (!window.lastRadiusResults || !window.lastRadiusResults.center) return;
+            const center = window.lastRadiusResults.center;
             window.runRadiusAnalysis(center[0], center[1], radiusMeters);
         }, 150);
     };
@@ -360,6 +366,8 @@
      * Clears current radius analysis graphics and results.
      */
     window.clearRadiusAnalysis = function() {
+        if (window.radiusDebounceTimer) clearTimeout(window.radiusDebounceTimer);
+
         if (typeof map !== 'undefined') {
             if (window.radiusCircle) {
                 map.removeLayer(window.radiusCircle);
