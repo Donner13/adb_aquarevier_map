@@ -907,6 +907,44 @@
                         setTimeout(() => lastTriggerElement.focus(), 10);
                     }
                 }
+            } else if (e.key === 'Tab') {
+                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop');
+                let activeModal = null;
+                // Identify the top-most active modal
+                for (let i = openModals.length - 1; i >= 0; i--) {
+                    const modal = openModals[i];
+                    const style = window.getComputedStyle(modal);
+                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
+                        activeModal = modal;
+                        break;
+                    }
+                }
+
+                if (activeModal) {
+                    const focusableSelectors = 'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+                    const elements = Array.from(activeModal.querySelectorAll(focusableSelectors)).filter(el => {
+                        return el.offsetWidth > 0 || el.offsetHeight > 0 || el.getClientRects().length > 0;
+                    });
+
+                    if (elements.length > 0) {
+                        const firstElement = elements[0];
+                        const lastElement = elements[elements.length - 1];
+
+                        if (!activeModal.contains(document.activeElement)) {
+                            firstElement.focus();
+                            e.preventDefault();
+                        } else if (e.shiftKey && document.activeElement === firstElement) {
+                            lastElement.focus();
+                            e.preventDefault();
+                        } else if (!e.shiftKey && document.activeElement === lastElement) {
+                            firstElement.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        // If no focusable elements, keep focus trapped inside modal (prevent leaving)
+                        e.preventDefault();
+                    }
+                }
             }
         });
     }
