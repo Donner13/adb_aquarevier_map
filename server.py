@@ -160,8 +160,20 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
         # Guard against path traversal attacks and symlink escapes
         if os.path.commonpath([resolved_directory, resolved_path]) != resolved_directory:
-            return os.path.join(self.directory, ".invalid_path_guard")
+            # By returning a non-existent path outside the webroot structure but that doesn't trigger
+            # further traversal, we guarantee a 404 from SimpleHTTPRequestHandler without crashing.
+            # A cleaner approach in SimpleHTTPRequestHandler to send 403 explicitly requires
+            # overriding send_head, but this is the least invasive override.
+            return os.path.join(self.directory, ".invalid_path_guard_" + os.urandom(8).hex())
         return translated
+
+    def send_head(self):
+        """Override to explicitly check for traversal and send 403 Forbidden instead of generic 404."""
+        path = self.translate_path(self.path)
+        if ".invalid_path_guard_" in path:
+            self.send_error(http.HTTPStatus.FORBIDDEN, "Path traversal attempt detected")
+            return None
+        return super().send_head()
 
     def log_message(self, format, *args):
         """Keep automated runs quiet unless access logging is explicitly requested."""
