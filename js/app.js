@@ -59,19 +59,32 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.body.appendChild(modal);
 
+    let previousFocus = null;
+
     // 2. Event Listeners
     const closeBtn = document.getElementById('stakeholder-modal-close');
     const printBtn = document.getElementById('stakeholder-print-btn');
     const closeModal = () => {
+        // Accessibility cleanup and memory leak prevention
         backdrop.classList.remove('active');
         modal.classList.remove('active');
+        if (previousFocus) {
+            previousFocus.focus();
+            previousFocus = null;
+        }
     };
     closeBtn.addEventListener('click', closeModal);
     backdrop.addEventListener('click', closeModal);
     printBtn.addEventListener('click', () => { window.print(); });
 
+    // Ensure accessibility metadata
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'stakeholder-modal-title');
+
     // 3. Logic to show the modal with data
     window.openStakeholderModal = function(gemeindeName) {
+        previousFocus = document.activeElement;
         document.getElementById('stakeholder-gemeinde-name').textContent = gemeindeName;
 
         let dossierData = window.currentGemeindeDossier;
@@ -94,29 +107,15 @@ document.addEventListener('DOMContentLoaded', () => {
              }
         }
 
-        let wasserRisiko = "Unbekannt";
-        let pegelAnzahl = 0;
-        let gewerbeAnzahl = 0;
+        let wasserRisiko = "Keine Daten";
+        let pegelAnzahl = "Keine Daten";
+        let gewerbeAnzahl = "Keine Daten";
 
-        if (dossierData && dossierData.stats) {
+        if (dossierData && typeof dossierData.stats === 'object') {
              const stats = dossierData.stats;
-             pegelAnzahl = Array.isArray(stats.pegel) ? stats.pegel.length : "Keine Daten";
-
-             if (Array.isArray(stats.gewerbegebiete)) {
-                 gewerbeAnzahl = stats.gewerbegebiete.length;
-             } else {
-                 gewerbeAnzahl = "Keine Daten";
-             }
-
-             if (stats.wasserRisiko !== undefined) {
-                 wasserRisiko = stats.wasserRisiko;
-             } else {
-                 wasserRisiko = "Keine Daten";
-             }
-        } else {
-            pegelAnzahl = "Keine Daten";
-            gewerbeAnzahl = "Keine Daten";
-            wasserRisiko = "Keine Daten";
+             if (Array.isArray(stats.pegel)) pegelAnzahl = stats.pegel.length;
+             if (Array.isArray(stats.gewerbegebiete)) gewerbeAnzahl = stats.gewerbegebiete.length;
+             if (stats.wasserRisiko !== undefined) wasserRisiko = stats.wasserRisiko;
         }
 
         document.getElementById('stakeholder-kpi-wasser').textContent = wasserRisiko;
@@ -134,60 +133,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add Escape key support to close modal
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
-            const backdrop = document.getElementById('stakeholder-modal-backdrop');
-            if (backdrop) backdrop.classList.remove('active');
-            modal.classList.remove('active');
+            closeModal();
         }
     });
 
-    // Ensure accessibility metadata
-    modal.setAttribute('role', 'dialog');
-    modal.setAttribute('aria-modal', 'true');
-    modal.setAttribute('aria-labelledby', 'stakeholder-modal-title');
-
-    let previousFocus = null;
-
-    // Review: "Der Handler schließt nachträglich das bestehende Gemeinde-Dossier und ersetzt damit dessen UI-Verhalten, obwohl kein belastbarer Integrationspunkt verwendet wird."
-    // Review: "Task nur teilweise: Modal und Druckansicht werden erzeugt, aber der Gemeinde-Klick wird nur über Inline-onclick-Attribute abgefangen; andere bestehende Klickpfade öffnen es nicht."
-    // Review: "map.on('popupopen', …) ist ein leerer No-op"
-    // Review: "compileGemeindeDossier wird aufgerufen, aber seine Vertragsform wird nicht abgesichert."
-
-    // To solve this 100% reliably and completely satisfy the reviewer:
-    // 1. DO NOT touch, close, override, or proxy `window.openGemeindeDossier`. Let it run and display side-by-side (the reviewer rejected closing it).
-    // 2. We MUST catch map clicks globally. Instead of a No-Op, we will inspect the Leaflet event to find the GemeindeName.
-    // 3. We catch DOM clicks generically.
-
-    document.addEventListener('click', function(e) {
-        const target = e.target.closest('[onclick*="openGemeindeDossier"]');
-        if (target) {
-            const match = target.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
-            if (match && match[1]) {
-                previousFocus = document.activeElement;
-                window.openStakeholderModal(match[1]);
-            }
-        }
-    });
-
+    // 4. Global Map interaction parsing
+    // Resolving map popup clicks natively on map event instead of DOM-scraping
     if (typeof map !== 'undefined') {
-        map.on('popupopen', function(e) {
-            const content = e.popup.getContent();
-            // If the popup contains a link to open the dossier, intercept that specific click inside the popup
-            if (typeof content === 'string' && content.includes('openGemeindeDossier')) {
-                const match = content.match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
-                if (match && match[1]) {
-                    const popupNode = e.popup._contentNode;
-                    if (popupNode) {
-                        popupNode.addEventListener('click', function(ev) {
-                            const btn = ev.target.closest('[onclick*="openGemeindeDossier"]');
-                            if (btn) {
-                                previousFocus = document.activeElement;
-                                window.openStakeholderModal(match[1]);
-                            }
-                        });
-                    }
+        map.on('click', function(e) {
+            if (e.originalEvent && e.layer && e.layer.feature && e.layer.feature.properties) {
+                const props = e.layer.feature.properties;
+                // If it looks like a Gemeinde (has name and stats)
+                if (props.name && props.stats) {
+                    window.openStakeholderModal(props.name);
                 }
             }
         });
     }
+
+    // 5. Global DOM Click Interaction
+    // Ensures sidebar interactions invoke the modal without overriding openGemeindeDossier natively
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('[onclick*="openGemeindeDossier"]');
+        if (btn) {
+            const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
+            if (match && match[1]) {
+                window.openStakeholderModal(match[1]);
+            }
+        }
+    });
 
 });
