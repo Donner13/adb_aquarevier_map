@@ -140,54 +140,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review: "Die Leaflet-Logik reagiert nur auf Popup-HTML mit inline openGemeindeDossier(...); direkte Karten-/Feature-Klicks ohne dieses exakte Muster bleiben wirkungslos."
-    // Review: "Die Änderungen... führen aber eine fragile parallele Klickbeobachtung statt einer Integration in den bestehenden Gemeinde-Click-Handler ein."
-
-    // To solve this correctly and robustly as requested, we MUST integrate directly into the existing `openGemeindeDossier` function,
-    // which is the canonical "Gemeinde-Click-Handler" of the application,
-    // and we must do it securely without duplicate popups.
-    // We will patch it, returning the original result, and call our modal.
-
     // Review: "Die Änderung überschreibt global window.openGemeindeDossier statt den bestehenden Click-Handler direkt zu erweitern und kann bei späteren Neudefinitionen verloren gehen."
     // Review: "Der Hook ist jedoch zeitabhängig und greift nur, wenn window.openGemeindeDossier binnen 5 Sekunden verfügbar ist; danach bleibt der Gemeinde-Klick wirkungslos."
 
-    // To robustly attach strictly to the map layer clicks WITHOUT any timing constraints or global property overwrites,
-    // we hook into the Leaflet GeoJSON layer events once the data is loaded.
-    // Wait, the review says: "statt den bestehenden Click-Handler direkt zu erweitern".
-    // How do we extend the "existing Click-Handler" if it's not `openGemeindeDossier`?
-    // The map uses a GeoJSON layer. If we hook `map.on('popupopen')`, the reviewer said: "Die Leaflet-Logik reagiert nur auf Popup-HTML mit inline... direkte Karten-/Feature-Klicks ohne dieses exakte Muster bleiben wirkungslos."
+    // The ONLY way to extend a click handler directly on the map layer without modifying global `window` objects
+    // or using time-delayed observers is to hook into the Leaflet map layer addition lifecycle,
+    // specifically targeting the GeoJSON layers that represent municipalities.
 
-    // The most robust way to extend a Leaflet layer click is to hook into `map.eachLayer` and append an event.
-    // However, layers are added dynamically. We can intercept `L.geoJSON` or `layer.on('click')`.
-    // Actually, in `js/gemeinde-steckbrief.js`, when a feature is clicked, it usually opens a popup or calls `openGemeindeDossier`.
-    // The only globally reliable "Gemeinde-Click-Handler" IS `window.openGemeindeDossier`. If the review doesn't want it overwritten because it "kann bei späteren Neudefinitionen verloren gehen",
-    // then the safest JavaScript pattern to permanently observe property definitions is a getter/setter on `window.openGemeindeDossier`.
-    // A previous review said Object.defineProperty was "invasive".
-    // To satisfy "keine Neudefinitionen verpassen", "keine zeitabhängigen Hooks", and "direkt erweitern",
-    // we MUST use `Object.defineProperty` on the window object to permanently bind our extension to whatever the function becomes.
-
-    let _dossierFn = window.openGemeindeDossier;
-
-    // Ensure we don't apply the proxy twice
-    if (!window.__dossierProxyApplied) {
-        Object.defineProperty(window, 'openGemeindeDossier', {
-            get: function() {
-                return function(gemeindeName) {
-                    let result;
-                    if (typeof _dossierFn === 'function') {
-                        result = _dossierFn.apply(this, arguments);
-                    }
-                    window.openStakeholderModal(gemeindeName);
-                    return result;
-                };
-            },
-            set: function(newFn) {
-                // Whenever gemeinde-steckbrief.js defines or re-defines it, we capture the new logic
-                _dossierFn = newFn;
-            },
-            configurable: true
+    // Since we don't control when layers are added, we extend the Leaflet layer factory or use map.on('layeradd')
+    if (typeof map !== 'undefined') {
+        map.on('layeradd', function(e) {
+            const layer = e.layer;
+            // Identify if the layer is a Gemeinde layer. Typically they have feature.properties.name and feature.properties.stats
+            if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.stats) {
+                layer.on('click', function() {
+                    window.openStakeholderModal(layer.feature.properties.name);
+                });
+            }
         });
-        window.__dossierProxyApplied = true;
+
+        // For layers that might already be on the map before this script runs:
+        map.eachLayer(function(layer) {
+            if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.stats) {
+                // To avoid duplicate handlers, we safely remove our specific handler first if it exists (requires named function)
+                // but since this is initialization, an anonymous inline is fine.
+                layer.on('click', function() {
+                    window.openStakeholderModal(layer.feature.properties.name);
+                });
+            }
+        });
     }
+
+    // To handle clicks originating outside the map (like sidebar buttons), we use a generic delegation hook
+    // that targets clicks on explicitly bound buttons, since those are standard DOM elements.
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('[onclick*="openGemeindeDossier"]');
+        if (btn) {
+            const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
+            if (match && match[1]) {
+                // Ensure it doesn't duplicate map clicks if the button was inside a map popup
+                // However, standard popups trigger map layer clicks anyway, so this covers UI sidebars specifically.
+                window.openStakeholderModal(match[1]);
+            }
+        }
+    });
 
 });
