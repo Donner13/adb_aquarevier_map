@@ -2713,6 +2713,32 @@ body.embed-mode .embed-mini-legend {
             position: 'bottomright'
         }).addTo(map);
 
+        // Check Embed Mode URL Parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('embed') === '1') {
+            document.body.classList.add('embed-mode');
+
+            // Build Mini Legend
+            const miniLegendContainer = document.getElementById('embed-mini-legend-items');
+            for (const [group, color] of Object.entries(groupColors)) {
+                if (group !== 'Konsortium') {
+                    const item = document.createElement('div');
+                    item.className = 'embed-mini-legend-item';
+                    item.innerHTML = `<span class="embed-mini-legend-color" style="background-color: ${color}"></span><span>${group}</span>`;
+                    miniLegendContainer.appendChild(item);
+                }
+            }
+
+            // Set dynamic back link
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.delete('embed');
+            document.getElementById('embed-back-link').href = currentUrl.toString();
+
+            // Handle Map Resize for iframes
+            window.addEventListener('resize', () => map.invalidateSize());
+            setTimeout(() => map.invalidateSize(), 300);
+        }
+
         // Base Maps
         const baseLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -7307,6 +7333,64 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
         // visit would reliably exhaust that quota and log a real browser-level
         // "Failed to load resource" console error for ordinary users.
         // --- End Feedback Logic ---
+        // Embed Modal Logic
+        const embedModal = document.getElementById('embed-modal');
+        const embedOpenBtn = document.getElementById('embed-open-btn');
+        const embedCloseBtn = document.getElementById('embed-close-btn');
+        const embedWidthRadios = document.querySelectorAll('input[name="embed-width-type"]');
+        const embedWidthPx = document.getElementById('embed-width-px');
+        const embedHeight = document.getElementById('embed-height');
+        const embedSnippetOutput = document.getElementById('embed-snippet-output');
+        const embedPreviewIframe = document.getElementById('embed-preview-iframe');
+        const embedCopyBtn = document.getElementById('embed-copy-btn');
+
+        function generateEmbedSnippet() {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const embedUrl = baseUrl + '?embed=1';
+            const widthType = document.querySelector('input[name="embed-width-type"]:checked').value;
+            const width = widthType === 'responsive' ? '100%' : embedWidthPx.value + 'px';
+            const height = embedHeight.value + 'px';
+
+            const snippet = `<iframe src="${embedUrl}" width="${width}" height="${height}" style="border:0;" loading="lazy" title="AquaRevier Akteurskarte"></iframe>`;
+            embedSnippetOutput.value = snippet;
+            embedPreviewIframe.src = embedUrl;
+            embedPreviewIframe.style.width = width;
+            embedPreviewIframe.style.height = height;
+        }
+
+        if (embedOpenBtn) {
+            embedOpenBtn.addEventListener('click', () => {
+                embedModal.style.display = 'flex';
+                generateEmbedSnippet();
+            });
+        }
+
+        if (embedCloseBtn) {
+            embedCloseBtn.addEventListener('click', () => {
+                embedModal.style.display = 'none';
+            });
+        }
+
+        embedWidthRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                embedWidthPx.disabled = e.target.value === 'responsive';
+                generateEmbedSnippet();
+            });
+        });
+
+        embedWidthPx.addEventListener('input', generateEmbedSnippet);
+        embedHeight.addEventListener('input', generateEmbedSnippet);
+
+        embedCopyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(embedSnippetOutput.value).then(() => {
+                const originalText = embedCopyBtn.innerText;
+                embedCopyBtn.innerText = '✅ Kopiert!';
+                setTimeout(() => {
+                    embedCopyBtn.innerText = originalText;
+                }, 2000);
+            });
+        });
+
         window.aquarevierCoreReady = true;
         document.dispatchEvent(new CustomEvent('aquarevier:core-ready'));
 
