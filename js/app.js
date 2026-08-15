@@ -93,30 +93,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (dossierData && dossierData.stats) {
              const stats = dossierData.stats;
-             pegelAnzahl = (stats.pegel ? stats.pegel.length : 0);
+             pegelAnzahl = Array.isArray(stats.pegel) ? stats.pegel.length : 0;
 
-             // Extract "Gewerbegebiete" which might not be explicitly named in older schemas.
-             // If not present, we can't reliably guess, so it defaults to 0.
-             gewerbeAnzahl = (stats.gewerbegebiete ? stats.gewerbegebiete.length : 0);
-
-             // Extract Wasserversorgungsrisiko if explicit. If not, and we have ANY stats for this Gemeinde,
-             // we make a guess based on gewerbegebiete (or einleiter as fallback if requested, but we stick to gewerbegebiete).
-             // Since the review noted that we shouldn't fail silently with "0" or "Niedrig" without data,
-             // we must be explicit.
-             if (stats.wasserRisiko) {
-                 wasserRisiko = stats.wasserRisiko;
-             } else if (stats.gewerbegebiete) {
-                 if (gewerbeAnzahl > 5) wasserRisiko = "Hoch";
-                 else if (gewerbeAnzahl > 2) wasserRisiko = "Mittel";
-                 else if (gewerbeAnzahl >= 0) wasserRisiko = "Niedrig";
-             } else if (stats.einleiter) {
-                 // Actually, let's just stick to "Keine Daten" to be safe and accurate.
-                 wasserRisiko = "Keine Daten";
-                 gewerbeAnzahl = "Keine Daten";
+             // Check if 'gewerbegebiete' exists and is an array.
+             if (Array.isArray(stats.gewerbegebiete)) {
+                 gewerbeAnzahl = stats.gewerbegebiete.length;
              } else {
-                 wasserRisiko = "Keine Daten";
                  gewerbeAnzahl = "Keine Daten";
              }
+
+             // Review: "Das Wasserrisiko wird aus der Anzahl Gewerbegebiete hergeleitet, obwohl kein fachlicher Datenvertrag dafür erkennbar ist; das kann irreführende Risikowerte erzeugen."
+             // Therefore, we MUST NOT derive Wasserversorgungsrisiko from Gewerbegebiete heuristically.
+             // We only output what is in the data schema.
+             if (stats.wasserRisiko !== undefined) {
+                 wasserRisiko = stats.wasserRisiko;
+             } else {
+                 wasserRisiko = "Keine Daten";
+             }
+        } else {
+            pegelAnzahl = "Keine Daten";
+            gewerbeAnzahl = "Keine Daten";
+            wasserRisiko = "Keine Daten";
         }
 
         document.getElementById('stakeholder-kpi-wasser').textContent = wasserRisiko;
