@@ -146,15 +146,17 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     `;
 
     for (const field of (cfg.popupFields || [])) {
-      let value;
+      let safeVal;
       if (field.expr) {
-        value = field.expr(safeP);
+        const exprVal = field.expr(p);
+        if (!exprVal) continue;
+        safeVal = escapeHtml(exprVal);
       } else {
-        value = safeP[field.field];
+        const val = safeP[field.field];
+        if (!val) continue;
+        safeVal = val; // Already escaped via safeP loop
       }
-      if (!value) continue;
 
-      const safeVal = value; // value is already escaped via safeP
       // first field (📍) has no label prefix, just the value
       if (field.label === '📍') {
         html += `<div class="popup-detail">📍 ${safeVal}</div>`;
@@ -258,7 +260,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // getZustaendigkeitHtml is a global function defined in index/internal.html
     if (typeof getZustaendigkeitHtml === 'function') {
-      html += getZustaendigkeitHtml(safeP);
+      html += getZustaendigkeitHtml(p);
     }
 
     // Pegelonline Live-Dashboard Placeholder
@@ -270,8 +272,10 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     }
 
     // Feedback Link
-    const safeLat = Number(p.lat || p.latitude) || 0;
-    const safeLng = Number(p.lng || p.longitude || p.lon) || 0;
+    const parsedLat = Number(p.lat || p.latitude);
+    const safeLat = Number.isFinite(parsedLat) ? parsedLat : 0;
+    const parsedLng = Number(p.lng || p.longitude || p.lon);
+    const safeLng = Number.isFinite(parsedLng) ? parsedLng : 0;
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
       <button type="button" onclick="openFeedbackModal('${escapeForJs(p.name)}', '${escapeForJs(cfg.groupLabel)}', '${escapeForJs(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${safeLat}, ${safeLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
     </div>`;
