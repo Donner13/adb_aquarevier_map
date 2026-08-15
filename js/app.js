@@ -74,11 +74,18 @@ document.addEventListener('DOMContentLoaded', () => {
     window.openStakeholderModal = function(gemeindeName) {
         document.getElementById('stakeholder-gemeinde-name').textContent = gemeindeName;
 
-        // Check `window.currentGemeindeDossier` but also explicitly extract from `geojsonData`.
         let dossierData = window.currentGemeindeDossier;
 
+        // Attempt to call `compileGemeindeDossier` directly to fetch unpopulated stats if the original wasn't fully triggered.
+        if (typeof window.compileGemeindeDossier === 'function') {
+            const compiled = window.compileGemeindeDossier(gemeindeName);
+            if (compiled && compiled.name === gemeindeName) {
+                dossierData = compiled;
+            }
+        }
+
         if (!dossierData || dossierData.name !== gemeindeName) {
-             // We manually search the global geojsonData if current dossier isn't populated for this name.
+             // Fallback to searching the global geojsonData if compilation failed.
              if (window.geojsonData && window.geojsonData.gemeinden && window.geojsonData.gemeinden.features) {
                  const feature = window.geojsonData.gemeinden.features.find(f => f.properties && f.properties.name === gemeindeName);
                  if (feature) {
