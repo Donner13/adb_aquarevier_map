@@ -93,18 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (dossierData && dossierData.stats) {
              const stats = dossierData.stats;
-             pegelAnzahl = Array.isArray(stats.pegel) ? stats.pegel.length : 0;
+             pegelAnzahl = Array.isArray(stats.pegel) ? stats.pegel.length : "Keine Daten";
 
-             // Check if 'gewerbegebiete' exists and is an array.
              if (Array.isArray(stats.gewerbegebiete)) {
                  gewerbeAnzahl = stats.gewerbegebiete.length;
              } else {
                  gewerbeAnzahl = "Keine Daten";
              }
 
-             // Review: "Das Wasserrisiko wird aus der Anzahl Gewerbegebiete hergeleitet, obwohl kein fachlicher Datenvertrag dafür erkennbar ist; das kann irreführende Risikowerte erzeugen."
-             // Therefore, we MUST NOT derive Wasserversorgungsrisiko from Gewerbegebiete heuristically.
-             // We only output what is in the data schema.
              if (stats.wasserRisiko !== undefined) {
                  wasserRisiko = stats.wasserRisiko;
              } else {
