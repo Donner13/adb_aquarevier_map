@@ -122,6 +122,17 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
   /** Baut den Popup-HTML-String aus cfg.popupFields */
   function buildPopupHtml(p) {
+    // XSS-Sanitisierung fuer alle String-Eigenschaften
+    const sanitizedP = {};
+    if (p) {
+      for (const key in p) {
+        if (Object.prototype.hasOwnProperty.call(p, key)) {
+          sanitizedP[key] = typeof p[key] === 'string' ? escapeHtml(p[key]) : p[key];
+        }
+      }
+    }
+    p = sanitizedP;
+
     const glossarSpan = (key) =>
       key ? `<span class="glossar-icon" data-glossar="${escapeHtml(key)}">i</span>` : '';
     // Feste deutsche Config-Strings (groupLabel/field.label) werden bei
