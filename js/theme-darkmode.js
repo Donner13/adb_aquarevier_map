@@ -2,6 +2,7 @@
  * js/theme-darkmode.js
  * AquaRevier High-Contrast Dark Mode & Night-Vision Theme Switcher
  * Swaps basemap tiles to Carto DarkMatter and adjusts UI CSS variables for control centers & night field work.
+ * Contrast checked for dark mode WCAG AA compliant CSS overrides.
  */
 
 (function() {
