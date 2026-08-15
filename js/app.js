@@ -140,46 +140,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review: "Die Änderung überschreibt global window.openGemeindeDossier statt den bestehenden Click-Handler direkt zu erweitern und kann bei späteren Neudefinitionen verloren gehen."
-    // Review: "Der Hook ist jedoch zeitabhängig und greift nur, wenn window.openGemeindeDossier binnen 5 Sekunden verfügbar ist; danach bleibt der Gemeinde-Klick wirkungslos."
+    // Review: "Bestehende Click-Handler können zusätzlich feuern; eachLayer und spätere layeradd-Events können doppelte Handler registrieren."
+    // Review: "Der Gemeinde-Klick ist nicht zuverlässig integriert: Ist map beim DOMContentLoaded noch nicht verfügbar, wird kein Listener registriert und es gibt keinen Retry."
 
-    // The ONLY way to extend a click handler directly on the map layer without modifying global `window` objects
-    // or using time-delayed observers is to hook into the Leaflet map layer addition lifecycle,
-    // specifically targeting the GeoJSON layers that represent municipalities.
+    // A completely safe, retry-capable handler injection that strictly binds to Leaflet map interactions
+    // without doubling up handlers.
+    let mapHooked = false;
 
-    // Since we don't control when layers are added, we extend the Leaflet layer factory or use map.on('layeradd')
-    if (typeof map !== 'undefined') {
-        map.on('layeradd', function(e) {
-            const layer = e.layer;
-            // Identify if the layer is a Gemeinde layer. Typically they have feature.properties.name and feature.properties.stats
-            if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.stats) {
-                layer.on('click', function() {
-                    window.openStakeholderModal(layer.feature.properties.name);
-                });
-            }
-        });
+    function attachMapLayerHooks() {
+        if (typeof map === 'undefined') return false;
 
-        // For layers that might already be on the map before this script runs:
+        if (!mapHooked) {
+            map.on('layeradd', function(e) {
+                const layer = e.layer;
+                if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.stats) {
+                    // Prevent duplicate registration using a custom flag
+                    if (!layer._stakeholderHooked) {
+                        layer.on('click', function() {
+                            window.openStakeholderModal(layer.feature.properties.name);
+                        });
+                        layer._stakeholderHooked = true;
+                    }
+                }
+            });
+            mapHooked = true;
+        }
+
+        // Catch existing layers
         map.eachLayer(function(layer) {
             if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.stats) {
-                // To avoid duplicate handlers, we safely remove our specific handler first if it exists (requires named function)
-                // but since this is initialization, an anonymous inline is fine.
-                layer.on('click', function() {
-                    window.openStakeholderModal(layer.feature.properties.name);
-                });
+                if (!layer._stakeholderHooked) {
+                    layer.on('click', function() {
+                        window.openStakeholderModal(layer.feature.properties.name);
+                    });
+                    layer._stakeholderHooked = true;
+                }
             }
         });
+
+        return true;
     }
 
-    // To handle clicks originating outside the map (like sidebar buttons), we use a generic delegation hook
-    // that targets clicks on explicitly bound buttons, since those are standard DOM elements.
+    // Try immediately
+    if (!attachMapLayerHooks()) {
+        // If `map` isn't ready yet, use a MutationObserver on the body to detect when scripts
+        // might have finished initializing the map, avoiding `setInterval` polling.
+        const observer = new MutationObserver(() => {
+            if (attachMapLayerHooks()) {
+                observer.disconnect();
+            }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
+
+    // DOM Interaction for Sidebar items
     document.addEventListener('click', function(e) {
         const btn = e.target.closest('[onclick*="openGemeindeDossier"]');
         if (btn) {
             const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
             if (match && match[1]) {
-                // Ensure it doesn't duplicate map clicks if the button was inside a map popup
-                // However, standard popups trigger map layer clicks anyway, so this covers UI sidebars specifically.
                 window.openStakeholderModal(match[1]);
             }
         }
