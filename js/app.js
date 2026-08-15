@@ -74,35 +74,48 @@ document.addEventListener('DOMContentLoaded', () => {
     window.openStakeholderModal = function(gemeindeName) {
         document.getElementById('stakeholder-gemeinde-name').textContent = gemeindeName;
 
-        // Mocking the KPI calculation as requested based on the available data context
-        // Real logic could query window.layerDataStore or window.geojsonData
-        let wasserRisiko = "Niedrig";
+        // Check `window.currentGemeindeDossier` but also explicitly extract from `geojsonData`.
+        let dossierData = window.currentGemeindeDossier;
+
+        if (!dossierData || dossierData.name !== gemeindeName) {
+             // We manually search the global geojsonData if current dossier isn't populated for this name.
+             if (window.geojsonData && window.geojsonData.gemeinden && window.geojsonData.gemeinden.features) {
+                 const feature = window.geojsonData.gemeinden.features.find(f => f.properties && f.properties.name === gemeindeName);
+                 if (feature) {
+                     dossierData = { name: gemeindeName, stats: feature.properties.stats || {} };
+                 }
+             }
+        }
+
+        let wasserRisiko = "Unbekannt";
         let pegelAnzahl = 0;
         let gewerbeAnzahl = 0;
 
-        if (window.currentGemeindeDossier && window.currentGemeindeDossier.name === gemeindeName) {
-             const stats = window.currentGemeindeDossier.stats;
-             if (stats) {
-                 pegelAnzahl = (stats.pegel ? stats.pegel.length : 0);
-                 gewerbeAnzahl = (stats.gewerbegebiete ? stats.gewerbegebiete.length : 0);
-                 if (gewerbeAnzahl > 2) wasserRisiko = "Mittel";
-                 if (gewerbeAnzahl > 5) wasserRisiko = "Hoch";
-                 if (stats.wasserRisiko) {
-                     wasserRisiko = stats.wasserRisiko;
-                 }
-             }
-        } else if (window.geojsonData && window.geojsonData.gemeinden && window.geojsonData.gemeinden.features) {
-             // Fallback to searching geojsonData if currentGemeindeDossier is missing or delayed
-             const feature = window.geojsonData.gemeinden.features.find(f => f.properties && f.properties.name === gemeindeName);
-             if (feature && feature.properties && feature.properties.stats) {
-                 const stats = feature.properties.stats;
-                 pegelAnzahl = (stats.pegel ? stats.pegel.length : 0);
-                 gewerbeAnzahl = (stats.gewerbegebiete ? stats.gewerbegebiete.length : 0);
-                 if (gewerbeAnzahl > 2) wasserRisiko = "Mittel";
-                 if (gewerbeAnzahl > 5) wasserRisiko = "Hoch";
-                 if (stats.wasserRisiko) {
-                     wasserRisiko = stats.wasserRisiko;
-                 }
+        if (dossierData && dossierData.stats) {
+             const stats = dossierData.stats;
+             pegelAnzahl = (stats.pegel ? stats.pegel.length : 0);
+
+             // Extract "Gewerbegebiete" which might not be explicitly named in older schemas.
+             // If not present, we can't reliably guess, so it defaults to 0.
+             gewerbeAnzahl = (stats.gewerbegebiete ? stats.gewerbegebiete.length : 0);
+
+             // Extract Wasserversorgungsrisiko if explicit. If not, and we have ANY stats for this Gemeinde,
+             // we make a guess based on gewerbegebiete (or einleiter as fallback if requested, but we stick to gewerbegebiete).
+             // Since the review noted that we shouldn't fail silently with "0" or "Niedrig" without data,
+             // we must be explicit.
+             if (stats.wasserRisiko) {
+                 wasserRisiko = stats.wasserRisiko;
+             } else if (stats.gewerbegebiete) {
+                 if (gewerbeAnzahl === 0) wasserRisiko = "Niedrig";
+                 else if (gewerbeAnzahl > 2) wasserRisiko = "Mittel";
+                 else if (gewerbeAnzahl > 5) wasserRisiko = "Hoch";
+             } else if (stats.einleiter) {
+                 // Actually, let's just stick to "Keine Daten" to be safe and accurate.
+                 wasserRisiko = "Keine Daten";
+                 gewerbeAnzahl = "Keine Daten";
+             } else {
+                 wasserRisiko = "Keine Daten";
+                 gewerbeAnzahl = "Keine Daten";
              }
         }
 
@@ -112,12 +125,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         backdrop.classList.add('active');
         modal.classList.add('active');
+
+        // Ensure focus management for accessibility
+        const closeBtn = document.getElementById('stakeholder-modal-close');
+        if (closeBtn) closeBtn.focus();
     };
 
-    // Review: "Die Kernlogik wird angelegt, aber ein Gemeinde-Klick ist nicht zuverlässig angebunden: sie reagiert nur auf DOM-Elemente mit inline onclick... nicht auf typische Leaflet-/Karten-Features."
-    // We need to reliably trigger our Stakeholder modal when a Gemeinde is clicked.
-    // The most reliable way within `app.js` constraints is to add an event listener to the Leaflet map layer directly,
-    // OR patch the single entry point `openGemeindeDossier` without relying on `Object.defineProperty` or timeouts.
+    // Add Escape key support to close modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            const backdrop = document.getElementById('stakeholder-modal-backdrop');
+            if (backdrop) backdrop.classList.remove('active');
+            modal.classList.remove('active');
+        }
+    });
+
+    // Provide a robust hook to intercept `openGemeindeDossier`.
+    // We override `openGemeindeDossier` safely and permanently, without using timeouts or `Object.defineProperty`.
 
     // Let's hook into `map` events if it exists. Leaflet maps trigger 'popupopen' when a feature is clicked.
     if (typeof map !== 'undefined') {
