@@ -863,14 +863,14 @@
 
     // Track last active element before a modal is opened
     document.addEventListener('focusin', (e) => {
-        const isInsideModal = e.target.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"]');
+        const isInsideModal = e.target.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
         if (!isInsideModal) {
             lastTriggerElement = e.target;
         }
     }, true);
 
     document.addEventListener('click', (e) => {
-        const isInsideModal = e.target.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"]');
+        const isInsideModal = e.target.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
         if (!isInsideModal) {
             // Also update on click, in case element is clicked but not focused (e.g. mouse click on div)
             // or for buttons that don't steal focus perfectly in all browsers
@@ -885,9 +885,8 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 let closedAny = false;
-                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"]');
+                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
-                    if (modal.id === 'onboarding-role-modal') return;
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
