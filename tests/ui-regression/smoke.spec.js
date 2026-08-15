@@ -5,23 +5,19 @@ test.describe('CI Smoke Test', () => {
     test.setTimeout(10000); // Enforce strictly under 10 seconds for BOTH pages combined
 
     // 1. Check index.html
-    let tileResponsePromise = page.waitForResponse(res =>
-      res.url().includes('basemaps.cartocdn.com') || res.url().includes('openstreetmap')
-    );
-    await gotoPage(page, 'index.html');
-    await tileResponsePromise;
+    await Promise.all([
+      page.waitForResponse(res => res.url().includes('basemaps.cartocdn.com') || res.url().includes('openstreetmap')),
+      gotoPage(page, 'index.html')
+    ]);
     assertNoJsErrors(page);
-
     await expect(page.locator('#map')).toBeVisible();
 
     // 2. Check internal.html
-    tileResponsePromise = page.waitForResponse(res =>
-      res.url().includes('basemaps.cartocdn.com') || res.url().includes('openstreetmap')
-    );
-    await gotoPage(page, 'internal.html');
-    await tileResponsePromise;
+    await Promise.all([
+      page.waitForResponse(res => res.url().includes('basemaps.cartocdn.com') || res.url().includes('openstreetmap')),
+      gotoPage(page, 'internal.html')
+    ]);
     assertNoJsErrors(page);
-
     await expect(page.locator('#map')).toBeVisible();
   });
 });
