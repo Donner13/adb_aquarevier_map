@@ -121,7 +121,16 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
   }
 
   /** Baut den Popup-HTML-String aus cfg.popupFields */
-  function buildPopupHtml(p) {
+  function buildPopupHtml(p_raw) {
+    const p = {};
+    if (p_raw) {
+      for (const key in p_raw) {
+        if (Object.prototype.hasOwnProperty.call(p_raw, key)) {
+          const val = p_raw[key];
+          p[key] = typeof val === 'string' ? escapeHtml(val) : val;
+        }
+      }
+    }
     const glossarSpan = (key) =>
       key ? `<span class="glossar-icon" data-glossar="${escapeHtml(key)}">i</span>` : '';
     // Feste deutsche Config-Strings (groupLabel/field.label) werden bei
