@@ -20,6 +20,9 @@
         if (!modal) {
             modal = document.createElement('div');
             modal.id = 'wrrl-quality-modal';
+            modal.setAttribute('role', 'dialog');
+            modal.setAttribute('aria-modal', 'true');
+            modal.setAttribute('aria-labelledby', 'wrrl-quality-modal-title');
             modal.style.cssText = `
                 position: fixed;
                 inset: 0;
@@ -38,7 +41,7 @@
             modal.innerHTML = `
                 <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 440px; border-radius: 12px; padding: 20px; text-align: center;">
                     <div style="font-size: 24px; margin-bottom: 8px;">⚠️</div>
-                    <div style="font-weight: 700; color: #dc2626; margin-bottom: 4px;">Wassergüte-Daten nicht verfügbar</div>
+                    <div id="wrrl-quality-modal-title" style="font-weight: 700; color: #dc2626; margin-bottom: 4px;">Wassergüte-Daten nicht verfügbar</div>
                     <div style="font-size: 11px; color: #64748b; margin-bottom: 14px;">Die Messwerte für '${escapeHtml(name)}' konnten vom Server nicht geladen werden.</div>
                     <button type="button" class="btn btn-sm btn-secondary" onclick="closeWrrlQualityModal()">Schließen</button>
                 </div>
@@ -51,7 +54,7 @@
             <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 480px; border-radius: 12px; box-shadow: var(--modal-shadow, 0 10px 30px rgba(0, 0, 0, 0.5)); overflow: hidden; font-size: 12px;">
                 <div style="background: #0284c7; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <div style="font-size: 15px; font-weight: 700;">🐟 WRRL-Gewässergüte: ${escapeHtml(name)}</div>
+                        <div id="wrrl-quality-modal-title" style="font-size: 15px; font-weight: 700;">🐟 WRRL-Gewässergüte: ${escapeHtml(name)}</div>
                         <div style="font-size: 10.5px; opacity: 0.9;">Wasserrahmenrichtlinie (WRRL NRW) Statusbewertung</div>
                     </div>
                     <button type="button" onclick="closeWrrlQualityModal()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #ffffff; font-size: 20px; cursor: pointer;">✕</button>
