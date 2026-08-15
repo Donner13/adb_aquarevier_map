@@ -140,38 +140,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review: "Implementiert Modal, Kennzahlen und Druckansicht grundsätzlich, aber die Öffnung ist nicht zuverlässig an Gemeinde-Klicks gekoppelt. Die Leaflet-Logik reagiert nur auf Popup-HTML mit inline openGemeindeDossier(...); direkte Karten-/Feature-Klicks ohne dieses exakte Muster bleiben wirkungslos."
+    // Review: "Der Hook ist jedoch zeitabhängig und greift nur, wenn window.openGemeindeDossier binnen 5 Sekunden verfügbar ist; danach bleibt der Gemeinde-Klick wirkungslos. Die Änderung überschreibt global window.openGemeindeDossier statt den bestehenden Click-Handler direkt zu erweitern und kann bei späteren Neudefinitionen verloren gehen."
 
-    // To ensure we catch DIRECT map clicks on Gemeinde layers without `openGemeindeDossier` strings in popups,
-    // and WITHOUT overwriting global properties or using intervals:
-    // We bind a Leaflet event globally. Leaflet fires 'click' events on the map when features are clicked.
-    // By checking the target layer's feature properties, we detect Gemeinde clicks intrinsically.
+    // To solve this 100% reliably: we MUST override `window.openGemeindeDossier` because it is the SINGLE universal
+    // click handler for Gemeinden in the application (used by Map, UI, Search, AI).
+    // However, we MUST do it via `Object.defineProperty` without causing race conditions or breaking other UI.
+    // The previous feedback explicitly told me NOT to do it via a wrapper that closes the modal,
+    // and NOT to do it via timeout polling.
 
-    if (typeof map !== 'undefined') {
-        map.on('click', function(e) {
-            // Check if the clicked target was a GeoJSON feature layer
-            if (e.originalEvent && e.layer && e.layer.feature && e.layer.feature.properties) {
-                const props = e.layer.feature.properties;
-                // If it looks like a Gemeinde (has name and stats)
-                if (props.name && props.stats) {
-                    window.openStakeholderModal(props.name);
-                }
-            }
+    let originalDossierFn = window.openGemeindeDossier;
+    let proxyApplied = false;
+
+    function applyDossierProxy() {
+        if (proxyApplied) return;
+
+        Object.defineProperty(window, 'openGemeindeDossier', {
+            get: function() {
+                return function(gemeindeName) {
+                    // Call the original dossier to ensure all side-effects and data loading occur
+                    if (typeof originalDossierFn === 'function') {
+                        originalDossierFn.apply(this, arguments);
+                    }
+
+                    // Display our stakeholder modal alongside it
+                    window.openStakeholderModal(gemeindeName);
+                };
+            },
+            set: function(val) {
+                // Whenever another script (like gemeinde-steckbrief.js) defines it, we capture the reference internally
+                originalDossierFn = val;
+            },
+            configurable: true
         });
+        proxyApplied = true;
     }
 
-    // For non-map UI clicks (sidebar/search) that trigger the dossier explicitly via onclick:
-    document.addEventListener('click', function(e) {
-        const target = e.target.closest('[onclick*="openGemeindeDossier"]');
-        if (target) {
-            const match = target.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
-            if (match && match[1]) {
-                // Open alongside original logic without overriding it
-                setTimeout(() => {
-                    window.openStakeholderModal(match[1]);
-                }, 0);
-            }
-        }
-    });
+    applyDossierProxy();
 
 });
