@@ -155,13 +155,13 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def translate_path(self, path):
         translated_path = super().translate_path(path)
-        resolved_target = os.path.abspath(translated_path)
-        resolved_dir = os.path.abspath(self.directory)
+        resolved_target = os.path.realpath(translated_path)
+        resolved_dir = os.path.realpath(self.directory)
 
         # Ensure the resolved target is within the intended directory
         if not (resolved_target == resolved_dir or resolved_target.startswith(resolved_dir + os.sep)):
             # Return a non-existent path to trigger a 404 Not Found
-            return os.path.join(resolved_dir, ".invalid_path_traversal")
+            return os.path.join(resolved_dir, ".invalid_path_traversal_blocked_by_guard")
 
         return translated_path
 
