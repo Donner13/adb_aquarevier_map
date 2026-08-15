@@ -160,7 +160,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
         # Guard against path traversal and symlinks escaping the root
         if not abs_path.startswith(abs_dir + os.sep) and abs_path != abs_dir:
-            return "/dev/null/blocked_path_traversal"
+            return os.path.join(abs_dir, ".blocked_path_traversal")
 
         return translated
 
