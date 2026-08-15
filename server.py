@@ -196,6 +196,40 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed_path = urllib.parse.urlparse(self.path)
+
+        if parsed_path.path == '/health':
+            core_files = ['contacts.geojson', 'contacts_anonymized.geojson']
+            try:
+                with open(os.path.join(DIRECTORY, 'js', 'layers-config.js'), 'r', encoding='utf-8') as f:
+                    content = f.read()
+                    layer_files = re.findall(r"file:\s*'([^']+)'", content)
+                    core_files.extend(layer_files)
+            except Exception:
+                pass
+
+            core_files = list(set(core_files))
+            missing = []
+            unreadable = []
+
+            for f in core_files:
+                filepath = os.path.join(DIRECTORY, f)
+                if not os.path.exists(filepath):
+                    missing.append(f)
+                elif not os.access(filepath, os.R_OK):
+                    unreadable.append(f)
+
+            status = 'error' if missing or unreadable else 'ok'
+
+            self.send_response(200 if status == 'ok' else 503)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps({
+                "status": status,
+                "missing": missing,
+                "unreadable": unreadable
+            }).encode('utf-8'))
+            return
+
         # Protect raw PII contacts.geojson file from direct GET access without auth
         if parsed_path.path == '/contacts.geojson' or parsed_path.path.startswith('/api/'):
             if not self.check_auth():
