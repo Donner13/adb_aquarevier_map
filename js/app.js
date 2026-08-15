@@ -193,8 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // To prevent overlapping UI WITHOUT modifying `openGemeindeDossier` globally (which breaks standard workflow)
     // and WITHOUT timing-dependent wrappers:
-    // We modify our DOM listener to explicitly close the native dossier modal sequentially AFTER it fires.
+    // We explicitly close the native dossier modal sequentially AFTER it fires.
 
+    // Consolidating all DOM click interception into a single, clean event listener
     document.addEventListener('click', function(e) {
         // Intercept standard elements that intend to open the dossier
         const target = e.target.closest('[onclick*="openGemeindeDossier"]');
@@ -202,7 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Give original logic a microtick to render, then overwrite it visually
             setTimeout(() => {
                 const dossierModal = document.getElementById('gemeinde-dossier-modal');
-                if (dossierModal) dossierModal.style.display = 'none';
+                if (dossierModal) {
+                    dossierModal.style.display = 'none';
+                }
             }, 10);
         }
     });
