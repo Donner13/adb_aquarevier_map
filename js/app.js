@@ -154,31 +154,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Review: "Der Karten-Handler bindet nur Layer mit properties.stats; Gemeinden ohne dieses Feld öffnen das Modal nie."
+
     // 2. Leaflet Layer Interception for map features.
-    // Instead of parsing popup DOM or generic map clicks, we listen to layer addition and hook natively into the Leaflet object logic.
+    // Instead of checking for `properties.stats`, we only check for `properties.name`.
+    // The Modal extraction logic safely handles missing stats by displaying "Keine Daten".
     let layerHooked = false;
     function bindMapLayerClicks() {
         if (typeof map !== 'undefined' && !layerHooked) {
             map.on('layeradd', function(e) {
                 const layer = e.layer;
-                if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.stats) {
-                    if (!layer._stakeholderHook) {
-                        layer.on('click', function() {
-                            window.openStakeholderModal(layer.feature.properties.name);
-                        });
-                        layer._stakeholderHook = true;
-                    }
+                // Identify Gemeinde layer broadly via name, removing the restrictive `stats` requirement.
+                if (layer.feature && layer.feature.properties && layer.feature.properties.name && !layer._stakeholderHook) {
+                    layer.on('click', function() {
+                        window.openStakeholderModal(layer.feature.properties.name);
+                    });
+                    layer._stakeholderHook = true;
                 }
             });
+
             // Backfill existing layers if we loaded late
             map.eachLayer(function(layer) {
-                if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.stats) {
-                    if (!layer._stakeholderHook) {
-                        layer.on('click', function() {
-                            window.openStakeholderModal(layer.feature.properties.name);
-                        });
-                        layer._stakeholderHook = true;
-                    }
+                if (layer.feature && layer.feature.properties && layer.feature.properties.name && !layer._stakeholderHook) {
+                    layer.on('click', function() {
+                        window.openStakeholderModal(layer.feature.properties.name);
+                    });
+                    layer._stakeholderHook = true;
                 }
             });
             layerHooked = true;
