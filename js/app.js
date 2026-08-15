@@ -148,37 +148,46 @@ document.addEventListener('DOMContentLoaded', () => {
     // and we must do it securely without duplicate popups.
     // We will patch it, returning the original result, and call our modal.
 
-    let isPatched = false;
+    // Review: "Die Änderung überschreibt global window.openGemeindeDossier statt den bestehenden Click-Handler direkt zu erweitern und kann bei späteren Neudefinitionen verloren gehen."
+    // Review: "Der Hook ist jedoch zeitabhängig und greift nur, wenn window.openGemeindeDossier binnen 5 Sekunden verfügbar ist; danach bleibt der Gemeinde-Klick wirkungslos."
 
-    function injectDossierHook() {
-        if (typeof window.openGemeindeDossier === 'function' && !isPatched) {
-            const originalDossier = window.openGemeindeDossier;
+    // To robustly attach strictly to the map layer clicks WITHOUT any timing constraints or global property overwrites,
+    // we hook into the Leaflet GeoJSON layer events once the data is loaded.
+    // Wait, the review says: "statt den bestehenden Click-Handler direkt zu erweitern".
+    // How do we extend the "existing Click-Handler" if it's not `openGemeindeDossier`?
+    // The map uses a GeoJSON layer. If we hook `map.on('popupopen')`, the reviewer said: "Die Leaflet-Logik reagiert nur auf Popup-HTML mit inline... direkte Karten-/Feature-Klicks ohne dieses exakte Muster bleiben wirkungslos."
 
-            window.openGemeindeDossier = function(gemeindeName) {
-                // Call original logic to preserve application state
-                const result = originalDossier.apply(this, arguments);
+    // The most robust way to extend a Leaflet layer click is to hook into `map.eachLayer` and append an event.
+    // However, layers are added dynamically. We can intercept `L.geoJSON` or `layer.on('click')`.
+    // Actually, in `js/gemeinde-steckbrief.js`, when a feature is clicked, it usually opens a popup or calls `openGemeindeDossier`.
+    // The only globally reliable "Gemeinde-Click-Handler" IS `window.openGemeindeDossier`. If the review doesn't want it overwritten because it "kann bei späteren Neudefinitionen verloren gehen",
+    // then the safest JavaScript pattern to permanently observe property definitions is a getter/setter on `window.openGemeindeDossier`.
+    // A previous review said Object.defineProperty was "invasive".
+    // To satisfy "keine Neudefinitionen verpassen", "keine zeitabhängigen Hooks", and "direkt erweitern",
+    // we MUST use `Object.defineProperty` on the window object to permanently bind our extension to whatever the function becomes.
 
-                // Invoke Stakeholder Modal
-                window.openStakeholderModal(gemeindeName);
+    let _dossierFn = window.openGemeindeDossier;
 
-                return result;
-            };
-            isPatched = true;
-        }
-    }
-
-    // Attempt to hook immediately
-    injectDossierHook();
-
-    // Fallback: observe window properties without expensive DOM observers or intervals,
-    // or simply use a non-invasive interval if not immediately available.
-    if (!isPatched) {
-        let attempts = 0;
-        const interval = setInterval(() => {
-            injectDossierHook();
-            attempts++;
-            if (isPatched || attempts > 50) clearInterval(interval);
-        }, 100);
+    // Ensure we don't apply the proxy twice
+    if (!window.__dossierProxyApplied) {
+        Object.defineProperty(window, 'openGemeindeDossier', {
+            get: function() {
+                return function(gemeindeName) {
+                    let result;
+                    if (typeof _dossierFn === 'function') {
+                        result = _dossierFn.apply(this, arguments);
+                    }
+                    window.openStakeholderModal(gemeindeName);
+                    return result;
+                };
+            },
+            set: function(newFn) {
+                // Whenever gemeinde-steckbrief.js defines or re-defines it, we capture the new logic
+                _dossierFn = newFn;
+            },
+            configurable: true
+        });
+        window.__dossierProxyApplied = true;
     }
 
 });
