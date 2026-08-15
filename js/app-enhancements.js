@@ -885,7 +885,13 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 let closedAny = false;
-                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"]');
+
+                // Be more permissive with class names to ensure we catch all modals/overlays
+                // and explicitly target known overlays like coachmark-overlay which might not have a generic class
+                const openModals = document.querySelectorAll(
+                    '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"], #coachmark-overlay, #onboarding-role-modal'
+                );
+
                 openModals.forEach(modal => {
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
@@ -895,6 +901,21 @@
                             // Instead of returning and skipping it, we programmatically click the modal backdrop
                             // which is handled by a listener inside initCommandPalette that calls closePalette()
                             modal.click();
+                            closedAny = true;
+                            return;
+                        }
+
+                        // Specific logic for onboarding-role-modal (needs to update localStorage to not re-open)
+                        if (modal.id === 'onboarding-role-modal' && typeof window.closeRoleModal === 'function') {
+                            window.closeRoleModal();
+                            if (window.StorageModule) window.StorageModule.setItem('aquarevier_onboarding_completed_v1', '1');
+                            closedAny = true;
+                            return;
+                        }
+
+                        // Specific logic for coachmarks
+                        if (modal.id === 'coachmark-overlay' && typeof window.endCoachmarkTour === 'function') {
+                            window.endCoachmarkTour();
                             closedAny = true;
                             return;
                         }
