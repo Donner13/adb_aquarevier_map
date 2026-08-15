@@ -887,10 +887,17 @@
                 let closedAny = false;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"]');
                 openModals.forEach(modal => {
-                    if (modal.id === 'command-palette-modal') return;
-                    if (modal.id === 'onboarding-role-modal') return;
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
+
+                        // Ensure we also close the command palette if it is open, handling the animation correctly
+                        if (modal.id === 'command-palette-modal') {
+                            // Instead of returning and skipping it, we programmatically click the modal backdrop
+                            // which is handled by a listener inside initCommandPalette that calls closePalette()
+                            modal.click();
+                            closedAny = true;
+                            return;
+                        }
 
                         if (modal.classList.contains('scorecard-backdrop')) {
                             modal.remove();
