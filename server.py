@@ -16,6 +16,19 @@ ENC_PASSWORD = os.environ.get('CONTACTS_ENCRYPTION_KEY') or os.environ.get('ENC_
 EDITOR_USER = os.environ.get('EDITOR_USER', 'florian')
 EDITOR_PASSWORD = os.environ.get('EDITOR_PASSWORD', 'AquaRevier2026')
 
+CORE_GEOJSONS = [
+    'contacts.geojson',
+    'contacts_anonymized.geojson',
+    'klaeranlagen.geojson',
+    'grundwassermessstellen.geojson',
+    'pegel.geojson',
+    'stauanlagen.geojson',
+    'regenbecken.geojson',
+    'querbauwerke.geojson',
+    'h2_elektrolyseure_nrw.geojson',
+    'vogelbeobachtungsgebiete.geojson'
+]
+
 GROUP_COLORS = {
     'Behörde': '#f43f5e', 'Einzelakteure': '#00f5d4', 'Forschung': '#3b82f6',
     'Gebietskörperschaft': '#fbbf24', 'Gewerbe/ Industrie': '#d946ef',
@@ -196,6 +209,27 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed_path = urllib.parse.urlparse(self.path)
+
+        # Health-Check Endpoint fuer Scraper & Layer-Status
+        if parsed_path.path == '/health':
+            missing_files = []
+            for filename in CORE_GEOJSONS:
+                filepath = os.path.join(DIRECTORY, filename)
+                if not os.path.exists(filepath) or not os.access(filepath, os.R_OK):
+                    missing_files.append(filename)
+
+            if missing_files:
+                self.send_response(503)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "missing": missing_files}).encode('utf-8'))
+            else:
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "healthy"}).encode('utf-8'))
+            return
+
         # Protect raw PII contacts.geojson file from direct GET access without auth
         if parsed_path.path == '/contacts.geojson' or parsed_path.path.startswith('/api/'):
             if not self.check_auth():
