@@ -1634,7 +1634,7 @@
         <div id="filter-live-region" class="sr-only" aria-live="polite"></div>
 
         <!-- Mobile Sidebar Toggle -->
-        <button id="mobile-sidebar-toggle">
+        <button id="mobile-sidebar-toggle" aria-label="Filter und Daten ein/ausblenden">
             <span class="icon" style="font-size:16px;">☰</span>
             <span class="text">Filter & Daten</span>
         </button>
@@ -3880,7 +3880,7 @@
                 div.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <strong style="color: var(--accent-primary)">${w.name}</strong>
-                        <button onclick="removeCustomWMS('${w.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer;" title="Löschen">🗑️</button>
+                        <button onclick="removeCustomWMS('${w.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer;" title="Löschen" aria-label="Löschen">🗑️</button>
                     </div>
                     <div style="color: var(--text-secondary); word-break: break-all;">${w.layers}</div>
                     <div style="display: flex; align-items: center; gap: 4px;">
@@ -6561,7 +6561,7 @@ function renderMapAndSidebar() {
                         panel.innerHTML = `
                             <div class="update-radar-header">
                                 <span>${headerText}</span>
-                                <button class="update-radar-close" title="Schließen">&times;</button>
+                                <button class="update-radar-close" title="Schließen" aria-label="Schließen">&times;</button>
                             </div>
                             <div class="update-radar-content">
                                 ${diffs.map((d, i) => {
@@ -6834,7 +6834,7 @@ function renderMapAndSidebar() {
         <div class="scorecard-modal" id="kreisScorecardModal">
             <div class="scorecard-header">
                 <div class="scorecard-title" id="scorecardModalTitle">Kreisvergleich</div>
-                <button class="scorecard-close" id="scorecardModalClose">&times;</button>
+                <button class="scorecard-close" id="scorecardModalClose" aria-label="Schließen">&times;</button>
             </div>
             <div class="scorecard-body">
                 <div class="scorecard-kpi-narration" id="scorecardModalNarration">
@@ -7128,7 +7128,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
                     <h3 id="feedback-modal-title" style="margin: 0; font-size: 16px; color: var(--text-primary, #0f172a);">Fehler melden</h3>
                     <div id="feedback-modal-layer" style="font-size: 12px; color: var(--text-secondary, #64748b); margin-top: 4px;">Layer: -</div>
                 </div>
-                <button type="button" onclick="closeFeedbackModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-secondary, #64748b);">&times;</button>
+                <button type="button" onclick="closeFeedbackModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-secondary, #64748b);" aria-label="Schließen">&times;</button>
             </div>
 
             <form id="feedback-form" onsubmit="submitFeedback(event)" style="display: flex; flex-direction: column; gap: 12px;">
@@ -7210,7 +7210,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
         <div class="scorecard-modal" id="textGeneratorModal" style="max-width: 800px; width: 90%; max-height: 90vh; display: flex; flex-direction: column;">
             <div class="scorecard-header" style="flex-shrink: 0;">
                 <div class="scorecard-title" id="textGeneratorTitle">Text generieren</div>
-                <button class="scorecard-close" id="textGeneratorClose">&times;</button>
+                <button class="scorecard-close" id="textGeneratorClose" aria-label="Schließen">&times;</button>
             </div>
             <div class="scorecard-body" style="display: flex; flex-direction: column; flex: 1; overflow: hidden; padding: 20px; gap: 15px;">
                 <div id="textGeneratorHint" style="font-size: 14px; color: var(--text-secondary); flex-shrink: 0;"></div>
