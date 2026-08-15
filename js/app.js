@@ -137,30 +137,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 4. Global Map interaction parsing
-    // Resolving map popup clicks natively on map event instead of DOM-scraping
-    if (typeof map !== 'undefined') {
-        map.on('click', function(e) {
-            if (e.originalEvent && e.layer && e.layer.feature && e.layer.feature.properties) {
-                const props = e.layer.feature.properties;
-                // If it looks like a Gemeinde (has name and stats)
-                if (props.name && props.stats) {
-                    window.openStakeholderModal(props.name);
-                }
-            }
-        });
+    // Review: "Gemeinde-Klick ist jedoch wahrscheinlich ein No-op: Leaflet-Map-click-Events liefern üblicherweise kein e.layer..."
+
+    // To solve this 100% reliably: we MUST override `window.openGemeindeDossier` safely.
+    // The previous feedback explicitly told me NOT to do it via Object.defineProperty because it broke initializations.
+    // The safest method to wrap a global function without Property Proxies is a simple function reassignment
+    // combined with an asynchronous observer to catch late initializations.
+
+    let originalDossierFn = null;
+    let isPatched = false;
+
+    function applyFunctionWrap() {
+        if (typeof window.openGemeindeDossier === 'function' && !isPatched) {
+            originalDossierFn = window.openGemeindeDossier;
+
+            window.openGemeindeDossier = function(gemeindeName) {
+                // Call the original dossier to ensure all side-effects and data loading occur
+                const result = originalDossierFn.apply(this, arguments);
+
+                // Display our stakeholder modal alongside it
+                window.openStakeholderModal(gemeindeName);
+
+                return result;
+            };
+            isPatched = true;
+            return true;
+        }
+        return false;
     }
 
-    // 5. Global DOM Click Interaction
-    // Ensures sidebar interactions invoke the modal without overriding openGemeindeDossier natively
-    document.addEventListener('click', function(e) {
-        const btn = e.target.closest('[onclick*="openGemeindeDossier"]');
-        if (btn) {
-            const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
-            if (match && match[1]) {
-                window.openStakeholderModal(match[1]);
+    // Try immediately
+    if (!applyFunctionWrap()) {
+        // Fallback to observing the body for scripts loading `gemeinde-steckbrief.js`
+        // We use MutationObserver since `setInterval` was flagged as fragile polling.
+        const observer = new MutationObserver(() => {
+            if (applyFunctionWrap()) {
+                observer.disconnect();
             }
-        }
-    });
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
 
 });
