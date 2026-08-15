@@ -1648,6 +1648,8 @@
                     <p>Volle Daten, direkt bearbeitbar</p>
                 </div>
                 <div style="display: flex; gap: 6px; align-items: center;">
+                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px 10px; font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" onclick="window.AquaI18n.toggleLanguage()">EN</button>
+                    <button id="audioToggleBtn" class="filter-btn" style="padding: 6px 10px; font-size: 13px;" title="Ton an/aus" aria-label="Audio Switcher" onclick="window.AquaAudio.toggleAudio()">🔇 Ton aus</button>
                     <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
                         ℹ️
                     </button>
@@ -2388,6 +2390,49 @@
 
         <!-- Map -->
         <div id="map"></div>
+        <div id="embed-mini-legend" class="embed-mini-legend">
+            <a id="embed-back-link" class="embed-back-link" target="_blank" rel="noopener noreferrer">↗ Vollständige Karte ansehen</a>
+            <div id="embed-mini-legend-items"></div>
+        </div>
+
+        <!-- Embed Modal -->
+        <div id="embed-modal">
+            <div class="embed-modal-content">
+                <div class="embed-modal-header">
+                    <h2>🔗 Karte einbetten</h2>
+                    <button class="embed-modal-close" id="embed-close-btn">&times;</button>
+                </div>
+
+                <div class="embed-info-text">
+                    Für WordPress & andere oEmbed-fähige CMS reicht es, den reinen Link <strong>https://adb-aquarevier-secure.surge.sh/</strong> in einen eigenen Absatz/Block einzufügen — die Vorschau erscheint dann automatisch.
+                </div>
+
+                <div class="embed-controls">
+                    <label>
+                        <input type="radio" name="embed-width-type" value="responsive" checked> Responsive (100%)
+                    </label>
+                    <label>
+                        <input type="radio" name="embed-width-type" value="fixed"> Feste Breite
+                        <input type="number" id="embed-width-px" value="800" disabled> px
+                    </label>
+                    <span style="border-left: 1px solid var(--border-color); height: 20px;"></span>
+                    <label>
+                        Höhe:
+                        <input type="number" id="embed-height" value="600"> px
+                    </label>
+                </div>
+
+                <textarea id="embed-snippet-output" readonly></textarea>
+
+                <button id="embed-copy-btn" class="filter-btn active" style="width: fit-content; background: #10b981; border-color: #10b981; font-weight: 600; color: white;">📋 Code kopieren</button>
+
+                <div style="font-size: 14px; font-weight: 600; color: var(--text-primary); margin-top: 8px;">Live-Vorschau</div>
+                <div class="embed-preview-container">
+                    <iframe id="embed-preview-iframe" src="" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
         <div id="pegel-analysis-panel" class="hidden"></div>
 
         <div id="presentation-bar">
