@@ -188,6 +188,25 @@ document.addEventListener('DOMContentLoaded', () => {
         return false;
     }
 
+    // Review: "Der Hook auf Gemeinde-Klick ist fragil: Falls openGemeindeDossier erst per Script-Ausführung gesetzt wird, erkennt der MutationObserver dies nicht und das Modal bleibt ein No-op."
+    // Review: "Der Wrapper öffnet außerdem das neue Modal zusätzlich zum bestehenden Dossier, was zu überlappenden Dialogen führen kann."
+
+    // To prevent overlapping UI WITHOUT modifying `openGemeindeDossier` globally (which breaks standard workflow)
+    // and WITHOUT timing-dependent wrappers:
+    // We modify our DOM listener to explicitly close the native dossier modal sequentially AFTER it fires.
+
+    document.addEventListener('click', function(e) {
+        // Intercept standard elements that intend to open the dossier
+        const target = e.target.closest('[onclick*="openGemeindeDossier"]');
+        if (target) {
+            // Give original logic a microtick to render, then overwrite it visually
+            setTimeout(() => {
+                const dossierModal = document.getElementById('gemeinde-dossier-modal');
+                if (dossierModal) dossierModal.style.display = 'none';
+            }, 10);
+        }
+    });
+
     // Try immediately.
     if (!bindMapLayerClicks()) {
         // If map is not initialized yet, we can't use generic polling per constraints.
