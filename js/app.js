@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.id = 'stakeholder-modal';
     modal.innerHTML = `
         <div class="stakeholder-modal-header">
-            <h2 class="stakeholder-modal-title">Gemeinde-Steckbrief</h2>
+            <h2 class="stakeholder-modal-title" id="stakeholder-modal-title">Gemeinde-Steckbrief</h2>
             <button class="stakeholder-modal-close" id="stakeholder-modal-close">&times;</button>
         </div>
         <div class="stakeholder-modal-content">
