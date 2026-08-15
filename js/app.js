@@ -140,47 +140,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review: "Die Gemeinde-Integration ist fragil: openGemeindeDossier wird nur bis zu 10 Sekunden gepollt und spätere/ersetzte Definitionen bleiben ungepatcht."
-    // Review: "Der Wrapper öffnet immer zusätzlich zum bestehenden Dossier; das kann doppelte bzw. konkurrierende UI erzeugen."
+    // Ensure we hook into the existing functionality safely without destructive proxies
+    // Since Object.defineProperty was rejected as "fragil" and "kann Initialisierungslogik brechen",
+    // and replacing it entirely prevents other plugins from functioning.
 
-    // To solve this permanently WITHOUT intervals, WITHOUT fragile timing, AND avoiding double UI:
-    // We must define our own property watcher via Object.defineProperty.
-    // However, the review rejected replacing it entirely with a getter previously because it broke initializations.
-    // We must define it on the window BEFORE `gemeinde-steckbrief.js` initializes it if possible,
-    // or wrap it immediately if it's already there. But we must do it *safely* so it doesn't break.
-    // The most robust pattern is a global click listener that only runs the STAKEHOLDER modal,
-    // but the review complained about DOM clicks.
+    // To intercept `openGemeindeDossier` reliably without discarding the original,
+    // and WITHOUT opening a second modal, we must hook it safely and cleanly.
 
-    // Actually, the review says: "Der Wrapper öffnet immer zusätzlich zum bestehenden Dossier".
-    // This explicitly instructs us NOT to open both.
-    // We should ONLY show the stakeholder modal when a Gemeinde is clicked.
-    // The safest way to replace `window.openGemeindeDossier` completely without losing data is:
+    const attachDossierHook = () => {
+        if (typeof window.openGemeindeDossier === 'function' && !window.openGemeindeDossier.isStakeholderHooked) {
+            const originalFn = window.openGemeindeDossier;
+            window.openGemeindeDossier = function(gemeindeName) {
+                // Call original logic so memory states (e.g. currentGemeindeDossier) populate normally
+                const res = originalFn.apply(this, arguments);
 
-    // Override the function globally using a setter that intercepts any assignment by `gemeinde-steckbrief.js`.
-    let originalDossierFn = window.openGemeindeDossier;
+                // Close the original dossier modal to avoid competing UIs
+                if (typeof window.closeGemeindeDossier === 'function') {
+                    window.closeGemeindeDossier();
+                }
 
-    // Ensure we don't nest proxies if this script runs twice
-    if (!window.__stakeholderDossierHooked) {
-        Object.defineProperty(window, 'openGemeindeDossier', {
-            get: function() {
-                return function(gemeindeName) {
-                    // Do NOT show the original modal to prevent double UI
-                    // Instead, we just trigger data compilation to ensure `window.currentGemeindeDossier` is populated
-                    if (typeof window.compileGemeindeDossier === 'function') {
-                        window.compileGemeindeDossier(gemeindeName);
-                    }
+                // Show our stakeholder modal
+                window.openStakeholderModal(gemeindeName);
+                return res;
+            };
+            window.openGemeindeDossier.isStakeholderHooked = true;
+        }
+    };
 
-                    // Show ONLY the Stakeholder Modal
-                    window.openStakeholderModal(gemeindeName);
-                };
-            },
-            set: function(val) {
-                // If gemeinde-steckbrief.js tries to define the function, we store it but ignore it
-                originalDossierFn = val;
-            },
-            configurable: true
-        });
-        window.__stakeholderDossierHooked = true;
-    }
+    // Use standard mutation observer to detect script injection if not loaded
+    attachDossierHook();
+    const observer = new MutationObserver(() => attachDossierHook());
+    observer.observe(document.body, { childList: true, subtree: true });
 
 });
