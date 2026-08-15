@@ -885,7 +885,7 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Tab') {
                 let activeModal = null;
-                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop');
+                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 for (let i = 0; i < openModals.length; i++) {
                     const modal = openModals[i];
                     const style = window.getComputedStyle(modal);
