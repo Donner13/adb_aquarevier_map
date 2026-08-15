@@ -916,14 +916,37 @@
 
                 if (openModals.length > 0) {
                     // Use the topmost (last in DOM) open modal
-                    const activeModal = openModals[openModals.length - 1];
-                    const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [tabindex]:not([tabindex^="-"])';
+                    let activeModal = openModals[openModals.length - 1];
+                    let activeIndex = openModals.length - 1;
+
+                    let focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [tabindex]:not([tabindex^="-"])';
                     let focusableElements = Array.from(activeModal.querySelectorAll(focusableElementsString));
 
                     // Filter out truly hidden elements
                     focusableElements = focusableElements.filter(el => {
                         return el.offsetWidth > 0 && el.offsetHeight > 0 && window.getComputedStyle(el).visibility !== 'hidden';
                     });
+
+                    // If active modal has no focusable elements, fall back to previous modal
+                    while (focusableElements.length === 0 && activeIndex > 0) {
+                        activeIndex--;
+                        activeModal = openModals[activeIndex];
+                        focusableElements = Array.from(activeModal.querySelectorAll(focusableElementsString)).filter(el => {
+                            return el.offsetWidth > 0 && el.offsetHeight > 0 && window.getComputedStyle(el).visibility !== 'hidden';
+                        });
+                    }
+
+                    if (focusableElements.length === 0) {
+                        return; // If no focusable element in any modal, do not trap focus
+                    }
+
+                    if (activeModal.classList.contains('scorecard-backdrop') && !activeModal.querySelector('.scorecard-modal, .scorecard-dialog, .modal, [role="dialog"]')) {
+                        return;
+                    }
+
+                    if (activeModal.classList.contains('scorecard-backdrop') && activeModal.children.length === 0) {
+                        return;
+                    }
 
                     if (focusableElements.length > 0) {
                         const firstElement = focusableElements[0];
