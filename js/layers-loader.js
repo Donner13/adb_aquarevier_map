@@ -122,14 +122,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
   /** Baut den Popup-HTML-String aus cfg.popupFields */
   function buildPopupHtml(p) {
-    const originalP = p || {};
-    const sanitizedP = {};
-    for (const key in originalP) {
-      if (Object.prototype.hasOwnProperty.call(originalP, key)) {
-        sanitizedP[key] = typeof originalP[key] === 'string' ? escapeHtml(originalP[key]) : originalP[key];
-      }
-    }
-    p = sanitizedP;
+    p = p || {};
 
     const glossarSpan = (key) =>
       key ? `<span class="glossar-icon" data-glossar="${escapeHtml(key)}">i</span>` : '';
@@ -141,22 +134,20 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     let html = `
       <div class="popup-card">
-        <div class="popup-group" style="color:${escapeHtml(cfg.color)}">${escapeHtml(tLabel(cfg.groupLabel))}</div>
-        <div class="popup-title">${p.name || 'Unbekannt'}</div>
+        <div class="popup-group" style="color:${cfg.color}">${escapeHtml(tLabel(cfg.groupLabel))}</div>
+        <div class="popup-title">${escapeHtml(p.name || 'Unbekannt')}</div>
     `;
 
     for (const field of (cfg.popupFields || [])) {
       let value;
-      let safeVal;
       if (field.expr) {
-        value = field.expr(originalP);
-        safeVal = value; // Preserve HTML returned by expressions
+        value = field.expr(p);
       } else {
         value = p[field.field];
-        safeVal = value; // ALREADY escaped by sanitizedP
       }
       if (!value) continue;
 
+      const safeVal = escapeHtml(value);
       // first field (📍) has no label prefix, just the value
       if (field.label === '📍') {
         html += `<div class="popup-detail">📍 ${safeVal}</div>`;
@@ -167,7 +158,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // Special: Pegel NQ/MQ/HQ row
     if (cfg.pegelStats && p.mq_m3s) {
-      html += `<div class="popup-detail">📊 NQ<span class="glossar-icon" data-glossar="NQ">i</span>: ${p.nq_m3s || '–'}, MNQ<span class="glossar-icon" data-glossar="MNQ">i</span>: ${p.mnq_m3s || '–'}, MQ<span class="glossar-icon" data-glossar="MQ">i</span>: ${p.mq_m3s}, HQ<span class="glossar-icon" data-glossar="HQ">i</span>: ${p.hq_m3s || '–'} m³/s</div>`;
+      html += `<div class="popup-detail">📊 NQ<span class="glossar-icon" data-glossar="NQ">i</span>: ${escapeHtml(p.nq_m3s) || '–'}, MNQ<span class="glossar-icon" data-glossar="MNQ">i</span>: ${escapeHtml(p.mnq_m3s) || '–'}, MQ<span class="glossar-icon" data-glossar="MQ">i</span>: ${escapeHtml(p.mq_m3s)}, HQ<span class="glossar-icon" data-glossar="HQ">i</span>: ${escapeHtml(p.hq_m3s) || '–'} m³/s</div>`;
 
       // Calculate trend indicators if we have numerical values
       if (p.nq_m3s && p.mnq_m3s) {
@@ -209,9 +200,9 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       const betriebeHinweis = p.upstream_betriebe_mit_wert > 0
         ? ` (${p.upstream_betriebe_mit_wert} Betrieb(e) mit Mengenangabe oberhalb)`
         : ' (keine quantifizierten Industrieeinleiter oberhalb gefunden)';
-      html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${p.mq_m3s} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${escapeHtml(pctStr)}% davon als Industrieabwasser ein${escapeHtml(betriebeHinweis)}.</div>`;
+      html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${escapeHtml(p.mq_m3s)} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${escapeHtml(pctStr)}% davon als Industrieabwasser ein${escapeHtml(betriebeHinweis)}.</div>`;
       if (p.upstream_betriebe_count > 0) {
-        const safePegelNr = escapeHtml(String(originalP.pegel_nr || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
+        const safePegelNr = escapeHtml(String(p.pegel_nr || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
         html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${safePegelNr}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
       }
     }
@@ -273,11 +264,11 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     }
 
     // Feedback Link
-    const safeJsName = escapeHtml(String(originalP.name || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
-    const safeJsId = escapeHtml(String(originalP.id || originalP.anlagen_nr || originalP.pegel_nr || originalP.betriebs_nr || originalP.name || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
+    const safeJsName = escapeHtml(String(p.name || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
+    const safeJsId = escapeHtml(String(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
     const safeJsGroupLabel = escapeHtml(String(cfg.groupLabel || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
-    const safeLat = Number(originalP.lat || originalP.latitude || 0);
-    const safeLng = Number(originalP.lng || originalP.longitude || originalP.lon || 0);
+    const safeLat = Number(p.lat || p.latitude || 0);
+    const safeLng = Number(p.lng || p.longitude || p.lon || 0);
 
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
       <button type="button" onclick="openFeedbackModal('${safeJsName}', '${safeJsGroupLabel}', '${safeJsId}', ${safeLat}, ${safeLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
