@@ -213,8 +213,14 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             missing = []
             for geojson in CORE_GEOJSONS:
                 filepath = os.path.join(DIRECTORY, geojson)
-                if not (os.path.isfile(filepath) and os.access(filepath, os.R_OK)):
+                if not os.path.isfile(filepath):
                     missing.append(geojson)
+                else:
+                    try:
+                        with open(filepath, 'rb') as f:
+                            f.read(1)
+                    except OSError:
+                        missing.append(geojson)
 
             if missing:
                 self.send_response(503)
