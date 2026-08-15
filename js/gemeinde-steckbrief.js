@@ -216,19 +216,19 @@
                     <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px;">
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; text-align: center;">
                             <div style="font-size: 18px; font-weight: 700; color: #2563eb;">${dossier.stats.akteure.length}</div>
-                            <div style="font-size: 10px; color: #64748b;">🤝 Akteure</div>
+                            <div style="font-size: 10px; color: var(--text-secondary, #64748b);">🤝 Akteure</div>
                         </div>
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; text-align: center;">
                             <div style="font-size: 18px; font-weight: 700; color: #0284c7;">${dossier.stats.messstellen.length}</div>
-                            <div style="font-size: 10px; color: #64748b;">💧 Messstellen</div>
+                            <div style="font-size: 10px; color: var(--text-secondary, #64748b);">💧 Messstellen</div>
                         </div>
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; text-align: center;">
                             <div style="font-size: 18px; font-weight: 700; color: #7c3aed;">${dossier.stats.einleiter.length + dossier.stats.klaeranlagen.length}</div>
-                            <div style="font-size: 10px; color: #64748b;">🏭 Abwasser/Einleiter</div>
+                            <div style="font-size: 10px; color: var(--text-secondary, #64748b);">🏭 Abwasser/Einleiter</div>
                         </div>
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; text-align: center;">
                             <div style="font-size: 18px; font-weight: 700; color: #d97706;">${dossier.stats.pegel.length + dossier.stats.stauanlagen.length + dossier.stats.regenbecken.length + dossier.stats.querbauwerke.length}</div>
-                            <div style="font-size: 10px; color: #64748b;">🌊 Gewässerbauwerke</div>
+                            <div style="font-size: 10px; color: var(--text-secondary, #64748b);">🌊 Gewässerbauwerke</div>
                         </div>
                     </div>
 
@@ -274,7 +274,7 @@
             html += `
                 <div style="padding: 4px 10px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
                     <span style="font-weight: 500; color: #0f172a;">${escapeHtml(item.name)}</span>
-                    ${item.sub ? `<span style="font-size: 10px; color: #64748b;">${escapeHtml(item.sub)}</span>` : ''}
+                    ${item.sub ? `<span style="font-size: 10px; color: var(--text-secondary, #64748b);">${escapeHtml(item.sub)}</span>` : ''}
                 </div>
             `;
         });
