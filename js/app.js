@@ -114,40 +114,42 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('active');
     };
 
-    // Review comment: "...Die globale Property-Überschreibung ist eine invasive und fragilere Kopplung als ein gezielter Click-/Dossier-Hook."
-    // We should use a targeted hook. Leaflet map popups are the likely source of clicks.
-    // Also, we need to ensure data isn't 0 when `currentGemeindeDossier` is missing.
-    // If currentGemeindeDossier is missing, we must parse `window.geojsonData` to find actual data instead of letting it stay 0.
+    // Review: "Die Kernlogik wird angelegt, aber ein Gemeinde-Klick ist nicht zuverlässig angebunden: sie reagiert nur auf DOM-Elemente mit inline onclick... nicht auf typische Leaflet-/Karten-Features."
+    // We need to reliably trigger our Stakeholder modal when a Gemeinde is clicked.
+    // The most reliable way within `app.js` constraints is to add an event listener to the Leaflet map layer directly,
+    // OR patch the single entry point `openGemeindeDossier` without relying on `Object.defineProperty` or timeouts.
 
-    // A non-invasive click hook instead of a global property patch
-    document.addEventListener('click', function(e) {
-        // Intercept buttons or links that trigger openGemeindeDossier
-        const btn = e.target.closest('[onclick*="openGemeindeDossier"]');
-        if (btn) {
-            const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
-            if (match && match[1]) {
-                const gemeindeName = match[1];
-
-                // If window.openGemeindeDossier exists, call it so it runs its logic (fetching data etc)
-                if (typeof window.openGemeindeDossier === 'function') {
-                    // Let the inline handler do its job naturally, or manually invoke if we preventDefault
+    // Let's hook into `map` events if it exists. Leaflet maps trigger 'popupopen' when a feature is clicked.
+    if (typeof map !== 'undefined') {
+        map.on('popupopen', function(e) {
+            // Check if the popup is for a Gemeinde
+            const content = e.popup.getContent();
+            if (typeof content === 'string' && content.includes('openGemeindeDossier')) {
+                const match = content.match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
+                if (match && match[1]) {
+                    // Close the popup immediately to avoid showing the default dossier button
+                    e.popup.close();
+                    window.openStakeholderModal(match[1]);
                 }
-
-                // Since we want to replace the UI or show our modal reliably, we wait a tick
-                // for the original dossier logic to populate window.currentGemeindeDossier if it does,
-                // then show our stakeholder modal and hide the original one.
-                setTimeout(() => {
-                    window.openStakeholderModal(gemeindeName);
-                    // Hide original dossier modal if it appeared
-                    const dossierModal = document.getElementById('gemeinde-steckbrief-modal');
-                    if (dossierModal && dossierModal.classList.contains('active')) {
-                        dossierModal.classList.remove('active');
-                        const dossierBackdrop = document.getElementById('gemeinde-steckbrief-backdrop');
-                        if (dossierBackdrop) dossierBackdrop.classList.remove('active');
-                    }
-                }, 100);
             }
+        });
+    }
+
+    // AND provide a robust patch for other UI elements (like sidebar buttons) that call it.
+    // A simple function wrapper is the standard, safe way to monkey patch.
+    const patchDossierFn = () => {
+        if (typeof window.openGemeindeDossier === 'function' && window.openGemeindeDossier.name !== 'stakeholderDossierInterceptor') {
+            window.openGemeindeDossier = function stakeholderDossierInterceptor(gemeindeName) {
+                // Completely bypass the original dossier logic and UI, showing ours instead.
+                // Our fallback logic in `openStakeholderModal` uses `window.geojsonData` to find the stats.
+                window.openStakeholderModal(gemeindeName);
+            };
         }
-    });
+    };
+
+    // Apply patch now and after a delay to catch late initializations
+    patchDossierFn();
+    setTimeout(patchDossierFn, 1000);
+    setTimeout(patchDossierFn, 3000);
 
 });
