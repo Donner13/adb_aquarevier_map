@@ -909,63 +909,50 @@
                 }
             } else if (e.key === 'Tab') {
                 // Focus trap for open modals
+                const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [tabindex]:not([tabindex^="-"])';
+
                 const openModals = Array.from(document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop')).filter(modal => {
                     const style = window.getComputedStyle(modal);
-                    return style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden');
-                });
+                    if (style.display === 'none' || style.visibility === 'hidden' || modal.classList.contains('hidden')) return false;
 
-                if (openModals.length > 0) {
-                    // Use the topmost (last in DOM) open modal
-                    let activeModal = openModals[openModals.length - 1];
-                    let activeIndex = openModals.length - 1;
+                    // Filter out backdrops without actual dialog content
+                    if (modal.classList.contains('scorecard-backdrop')) {
+                         if (!modal.querySelector('.scorecard-modal, .scorecard-dialog, .modal, [role="dialog"]') || modal.children.length === 0) {
+                             return false;
+                         }
+                    }
 
-                    let focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [tabindex]:not([tabindex^="-"])';
-                    let focusableElements = Array.from(activeModal.querySelectorAll(focusableElementsString));
-
-                    // Filter out truly hidden elements
-                    focusableElements = focusableElements.filter(el => {
+                    // Only consider the modal if it actually contains visible focusable elements
+                    const elements = Array.from(modal.querySelectorAll(focusableElementsString)).filter(el => {
                         return el.offsetWidth > 0 && el.offsetHeight > 0 && window.getComputedStyle(el).visibility !== 'hidden';
                     });
 
-                    // If active modal has no focusable elements, fall back to previous modal
-                    while (focusableElements.length === 0 && activeIndex > 0) {
-                        activeIndex--;
-                        activeModal = openModals[activeIndex];
-                        focusableElements = Array.from(activeModal.querySelectorAll(focusableElementsString)).filter(el => {
-                            return el.offsetWidth > 0 && el.offsetHeight > 0 && window.getComputedStyle(el).visibility !== 'hidden';
-                        });
-                    }
+                    return elements.length > 0;
+                });
 
-                    if (focusableElements.length === 0) {
-                        return; // If no focusable element in any modal, do not trap focus
-                    }
+                if (openModals.length > 0) {
+                    // Use the topmost (last in DOM) open modal that passed the filters
+                    const activeModal = openModals[openModals.length - 1];
 
-                    if (activeModal.classList.contains('scorecard-backdrop') && !activeModal.querySelector('.scorecard-modal, .scorecard-dialog, .modal, [role="dialog"]')) {
-                        return;
-                    }
+                    // Extract the focusable elements from the active modal
+                    const focusableElements = Array.from(activeModal.querySelectorAll(focusableElementsString)).filter(el => {
+                        return el.offsetWidth > 0 && el.offsetHeight > 0 && window.getComputedStyle(el).visibility !== 'hidden';
+                    });
 
-                    if (activeModal.classList.contains('scorecard-backdrop') && activeModal.children.length === 0) {
-                        return;
-                    }
+                    // We are guaranteed to have at least one element due to the array filter above
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
 
-                    if (focusableElements.length > 0) {
-                        const firstElement = focusableElements[0];
-                        const lastElement = focusableElements[focusableElements.length - 1];
-
-                        if (e.shiftKey) {
-                            if (document.activeElement === firstElement || !activeModal.contains(document.activeElement)) {
-                                lastElement.focus();
-                                e.preventDefault();
-                            }
-                        } else {
-                            if (document.activeElement === lastElement || !activeModal.contains(document.activeElement)) {
-                                firstElement.focus();
-                                e.preventDefault();
-                            }
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstElement || !activeModal.contains(document.activeElement)) {
+                            lastElement.focus();
+                            e.preventDefault();
                         }
                     } else {
-                        // If no focusable elements, prevent tabbing out of the modal
-                        e.preventDefault();
+                        if (document.activeElement === lastElement || !activeModal.contains(document.activeElement)) {
+                            firstElement.focus();
+                            e.preventDefault();
+                        }
                     }
                 }
             }
