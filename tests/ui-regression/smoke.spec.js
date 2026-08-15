@@ -7,22 +7,26 @@ test.describe('CI Smoke Test', () => {
 
   test('index.html loads successfully under 10s', async ({ page }) => {
     // 1. Check index.html
-    const tileResponse1 = page.waitForResponse(res =>
-      res.url().includes('basemaps.cartocdn.com') || res.url().includes('openstreetmap')
+    // Use the exact regex that fixtures.js intercepts to guarantee we only catch local mocked responses
+    const tileResponsePromise = page.waitForResponse(
+      res => /basemaps\.cartocdn\.com|tile\.openstreetmap\.org|wms\.nrw\.de|cismet\.de/.test(res.url()),
+      { timeout: 5000 }
     );
+
     await gotoPage(page, 'index.html');
-    const res1 = await tileResponse1;
+    const res1 = await tileResponsePromise;
 
     assertNoJsErrors(page);
     await expect(page.locator('#map')).toBeVisible();
     expect(res1.ok()).toBe(true);
 
-    // Verify basemap configuration via global map object
-    let hasBasemapConfig = await page.evaluate(() => {
+    // Verify basemap configuration via global map object.
+    // In this legacy application architecture (see memory/backlog context), Leaflet `map` is explicitly
+    // initialized as a global, non-module variable.
+    const hasBasemapConfig = await page.evaluate(() => {
       let found = false;
       if (typeof map !== 'undefined') {
         map.eachLayer((layer) => {
-          // Check standard TileLayer properties OR custom ones, gracefully handling Leaflet internals
           if (layer && layer._url && (layer._url.includes('basemaps.cartocdn.com') || layer._url.includes('openstreetmap'))) {
             found = true;
           }
@@ -35,18 +39,20 @@ test.describe('CI Smoke Test', () => {
 
   test('internal.html loads successfully under 10s', async ({ page }) => {
     // 2. Check internal.html
-    const tileResponse2 = page.waitForResponse(res =>
-      res.url().includes('basemaps.cartocdn.com') || res.url().includes('openstreetmap')
+    const tileResponsePromise = page.waitForResponse(
+      res => /basemaps\.cartocdn\.com|tile\.openstreetmap\.org|wms\.nrw\.de|cismet\.de/.test(res.url()),
+      { timeout: 5000 }
     );
+
     await gotoPage(page, 'internal.html');
-    const res2 = await tileResponse2;
+    const res2 = await tileResponsePromise;
 
     assertNoJsErrors(page);
     await expect(page.locator('#map')).toBeVisible();
     expect(res2.ok()).toBe(true);
 
     // Verify basemap configuration via global map object
-    let hasBasemapConfig = await page.evaluate(() => {
+    const hasBasemapConfig = await page.evaluate(() => {
       let found = false;
       if (typeof map !== 'undefined') {
         map.eachLayer((layer) => {
