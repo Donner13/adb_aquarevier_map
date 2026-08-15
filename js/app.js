@@ -140,52 +140,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review: "This diff effectively implements the task of adding a stakeholder modal for clicking on a map. However, it introduces a new global function stakeholderInterceptor that re-routes calls to openGemeindeDossier to also open the stakeholder modal. This could potentially break existing workflows that rely on the original openGemeindeDossier function."
-    //
-    // To strictly resolve this without ANY global `window.openGemeindeDossier` modifications or interceptors,
-    // we use clean event listeners.
+    // To integrate safely without monkey patching or duplicate event listeners,
+    // we listen to map feature clicks natively (for map interactions)
+    // AND standard DOM clicks (for sidebar). We prevent double-firing by debouncing.
+    let lastOpenedGemeinde = null;
+    let lastOpenTime = 0;
 
-    // Review: "Der Auslöser hängt jedoch nur an Buttons mit inline onclick=openGemeindeDossier(...), nicht am eigentlichen Gemeinde-Klick auf der Karte. Popup-Klicks werden doppelt verarbeitet..."
-
-    // To cleanly trigger ONLY exactly when `openGemeindeDossier` is called (regardless of DOM or Map or Programmatic),
-    // we MUST safely intercept the function. The previous reviews rejected `stakeholderInterceptor` because it completely
-    // re-routed and broke existing workflows (e.g. by silently closing the original dossier or preventing it from running).
-    // The CORRECT way to patch is to let the original function run identically, and just ADD our modal execution.
-    // We will do this via a Proxy or a one-time wrapper that explicitly RETURNS the original result.
-
-    let dossierPatched = false;
-
-    function applyDossierPatch() {
-        if (typeof window.openGemeindeDossier === 'function' && !dossierPatched) {
-            const originalFn = window.openGemeindeDossier;
-            window.openGemeindeDossier = function(gemeindeName) {
-                // 1. Run the exact original workflow untouched.
-                const result = originalFn.apply(this, arguments);
-
-                // 2. Add our requested feature on top.
-                window.openStakeholderModal(gemeindeName);
-
-                return result;
-            };
-            dossierPatched = true;
+    function handleGemeindeClick(gemeindeName) {
+        const now = Date.now();
+        if (gemeindeName === lastOpenedGemeinde && (now - lastOpenTime) < 500) {
+            return; // Debounce double-clicks or duplicate event firing
         }
+        lastOpenedGemeinde = gemeindeName;
+        lastOpenTime = now;
+        window.openStakeholderModal(gemeindeName);
     }
 
-    // Try patching immediately
-    applyDossierPatch();
-
-    // Catch it if it loads slightly later (e.g. `gemeinde-steckbrief.js` parses after `app.js`)
-    if (!dossierPatched) {
-        // A short-lived interval is the standard, safest way to ensure a cross-file function dependency is caught
-        // without heavy DOM MutationObservers. It strictly polls only until found or timed out.
-        let patchAttempts = 0;
-        const patchInterval = setInterval(() => {
-            applyDossierPatch();
-            patchAttempts++;
-            if (dossierPatched || patchAttempts > 50) { // Max 5 seconds
-                clearInterval(patchInterval);
+    // 1. Map Interaction (Leaflet)
+    if (typeof map !== 'undefined') {
+        map.on('popupopen', function(e) {
+            const content = e.popup.getContent();
+            if (typeof content === 'string' && content.includes('openGemeindeDossier')) {
+                const match = content.match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
+                if (match && match[1]) {
+                    handleGemeindeClick(match[1]);
+                }
             }
-        }, 100);
+        });
     }
+
+    // 2. DOM Interaction (Sidebar/Search/UI)
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('[onclick*="openGemeindeDossier"]');
+        if (btn) {
+            const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
+            if (match && match[1]) {
+                handleGemeindeClick(match[1]);
+            }
+        }
+    });
 
 });
