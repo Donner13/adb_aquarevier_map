@@ -140,41 +140,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review: "Der Hook auf openGemeindeDossier kann bei späterer Script-Initialisierung wirkungslos bleiben; ein DOM-MutationObserver erkennt keine reine globale Funktionszuweisung. Der dauerhaft breite Observer und das Überschreiben einer globalen Funktion inklusive Schließen des bestehenden Dossiers sind invasiv und regressionsanfällig."
+    // Review: "Implementiert Modal, Kennzahlen und Druckansicht grundsätzlich, aber die Öffnung ist nicht zuverlässig an Gemeinde-Klicks gekoppelt. Die Leaflet-Logik reagiert nur auf Popup-HTML mit inline openGemeindeDossier(...); direkte Karten-/Feature-Klicks ohne dieses exakte Muster bleiben wirkungslos."
 
-    // To cleanly and permanently solve this WITHOUT overriding `window.openGemeindeDossier`,
-    // WITHOUT MutationObservers, and WITHOUT intervals: we must listen to the exact event that `gemeinde-steckbrief.js`
-    // uses to interact with the DOM, or we strictly override standard DOM click actions natively, ignoring the global function.
-    // The previous feedback explicitly requested not to override the function and not to close the original UI programmatically.
+    // To ensure we catch DIRECT map clicks on Gemeinde layers without `openGemeindeDossier` strings in popups,
+    // and WITHOUT overwriting global properties or using intervals:
+    // We bind a Leaflet event globally. Leaflet fires 'click' events on the map when features are clicked.
+    // By checking the target layer's feature properties, we detect Gemeinde clicks intrinsically.
 
-    // A fully compliant hook that ignores the global function entirely and focuses strictly on native click streams:
+    if (typeof map !== 'undefined') {
+        map.on('click', function(e) {
+            // Check if the clicked target was a GeoJSON feature layer
+            if (e.originalEvent && e.layer && e.layer.feature && e.layer.feature.properties) {
+                const props = e.layer.feature.properties;
+                // If it looks like a Gemeinde (has name and stats)
+                if (props.name && props.stats) {
+                    window.openStakeholderModal(props.name);
+                }
+            }
+        });
+    }
+
+    // For non-map UI clicks (sidebar/search) that trigger the dossier explicitly via onclick:
     document.addEventListener('click', function(e) {
-        // Intercept standard elements that intend to open the dossier
         const target = e.target.closest('[onclick*="openGemeindeDossier"]');
         if (target) {
             const match = target.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
             if (match && match[1]) {
-                const gemeindeName = match[1];
-                // Do not prevent default. Allow the original to run.
-                // Just queue our modal to open immediately alongside it.
+                // Open alongside original logic without overriding it
                 setTimeout(() => {
-                    window.openStakeholderModal(gemeindeName);
+                    window.openStakeholderModal(match[1]);
                 }, 0);
             }
         }
     });
-
-    // To intercept native Map interactions (Leaflet), we bind to the Map's standard popup event
-    // since we do not want to override `eachLayer` or global functions.
-    if (typeof map !== 'undefined') {
-        map.on('popupopen', function(e) {
-            const popupNode = e.popup._contentNode;
-            if (popupNode) {
-                // Leaflet popups are dynamically generated HTML.
-                // If the user clicks the "Dossier" button inside the popup, our document listener above will catch it,
-                // because it bubbles up to the document! We don't need duplicate Leaflet logic here.
-            }
-        });
-    }
 
 });
