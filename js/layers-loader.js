@@ -91,6 +91,21 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
+// NRW Bounding Box roughly: [5.7, 50.3, 9.5, 52.6]
+const NRW_BBOX = { minLon: 5.7, minLat: 50.3, maxLon: 9.5, maxLat: 52.6 };
+
+function isValidPointFeature(feature) {
+  if (feature && feature.geometry && feature.geometry.type === 'Point') {
+    const coords = feature.geometry.coordinates;
+    if (!Array.isArray(coords) || coords.length < 2) return false;
+    const lon = Number(coords[0]);
+    const lat = Number(coords[1]);
+    if (isNaN(lon) || isNaN(lat)) return false;
+    if (lon < NRW_BBOX.minLon || lon > NRW_BBOX.maxLon || lat < NRW_BBOX.minLat || lat > NRW_BBOX.maxLat) return false;
+  }
+  return true;
+}
+
 function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
   const size = cfg.cluster ? 10 : 22;
 
@@ -306,6 +321,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
           if (cfg.id === 'contacts' || cfg.id === 'akteure') window.geojsonData = data;
           window[cfg.geoDataVar] = data;  // backward-compat global
           const markers = L.geoJSON(data, {
+            filter: isValidPointFeature,
             pointToLayer: (feature, latlng) => {
               const marker = L.marker(latlng, { icon: buildIcon() });
               // Safely extract name from nested blocks like Stammdaten or Lage if they exist
@@ -374,6 +390,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         window[cfg.geoDataVar] = data;  // backward-compat global
 
         const geoLayer = L.geoJSON(data, {
+          filter: isValidPointFeature,
           pointToLayer: (feature, latlng) => {
             const marker = L.marker(latlng, { icon: buildIcon() });
             let extractedName = '';
