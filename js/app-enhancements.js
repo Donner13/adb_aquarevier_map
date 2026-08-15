@@ -885,8 +885,9 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 let closedAny = false;
-                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop');
+                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"]');
                 openModals.forEach(modal => {
+                    if (modal.id === 'command-palette-modal') return;
                     if (modal.id === 'onboarding-role-modal') return;
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
