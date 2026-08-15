@@ -888,7 +888,6 @@
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop');
                 for (let i = 0; i < openModals.length; i++) {
                     const modal = openModals[i];
-                    if (modal.id === 'onboarding-role-modal') continue;
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
                         activeModal = modal;
@@ -920,8 +919,12 @@
                             }
                         }
                     } else {
-                        // if no focusable elements, prevent tab out of modal
+                        // if no focusable elements, force focus onto the modal container itself
                         e.preventDefault();
+                        if (!activeModal.hasAttribute('tabindex')) {
+                            activeModal.setAttribute('tabindex', '-1');
+                        }
+                        activeModal.focus();
                     }
                 }
             } else if (e.key === 'Escape') {
