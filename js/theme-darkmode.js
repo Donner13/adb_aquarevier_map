@@ -62,8 +62,8 @@
     // Restore user theme preference on load
     function initTheme() {
         const savedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        // Removed matchMedia as requested
+        const shouldBeDark = savedTheme === 'dark';
 
         if (shouldBeDark) {
             window.isDarkMode = false; // set false so toggleDarkMode flips to true
