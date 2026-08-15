@@ -58,7 +58,6 @@
             }
         }
     };
-
     // Restore user theme preference on load
     function initTheme() {
         const savedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
@@ -71,6 +70,22 @@
         } else {
             window.isDarkMode = true; // set true so toggleDarkMode flips to false
             window.toggleDarkMode();
+        }
+
+        // Decoupled Media-Query Listener: Register exactly once
+        if (window.matchMedia && !window._themeMediaQueryListenerAdded) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                const currentSavedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
+                if (!currentSavedTheme) {
+                    if ((e.matches && !window.isDarkMode) || (!e.matches && window.isDarkMode)) {
+                        window.toggleDarkMode();
+                        // Clearing explicitly set values from toggleDarkMode to maintain tracking
+                        window.StorageModule.removeItem('theme');
+                        window.StorageModule.removeItem('aquarevier_theme');
+                    }
+                }
+            });
+            window._themeMediaQueryListenerAdded = true;
         }
     }
 
