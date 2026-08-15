@@ -204,6 +204,143 @@
             z-index: 1;
         }
 
+        .embed-mini-legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--bg-surface);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 1000;
+            font-size: 11px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+        }
+        body.embed-mode .embed-mini-legend {
+            display: flex;
+        }
+        .embed-mini-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .embed-mini-legend-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .embed-back-link {
+            font-size: 11px;
+            color: var(--accent-primary);
+            text-decoration: none;
+            margin-bottom: 6px;
+            display: inline-block;
+        }
+        .embed-back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Embed Modal */
+        #embed-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--modal-backdrop);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        .embed-modal-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            width: 800px;
+            max-width: 90vw;
+            box-shadow: var(--modal-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .embed-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+        .embed-modal-header h2 {
+            margin: 0;
+            font-size: 18px;
+            color: var(--text-primary);
+        }
+        .embed-modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 24px;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .embed-modal-close:hover {
+            color: var(--text-primary);
+        }
+        .embed-controls {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .embed-controls label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+        .embed-controls input[type="number"] {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            width: 80px;
+        }
+        #embed-snippet-output {
+            width: 100%;
+            height: 60px;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            resize: none;
+        }
+        .embed-preview-container {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            height: 400px;
+        }
+        .embed-info-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
         /* Header */
         .sidebar-header {
             padding: 20px 24px;
@@ -1648,6 +1785,8 @@
                     <p>Volle Daten, direkt bearbeitbar</p>
                 </div>
                 <div style="display: flex; gap: 6px; align-items: center;">
+                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px 10px; font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" onclick="window.AquaI18n.toggleLanguage()">EN</button>
+                    <button id="audioToggleBtn" class="filter-btn" style="padding: 6px 10px; font-size: 13px;" title="Ton an/aus" aria-label="Audio Switcher" onclick="window.AquaAudio.toggleAudio()">🔇 Ton aus</button>
                     <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
                         ℹ️
                     </button>
@@ -2388,6 +2527,49 @@
 
         <!-- Map -->
         <div id="map"></div>
+        <div id="embed-mini-legend" class="embed-mini-legend">
+            <a id="embed-back-link" class="embed-back-link" target="_blank" rel="noopener noreferrer">↗ Vollständige Karte ansehen</a>
+            <div id="embed-mini-legend-items"></div>
+        </div>
+
+        <!-- Embed Modal -->
+        <div id="embed-modal">
+            <div class="embed-modal-content">
+                <div class="embed-modal-header">
+                    <h2>🔗 Karte einbetten</h2>
+                    <button class="embed-modal-close" id="embed-close-btn" aria-label="Schließen">&times;</button>
+                </div>
+
+                <div class="embed-info-text">
+                    Für WordPress & andere oEmbed-fähige CMS reicht es, den reinen Link <strong>https://adb-aquarevier-secure.surge.sh/</strong> in einen eigenen Absatz/Block einzufügen — die Vorschau erscheint dann automatisch.
+                </div>
+
+                <div class="embed-controls">
+                    <label>
+                        <input type="radio" name="embed-width-type" value="responsive" checked> Responsive (100%)
+                    </label>
+                    <label>
+                        <input type="radio" name="embed-width-type" value="fixed"> Feste Breite
+                        <input type="number" id="embed-width-px" value="800" disabled> px
+                    </label>
+                    <span style="border-left: 1px solid var(--border-color); height: 20px;"></span>
+                    <label>
+                        Höhe:
+                        <input type="number" id="embed-height" value="600"> px
+                    </label>
+                </div>
+
+                <textarea id="embed-snippet-output" readonly></textarea>
+
+                <button id="embed-copy-btn" class="filter-btn active" style="width: fit-content; background: #10b981; border-color: #10b981; font-weight: 600; color: white;">📋 Code kopieren</button>
+
+                <div style="font-size: 14px; font-weight: 600; color: var(--text-primary); margin-top: 8px;">Live-Vorschau</div>
+                <div class="embed-preview-container">
+                    <iframe id="embed-preview-iframe" src="" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
         <div id="pegel-analysis-panel" class="hidden"></div>
 
         <div id="presentation-bar">
