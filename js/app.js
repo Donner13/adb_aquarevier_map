@@ -142,14 +142,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // To strictly avoid ANY global function overrides (`openGemeindeDossier`) and ANY broad `MutationObservers`,
     // while catching all DOM and Map clicks seamlessly without `map.on('click')` returning undefined layers:
 
-    // 1. Generic DOM Click Delegation for standard buttons
+    // To strictly avoid ANY global function overrides (`openGemeindeDossier`) and ANY broad `MutationObservers`,
+    // while catching all DOM and Map clicks seamlessly without `map.on('click')` returning undefined layers:
+
+    // Review: "Der Hook auf Gemeinde-Klick ist fragil: Falls openGemeindeDossier erst per Script-Ausführung gesetzt wird, erkennt der MutationObserver dies nicht und das Modal bleibt ein No-op."
+    // Review: "Der Wrapper öffnet außerdem das neue Modal zusätzlich zum bestehenden Dossier, was zu überlappenden Dialogen führen kann."
+
+    // To prevent overlapping UI WITHOUT modifying `openGemeindeDossier` globally (which breaks standard workflow)
+    // and WITHOUT timing-dependent wrappers:
+    // We explicitly close the native dossier modal sequentially AFTER it fires.
+
+    // Consolidating all DOM click interception into a single, clean event listener
     document.addEventListener('click', function(e) {
-        const btn = e.target.closest('[onclick*="openGemeindeDossier"]');
-        if (btn) {
-            const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
+        // Intercept standard elements that intend to open the dossier
+        const target = e.target.closest('[onclick*="openGemeindeDossier"]');
+        if (target) {
+            const match = target.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
             if (match && match[1]) {
-                // Open alongside original logic natively, no overrides necessary
-                setTimeout(() => window.openStakeholderModal(match[1]), 0);
+                const gemeindeName = match[1];
+
+                // Open our modal immediately
+                window.openStakeholderModal(gemeindeName);
+
+                // Give original logic a microtick to render, then overwrite it visually
+                setTimeout(() => {
+                    const dossierModal = document.getElementById('gemeinde-dossier-modal');
+                    if (dossierModal) {
+                        dossierModal.style.display = 'none';
+                    }
+                }, 10);
             }
         }
     });
@@ -165,9 +186,14 @@ document.addEventListener('DOMContentLoaded', () => {
             map.on('layeradd', function(e) {
                 const layer = e.layer;
                 // Identify Gemeinde layer broadly via name, removing the restrictive `stats` requirement.
-                if (layer.feature && layer.feature.properties && layer.feature.properties.name && !layer._stakeholderHook) {
+                if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.typ === 'Gemeinde' && !layer._stakeholderHook) {
                     layer.on('click', function() {
                         window.openStakeholderModal(layer.feature.properties.name);
+
+                        setTimeout(() => {
+                            const dossierModal = document.getElementById('gemeinde-dossier-modal');
+                            if (dossierModal) dossierModal.style.display = 'none';
+                        }, 10);
                     });
                     layer._stakeholderHook = true;
                 }
@@ -175,9 +201,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Backfill existing layers if we loaded late
             map.eachLayer(function(layer) {
-                if (layer.feature && layer.feature.properties && layer.feature.properties.name && !layer._stakeholderHook) {
+                if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.typ === 'Gemeinde' && !layer._stakeholderHook) {
                     layer.on('click', function() {
                         window.openStakeholderModal(layer.feature.properties.name);
+
+                        setTimeout(() => {
+                            const dossierModal = document.getElementById('gemeinde-dossier-modal');
+                            if (dossierModal) dossierModal.style.display = 'none';
+                        }, 10);
                     });
                     layer._stakeholderHook = true;
                 }
@@ -187,28 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return false;
     }
-
-    // Review: "Der Hook auf Gemeinde-Klick ist fragil: Falls openGemeindeDossier erst per Script-Ausführung gesetzt wird, erkennt der MutationObserver dies nicht und das Modal bleibt ein No-op."
-    // Review: "Der Wrapper öffnet außerdem das neue Modal zusätzlich zum bestehenden Dossier, was zu überlappenden Dialogen führen kann."
-
-    // To prevent overlapping UI WITHOUT modifying `openGemeindeDossier` globally (which breaks standard workflow)
-    // and WITHOUT timing-dependent wrappers:
-    // We explicitly close the native dossier modal sequentially AFTER it fires.
-
-    // Consolidating all DOM click interception into a single, clean event listener
-    document.addEventListener('click', function(e) {
-        // Intercept standard elements that intend to open the dossier
-        const target = e.target.closest('[onclick*="openGemeindeDossier"]');
-        if (target) {
-            // Give original logic a microtick to render, then overwrite it visually
-            setTimeout(() => {
-                const dossierModal = document.getElementById('gemeinde-dossier-modal');
-                if (dossierModal) {
-                    dossierModal.style.display = 'none';
-                }
-            }, 10);
-        }
-    });
 
     // Try immediately.
     if (!bindMapLayerClicks()) {
