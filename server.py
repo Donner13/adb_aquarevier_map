@@ -186,6 +186,10 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
         # Enable CORS for origin validation
         origin = self.headers.get('Origin')
+
+        # Always emit Vary: Origin when Origin-based reflection is used
+        self.send_header('Vary', 'Origin')
+
         if origin:
             parsed = urllib.parse.urlparse(origin)
             if parsed.scheme in ('http', 'https') and parsed.hostname in ('localhost', '127.0.0.1'):
