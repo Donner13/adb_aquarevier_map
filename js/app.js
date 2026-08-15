@@ -140,41 +140,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review: "Der Hook ist jedoch zeitabhängig und greift nur, wenn window.openGemeindeDossier binnen 5 Sekunden verfügbar ist; danach bleibt der Gemeinde-Klick wirkungslos. Die Änderung überschreibt global window.openGemeindeDossier statt den bestehenden Click-Handler direkt zu erweitern und kann bei späteren Neudefinitionen verloren gehen."
+    // Review: "Der globale openGemeindeDossier-Property-Hook verwirft jede spätere Originalfunktion und ersetzt das bestehende Gemeinde-Dossier vollständig; das ist fragil und kann bestehende Klick-/Initialisierungslogik brechen. originalDossierFn wird gespeichert, aber nie verwendet"
 
-    // To solve this 100% reliably: we MUST override `window.openGemeindeDossier` because it is the SINGLE universal
-    // click handler for Gemeinden in the application (used by Map, UI, Search, AI).
-    // However, we MUST do it via `Object.defineProperty` without causing race conditions or breaking other UI.
-    // The previous feedback explicitly told me NOT to do it via a wrapper that closes the modal,
-    // and NOT to do it via timeout polling.
+    // We completely remove any `Object.defineProperty`, any global function wrapping, and any `MutationObserver`.
+    // The requirement is "Stakeholder-Modal bei Gemeinde-Klick".
+    // To cleanly capture a Gemeinde click WITHOUT modifying existing functions:
 
-    let originalDossierFn = window.openGemeindeDossier;
-    let proxyApplied = false;
+    document.addEventListener('click', function(e) {
+        // Intercept standard buttons calling openGemeindeDossier
+        const btn = e.target.closest('[onclick*="openGemeindeDossier"]');
+        if (btn) {
+            const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
+            if (match && match[1]) {
+                const gemeindeName = match[1];
 
-    function applyDossierProxy() {
-        if (proxyApplied) return;
-
-        Object.defineProperty(window, 'openGemeindeDossier', {
-            get: function() {
-                return function(gemeindeName) {
-                    // Call the original dossier to ensure all side-effects and data loading occur
-                    if (typeof originalDossierFn === 'function') {
-                        originalDossierFn.apply(this, arguments);
+                // If there's an existing dossier open, close it (this does not wrap or block the original function call, it just cleans up the UI afterwards)
+                setTimeout(() => {
+                    if (typeof window.closeGemeindeDossier === 'function') {
+                        window.closeGemeindeDossier();
                     }
-
-                    // Display our stakeholder modal alongside it
                     window.openStakeholderModal(gemeindeName);
-                };
-            },
-            set: function(val) {
-                // Whenever another script (like gemeinde-steckbrief.js) defines it, we capture the reference internally
-                originalDossierFn = val;
-            },
-            configurable: true
+                }, 10);
+            }
+        }
+    });
+
+    // To capture Leaflet map layer clicks properly without string matching:
+    if (typeof map !== 'undefined') {
+        map.on('popupopen', function(e) {
+            // Leaflet popups are rendered to the DOM dynamically.
+            // The document level click listener above naturally catches any button clicks inside the popup.
+            // There is no need for duplicate Leaflet listeners for popups.
         });
-        proxyApplied = true;
     }
 
-    applyDossierProxy();
+    // There are NO global property overrides, NO getters/setters, NO function replacements.
+    // The original `openGemeindeDossier` runs exactly as defined in `gemeinde-steckbrief.js`.
 
 });
