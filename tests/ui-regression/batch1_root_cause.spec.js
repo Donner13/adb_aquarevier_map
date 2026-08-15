@@ -66,7 +66,7 @@ test('Batch 1: Root-Cause JS Bugs & Theme System Validation', async ({ page }) =
     const toggledThemeState = await page.evaluate(() => ({
         hasLight: document.body.classList.contains('light-theme'),
         hasDark: document.body.classList.contains('dark-theme'),
-        themeKey: localStorage.getItem('theme')
+        themeKey: localStorage.getItem('aquarevier_theme')
     }));
 
     // Ensure light-theme and dark-theme are NEVER simultaneously present

@@ -76,7 +76,7 @@ async function gotoPage(page, filename) {
     localStorage.setItem('aquarevier_onboarding_completed_v1', '1');
     // Keep visual tests deterministic: the mascot's daily fact intentionally
     // contains a random message and otherwise opens after 2.5 seconds.
-    localStorage.setItem('platschi_fact_date', new Date().toDateString());
+    localStorage.setItem('aquarevier_platschi_fact_date', new Date().toDateString());
   });
   try {
     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
