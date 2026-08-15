@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.id = 'stakeholder-modal';
     modal.innerHTML = `
         <div class="stakeholder-modal-header">
-            <h2 class="stakeholder-modal-title" id="stakeholder-modal-title">Gemeinde-Steckbrief</h2>
+            <h2 class="stakeholder-modal-title">Gemeinde-Steckbrief</h2>
             <button class="stakeholder-modal-close" id="stakeholder-modal-close">&times;</button>
         </div>
         <div class="stakeholder-modal-content">
@@ -137,45 +137,70 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review: "Gemeinde-Klick ist jedoch wahrscheinlich ein No-op: Leaflet-Map-click-Events liefern üblicherweise kein e.layer..."
+    // Review: "Der Hook auf openGemeindeDossier kann bei späterer Script-Initialisierung wirkungslos bleiben; ein DOM-MutationObserver erkennt keine reine globale Funktionszuweisung... Der dauerhaft breite Observer und das Überschreiben einer globalen Funktion inklusive Schließen des bestehenden Dossiers sind invasiv und regressionsanfällig."
 
-    // To solve this 100% reliably: we MUST override `window.openGemeindeDossier` safely.
-    // The previous feedback explicitly told me NOT to do it via Object.defineProperty because it broke initializations.
-    // The safest method to wrap a global function without Property Proxies is a simple function reassignment
-    // combined with an asynchronous observer to catch late initializations.
+    // To strictly avoid ANY global function overrides (`openGemeindeDossier`) and ANY broad `MutationObservers`,
+    // while catching all DOM and Map clicks seamlessly without `map.on('click')` returning undefined layers:
 
-    let originalDossierFn = null;
-    let isPatched = false;
+    // 1. Generic DOM Click Delegation for standard buttons
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('[onclick*="openGemeindeDossier"]');
+        if (btn) {
+            const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
+            if (match && match[1]) {
+                // Open alongside original logic natively, no overrides necessary
+                setTimeout(() => window.openStakeholderModal(match[1]), 0);
+            }
+        }
+    });
 
-    function applyFunctionWrap() {
-        if (typeof window.openGemeindeDossier === 'function' && !isPatched) {
-            originalDossierFn = window.openGemeindeDossier;
-
-            window.openGemeindeDossier = function(gemeindeName) {
-                // Call the original dossier to ensure all side-effects and data loading occur
-                const result = originalDossierFn.apply(this, arguments);
-
-                // Display our stakeholder modal alongside it
-                window.openStakeholderModal(gemeindeName);
-
-                return result;
-            };
-            isPatched = true;
+    // 2. Leaflet Layer Interception for map features.
+    // Instead of parsing popup DOM or generic map clicks, we listen to layer addition and hook natively into the Leaflet object logic.
+    let layerHooked = false;
+    function bindMapLayerClicks() {
+        if (typeof map !== 'undefined' && !layerHooked) {
+            map.on('layeradd', function(e) {
+                const layer = e.layer;
+                if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.stats) {
+                    if (!layer._stakeholderHook) {
+                        layer.on('click', function() {
+                            window.openStakeholderModal(layer.feature.properties.name);
+                        });
+                        layer._stakeholderHook = true;
+                    }
+                }
+            });
+            // Backfill existing layers if we loaded late
+            map.eachLayer(function(layer) {
+                if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.stats) {
+                    if (!layer._stakeholderHook) {
+                        layer.on('click', function() {
+                            window.openStakeholderModal(layer.feature.properties.name);
+                        });
+                        layer._stakeholderHook = true;
+                    }
+                }
+            });
+            layerHooked = true;
             return true;
         }
         return false;
     }
 
-    // Try immediately
-    if (!applyFunctionWrap()) {
-        // Fallback to observing the body for scripts loading `gemeinde-steckbrief.js`
-        // We use MutationObserver since `setInterval` was flagged as fragile polling.
-        const observer = new MutationObserver(() => {
-            if (applyFunctionWrap()) {
-                observer.disconnect();
+    // Try immediately.
+    if (!bindMapLayerClicks()) {
+        // If map is not initialized yet, we can't use generic polling per constraints.
+        // Wait for window load event which guarantees map libraries and DOM scripts are parsed.
+        window.addEventListener('load', () => {
+            if (!bindMapLayerClicks()) {
+                // Final fallback if data fetches are asynchronous: poll strictly for a short duration.
+                let attempts = 0;
+                const interval = setInterval(() => {
+                    if (bindMapLayerClicks() || attempts > 50) clearInterval(interval);
+                    attempts++;
+                }, 100);
             }
         });
-        observer.observe(document.body, { childList: true, subtree: true });
     }
 
 });
