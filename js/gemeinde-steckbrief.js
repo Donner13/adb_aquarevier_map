@@ -178,6 +178,9 @@
         if (!modal) {
             modal = document.createElement('div');
             modal.id = 'gemeinde-dossier-modal';
+            modal.setAttribute('role', 'dialog');
+            modal.setAttribute('aria-modal', 'true');
+            modal.setAttribute('aria-labelledby', 'gemeinde-dossier-modal-title');
             modal.style.cssText = `
                 position: fixed;
                 inset: 0;
@@ -198,7 +201,7 @@
             <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 620px; border-radius: 12px; box-shadow: var(--modal-shadow, 0 10px 30px rgba(0, 0, 0, 0.5)); overflow: hidden; display: flex; flex-direction: column; max-height: 85vh;">
                 <div style="background: #1e293b; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <div style="font-size: 16px; font-weight: 700;">🏛️ Gemeinde-Steckbrief: ${escapeHtml(dossier.name)}</div>
+                        <div id="gemeinde-dossier-modal-title" style="font-size: 16px; font-weight: 700;">🏛️ Gemeinde-Steckbrief: ${escapeHtml(dossier.name)}</div>
                         <div style="font-size: 11px; color: #94a3b8;">${escapeHtml(dossier.kreis)} • ${totalObj} registrierte Infrastruktur-Objekte</div>
                     </div>
                     <button type="button" onclick="closeGemeindeDossier()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>

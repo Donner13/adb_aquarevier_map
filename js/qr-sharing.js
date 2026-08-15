@@ -51,6 +51,9 @@
         if (!modal) {
             modal = document.createElement('div');
             modal.id = 'qr-share-modal';
+            modal.setAttribute('role', 'dialog');
+            modal.setAttribute('aria-modal', 'true');
+            modal.setAttribute('aria-labelledby', 'qr-share-modal-title');
             modal.style.cssText = `
                 position: fixed;
                 inset: 0;
@@ -68,7 +71,7 @@
         modal.innerHTML = `
             <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 420px; border-radius: 12px; box-shadow: var(--modal-shadow, 0 10px 30px rgba(0, 0, 0, 0.5)); overflow: hidden; text-align: center; font-size: 12px;">
                 <div style="background: #1e293b; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 15px; font-weight: 700;">📱 QR-Code &amp; Deep-Link Teilen</span>
+                    <span id="qr-share-modal-title" style="font-size: 15px; font-weight: 700;">📱 QR-Code &amp; Deep-Link Teilen</span>
                     <button type="button" onclick="closeQrShareModal()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
                 </div>
                 
