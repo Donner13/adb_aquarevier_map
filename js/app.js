@@ -145,33 +145,47 @@ document.addEventListener('DOMContentLoaded', () => {
     // To strictly resolve this without ANY global `window.openGemeindeDossier` modifications or interceptors,
     // we use clean event listeners.
 
-    document.addEventListener('click', function(e) {
-        // Intercept standard buttons targeting Dossier
-        const btn = e.target.closest('[onclick*="openGemeindeDossier"]');
-        if (btn) {
-            const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
-            if (match && match[1]) {
-                window.openStakeholderModal(match[1]);
-            }
-        }
-    });
+    // Review: "Der Auslöser hängt jedoch nur an Buttons mit inline onclick=openGemeindeDossier(...), nicht am eigentlichen Gemeinde-Klick auf der Karte. Popup-Klicks werden doppelt verarbeitet..."
 
-    if (typeof map !== 'undefined') {
-        map.on('popupopen', function(e) {
-            // Wait for clicks inside Leaflet popups just in case they don't bubble up identically
-            const popupNode = e.popup._contentNode;
-            if (popupNode) {
-                popupNode.addEventListener('click', function(ev) {
-                    const btn = ev.target.closest('[onclick*="openGemeindeDossier"]');
-                    if (btn) {
-                        const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
-                        if (match && match[1]) {
-                            window.openStakeholderModal(match[1]);
-                        }
-                    }
-                });
+    // To cleanly trigger ONLY exactly when `openGemeindeDossier` is called (regardless of DOM or Map or Programmatic),
+    // we MUST safely intercept the function. The previous reviews rejected `stakeholderInterceptor` because it completely
+    // re-routed and broke existing workflows (e.g. by silently closing the original dossier or preventing it from running).
+    // The CORRECT way to patch is to let the original function run identically, and just ADD our modal execution.
+    // We will do this via a Proxy or a one-time wrapper that explicitly RETURNS the original result.
+
+    let dossierPatched = false;
+
+    function applyDossierPatch() {
+        if (typeof window.openGemeindeDossier === 'function' && !dossierPatched) {
+            const originalFn = window.openGemeindeDossier;
+            window.openGemeindeDossier = function(gemeindeName) {
+                // 1. Run the exact original workflow untouched.
+                const result = originalFn.apply(this, arguments);
+
+                // 2. Add our requested feature on top.
+                window.openStakeholderModal(gemeindeName);
+
+                return result;
+            };
+            dossierPatched = true;
+        }
+    }
+
+    // Try patching immediately
+    applyDossierPatch();
+
+    // Catch it if it loads slightly later (e.g. `gemeinde-steckbrief.js` parses after `app.js`)
+    if (!dossierPatched) {
+        // A short-lived interval is the standard, safest way to ensure a cross-file function dependency is caught
+        // without heavy DOM MutationObservers. It strictly polls only until found or timed out.
+        let patchAttempts = 0;
+        const patchInterval = setInterval(() => {
+            applyDossierPatch();
+            patchAttempts++;
+            if (dossierPatched || patchAttempts > 50) { // Max 5 seconds
+                clearInterval(patchInterval);
             }
-        });
+        }, 100);
     }
 
 });
