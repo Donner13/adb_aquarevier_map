@@ -124,7 +124,7 @@
                         background: var(--bg-base, #0b0f19);
                         border: 1px solid var(--border-color, rgba(255,255,255,0.15));
                         border-radius: 4px;
-                        color: var(--text-secondary, #cbd5e1);
+                        color: var(--text-secondary, #9ca3af);
                     ">ESC</kbd>
                 </div>
                 <div id="cmd-results" style="max-height: 380px; overflow-y: auto; padding: 8px;"></div>
@@ -134,7 +134,7 @@
                     padding: 10px 18px;
                     border-top: 1px solid var(--border-color, rgba(255,255,255,0.1));
                     font-size: 11px;
-                    color: var(--text-secondary, #cbd5e1);
+                    color: var(--text-secondary, #9ca3af);
                     background: rgba(0, 0, 0, 0.15);
                 ">
                     <span><kbd style="padding:1px 4px; border-radius:3px; background:var(--bg-base, #0b0f19);">↑</kbd><kbd style="padding:1px 4px; border-radius:3px; background:var(--bg-base, #0b0f19);">↓</kbd> Navigieren</span>
@@ -260,7 +260,7 @@
             if (selectedIndex >= commandItems.length) selectedIndex = 0;
 
             if (commandItems.length === 0) {
-                results.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-secondary, #cbd5e1); font-size: 13px;">Keine Treffer für "${filterText}" gefunden.</div>`;
+                results.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-secondary, #9ca3af); font-size: 13px;">Keine Treffer für "${filterText}" gefunden.</div>`;
                 return;
             }
 
@@ -290,7 +290,7 @@
                         padding: 2px 6px;
                         border-radius: 4px;
                         background: rgba(255, 255, 255, 0.08);
-                        color: var(--text-secondary, #cbd5e1);
+                        color: var(--text-secondary, #9ca3af);
                     ">${item.category}</span>
                 </div>
             `).join('');
@@ -384,7 +384,7 @@
                     font-size: 10px;
                     font-weight: 600;
                     background: var(--bg-surface, rgba(17, 24, 39, 0.8));
-                    color: var(--text-secondary, #cbd5e1);
+                    color: var(--text-secondary, #9ca3af);
                     border: 1px solid var(--border-color, rgba(255,255,255,0.15));
                     border-radius: 4px;
                     pointer-events: auto;
