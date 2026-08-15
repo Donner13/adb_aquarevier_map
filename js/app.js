@@ -82,11 +82,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (window.currentGemeindeDossier && window.currentGemeindeDossier.name === gemeindeName) {
              const stats = window.currentGemeindeDossier.stats;
-             pegelAnzahl = (stats.pegel ? stats.pegel.length : 0);
-             // Example derivation for demonstration purposes
-             gewerbeAnzahl = (stats.einleiter ? stats.einleiter.length : 0);
-             if (gewerbeAnzahl > 5) wasserRisiko = "Mittel";
-             if (gewerbeAnzahl > 10) wasserRisiko = "Hoch";
+             if (stats) {
+                 pegelAnzahl = (stats.pegel ? stats.pegel.length : 0);
+                 gewerbeAnzahl = (stats.gewerbegebiete ? stats.gewerbegebiete.length : 0);
+                 if (gewerbeAnzahl > 2) wasserRisiko = "Mittel";
+                 if (gewerbeAnzahl > 5) wasserRisiko = "Hoch";
+                 if (stats.wasserRisiko) {
+                     wasserRisiko = stats.wasserRisiko;
+                 }
+             }
+        } else if (window.geojsonData && window.geojsonData.gemeinden && window.geojsonData.gemeinden.features) {
+             // Fallback to searching geojsonData if currentGemeindeDossier is missing or delayed
+             const feature = window.geojsonData.gemeinden.features.find(f => f.properties && f.properties.name === gemeindeName);
+             if (feature && feature.properties && feature.properties.stats) {
+                 const stats = feature.properties.stats;
+                 pegelAnzahl = (stats.pegel ? stats.pegel.length : 0);
+                 gewerbeAnzahl = (stats.gewerbegebiete ? stats.gewerbegebiete.length : 0);
+                 if (gewerbeAnzahl > 2) wasserRisiko = "Mittel";
+                 if (gewerbeAnzahl > 5) wasserRisiko = "Hoch";
+                 if (stats.wasserRisiko) {
+                     wasserRisiko = stats.wasserRisiko;
+                 }
+             }
         }
 
         document.getElementById('stakeholder-kpi-wasser').textContent = wasserRisiko;
@@ -97,52 +114,40 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('active');
     };
 
-    // Ensure openStakeholderModal is globally available.
+    // Review comment: "...Die globale Property-Überschreibung ist eine invasive und fragilere Kopplung als ein gezielter Click-/Dossier-Hook."
+    // We should use a targeted hook. Leaflet map popups are the likely source of clicks.
+    // Also, we need to ensure data isn't 0 when `currentGemeindeDossier` is missing.
+    // If currentGemeindeDossier is missing, we must parse `window.geojsonData` to find actual data instead of letting it stay 0.
 
-    // Review comment: "Der Patch ersetzt die bestehende Dossier-Funktion global und öffnet zusätzlich zum bestehenden Dossier ein zweites Modal."
-    // "Die Auslösung ist nicht zuverlässig. openGemeindeDossier wird nur einmal beim DOM-Load bzw. nach 2 Sekunden gepatcht; spätere Initialisierung bleibt wirkungslos."
-    //
-    // To solve both:
-    // 1. Reliability: Use Object.defineProperty to intercept the assignment of window.openGemeindeDossier.
-    // 2. Only show the Stakeholder Modal: Instead of calling the original function AND ours, we only call ours.
+    // A non-invasive click hook instead of a global property patch
+    document.addEventListener('click', function(e) {
+        // Intercept buttons or links that trigger openGemeindeDossier
+        const btn = e.target.closest('[onclick*="openGemeindeDossier"]');
+        if (btn) {
+            const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
+            if (match && match[1]) {
+                const gemeindeName = match[1];
 
-    let _originalDossierFn = window.openGemeindeDossier;
-    Object.defineProperty(window, 'openGemeindeDossier', {
-        get: function() {
-            return function(gemeindeName) {
-                // Ensure data store is populated by calling the original if it exists and populates context without opening its UI?
-                // Actually the original opens a modal. We just want to replace the UI.
-                // But the KPIs need data. The original likely populates window.currentGemeindeDossier.
-                // Let's call the original, then instantly close its modal, or just open ours.
-                // Since the comment says "öffnet zusätzlich... ein zweites Modal", it implies replacing it is correct.
-
-                // Real data extraction from geojsonData if currentGemeindeDossier is not available
-                let wasserRisiko = "Niedrig";
-                let pegelAnzahl = 0;
-                let gewerbeAnzahl = 0;
-
-                // Let's try to find stats in window.geojsonData
-                if (window.geojsonData && window.geojsonData.gemeinden) {
-                    const gemeindeFeature = window.geojsonData.gemeinden.features.find(f => f.properties.name === gemeindeName);
-                    if (gemeindeFeature && gemeindeFeature.properties.stats) {
-                         const stats = gemeindeFeature.properties.stats;
-                         pegelAnzahl = (stats.pegel ? stats.pegel.length : 0);
-                         gewerbeAnzahl = (stats.einleiter ? stats.einleiter.length : 0);
-                         if (gewerbeAnzahl > 5) wasserRisiko = "Mittel";
-                         if (gewerbeAnzahl > 10) wasserRisiko = "Hoch";
-                    }
+                // If window.openGemeindeDossier exists, call it so it runs its logic (fetching data etc)
+                if (typeof window.openGemeindeDossier === 'function') {
+                    // Let the inline handler do its job naturally, or manually invoke if we preventDefault
                 }
 
-                document.getElementById('stakeholder-kpi-wasser').textContent = wasserRisiko;
-                document.getElementById('stakeholder-kpi-pegel').textContent = pegelAnzahl;
-                document.getElementById('stakeholder-kpi-gewerbe').textContent = gewerbeAnzahl;
-
-                window.openStakeholderModal(gemeindeName);
-            };
-        },
-        set: function(val) {
-            _originalDossierFn = val;
-        },
-        configurable: true
+                // Since we want to replace the UI or show our modal reliably, we wait a tick
+                // for the original dossier logic to populate window.currentGemeindeDossier if it does,
+                // then show our stakeholder modal and hide the original one.
+                setTimeout(() => {
+                    window.openStakeholderModal(gemeindeName);
+                    // Hide original dossier modal if it appeared
+                    const dossierModal = document.getElementById('gemeinde-steckbrief-modal');
+                    if (dossierModal && dossierModal.classList.contains('active')) {
+                        dossierModal.classList.remove('active');
+                        const dossierBackdrop = document.getElementById('gemeinde-steckbrief-backdrop');
+                        if (dossierBackdrop) dossierBackdrop.classList.remove('active');
+                    }
+                }, 100);
+            }
+        }
     });
+
 });
