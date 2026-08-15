@@ -10,6 +10,9 @@
         if (!modal) {
             modal = document.createElement('div');
             modal.id = 'ai-assistant-modal';
+            modal.setAttribute('role', 'dialog');
+            modal.setAttribute('aria-modal', 'true');
+            modal.setAttribute('aria-labelledby', 'ai-assistant-modal-title');
             modal.style.cssText = `
                 position: fixed;
                 inset: 0;
@@ -30,7 +33,7 @@
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <span style="font-size: 18px;">🤖</span>
                         <div>
-                            <div style="font-size: 15px; font-weight: 700;">Frag die AquaRevier-Karte</div>
+                            <div id="ai-assistant-modal-title" style="font-size: 15px; font-weight: 700;">Frag die AquaRevier-Karte</div>
                             <div style="font-size: 10.5px; color: #94a3b8;">Intelligenter Assistent für Wasserinfrastruktur &amp; Akteure</div>
                         </div>
                     </div>
