@@ -2305,14 +2305,9 @@
                             Ermittle alle Akteure, Messstellen &amp; Fachdaten in einem definierten Umkreis.
                         </div>
                         <div style="display: flex; gap: 6px; align-items: center; margin-bottom: 8px;">
-                            <label for="radius-select" style="font-size: 11px; font-weight: 600; white-space: nowrap; margin: 0;">Radius:</label>
-                            <select id="radius-select" class="form-select form-select-sm" style="font-size: 11px; padding: 2px 6px; border-radius: 4px; flex: 1;">
-                                <option value="1000">1 km</option>
-                                <option value="2000">2 km</option>
-                                <option value="5000" selected>5 km</option>
-                                <option value="10000">10 km</option>
-                                <option value="25000">25 km</option>
-                            </select>
+                            <label for="radius-slider" style="font-size: 11px; font-weight: 600; white-space: nowrap; margin: 0;">Radius:</label>
+                            <input type="range" id="radius-slider" min="0" max="4" step="1" value="2" style="flex: 1; margin: 0;" oninput="if(window.handleRadiusSliderInput) window.handleRadiusSliderInput(this.value)">
+                            <span id="radius-slider-val" style="font-size: 11px; font-weight: 600; width: 45px; text-align: right;">5 km</span>
                         </div>
                         <div style="display: flex; gap: 4px; margin-bottom: 8px; align-items: center;">
                             <input type="number" id="radius-manual-lat" placeholder="Breite (z.B. 50.92)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px 4px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Breite für Radius-Analyse">

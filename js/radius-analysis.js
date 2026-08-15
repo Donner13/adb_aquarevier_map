@@ -76,8 +76,9 @@
     window.handleRadiusMapClick = function(e) {
         if (!window.radiusAnalysisActive) return;
         const latlng = e.latlng;
-        const radiusSelect = document.getElementById('radius-select');
-        const radiusMeters = parseInt(radiusSelect ? radiusSelect.value : 5000, 10);
+        const radiusSlider = document.getElementById('radius-slider');
+        const sliderVal = parseInt(radiusSlider ? radiusSlider.value : 2, 10);
+        const radiusMeters = radiusValues[sliderVal] || 5000;
         
         // Populate inputs for visibility
         const latInput = document.getElementById('radius-manual-lat');
@@ -95,11 +96,12 @@
     window.runRadiusAnalysisFromInputs = function() {
         const latInput = document.getElementById('radius-manual-lat');
         const lngInput = document.getElementById('radius-manual-lng');
-        const radiusSelect = document.getElementById('radius-select');
+        const radiusSlider = document.getElementById('radius-slider');
 
         const lat = parseFloat(latInput ? latInput.value : '');
         const lng = parseFloat(lngInput ? lngInput.value : '');
-        const radiusMeters = parseInt(radiusSelect ? radiusSelect.value : 5000, 10);
+        const sliderVal = parseInt(radiusSlider ? radiusSlider.value : 2, 10);
+        const radiusMeters = radiusValues[sliderVal] || 5000;
 
         if (isNaN(lat) || isNaN(lng)) {
             if (typeof window.showToast === 'function') window.showToast("Bitte gültige Koordinaten (Breite/Länge) eingeben", "⚠️");
@@ -109,6 +111,38 @@
         window.runRadiusAnalysis(lat, lng, radiusMeters);
     };
 
+
+    window.radiusDebounceTimer = null;
+    const radiusValues = [1000, 2000, 5000, 10000, 25000];
+
+    /**
+     * Handles slider input events. Updates display value immediately and
+     * debounces the actual point-in-polygon analysis.
+     */
+    window.handleRadiusSliderInput = function(val) {
+        const index = parseInt(val, 10);
+        const radiusMeters = radiusValues[index] || 5000;
+
+        // Update display text
+        const valSpan = document.getElementById('radius-slider-val');
+        if (valSpan) {
+            valSpan.textContent = (radiusMeters >= 1000 ? (radiusMeters / 1000) + ' km' : radiusMeters + ' m');
+        }
+
+        // Only run analysis if a center is already defined
+        if (!window.lastRadiusResults || !window.lastRadiusResults.center) return;
+
+        // Clear existing timer
+        if (window.radiusDebounceTimer) clearTimeout(window.radiusDebounceTimer);
+
+        // Set new timer for 150ms
+        window.radiusDebounceTimer = setTimeout(() => {
+            // Check again inside timeout in case it was cleared
+            if (!window.lastRadiusResults || !window.lastRadiusResults.center) return;
+            const center = window.lastRadiusResults.center;
+            window.runRadiusAnalysis(center[0], center[1], radiusMeters);
+        }, 150);
+    };
     /**
      * Executes the radius analysis around a specific center coordinate.
      */
@@ -332,6 +366,8 @@
      * Clears current radius analysis graphics and results.
      */
     window.clearRadiusAnalysis = function() {
+        if (window.radiusDebounceTimer) clearTimeout(window.radiusDebounceTimer);
+
         if (typeof map !== 'undefined') {
             if (window.radiusCircle) {
                 map.removeLayer(window.radiusCircle);
