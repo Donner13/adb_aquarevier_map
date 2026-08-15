@@ -2239,7 +2239,7 @@
                     <button class="filter-btn" id="export-csv-btn" style="display:none;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('csv')"></button>
                     <button class="filter-btn" id="export-pdf-btn" style="display:none;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()"></button>
                     <button class="filter-btn" id="open-data-export-btn" style="display:none;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('geojson')"></button>
-                    <button class="filter-btn" id="embed-open-btn" style="display:none;" onclick="if(typeof openEmbedModal==='function') openEmbedModal()"></button>
+                    <button id="embed-open-btn" class="filter-btn" style="flex: 1; justify-content: center;">🔗 Karte einbetten</button>
                     <button class="filter-btn" id="generate-report-btn" style="display:none;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()"></button>
                     <button class="filter-btn" id="generate-sprechzettel-btn" style="width:100%; justify-content:center; margin-bottom:6px;">🗣️ Sprechzettel generieren</button>
                     <button class="filter-btn" id="generate-beschlussvorlage-btn" style="width:100%; justify-content:center; margin-bottom:6px;">📋 Beschlussvorlage generieren</button>
@@ -7380,12 +7380,15 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
         embedHeight.addEventListener('input', generateEmbedSnippet);
 
         embedCopyBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText(embedSnippetOutput.value).then(() => {
+                        navigator.clipboard.writeText(embedSnippetOutput.value).then(() => {
                 const originalText = embedCopyBtn.innerText;
                 embedCopyBtn.innerText = '✅ Kopiert!';
                 setTimeout(() => {
                     embedCopyBtn.innerText = originalText;
                 }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert('Kopieren fehlgeschlagen. Bitte manuell kopieren.');
             });
         });
 

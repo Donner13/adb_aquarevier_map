@@ -4971,12 +4971,15 @@
         embedHeight.addEventListener('input', generateEmbedSnippet);
 
         embedCopyBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText(embedSnippetOutput.value).then(() => {
+                        navigator.clipboard.writeText(embedSnippetOutput.value).then(() => {
                 const originalText = embedCopyBtn.innerText;
                 embedCopyBtn.innerText = '✅ Kopiert!';
                 setTimeout(() => {
                     embedCopyBtn.innerText = originalText;
                 }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert('Kopieren fehlgeschlagen. Bitte manuell kopieren.');
             });
         });
 
