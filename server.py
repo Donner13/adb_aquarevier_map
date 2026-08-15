@@ -186,11 +186,15 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
         # Enable CORS for origin validation
         origin = self.headers.get('Origin')
-        if origin and ('localhost' in origin or '127.0.0.1' in origin):
+        parsed_origin = urllib.parse.urlparse(origin) if origin else None
+
+        if parsed_origin and parsed_origin.hostname in ('localhost', '127.0.0.1'):
             self.send_header('Access-Control-Allow-Origin', origin)
             self.send_header('Access-Control-Allow-Credentials', 'true')
+            self.send_header('Vary', 'Origin')
         else:
             self.send_header('Access-Control-Allow-Origin', '*')
+
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
         super().end_headers()
