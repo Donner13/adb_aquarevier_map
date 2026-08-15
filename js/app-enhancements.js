@@ -887,7 +887,6 @@
                 let closedAny = false;
 
                 // Be more permissive with class names to ensure we catch all modals/overlays
-                // and explicitly target known overlays like coachmark-overlay which might not have a generic class
                 const openModals = document.querySelectorAll(
                     '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"], #coachmark-overlay, #onboarding-role-modal'
                 );
@@ -896,10 +895,10 @@
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
-                        // Ensure we also close the command palette if it is open, handling the animation correctly
+                        // Special case: Command Palette handles its own animation closure
                         if (modal.id === 'command-palette-modal') {
-                            // Instead of returning and skipping it, we programmatically click the modal backdrop
-                            // which is handled by a listener inside initCommandPalette that calls closePalette()
+                            // Relying on the backdrop click listener set up in initCommandPalette
+                            // This ensures the custom opacity fade-out animation triggers correctly.
                             modal.click();
                             closedAny = true;
                             return;
