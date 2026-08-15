@@ -76,8 +76,8 @@
     window.handleRadiusMapClick = function(e) {
         if (!window.radiusAnalysisActive) return;
         const latlng = e.latlng;
-        const radiusSelect = document.getElementById('radius-select');
-        const radiusMeters = parseInt(radiusSelect ? radiusSelect.value : 5000, 10);
+        const radiusSlider = document.getElementById('radius-slider');
+        const radiusMeters = parseInt(radiusSlider ? radiusSlider.value : 5000, 10);
         
         // Populate inputs for visibility
         const latInput = document.getElementById('radius-manual-lat');
@@ -95,11 +95,11 @@
     window.runRadiusAnalysisFromInputs = function() {
         const latInput = document.getElementById('radius-manual-lat');
         const lngInput = document.getElementById('radius-manual-lng');
-        const radiusSelect = document.getElementById('radius-select');
+        const radiusSlider = document.getElementById('radius-slider');
 
         const lat = parseFloat(latInput ? latInput.value : '');
         const lng = parseFloat(lngInput ? lngInput.value : '');
-        const radiusMeters = parseInt(radiusSelect ? radiusSelect.value : 5000, 10);
+        const radiusMeters = parseInt(radiusSlider ? radiusSlider.value : 5000, 10);
 
         if (isNaN(lat) || isNaN(lng)) {
             if (typeof window.showToast === 'function') window.showToast("Bitte gültige Koordinaten (Breite/Länge) eingeben", "⚠️");
@@ -109,6 +109,34 @@
         window.runRadiusAnalysis(lat, lng, radiusMeters);
     };
 
+
+    let radiusDebounceTimer = null;
+
+    /**
+     * Handles slider input events. Updates display value immediately and
+     * debounces the actual point-in-polygon analysis.
+     */
+    window.handleRadiusSliderInput = function(val) {
+        const radiusMeters = parseInt(val, 10);
+
+        // Update display text
+        const valSpan = document.getElementById('radius-slider-val');
+        if (valSpan) {
+            valSpan.textContent = (radiusMeters >= 1000 ? (radiusMeters / 1000) + ' km' : radiusMeters + ' m');
+        }
+
+        // Only run analysis if a center is already defined
+        if (!window.lastRadiusResults || !window.lastRadiusResults.center) return;
+        const center = window.lastRadiusResults.center;
+
+        // Clear existing timer
+        if (radiusDebounceTimer) clearTimeout(radiusDebounceTimer);
+
+        // Set new timer for 150ms
+        radiusDebounceTimer = setTimeout(() => {
+            window.runRadiusAnalysis(center[0], center[1], radiusMeters);
+        }, 150);
+    };
     /**
      * Executes the radius analysis around a specific center coordinate.
      */

@@ -15,7 +15,7 @@ for (const filename of PAGES) {
 
       const activateBtn = page.locator('#btn-radius-activate');
       const clearBtn = page.locator('#btn-radius-clear');
-      const select = page.locator('#radius-select');
+      const select = page.locator('#radius-slider');
       const statusInfo = page.locator('#radius-status-info');
 
       await expect(activateBtn).toBeVisible();
