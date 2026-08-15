@@ -907,6 +907,44 @@
                         setTimeout(() => lastTriggerElement.focus(), 10);
                     }
                 }
+            } else if (e.key === 'Tab') {
+                // Focus trap for open modals
+                const openModals = Array.from(document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop')).filter(modal => {
+                    const style = window.getComputedStyle(modal);
+                    return style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden');
+                });
+
+                if (openModals.length > 0) {
+                    // Use the topmost (last in DOM) open modal
+                    const activeModal = openModals[openModals.length - 1];
+                    const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [tabindex]:not([tabindex^="-"])';
+                    let focusableElements = Array.from(activeModal.querySelectorAll(focusableElementsString));
+
+                    // Filter out truly hidden elements
+                    focusableElements = focusableElements.filter(el => {
+                        return el.offsetWidth > 0 && el.offsetHeight > 0 && window.getComputedStyle(el).visibility !== 'hidden';
+                    });
+
+                    if (focusableElements.length > 0) {
+                        const firstElement = focusableElements[0];
+                        const lastElement = focusableElements[focusableElements.length - 1];
+
+                        if (e.shiftKey) {
+                            if (document.activeElement === firstElement || !activeModal.contains(document.activeElement)) {
+                                lastElement.focus();
+                                e.preventDefault();
+                            }
+                        } else {
+                            if (document.activeElement === lastElement || !activeModal.contains(document.activeElement)) {
+                                firstElement.focus();
+                                e.preventDefault();
+                            }
+                        }
+                    } else {
+                        // If no focusable elements, prevent tabbing out of the modal
+                        e.preventDefault();
+                    }
+                }
             }
         });
     }
