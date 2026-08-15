@@ -53,6 +53,12 @@
             --modal-backdrop: rgba(0, 0, 0, 0.7);
             --modal-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
+        /* [TASK-014] WCAG AA Contrast Fix for dimmed text in Dark Mode */
+        body.dark-theme .logo-schoellershammer-sub,
+        body.dark-theme .logo-tillmann-p {
+            color: var(--text-secondary);
+        }
+
 
 
         body.dark-theme .leaflet-bar a {
