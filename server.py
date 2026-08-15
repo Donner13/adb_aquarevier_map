@@ -12,6 +12,18 @@ import hmac
 PORT = int(os.environ.get('PORT', 8000))
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
+CORE_GEOJSONS = [
+    'contacts_anonymized.geojson',
+    'klaeranlagen.geojson',
+    'grundwassermessstellen.geojson',
+    'pegel.geojson',
+    'stauanlagen.geojson',
+    'regenbecken.geojson',
+    'querbauwerke.geojson',
+    'h2_elektrolyseure_nrw.geojson',
+    'vogelbeobachtungsgebiete.geojson'
+]
+
 ENC_PASSWORD = os.environ.get('CONTACTS_ENCRYPTION_KEY') or os.environ.get('ENC_PASSWORD', 'AquaRevier2026')
 EDITOR_USER = os.environ.get('EDITOR_USER', 'florian')
 EDITOR_PASSWORD = os.environ.get('EDITOR_PASSWORD', 'AquaRevier2026')
@@ -196,6 +208,32 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed_path = urllib.parse.urlparse(self.path)
+
+        if parsed_path.path == '/health':
+            missing = []
+            for geojson in CORE_GEOJSONS:
+                filepath = os.path.join(DIRECTORY, geojson)
+                if not os.path.isfile(filepath):
+                    missing.append(geojson)
+                else:
+                    try:
+                        with open(filepath, 'rb') as f:
+                            f.read(1)
+                    except OSError:
+                        missing.append(geojson)
+
+            if missing:
+                self.send_response(503)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "missing": missing}).encode('utf-8'))
+            else:
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "ok", "missing": []}).encode('utf-8'))
+            return
+
         # Protect raw PII contacts.geojson file from direct GET access without auth
         if parsed_path.path == '/contacts.geojson' or parsed_path.path.startswith('/api/'):
             if not self.check_auth():
