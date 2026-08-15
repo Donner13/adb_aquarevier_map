@@ -907,6 +907,54 @@
                         setTimeout(() => lastTriggerElement.focus(), 10);
                     }
                 }
+            } else if (e.key === 'Tab') {
+                // Focus trap for open modals
+                const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [tabindex]:not([tabindex^="-"])';
+
+                const openModals = Array.from(document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop')).filter(modal => {
+                    const style = window.getComputedStyle(modal);
+                    if (style.display === 'none' || style.visibility === 'hidden' || modal.classList.contains('hidden')) return false;
+
+                    // Filter out backdrops without actual dialog content
+                    if (modal.classList.contains('scorecard-backdrop')) {
+                         if (!modal.querySelector('.scorecard-modal, .scorecard-dialog, .modal, [role="dialog"]') || modal.children.length === 0) {
+                             return false;
+                         }
+                    }
+
+                    // Only consider the modal if it actually contains visible focusable elements
+                    const elements = Array.from(modal.querySelectorAll(focusableElementsString)).filter(el => {
+                        return el.offsetWidth > 0 && el.offsetHeight > 0 && window.getComputedStyle(el).visibility !== 'hidden';
+                    });
+
+                    return elements.length > 0;
+                });
+
+                if (openModals.length > 0) {
+                    // Use the topmost (last in DOM) open modal that passed the filters
+                    const activeModal = openModals[openModals.length - 1];
+
+                    // Extract the focusable elements from the active modal
+                    const focusableElements = Array.from(activeModal.querySelectorAll(focusableElementsString)).filter(el => {
+                        return el.offsetWidth > 0 && el.offsetHeight > 0 && window.getComputedStyle(el).visibility !== 'hidden';
+                    });
+
+                    // We are guaranteed to have at least one element due to the array filter above
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
+
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstElement || !activeModal.contains(document.activeElement)) {
+                            lastElement.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        if (document.activeElement === lastElement || !activeModal.contains(document.activeElement)) {
+                            firstElement.focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
             }
         });
     }
