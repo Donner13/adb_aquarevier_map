@@ -270,8 +270,10 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     }
 
     // Feedback Link
+    const safeLat = Number(p.lat || p.latitude) || 0;
+    const safeLng = Number(p.lng || p.longitude || p.lon) || 0;
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-      <button type="button" onclick="openFeedbackModal('${escapeForJs(p.name)}', '${escapeForJs(cfg.groupLabel)}', '${escapeForJs(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${p.lat || p.latitude || 0}, ${p.lng || p.longitude || p.lon || 0})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
+      <button type="button" onclick="openFeedbackModal('${escapeForJs(p.name)}', '${escapeForJs(cfg.groupLabel)}', '${escapeForJs(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${safeLat}, ${safeLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
     </div>`;
 
     // Footer
