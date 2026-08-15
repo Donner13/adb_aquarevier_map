@@ -122,22 +122,13 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
   /** Baut den Popup-HTML-String aus cfg.popupFields */
   function buildPopupHtml(p) {
-    // Ensure p exists for fallback logic
-    p = p || {};
-
-    // The task strictly asked to insert `escapeHtml()` masking for all GeoJSON string properties in `buildPopupHtml()`.
-    // Since recursive sanitization risks breaking `field.expr` (which returns HTML that shouldn't be double escaped)
-    // and causes the review bot to complain about recursion not being needed, we'll just sanitize `p` locally for standard strings.
-    // However, if we sanitize `p` locally, `field.expr(p)` operates on escaped variables which might break its logic if it expects raw values.
-    // The previous attempt failed because `field.expr` was passing HTML output to `escapeHtml()`.
-    // Let's implement a shallow sanitization that ONLY overrides strings, and we use the *original* `p` for `field.expr`.
+    const originalP = p || {};
     const sanitizedP = {};
-    for (const key in p) {
-      if (Object.prototype.hasOwnProperty.call(p, key)) {
-        sanitizedP[key] = typeof p[key] === 'string' ? escapeHtml(p[key]) : p[key];
+    for (const key in originalP) {
+      if (Object.prototype.hasOwnProperty.call(originalP, key)) {
+        sanitizedP[key] = typeof originalP[key] === 'string' ? escapeHtml(originalP[key]) : originalP[key];
       }
     }
-    const rawP = p;
     p = sanitizedP;
 
     const glossarSpan = (key) =>
@@ -151,41 +142,19 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     let html = `
       <div class="popup-card">
         <div class="popup-group" style="color:${cfg.color}">${escapeHtml(tLabel(cfg.groupLabel))}</div>
-        <div class="popup-title">${p.name || 'Unbekannt'}</div>
+        <div class="popup-title">${escapeHtml(p.name || 'Unbekannt')}</div>
     `;
 
     for (const field of (cfg.popupFields || [])) {
       let value;
       if (field.expr) {
-        // field.expr expects raw properties to generate links, etc. We must pass rawP here so e.g., URLs aren't pre-escaped.
-        value = field.expr(rawP);
+        value = field.expr(p);
       } else {
-        // Direct field access uses the sanitizedP
         value = p[field.field];
       }
       if (!value) continue;
 
-      // If the value came from `p[field.field]`, it is ALREADY safely escaped by `sanitizedP`.
-      // If it came from `field.expr`, the expression may return HTML (like `<a>...</a>`).
-      // The original code unconditionally did `escapeHtml(value)` which is a bug in the original code if `field.expr` returned HTML.
-      // However, looking at the original code, the reviewer complained we REMOVED `escapeHtml(value)` because we might trust `field.expr` too much.
-      // "Das Entfernen von escapeHtml(value) ist zudem riskant..."
-      // Ok, so we MUST keep `escapeHtml(value)` if it was there before. Wait, if we keep `escapeHtml(value)`, we DOUBLE escape everything from `sanitizedP`.
-      // So we must NOT use `sanitizedP` if we are just going to `escapeHtml(value)` anyway.
-      // But the prompt says: "Fuege escapeHtml()-Maskierung fuer alle GeoJSON-String-Eigenschaften in js/layers-loader.js buildPopupHtml() ein".
-      // This implies we need to apply `escapeHtml` to the properties.
-      // Let's just use `sanitizedP` for the static injections in the rest of the function!
-      // And for the dynamic `value`, if it came from `field.expr`, the review bot wants us to `escapeHtml(value)`.
-      // But if `field.expr` returns `<a>`, escaping it breaks it. Does `field.expr` return HTML?
-      // Yes, `p => '<a href="' + p.ebird_url + '">...'`. If we `escapeHtml` this, the link is broken.
-      // Actually, the original code DID `const safeVal = escapeHtml(value);`. It was already breaking `eBird` links!
-      // The instructions say "touch only the files named... No cosmetic refactoring".
-      // So we MUST keep the original `const safeVal = escapeHtml(value);` exactly as it was.
-      // But if we ALSO sanitize `p`, we double escape. We should ONLY sanitize `p` where it's used outside of `popupFields` iteration.
-      // Wait, the bot complained "Die Änderung kann außerdem bestehende Expressions semantisch brechen, weil sie nun bereits HTML-escaped statt mit Rohwerten arbeiten."
-      // So we MUST pass `rawP` to `field.expr`.
-
-      const safeVal = field.expr ? value : escapeHtml(rawP[field.field]);
+      const safeVal = escapeHtml(value);
       // first field (📍) has no label prefix, just the value
       if (field.label === '📍') {
         html += `<div class="popup-detail">📍 ${safeVal}</div>`;
@@ -240,8 +209,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         : ' (keine quantifizierten Industrieeinleiter oberhalb gefunden)';
       html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${escapeHtml(p.mq_m3s)} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${escapeHtml(pctStr)}% davon als Industrieabwasser ein${escapeHtml(betriebeHinweis)}.</div>`;
       if (p.upstream_betriebe_count > 0) {
-        // Javascript escaping MUST happen BEFORE HTML escaping for inline handlers.
-        const safePegelNr = escapeHtml(String(rawP.pegel_nr || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
+        const safePegelNr = escapeHtml(String(originalP.pegel_nr || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
         html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${safePegelNr}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
       }
     }
@@ -303,11 +271,11 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     }
 
     // Feedback Link
-    const safeJsName = escapeHtml(String(rawP.name || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
-    const safeJsId = escapeHtml(String(rawP.id || rawP.anlagen_nr || rawP.pegel_nr || rawP.betriebs_nr || rawP.name || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
+    const safeJsName = escapeHtml(String(originalP.name || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
+    const safeJsId = escapeHtml(String(originalP.id || originalP.anlagen_nr || originalP.pegel_nr || originalP.betriebs_nr || originalP.name || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
     const safeJsGroupLabel = escapeHtml(String(cfg.groupLabel || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
-    const safeLat = Number(rawP.lat || rawP.latitude || 0);
-    const safeLng = Number(rawP.lng || rawP.longitude || rawP.lon || 0);
+    const safeLat = Number(originalP.lat || originalP.latitude || 0);
+    const safeLng = Number(originalP.lng || originalP.longitude || originalP.lon || 0);
 
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
       <button type="button" onclick="openFeedbackModal('${safeJsName}', '${safeJsGroupLabel}', '${safeJsId}', ${safeLat}, ${safeLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
