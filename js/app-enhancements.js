@@ -936,8 +936,22 @@
         }
     };
 
+    // --- 11. MAP LAYER GROUP CLEARING ---
+    function initMapLayerClearing() {
+        if (typeof L !== 'undefined' && L.Map) {
+            L.Map.addInitHook(function () {
+                this.onCreate = () => {
+                    if (this._layerGroup) {
+                        this._layerGroup.clearLayers();
+                    }
+                };
+            });
+        }
+    }
+
     // --- 5. INITIALIZE ALL ON DOM READY ---
     function initializeEnhancements() {
+        initMapLayerClearing();
         applyLayerColorHarmony();
         initCommandPalette();
         initSystemHealthBadge();
