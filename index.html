@@ -1766,7 +1766,7 @@
         .feedback-badge.offen { background-color: #fee2e2; color: #991b1b; }
         .feedback-badge.in-pruefung { background-color: #dbeafe; color: #1e40af; }
         .feedback-badge.behoben { background-color: #dcfce3; color: #166534; }
-        .feedback-badge.abgelehnt { background-color: #f1f5f9; color: var(--text-secondary); }
+        .feedback-badge.abgelehnt { background-color: var(--bg-surface-hover, #f1f5f9); color: var(--text-secondary); }
 
         .feedback-item {
             padding: 8px;
@@ -2334,7 +2334,7 @@
                                 ❌ Reset
                             </button>
                         </div>
-                        <div id="radius-status-info" style="font-size: 10.5px; color: var(--text-secondary); background: #f8fafc; padding: 6px 8px; border-radius: 4px; border: 1px dashed #cbd5e1; text-align: center;">
+                        <div id="radius-status-info" style="font-size: 10.5px; color: var(--text-secondary); background: var(--bg-surface, #f8fafc); padding: 6px 8px; border-radius: 4px; border: 1px dashed var(--border-color, #cbd5e1); text-align: center;">
                             Klicke auf "📍 Punkt wählen" &amp; danach auf die Karte.
                         </div>
                         <div id="radius-results-container" style="display: none; margin-top: 8px; max-height: 250px; overflow-y: auto; font-size: 11px;">
@@ -3871,7 +3871,7 @@
                 const targetX = ax + dx + 55;
                 const targetY = ay + dy + 19;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -3887,7 +3887,7 @@
                 const targetX = ax + dx;
                 const targetY = ay + dy + 21;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -3903,7 +3903,7 @@
                 const targetX = ax + dx;
                 const targetY = ay + dy + 20;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -3919,7 +3919,7 @@
                 const targetX = ax + dx;
                 const targetY = ay + dy + 18;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -3935,7 +3935,7 @@
                 const targetX = ax + dx + 110;
                 const targetY = ay + dy + 19;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -3951,7 +3951,7 @@
                 const targetX = ax + dx + 60;
                 const targetY = ay + dy + 25;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -3967,7 +3967,7 @@
                 const startX = ax + dx + 85;
                 const startY = ay + dy + 10;
                 svgContent = `
-                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${startX}" y1="${startY}" x2="${ax + (startX - ax)*0.25}" y2="${ay + (startY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax - 6},${ay + 3} ${ax - 3},${ay + 6}" fill="${color}" />
@@ -3983,7 +3983,7 @@
                 const startX = ax + dx + 85;
                 const startY = ay + dy + 10;
                 svgContent = `
-                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${startX}" y1="${startY}" x2="${ax + (startX - ax)*0.25}" y2="${ay + (startY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax - 6},${ay + 3} ${ax - 3},${ay + 6}" fill="${color}" />
@@ -3999,7 +3999,7 @@
                 const startX = ax + dx + 85;
                 const startY = ay + dy + 10;
                 svgContent = `
-                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${startX}" y1="${startY}" x2="${ax + (startX - ax)*0.25}" y2="${ay + (startY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax - 6},${ay + 3} ${ax - 3},${ay + 6}" fill="${color}" />
@@ -4015,7 +4015,7 @@
                 const targetX = ax + dx + 10;
                 const targetY = ay + dy;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
