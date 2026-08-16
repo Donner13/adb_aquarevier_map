@@ -2,7 +2,8 @@ const { test, expect, gotoPage, assertNoJsErrors } = require('./fixtures');
 
 test.describe('CI Smoke Test', () => {
   // Test requirement: "Erstelle ein ... Smoke-Test Script, das in unter 10 Sekunden das Laden von index.html, internal.html und der Basiskarte bestaetigt."
-  // Run sequentially, but aggressively prune any unnecessary awaits or external delays to stay inside 10 seconds.
+  // Run sequentially on the built-in `{ page }` fixture, which automatically handles the custom
+  // setup/teardown (like `consoleErrors` attachments) from `fixtures.js`.
   test('index.html and internal.html load successfully total under 10s', async ({ page }) => {
     test.setTimeout(10000);
 
@@ -33,10 +34,13 @@ test.describe('CI Smoke Test', () => {
     expect(hasBasemapConfig).toBe(true);
 
     // 2. Check internal.html
-    // Fixtures.js accumulates errors array on the page object across navigations;
-    // reset it to ensure assertNoJsErrors evaluates correctly for the second page load.
-    page.consoleErrors = [];
-    page.pageErrors = [];
+    // The `page` fixture is reused within a single `test` block.
+    // Ensure `page.consoleErrors` is cleared so errors from `index.html` don't bleed over.
+    // If it's somehow undefined, fall back to initializing an empty array.
+    page.consoleErrors = page.consoleErrors || [];
+    page.pageErrors = page.pageErrors || [];
+    page.consoleErrors.length = 0;
+    page.pageErrors.length = 0;
 
     tilePromise = page.waitForResponse(tileMatcher, waitOpts);
     await gotoPage(page, 'internal.html');
