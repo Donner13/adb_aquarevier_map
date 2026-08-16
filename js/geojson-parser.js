@@ -10,7 +10,12 @@ function parseFeature(input) {
     let feature;
     if (typeof input === 'string') {
         try {
-            feature = JSON.parse(input);
+            // Check and strip UTF-8 BOM if present before parsing
+            let cleanedInput = input;
+            if (input.charCodeAt(0) === 0xFEFF) {
+                cleanedInput = input.slice(1);
+            }
+            feature = JSON.parse(cleanedInput);
         } catch (e) {
             return null;
         }
