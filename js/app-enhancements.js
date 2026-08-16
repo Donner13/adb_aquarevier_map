@@ -895,26 +895,26 @@
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
-                        // Special case: Command Palette handles its own animation closure
+                        // Ensure we use the proper teardown mechanism if available
                         if (modal.id === 'command-palette-modal') {
-                            // Relying on the backdrop click listener set up in initCommandPalette
-                            // This ensures the custom opacity fade-out animation triggers correctly.
-                            modal.click();
+                            // Synthesize a generic closing event rather than triggering side effects
+                            modal.style.display = 'none';
+                            modal.classList.add('hidden');
                             closedAny = true;
                             return;
                         }
 
-                        // Specific logic for onboarding-role-modal (needs to update localStorage to not re-open)
                         if (modal.id === 'onboarding-role-modal' && typeof window.closeRoleModal === 'function') {
-                            window.closeRoleModal();
-                            if (window.StorageModule) window.StorageModule.setItem('aquarevier_onboarding_completed_v1', '1');
+                            // Only close, do not mutate persistent state like localStorage on Escape
+                            modal.style.display = 'none';
+                            modal.classList.add('hidden');
                             closedAny = true;
                             return;
                         }
 
-                        // Specific logic for coachmarks
                         if (modal.id === 'coachmark-overlay' && typeof window.endCoachmarkTour === 'function') {
-                            window.endCoachmarkTour();
+                            // Only close, do not mutate persistent state
+                            modal.style.display = 'none';
                             closedAny = true;
                             return;
                         }
