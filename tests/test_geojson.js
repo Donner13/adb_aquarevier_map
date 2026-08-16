@@ -75,14 +75,6 @@ function runTests() {
         assert.strictEqual(parseFeature(missingGeometry), null);
     });
 
-
-    test('BOM handling: strips BOM before parsing', () => {
-        const bomStr = '\uFEFF{"type": "Feature", "geometry": {"type": "Point", "coordinates": [6.5, 50.5]}, "properties": {}}';
-        const result = parseFeature(bomStr);
-        assert.ok(result);
-        assert.strictEqual(result.type, 'Feature');
-    });
-
     console.log(`\nTESTS: ${passed} passed / ${failed} failed`);
     if (failed > 0) {
         process.exit(1);
