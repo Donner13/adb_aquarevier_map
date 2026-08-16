@@ -4252,13 +4252,13 @@
         const hazardLegend = L.control({ position: 'bottomleft' });
         hazardLegend.onAdd = function () {
             const div = L.DomUtil.create('div', 'info-legend');
-            div.style.background = '#ffffff';
+            div.style.background = 'var(--bg-surface, #ffffff)';
             div.style.padding = '8px 12px';
             div.style.borderRadius = '6px';
             div.style.boxShadow = '0 1.5px 5px rgba(0,0,0,0.25)';
             div.style.fontSize = '12px';
             div.style.lineHeight = '1.7';
-            div.style.color = '#1e293b';
+            div.style.color = 'var(--text-primary, #1e293b)';
             div.innerHTML = `
                 <div style="font-weight:700; margin-bottom:4px; font-size:12.5px;">Gefahrenkarten</div>
                 <div style="font-size:11px; color: var(--text-secondary); margin-bottom:2px;">Fluvial (LANUV)</div>
