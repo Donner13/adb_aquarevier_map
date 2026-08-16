@@ -112,12 +112,19 @@ document.addEventListener('DOMContentLoaded', () => {
              if (stats.wasserRisiko !== undefined) wasserRisiko = stats.wasserRisiko;
         }
 
-        // Review fix: "ein Fallback auf die bekannten Datenquellen fehlt."
-        if (pegelAnzahl === "Keine Daten" && typeof window.layerDataStore === 'object' && window.layerDataStore.pegel && Array.isArray(window.layerDataStore.pegel.features)) {
-             pegelAnzahl = window.layerDataStore.pegel.features.filter(f => f.properties && (f.properties.gemeinde === gemeindeName || f.properties.Gemeinde === gemeindeName)).length;
+        // Review fix: "Die Kennzahlen hängen an nicht nachgewiesenen globalen Datenstrukturen..."
+        // Explicitly secure fallbacks by verifying property chains to avoid silent failures or misinterpretations.
+        if (pegelAnzahl === "Keine Daten" && typeof window.layerDataStore === 'object' && window.layerDataStore !== null) {
+             const pegelData = window.layerDataStore['pegel'];
+             if (pegelData && typeof pegelData === 'object' && Array.isArray(pegelData.features)) {
+                 pegelAnzahl = pegelData.features.filter(f => f && f.properties && (f.properties.gemeinde === gemeindeName || f.properties.Gemeinde === gemeindeName)).length;
+             }
         }
-        if (gewerbeAnzahl === "Keine Daten" && typeof window.layerDataStore === 'object' && window.layerDataStore.gewerbegebiete && Array.isArray(window.layerDataStore.gewerbegebiete.features)) {
-             gewerbeAnzahl = window.layerDataStore.gewerbegebiete.features.filter(f => f.properties && (f.properties.gemeinde === gemeindeName || f.properties.Gemeinde === gemeindeName)).length;
+        if (gewerbeAnzahl === "Keine Daten" && typeof window.layerDataStore === 'object' && window.layerDataStore !== null) {
+             const gewerbeData = window.layerDataStore['gewerbegebiete'];
+             if (gewerbeData && typeof gewerbeData === 'object' && Array.isArray(gewerbeData.features)) {
+                 gewerbeAnzahl = gewerbeData.features.filter(f => f && f.properties && (f.properties.gemeinde === gemeindeName || f.properties.Gemeinde === gemeindeName)).length;
+             }
         }
 
         document.getElementById('stakeholder-kpi-wasser').textContent = wasserRisiko;
@@ -165,34 +172,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review fix: "Die bestehende openGemeindeDossier-Logik wird entgegen Taskbeschreibung nicht integriert..."
-    // "map.eachLayer() und layeradd sehen bei GeoJSON-Layergruppen häufig nur den Container... dann wird kein Gemeinde-Klick gebunden."
-    // Integrate cleanly with openGemeindeDossier to catch ALL clicks (map, sidebar, programmatic) reliably.
-
-    // Instead of completely redefining or intercepting clicks manually (which misses programmatic calls or GeoJSON clusters),
-    // we hook into the existing `openGemeindeDossier` safely. Since `openGemeindeDossier` might be defined later,
-    // we use a property setter to detect when it's assigned, or just wrap it directly if it already exists.
-
-    // Review fix: "openGemeindeDossier wird nur bis ca. 2,1s nach DOMContentLoaded gepatcht und kann danach still ausfallen."
-    // We poll reliably until the script is fully executed, avoiding global scope pollution and redundant checks.
-    const interval = setInterval(() => {
-        if (typeof window.openGemeindeDossier === 'function') {
-            const originalOpenDossier = window.openGemeindeDossier;
-            window.openGemeindeDossier = function(gemeindeName) {
-                // Execute original logic first to compile dossier and open original modal (if any)
-                originalOpenDossier.apply(this, arguments);
+    // Review fix: "Der Hook auf window.openGemeindeDossier ist zeit- und reassign-anfällig..."
+    // To ensure a robust integration that survives late loading or reassignments, we proxy the global property.
+    let _openGemeindeDossier = window.openGemeindeDossier;
+    Object.defineProperty(window, 'openGemeindeDossier', {
+        get: function() {
+            return function(gemeindeName) {
+                if (typeof _openGemeindeDossier === 'function') {
+                    _openGemeindeDossier.apply(this, arguments);
+                }
 
                 // Ensure the new Stakeholder Modal acts as an explicit overlay
                 const backdrop = document.getElementById('stakeholder-modal-backdrop');
-                if (backdrop) backdrop.style.zIndex = '10009'; // Ensure above old modal (10008)
+                if (backdrop) backdrop.style.zIndex = '10009';
 
                 const stakeholderModal = document.getElementById('stakeholder-modal');
                 if (stakeholderModal) stakeholderModal.style.zIndex = '10010';
 
-                // Then open our new Stakeholder Modal
-                window.openStakeholderModal.call(this, gemeindeName);
+                // Ensure we only trigger for valid Gemeinde identifiers
+                if (typeof gemeindeName === 'string' && gemeindeName.trim().length > 0) {
+                    window.openStakeholderModal.call(this, gemeindeName.trim());
+                }
             };
-            clearInterval(interval);
-        }
-    }, 250);
+        },
+        set: function(val) {
+            _openGemeindeDossier = val;
+        },
+        configurable: true,
+        enumerable: true
+    });
 });
