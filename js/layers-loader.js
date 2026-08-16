@@ -28,7 +28,10 @@ const geojsonWorkerCode = `
       })
       .then(text => {
         // Strip BOM if present
-        const cleanedText = text.charCodeAt(0) === 0xFEFF ? text.slice(1) : text;
+        let cleanedText = text;
+        if (text.charCodeAt(0) === 0xFEFF) {
+          cleanedText = text.slice(1);
+        }
         return JSON.parse(cleanedText);
       })
       .then(data => self.postMessage({ id: id, data: data, success: true }))
@@ -78,7 +81,10 @@ function fetchGeoJSONWorker(url) {
       return res.text();
     }).then(text => {
       // Strip BOM if present
-      const cleanedText = text.charCodeAt(0) === 0xFEFF ? text.slice(1) : text;
+      let cleanedText = text;
+      if (text.charCodeAt(0) === 0xFEFF) {
+        cleanedText = text.slice(1);
+      }
       return JSON.parse(cleanedText);
     });
   }
