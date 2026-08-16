@@ -223,7 +223,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 else:
                     try:
                         with open(filepath, 'r', encoding='utf-8') as f:
-                            f.read(1)
+                            json.load(f)
                     except Exception:
                         unreadable.append(file_name)
 
