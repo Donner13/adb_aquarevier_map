@@ -366,6 +366,10 @@
             if (e.target === modal) closePalette();
         });
 
+        modal.addEventListener('closeCommandPalette', () => {
+            closePalette();
+        });
+
         // Add visual KBD trigger to search inputs
         const searchInputs = document.querySelectorAll('#usearch-input, #search-input');
         searchInputs.forEach(inp => {
