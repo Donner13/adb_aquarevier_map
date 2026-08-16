@@ -215,8 +215,14 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             missing_files = []
             for filename in CORE_GEOJSONS:
                 filepath = os.path.join(DIRECTORY, filename)
-                if not os.path.exists(filepath) or not os.access(filepath, os.R_OK):
+                if not os.path.exists(filepath):
                     missing_files.append(filename)
+                else:
+                    try:
+                        with open(filepath, 'rb') as f:
+                            f.read(1)
+                    except OSError:
+                        missing_files.append(filename)
 
             if missing_files:
                 self.send_response(503)
