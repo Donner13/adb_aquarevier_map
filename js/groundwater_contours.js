@@ -29,12 +29,7 @@ function loadGwIsoLayer() {
     fetch('grundwassermessstellen.geojson')
         .then(res => {
             if (!res.ok) throw new Error('HTTP ' + res.status);
-            return res.text();
-        })
-        .then(text => {
-            // Strip BOM if present
-            const cleanedText = text.charCodeAt(0) === 0xFEFF ? text.slice(1) : text;
-            return JSON.parse(cleanedText);
+            return res.json();
         })
         .then(data => {
             if (!data || !data.features || data.features.length === 0) {
