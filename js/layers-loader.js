@@ -271,7 +271,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // getZustaendigkeitHtml is a global function defined in index/internal.html
     if (typeof getZustaendigkeitHtml === 'function') {
-      html += getZustaendigkeitHtml(p);
+      html += getZustaendigkeitHtml(safeP);
     }
 
     // Pegelonline Live-Dashboard Placeholder

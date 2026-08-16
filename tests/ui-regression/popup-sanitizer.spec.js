@@ -1,11 +1,9 @@
 const { test, expect, gotoPage } = require('./fixtures');
 
 test.describe('Popup Content Sanitizer', () => {
-  // Use test.fail to mark it as known failure.
   test('Popup generation sanitizes HTML in properties to prevent XSS', async ({ page }) => {
-    test.fail(true, 'Popup sanitization is currently missing');
 
-    await page.route('**/contacts_anonymized.geojson', route => {
+    await page.route('**/klaeranlagen.geojson', route => {
       route.fulfill({
         status: 200,
         contentType: 'application/json',
@@ -18,12 +16,10 @@ test.describe('Popup Content Sanitizer', () => {
               properties: {
                 id: 'xss-1',
                 name: '<img src=x onerror="window.xssFired=true">Malicious Name',
-                group: 'Forschung',
-                organisation: '<script>window.xssFired=true</script>Malicious Org',
-                institution: '<b onmouseover="window.xssFired=true">HoverMe</b>',
-                bereich: '<svg onload="window.xssFired=true">',
-                email: 'test@example.com"></a><script>window.xssFired=true</script>',
-                phone: '<iframe src="javascript:alert(1)"></iframe>'
+                zustaendigkeit_behoerde: '<script>window.xssFired=true</script>Behoerde',
+                zustaendigkeit_amt: '<b onmouseover="window.xssFired=true">Amt</b>',
+                zustaendigkeit_email: 'test@example.com"></a><script>window.xssFired=true</script>',
+                zustaendigkeit_telefon: '<iframe src="javascript:alert(1)"></iframe>'
               }
             }
           ]
@@ -36,16 +32,35 @@ test.describe('Popup Content Sanitizer', () => {
 
     // Wait for markers to be rendered
     await page.waitForFunction(() => {
-      return typeof markersLayer !== 'undefined' && markersLayer.getLayers().length > 0;
+      return typeof window.klaeranlagenLayer !== 'undefined' && window.klaeranlagenLayer.getLayers().length > 0;
     });
 
     // Programmatically open the popup for the malicious marker
-    await page.evaluate(() => {
+    await page.evaluate(async () => {
       window.xssFired = false;
-      const markers = markersLayer.getLayers();
-      if (markers.length > 0) {
-        markers[0].fire('click'); // Click is handled to pan and open popup
-        markers[0].openPopup();
+      let targetMarker = null;
+      if (window.klaeranlagenLayer && window.klaeranlagenLayer.eachLayer) {
+          window.klaeranlagenLayer.eachLayer(l => {
+              if (l.feature && l.feature.properties && l.feature.properties.id === 'xss-1') {
+                  targetMarker = l;
+              }
+          });
+      }
+
+      if (!targetMarker && window.map) {
+          window.map.eachLayer(l => {
+              if (l.feature && l.feature.properties && l.feature.properties.id === 'xss-1') targetMarker = l;
+          });
+      }
+
+      if (targetMarker) {
+          targetMarker.fire('click');
+          if (targetMarker.openPopup) targetMarker.openPopup();
+      } else {
+          const div = document.createElement('div');
+          div.className = 'leaflet-popup-content';
+          div.innerHTML = 'NOT FOUND';
+          document.body.appendChild(div);
       }
     });
 
@@ -67,6 +82,6 @@ test.describe('Popup Content Sanitizer', () => {
     expect(popupHtml).not.toContain('<iframe');
 
     // The escaped payload should ideally be present as text
-    expect(popupHtml).toContain('&lt;script&gt;window.xssFired=true&lt;/script&gt;');
+    expect(popupHtml).toContain('&lt;script&gt;window.xssFired=true&lt;/script&gt;Behoerde');
   });
 });
