@@ -883,8 +883,6 @@
 
         // Global Escape key listener to close all open modals
         document.addEventListener('keydown', (e) => {
-            if (e.defaultPrevented) return;
-
             if (e.key === 'Tab') {
                 let activeModal = null;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
@@ -930,6 +928,7 @@
                     }
                 }
             } else if (e.key === 'Escape') {
+                // To ensure Escape reliably closes modals, we bypass defaultPrevented checks here.
                 let closedAny = false;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
