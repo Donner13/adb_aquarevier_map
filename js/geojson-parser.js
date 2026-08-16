@@ -10,6 +10,7 @@ function parseFeature(input) {
     let feature;
     if (typeof input === 'string') {
         try {
+            input = input.replace(/^\uFEFF/, '');
             feature = JSON.parse(input);
         } catch (e) {
             return null;
