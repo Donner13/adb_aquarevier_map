@@ -130,15 +130,6 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
   /** Baut den Popup-HTML-String aus cfg.popupFields */
   function buildPopupHtml(p) {
-    const safeP = { ...p };
-    for (const key in safeP) {
-      if (typeof safeP[key] === 'string') {
-        safeP[key] = escapeHtml(safeP[key]);
-      } else if (Array.isArray(safeP[key])) {
-        safeP[key] = escapeHtml(JSON.stringify(safeP[key]));
-      }
-    }
-
     const glossarSpan = (key) =>
       key ? `<span class="glossar-icon" data-glossar="${escapeHtml(key)}">i</span>` : '';
     // Feste deutsche Config-Strings (groupLabel/field.label) werden bei
@@ -150,7 +141,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     let html = `
       <div class="popup-card">
         <div class="popup-group" style="color:${cfg.color}">${escapeHtml(tLabel(cfg.groupLabel))}</div>
-        <div class="popup-title">${safeP.name || 'Unbekannt'}</div>
+        <div class="popup-title">${escapeHtml(String(p.name || 'Unbekannt'))}</div>
     `;
 
     for (const field of (cfg.popupFields || [])) {
@@ -286,8 +277,14 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     // Feedback Link
     const feedbackLat = Number.isFinite(Number(p.lat || p.latitude)) ? Number(p.lat || p.latitude) : 0;
     const feedbackLng = Number.isFinite(Number(p.lng || p.longitude || p.lon)) ? Number(p.lng || p.longitude || p.lon) : 0;
+
+    // We stringify the name, replace any backslashes and single quotes to make it safe for the inline JS parameter,
+    // and then apply escapeHtml for the final HTML attribute context.
+    let jsSafeName = String(p.name || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    let jsSafeId = String(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-      <button type="button" onclick="openFeedbackModal('${escapeHtml(String(p.name || '')).replace(/'/g, "\\'")}', '${escapeHtml(cfg.groupLabel)}', '${escapeHtml(String(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || ''))}', ${feedbackLat}, ${feedbackLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
+      <button type="button" onclick="openFeedbackModal('${escapeHtml(jsSafeName)}', '${escapeHtml(cfg.groupLabel)}', '${escapeHtml(jsSafeId)}', ${feedbackLat}, ${feedbackLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
     </div>`;
 
     // Footer
