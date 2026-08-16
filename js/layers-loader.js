@@ -27,8 +27,11 @@ const geojsonWorkerCode = `
         return res.text();
       })
       .then(text => {
-        // Check and strip UTF-8 BOM if present before parsing
-        const cleanedText = text.charCodeAt(0) === 0xFEFF ? text.slice(1) : text;
+        // Strip BOM if present
+        let cleanedText = text;
+        if (text.charCodeAt(0) === 0xFEFF) {
+          cleanedText = text.slice(1);
+        }
         if (!cleanedText.trim()) throw new Error("File is empty after stripping BOM");
         return JSON.parse(cleanedText);
       })
@@ -78,8 +81,12 @@ function fetchGeoJSONWorker(url) {
       if(!res.ok) throw new Error("HTTP " + res.status + " when loading " + url);
       return res.text();
     }).then(text => {
-      // Check and strip UTF-8 BOM if present before parsing
-      const cleanedText = text.charCodeAt(0) === 0xFEFF ? text.slice(1) : text;
+      // Strip BOM if present
+      let cleanedText = text;
+      if (text.charCodeAt(0) === 0xFEFF) {
+        cleanedText = text.slice(1);
+      }
+      if (!cleanedText.trim()) throw new Error("File is empty after stripping BOM");
       return JSON.parse(cleanedText);
     });
   }
