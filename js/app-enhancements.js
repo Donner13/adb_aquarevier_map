@@ -928,8 +928,6 @@
                     }
                 }
             } else if (e.key === 'Escape') {
-                if (e.defaultPrevented) return;
-
                 let closedAny = false;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
@@ -944,7 +942,6 @@
                         } else {
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
-                            modal.hidden = true;
                         }
                         closedAny = true;
                     }
