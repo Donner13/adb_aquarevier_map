@@ -67,8 +67,8 @@
         const list = Object.values(gemeindenMap).map(g => ({
             name: g.name,
             kreis: g.kreis,
-            centerLat: g.count > 0 ? g.latSum / g.count : null,
-            centerLng: g.count > 0 ? g.lngSum / g.count : null,
+            centerLat: g.count === 0 ? null : g.latSum / g.count,
+            centerLng: g.count === 0 ? null : g.lngSum / g.count,
             totalObjects: g.count
         }));
 
@@ -158,10 +158,8 @@
             });
         }
 
-        if (lats.length > 0) {
-            dossier.centerLat = lats.reduce((a, b) => a + b, 0) / lats.length;
-            dossier.centerLng = lngs.reduce((a, b) => a + b, 0) / lngs.length;
-        }
+        dossier.centerLat = lats.length === 0 ? null : lats.reduce((a, b) => a + b, 0) / lats.length;
+        dossier.centerLng = lngs.length === 0 ? null : lngs.reduce((a, b) => a + b, 0) / lngs.length;
 
         window.currentGemeindeDossier = dossier;
         return dossier;
