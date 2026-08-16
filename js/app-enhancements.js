@@ -890,8 +890,9 @@
             if (e.key === 'Escape') {
                 let closedAny = false;
 
+                // Select all known overlays, explicitly catching ones like coachmarks and onboarding
                 const openModals = document.querySelectorAll(
-                    '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay'
+                    '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #onboarding-role-modal'
                 );
 
                 openModals.forEach(modal => {
@@ -900,7 +901,7 @@
 
                         if (modal.id === 'command-palette-modal') {
                             // Trigger the custom event which calls closePalette() to do the fade out.
-                            // Do not force display:none here, let the animation finish.
+                            // Do not force display:none here, let the animation finish safely.
                             modal.dispatchEvent(new CustomEvent('closeCommandPalette'));
                             closedAny = true;
                             return;
