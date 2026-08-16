@@ -137,7 +137,13 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         safeP[key] = escapeHtml(safeP[key]);
       } else if (Array.isArray(safeP[key])) {
         // Prevent array bypasses that stringify into XSS payloads during interpolation
-        safeP[key] = safeP[key].map(item => typeof item === 'string' ? escapeHtml(item) : item);
+        safeP[key] = safeP[key].map(item => typeof item === 'string' ? escapeHtml(item) : escapeHtml(String(item)));
+      } else if (safeP[key] !== null && safeP[key] !== undefined && typeof safeP[key] === 'object') {
+        // Convert any unhandled objects to string to prevent object injection vulnerabilities
+        safeP[key] = escapeHtml(JSON.stringify(safeP[key]));
+      } else if (safeP[key] !== null && safeP[key] !== undefined) {
+        // Convert numbers, booleans, etc. to strings and escape
+        safeP[key] = escapeHtml(String(safeP[key]));
       }
     }
 
