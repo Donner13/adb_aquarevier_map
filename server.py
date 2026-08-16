@@ -153,6 +153,22 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
+    def translate_path(self, path):
+        translated = super().translate_path(path)
+        # normcase normalizes case on Windows, making it safer
+        abs_dir = os.path.normcase(os.path.realpath(self.directory))
+        abs_path = os.path.normcase(os.path.realpath(translated))
+
+        # Guard against path traversal and symlinks escaping the root
+        try:
+            if os.path.commonpath([abs_dir, abs_path]) != abs_dir:
+                return os.path.join(self.directory, ".path_traversal_blocked_404_not_found")
+        except ValueError:
+            # Different drives on Windows
+            return os.path.join(self.directory, ".path_traversal_blocked_404_not_found")
+
+        return translated
+
     def log_message(self, format, *args):
         """Keep automated runs quiet unless access logging is explicitly requested."""
         if os.environ.get('SERVER_ACCESS_LOG') == '1':
