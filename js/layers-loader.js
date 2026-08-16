@@ -28,7 +28,7 @@ const geojsonWorkerCode = `
       })
       .then(text => {
         // Strip BOM if present
-        const cleanedText = text.replace(/\\uFEFF|\\xEF\\xBB\\xBF/g, '');
+        const cleanedText = text.replace(/^\\uFEFF|^\\xEF\\xBB\\xBF/, '');
         return JSON.parse(cleanedText);
       })
       .then(data => self.postMessage({ id: id, data: data, success: true }))
@@ -78,7 +78,7 @@ function fetchGeoJSONWorker(url) {
       return res.text();
     }).then(text => {
       // Strip BOM if present
-      const cleanedText = text.replace(/\uFEFF|\xEF\xBB\xBF/g, '');
+      const cleanedText = text.replace(/^\uFEFF|^\xEF\xBB\xBF/, '');
       return JSON.parse(cleanedText);
     });
   }
