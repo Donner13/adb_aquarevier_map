@@ -191,6 +191,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+        self.send_header('Vary', 'Origin')
         super().end_headers()
 
     def do_OPTIONS(self):
