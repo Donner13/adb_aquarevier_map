@@ -883,8 +883,6 @@
 
         // Global Escape key listener to close all open modals
         document.addEventListener('keydown', (e) => {
-            if (e.defaultPrevented) return;
-
             if (e.key === 'Tab') {
                 let activeModal = null;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
@@ -930,13 +928,15 @@
                     }
                 }
             } else if (e.key === 'Escape') {
+                if (e.defaultPrevented) return;
+
                 let closedAny = false;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
                         // Try to find a close button within the modal to gracefully close it and trigger cleanup
-                        const closeBtn = modal.querySelector('.close-btn, .scorecard-close, [aria-label="Schließen"], [data-close], .btn-close');
+                        const closeBtn = modal.querySelector('.close-btn, .scorecard-close, [aria-label="Schließen"], .btn-close');
                         if (closeBtn) {
                             closeBtn.click();
                         } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
