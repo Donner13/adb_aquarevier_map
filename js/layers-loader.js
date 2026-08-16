@@ -307,10 +307,17 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
           window[cfg.geoDataVar] = data;  // backward-compat global
           const markers = L.geoJSON(data, {
             filter: (feature) => {
-              if (feature.geometry && feature.geometry.type === 'Point' && feature.geometry.coordinates) {
+              if (!feature.geometry || !Array.isArray(feature.geometry.coordinates)) return true;
+              if (feature.geometry.type === 'Point') {
                 const [lon, lat] = feature.geometry.coordinates;
                 if (typeof lon !== 'number' || typeof lat !== 'number' || isNaN(lon) || isNaN(lat)) return false;
                 if (lon < 5.7 || lon > 9.5 || lat < 50.3 || lat > 52.6) return false;
+              } else if (feature.geometry.type === 'MultiPoint') {
+                for (let i = 0; i < feature.geometry.coordinates.length; i++) {
+                  const [lon, lat] = feature.geometry.coordinates[i];
+                  if (typeof lon !== 'number' || typeof lat !== 'number' || isNaN(lon) || isNaN(lat)) return false;
+                  if (lon < 5.7 || lon > 9.5 || lat < 50.3 || lat > 52.6) return false;
+                }
               }
               return true;
             },
@@ -383,10 +390,17 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
         const geoLayer = L.geoJSON(data, {
           filter: (feature) => {
-            if (feature.geometry && feature.geometry.type === 'Point' && feature.geometry.coordinates) {
+            if (!feature.geometry || !Array.isArray(feature.geometry.coordinates)) return true;
+            if (feature.geometry.type === 'Point') {
               const [lon, lat] = feature.geometry.coordinates;
               if (typeof lon !== 'number' || typeof lat !== 'number' || isNaN(lon) || isNaN(lat)) return false;
               if (lon < 5.7 || lon > 9.5 || lat < 50.3 || lat > 52.6) return false;
+            } else if (feature.geometry.type === 'MultiPoint') {
+              for (let i = 0; i < feature.geometry.coordinates.length; i++) {
+                const [lon, lat] = feature.geometry.coordinates[i];
+                if (typeof lon !== 'number' || typeof lat !== 'number' || isNaN(lon) || isNaN(lat)) return false;
+                if (lon < 5.7 || lon > 9.5 || lat < 50.3 || lat > 52.6) return false;
+              }
             }
             return true;
           },
