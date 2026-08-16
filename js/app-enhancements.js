@@ -944,7 +944,10 @@
                                 console.error('Error during modal.closeModal():', error);
                             }
                         } else {
-                            const closeBtn = modal.querySelector('.close-btn');
+                            // Find the closest close-btn that belongs to this specific modal level
+                            const closeBtns = Array.from(modal.querySelectorAll('.close-btn'));
+                            const closeBtn = closeBtns.find(btn => btn.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay') === modal) || closeBtns[0];
+
                             if (closeBtn) {
                                 try {
                                     closeBtn.click();
@@ -955,13 +958,22 @@
                             }
                         }
 
-                        if (!handled) {
-                            if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
-                                modal.remove();
-                            } else {
-                                modal.style.display = 'none';
-                                modal.classList.add('hidden');
+                        const forceCloseFallback = () => {
+                            if (document.body.contains(modal) && window.getComputedStyle(modal).display !== 'none' && !modal.classList.contains('hidden')) {
+                                if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
+                                    modal.remove();
+                                } else {
+                                    modal.style.display = 'none';
+                                    modal.classList.add('hidden');
+                                }
                             }
+                        };
+
+                        if (!handled) {
+                            forceCloseFallback();
+                        } else {
+                            // Verify after a short delay to allow custom handlers/animations to run, force close if they failed silently
+                            setTimeout(forceCloseFallback, 150);
                         }
                         closedAny = true;
                     }
