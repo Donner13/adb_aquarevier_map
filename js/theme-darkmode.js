@@ -59,11 +59,25 @@
         }
     };
 
+    // Listen to OS theme changes globally (decoupled from toggles)
+    if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            const savedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
+            if (!savedTheme) { // Only auto-switch if no manual override exists
+                if (e.matches && !window.isDarkMode) {
+                    window.toggleDarkMode();
+                } else if (!e.matches && window.isDarkMode) {
+                    window.toggleDarkMode();
+                }
+            }
+        });
+    }
+
     // Restore user theme preference on load
     function initTheme() {
         const savedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
-        // Removed matchMedia as requested
-        const shouldBeDark = savedTheme === 'dark';
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
 
         if (shouldBeDark) {
             window.isDarkMode = false; // set false so toggleDarkMode flips to true
