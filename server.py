@@ -203,26 +203,34 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         parsed_path = urllib.parse.urlparse(self.path)
 
         if parsed_path.path == '/health':
+            file_status = {}
             missing_files = []
+
             for geojson_file in CORE_GEOJSONS:
                 file_path = os.path.join(DIRECTORY, geojson_file)
                 is_readable_file = False
+                error_msg = None
+
                 if os.path.isfile(file_path):
                     try:
                         with open(file_path, 'r', encoding='utf-8') as f:
-                            pass
+                            # Read a tiny chunk to ensure encoding and permissions actually allow reading
+                            f.read(1)
                         is_readable_file = True
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        error_msg = str(e)
+                else:
+                    error_msg = "File not found or is a directory"
 
                 if not is_readable_file:
                     missing_files.append(geojson_file)
+                    file_status[geojson_file] = error_msg
 
             if missing_files:
                 self.send_response(503)
                 self.send_header('Content-Type', 'application/json')
                 self.end_headers()
-                self.wfile.write(json.dumps({"status": "error", "missing": missing_files}).encode('utf-8'))
+                self.wfile.write(json.dumps({"status": "error", "missing": missing_files, "details": file_status}).encode('utf-8'))
             else:
                 self.send_response(200)
                 self.send_header('Content-Type', 'application/json')
