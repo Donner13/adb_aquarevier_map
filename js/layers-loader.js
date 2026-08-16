@@ -18,13 +18,13 @@
 
 
 function textPreprocessing(text) {
-  return text.replace(/^\uFEFF\uFEFF/, '');
+  return text.replace(/^\uFEFF/, '');
 }
 
 // Setup reusable web worker for GeoJSON parsing to unblock main thread
 const geojsonWorkerCode = `
   function textPreprocessing(text) {
-    return text.replace(/^\\uFEFF\\uFEFF/, '');
+    return text.replace(/^\\uFEFF/, '');
   }
 
   self.onmessage = function(e) {
