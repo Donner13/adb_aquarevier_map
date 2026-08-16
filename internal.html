@@ -5962,6 +5962,318 @@ function renderMapAndSidebar() {
             updateSidebarCounters();
         });
 
+        // Embed Modal Logic
+        const embedModal = document.getElementById('embed-modal');
+        const embedOpenBtn = document.getElementById('embed-open-btn');
+        const embedCloseBtn = document.getElementById('embed-close-btn');
+        const embedWidthRadios = document.querySelectorAll('input[name="embed-width-type"]');
+        const embedWidthPx = document.getElementById('embed-width-px');
+        const embedHeight = document.getElementById('embed-height');
+        const embedSnippetOutput = document.getElementById('embed-snippet-output');
+        const embedPreviewIframe = document.getElementById('embed-preview-iframe');
+        const embedCopyBtn = document.getElementById('embed-copy-btn');
+
+        function generateEmbedSnippet() {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const embedUrl = baseUrl + '?embed=1';
+            const widthType = document.querySelector('input[name="embed-width-type"]:checked').value;
+            const width = widthType === 'responsive' ? '100%' : embedWidthPx.value + 'px';
+            const height = embedHeight.value + 'px';
+
+            const snippet = `<iframe src="${embedUrl}" width="${width}" height="${height}" style="border:0;" loading="lazy" title="AquaRevier Akteurskarte"></iframe>`;
+            embedSnippetOutput.value = snippet;
+            embedPreviewIframe.src = embedUrl;
+            embedPreviewIframe.style.width = width;
+            embedPreviewIframe.style.height = height;
+        }
+
+        if (embedOpenBtn) {
+            embedOpenBtn.addEventListener('click', () => {
+                embedModal.style.display = 'flex';
+                generateEmbedSnippet();
+            });
+        }
+
+        if (embedCloseBtn) {
+            embedCloseBtn.addEventListener('click', () => {
+                embedModal.style.display = 'none';
+            });
+        }
+
+        embedWidthRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                embedWidthPx.disabled = e.target.value === 'responsive';
+                generateEmbedSnippet();
+            });
+        });
+
+        embedWidthPx.addEventListener('input', generateEmbedSnippet);
+        embedHeight.addEventListener('input', generateEmbedSnippet);
+
+        embedCopyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(embedSnippetOutput.value).then(() => {
+                const originalText = embedCopyBtn.innerText;
+                embedCopyBtn.innerText = '✅ Kopiert!';
+                setTimeout(() => {
+                    embedCopyBtn.innerText = originalText;
+                }, 2000);
+            });
+        });
+
+        // Export Logic
+        function getFilteredDataForExport() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const mainPartners = [
+                'wver', 'schoellershammer', 'smurfit', 'tillmann',
+                'rlv', 'eschweiler', 'fiw', 'iww'
+            ];
+            const isMainPartner = (name) => {
+                const nameLower = name.toLowerCase();
+                return mainPartners.some(p => nameLower.includes(p));
+            };
+
+            return geojsonData.features.filter(feature => {
+                const props = feature.properties;
+                const matchesFilter = activeFilters.has(props.group) || isMainPartner(props.name);
+                const matchesSearch = !searchQuery ||
+                    props.name.toLowerCase().includes(searchQuery) ||
+                    props.group.toLowerCase().includes(searchQuery);
+                return matchesFilter && matchesSearch;
+            }).map(f => f.properties);
+        }
+
+        document.getElementById('export-csv-btn').addEventListener('click', () => {
+            const data = getFilteredDataForExport();
+            if (data.length === 0) {
+                alert("Keine Daten zum Exportieren vorhanden.");
+                return;
+            }
+
+            const headers = ['Name', 'Organisation', 'Gruppe', 'E-Mail'];
+            const csvRows = [headers.join(';')];
+
+            data.forEach(props => {
+                const row = [
+                    props.name || '',
+                    props.organisation || '',
+                    props.group || '',
+                    props.email || ''
+                ].map(val => `"${val.toString().replace(/"/g, '""')}"`);
+                csvRows.push(row.join(';'));
+            });
+
+            const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + csvRows.join("\n");
+            const encodedUri = encodeURI(csvContent);
+
+            const today = new Date().toISOString().split('T')[0];
+            const filename = `Akteure_${today}.csv`;
+
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        document.getElementById('export-pdf-btn').addEventListener('click', () => {
+            const data = getFilteredDataForExport();
+            if (data.length === 0) {
+                alert("Keine Daten zum Exportieren vorhanden.");
+                return;
+            }
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFontSize(18);
+            doc.text("AquaRevier Akteursliste", 14, 22);
+            doc.setFontSize(11);
+            doc.text(`Gefilterte Ergebnisse: ${data.length} Akteure`, 14, 30);
+
+            const tableData = data.map(props => [
+                props.name || '',
+                props.organisation || '',
+                props.group || '',
+                props.email || ''
+            ]);
+
+            doc.autoTable({
+                startY: 36,
+                head: [['Name', 'Organisation', 'Gruppe', 'E-Mail']],
+                body: tableData,
+                theme: 'striped',
+                headStyles: { fillColor: [79, 70, 229] },
+                styles: { fontSize: 9 }
+            });
+
+            const today = new Date().toISOString().split('T')[0];
+            doc.save(`Akteure_${today}.pdf`);
+        });
+
+        // Generate Detailed Report containing map capture and table analysis
+        document.getElementById('generate-report-btn').addEventListener('click', async () => {
+            const btn = document.getElementById('generate-report-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "⏳ Generiere Bericht...";
+            btn.disabled = true;
+
+            try {
+                // Determine visible bounding box of the map
+                const bounds = map.getBounds();
+
+                // 1. Filter visible contacts (from geojsonData)
+                const visibleContacts = geojsonData.features.filter(f => {
+                    const coords = f.geometry.coordinates;
+                    const latlng = L.latLng(coords[1], coords[0]);
+                    return bounds.contains(latlng) && (activeFilters.has(f.properties.group) || f.properties.isMainPartner);
+                }).map(f => f.properties);
+
+                // 2. Filter visible industrial dischargers (from elwasGeoData)
+                let visibleEinleiter = [];
+                if (elwasGeoData && map.hasLayer(elwasLayer)) {
+                    visibleEinleiter = elwasGeoData.features.filter(f => {
+                        const coords = f.geometry.coordinates;
+                        const latlng = L.latLng(coords[1], coords[0]);
+                        const matchesBranche = elwasActiveRisks.has(getEinleiterRisk(f));
+                        return bounds.contains(latlng) && matchesBranche;
+                    }).map(f => f.properties);
+                }
+
+                // Temporary hide Leaflet controls for clean capture
+                const controlsToHide = document.querySelectorAll('.leaflet-control-zoom, .leaflet-control-layers, .unified-search-control');
+                controlsToHide.forEach(el => el.style.opacity = '0');
+
+                // Render Map Canvas via html2canvas
+                const mapCanvas = await html2canvas(document.getElementById('map'), {
+                    useCORS: true,
+                    allowTaint: true,
+                    logging: false,
+                    scale: window.devicePixelRatio || 1
+                });
+
+                // Restore hidden UI controls
+                controlsToHide.forEach(el => el.style.opacity = '1');
+
+                // Build PDF Document
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'mm', 'a4');
+                const pageWidth = doc.internal.pageSize.getWidth();
+                const margin = 14;
+
+                // Page 1: Cover / Map Image
+                doc.setFontSize(22);
+                doc.setTextColor(30, 41, 59); // Sleek dark slate
+                doc.text("AquaRevier - Lagebericht", margin, 20);
+
+                doc.setFontSize(10);
+                doc.setTextColor(100, 116, 139);
+                const printDate = new Date().toLocaleString('de-DE');
+                doc.text(`Generiert am: ${printDate} | Massstab/Zoom: Level ${map.getZoom()}`, margin, 26);
+                doc.text(`Kartenzentrum: Lat ${map.getCenter().lat.toFixed(4)}, Lng ${map.getCenter().lng.toFixed(4)}`, margin, 31);
+
+                // Active Filters Meta
+                const activeFiltersStr = Array.from(activeFilters).join(', ');
+                doc.setFontSize(9);
+                doc.text(`Aktive Filter (Gruppen): ${activeFiltersStr}`, margin, 38, { maxWidth: pageWidth - 28 });
+
+                // Map Image Insertion
+                const imgWidth = pageWidth - 28;
+                const imgHeight = (mapCanvas.height * imgWidth) / mapCanvas.width;
+                const mapImgData = mapCanvas.toDataURL('image/png');
+                doc.addImage(mapImgData, 'PNG', margin, 44, imgWidth, imgHeight);
+
+                // Page 2: Visible Actors Table & Industrial Discharges
+                doc.addPage();
+                doc.setFontSize(16);
+                doc.setTextColor(30, 41, 59);
+                doc.text("Analysedaten im Kartenausschnitt", margin, 20);
+
+                doc.setFontSize(11);
+                doc.setTextColor(71, 85, 105);
+                doc.text(`Gefundene Akteure in diesem Ausschnitt: ${visibleContacts.length}`, margin, 28);
+
+                // Table 1: Visible Contacts
+                const contactsBody = visibleContacts.map(props => [
+                    props.name || '',
+                    props.organisation || props.institution || '–',
+                    props.group || '',
+                    props.email || '–'
+                ]);
+
+                doc.autoTable({
+                    startY: 32,
+                    head: [['Akteur Name', 'Organisation / Institution', 'Gruppe', 'E-Mail']],
+                    body: contactsBody.length > 0 ? contactsBody : [['Keine Akteure im sichtbaren Bereich', '', '', '']],
+                    theme: 'striped',
+                    headStyles: { fillColor: [99, 102, 241] }, // Indigo theme
+                    styles: { fontSize: 8.5 }
+                });
+
+                // Section 2: Industrial Wastewater Discharges
+                let nextY = doc.lastAutoTable.finalY + 12;
+                doc.setFontSize(14);
+                doc.setTextColor(30, 41, 59);
+                doc.text("Industrieeinleiter & Abwassermengen (ELWAS)", margin, nextY);
+
+                // Compute sums
+                let totalDischarge = 0;
+                let unit = "m³/a";
+                const einleiterBody = visibleEinleiter.map(props => {
+                    let maxVal = 0;
+                    if (props.mengen_je_typ) {
+                        Object.keys(props.mengen_je_typ).forEach(type => {
+                            const val = props.mengen_je_typ[type].max_a;
+                            if (val) {
+                                const parsed = parseFloat(val);
+                                if (!isNaN(parsed)) maxVal += parsed;
+                            }
+                        });
+                    }
+                    totalDischarge += maxVal;
+                    return [
+                        props.name || 'Unbekannt',
+                        props.anhang_codes ? props.anhang_codes.map(a => 'Anhang ' + a).join(', ') : '–',
+                        props.einleitungsart || '–',
+                        maxVal > 0 ? `${maxVal.toLocaleString('de-DE')} m³/a` : 'keine Angabe'
+                    ];
+                });
+
+                doc.setFontSize(11);
+                doc.setTextColor(71, 85, 105);
+                doc.text(`Summierte Abwassermenge im Ausschnitt: ${totalDischarge.toLocaleString('de-DE')} m³/a (aus ${visibleEinleiter.length} Betrieben)`, margin, nextY + 6);
+
+                doc.autoTable({
+                    startY: nextY + 10,
+                    head: [['Betriebsname', 'Anhang', 'Einleitungsart', 'Menge (max_a)']],
+                    body: einleiterBody.length > 0 ? einleiterBody : [['Keine aktiven Industrieeinleiter im Ausschnitt geladen', '', '', '']],
+                    theme: 'striped',
+                    headStyles: { fillColor: [89, 89, 89] },
+                    styles: { fontSize: 8.5 }
+                });
+
+                // Verification check: count matching markers currently loaded in active Leaflet bounds
+                let leafletContactsCount = 0;
+                markersLayer.eachLayer(layer => {
+                    if (layer instanceof L.Marker && bounds.contains(layer.getLatLng())) {
+                        leafletContactsCount++;
+                    }
+                });
+
+                // Save PDF
+                const fileDate = new Date().toISOString().split('T')[0];
+                doc.save(`AquaRevier_Report_${fileDate}.pdf`);
+
+                console.log(`[Report Verification] PDF Table: ${visibleContacts.length} vs Leaflet Markers: ${leafletContactsCount}`);
+            } catch (err) {
+                console.error("Fehler bei der Berichtgenerierung:", err);
+                alert("Fehler beim Erstellen des PDF-Berichts. Bitte prüfe die Entwicklerkonsole.");
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        });
+
         // Initial Load
         loadContacts();
 
