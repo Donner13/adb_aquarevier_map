@@ -3,9 +3,8 @@ const { test, expect, gotoPage } = require('./fixtures');
 test.describe('Popup Content Sanitizer', () => {
   // Use test.fail to mark it as known failure.
   test('Popup generation sanitizes HTML in properties to prevent XSS', async ({ page }) => {
-    test.fail(true, 'Popup sanitization is currently missing');
 
-    await page.route('**/contacts_anonymized.geojson', route => {
+    await page.route(/.*contacts_anonymized\.geojson.*/, route => {
       route.fulfill({
         status: 200,
         contentType: 'application/json',

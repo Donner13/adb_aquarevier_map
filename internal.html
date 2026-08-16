@@ -2684,10 +2684,10 @@
                             const html = `
                                 <div class="popup-card">
                                     <div class="popup-group" style="color: #dc2626">Trinkwasserschutzgebiet</div>
-                                    <div class="popup-title">${p.wsg_name || 'Unbekannt'}</div>
+                                    <div class="popup-title">${escapeHtml(p.wsg_name || 'Unbekannt')}</div>
                                     <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'}</div>
                                     <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
-                                    <div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.wsg_name || 'Unbekannt').replace(/'/g, "\\'")}', 'Wasserschutzgebiete', '${p.id || p.wsg_name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>
+                                    <div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${escapeHtml(p.wsg_name || 'Unbekannt').replace(/&#039;/g, "\\'")}', 'Wasserschutzgebiete', '${escapeHtml(p.id || p.wsg_name || '').replace(/&#039;/g, "\\'")}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>
                                     <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
                                 </div>
                             `;
@@ -2718,7 +2718,7 @@
                             const html = `
                                 <div class="popup-card">
                                     <div class="popup-group" style="color: #005A9C">Wassergewinnungsgebiet</div>
-                                    <div class="popup-title">${p.wsg_name || 'Unbekannt'}</div>
+                                    <div class="popup-title">${escapeHtml(p.wsg_name || 'Unbekannt')}</div>
                                     <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'} (Fassungsbereich)</div>
                                     <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
                                     <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
@@ -3018,18 +3018,20 @@
                     },
                     onEachFeature: function(feature, layer) {
                         const props = feature.properties;
+                        const safeProps = { ...props };
+                        for (const key in safeProps) { if (typeof safeProps[key] === 'string') safeProps[key] = escapeHtml(safeProps[key]); }
                         let popupContent = `
                             <div class="popup-card">
                                 <div class="popup-group" style="color: #94a3b8">Akteur (Stand 2025)</div>
-                                <div class="popup-title">${props.name}</div>
+                                <div class="popup-title">${safeProps.name}</div>
                         `;
-                        if (props.abbreviation) popupContent += `<div style="font-size: 11px; margin-top:-4px; margin-bottom:6px; color:#cbd5e1">${props.abbreviation}</div>`;
-                        popupContent += `<div class="popup-detail">💼 Gruppe: ${props.group}</div>`;
-                        if (props.sector) popupContent += `<div class="popup-detail">🏢 Branche: ${props.sector}</div>`;
-                        if (props.address) popupContent += `<div class="popup-detail">📍 Adresse: ${props.address}</div>`;
-                        if (props.common_projects) popupContent += `<div class="popup-detail">🤝 Projekte: ${props.common_projects}</div>`;
+                        if (safeProps.abbreviation) popupContent += `<div style="font-size: 11px; margin-top:-4px; margin-bottom:6px; color:#cbd5e1">${safeProps.abbreviation}</div>`;
+                        popupContent += `<div class="popup-detail">💼 Gruppe: ${safeProps.group}</div>`;
+                        if (safeProps.sector) popupContent += `<div class="popup-detail">🏢 Branche: ${safeProps.sector}</div>`;
+                        if (safeProps.address) popupContent += `<div class="popup-detail">📍 Adresse: ${safeProps.address}</div>`;
+                        if (safeProps.common_projects) popupContent += `<div class="popup-detail">🤝 Projekte: ${safeProps.common_projects}</div>`;
                         const latlng = layer.getLatLng ? layer.getLatLng() : {lat:0, lng:0};
-                        popupContent += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(props.name || '').replace(/'/g, "\\'")}', 'Akteur 2025', '${props.id || props.name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
+                        popupContent += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${String(safeProps.name || '').replace(/&#039;/g, "\\'")}', 'Akteur 2025', '${String(safeProps.id || safeProps.name || '').replace(/&#039;/g, "\\'")}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
                         popupContent += `</div>`;
                         layer.bindPopup(popupContent);
                     }
@@ -3342,7 +3344,7 @@
                                 : (p.anzahl_betriebe > 0
                                     ? `<div class="popup-detail">💧 Keine Mengenangabe für die Betriebe hier verfügbar</div>`
                                     : '');
-                            html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(title || '').replace(/'/g, "\\'")}', 'Einzugsgebiet-Statistik', '${p.id || title || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
+                            html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${escapeHtml(title || '').replace(/&#039;/g, "\\'")}', 'Einzugsgebiet-Statistik', '${escapeHtml(p.id || title || '').replace(/&#039;/g, "\\'")}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
                             html += `
                                     <div style="font-size: 10px; color: #475569; margin-top: 6px;">Spatial Join: ELWAS-WEB Industrieeinleiter × LANUV Teileinzugsgebiete (Rur)</div>
                                 </div>
@@ -5870,7 +5872,7 @@ function renderMapAndSidebar() {
                                 cat: 'einleiter', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng, color,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">💧 Einleitungsart: ${p.einleitungsart || '–'}</div><div class="popup-detail">🚦 Risikoklasse: <strong style="color: ${color};">${risk}</strong></div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}${getZustaendigkeitHtml(p)}<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', 'Industrieeinleiter', '${p.betriebs_nr || p.name || ''}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div></div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">💧 Einleitungsart: ${p.einleitungsart || '–'}</div><div class="popup-detail">🚦 Risikoklasse: <strong style="color: ${color};">${risk}</strong></div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}${getZustaendigkeitHtml(p)}<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${escapeHtml(p.name || '').replace(/&#039;/g, "\\'")}', 'Industrieeinleiter', '${escapeHtml(p.betriebs_nr || p.name || '').replace(/&#039;/g, "\\'")}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div></div>`
                             });
                             if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
                             (p.gewaesser_liste || '').split(',').map(s => s.trim()).filter(Boolean).forEach(g => addAgg(gewaesserAgg, g, lat, lng));

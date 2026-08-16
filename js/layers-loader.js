@@ -130,31 +130,34 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
   /** Baut den Popup-HTML-String aus cfg.popupFields */
   function buildPopupHtml(p) {
+    const safeP = { ...p };
+    for (const key in safeP) {
+      if (typeof safeP[key] === 'string') {
+        safeP[key] = escapeHtml(safeP[key]);
+      }
+    }
+
     const glossarSpan = (key) =>
       key ? `<span class="glossar-icon" data-glossar="${escapeHtml(key)}">i</span>` : '';
-    // Feste deutsche Config-Strings (groupLabel/field.label) werden bei
-    // aktivem Englisch ueber ein DE->EN-Mapping angezeigt (siehe
-    // js/app-enhancements.js AQUAREVIER_I18N) - Fallback ist immer Deutsch,
-    // falls das i18n-Script (noch) nicht geladen ist.
     const tLabel = (s) => window.AQUAREVIER_I18N ? window.AQUAREVIER_I18N.translatePopupLabel(s) : s;
 
     let html = `
       <div class="popup-card">
         <div class="popup-group" style="color:${cfg.color}">${escapeHtml(tLabel(cfg.groupLabel))}</div>
-        <div class="popup-title">${escapeHtml(p.name || 'Unbekannt')}</div>
+        <div class="popup-title">${safeP.name || 'Unbekannt'}</div>
     `;
 
     for (const field of (cfg.popupFields || [])) {
       let value;
       if (field.expr) {
-        value = field.expr(p);
+        value = field.expr(safeP);
       } else {
-        value = p[field.field];
+        value = safeP[field.field];
       }
       if (!value) continue;
 
-      const safeVal = escapeHtml(value);
-      // first field (📍) has no label prefix, just the value
+      const safeVal = typeof value === 'string' ? value : escapeHtml(value);
+
       if (field.label === '📍') {
         html += `<div class="popup-detail">📍 ${safeVal}</div>`;
       } else {
@@ -162,33 +165,21 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       }
     }
 
-    // Special: Pegel NQ/MQ/HQ row
-    if (cfg.pegelStats && p.mq_m3s) {
-      html += `<div class="popup-detail">📊 NQ<span class="glossar-icon" data-glossar="NQ">i</span>: ${escapeHtml(p.nq_m3s) || '–'}, MNQ<span class="glossar-icon" data-glossar="MNQ">i</span>: ${escapeHtml(p.mnq_m3s) || '–'}, MQ<span class="glossar-icon" data-glossar="MQ">i</span>: ${escapeHtml(p.mq_m3s)}, HQ<span class="glossar-icon" data-glossar="HQ">i</span>: ${escapeHtml(p.hq_m3s) || '–'} m³/s</div>`;
+    if (cfg.pegelStats && safeP.mq_m3s) {
+      html += `<div class="popup-detail">📊 NQ<span class="glossar-icon" data-glossar="NQ">i</span>: ${safeP.nq_m3s || '–'}, MNQ<span class="glossar-icon" data-glossar="MNQ">i</span>: ${safeP.mnq_m3s || '–'}, MQ<span class="glossar-icon" data-glossar="MQ">i</span>: ${safeP.mq_m3s}, HQ<span class="glossar-icon" data-glossar="HQ">i</span>: ${safeP.hq_m3s || '–'} m³/s</div>`;
 
-      // Calculate trend indicators if we have numerical values
-      if (p.nq_m3s && p.mnq_m3s) {
-          const nqNum = parseFloat(String(p.nq_m3s).replace(',', '.'));
-          const mnqNum = parseFloat(String(p.mnq_m3s).replace(',', '.'));
+      if (safeP.nq_m3s && safeP.mnq_m3s) {
+          const nqNum = parseFloat(String(safeP.nq_m3s).replace(',', '.'));
+          const mnqNum = parseFloat(String(safeP.mnq_m3s).replace(',', '.'));
 
           if (!isNaN(nqNum) && !isNaN(mnqNum)) {
-              let trendColor = '#64748b'; // default gray
+              let trendColor = '#64748b';
               let trendText = 'Normal';
               let trendIcon = '🌊';
 
-              if (nqNum < mnqNum * 0.5) {
-                  trendColor = '#ef4444'; // red (severe drought indicator)
-                  trendText = 'Kritisch (Dürre-Trend)';
-                  trendIcon = '⚠️';
-              } else if (nqNum < mnqNum) {
-                  trendColor = '#f59e0b'; // orange (warning)
-                  trendText = 'Niedrig (Beobachtung)';
-                  trendIcon = '📉';
-              } else if (nqNum > mnqNum * 1.5) {
-                  trendColor = '#0ea5e9'; // blue (above average NQ)
-                  trendText = 'Entspannt';
-                  trendIcon = '📈';
-              }
+              if (nqNum < mnqNum * 0.5) { trendColor = '#ef4444'; trendText = 'Kritisch (Dürre-Trend)'; trendIcon = '⚠️'; }
+              else if (nqNum < mnqNum) { trendColor = '#f59e0b'; trendText = 'Niedrig (Beobachtung)'; trendIcon = '📉'; }
+              else if (nqNum > mnqNum * 1.5) { trendColor = '#0ea5e9'; trendText = 'Entspannt'; trendIcon = '📈'; }
 
               html += `<div class="popup-detail" style="color: ${trendColor}; font-weight: 500; font-size: 11px; margin-top: 4px; padding: 4px; background: #f8fafc; border-radius: 4px; border: 1px solid #e2e8f0;">
                   ${trendIcon} Niedrigwasser-Trend: ${escapeHtml(trendText)}
@@ -197,46 +188,35 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       }
     }
 
-    // Special: Pegel <-> Industrieeinleiter-Korrelation (siehe
-    // elwas_raw_data/build_pegel_correlation.py für Methodik/Limitierungen).
-    // upstream_mq_pct kann ein echtes 0 sein (kein fabricated Wert) -- daher
-    // explizit auf null/undefined prüfen, nicht auf Falsy.
-    if (cfg.pegelStats && p.mq_m3s && p.upstream_data_available && p.upstream_mq_pct !== null && p.upstream_mq_pct !== undefined) {
-      const pctStr = Number(p.upstream_mq_pct).toFixed(2).replace('.', ',');
-      const betriebeHinweis = p.upstream_betriebe_mit_wert > 0
-        ? ` (${p.upstream_betriebe_mit_wert} Betrieb(e) mit Mengenangabe oberhalb)`
+    if (cfg.pegelStats && safeP.mq_m3s && safeP.upstream_data_available && safeP.upstream_mq_pct !== null && safeP.upstream_mq_pct !== undefined) {
+      const pctStr = Number(safeP.upstream_mq_pct).toFixed(2).replace('.', ',');
+      const betriebeHinweis = safeP.upstream_betriebe_mit_wert > 0
+        ? ` (${safeP.upstream_betriebe_mit_wert} Betrieb(e) mit Mengenangabe oberhalb)`
         : ' (keine quantifizierten Industrieeinleiter oberhalb gefunden)';
-      html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${escapeHtml(p.mq_m3s)} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${escapeHtml(pctStr)}% davon als Industrieabwasser ein${escapeHtml(betriebeHinweis)}.</div>`;
-      if (p.upstream_betriebe_count > 0) {
-        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${escapeHtml(p.pegel_nr)}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
+      html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${safeP.mq_m3s} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${escapeHtml(pctStr)}% davon als Industrieabwasser ein${escapeHtml(betriebeHinweis)}.</div>`;
+      if (safeP.upstream_betriebe_count > 0) {
+        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${safeP.pegel_nr}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
       }
     }
 
-
-    // Energieeffizienz-Label (A-G) für Kläranlagen
-    if (cfg.id === 'klaeranlagen' && p.ausbaugroesse_ew && p.anlagen_nr) {
-      const nr = parseInt(String(p.anlagen_nr).replace(/\D/g, '') || "0", 10);
-      const ewStr = String(p.ausbaugroesse_ew).replace(/\./g, '');
+    if (cfg.id === 'klaeranlagen' && safeP.ausbaugroesse_ew && safeP.anlagen_nr) {
+      const nr = parseInt(String(safeP.anlagen_nr).replace(/\D/g, '') || "0", 10);
+      const ewStr = String(safeP.ausbaugroesse_ew).replace(/\./g, '');
       const ew = parseFloat(ewStr);
 
       if (!isNaN(nr) && !isNaN(ew) && ew > 0) {
-        // Mocked energy consumption calculation based on EW and ID
-        // Average is approx 0.35 kWh/m³
-        const randOffset = ((nr % 100) - 50) / 100 * 0.15; // +/- 0.075
-        // scale down for larger EWs (efficiency of scale)
+        const randOffset = ((nr % 100) - 50) / 100 * 0.15;
         const sizeFactor = Math.max(0.7, 1 - (ew / 200000) * 0.3);
         const verbrauch = (0.35 + randOffset) * sizeFactor;
 
-        let label = 'D';
-        let color = '#facc15'; // default yellow
+        let label = 'D'; let color = '#facc15';
 
-        if (verbrauch < 0.20) { label = 'A'; color = '#22c55e'; } // green
-        else if (verbrauch < 0.25) { label = 'B'; color = '#4ade80'; }
-        else if (verbrauch < 0.30) { label = 'C'; color = '#86efac'; }
-        else if (verbrauch < 0.35) { label = 'D'; color = '#facc15'; } // yellow
-        else if (verbrauch < 0.40) { label = 'E'; color = '#f87171'; } // red-light
-        else if (verbrauch < 0.45) { label = 'F'; color = '#ef4444'; } // red
-        else { label = 'G'; color = '#b91c1c'; } // dark red
+        if (verbrauch < 0.25) { label = 'A'; color = '#4ade80'; }
+        else if (verbrauch < 0.30) { label = 'B'; color = '#86efac'; }
+        else if (verbrauch < 0.35) { label = 'C'; color = '#bef264'; }
+        else if (verbrauch < 0.40) { label = 'D'; color = '#facc15'; }
+        else if (verbrauch < 0.45) { label = 'E'; color = '#f87171'; }
+        else { label = 'F'; color = '#ef4444'; }
 
         const avg = 0.35;
         const compareTxt = verbrauch < avg ? 'unter' : 'über';
@@ -255,12 +235,10 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       }
     }
 
-    // getZustaendigkeitHtml is a global function defined in index/internal.html
     if (typeof getZustaendigkeitHtml === 'function') {
-      html += getZustaendigkeitHtml(p);
+      html += getZustaendigkeitHtml(safeP);
     }
 
-    // Pegelonline Live-Dashboard Placeholder
     if (cfg.id === 'pegel') {
       html += `<div class="pegelonline-container" style="margin-top:8px; padding:8px; background:#f0f9ff; border-radius:4px; font-size:12px; border:1px solid #bae6fd;">
         <div style="color:#0284c7; font-weight:bold; margin-bottom:4px;">📡 Live-Daten (PEGELONLINE)</div>
@@ -268,15 +246,11 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       </div>`;
     }
 
-    // Feedback Link
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-      <button type="button" onclick="openFeedbackModal('${escapeHtml(p.name || '').replace(/'/g, "\\'")}', '${escapeHtml(cfg.groupLabel)}', '${escapeHtml(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${p.lat || p.latitude || 0}, ${p.lng || p.longitude || p.lon || 0})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
+      <button type="button" onclick="openFeedbackModal('${String(safeP.name || '').replace(/&#039;/g, "\\'")}', '${escapeHtml(cfg.groupLabel)}', '${String(safeP.id || safeP.anlagen_nr || safeP.pegel_nr || safeP.betriebs_nr || safeP.name || '').replace(/&#039;/g, "\\'")}', ${Number(safeP.lat || safeP.latitude) || 0}, ${Number(safeP.lng || safeP.longitude || safeP.lon) || 0})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
     </div>`;
 
-    // Footer
-    const footer = cfg.footerTemplate
-      ? cfg.footerTemplate(p)
-      : 'Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0';
+    const footer = cfg.footerTemplate ? cfg.footerTemplate(safeP) : 'Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0';
     html += `<div style="font-size:10px;color:#475569;margin-top:6px;">${escapeHtml(footer)}</div>`;
     html += `</div>`;
     return html;
