@@ -932,7 +932,7 @@
                     }
                 }
             } else if (e.key === 'Escape') {
-                let closedAny = false;
+                let isModalClosed = false;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
                     const style = window.getComputedStyle(modal);
@@ -944,11 +944,11 @@
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
                         }
-                        closedAny = true;
+                        isModalClosed = true;
                     }
                 });
 
-                if (closedAny && lastTriggerElement && document.body.contains(lastTriggerElement)) {
+                if (isModalClosed && lastTriggerElement && document.body.contains(lastTriggerElement)) {
                     if (typeof lastTriggerElement.focus === 'function') {
                         // Small delay to allow modal display to clear before restoring focus
                         setTimeout(() => lastTriggerElement.focus(), 10);
