@@ -887,7 +887,7 @@
                 let closedAny = false;
 
                 const openModals = document.querySelectorAll(
-                    '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #onboarding-role-modal'
+                    '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay'
                 );
 
                 openModals.forEach(modal => {
@@ -895,6 +895,8 @@
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (modal.id === 'command-palette-modal') {
+                            // Unified closure: If the custom close function is in scope, use it for animation,
+                            // otherwise fall back to generic hiding.
                             if (typeof closePalette === 'function') {
                                 closePalette();
                             } else {
@@ -905,23 +907,8 @@
                             return;
                         }
 
-                        if (modal.id === 'onboarding-role-modal') {
-                            if (typeof window.closeRoleModal === 'function') {
-                                window.closeRoleModal();
-                            } else {
-                                modal.style.display = 'none';
-                                modal.classList.add('hidden');
-                            }
-                            closedAny = true;
-                            return;
-                        }
-
                         if (modal.id === 'coachmark-overlay') {
-                            if (typeof window.endCoachmarkTour === 'function') {
-                                window.endCoachmarkTour();
-                            } else {
-                                modal.style.display = 'none';
-                            }
+                            modal.style.display = 'none';
                             closedAny = true;
                             return;
                         }
