@@ -214,6 +214,60 @@
             z-index: 1;
         }
 
+        /* Embed Mode */
+        body.embed-mode #sidebar {
+            display: none !important;
+        }
+        body.embed-mode .unified-search-container {
+            display: none !important;
+        }
+        body.embed-mode #map {
+            width: 100vw !important;
+            flex: none !important;
+        }
+
+        .embed-mini-legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--bg-surface);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 1000;
+            font-size: 11px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+        }
+        body.embed-mode .embed-mini-legend {
+            display: flex;
+        }
+        .embed-mini-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .embed-mini-legend-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .embed-back-link {
+            font-size: 11px;
+            color: var(--accent-primary);
+            text-decoration: none;
+            margin-bottom: 6px;
+            display: inline-block;
+        }
+        .embed-back-link:hover {
+            text-decoration: underline;
+        }
+
         /* Header */
         .sidebar-header {
             padding: 20px 24px;
@@ -661,6 +715,100 @@
             display: flex;
             align-items: center;
             gap: 6px;
+        }
+
+        .extended-popup {
+            max-height: 350px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .extended-popup::-webkit-scrollbar {
+            width: 4px;
+        }
+        .extended-popup::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+        body.light-theme .extended-popup::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-body {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .popup-detail strong {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .popup-detail a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+        .popup-detail a:hover {
+            text-decoration: underline;
+        }
+
+        .coords-detail {
+            font-family: monospace;
+            font-size: 10px;
+            margin-top: 6px;
+            color: var(--text-secondary);
+        }
+
+        .popup-footer {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .website-btn {
+            display: block;
+            text-align: center;
+            background: var(--accent-primary);
+            color: #ffffff;
+            padding: 8px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .copy-contact-btn {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 10px;
+            background-color: var(--accent-primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .copy-contact-btn:hover {
+            background-color: var(--accent-hover);
+        }
+        body.light-theme .copy-contact-btn {
+            color: white;
+        }
+        .website-btn:hover {
+            background: #4f46e5;
+            transform: translateY(-1px);
+            color: #ffffff;
+        }
+        body.light-theme .website-btn {
+            color: #ffffff !important;
         }
 
         .info-msg {
@@ -2574,6 +2722,31 @@
         L.control.zoom({
             position: 'bottomright'
         }).addTo(map);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('embed') === '1') {
+            document.body.classList.add('embed-mode');
+
+            // Build Mini Legend
+            const miniLegendContainer = document.getElementById('embed-mini-legend-items');
+            for (const [group, color] of Object.entries(groupColors)) {
+                if (group !== 'Konsortium') {
+                    const item = document.createElement('div');
+                    item.className = 'embed-mini-legend-item';
+                    item.innerHTML = `<span class="embed-mini-legend-color" style="background-color: ${color}"></span><span>${group}</span>`;
+                    miniLegendContainer.appendChild(item);
+                }
+            }
+
+            // Set dynamic back link
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.delete('embed');
+            document.getElementById('embed-back-link').href = currentUrl.toString();
+
+            // Handle Map Resize for iframes
+            window.addEventListener('resize', () => map.invalidateSize());
+            setTimeout(() => map.invalidateSize(), 300);
+        }
 
         // Base Maps
         const baseLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -5090,7 +5263,7 @@ function renderMapAndSidebar() {
                 };
 
                 const popupContent = `
-                    <div class="popup-card">
+                    <div class="popup-card extended-popup">
                         <div class="popup-group" style="color: ${color}">${group}</div>
                         <div class="popup-title">${institution}</div>
                         <div class="popup-detail" style="font-family: monospace; font-size:10px; margin-top: 6px;">
@@ -5860,7 +6033,7 @@ function renderMapAndSidebar() {
                             addSearchRecord({
                                 cat: 'akteur', label: p.name || 'Unbekannt', sub: p.group || '',
                                 lat, lng, color,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">${p.group || ''}</div><div class="popup-title">${p.name || ''}</div></div>`
+                                popupHtml: `<div class="popup-card extended-popup"><div class="popup-group" style="color:${color}">${p.group || ''}</div><div class="popup-title">${p.name || ''}</div></div>`
                             });
                         });
                     }).catch(() => {}));
@@ -5880,7 +6053,7 @@ function renderMapAndSidebar() {
                                 cat: 'einleiter', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng, color,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">💧 Einleitungsart: ${p.einleitungsart || '–'}</div><div class="popup-detail">🚦 Risikoklasse: <strong style="color: ${color};">${risk}</strong></div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}${getZustaendigkeitHtml(p)}<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', 'Industrieeinleiter', '${p.betriebs_nr || p.name || ''}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div></div>`
+                                popupHtml: `<div class="popup-card extended-popup"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">💧 Einleitungsart: ${p.einleitungsart || '–'}</div><div class="popup-detail">🚦 Risikoklasse: <strong style="color: ${color};">${risk}</strong></div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}${getZustaendigkeitHtml(p)}<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', 'Industrieeinleiter', '${p.betriebs_nr || p.name || ''}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div></div>`
                             });
                             if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
                             (p.gewaesser_liste || '').split(',').map(s => s.trim()).filter(Boolean).forEach(g => addAgg(gewaesserAgg, g, lat, lng));
@@ -5900,7 +6073,7 @@ function renderMapAndSidebar() {
                                 cat: 'klaeranlage', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.klaeranlage}">Kläranlage</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.betreiber ? `<div class="popup-detail">🏢 Betreiber: ${p.betreiber}</div>` : ''}${p.gewaesser ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
+                                popupHtml: `<div class="popup-card extended-popup"><div class="popup-group" style="color:${catColors.klaeranlage}">Kläranlage</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.betreiber ? `<div class="popup-detail">🏢 Betreiber: ${p.betreiber}</div>` : ''}${p.gewaesser ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
                             if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
@@ -5925,7 +6098,7 @@ function renderMapAndSidebar() {
                                 cat: 'gwm', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.gwm}">Grundwassermessstelle</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.eigentuemer ? `<div class="popup-detail">🏢 Eigentümer: ${p.eigentuemer}</div>` : ''}${p.messstellenart ? `<div class="popup-detail">🔧 Art: ${p.messstellenart}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
+                                popupHtml: `<div class="popup-card extended-popup"><div class="popup-group" style="color:${catColors.gwm}">Grundwassermessstelle</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.eigentuemer ? `<div class="popup-detail">🏢 Eigentümer: ${p.eigentuemer}</div>` : ''}${p.messstellenart ? `<div class="popup-detail">🔧 Art: ${p.messstellenart}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
                         });
@@ -5942,7 +6115,7 @@ function renderMapAndSidebar() {
                             addSearchRecord({
                                 cat: 'pegel', label: p.name || 'Unbekannt', sub: p.kreis || '',
                                 lat, lng,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.pegel}">Pegel</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
+                                popupHtml: `<div class="popup-card extended-popup"><div class="popup-group" style="color:${catColors.pegel}">Pegel</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
                         });
@@ -5959,7 +6132,7 @@ function renderMapAndSidebar() {
                             addSearchRecord({
                                 cat: 'stauanlage', label: p.name || 'Unbekannt', sub: p.kreis || '',
                                 lat, lng,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.stauanlage}">Stauanlage</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
+                                popupHtml: `<div class="popup-card extended-popup"><div class="popup-group" style="color:${catColors.stauanlage}">Stauanlage</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
                         });
@@ -5977,7 +6150,7 @@ function renderMapAndSidebar() {
                                 cat: 'regenbecken', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.regenbecken}">Regenbecken / Sonderbauwerk</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${getZustaendigkeitHtml(p)}</div>`
+                                popupHtml: `<div class="popup-card extended-popup"><div class="popup-group" style="color:${catColors.regenbecken}">Regenbecken / Sonderbauwerk</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gemeinde) addAgg(gemeindeAgg, p.gemeinde, lat, lng);
                         });
@@ -5994,7 +6167,7 @@ function renderMapAndSidebar() {
                             addSearchRecord({
                                 cat: 'querbauwerk', label: p.name || 'Unbekannt', sub: p.kreis || '',
                                 lat, lng,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.querbauwerk}">Querbauwerk / Bauwerk</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
+                                popupHtml: `<div class="popup-card extended-popup"><div class="popup-group" style="color:${catColors.querbauwerk}">Querbauwerk / Bauwerk</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">📍 ${p.kreis || ''}</div>${p.gewaesser ? `<div class="popup-detail">🌊 Gewässer: ${p.gewaesser}</div>` : ''}${getZustaendigkeitHtml(p)}</div>`
                             });
                             if (p.gewaesser) addAgg(gewaesserAgg, p.gewaesser, lat, lng);
                         });
@@ -6013,7 +6186,7 @@ function renderMapAndSidebar() {
                             addSearchRecord({
                                 cat: 'kreis', label: name, sub: 'Kreis', kind: 'polygon',
                                 bounds, geoFeature: f,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.kreis}">Kreis</div><div class="popup-title">${name}</div></div>`
+                                popupHtml: `<div class="popup-card extended-popup"><div class="popup-group" style="color:${catColors.kreis}">Kreis</div><div class="popup-title">${name}</div></div>`
                             });
                         });
                     }).catch(() => {}));
@@ -6023,14 +6196,14 @@ function renderMapAndSidebar() {
                         addSearchRecord({
                             cat: 'gemeinde', label: name, sub: `${points.length} Objekt(e)`,
                             kind: 'aggregate', points,
-                            popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.gemeinde}">Gemeinde</div><div class="popup-title">${name}</div><div class="popup-detail">📍 ${points.length} Objekt(e) gefunden</div></div>`
+                            popupHtml: `<div class="popup-card extended-popup"><div class="popup-group" style="color:${catColors.gemeinde}">Gemeinde</div><div class="popup-title">${name}</div><div class="popup-detail">📍 ${points.length} Objekt(e) gefunden</div></div>`
                         });
                     });
                     gewaesserAgg.forEach((points, name) => {
                         addSearchRecord({
                             cat: 'gewaesser', label: name, sub: `${points.length} Objekt(e)`,
                             kind: 'aggregate', points,
-                            popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${catColors.gewaesser}">Gewässer</div><div class="popup-title">${name}</div><div class="popup-detail">🌊 ${points.length} zugehörige(s) Objekt(e) gefunden</div></div>`
+                            popupHtml: `<div class="popup-card extended-popup"><div class="popup-group" style="color:${catColors.gewaesser}">Gewässer</div><div class="popup-title">${name}</div><div class="popup-detail">🌊 ${points.length} zugehörige(s) Objekt(e) gefunden</div></div>`
                         });
                     });
                     console.log('[UnifiedSearch] Index bereit:', searchIndex.length, 'Eintraege');
