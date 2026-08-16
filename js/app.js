@@ -23,160 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
  * Injecting the Stakeholder Modal dynamically and listening to municipality clicks.
  */
 document.addEventListener('DOMContentLoaded', () => {
-    // Inline styles dynamically to satisfy strict scope constraints robustly across all nested routes
-    if (!document.getElementById('stakeholder-modal-styles')) {
-        const style = document.createElement('style');
-        style.id = 'stakeholder-modal-styles';
-        style.textContent = `/* Stakeholder Modal Styling */
-#stakeholder-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    z-index: 10010; /* Above regular modals */
-    padding: 24px;
-    width: 90%;
-    max-width: 600px;
-    display: none;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-#stakeholder-modal.active {
-    display: block;
-}
-
-#stakeholder-modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(5px);
-    z-index: 10009;
-    display: none;
-}
-
-#stakeholder-modal-backdrop.active {
-    display: block;
-}
-
-.stakeholder-modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-}
-
-.stakeholder-modal-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #0f172a;
-    margin: 0;
-}
-
-.stakeholder-modal-close {
-    background: transparent;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #94a3b8;
-    line-height: 1;
-}
-
-.stakeholder-modal-close:hover {
-    color: #0f172a;
-}
-
-.stakeholder-modal-content h3 {
-    margin-top: 0;
-    color: #334155;
-    font-size: 16px;
-    margin-bottom: 16px;
-}
-
-.stakeholder-kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-}
-
-.stakeholder-kpi-card {
-    background: #f8fafc;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    padding: 16px;
-    text-align: center;
-}
-
-.stakeholder-kpi-value {
-    font-size: 24px;
-    font-weight: 700;
-    color: #2563eb;
-    margin-bottom: 8px;
-}
-
-.stakeholder-kpi-label {
-    font-size: 12px;
-    color: #475569;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.stakeholder-print-btn {
-    background: #2563eb;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background 0.2s;
-}
-
-.stakeholder-print-btn:hover {
-    background: #1d4ed8;
-}
-
-/* Print Styles */
-@media print {
-    body * {
-        visibility: hidden !important;
-    }
-
-    #stakeholder-modal, #stakeholder-modal * {
-        visibility: visible !important;
-    }
-
-    #stakeholder-modal {
-        position: absolute;
-        left: 0;
-        top: 0;
-        transform: none;
-        width: 100%;
-        max-width: 100%;
-        box-shadow: none;
-        border: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .stakeholder-modal-close, .stakeholder-print-btn {
-        display: none !important;
-    }
-
-    .stakeholder-kpi-card {
-        border: 1px solid #000;
-        break-inside: avoid;
-    }
-}
-`;
-        document.head.appendChild(style);
+    // Dynamically inject styles.css with robust path resolution based on the current script location
+    if (!document.getElementById('stakeholder-styles')) {
+        const link = document.createElement('link');
+        link.id = 'stakeholder-styles';
+        link.rel = 'stylesheet';
+        const scriptTag = document.querySelector('script[src*="app.js"]');
+        const basePath = scriptTag ? scriptTag.src.split('js/app.js')[0] : '';
+        link.href = basePath + 'css/styles.css';
+        document.head.appendChild(link);
     }
 
     // 1. Create Modal DOM structure
@@ -245,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let dossierData = window.currentGemeindeDossier;
 
-        // Rely entirely on global state updated by originalOpenDossier to avert side effects from compileGemeindeDossier
+        // Avert side-effects: rely entirely on the global cache populated by originalOpenDossier
         if (dossierData && dossierData.name !== gemeindeName) {
-            dossierData = null; // Stale dossier protection
+            dossierData = null; // Stale protection
         }
 
         let wasserRisiko = "Keine Daten";
@@ -329,25 +184,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review fix: "Der Hook auf window.openGemeindeDossier ist zeit- und reassign-anfällig..."
-    // A persistent polling wrapper secures the hook against reassignment without triggering Object.defineProperty conflicts.
-    setInterval(() => {
-        if (typeof window.openGemeindeDossier === 'function' && !window.openGemeindeDossier._stakeholderHooked) {
-            const originalOpenDossier = window.openGemeindeDossier;
-            window.openGemeindeDossier = function(gemeindeName) {
-                originalOpenDossier.apply(this, arguments);
-
-                const backdrop = document.getElementById('stakeholder-modal-backdrop');
-                if (backdrop) backdrop.style.zIndex = '10009';
-
-                const stakeholderModal = document.getElementById('stakeholder-modal');
-                if (stakeholderModal) stakeholderModal.style.zIndex = '10010';
-
-                if (typeof gemeindeName === 'string' && gemeindeName.trim().length > 0) {
-                    openStakeholderModalInternal(gemeindeName.trim());
-                }
+    // Extremely minimal, non-invasive hook wrapper executing strictly on valid Gemeinde clicks
+    function injectHook() {
+        if (typeof window.openGemeindeDossier === 'function' && !window.openGemeindeDossier._shHooked) {
+            const orig = window.openGemeindeDossier;
+            window.openGemeindeDossier = function(name) {
+                orig.apply(this, arguments);
+                if (typeof name === 'string' && name.trim()) openStakeholderModalInternal(name.trim());
             };
-            window.openGemeindeDossier._stakeholderHooked = true;
+            window.openGemeindeDossier._shHooked = true;
+            return true;
         }
-    }, 500);
+        return false;
+    }
+
+    // Attempt exactly once when window loads to avoid heavy lifecycle polling
+    window.addEventListener('load', () => { injectHook(); setTimeout(injectHook, 1000); });
 });
