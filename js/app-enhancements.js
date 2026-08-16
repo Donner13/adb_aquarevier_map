@@ -896,11 +896,9 @@
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (modal.id === 'command-palette-modal') {
-                            // Dispatch custom event to gracefully close palette if supported
-                            modal.dispatchEvent(new CustomEvent('closeCommandPalette'));
-                            // Fallback to ensuring it is closed visually
-                            modal.style.display = 'none';
-                            modal.classList.add('hidden');
+                            // The command palette intercepts its own keydown for Escape and performs its own fade.
+                            // Simply setting closedAny avoids blocking focus restoration or other cleanups without
+                            // interfering with its local animation.
                             closedAny = true;
                             return;
                         }
