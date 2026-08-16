@@ -888,7 +888,7 @@
 
                 // Select all known overlays, explicitly catching ones like coachmarks and onboarding
                 const openModals = document.querySelectorAll(
-                    '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay'
+                    '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #onboarding-role-modal'
                 );
 
                 openModals.forEach(modal => {
@@ -896,9 +896,9 @@
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (modal.id === 'command-palette-modal') {
-                            // The command palette intercepts its own keydown for Escape and performs its own fade.
-                            // Simply setting closedAny avoids blocking focus restoration or other cleanups without
-                            // interfering with its local animation.
+                            // Unified closure: Use a programmatic click on the backdrop, as this uses the proper close event
+                            // already registered inside initCommandPalette without bypassing it.
+                            modal.click();
                             closedAny = true;
                             return;
                         }
