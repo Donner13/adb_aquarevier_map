@@ -155,12 +155,17 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def translate_path(self, path):
         translated = super().translate_path(path)
-        abs_dir = os.path.realpath(self.directory)
-        abs_path = os.path.realpath(translated)
+        # normcase normalizes case on Windows, making it safer
+        abs_dir = os.path.normcase(os.path.realpath(self.directory))
+        abs_path = os.path.normcase(os.path.realpath(translated))
 
         # Guard against path traversal and symlinks escaping the root
-        if not abs_path.startswith(abs_dir + os.sep) and abs_path != abs_dir:
-            return os.path.join(abs_dir, ".blocked_path_traversal")
+        try:
+            if os.path.commonpath([abs_dir, abs_path]) != abs_dir:
+                return os.path.join(self.directory, ".path_traversal_blocked_404_not_found")
+        except ValueError:
+            # Different drives on Windows
+            return os.path.join(self.directory, ".path_traversal_blocked_404_not_found")
 
         return translated
 
