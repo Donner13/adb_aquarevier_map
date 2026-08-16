@@ -128,7 +128,7 @@ function createLogoCalloutMarker(lat, lng, name) {
                     <span style="color: #0891b2; border-right: 1.5px solid #cbd5e1; padding-right: 6px; padding-left: 6px;">IWW</span>
                     <span style="color: #16a34a; padding-left: 6px;">FiW</span>
                 </div>
-                <div style="font-size: 8px; color: var(--text-secondary, #64748b); font-weight: 600; text-align: center; border-top: 1px solid #e2e8f0; margin-top: 4px; padding-top: 2px; letter-spacing: 0.02em;">
+                <div style="font-size: 8px; color: #64748b; font-weight: 600; text-align: center; border-top: 1px solid #e2e8f0; margin-top: 4px; padding-top: 2px; letter-spacing: 0.02em;">
                     Aachener Wasserforschung
                 </div>
             </div>
