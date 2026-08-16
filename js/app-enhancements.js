@@ -934,11 +934,14 @@
                 openModals.forEach(modal => {
                     const style = window.getComputedStyle(modal);
                     const rects = modal.getClientRects();
-                    const hasSize = rects.length > 0 && (rects[0].width > 0 || rects[0].height > 0) || (modal.offsetWidth > 0 || modal.offsetHeight > 0);
+                    const hasSize = (rects.length > 0 && (rects[0].width > 0 || rects[0].height > 0)) || (modal.offsetWidth > 0 || modal.offsetHeight > 0);
+
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden') && hasSize) {
                         const closeBtn = modal.querySelector('.close-btn, .scorecard-close, .embed-modal-close, [aria-label="Schließen"]');
                         if (closeBtn && typeof closeBtn.click === 'function') {
                             closeBtn.click();
+                        } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
+                            modal.remove();
                         } else {
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
