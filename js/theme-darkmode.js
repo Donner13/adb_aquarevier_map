@@ -16,11 +16,6 @@
         window.isDarkMode = !window.isDarkMode;
         const body = document.body;
 
-    // Note: Dark Mode CSS variable color values (e.g. for WCAG AA contrast ratio compliance of dimmed texts)
-    // are strictly defined in the stylesheet blocks of index.html and internal.html under the body.dark-theme selector.
-    // This script merely applies the class to enable them.
-
-
         if (window.isDarkMode) {
             body.classList.remove('light-theme');
             body.classList.add('dark-theme');
