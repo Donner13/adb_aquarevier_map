@@ -28,8 +28,8 @@ const geojsonWorkerCode = `
       })
       .then(text => {
         // Strip BOM if present (only for .json and .geojson files)
-        const baseUrl = url.split(/[?#]/)[0].toLowerCase();
-        const cleanedText = (baseUrl.endsWith('.geojson') || baseUrl.endsWith('.json')) ? text.replace(/^\\uFEFF/, '') : text;
+        const pathname = new URL(url, 'http://localhost').pathname.toLowerCase();
+        const cleanedText = (pathname.endsWith('.geojson') || pathname.endsWith('.json')) ? text.replace(/^\\uFEFF/, '') : text;
         return JSON.parse(cleanedText);
       })
       .then(data => self.postMessage({ id: id, data: data, success: true }))
@@ -79,8 +79,8 @@ function fetchGeoJSONWorker(url) {
       return res.text();
     }).then(text => {
       // Strip BOM if present (only for .json and .geojson files)
-      const baseUrl = url.split(/[?#]/)[0].toLowerCase();
-      const cleanedText = (baseUrl.endsWith('.geojson') || baseUrl.endsWith('.json')) ? text.replace(/^\uFEFF/, '') : text;
+      const pathname = new URL(url, 'http://localhost').pathname.toLowerCase();
+      const cleanedText = (pathname.endsWith('.geojson') || pathname.endsWith('.json')) ? text.replace(/^\uFEFF/, '') : text;
       return JSON.parse(cleanedText);
     });
   }
