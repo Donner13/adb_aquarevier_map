@@ -297,6 +297,8 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       : 'Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0';
     html += `<div style="font-size:10px;color:#475569;margin-top:6px;">${escapeHtml(footer)}</div>`;
     html += `</div>`;
+    // Add fallback to any dynamically generated company logo within the popup HTML
+    html = html.replace(/<img\b(?!.*\bonerror=)/gi, `<img onerror="this.onerror=null; this.src='logos/placeholder.png'" `);
     return html;
   }
 
