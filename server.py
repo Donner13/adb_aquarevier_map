@@ -195,10 +195,6 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             if parsed.scheme in ('http', 'https') and parsed.hostname in ('localhost', '127.0.0.1'):
                 self.send_header('Access-Control-Allow-Origin', origin)
                 self.send_header('Access-Control-Allow-Credentials', 'true')
-            else:
-                self.send_header('Access-Control-Allow-Origin', '*')
-        else:
-            self.send_header('Access-Control-Allow-Origin', '*')
 
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
