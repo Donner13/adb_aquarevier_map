@@ -167,9 +167,8 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         # We must resolve this implicitly targeted file to check its real path.
         if os.path.isdir(path):
             for index in "index.html", "index.htm":
-                index_path = os.path.join(path, index)
-                if os.path.exists(index_path):
-                    path = index_path
+                if os.path.exists(os.path.join(path, index)):
+                    path = os.path.join(path, index)
                     break
 
         resolved_target = os.path.realpath(path)
@@ -180,7 +179,8 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_error(404, "File not found")
             return None
 
-        return super().send_head()
+        f = super().send_head()
+        return f
 
     def log_message(self, format, *args):
         """Keep automated runs quiet unless access logging is explicitly requested."""
