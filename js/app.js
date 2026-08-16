@@ -23,6 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
  * Injecting the Stakeholder Modal dynamically and listening to municipality clicks.
  */
 document.addEventListener('DOMContentLoaded', () => {
+    // Dynamically inject styles.css to satisfy strict scope constraints without modifying index.html
+    if (!document.querySelector('link[href="css/styles.css"]')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'css/styles.css';
+        document.head.appendChild(link);
+    }
+
     // 1. Create Modal DOM structure
     const backdrop = document.createElement('div');
     backdrop.id = 'stakeholder-modal-backdrop';
@@ -131,6 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('stakeholder-kpi-pegel').textContent = pegelAnzahl;
         document.getElementById('stakeholder-kpi-gewerbe').textContent = gewerbeAnzahl;
 
+        // Ensure explicit z-index to overlay native modals (which use 10008)
+        backdrop.style.zIndex = '10009';
+        modal.style.zIndex = '10010';
+
         backdrop.classList.add('active');
         modal.classList.add('active');
 
@@ -172,33 +184,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review fix: "Der Hook auf window.openGemeindeDossier ist zeit- und reassign-anfällig..."
-    // To ensure a robust integration that survives late loading or reassignments, we proxy the global property.
-    let _openGemeindeDossier = window.openGemeindeDossier;
-    Object.defineProperty(window, 'openGemeindeDossier', {
-        get: function() {
-            return function(gemeindeName) {
-                if (typeof _openGemeindeDossier === 'function') {
-                    _openGemeindeDossier.apply(this, arguments);
-                }
+    // Review fix: "die globale Hook-Übernahme ist für einen minimalen UI-Patch zu invasiv."
+    // We bind natively to the DOM and Leaflet layers instead of rewriting global functions.
 
-                // Ensure the new Stakeholder Modal acts as an explicit overlay
-                const backdrop = document.getElementById('stakeholder-modal-backdrop');
-                if (backdrop) backdrop.style.zIndex = '10009';
-
-                const stakeholderModal = document.getElementById('stakeholder-modal');
-                if (stakeholderModal) stakeholderModal.style.zIndex = '10010';
-
-                // Ensure we only trigger for valid Gemeinde identifiers
-                if (typeof gemeindeName === 'string' && gemeindeName.trim().length > 0) {
-                    window.openStakeholderModal.call(this, gemeindeName.trim());
-                }
-            };
-        },
-        set: function(val) {
-            _openGemeindeDossier = val;
-        },
-        configurable: true,
-        enumerable: true
+    // 1. Sidebar / DOM Clicks
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('[onclick*="openGemeindeDossier"]');
+        if (btn) {
+            const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
+            if (match && match[1]) {
+                const name = match[1];
+                setTimeout(() => window.openStakeholderModal(name), 50); // micro-delay to overlay native UI
+            }
+        }
     });
+
+    // 2. Leaflet Map Clicks
+    // Traverse all layers, including nested L.LayerGroups, to ensure GeoJSON features aren't missed.
+    function bindMapFeatures(layer) {
+        if (layer.eachLayer) {
+            layer.eachLayer(bindMapFeatures); // recurse for LayerGroups/GeoJSON containers
+        }
+        if (layer.feature && layer.feature.properties && layer.feature.properties.typ === 'Gemeinde' && !layer._stakeholderHook) {
+            layer.on('click', function() {
+                setTimeout(() => window.openStakeholderModal(layer.feature.properties.name), 50);
+            });
+            layer._stakeholderHook = true;
+        }
+    }
+
+    function initMapHooks() {
+        if (typeof map !== 'undefined') {
+            map.on('layeradd', function(e) { bindMapFeatures(e.layer); });
+            map.eachLayer(bindMapFeatures); // catch already loaded
+            return true;
+        }
+        return false;
+    }
+
+    if (!initMapHooks()) {
+        const interval = setInterval(() => {
+            if (initMapHooks()) clearInterval(interval);
+        }, 250);
+    }
 });
