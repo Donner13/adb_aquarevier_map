@@ -184,6 +184,8 @@ for (const filename of PAGES) {
     test('default state screenshot', async ({ page }) => {
       await gotoPage(page, filename);
       await page.mouse.move(5, 5);
+      await page.waitForTimeout(500);
+      await page.waitForTimeout(500);
       await expect(mapLocator(page)).toHaveScreenshot(pageId(filename) + '-default.png');
       assertNoJsErrors(page);
     });
@@ -205,6 +207,8 @@ for (const filename of PAGES) {
       }
 
       await page.mouse.move(5, 5);
+      await page.waitForTimeout(500);
+      await page.waitForTimeout(500);
       await expect(mapLocator(page)).toHaveScreenshot(pageId(filename) + '-all-on.png');
       assertNoJsErrors(page);
     });
@@ -231,6 +235,8 @@ for (const filename of PAGES) {
       }
 
       await page.mouse.move(5, 5);
+      await page.waitForTimeout(500);
+      await page.waitForTimeout(500);
       await expect(mapLocator(page)).toHaveScreenshot(pageId(filename) + '-all-off.png');
       assertNoJsErrors(page);
     });
