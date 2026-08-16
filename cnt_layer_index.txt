@@ -1,0 +1,18 @@
+2211:                            <span class="counter-badge" id="cnt-layer-grundwassermessstellen">(0/0)</span>
+2216:                            <span class="counter-badge" id="cnt-layer-gwiso">(0/0)</span>
+2220:                            <span class="counter-badge" id="cnt-layer-gwwa">(0/0)</span>
+2228:                            <span class="counter-badge" id="cnt-layer-pegel">(0/0)</span>
+2233:                            <span class="counter-badge" id="cnt-layer-stauanlagen">(0/0)</span>
+2238:                            <span class="counter-badge" id="cnt-layer-regenbecken">(0/0)</span>
+2243:                            <span class="counter-badge" id="cnt-layer-querbauwerke">(0/0)</span>
+2249:                            <span class="counter-badge" id="cnt-layer-h2_elektrolyseure_nrw">(0/0)</span>
+2254:                            <span class="counter-badge" id="cnt-layer-vogelbeobachtungsgebiete">(0/0)</span>
+2259:                            <span class="counter-badge" id="cnt-layer-stats">(0/0)</span>
+2264:                            <span class="counter-badge" id="cnt-layer-kreis-choropleth" style="display: none;">(0/7)</span>
+2279:                            <span class="counter-badge" id="cnt-layer-catchment">(0/0)</span>
+2284:                            <span class="counter-badge" id="cnt-layer-wsg">(0/0)</span>
+2289:                            <span class="counter-badge" id="cnt-layer-wsg-gewinnung" style="display: none;"></span>
+2294:                            <span class="counter-badge" id="cnt-layer-mining">(0/0)</span>
+2299:                            <span class="counter-badge" id="cnt-layer-rivers">(0/0)</span>
+2304:                            <span class="counter-badge" id="cnt-layer-boundary">(0/0)</span>
+2309:                            <span class="counter-badge" id="cnt-layer-kreise">(0/0)</span>

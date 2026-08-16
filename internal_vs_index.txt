@@ -1,0 +1,94 @@
+3,7d2
+< id="audit-log-container"
+< id="audit-panel"
+< id="audit-toggle-icon"
+< id="audit-trail-section"
+< id="auditLayerSelect"
+11d5
+< id="btn-add-custom-wms"
+14,19d7
+< id="btn-cancel-edit"
+< id="btn-delete-contact"
+< id="btn-deploy-server"
+< id="btn-export-csv"
+< id="btn-export-geojson"
+< id="btn-generate-report"
+22d9
+< id="btn-import-layer"
+25d11
+< id="btn-new-contact"
+27d12
+< id="btn-pick-on-map"
+32,34d16
+< id="btn-reset-local"
+< id="btn-save-contact"
+< id="btn-save-server"
+41,70d22
+< id="cfg-ca-color"
+< id="cfg-ca-fill"
+< id="cfg-ca-opacity"
+< id="cfg-ca-weight"
+< id="cfg-kr-color"
+< id="cfg-kr-dash"
+< id="cfg-kr-weight"
+< id="cfg-marker-border"
+< id="cfg-marker-size"
+< id="cfg-marker-tooltip"
+< id="cfg-riv-color"
+< id="cfg-riv-opacity"
+< id="cfg-riv-weight-det"
+< id="cfg-rivl-color"
+< id="cfg-rivl-color-light"
+< id="cfg-rivl-shadow"
+< id="cfg-rivl-shadow-light"
+< id="cfg-rivl-size"
+< id="cfg-search-description"
+< id="cfg-search-email"
+< id="cfg-search-group"
+< id="cfg-search-name"
+< id="cfg-search-phone"
+< id="cfg-theme-accentPrimary"
+< id="cfg-theme-bgBase"
+< id="cfg-theme-textPrimary"
+< id="cfg-ug-color"
+< id="cfg-ug-fill"
+< id="cfg-ug-opacity"
+< id="cfg-ug-weight"
+74d25
+< id="cnt-group-Einzelakteure"
+78d28
+< id="cnt-group-Konsortium"
+112,116d61
+< id="contact-desc"
+< id="contact-email"
+< id="contact-group"
+< id="contact-id"
+< id="contact-lat"
+118,121d62
+< id="contact-lng"
+< id="contact-logo"
+< id="contact-name"
+< id="contact-phone"
+124,130d64
+< id="custom-wms-layers"
+< id="custom-wms-list"
+< id="custom-wms-name"
+< id="custom-wms-url"
+< id="customizer-panel"
+< id="customizer-toggle-icon"
+< id="editor-panel"
+157d90
+< id="form-action-title"
+161d93
+< id="group-customizer-container"
+163,166d94
+< id="import-geojson-file"
+< id="import-layer-color"
+< id="import-layer-name"
+< id="import-status"
+192d119
+< id="save-status"
+216,218d142
+< id="val-marker-border"
+< id="val-marker-size"
+< id="wms-customizer-container"

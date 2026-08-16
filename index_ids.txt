@@ -1,0 +1,142 @@
+2075:    <div id="app-container">
+2077:        <div id="filter-live-region" class="sr-only" aria-live="polite"></div>
+2080:        <button id="mobile-sidebar-toggle" aria-label="Filter und Daten ein/ausblenden">
+2087:        <div id="sidebar">
+2094:                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px 10px; font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" onclick="window.AquaI18n.toggleLanguage()">EN</button>
+2095:                    <button id="audioToggleBtn" class="filter-btn" style="padding: 6px 10px; font-size: 13px;" title="Ton an/aus" aria-label="Audio Switcher" onclick="window.AquaAudio.toggleAudio()">🔇 Ton aus</button>
+2096:                    <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
+2099:                    <button id="presentation-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Präsentationsmodus starten (Beamer)" aria-label="Präsentationsmodus starten">
+2102:                    <button id="contrast-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
+2105:                    <button id="replay-tour-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Tour erneut starten" aria-label="Einführungstour erneut starten" onclick="showRoleModal()">🎓</button>
+2106:                    <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln" aria-label="Farbschema umschalten">
+2118:                            <button id="btn-actors-all" type="button">Alle an</button>
+2119:                            <button id="btn-actors-none" type="button">Alle aus</button>
+2126:                            <span class="counter-badge" id="cnt-group-Behörde">(0/0)</span>
+2131:                            <span class="counter-badge" id="cnt-group-Forschung">(0/0)</span>
+2136:                            <span class="counter-badge" id="cnt-group-Gebietskörperschaft">(0/0)</span>
+2141:                            <span class="counter-badge" id="cnt-group-Gewerbe-Industrie">(0/0)</span>
+2146:                            <span class="counter-badge" id="cnt-group-Landwirtschaft">(0/0)</span>
+2151:                            <span class="counter-badge" id="cnt-group-Netzwerk-Multiplikator">(0/0)</span>
+2156:                            <span class="counter-badge" id="cnt-group-Ver-Entsorger">(0/0)</span>
+2161:                            <span class="counter-badge" id="cnt-group-Sonstige">(0/0)</span>
+2171:                            <button id="btn-branches-all" type="button">Alle an</button>
+2172:                            <button id="btn-branches-none" type="button">Alle aus</button>
+2179:                            <span class="counter-badge" id="cnt-risk-Hoch">(0/0)</span>
+2184:                            <span class="counter-badge" id="cnt-risk-Mittel">(0/0)</span>
+2189:                            <span class="counter-badge" id="cnt-risk-Niedrig">(0/0)</span>
+2194:                            <span class="counter-badge" id="cnt-risk-Unbekannt">(0/0)</span>
+2204:                            <button id="btn-layers-all" type="button">Alle an</button>
+2205:                            <button id="btn-layers-none" type="button">Alle aus</button>
+2211:                            <span class="counter-badge" id="cnt-layer-grundwassermessstellen">(0/0)</span>
+2216:                            <span class="counter-badge" id="cnt-layer-gwiso">(0/0)</span>
+2220:                            <span class="counter-badge" id="cnt-layer-gwwa">(0/0)</span>
+2222:                        <button id="btn-pegel-analysis" class="filter-btn" style="background-color: rgba(0, 158, 115, 0.1); border-color: #009E73;" title="Aktiviert die Analyse-Ansicht für Industrieabwasseranteile an Pegeln">
+2228:                            <span class="counter-badge" id="cnt-layer-pegel">(0/0)</span>
+2233:                            <span class="counter-badge" id="cnt-layer-stauanlagen">(0/0)</span>
+2238:                            <span class="counter-badge" id="cnt-layer-regenbecken">(0/0)</span>
+2243:                            <span class="counter-badge" id="cnt-layer-querbauwerke">(0/0)</span>
+2244:                            <span class="quality-badge" id="qbadge-layer-querbauwerke" title="" hidden>⚠️</span>
+2249:                            <span class="counter-badge" id="cnt-layer-h2_elektrolyseure_nrw">(0/0)</span>
+2254:                            <span class="counter-badge" id="cnt-layer-vogelbeobachtungsgebiete">(0/0)</span>
+2259:                            <span class="counter-badge" id="cnt-layer-stats">(0/0)</span>
+2264:                            <span class="counter-badge" id="cnt-layer-kreis-choropleth" style="display: none;">(0/7)</span>
+2266:                        <div class="choropleth-select-container" id="choroplethMetricContainer" style="display: none;">
+2268:                            <select id="choroplethMetricSelect">
+2279:                            <span class="counter-badge" id="cnt-layer-catchment">(0/0)</span>
+2284:                            <span class="counter-badge" id="cnt-layer-wsg">(0/0)</span>
+2289:                            <span class="counter-badge" id="cnt-layer-wsg-gewinnung" style="display: none;"></span>
+2294:                            <span class="counter-badge" id="cnt-layer-mining">(0/0)</span>
+2299:                            <span class="counter-badge" id="cnt-layer-rivers">(0/0)</span>
+2304:                            <span class="counter-badge" id="cnt-layer-boundary">(0/0)</span>
+2309:                            <span class="counter-badge" id="cnt-layer-kreise">(0/0)</span>
+2325:                            <select id="radius-select" class="form-select form-select-sm" style="font-size: 11px; padding: 2px 6px; border-radius: 4px; flex: 1;">
+2334:                            <input type="number" id="radius-manual-lat" placeholder="Breite (z.B. 50.92)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px 4px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Breite für Radius-Analyse">
+2335:                            <input type="number" id="radius-manual-lng" placeholder="Länge (z.B. 6.45)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px 4px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Länge für Radius-Analyse">
+2338:                            <button id="btn-radius-activate" type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: var(--bg-surface, #ffffff); border: 1px solid #3b82f6; color: #2563eb; font-weight: 600;" onclick="toggleRadiusAnalysis()">
+2341:                            <button id="btn-radius-manual-submit" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 6px;" onclick="if(window.runRadiusAnalysisFromInputs) window.runRadiusAnalysisFromInputs()">
+2344:                            <button id="btn-radius-clear" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" onclick="clearRadiusAnalysis()" disabled>
+2348:                        <div id="radius-status-info" style="font-size: 10.5px; color: #475569; background: #f8fafc; padding: 6px 8px; border-radius: 4px; border: 1px dashed #cbd5e1; text-align: center;">
+2351:                        <div id="radius-results-container" style="display: none; margin-top: 8px; max-height: 250px; overflow-y: auto; font-size: 11px;">
+2380:                            <span id="timeseries-year-display" style="font-size: 16px; font-weight: 700; color: #2563eb;">2025</span>
+2382:                        <input type="range" id="timeseries-slider" min="0" max="6" step="1" value="5" style="width: 100%; margin-bottom: 8px; cursor: pointer;" oninput="setTimeSeriesYearIndex(parseInt(this.value, 10))">
+2390:                            <button id="btn-timeseries-play" type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: #16a34a; border: 1px solid #15803d; color: white; font-weight: 600;" onclick="toggleTimeSeriesPlay()">
+2393:                            <button id="btn-timeseries-reset" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" onclick="resetTimeSeries()">
+2397:                        <div id="timeseries-stats-summary" style="margin-top: 6px;">
+2407:                        <span id="network-status-badge" style="font-size: 10px; padding: 2px 6px; border-radius: 10px; border: 1px solid #cbd5e1; background: #f1f5f9;">🟢 Online</span>
+2418:                        <div id="bookmarks-list-container">
+2424:                            <button id="btn-toggle-theme" type="button" class="btn btn-sm btn-outline-dark" style="flex:1; font-size: 10px;" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+2434:                            <button id="btn-refresh-feedback" type="button" onclick="loadFeedbackIssues()">🔄 Aktualisieren</button>
+2437:                    <div id="feedback-issues-list" style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; padding: 8px; max-height: 250px; overflow-y: auto;">
+2448:                            <button id="btn-hazard-all" type="button">Alle an</button>
+2449:                            <button id="btn-hazard-none" type="button">Alle aus</button>
+2452:                    <div id="hazard-layer-group">
+2512:                        <input type="text" id="search-input" data-i18n-key="search_placeholder" placeholder="Nach Name oder Ort suchen...">
+2516:                        <div class="contacts-meta" id="contacts-count" aria-live="polite" style="margin-bottom: 0;">0 von 0 Kontakten angezeigt</div>
+2517:                        <button id="reset-filters-btn" class="filter-btn" data-i18n-key="reset_filters" style="padding: 4px 8px; font-size: 10px;">Filter zurücksetzen</button>
+2519:                    <button id="share-view-btn" class="filter-btn" data-i18n-key="share_view" style="width: 100%; margin-bottom: 12px; font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
+2520:                    <div class="contact-list" id="contact-list-container">
+2528:                        <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;">📄 CSV Export</button>
+2529:                        <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;">📑 PDF Export</button>
+2532:                        <button id="embed-open-btn" class="filter-btn" style="flex: 1; justify-content: center;">🔗 Karte einbetten</button>
+2533:                        <button id="open-data-export-btn" class="filter-btn" data-i18n-key="open_data_export" style="flex: 1; justify-content: center;" onclick="window.exportActiveLayersData('geojson')" title="Exportiert alle aktiven Karten-Layer als Open-Data GeoJSON">💾 Geodaten-Export</button>
+2535:                    <button id="generate-report-btn" class="filter-btn active" data-i18n-key="generate_report" style="justify-content: center; background: #6366f1; border-color: #6366f1; font-weight: 600; color: white;">📊 Bericht generieren (PDF)</button>
+2536:                    <button id="generate-sprechzettel-btn" class="filter-btn" style="justify-content: center;">🗣️ Sprechzettel generieren</button>
+2537:                    <button id="generate-beschlussvorlage-btn" class="filter-btn" style="justify-content: center;">📋 Beschlussvorlage generieren</button>
+2548:        <div id="map"></div>
+2549:        <div id="embed-mini-legend" class="embed-mini-legend">
+2550:            <a id="embed-back-link" class="embed-back-link" target="_blank" rel="noopener noreferrer">↗ Vollständige Karte ansehen</a>
+2551:            <div id="embed-mini-legend-items"></div>
+2555:        <div id="embed-modal">
+2559:                    <button class="embed-modal-close" id="embed-close-btn" aria-label="Schließen">&times;</button>
+2572:                        <input type="number" id="embed-width-px" value="800" disabled> px
+2577:                        <input type="number" id="embed-height" value="600"> px
+2581:                <textarea id="embed-snippet-output" readonly></textarea>
+2583:                <button id="embed-copy-btn" class="filter-btn active" style="width: fit-content; background: #10b981; border-color: #10b981; font-weight: 600; color: white;">📋 Code kopieren</button>
+2587:                    <iframe id="embed-preview-iframe" src="" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
+2592:        <div id="pegel-analysis-panel" class="hidden"></div>
+2594:    <div id="presentation-bar">
+2595:        <div class="title" id="presentation-title"></div>
+2596:        <div class="step-counter" id="presentation-step-counter"></div>
+2597:        <div class="caption" id="presentation-caption"></div>
+2599:            <button id="prev-step-btn" class="control-btn">← Zurück</button>
+2600:            <button id="next-step-btn" class="control-btn">Weiter →</button>
+2601:            <button id="exit-presentation-btn" class="control-btn exit-btn">✕ Beenden</button>
+5650:                            <input type="text" id="usearch-input" aria-label="Universalsuche" autocomplete="off" spellcheck="false"
+5653:                            <div id="usearch-results" class="usearch-results"></div>
+5654:                            <div id="usearch-live-region" class="sr-only" aria-live="polite"></div>
+6583:    <div class="scorecard-backdrop" id="kreisScorecardBackdrop" style="display: none;">
+6584:        <div class="scorecard-modal" id="kreisScorecardModal">
+6586:                <div class="scorecard-title" id="scorecardModalTitle">Kreisvergleich</div>
+6587:                <button class="scorecard-close" id="scorecardModalClose" aria-label="Schließen">&times;</button>
+6590:                <div class="scorecard-kpi-narration" id="scorecardModalNarration">
+6594:                    <table class="scorecard-table" id="scorecardModalTable">
+6607:                        <tbody id="scorecardModalTableBody">
+6612:                <div class="scorecard-source" id="scorecardModalSource">
+6621:    <div id="feedback-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: var(--modal-backdrop); z-index: 2000; justify-content: center; align-items: center;">
+6625:                    <h3 id="feedback-modal-title" style="margin: 0; font-size: 16px; color: var(--text-primary, #0f172a);">Fehler melden</h3>
+6626:                    <div id="feedback-modal-layer" style="font-size: 12px; color: var(--text-secondary, #64748b); margin-top: 4px;">Layer: -</div>
+6631:            <form id="feedback-form" onsubmit="submitFeedback(event)" style="display: flex; flex-direction: column; gap: 12px;">
+6632:                <input type="hidden" id="feedback-feature-id">
+6633:                <input type="hidden" id="feedback-lat">
+6634:                <input type="hidden" id="feedback-lng">
+6638:                    <select id="feedback-category" required style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);">
+6649:                    <textarea id="feedback-text" required minlength="10" rows="4" style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; resize: vertical; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);"></textarea>
+6650:                    <div id="feedback-error" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: none;">Bitte füllen Sie alle Pflichtfelder aus (mind. 10 Zeichen im Text).</div>
+6662:    <div id="onboarding-role-modal">
+6689:    <div id="coachmark-overlay">
+6690:        <div id="coachmark-spotlight"></div>
+6691:        <div id="coachmark-tooltip">
+6692:            <h4 id="coachmark-title">Titel</h4>
+6693:            <p id="coachmark-text">Text</p>
+6695:                <div class="coachmark-progress" id="coachmark-progress">Schritt 1 von 4</div>
+6698:                    <button id="coachmark-next-btn" onclick="nextCoachmarkStep()">Weiter</button>
+6705:    <div class="scorecard-backdrop" id="textGeneratorBackdrop" style="display: none;">
+6706:        <div class="scorecard-modal" id="textGeneratorModal" style="max-width: 800px; width: 90%; max-height: 90vh; display: flex; flex-direction: column;">
+6708:                <div class="scorecard-title" id="textGeneratorTitle">Text generieren</div>
+6709:                <button class="scorecard-close" id="textGeneratorClose" aria-label="Schließen">&times;</button>
+6712:                <div id="textGeneratorHint" style="font-size: 14px; color: var(--text-secondary); flex-shrink: 0;"></div>
+6713:                <textarea id="textGeneratorContent" style="flex: 1; min-height: 250px; width: 100%; resize: none; background: rgba(0,0,0,0.2); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 12px; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5;"></textarea>
+6715:                <div id="textGeneratorActions" style="display: flex; gap: 10px; flex-shrink: 0;">
+6716:                    <button id="btn-textgen-copy" class="filter-btn" style="flex: 1; justify-content: center; display: none;">📋 In Zwischenablage kopieren</button>
+6717:                    <button id="btn-textgen-txt" class="filter-btn" style="flex: 1; justify-content: center; display: none;">💾 Als .txt herunterladen</button>
+6718:                    <button id="btn-textgen-docx" class="filter-btn" style="flex: 1; justify-content: center; display: none;">💾 Als .docx herunterladen</button>

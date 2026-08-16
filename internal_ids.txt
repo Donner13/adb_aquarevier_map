@@ -1,0 +1,218 @@
+1648:    <div id="app-container">
+1650:        <div id="filter-live-region" class="sr-only" aria-live="polite"></div>
+1653:        <button id="mobile-sidebar-toggle" aria-label="Filter und Daten ein/ausblenden">
+1660:        <div id="sidebar">
+1667:                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px 10px; font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" onclick="window.AquaI18n.toggleLanguage()">EN</button>
+1668:                    <button id="audioToggleBtn" class="filter-btn" style="padding: 6px 10px; font-size: 13px;" title="Ton an/aus" aria-label="Audio Switcher" onclick="window.AquaAudio.toggleAudio()">🔇 Ton aus</button>
+1669:                    <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
+1672:                    <button id="presentation-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Präsentationsmodus starten (Beamer)" aria-label="Präsentationsmodus starten">
+1675:                    <button id="contrast-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
+1678:                    <button id="replay-tour-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Tour erneut starten" aria-label="Einführungstour erneut starten" onclick="showRoleModal()">🎓</button>
+1679:                    <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln" aria-label="Farbschema umschalten">
+1691:                            <button id="btn-actors-all" type="button">Alle an</button>
+1692:                            <button id="btn-actors-none" type="button">Alle aus</button>
+1699:                            <span class="counter-badge" id="cnt-group-Behörde">(0/0)</span>
+1704:                            <span class="counter-badge" id="cnt-group-Forschung">(0/0)</span>
+1709:                            <span class="counter-badge" id="cnt-group-Gebietskörperschaft">(0/0)</span>
+1714:                            <span class="counter-badge" id="cnt-group-Gewerbe-Industrie">(0/0)</span>
+1719:                            <span class="counter-badge" id="cnt-group-Landwirtschaft">(0/0)</span>
+1724:                            <span class="counter-badge" id="cnt-group-Netzwerk-Multiplikator">(0/0)</span>
+1729:                            <span class="counter-badge" id="cnt-group-Ver-Entsorger">(0/0)</span>
+1734:                            <span class="counter-badge" id="cnt-group-Sonstige">(0/0)</span>
+1739:                            <span class="counter-badge" id="cnt-group-Einzelakteure">(0/0)</span>
+1744:                            <span class="counter-badge" id="cnt-group-Konsortium">(0/0)</span>
+1754:                            <button id="btn-branches-all" type="button">Alle an</button>
+1755:                            <button id="btn-branches-none" type="button">Alle aus</button>
+1762:                            <span class="counter-badge" id="cnt-risk-Hoch">(0/0)</span>
+1767:                            <span class="counter-badge" id="cnt-risk-Mittel">(0/0)</span>
+1772:                            <span class="counter-badge" id="cnt-risk-Niedrig">(0/0)</span>
+1777:                            <span class="counter-badge" id="cnt-risk-Unbekannt">(0/0)</span>
+1787:                            <button id="btn-layers-all" type="button">Alle an</button>
+1788:                            <button id="btn-layers-none" type="button">Alle aus</button>
+1794:                            <span class="counter-badge" id="cnt-layer-grundwassermessstellen">(0/0)</span>
+1799:                            <span class="counter-badge" id="cnt-layer-gwiso">(0/0)</span>
+1803:                            <span class="counter-badge" id="cnt-layer-gwwa">(0/0)</span>
+1805:                        <button id="btn-pegel-analysis" class="filter-btn" style="background-color: rgba(0, 158, 115, 0.1); border-color: #009E73;" title="Aktiviert die Analyse-Ansicht für Industrieabwasseranteile an Pegeln">
+1811:                            <span class="counter-badge" id="cnt-layer-pegel">(0/0)</span>
+1816:                            <span class="counter-badge" id="cnt-layer-stauanlagen">(0/0)</span>
+1821:                            <span class="counter-badge" id="cnt-layer-regenbecken">(0/0)</span>
+1826:                            <span class="counter-badge" id="cnt-layer-querbauwerke">(0/0)</span>
+1827:                            <span class="quality-badge" id="qbadge-layer-querbauwerke" title="" hidden>⚠️</span>
+1832:                            <span class="counter-badge" id="cnt-layer-h2_elektrolyseure_nrw">(0/0)</span>
+1837:                            <span class="counter-badge" id="cnt-layer-vogelbeobachtungsgebiete">(0/0)</span>
+1842:                            <span class="counter-badge" id="cnt-layer-stats">(0/0)</span>
+1847:                            <span class="counter-badge" id="cnt-layer-kreis-choropleth" style="display: none;">(0/7)</span>
+1849:                        <div class="choropleth-select-container" id="choroplethMetricContainer" style="display: none;">
+1851:                            <select id="choroplethMetricSelect">
+1862:                            <span class="counter-badge" id="cnt-layer-catchment">(0/0)</span>
+1867:                            <span class="counter-badge" id="cnt-layer-wsg">(0/0)</span>
+1872:                            <span class="counter-badge" id="cnt-layer-wsg-gewinnung" style="display: none;"></span>
+1877:                            <span class="counter-badge" id="cnt-layer-mining">(0/0)</span>
+1882:                            <span class="counter-badge" id="cnt-layer-rivers">(0/0)</span>
+1887:                            <span class="counter-badge" id="cnt-layer-boundary">(0/0)</span>
+1892:                            <span class="counter-badge" id="cnt-layer-kreise">(0/0)</span>
+1908:                            <select id="radius-select" class="form-select form-select-sm" style="font-size: 11px; padding: 2px 6px; border-radius: 4px; flex: 1;">
+1917:                            <input type="number" id="radius-manual-lat" placeholder="Breite (z.B. 50.92)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px 4px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Breite für Radius-Analyse">
+1918:                            <input type="number" id="radius-manual-lng" placeholder="Länge (z.B. 6.45)" step="0.0001" style="width: 50%; font-size: 10px; padding: 3px 4px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px;" aria-label="Geografische Länge für Radius-Analyse">
+1921:                            <button id="btn-radius-activate" type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: var(--bg-surface, #ffffff); border: 1px solid #3b82f6; color: #2563eb; font-weight: 600;" onclick="toggleRadiusAnalysis()">
+1924:                            <button id="btn-radius-manual-submit" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 6px;" onclick="if(window.runRadiusAnalysisFromInputs) window.runRadiusAnalysisFromInputs()">
+1927:                            <button id="btn-radius-clear" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" onclick="clearRadiusAnalysis()" disabled>
+1931:                        <div id="radius-status-info" style="font-size: 10.5px; color: #475569; background: #f8fafc; padding: 6px 8px; border-radius: 4px; border: 1px dashed #cbd5e1; text-align: center;">
+1934:                        <div id="radius-results-container" style="display: none; margin-top: 8px; max-height: 250px; overflow-y: auto; font-size: 11px;">
+1963:                            <span id="timeseries-year-display" style="font-size: 16px; font-weight: 700; color: #2563eb;">2025</span>
+1965:                        <input type="range" id="timeseries-slider" min="0" max="6" step="1" value="5" style="width: 100%; margin-bottom: 8px; cursor: pointer;" oninput="setTimeSeriesYearIndex(parseInt(this.value, 10))">
+1973:                            <button id="btn-timeseries-play" type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: #16a34a; border: 1px solid #15803d; color: white; font-weight: 600;" onclick="toggleTimeSeriesPlay()">
+1976:                            <button id="btn-timeseries-reset" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" onclick="resetTimeSeries()">
+1980:                        <div id="timeseries-stats-summary" style="margin-top: 6px;">
+1990:                        <span id="network-status-badge" style="font-size: 10px; padding: 2px 6px; border-radius: 10px; border: 1px solid #cbd5e1; background: #f1f5f9;">🟢 Online</span>
+2001:                        <div id="bookmarks-list-container">
+2007:                            <button id="btn-toggle-theme" type="button" class="btn btn-sm btn-outline-dark" style="flex:1; font-size: 10px;" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+2017:                            <button id="btn-refresh-feedback" type="button" onclick="loadFeedbackIssues()">🔄 Aktualisieren</button>
+2020:                    <div id="feedback-issues-list" style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; padding: 8px; max-height: 250px; overflow-y: auto;">
+2027:                <div id="audit-trail-section">
+2030:                        <span id="audit-toggle-icon">▼</span>
+2032:                    <div class="glass-panel" id="audit-panel" style="padding:10px; border-radius:8px; margin-bottom:10px; background: var(--bg-surface); border:1px solid var(--border-color); display:none;">
+2036:                        <select id="auditLayerSelect" style="width: 100%; margin-bottom: 10px; padding: 5px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-primary);" onchange="loadAuditTrail()">
+2045:                        <div id="audit-log-container" style="max-height: 200px; overflow-y: auto; font-size: 0.85em;">
+2054:                    <div class="glass-panel" id="editor-panel" style="padding: 10px; border-radius: 8px; margin-bottom: 10px; background: var(--bg-surface); border: 1px solid var(--border-color);">
+2056:                            <strong id="form-action-title" style="font-size:12px;">Neuen Akteur erstellen</strong>
+2057:                            <button class="filter-btn" id="btn-cancel-edit" style="display:none; padding: 2px 8px; font-size:10px;">Abbrechen</button>
+2059:                        <input type="hidden" id="contact-id">
+2062:                            <input type="text" id="contact-name" placeholder="z. B. LANUV NRW" style="width:100%; box-sizing:border-box;">
+2066:                            <select id="contact-group" style="width:100%; box-sizing:border-box;">
+2082:                                <input type="number" step="any" id="contact-lat" placeholder="Lat" style="width:50%; box-sizing:border-box;">
+2083:                                <input type="number" step="any" id="contact-lng" placeholder="Lng" style="width:50%; box-sizing:border-box;">
+2088:                            <textarea id="contact-desc" rows="2" style="width:100%; box-sizing:border-box;"></textarea>
+2092:                            <input type="text" id="contact-phone" style="width:100%; box-sizing:border-box;">
+2096:                            <input type="email" id="contact-email" style="width:100%; box-sizing:border-box;">
+2100:                            <input type="text" id="contact-logo" placeholder="https://..." style="width:100%; box-sizing:border-box;">
+2102:                        <button class="filter-btn active" id="btn-save-contact" style="width:100%; margin-bottom:6px; justify-content:center;">💾 Speichern</button>
+2103:                        <button class="filter-btn" id="btn-delete-contact" style="display:none; width:100%; margin-bottom:6px; justify-content:center; color:#ef4444;">🗑️ Löschen</button>
+2104:                        <button class="filter-btn" id="btn-pick-on-map" style="width:100%; justify-content:center;">📍 Position auf Karte wählen</button>
+2106:                    <button class="filter-btn active" id="btn-new-contact" style="width:100%; justify-content:center; margin-bottom:6px;">➕ Neuer Akteur</button>
+2107:                    <button class="filter-btn" id="btn-export-geojson" style="width:100%; justify-content:center; margin-bottom:6px;">💾 Als .geojson exportieren</button>
+2108:                    <button class="filter-btn" id="btn-export-csv" style="width:100%; justify-content:center; margin-bottom:6px;">📄 Als .csv exportieren</button>
+2109:                    <button class="filter-btn" id="export-csv-btn" style="display:none;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('csv')"></button>
+2110:                    <button class="filter-btn" id="export-pdf-btn" style="display:none;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()"></button>
+2111:                    <button class="filter-btn" id="open-data-export-btn" style="display:none;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('geojson')"></button>
+2112:                    <button class="filter-btn" id="embed-open-btn" style="display:none;" onclick="if(typeof openEmbedModal==='function') openEmbedModal()"></button>
+2113:                    <button class="filter-btn" id="generate-report-btn" style="display:none;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()"></button>
+2114:                    <button class="filter-btn" id="generate-sprechzettel-btn" style="width:100%; justify-content:center; margin-bottom:6px;">🗣️ Sprechzettel generieren</button>
+2115:                    <button class="filter-btn" id="generate-beschlussvorlage-btn" style="width:100%; justify-content:center; margin-bottom:6px;">📋 Beschlussvorlage generieren</button>
+2116:                    <button class="filter-btn" id="btn-save-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #059669; border-color: #059669; color: white;">💾 Auf Server speichern</button>
+2117:                    <button class="filter-btn" id="btn-deploy-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #2563eb; border-color: #2563eb; color: white;">🚀 Karte veröffentlichen (Deploy)</button>
+2118:                    <button class="filter-btn active" id="btn-generate-report" style="width:100%; justify-content:center; margin-bottom:6px; background: #6366f1; border-color: #6366f1; color: white; font-weight: 600;">📊 Bericht generieren (PDF)</button>
+2119:                    <button class="filter-btn" id="btn-reset-local" style="width:100%; justify-content:center; font-size:10px; color:#ef4444; margin-bottom:6px;">↺ Lokale Änderungen verwerfen</button>
+2120:                    <div id="save-status" style="font-size:10px; color: var(--text-secondary); margin-top:6px; min-height:14px;"></div>
+2127:                        <span id="customizer-toggle-icon">▼</span>
+2129:                    <div class="glass-panel" id="customizer-panel" style="padding: 10px; border-radius: 8px; margin-bottom: 10px; background: var(--bg-surface); border: 1px solid var(--border-color); display: none;">
+2137:                                    <span id="val-marker-size">14</span>
+2139:                                <input type="range" id="cfg-marker-size" min="8" max="32" value="14" style="width: 100%;" oninput="updateMarkerStyles()">
+2144:                                    <span id="val-marker-border">2</span>
+2146:                                <input type="range" id="cfg-marker-border" min="0" max="8" value="2" style="width: 100%;" oninput="updateMarkerStyles()">
+2152:                                <select id="cfg-marker-tooltip" style="width: 100%; font-size: 10px; padding: 2px;" onchange="updateMarkerStyles()">
+2171:                                    <input type="color" id="cfg-ug-color" value="#000000" onchange="updateBoundaryStyles()">
+2172:                                    <input type="color" id="cfg-ug-fill" value="#818cf8" onchange="updateBoundaryStyles()">
+2173:                                    <input type="range" id="cfg-ug-weight" min="0" max="6" step="0.5" value="1.8" style="width:50px;" oninput="updateBoundaryStyles()">
+2174:                                    <input type="range" id="cfg-ug-opacity" min="0" max="1" step="0.05" value="0.04" style="width:50px;" oninput="updateBoundaryStyles()">
+2182:                                    <input type="color" id="cfg-kr-color" value="#000000" onchange="updateBoundaryStyles()">
+2183:                                    <input type="range" id="cfg-kr-weight" min="0" max="6" step="0.5" value="2" style="width:60px;" oninput="updateBoundaryStyles()">
+2184:                                    <input type="text" id="cfg-kr-dash" value="6, 4" placeholder="Strichung" style="width:50px; font-size:10px; padding:2px;" onchange="updateBoundaryStyles()">
+2192:                                    <input type="color" id="cfg-ca-color" value="#1e3a8a" onchange="updateBoundaryStyles()">
+2193:                                    <input type="color" id="cfg-ca-fill" value="#3b82f6" onchange="updateBoundaryStyles()">
+2194:                                    <input type="range" id="cfg-ca-weight" min="0" max="6" step="0.5" value="1.2" style="width:50px;" oninput="updateBoundaryStyles()">
+2195:                                    <input type="range" id="cfg-ca-opacity" min="0" max="1" step="0.05" value="0.12" style="width:50px;" oninput="updateBoundaryStyles()">
+2205:                                        <input type="color" id="cfg-riv-color" value="#2563eb" onchange="updateRiverStyles()">
+2206:                                        <input type="range" id="cfg-riv-weight-det" min="0.5" max="6" step="0.5" value="2.5" title="Dicke (Detail)" style="width:40px;" oninput="updateRiverStyles()">
+2207:                                        <input type="range" id="cfg-riv-opacity" min="0" max="1" step="0.05" value="0.85" title="Transparenz" style="width:40px;" oninput="updateRiverStyles()">
+2211:                                        <input type="color" id="cfg-rivl-color" value="#60a5fa" onchange="updateRiverStyles()">
+2212:                                        <input type="color" id="cfg-rivl-shadow" value="#000000" title="Schatten" onchange="updateRiverStyles()">
+2214:                                        <input type="color" id="cfg-rivl-color-light" value="#1e3a8a" onchange="updateRiverStyles()">
+2215:                                        <input type="color" id="cfg-rivl-shadow-light" value="#ffffff" title="Schatten" onchange="updateRiverStyles()">
+2219:                                        <input type="number" id="cfg-rivl-size" min="8" max="24" value="11" style="width:40px;" onchange="updateRiverStyles()">
+2230:                            <div id="wms-customizer-container" style="display: flex; flex-direction: column; gap: 6px;">
+2241:                                <input type="text" id="custom-wms-name" placeholder="Anzeigename (z.B. NRW Höhe)" style="font-size: 10px; width: 100%; box-sizing: border-box;">
+2244:                                <input type="text" id="custom-wms-url" placeholder="WMS Server URL" style="font-size: 10px; width: 100%; box-sizing: border-box;">
+2247:                                <input type="text" id="custom-wms-layers" placeholder="Layer-Namen (kommagetrennt)" style="font-size: 10px; width: 100%; box-sizing: border-box;">
+2249:                            <button class="filter-btn active" id="btn-add-custom-wms" style="width: 100%; justify-content: center; font-size: 10px; padding: 4px;" onclick="addCustomWMS()">➕ WMS hinzufügen</button>
+2251:                            <div id="custom-wms-list" style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px; max-height: 100px; overflow-y: auto;">
+2261:                            <div id="group-customizer-container" style="max-height: 180px; overflow-y: auto; padding-right: 4px; display: flex; flex-direction: column; gap: 6px;">
+2273:                                <input type="color" id="cfg-theme-bgBase" value="#0b0f19" onchange="updateTheme('bgBase', this.value)" style="width: 30px; height: 20px;">
+2277:                                <input type="color" id="cfg-theme-textPrimary" value="#f3f4f6" onchange="updateTheme('textPrimary', this.value)" style="width: 30px; height: 20px;">
+2281:                                <input type="color" id="cfg-theme-accentPrimary" value="#6366f1" onchange="updateTheme('accentPrimary', this.value)" style="width: 30px; height: 20px;">
+2291:                                <label><input type="checkbox" id="cfg-search-name" onchange="updateSearchFields()"> Name</label>
+2292:                                <label><input type="checkbox" id="cfg-search-group" onchange="updateSearchFields()"> Gruppe</label>
+2293:                                <label><input type="checkbox" id="cfg-search-description" onchange="updateSearchFields()"> Beschreibung</label>
+2294:                                <label><input type="checkbox" id="cfg-search-phone" onchange="updateSearchFields()"> Telefon</label>
+2295:                                <label><input type="checkbox" id="cfg-search-email" onchange="updateSearchFields()"> E-Mail</label>
+2305:                                <input type="file" id="import-geojson-file" accept=".geojson,.json" style="font-size: 10px; width: 100%;">
+2308:                                <input type="text" id="import-layer-name" placeholder="Layer Name" style="font-size: 10px; width: 60%; padding: 2px;">
+2309:                                <input type="color" id="import-layer-color" value="#10b981" style="width: 30px; height: 20px;">
+2311:                            <button class="filter-btn active" id="btn-import-layer" style="width: 100%; justify-content: center; font-size: 10px; padding: 4px;">📥 Layer laden</button>
+2312:                            <div id="import-status" style="font-size: 9px; color: var(--text-secondary); margin-top: 4px;"></div>
+2324:                            <button id="btn-hazard-all" type="button">Alle an</button>
+2325:                            <button id="btn-hazard-none" type="button">Alle aus</button>
+2328:                    <div id="hazard-layer-group">
+2388:                        <input type="text" id="search-input" data-i18n-key="search_placeholder" placeholder="Nach Name oder Ort suchen...">
+2391:                        <div class="contacts-meta" id="contacts-count" aria-live="polite" style="margin-bottom: 0;">0 von 0 Kontakten angezeigt</div>
+2392:                        <button id="reset-filters-btn" class="filter-btn" data-i18n-key="reset_filters" style="padding: 4px 8px; font-size: 10px;">Filter zurücksetzen</button>
+2394:                    <button id="share-view-btn" class="filter-btn" style="width: 100%; margin-bottom: 12px; font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
+2395:                    <div class="contact-list" id="contact-list-container">
+2408:        <div id="map"></div>
+2409:        <div id="embed-mini-legend" class="embed-mini-legend">
+2410:            <a id="embed-back-link" class="embed-back-link" target="_blank" rel="noopener noreferrer">↗ Vollständige Karte ansehen</a>
+2411:            <div id="embed-mini-legend-items"></div>
+2415:        <div id="embed-modal">
+2419:                    <button class="embed-modal-close" id="embed-close-btn">&times;</button>
+2432:                        <input type="number" id="embed-width-px" value="800" disabled> px
+2437:                        <input type="number" id="embed-height" value="600"> px
+2441:                <textarea id="embed-snippet-output" readonly></textarea>
+2443:                <button id="embed-copy-btn" class="filter-btn active" style="width: fit-content; background: #10b981; border-color: #10b981; font-weight: 600; color: white;">📋 Code kopieren</button>
+2447:                    <iframe id="embed-preview-iframe" src="" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
+2452:        <div id="pegel-analysis-panel" class="hidden"></div>
+2454:        <div id="presentation-bar">
+2455:            <div class="title" id="presentation-title"></div>
+2456:            <div class="step-counter" id="presentation-step-counter"></div>
+2457:            <div class="caption" id="presentation-caption"></div>
+2459:                <button id="prev-step-btn" class="control-btn">← Zurück</button>
+2460:                <button id="next-step-btn" class="control-btn">Weiter →</button>
+2461:                <button id="exit-presentation-btn" class="control-btn exit-btn">✕ Beenden</button>
+6118:                            <input type="text" id="usearch-input" aria-label="Universalsuche" autocomplete="off" spellcheck="false"
+6121:                            <div id="usearch-results" class="usearch-results"></div>
+6122:                            <div id="usearch-live-region" class="sr-only" aria-live="polite"></div>
+6894:    <div class="scorecard-backdrop" id="kreisScorecardBackdrop" style="display: none;">
+6895:        <div class="scorecard-modal" id="kreisScorecardModal">
+6897:                <div class="scorecard-title" id="scorecardModalTitle">Kreisvergleich</div>
+6898:                <button class="scorecard-close" id="scorecardModalClose" aria-label="Schließen">&times;</button>
+6901:                <div class="scorecard-kpi-narration" id="scorecardModalNarration">
+6905:                    <table class="scorecard-table" id="scorecardModalTable">
+6918:                        <tbody id="scorecardModalTableBody">
+6923:                <div class="scorecard-source" id="scorecardModalSource">
+7185:    <div id="feedback-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: var(--modal-backdrop); z-index: 2000; justify-content: center; align-items: center;">
+7189:                    <h3 id="feedback-modal-title" style="margin: 0; font-size: 16px; color: var(--text-primary, #0f172a);">Fehler melden</h3>
+7190:                    <div id="feedback-modal-layer" style="font-size: 12px; color: var(--text-secondary, #64748b); margin-top: 4px;">Layer: -</div>
+7195:            <form id="feedback-form" onsubmit="submitFeedback(event)" style="display: flex; flex-direction: column; gap: 12px;">
+7196:                <input type="hidden" id="feedback-feature-id">
+7197:                <input type="hidden" id="feedback-lat">
+7198:                <input type="hidden" id="feedback-lng">
+7202:                    <select id="feedback-category" required style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);">
+7213:                    <textarea id="feedback-text" required minlength="10" rows="4" style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; resize: vertical; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);"></textarea>
+7214:                    <div id="feedback-error" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: none;">Bitte füllen Sie alle Pflichtfelder aus (mind. 10 Zeichen im Text).</div>
+7227:    <div id="onboarding-role-modal">
+7254:    <div id="coachmark-overlay">
+7255:        <div id="coachmark-spotlight"></div>
+7256:        <div id="coachmark-tooltip">
+7257:            <h4 id="coachmark-title">Titel</h4>
+7258:            <p id="coachmark-text">Text</p>
+7260:                <div class="coachmark-progress" id="coachmark-progress">Schritt 1 von 4</div>
+7263:                    <button id="coachmark-next-btn" onclick="nextCoachmarkStep()">Weiter</button>
+7270:    <div class="scorecard-backdrop" id="textGeneratorBackdrop" style="display: none;">
+7271:        <div class="scorecard-modal" id="textGeneratorModal" style="max-width: 800px; width: 90%; max-height: 90vh; display: flex; flex-direction: column;">
+7273:                <div class="scorecard-title" id="textGeneratorTitle">Text generieren</div>
+7274:                <button class="scorecard-close" id="textGeneratorClose" aria-label="Schließen">&times;</button>
+7277:                <div id="textGeneratorHint" style="font-size: 14px; color: var(--text-secondary); flex-shrink: 0;"></div>
+7278:                <textarea id="textGeneratorContent" style="flex: 1; min-height: 250px; width: 100%; resize: none; background: rgba(0,0,0,0.2); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 12px; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5;"></textarea>
+7280:                <div id="textGeneratorActions" style="display: flex; gap: 10px; flex-shrink: 0;">
+7281:                    <button id="btn-textgen-copy" class="filter-btn" style="flex: 1; justify-content: center; display: none;">📋 In Zwischenablage kopieren</button>
+7282:                    <button id="btn-textgen-txt" class="filter-btn" style="flex: 1; justify-content: center; display: none;">💾 Als .txt herunterladen</button>
+7283:                    <button id="btn-textgen-docx" class="filter-btn" style="flex: 1; justify-content: center; display: none;">💾 Als .docx herunterladen</button>

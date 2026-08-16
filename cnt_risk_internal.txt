@@ -1,0 +1,4 @@
+1762:                            <span class="counter-badge" id="cnt-risk-Hoch">(0/0)</span>
+1767:                            <span class="counter-badge" id="cnt-risk-Mittel">(0/0)</span>
+1772:                            <span class="counter-badge" id="cnt-risk-Niedrig">(0/0)</span>
+1777:                            <span class="counter-badge" id="cnt-risk-Unbekannt">(0/0)</span>
