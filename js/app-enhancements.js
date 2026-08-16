@@ -844,7 +844,6 @@
 
     // --- 8. KEYBOARD ACCESSIBILITY & ARIA ENHANCEMENTS ---
     function initAccessibility() {
-        // [TASK-012] Verify/initialize focus trap functionality
         const buttons = document.querySelectorAll('.filter-btn');
         buttons.forEach(btn => {
             if (!btn.hasAttribute('tabindex')) btn.setAttribute('tabindex', '0');
@@ -988,7 +987,7 @@
                     }
                 }
             } else if (e.key === 'Tab') {
-                // [TASK-012] Leichtgewichtiges Focus-Trapping fuer geoeffnete Modale (Focus trap for open modals)
+                // [TASK-012] Leichtgewichtiges Focus-Trapping fuer geoeffnete Modale
                 const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [tabindex]:not([tabindex^="-"])';
 
                 const openModals = Array.from(document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop')).filter(modal => {
