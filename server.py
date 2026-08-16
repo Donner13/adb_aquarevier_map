@@ -190,7 +190,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
         self.send_header('Vary', 'Origin')
 
-        if parsed_origin and parsed_origin.hostname in ('localhost', '127.0.0.1'):
+        if parsed_origin and parsed_origin.hostname in ('localhost', '127.0.0.1', '::1'):
             self.send_header('Access-Control-Allow-Origin', origin)
             self.send_header('Access-Control-Allow-Credentials', 'true')
 
