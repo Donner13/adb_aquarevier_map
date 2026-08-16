@@ -307,7 +307,13 @@
             });
         }
 
+        let _closePaletteTimer = null;
+
         function openPalette() {
+            if (_closePaletteTimer) {
+                clearTimeout(_closePaletteTimer);
+                _closePaletteTimer = null;
+            }
             modal.hidden = false;
             modal.style.display = 'flex';
             requestAnimationFrame(() => { modal.style.opacity = '1'; });
@@ -319,11 +325,14 @@
 
         function closePalette() {
             modal.style.opacity = '0';
-            setTimeout(() => {
+            _closePaletteTimer = setTimeout(() => {
                 modal.hidden = true;
                 modal.style.display = 'none';
+                _closePaletteTimer = null;
             }, 200);
         }
+
+        window.closeCommandPalette = closePalette;
 
         // Global Keydown Handler
         document.addEventListener('keydown', (e) => {
@@ -931,19 +940,13 @@
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden') && !modal.hidden) {
 
-                        if (modal.id === 'command-palette-modal') {
-                            modal.style.opacity = '0';
-                            setTimeout(() => {
-                                modal.hidden = true;
-                                modal.style.display = 'none';
-                                modal.classList.add('hidden');
-                            }, 200);
+                        if (modal.id === 'command-palette-modal' && typeof window.closeCommandPalette === 'function') {
+                            window.closeCommandPalette();
                         } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
                             modal.remove();
                         } else {
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
-                            modal.hidden = true;
                         }
                         closedAny = true;
                     }
