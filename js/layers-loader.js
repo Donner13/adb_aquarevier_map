@@ -122,8 +122,6 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
   /** Baut den Popup-HTML-String aus cfg.popupFields */
   function buildPopupHtml(p) {
-    // Fix for missing Firmenlogos
-    let dummyLogoStr = `<img onerror="this.src='logos/placeholder.png'" style="display:none;" />`;
 
     const glossarSpan = (key) =>
       key ? `<span class="glossar-icon" data-glossar="${escapeHtml(key)}">i</span>` : '';
@@ -137,6 +135,8 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       <div class="popup-card">
         <div class="popup-group" style="color:${cfg.color}">${escapeHtml(tLabel(cfg.groupLabel))}</div>
         <div class="popup-title">${escapeHtml(p.name || 'Unbekannt')}</div>
+        <!-- Fallback for dynamic logos -->
+        <img onerror="this.onerror=null; this.src='logos/placeholder.png'" style="display:none;" alt="" />
     `;
 
     for (const field of (cfg.popupFields || [])) {
