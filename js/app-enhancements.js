@@ -928,17 +928,29 @@
                     }
                 }
             } else if (e.key === 'Escape') {
+                if (e.defaultPrevented) return;
+
                 let closedAny = false;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
-                        if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
+                        const closeBtn = modal.querySelector('.close-btn, .scorecard-close, [aria-label="Schließen"]');
+                        if (closeBtn && typeof closeBtn.click === 'function') {
+                            closeBtn.click();
+                        } else if (modal.id === 'command-palette-modal') {
+                            modal.style.opacity = '0';
+                            setTimeout(() => {
+                                modal.hidden = true;
+                                modal.style.display = 'none';
+                            }, 200);
+                        } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
                             modal.remove();
                         } else {
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
+                            modal.hidden = true;
                         }
                         closedAny = true;
                     }
