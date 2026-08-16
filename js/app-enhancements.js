@@ -895,31 +895,39 @@
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (modal.id === 'command-palette-modal') {
-                            // Instead of a brittle click, we just hide it identically to the other modals
-                            // The command palette will reset properly next time it opens
-                            modal.style.display = 'none';
-                            modal.classList.add('hidden');
+                            if (typeof closePalette === 'function') {
+                                closePalette();
+                            } else {
+                                modal.style.display = 'none';
+                                modal.classList.add('hidden');
+                            }
                             closedAny = true;
                             return;
                         }
 
                         if (modal.id === 'onboarding-role-modal') {
-                            modal.style.display = 'none';
-                            modal.classList.add('hidden');
+                            if (typeof window.closeRoleModal === 'function') {
+                                window.closeRoleModal();
+                            } else {
+                                modal.style.display = 'none';
+                                modal.classList.add('hidden');
+                            }
                             closedAny = true;
                             return;
                         }
 
                         if (modal.id === 'coachmark-overlay') {
-                            modal.style.display = 'none';
+                            if (typeof window.endCoachmarkTour === 'function') {
+                                window.endCoachmarkTour();
+                            } else {
+                                modal.style.display = 'none';
+                            }
                             closedAny = true;
                             return;
                         }
 
                         if (modal.classList.contains('scorecard-backdrop')) {
-                            // Do not remove the modal, just hide it so it can be opened again later without a full rebuild
-                            modal.style.display = 'none';
-                            modal.classList.add('hidden');
+                            modal.remove();
                         } else {
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
