@@ -222,7 +222,10 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             if not self.check_auth():
                 self.send_auth_challenge()
                 return
-        super().do_GET()
+        try:
+            super().do_GET()
+        except PathTraversalError as e:
+            self.send_error(403, str(e))
 
     def do_POST(self):
         if not self.check_auth():
