@@ -322,6 +322,7 @@
             modal.style.opacity = '0';
             setTimeout(() => {
                 modal.hidden = true;
+                modal.classList.add('hidden');
                 modal.style.display = 'none';
             }, 200);
         }
