@@ -325,6 +325,9 @@
             }, 200);
         }
 
+        // Expose method for central accessibility handler
+        modal.closeModal = closePalette;
+
         // Global Keydown Handler
         document.addEventListener('keydown', (e) => {
             // Ctrl+K or Cmd+K
@@ -947,7 +950,7 @@
                             }
                         } else {
                             // Find the closest close-btn that belongs to this specific modal level
-                            const closeBtns = Array.from(modal.querySelectorAll('.close-btn, .scorecard-close, [aria-label="Schließen"]'));
+                            const closeBtns = Array.from(modal.querySelectorAll('.close-btn, .scorecard-close, .update-radar-close, .embed-modal-close, [aria-label*="close" i], [aria-label*="schließ" i], [title*="close" i], [title*="schließ" i]'));
                             const closeBtn = closeBtns.find(btn => btn.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay') === modal) || closeBtns[0];
 
                             if (closeBtn) {
