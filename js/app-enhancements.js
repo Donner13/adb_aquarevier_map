@@ -899,13 +899,9 @@
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (modal.id === 'command-palette-modal') {
-                            // Unified closure: Provide a safe fallback if the palette's own listener is bypassed
-                            // by emitting a synthetic close event or just hiding it if the listener failed.
-                            // However, since closePalette is not globally exposed, we use a CustomEvent
-                            // or fallback to generic hiding to ensure the constraint 'authoritative closure' is met.
+                            // Trigger the custom event which calls closePalette() to do the fade out.
+                            // Do not force display:none here, let the animation finish.
                             modal.dispatchEvent(new CustomEvent('closeCommandPalette'));
-                            modal.style.display = 'none';
-                            modal.classList.add('hidden');
                             closedAny = true;
                             return;
                         }
