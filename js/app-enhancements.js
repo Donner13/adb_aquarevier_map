@@ -325,6 +325,8 @@
             }, 200);
         }
 
+        modal.closeModal = closePalette;
+
         // Global Keydown Handler
         document.addEventListener('keydown', (e) => {
             // Ctrl+K or Cmd+K
@@ -337,10 +339,7 @@
 
             if (modal.hidden) return;
 
-            if (e.key === 'Escape') {
-                e.preventDefault();
-                closePalette();
-            } else if (e.key === 'ArrowDown') {
+            if (e.key === 'ArrowDown') {
                 e.preventDefault();
                 selectedIndex = (selectedIndex + 1) % (commandItems.length || 1);
                 renderResults(input.value);
@@ -934,7 +933,13 @@
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
-                        if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
+                        if (typeof modal.closeModal === 'function') {
+                            try {
+                                modal.closeModal();
+                            } catch (err) {
+                                console.error('Error closing modal:', err);
+                            }
+                        } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
                             modal.remove();
                         } else {
                             modal.style.display = 'none';
