@@ -936,7 +936,7 @@
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
-                        const closeBtn = modal.querySelector('.close-btn, .scorecard-close, [aria-label="Schließen"]');
+                        const closeBtn = modal.querySelector('.close-btn:not([disabled]), .scorecard-close:not([disabled]), [aria-label="Schließen"]:not([disabled])');
                         if (closeBtn) {
                             closeBtn.click();
                         } else if (!modal.id) {
