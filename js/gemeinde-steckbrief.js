@@ -160,6 +160,8 @@
 
         if (lats.length > 0) {
             dossier.centerLat = lats.reduce((a, b) => a + b, 0) / lats.length;
+        }
+        if (lngs.length > 0) {
             dossier.centerLng = lngs.reduce((a, b) => a + b, 0) / lngs.length;
         }
 
