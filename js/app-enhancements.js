@@ -939,7 +939,7 @@
                         const closeBtn = modal.querySelector('.close-btn:not([disabled]), .scorecard-close:not([disabled]), [aria-label="Schließen"]:not([disabled])');
                         if (closeBtn) {
                             closeBtn.click();
-                        } else if (!modal.id) {
+                        } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
                             modal.remove();
                         } else {
                             modal.style.display = 'none';
