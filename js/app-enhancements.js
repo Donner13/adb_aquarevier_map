@@ -894,10 +894,14 @@
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
+                        // We dispatch a custom event to tell the modal it should close via escape.
+                        // The global listener doesn't need to know the specifics of how the modal cleans up.
+                        // If it's a generic modal, it will be hidden below.
+
                         if (modal.id === 'command-palette-modal') {
-                            // Unified closure: Use a programmatic click on the backdrop, as this uses the proper close event
-                            // already registered inside initCommandPalette without bypassing it.
-                            modal.click();
+                            // The command palette intercepts Escape on document already and handles its own fade
+                            // So if we see it open, we know it's handling itself, we just need to ensure
+                            // we set closedAny to true to restore focus.
                             closedAny = true;
                             return;
                         }
