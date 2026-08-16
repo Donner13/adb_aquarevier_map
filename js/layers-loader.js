@@ -122,11 +122,14 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
   /** Baut den Popup-HTML-String aus cfg.popupFields */
   function buildPopupHtml(p) {
-    // XSS-Sanitisierung aller dynamischen String-Eigenschaften (Kopie)
+    // XSS-Sanitisierung aller dynamischen Eigenschaften (Kopie)
     const safeP = { ...p };
     for (const key in safeP) {
       if (typeof safeP[key] === 'string') {
         safeP[key] = escapeHtml(safeP[key]);
+      } else if (Array.isArray(safeP[key])) {
+        // Prevent array bypasses that stringify into XSS payloads during interpolation
+        safeP[key] = safeP[key].map(item => typeof item === 'string' ? escapeHtml(item) : item);
       }
     }
 
@@ -154,7 +157,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       } else {
         const val = safeP[field.field];
         if (!val) continue;
-        safeVal = val; // Already escaped via safeP loop
+        safeVal = val; // Already escaped via safeP
       }
 
       // first field (📍) has no label prefix, just the value
