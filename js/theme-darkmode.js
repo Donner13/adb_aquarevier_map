@@ -13,6 +13,9 @@
      * Toggles between Dark Mode and Light Mode consistently across UI and Leaflet basemaps.
      */
     window.toggleDarkMode = function() {
+        // [TASK-014] Note: Dimmed texts using hardcoded colors (#475569, #64748b)
+        // have been replaced in HTML with var(--text-secondary) to ensure
+        // WCAG AA compliant contrast (>= 4.5:1) against dark backgrounds.
         window.isDarkMode = !window.isDarkMode;
         const body = document.body;
 
