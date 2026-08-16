@@ -130,8 +130,9 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
   /** Baut den Popup-HTML-String aus cfg.popupFields */
   function featureFilter(feature) {
-    if (!feature || !feature.geometry || !feature.geometry.coordinates) return false;
+    if (!feature || !feature.geometry) return false;
     if (feature.geometry.type !== 'Point') return true; // Only validate points as requested
+    if (!feature.geometry.coordinates) return false;
 
     const coords = feature.geometry.coordinates;
     if (coords.length < 2) return false;
