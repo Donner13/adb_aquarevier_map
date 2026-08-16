@@ -2701,6 +2701,65 @@
             position: 'bottomright'
         }).addTo(map);
 
+// Embed Modal Logic
+        const embedModal = document.getElementById('embed-modal');
+        const embedOpenBtn = document.getElementById('embed-open-btn');
+        const embedCloseBtn = document.getElementById('embed-close-btn');
+        const embedWidthRadios = document.querySelectorAll('input[name="embed-width-type"]');
+        const embedWidthPx = document.getElementById('embed-width-px');
+        const embedHeight = document.getElementById('embed-height');
+        const embedSnippetOutput = document.getElementById('embed-snippet-output');
+        const embedPreviewIframe = document.getElementById('embed-preview-iframe');
+        const embedCopyBtn = document.getElementById('embed-copy-btn');
+
+        function generateEmbedSnippet() {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const embedUrl = baseUrl + '?embed=1';
+            const widthType = document.querySelector('input[name="embed-width-type"]:checked').value;
+            const width = widthType === 'responsive' ? '100%' : embedWidthPx.value + 'px';
+            const height = embedHeight.value + 'px';
+
+            const snippet = `<iframe src="${embedUrl}" width="${width}" height="${height}" style="border:0;" loading="lazy" title="AquaRevier Akteurskarte"></iframe>`;
+            embedSnippetOutput.value = snippet;
+            embedPreviewIframe.src = embedUrl;
+            embedPreviewIframe.style.width = width;
+            embedPreviewIframe.style.height = height;
+        }
+
+        if (embedOpenBtn) {
+            embedOpenBtn.addEventListener('click', () => {
+                embedModal.style.display = 'flex';
+                generateEmbedSnippet();
+            });
+        }
+
+        if (embedCloseBtn) {
+            embedCloseBtn.addEventListener('click', () => {
+                embedModal.style.display = 'none';
+            });
+        }
+
+        embedWidthRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                embedWidthPx.disabled = e.target.value === 'responsive';
+                generateEmbedSnippet();
+            });
+        });
+
+        embedWidthPx.addEventListener('input', generateEmbedSnippet);
+        embedHeight.addEventListener('input', generateEmbedSnippet);
+
+        embedCopyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(embedSnippetOutput.value).then(() => {
+                const originalText = embedCopyBtn.innerText;
+                embedCopyBtn.innerText = '✅ Kopiert!';
+                setTimeout(() => {
+                    embedCopyBtn.innerText = originalText;
+                }, 2000);
+            });
+        });
+
+
         // Check Embed Mode URL Parameter
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('embed') === '1') {
