@@ -89,6 +89,16 @@ function fetchGeoJSONWorker(url) {
   });
 }
 
+function escapeJsString(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/"/g, '\\"')
+    .replace(/\n/g, '\\n')
+    .replace(/\r/g, '\\r');
+}
+
 function escapeHtml(str) {
   if (str === null || str === undefined) return '';
   return String(str)
@@ -208,7 +218,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         : ' (keine quantifizierten Industrieeinleiter oberhalb gefunden)';
       html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${escapeHtml(p.mq_m3s)} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${escapeHtml(pctStr)}% davon als Industrieabwasser ein${escapeHtml(betriebeHinweis)}.</div>`;
       if (p.upstream_betriebe_count > 0) {
-        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${escapeHtml(p.pegel_nr)}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
+        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${escapeHtml(escapeJsString(p.pegel_nr))}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
       }
     }
 
@@ -257,7 +267,13 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // getZustaendigkeitHtml is a global function defined in index/internal.html
     if (typeof getZustaendigkeitHtml === 'function') {
-      html += getZustaendigkeitHtml(p);
+      html += getZustaendigkeitHtml({
+        ...p,
+        zustaendigkeit_behoerde: escapeHtml(p.zustaendigkeit_behoerde),
+        zustaendigkeit_amt: escapeHtml(p.zustaendigkeit_amt),
+        zustaendigkeit_email: escapeHtml(p.zustaendigkeit_email),
+        zustaendigkeit_telefon: escapeHtml(p.zustaendigkeit_telefon)
+      });
     }
 
     // Pegelonline Live-Dashboard Placeholder
@@ -269,8 +285,14 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     }
 
     // Feedback Link
+    const feedbackLat = Number.isFinite(Number(p.lat || p.latitude)) ? Number(p.lat || p.latitude) : 0;
+    const feedbackLng = Number.isFinite(Number(p.lng || p.longitude || p.lon)) ? Number(p.lng || p.longitude || p.lon) : 0;
+    const feedbackName = escapeHtml(escapeJsString(p.name || ''));
+    const feedbackGroup = escapeHtml(escapeJsString(cfg.groupLabel));
+    const feedbackId = escapeHtml(escapeJsString(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || ''));
+
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-      <button type="button" onclick="openFeedbackModal('${escapeHtml(p.name || '').replace(/'/g, "\\'")}', '${escapeHtml(cfg.groupLabel)}', '${escapeHtml(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${p.lat || p.latitude || 0}, ${p.lng || p.longitude || p.lon || 0})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
+      <button type="button" onclick="openFeedbackModal('${feedbackName}', '${feedbackGroup}', '${feedbackId}', ${feedbackLat}, ${feedbackLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
     </div>`;
 
     // Footer
