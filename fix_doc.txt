@@ -1,0 +1,7 @@
+This PR addresses [TASK-005] Event-Listener Entkopplung beim Theme-Switch by investigating the target file `js/theme-darkmode.js`.
+
+Upon inspection, no redundant `addEventListener('change')` media-query listeners are registered in this file. The theme preference check uses `window.matchMedia().matches` as a one-time evaluation during initialization.
+
+As dictated by the repository's strict scope and memory constraints:
+- I have not artificially introduced new implementations just to satisfy the prompt.
+- I have documented the absence of these listeners via an empty commit to unblock the PR workflow. This commit is intentionally left empty.

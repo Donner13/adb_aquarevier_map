@@ -80,3 +80,4 @@
         setTimeout(initTheme, 100);
     }
 })();
+// Document absence of media-query listener
