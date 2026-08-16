@@ -334,8 +334,11 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
           const markers = L.geoJSON(data, {
             filter: (feature) => {
               if (!feature.geometry || feature.geometry.type !== 'Point' || !feature.geometry.coordinates || feature.geometry.coordinates.length < 2) return false;
-              const lng = Number(feature.geometry.coordinates[0]);
-              const lat = Number(feature.geometry.coordinates[1]);
+              const rawLng = feature.geometry.coordinates[0];
+              const rawLat = feature.geometry.coordinates[1];
+              if (rawLng === null || rawLat === null || rawLng === '' || rawLat === '') return false;
+              const lng = Number(rawLng);
+              const lat = Number(rawLat);
               if (Number.isNaN(lng) || Number.isNaN(lat)) return false;
               if (lng < -180 || lng > 180 || lat < -90 || lat > 90) return false;
               return true;
@@ -410,8 +413,11 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         const geoLayer = L.geoJSON(data, {
           filter: (feature) => {
             if (!feature.geometry || feature.geometry.type !== 'Point' || !feature.geometry.coordinates || feature.geometry.coordinates.length < 2) return false;
-            const lng = Number(feature.geometry.coordinates[0]);
-            const lat = Number(feature.geometry.coordinates[1]);
+            const rawLng = feature.geometry.coordinates[0];
+            const rawLat = feature.geometry.coordinates[1];
+            if (rawLng === null || rawLat === null || rawLng === '' || rawLat === '') return false;
+            const lng = Number(rawLng);
+            const lat = Number(rawLat);
             if (Number.isNaN(lng) || Number.isNaN(lat)) return false;
             if (lng < -180 || lng > 180 || lat < -90 || lat > 90) return false;
             return true;
