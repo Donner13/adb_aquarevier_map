@@ -938,10 +938,10 @@
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
-                        const closeButton = modal.querySelector('.close-btn, .scorecard-close, [aria-label="Schließen"]');
+                        const closeButton = modal.querySelector('.modal-content > .close-btn, .scorecard-dialog .scorecard-close, .modal [aria-label="Schließen"]');
                         if (closeButton) {
                             closeButton.click();
-                        } else if (!modal.id) {
+                        } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
                             modal.remove();
                         } else {
                             modal.style.display = 'none';
