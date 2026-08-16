@@ -140,7 +140,14 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         safeP[key] = safeP[key].map(item => typeof item === 'string' ? escapeHtml(item) : escapeHtml(String(item)));
       } else if (safeP[key] !== null && safeP[key] !== undefined && typeof safeP[key] === 'object') {
         // Convert any unhandled objects to string to prevent object injection vulnerabilities
-        safeP[key] = escapeHtml(JSON.stringify(safeP[key]));
+        // Safely handle circular references gracefully via try/catch
+        let strVal = '';
+        try {
+          strVal = JSON.stringify(safeP[key]);
+        } catch (e) {
+          strVal = String(safeP[key]);
+        }
+        safeP[key] = escapeHtml(strVal);
       } else if (safeP[key] !== null && safeP[key] !== undefined) {
         // Convert numbers, booleans, etc. to strings and escape
         safeP[key] = escapeHtml(String(safeP[key]));
