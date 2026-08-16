@@ -153,6 +153,17 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
+    def translate_path(self, path):
+        translated = super().translate_path(path)
+        resolved_path = os.path.realpath(translated)
+        resolved_dir = os.path.realpath(self.directory)
+
+        # Security: Prevent Path Traversal and escaping via symlinks
+        if os.path.commonpath([resolved_path, resolved_dir]) != resolved_dir:
+            return os.path.join(self.directory, ".blocked_by_path_traversal_guard")
+
+        return translated
+
     def log_message(self, format, *args):
         """Keep automated runs quiet unless access logging is explicitly requested."""
         if os.environ.get('SERVER_ACCESS_LOG') == '1':
