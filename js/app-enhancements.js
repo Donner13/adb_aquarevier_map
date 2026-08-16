@@ -896,9 +896,11 @@
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (modal.id === 'command-palette-modal') {
-                            // Unified closure: Use a programmatic click on the backdrop, as this uses the proper close event
-                            // already registered inside initCommandPalette without bypassing it.
-                            modal.click();
+                            // Dispatch custom event to gracefully close palette if supported
+                            modal.dispatchEvent(new CustomEvent('closeCommandPalette'));
+                            // Fallback to ensuring it is closed visually
+                            modal.style.display = 'none';
+                            modal.classList.add('hidden');
                             closedAny = true;
                             return;
                         }
