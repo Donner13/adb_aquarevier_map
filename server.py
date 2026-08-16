@@ -205,12 +205,12 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             try:
                 with open(os.path.join(DIRECTORY, 'js', 'layers-config.js'), 'r', encoding='utf-8') as f:
                     content = f.read()
-                    layer_files = re.findall(r"file:\s*['\"]([^'\"]+)['\"]", content)
+                    layer_files = re.findall(r"file:\s*['\"]([^'\"]+\.geojson)['\"]", content)
                     core_files.extend(layer_files)
             except Exception:
                 unreadable.append('js/layers-config.js')
 
-            core_files = list(set(core_files))
+            core_files = sorted(list(set(core_files)))
 
             for file_name in core_files:
                 filepath = os.path.join(DIRECTORY, file_name)
@@ -226,8 +226,8 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({
                 "status": status,
-                "missing": missing,
-                "unreadable": unreadable
+                "missing": sorted(missing),
+                "unreadable": sorted(unreadable)
             }).encode('utf-8'))
             return
 
