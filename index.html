@@ -2850,10 +2850,10 @@
                                 <div class="popup-card">
                                     <div class="popup-group" style="color: #dc2626">Trinkwasserschutzgebiet</div>
                                     <div class="popup-title">${escapeHtml(p.wsg_name || 'Unbekannt')}</div>
-                                    <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'}</div>
-                                    <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
-                                    <div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${escapeHtml(p.wsg_name || 'Unbekannt').replace(/&#039;/g, "\\'")}', 'Wasserschutzgebiete', '${escapeHtml(p.id || p.wsg_name || '').replace(/&#039;/g, "\\'")}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>
-                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
+                                    <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${escapeHtml(p.wsg_zone || '–')}</div>
+                                    <div class="popup-detail">⚙️ Status: ${escapeHtml(p.areastatus || '–')}</div>
+                                    <div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${String(p.wsg_name || 'Unbekannt').replace(/\\/g, '\\\\').replace(/'/g, '\\\'').replace(/"/g, '&quot;').replace(/</g, '\\x3c').replace(/>/g, '\\x3e')}', 'Wasserschutzgebiete', '${String(p.id || p.wsg_name || '').replace(/\\/g, '\\\\').replace(/'/g, '\\\'').replace(/"/g, '&quot;').replace(/</g, '\\x3c').replace(/>/g, '\\x3e')}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>
+                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${escapeHtml(p.quelle || 'LANUV NRW')}</div>
                                 </div>
                             `;
                             layer.bindPopup(html);
@@ -2884,9 +2884,9 @@
                                 <div class="popup-card">
                                     <div class="popup-group" style="color: #005A9C">Wassergewinnungsgebiet</div>
                                     <div class="popup-title">${escapeHtml(p.wsg_name || 'Unbekannt')}</div>
-                                    <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'} (Fassungsbereich)</div>
-                                    <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
-                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
+                                    <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${escapeHtml(p.wsg_zone || '–')} (Fassungsbereich)</div>
+                                    <div class="popup-detail">⚙️ Status: ${escapeHtml(p.areastatus || '–')}</div>
+                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${escapeHtml(p.quelle || 'LANUV NRW')}</div>
                                 </div>
                             `;
                             layer.bindPopup(html);
@@ -3369,7 +3369,7 @@
                     }
                     html += getZustaendigkeitHtml(p);
                     const latlng = layer.getLatLng ? layer.getLatLng() : {lat:0, lng:0};
-                    html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${escapeHtml(p.name || '').replace(/&#039;/g, "\\'")}', 'Industrieeinleiter', '${escapeHtml(p.betriebs_nr || p.name || '').replace(/&#039;/g, "\\'")}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
+                    html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${String(p.name || '').replace(/\\/g, '\\\\').replace(/'/g, '\\\'').replace(/"/g, '&quot;').replace(/</g, '\\x3c').replace(/>/g, '\\x3e')}', 'Industrieeinleiter', '${String(p.betriebs_nr || p.name || '').replace(/\\/g, '\\\\').replace(/'/g, '\\\'').replace(/"/g, '&quot;').replace(/</g, '\\x3c').replace(/>/g, '\\x3e')}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
                     html += `
                             <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
                         </div>
@@ -3489,7 +3489,7 @@
                                 : (p.anzahl_betriebe > 0
                                     ? `<div class="popup-detail">💧 Keine Mengenangabe für die Betriebe hier verfügbar</div>`
                                     : '');
-                            html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${escapeHtml(title || '').replace(/&#039;/g, "\\'")}', 'Einzugsgebiet-Statistik', '${escapeHtml(p.id || title || '').replace(/&#039;/g, "\\'")}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
+                            html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${String(title || '').replace(/\\/g, '\\\\').replace(/'/g, '\\\'').replace(/"/g, '&quot;').replace(/</g, '\\x3c').replace(/>/g, '\\x3e')}', 'Einzugsgebiet-Statistik', '${String(p.id || title || '').replace(/\\/g, '\\\\').replace(/'/g, '\\\'').replace(/"/g, '&quot;').replace(/</g, '\\x3c').replace(/>/g, '\\x3e')}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
                             html += `
                                     <div style="font-size: 10px; color: #475569; margin-top: 6px;">Spatial Join: ELWAS-WEB Industrieeinleiter × LANUV Teileinzugsgebiete (Rur)</div>
                                 </div>
@@ -4165,7 +4165,8 @@
                         </div>
                 `;
 
-                const websiteUrl = safeProps.website || safeProps.url;
+                let websiteUrl = safeProps.website || safeProps.url;
+                if (websiteUrl && websiteUrl.toLowerCase().startsWith('javascript:')) websiteUrl = '';
                 if (websiteUrl) {
                     popupContent += `
                         <div class="popup-footer">
@@ -5406,7 +5407,7 @@ function buildUnifiedSearchIndex() {
                                 cat: 'einleiter', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng, color,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">💧 Einleitungsart: ${p.einleitungsart || '–'}</div><div class="popup-detail">🚦 Risikoklasse: <strong style="color: ${color};">${risk}</strong></div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}${getZustaendigkeitHtml(p)}<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${escapeHtml(p.name || '').replace(/&#039;/g, "\\'")}', 'Industrieeinleiter', '${escapeHtml(p.betriebs_nr || p.name || '').replace(/&#039;/g, "\\'")}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div></div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${escapeHtml(p.name || 'Unbekannt')}</div><div class="popup-detail">🏭 AbwV Anhang: ${escapeHtml(anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–')}</div><div class="popup-detail">💧 Einleitungsart: ${escapeHtml(p.einleitungsart || '–')}</div><div class="popup-detail">🚦 Risikoklasse: <strong style="color: ${color};">${escapeHtml(risk)}</strong></div><div class="popup-detail">📍 ${escapeHtml(p.gemeinde || '')}${p.gemeinde && p.kreis ? ', ' : ''}${escapeHtml(p.kreis || '')}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${escapeHtml(p.gewaesser_liste)}</div>` : ''}${getZustaendigkeitHtml(p)}<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${String(p.name || '').replace(/\\/g, '\\\\').replace(/'/g, '\\\'').replace(/"/g, '&quot;').replace(/</g, '\\x3c').replace(/>/g, '\\x3e')}', 'Industrieeinleiter', '${String(p.betriebs_nr || p.name || '').replace(/\\/g, '\\\\').replace(/'/g, '\\\'').replace(/"/g, '&quot;').replace(/</g, '\\x3c').replace(/>/g, '\\x3e')}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div></div>`
                             });
                             if (p.gemeinde) { addAgg(gemeindeAgg, p.gemeinde, lat, lng); addAggDetailed(gemeindeDetailAgg, p.gemeinde, { cat: 'einleiter', lat, lng, props: p }); }
                             (p.gewaesser_liste || '').split(',').map(s => s.trim()).filter(Boolean).forEach(g => addAgg(gewaesserAgg, g, lat, lng));

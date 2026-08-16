@@ -247,7 +247,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     }
 
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-      <button type="button" onclick="openFeedbackModal('${String(safeP.name || '').replace(/&#039;/g, "\\'")}', '${escapeHtml(cfg.groupLabel)}', '${String(safeP.id || safeP.anlagen_nr || safeP.pegel_nr || safeP.betriebs_nr || safeP.name || '').replace(/&#039;/g, "\\'")}', ${Number(safeP.lat || safeP.latitude) || 0}, ${Number(safeP.lng || safeP.longitude || safeP.lon) || 0})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
+      <button type="button" onclick="openFeedbackModal('${String(safeP.name || '').replace(/\\/g, '\\\\').replace(/'/g, '\\\'').replace(/"/g, '&quot;').replace(/</g, '\\x3c').replace(/>/g, '\\x3e')}', '${escapeHtml(cfg.groupLabel)}', '${String(safeP.id || safeP.anlagen_nr || safeP.pegel_nr || safeP.betriebs_nr || safeP.name || '').replace(/\\/g, '\\\\').replace(/'/g, '\\\'').replace(/"/g, '&quot;').replace(/</g, '\\x3c').replace(/>/g, '\\x3e')}', ${Number(safeP.lat || safeP.latitude) || 0}, ${Number(safeP.lng || safeP.longitude || safeP.lon) || 0})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
     </div>`;
 
     const footer = cfg.footerTemplate ? cfg.footerTemplate(safeP) : 'Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0';
