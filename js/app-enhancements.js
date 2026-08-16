@@ -941,11 +941,16 @@
                             } catch (error) {
                                 console.error('Error during modal.closeModal():', error);
                             }
-                        } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
-                            modal.remove();
                         } else {
-                            modal.style.display = 'none';
-                            modal.classList.add('hidden');
+                            const closeBtn = modal.querySelector('.close-btn');
+                            if (closeBtn) {
+                                closeBtn.click();
+                            } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
+                                modal.remove();
+                            } else {
+                                modal.style.display = 'none';
+                                modal.classList.add('hidden');
+                            }
                         }
                         closedAny = true;
                     }
