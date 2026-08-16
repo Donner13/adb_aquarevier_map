@@ -23,7 +23,11 @@ test.describe('Popup Content Sanitizer', () => {
                 institution: '<b onmouseover="window.xssFired=true">HoverMe</b>',
                 bereich: '<svg onload="window.xssFired=true">',
                 email: 'test@example.com"></a><script>window.xssFired=true</script>',
-                phone: '<iframe src="javascript:alert(1)"></iframe>'
+                phone: '<iframe src="javascript:alert(1)"></iframe>',
+                zustaendigkeit_behoerde: '<img src=x onerror="window.xssFired=true">Behoerde',
+                zustaendigkeit_amt: '<script>window.xssFired=true</script>Amt',
+                zustaendigkeit_email: '<svg onload="window.xssFired=true">email',
+                zustaendigkeit_telefon: '<iframe src="javascript:alert(1)"></iframe>tel'
               }
             }
           ]
