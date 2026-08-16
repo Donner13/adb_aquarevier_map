@@ -222,6 +222,43 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed_path = urllib.parse.urlparse(self.path)
+        if parsed_path.path == '/health':
+            core_geojsons = [
+                'klaeranlagen.geojson',
+                'grundwassermessstellen.geojson',
+                'pegel.geojson',
+                'stauanlagen.geojson',
+                'regenbecken.geojson',
+                'querbauwerke.geojson',
+                'h2_elektrolyseure_nrw.geojson',
+                'vogelbeobachtungsgebiete.geojson'
+            ]
+            missing = []
+            for f in core_geojsons:
+                filepath = os.path.join(DIRECTORY, f)
+                if not os.path.isfile(filepath):
+                    missing.append(f)
+                else:
+                    try:
+                        with open(filepath, 'r', encoding='utf-8') as file:
+                            # Just check readability
+                            file.read(10)
+                    except Exception:
+                        missing.append(f)
+
+            if missing:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "message": "Missing or unreadable core GeoJSONs", "missing": missing}).encode('utf-8'))
+            else:
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "ok", "message": "All core GeoJSONs are present and readable."}).encode('utf-8'))
+            return
+
+
         # Protect raw PII contacts.geojson file from direct GET access without auth
         if parsed_path.path == '/contacts.geojson' or parsed_path.path.startswith('/api/'):
             if not self.check_auth():
