@@ -938,15 +938,9 @@
                         const closeBtn = modal.querySelector('.close-btn, .scorecard-close, .embed-modal-close, [aria-label="Schließen"]');
                         if (closeBtn && typeof closeBtn.click === 'function') {
                             closeBtn.click();
-                            // Fallback if the click didn't hide the modal after a short delay is not strictly reliable sync,
-                            // but if there's no close button at all, we proceed with fallback removal
                         } else {
-                            if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
-                                modal.remove();
-                            } else {
-                                modal.style.display = 'none';
-                                modal.classList.add('hidden');
-                            }
+                            modal.style.display = 'none';
+                            modal.classList.add('hidden');
                         }
                         closedAny = true;
                     }
