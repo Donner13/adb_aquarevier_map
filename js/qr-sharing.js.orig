@@ -12,7 +12,7 @@
         if (typeof map === 'undefined' || !map || typeof map.getCenter !== 'function') return window.location.href;
         const center = map.getCenter();
         const zoom = map.getZoom();
-        
+
         const params = new URLSearchParams();
         params.set('lat', center.lat.toFixed(5));
         params.set('lng', center.lng.toFixed(5));
@@ -51,9 +51,9 @@
         if (!modal) {
             modal = document.createElement('div');
             modal.id = 'qr-share-modal';
-            modal.setAttribute("role", "dialog"); // [TASK-011]
-            modal.setAttribute("aria-modal", "true"); // [TASK-011]
-            modal.setAttribute("aria-labelledby", "qr-share-modal-title"); // [TASK-011]
+            modal.setAttribute('role', 'dialog');
+            modal.setAttribute('aria-modal', 'true');
+            modal.setAttribute('aria-labelledby', 'qr-share-modal-title');
             modal.style.cssText = `
                 position: fixed;
                 inset: 0;
@@ -74,12 +74,12 @@
                     <span id="qr-share-modal-title" style="font-size: 15px; font-weight: 700;">📱 QR-Code &amp; Deep-Link Teilen</span>
                     <button type="button" onclick="closeQrShareModal()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
                 </div>
-                
+
                 <div style="padding: 20px;">
                     <div style="font-size: 11.5px; color: #64748b; margin-bottom: 14px;">
                         Scanne den QR-Code mit deinem Smartphone, um diesen Kartenausschnitt &amp; die aktiven Layer direkt vor Ort im Feld zu öffnen.
                     </div>
-                    
+
                     <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; display: inline-block; margin-bottom: 14px;">
                         <img src="${qrApiUrl}" alt="QR Code" width="200" height="200" style="display: block; border-radius: 4px;" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'200\\' height=\\'200\\'><path fill=\\'%23f1f5f9\\' d=\\'M0 0h200v200H0z\\'/><text x=\\'100\\' y=\\'105\\' fill=\\'%2364748b\\' font-size=\\'12\\' text-anchor=\\'middle\\'>QR-Code (Offline)</text></svg>';">
                     </div>

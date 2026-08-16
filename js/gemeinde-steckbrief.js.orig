@@ -9,14 +9,14 @@
 
     // Standard municipalities of the Rheinisches Revier (7 Kreise)
     const REVIER_GEMEINDEN = [
-        "Aachen", "Aldenhoven", "Alsdorf", "Baesweiler", "Bedburg", "Bergheim", 
-        "Blankenheim", "Dahlem", "Düren", "Elsdorf", "Erftstadt", "Erkelenz", 
-        "Eschweiler", "Euskirchen", "Frechen", "Gangelt", "Geilenkirchen", "Grevenbroich", 
-        "Heimbach", "Heinsberg", "Herzogenrath", "Hürtgenwald", "Inden", "Jülich", 
-        "Kall", "Kerpen", "Kreuzau", "Langerwehe", "Linnich", "Mechernich", "Merzenich", 
-        "Mönchengladbach", "Nettersheim", "Nideggen", "Niederzier", "Nörvenich", 
-        "Pulheim", "Roetgen", "Rommerskirchen", "Simmerath", "Stolberg", "Titz", 
-        "Übach-Palenberg", "Vettweiß", "Waldfeucht", "Wassenberg", "Wegberg", 
+        "Aachen", "Aldenhoven", "Alsdorf", "Baesweiler", "Bedburg", "Bergheim",
+        "Blankenheim", "Dahlem", "Düren", "Elsdorf", "Erftstadt", "Erkelenz",
+        "Eschweiler", "Euskirchen", "Frechen", "Gangelt", "Geilenkirchen", "Grevenbroich",
+        "Heimbach", "Heinsberg", "Herzogenrath", "Hürtgenwald", "Inden", "Jülich",
+        "Kall", "Kerpen", "Kreuzau", "Langerwehe", "Linnich", "Mechernich", "Merzenich",
+        "Mönchengladbach", "Nettersheim", "Nideggen", "Niederzier", "Nörvenich",
+        "Pulheim", "Roetgen", "Rommerskirchen", "Simmerath", "Stolberg", "Titz",
+        "Übach-Palenberg", "Vettweiß", "Waldfeucht", "Wassenberg", "Wegberg",
         "Wesseling", "Würselen", "Zülpich"
     ];
 
@@ -178,9 +178,9 @@
         if (!modal) {
             modal = document.createElement('div');
             modal.id = 'gemeinde-dossier-modal';
-            modal.setAttribute("role", "dialog"); // [TASK-011]
-            modal.setAttribute("aria-modal", "true"); // [TASK-011]
-            modal.setAttribute("aria-labelledby", "gemeinde-dossier-modal-title"); // [TASK-011]
+            modal.setAttribute('role', 'dialog');
+            modal.setAttribute('aria-modal', 'true');
+            modal.setAttribute('aria-labelledby', 'gemeinde-dossier-modal-title');
             modal.style.cssText = `
                 position: fixed;
                 inset: 0;
@@ -206,11 +206,11 @@
                     </div>
                     <button type="button" onclick="closeGemeindeDossier()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
                 </div>
-                
+
                 <div id="gemeinde-loading-indicator" style="display:none; padding:8px 16px; background:#eff6ff; color:#1d4ed8; font-size:11px; text-align:center;">
                     🔄 Dossier wird zusammengestellt...
                 </div>
-                
+
                 <div style="padding: 16px; overflow-y: auto; flex: 1; font-size: 12px;">
                     <!-- Key Figures Grid -->
                     <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px;">

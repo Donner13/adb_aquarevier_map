@@ -20,9 +20,9 @@
         if (!modal) {
             modal = document.createElement('div');
             modal.id = 'wrrl-quality-modal';
-            modal.setAttribute("role", "dialog"); // [TASK-011]
-            modal.setAttribute("aria-modal", "true"); // [TASK-011]
-            modal.setAttribute("aria-labelledby", "wrrl-quality-modal-title"); // [TASK-011]
+            modal.setAttribute('role', 'dialog');
+            modal.setAttribute('aria-modal', 'true');
+            modal.setAttribute('aria-labelledby', 'wrrl-quality-modal-title');
             modal.style.cssText = `
                 position: fixed;
                 inset: 0;

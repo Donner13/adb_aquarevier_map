@@ -10,9 +10,9 @@
         if (!modal) {
             modal = document.createElement('div');
             modal.id = 'ai-assistant-modal';
-            modal.setAttribute("role", "dialog"); // [TASK-011]
-            modal.setAttribute("aria-modal", "true"); // [TASK-011]
-            modal.setAttribute("aria-labelledby", "ai-assistant-modal-title"); // [TASK-011]
+            modal.setAttribute('role', 'dialog');
+            modal.setAttribute('aria-modal', 'true');
+            modal.setAttribute('aria-labelledby', 'ai-assistant-modal-title');
             modal.style.cssText = `
                 position: fixed;
                 inset: 0;
@@ -91,7 +91,7 @@
                 const count = window.layerDataStore && window.layerDataStore['klaeranlagen'] ? window.layerDataStore['klaeranlagen'].features.length : 60;
                 responseHtml = `
                     <div style="font-weight: 700; color: #1e293b; margin-bottom: 4px;">🚰 Ergebnisse für Kläranlagen:</div>
-                    Im Reviereinzugsgebiet sind <b>${count} kommunale Kläranlagen</b> registriert. 
+                    Im Reviereinzugsgebiet sind <b>${count} kommunale Kläranlagen</b> registriert.
                     <br><br>
                     <button type="button" class="btn btn-sm btn-primary" style="font-size:10.5px;" onclick="closeAiAssistantModal(); if(typeof openGemeindeDossier==='function') openGemeindeDossier('Eschweiler');">🏛️ Gemeinde-Dossier Eschweiler öffnen</button>
                 `;
