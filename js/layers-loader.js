@@ -17,8 +17,16 @@
  */
 
 
+function textPreprocessing(text) {
+  return text.replace(/^\uFEFF/, '');
+}
+
 // Setup reusable web worker for GeoJSON parsing to unblock main thread
 const geojsonWorkerCode = `
+  function textPreprocessing(text) {
+    return text.replace(/^\\uFEFF/, '');
+  }
+
   self.onmessage = function(e) {
     const { url, id } = e.data;
     fetch(url)
@@ -27,9 +35,7 @@ const geojsonWorkerCode = `
         return res.text();
       })
       .then(text => {
-        // Strip BOM if present
-        const cleanedText = text.replace(/^\\uFEFF/, '');
-        return JSON.parse(cleanedText);
+        return JSON.parse(textPreprocessing(text));
       })
       .then(data => self.postMessage({ id: id, data: data, success: true }))
       .catch(err => self.postMessage({ id: id, error: err.message, success: false }));
@@ -77,9 +83,7 @@ function fetchGeoJSONWorker(url) {
       if(!res.ok) throw new Error("HTTP " + res.status + " when loading " + url);
       return res.text();
     }).then(text => {
-      // Strip BOM if present
-      const cleanedText = text.replace(/^\uFEFF/, '');
-      return JSON.parse(cleanedText);
+      return JSON.parse(textPreprocessing(text));
     });
   }
   return new Promise((resolve, reject) => {
