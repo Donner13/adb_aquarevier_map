@@ -883,6 +883,8 @@
 
         // Global Escape key listener to close all open modals
         document.addEventListener('keydown', (e) => {
+            if (e.defaultPrevented) return;
+
             if (e.key === 'Tab') {
                 let activeModal = null;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
@@ -934,7 +936,15 @@
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
                         // Try to find a close button within the modal to gracefully close it and trigger cleanup
-                        const closeBtn = modal.querySelector('.close-btn, .scorecard-close, [aria-label="Schließen"], .btn-close');
+                        // Target direct children or typical header locations first to avoid clicking arbitrary nested close buttons
+                        let closeBtn = Array.from(modal.children).find(el => el.matches('.close-btn, .scorecard-close, [aria-label="Schließen"]'));
+                        if (!closeBtn) {
+                            closeBtn = modal.querySelector('.modal-header .close-btn, .modal-header [aria-label="Schließen"], > .close-btn, > [aria-label="Schließen"]');
+                        }
+                        if (!closeBtn) {
+                            closeBtn = modal.querySelector('.close-btn, .scorecard-close, [aria-label="Schließen"]');
+                        }
+
                         if (closeBtn) {
                             closeBtn.click();
                         } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
@@ -942,6 +952,7 @@
                         } else {
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
+                            modal.hidden = true;
                         }
                         closedAny = true;
                     }
