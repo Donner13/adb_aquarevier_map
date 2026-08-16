@@ -220,8 +220,12 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                     missing.append(file_name)
                 elif not os.path.isfile(filepath):
                     unreadable.append(file_name)
-                elif not os.access(filepath, os.R_OK):
-                    unreadable.append(file_name)
+                else:
+                    try:
+                        with open(filepath, 'r', encoding='utf-8') as f:
+                            f.read(1)
+                    except Exception:
+                        unreadable.append(file_name)
 
             status = 'error' if missing or unreadable else 'ok'
 
