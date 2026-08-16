@@ -1,3 +1,0 @@
-feat: Add Google Fonts with display=swap
-
-Ensure all font inclusions (Inter and Outfit) are declared with &display=swap to prevent render-blocking.
