@@ -173,10 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // we hook into the existing `openGemeindeDossier` safely. Since `openGemeindeDossier` might be defined later,
     // we use a property setter to detect when it's assigned, or just wrap it directly if it already exists.
 
-    function injectStakeholderHook() {
-        const originalOpenDossier = window.openGemeindeDossier;
-
-        if (typeof originalOpenDossier === 'function' && !originalOpenDossier._isStakeholderHooked) {
+    // Review fix: "openGemeindeDossier wird nur bis ca. 2,1s nach DOMContentLoaded gepatcht und kann danach still ausfallen."
+    // We poll reliably until the script is fully executed, avoiding global scope pollution and redundant checks.
+    const interval = setInterval(() => {
+        if (typeof window.openGemeindeDossier === 'function') {
+            const originalOpenDossier = window.openGemeindeDossier;
             window.openGemeindeDossier = function(gemeindeName) {
                 // Execute original logic first to compile dossier and open original modal (if any)
                 originalOpenDossier.apply(this, arguments);
@@ -191,19 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Then open our new Stakeholder Modal
                 window.openStakeholderModal.call(this, gemeindeName);
             };
-            window.openGemeindeDossier._isStakeholderHooked = true;
-            return true;
+            clearInterval(interval);
         }
-        return false;
-    }
-
-    // Review fix: "openGemeindeDossier wird nur bis ca. 2,1s nach DOMContentLoaded gepatcht und kann danach still ausfallen."
-    // We remove the timeout limit and poll reliably until the script is fully executed.
-    if (!injectStakeholderHook()) {
-        const interval = setInterval(() => {
-            if (injectStakeholderHook()) {
-                clearInterval(interval);
-            }
-        }, 250);
-    }
+    }, 250);
 });
