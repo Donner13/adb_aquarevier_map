@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.id = 'stakeholder-modal';
     modal.innerHTML = `
         <div class="stakeholder-modal-header">
-            <h2 class="stakeholder-modal-title">Gemeinde-Steckbrief</h2>
+            <h2 class="stakeholder-modal-title" id="stakeholder-modal-title">Gemeinde-Steckbrief</h2>
             <button class="stakeholder-modal-close" id="stakeholder-modal-close">&times;</button>
         </div>
         <div class="stakeholder-modal-content">
@@ -97,16 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (!dossierData || dossierData.name !== gemeindeName) {
-             // Fallback to searching the global geojsonData if compilation failed.
-             if (window.geojsonData && window.geojsonData.gemeinden && window.geojsonData.gemeinden.features) {
-                 const feature = window.geojsonData.gemeinden.features.find(f => f.properties && f.properties.name === gemeindeName);
-                 if (feature) {
-                     dossierData = { name: gemeindeName, stats: feature.properties.stats || {} };
-                 }
-             }
-        }
-
         let wasserRisiko = "Keine Daten";
         let pegelAnzahl = "Keine Daten";
         let gewerbeAnzahl = "Keine Daten";
@@ -137,102 +127,69 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review: "Der Hook auf openGemeindeDossier kann bei späterer Script-Initialisierung wirkungslos bleiben; ein DOM-MutationObserver erkennt keine reine globale Funktionszuweisung... Der dauerhaft breite Observer und das Überschreiben einer globalen Funktion inklusive Schließen des bestehenden Dossiers sind invasiv und regressionsanfällig."
+    // Review fix: "handling of openGemeindeDossier globally may introduce maintenance issues" & "bindMapLayerClicks function has a potential issue with its return value".
+    // We avoid global openGemeindeDossier overwrites, and attach securely to map layers natively.
 
-    // To strictly avoid ANY global function overrides (`openGemeindeDossier`) and ANY broad `MutationObservers`,
-    // while catching all DOM and Map clicks seamlessly without `map.on('click')` returning undefined layers:
-
-    // To strictly avoid ANY global function overrides (`openGemeindeDossier`) and ANY broad `MutationObservers`,
-    // while catching all DOM and Map clicks seamlessly without `map.on('click')` returning undefined layers:
-
-    // Review: "Der Hook auf Gemeinde-Klick ist fragil: Falls openGemeindeDossier erst per Script-Ausführung gesetzt wird, erkennt der MutationObserver dies nicht und das Modal bleibt ein No-op."
-    // Review: "Der Wrapper öffnet außerdem das neue Modal zusätzlich zum bestehenden Dossier, was zu überlappenden Dialogen führen kann."
-
-    // To prevent overlapping UI WITHOUT modifying `openGemeindeDossier` globally (which breaks standard workflow)
-    // and WITHOUT timing-dependent wrappers:
-    // We explicitly close the native dossier modal sequentially AFTER it fires.
-
-    // Consolidating all DOM click interception into a single, clean event listener
-    document.addEventListener('click', function(e) {
-        // Intercept standard elements that intend to open the dossier
-        const target = e.target.closest('[onclick*="openGemeindeDossier"]');
-        if (target) {
-            const match = target.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
-            if (match && match[1]) {
-                const gemeindeName = match[1];
-
-                // Open our modal immediately
-                window.openStakeholderModal(gemeindeName);
-
-                // Give original logic a microtick to render, then overwrite it visually
-                setTimeout(() => {
-                    const dossierModal = document.getElementById('gemeinde-dossier-modal');
-                    if (dossierModal) {
-                        dossierModal.style.display = 'none';
-                    }
-                }, 10);
-            }
-        }
-    });
-
-    // Review: "Der Karten-Handler bindet nur Layer mit properties.stats; Gemeinden ohne dieses Feld öffnen das Modal nie."
-
-    // 2. Leaflet Layer Interception for map features.
-    // Instead of checking for `properties.stats`, we only check for `properties.name`.
-    // The Modal extraction logic safely handles missing stats by displaying "Keine Daten".
     let layerHooked = false;
     function bindMapLayerClicks() {
         if (typeof map !== 'undefined' && !layerHooked) {
+            layerHooked = true; // Set immediately to prevent race conditions
+
             map.on('layeradd', function(e) {
                 const layer = e.layer;
-                // Identify Gemeinde layer broadly via name, removing the restrictive `stats` requirement.
                 if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.typ === 'Gemeinde' && !layer._stakeholderHook) {
                     layer.on('click', function() {
                         window.openStakeholderModal(layer.feature.properties.name);
-
-                        setTimeout(() => {
-                            const dossierModal = document.getElementById('gemeinde-dossier-modal');
-                            if (dossierModal) dossierModal.style.display = 'none';
-                        }, 10);
                     });
                     layer._stakeholderHook = true;
                 }
             });
 
-            // Backfill existing layers if we loaded late
+            // Backfill already loaded layers
             map.eachLayer(function(layer) {
                 if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.typ === 'Gemeinde' && !layer._stakeholderHook) {
                     layer.on('click', function() {
                         window.openStakeholderModal(layer.feature.properties.name);
-
-                        setTimeout(() => {
-                            const dossierModal = document.getElementById('gemeinde-dossier-modal');
-                            if (dossierModal) dossierModal.style.display = 'none';
-                        }, 10);
                     });
                     layer._stakeholderHook = true;
                 }
             });
-            layerHooked = true;
+
             return true;
         }
         return false;
     }
 
-    // Try immediately.
     if (!bindMapLayerClicks()) {
-        // If map is not initialized yet, we can't use generic polling per constraints.
-        // Wait for window load event which guarantees map libraries and DOM scripts are parsed.
         window.addEventListener('load', () => {
             if (!bindMapLayerClicks()) {
-                // Final fallback if data fetches are asynchronous: poll strictly for a short duration.
+                // Short polling for asynchronous map initialization
                 let attempts = 0;
                 const interval = setInterval(() => {
-                    if (bindMapLayerClicks() || attempts > 50) clearInterval(interval);
+                    if (bindMapLayerClicks() || attempts > 50) {
+                        clearInterval(interval);
+                    }
                     attempts++;
                 }, 100);
             }
         });
     }
+
+    // Sidebar integration: delegate clicks purely in DOM for the list, avoiding global function interceptors
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.gemeinde-sidebar-item, [onclick*="openGemeindeDossier"]');
+        if (btn) {
+            let name = '';
+            if (btn.hasAttribute('onclick')) {
+                const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
+                if (match && match[1]) name = match[1];
+            } else if (btn.dataset && btn.dataset.name) {
+                name = btn.dataset.name;
+            }
+            if (name) {
+                window.openStakeholderModal(name);
+            }
+        }
+    });
 
 });
