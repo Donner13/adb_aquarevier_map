@@ -174,8 +174,15 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         resolved_target = os.path.realpath(path)
         resolved_dir = os.path.realpath(self.directory)
 
-        # Ensure the fully resolved target (including all parent directories) is within the intended directory
-        if not (resolved_target == resolved_dir or resolved_target.startswith(resolved_dir + os.sep)):
+        # Ensure the fully resolved target (including all parent directories) is within the intended directory.
+        # Note: For this local dev server, we explicitly accept the minor TOCTOU (Time-of-Check to Time-of-Use)
+        # risk between this check and the actual file open in super().send_head().
+        try:
+            if os.path.commonpath([resolved_dir, resolved_target]) != resolved_dir:
+                self.send_error(404, "File not found")
+                return None
+        except ValueError:
+            # commonpath raises ValueError if paths are on different drives
             self.send_error(404, "File not found")
             return None
 
