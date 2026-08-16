@@ -938,14 +938,20 @@
 
     // --- 11. MAP LAYER GROUP CLEARING ---
     function initMapLayerClearing() {
-        if (typeof L !== 'undefined' && L.Map) {
-            L.Map.addInitHook(function () {
-                this.onCreate = () => {
-                    if (this._layerGroup) {
-                        this._layerGroup.clearLayers();
-                    }
-                };
-            });
+        if (typeof L !== 'undefined' && L.MarkerClusterGroup) {
+            const originalInit = L.MarkerClusterGroup.prototype.initialize;
+            L.MarkerClusterGroup.prototype.initialize = function (options) {
+                if (window.overlayMaps) {
+                    Object.values(window.overlayMaps).forEach(layer => {
+                        if (layer && typeof layer.clearLayers === 'function') {
+                            layer.clearLayers();
+                        }
+                    });
+                }
+                if (originalInit) {
+                    originalInit.call(this, options);
+                }
+            };
         }
     }
 
