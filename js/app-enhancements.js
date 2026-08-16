@@ -324,6 +324,7 @@
                 modal.style.display = 'none';
             }, 200);
         }
+        modal.closeModal = closePalette;
 
         // Global Keydown Handler
         document.addEventListener('keydown', (e) => {
@@ -337,10 +338,7 @@
 
             if (modal.hidden) return;
 
-            if (e.key === 'Escape') {
-                e.preventDefault();
-                closePalette();
-            } else if (e.key === 'ArrowDown') {
+            if (e.key === 'ArrowDown') {
                 e.preventDefault();
                 selectedIndex = (selectedIndex + 1) % (commandItems.length || 1);
                 renderResults(input.value);
@@ -863,14 +861,14 @@
 
     // Track last active element before a modal is opened
     document.addEventListener('focusin', (e) => {
-        const isInsideModal = e.target.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
+        const isInsideModal = e.target.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"]');
         if (!isInsideModal) {
             lastTriggerElement = e.target;
         }
     }, true);
 
     document.addEventListener('click', (e) => {
-        const isInsideModal = e.target.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
+        const isInsideModal = e.target.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"]');
         if (!isInsideModal) {
             // Also update on click, in case element is clicked but not focused (e.g. mouse click on div)
             // or for buttons that don't steal focus perfectly in all browsers
@@ -929,13 +927,15 @@
                 }
             } else if (e.key === 'Escape') {
                 let closedAny = false;
-                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
+                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"]');
                 openModals.forEach(modal => {
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
                             modal.remove();
+                        } else if (typeof modal.closeModal === 'function') {
+                            modal.closeModal();
                         } else {
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
