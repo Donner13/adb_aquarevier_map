@@ -154,13 +154,13 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     for (const field of (cfg.popupFields || [])) {
       let value;
       if (field.expr) {
-        value = field.expr(safeP);
+        value = field.expr(p);
       } else {
-        value = safeP[field.field];
+        value = p[field.field];
       }
       if (!value) continue;
 
-      const safeVal = value;
+      const safeVal = escapeHtml(value);
       // first field (📍) has no label prefix, just the value
       if (field.label === '📍') {
         html += `<div class="popup-detail">📍 ${safeVal}</div>`;
@@ -264,7 +264,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // getZustaendigkeitHtml is a global function defined in index/internal.html
     if (typeof getZustaendigkeitHtml === 'function') {
-      html += getZustaendigkeitHtml(safeP);
+      html += getZustaendigkeitHtml(p);
     }
 
     // Pegelonline Live-Dashboard Placeholder
@@ -277,13 +277,15 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // Feedback Link
     const escapeJsString = (str) => String(str).replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/'/g, "\\'");
+    const safeLat = Number(p.lat || p.latitude) || 0;
+    const safeLng = Number(p.lng || p.longitude || p.lon) || 0;
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-      <button type="button" onclick="openFeedbackModal('${escapeHtml(escapeJsString(p.name || ''))}', '${escapeHtml(escapeJsString(cfg.groupLabel))}', '${escapeHtml(escapeJsString(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || ''))}', ${p.lat || p.latitude || 0}, ${p.lng || p.longitude || p.lon || 0})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
+      <button type="button" onclick="openFeedbackModal('${escapeHtml(escapeJsString(p.name || ''))}', '${escapeHtml(escapeJsString(cfg.groupLabel))}', '${escapeHtml(escapeJsString(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || ''))}', ${safeLat}, ${safeLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
     </div>`;
 
     // Footer
     const footer = cfg.footerTemplate
-      ? cfg.footerTemplate(safeP)
+      ? cfg.footerTemplate(p)
       : 'Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0';
     html += `<div style="font-size:10px;color:#475569;margin-top:6px;">${escapeHtml(footer)}</div>`;
     html += `</div>`;
