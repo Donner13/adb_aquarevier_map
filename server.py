@@ -206,7 +206,10 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 with open(os.path.join(DIRECTORY, 'js', 'layers-config.js'), 'r', encoding='utf-8') as f:
                     content = f.read()
                     layer_files = re.findall(r"file:\s*['\"]([^'\"]+\.geojson)['\"]", content)
-                    core_files.extend(layer_files)
+                    if not layer_files:
+                        unreadable.append('js/layers-config.js')
+                    else:
+                        core_files.extend(layer_files)
             except Exception:
                 unreadable.append('js/layers-config.js')
 
