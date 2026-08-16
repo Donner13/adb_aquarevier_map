@@ -24,15 +24,16 @@ function filterValidGeoJsonFeature(feature) {
   if (feature.geometry.type !== 'Point') return true;
 
   const coords = feature.geometry.coordinates;
-  if (!coords || coords.length < 2) return false;
+  if (!Array.isArray(coords) || coords.length < 2) return false;
 
   const rawLng = coords[0];
   const rawLat = coords[1];
 
-  // Reject explicitly empty/null values, arrays, and booleans
-  if (rawLng === null || rawLat === null || rawLng === '' || rawLat === '') return false;
-  if (typeof rawLng === 'boolean' || typeof rawLat === 'boolean') return false;
-  if (Array.isArray(rawLng) || Array.isArray(rawLat)) return false;
+  if ((typeof rawLng !== 'number' && typeof rawLng !== 'string') ||
+      (typeof rawLat !== 'number' && typeof rawLat !== 'string')) {
+      return false;
+  }
+
   if (typeof rawLng === 'string' && rawLng.trim() === '') return false;
   if (typeof rawLat === 'string' && rawLat.trim() === '') return false;
 
@@ -489,9 +490,4 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     };
     map.on("overlayadd", overlayAddHandler);
   }
-}
-
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports.filterValidGeoJsonFeature = filterValidGeoJsonFeature;
 }
