@@ -2442,7 +2442,7 @@
                     </div>
                     <div style="display: flex; gap: 8px;">
                         <button id="embed-open-btn" class="filter-btn" style="flex: 1; justify-content: center;" onclick="if(typeof openEmbedModal==='function') openEmbedModal()">🔗 Karte einbetten</button>
-                        <button id="open-data-export-btn" class="filter-btn" data-i18n-key="open_data_export" style="flex: 1; justify-content: center;" onclick="window.exportActiveLayersData('geojson')" title="Exportiert alle aktiven Karten-Layer als Open-Data GeoJSON">💾 Geodaten-Export</button>
+                        <button id="open-data-export-btn" class="filter-btn" data-i18n-key="open_data_export" style="flex: 1; justify-content: center;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('geojson')" title="Exportiert alle aktiven Karten-Layer als Open-Data GeoJSON">💾 Geodaten-Export</button>
                     </div>
                     <button id="generate-report-btn" class="filter-btn active" data-i18n-key="generate_report" style="justify-content: center; background: #6366f1; border-color: #6366f1; font-weight: 600; color: white;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()">📊 Bericht generieren (PDF)</button>
                     <button id="generate-sprechzettel-btn" class="filter-btn" style="justify-content: center;">🗣️ Sprechzettel generieren</button>
