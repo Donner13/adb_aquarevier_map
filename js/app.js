@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.rel = 'stylesheet';
         const scriptTag = document.querySelector('script[src*="app.js"]');
         const basePath = scriptTag ? scriptTag.src.split('js/app.js')[0] : '';
-        link.href = basePath + 'css/styles.css';
+        link.href = basePath + 'css/stakeholder-modal.css';
         document.head.appendChild(link);
     }
 
