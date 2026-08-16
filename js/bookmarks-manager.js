@@ -11,12 +11,8 @@
         try {
             const raw = window.StorageModule.getItem(STORAGE_KEY);
             if (!raw) return [];
-            try {
-                const parsed = JSON.parse(raw);
-                return Array.isArray(parsed) ? parsed : [];
-            } catch (parseError) {
-                return [];
-            }
+            const parsed = JSON.parse(raw);
+            return Array.isArray(parsed) ? parsed : [];
         } catch (e) {
             return [];
         }
