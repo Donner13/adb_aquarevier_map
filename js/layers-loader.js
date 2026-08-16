@@ -332,6 +332,14 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
           if (cfg.id === 'contacts' || cfg.id === 'akteure') window.geojsonData = data;
           window[cfg.geoDataVar] = data;  // backward-compat global
           const markers = L.geoJSON(data, {
+            filter: (feature) => {
+              if (!feature.geometry || feature.geometry.type !== 'Point' || !feature.geometry.coordinates || feature.geometry.coordinates.length < 2) return false;
+              const lng = Number(feature.geometry.coordinates[0]);
+              const lat = Number(feature.geometry.coordinates[1]);
+              if (Number.isNaN(lng) || Number.isNaN(lat)) return false;
+              if (lng < -180 || lng > 180 || lat < -90 || lat > 90) return false;
+              return true;
+            },
             pointToLayer: (feature, latlng) => {
               const marker = L.marker(latlng, { icon: buildIcon() });
               // Safely extract name from nested blocks like Stammdaten or Lage if they exist
@@ -400,6 +408,14 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         window[cfg.geoDataVar] = data;  // backward-compat global
 
         const geoLayer = L.geoJSON(data, {
+          filter: (feature) => {
+            if (!feature.geometry || feature.geometry.type !== 'Point' || !feature.geometry.coordinates || feature.geometry.coordinates.length < 2) return false;
+            const lng = Number(feature.geometry.coordinates[0]);
+            const lat = Number(feature.geometry.coordinates[1]);
+            if (Number.isNaN(lng) || Number.isNaN(lat)) return false;
+            if (lng < -180 || lng > 180 || lat < -90 || lat > 90) return false;
+            return true;
+          },
           pointToLayer: (feature, latlng) => {
             const marker = L.marker(latlng, { icon: buildIcon() });
             let extractedName = '';
