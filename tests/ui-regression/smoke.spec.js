@@ -7,14 +7,15 @@ test.describe('CI Smoke Test', () => {
     test.setTimeout(10000);
 
     const waitOpts = { timeout: 4500 }; // Fail fast to stay inside budget
-    const tileMatcher = res => /basemaps\.cartocdn\.com|tile\.openstreetmap\.org|wms\.nrw\.de|cismet\.de/.test(res.url());
+    // Match only carto or osm, aligning strictly with the global map check below
+    const tileMatcher = res => /basemaps\.cartocdn\.com|tile\.openstreetmap\.org/.test(res.url());
 
     // 1. Check index.html
     let tilePromise = page.waitForResponse(tileMatcher, waitOpts);
     await gotoPage(page, 'index.html');
     let res = await tilePromise;
 
-    assertNoJsErrors(page); // From fixtures.js, expects page.consoleErrors to be populated by the test page fixture
+    assertNoJsErrors(page);
     await expect(page.locator('#map')).toBeVisible();
     expect(res.ok()).toBe(true);
 
@@ -32,6 +33,11 @@ test.describe('CI Smoke Test', () => {
     expect(hasBasemapConfig).toBe(true);
 
     // 2. Check internal.html
+    // Fixtures.js accumulates errors array on the page object across navigations;
+    // reset it to ensure assertNoJsErrors evaluates correctly for the second page load.
+    page.consoleErrors = [];
+    page.pageErrors = [];
+
     tilePromise = page.waitForResponse(tileMatcher, waitOpts);
     await gotoPage(page, 'internal.html');
     res = await tilePromise;
