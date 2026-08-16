@@ -2538,49 +2538,14 @@
 
         <!-- Map -->
         <div id="map"></div>
+
         <div id="embed-mini-legend" class="embed-mini-legend">
             <a id="embed-back-link" class="embed-back-link" target="_blank" rel="noopener noreferrer">↗ Vollständige Karte ansehen</a>
             <div id="embed-mini-legend-items"></div>
         </div>
 
         <!-- Embed Modal -->
-        <div id="embed-modal">
-            <div class="embed-modal-content">
-                <div class="embed-modal-header">
-                    <h2>🔗 Karte einbetten</h2>
-                    <button class="embed-modal-close" id="embed-close-btn" aria-label="Schließen">&times;</button>
-                </div>
-
-                <div class="embed-info-text">
-                    Für WordPress & andere oEmbed-fähige CMS reicht es, den reinen Link <strong>https://adb-aquarevier-secure.surge.sh/</strong> in einen eigenen Absatz/Block einzufügen — die Vorschau erscheint dann automatisch.
-                </div>
-
-                <div class="embed-controls">
-                    <label>
-                        <input type="radio" name="embed-width-type" value="responsive" checked> Responsive (100%)
-                    </label>
-                    <label>
-                        <input type="radio" name="embed-width-type" value="fixed"> Feste Breite
-                        <input type="number" id="embed-width-px" value="800" disabled> px
-                    </label>
-                    <span style="border-left: 1px solid var(--border-color); height: 20px;"></span>
-                    <label>
-                        Höhe:
-                        <input type="number" id="embed-height" value="600"> px
-                    </label>
-                </div>
-
-                <textarea id="embed-snippet-output" readonly></textarea>
-
-                <button id="embed-copy-btn" class="filter-btn active" style="width: fit-content; background: #10b981; border-color: #10b981; font-weight: 600; color: white;">📋 Code kopieren</button>
-
-                <div style="font-size: 14px; font-weight: 600; color: var(--text-primary); margin-top: 8px;">Live-Vorschau</div>
-                <div class="embed-preview-container">
-                    <iframe id="embed-preview-iframe" src="" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
-
+        <div id="embed-modal" style="display:none;"></div>
         <div id="pegel-analysis-panel" class="hidden"></div>
 
         <div id="presentation-bar">
@@ -2712,34 +2677,6 @@
         L.control.zoom({
             position: 'bottomright'
         }).addTo(map);
-        // Check Embed Mode URL Parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('embed') === '1') {
-            document.body.classList.add('embed-mode');
-
-            // Build Mini Legend
-            const miniLegendContainer = document.getElementById('embed-mini-legend-items');
-            if(miniLegendContainer) {
-                for (const [group, color] of Object.entries(groupColors)) {
-                    if (group !== 'Konsortium') {
-                        const item = document.createElement('div');
-                        item.className = 'embed-mini-legend-item';
-                        item.innerHTML = `<span class="embed-mini-legend-color" style="background-color: ${color}"></span><span>${group}</span>`;
-                        miniLegendContainer.appendChild(item);
-                    }
-                }
-            }
-
-            // Set dynamic back link
-            const currentUrl = new URL(window.location.href);
-            currentUrl.searchParams.delete('embed');
-            if(document.getElementById('embed-back-link')) {
-                document.getElementById('embed-back-link').href = currentUrl.toString().replace('internal.html', 'index.html');
-            }
-
-            // Handle Map Resize for iframes
-            setTimeout(() => map.invalidateSize(), 100);
-        }
 
         // Base Maps
         const baseLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -7335,74 +7272,6 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
         // visit would reliably exhaust that quota and log a real browser-level
         // "Failed to load resource" console error for ordinary users.
         // --- End Feedback Logic ---
-        // Embed Modal Logic
-        const embedModal = document.getElementById('embed-modal');
-        const embedOpenBtn = document.getElementById('embed-open-btn');
-        const embedCloseBtn = document.getElementById('embed-close-btn');
-        const embedWidthRadios = document.querySelectorAll('input[name="embed-width-type"]');
-        const embedWidthPx = document.getElementById('embed-width-px');
-        const embedHeight = document.getElementById('embed-height');
-        const embedSnippetOutput = document.getElementById('embed-snippet-output');
-        const embedPreviewIframe = document.getElementById('embed-preview-iframe');
-        const embedCopyBtn = document.getElementById('embed-copy-btn');
-
-        function generateEmbedSnippet() {
-            if(!embedSnippetOutput) return;
-            const baseUrl = window.location.origin + window.location.pathname.replace('internal.html', 'index.html');
-            const embedUrl = baseUrl + '?embed=1';
-            let widthType = 'responsive';
-            const checkedRadio = document.querySelector('input[name="embed-width-type"]:checked');
-            if (checkedRadio) widthType = checkedRadio.value;
-            const width = widthType === 'responsive' ? '100%' : embedWidthPx.value + 'px';
-            const height = embedHeight.value + 'px';
-
-            const snippet = `<iframe src="${embedUrl}" width="${width}" height="${height}" style="border:0;" loading="lazy" title="AquaRevier Akteurskarte"></iframe>`;
-            embedSnippetOutput.value = snippet;
-            embedPreviewIframe.src = embedUrl;
-            embedPreviewIframe.style.width = width;
-            embedPreviewIframe.style.height = height;
-        }
-
-        window.openEmbedModal = function() {
-            if (embedModal) {
-                embedModal.style.display = 'flex';
-                generateEmbedSnippet();
-            }
-        };
-
-        if (embedOpenBtn) {
-            embedOpenBtn.addEventListener('click', () => {
-                if(typeof window.openEmbedModal === 'function') window.openEmbedModal();
-            });
-        }
-
-        if (embedCloseBtn) {
-            embedCloseBtn.addEventListener('click', () => {
-                embedModal.style.display = 'none';
-            });
-        }
-
-        embedWidthRadios.forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                embedWidthPx.disabled = e.target.value === 'responsive';
-                generateEmbedSnippet();
-            });
-        });
-
-        if (embedWidthPx) embedWidthPx.addEventListener('input', generateEmbedSnippet);
-        if (embedHeight) embedHeight.addEventListener('input', generateEmbedSnippet);
-
-        if (embedCopyBtn) {
-            embedCopyBtn.addEventListener('click', () => {
-                navigator.clipboard.writeText(embedSnippetOutput.value).then(() => {
-                    const originalText = embedCopyBtn.innerText;
-                    embedCopyBtn.innerText = '✅ Kopiert!';
-                    setTimeout(() => {
-                        embedCopyBtn.innerText = originalText;
-                    }, 2000);
-                });
-            });
-        }
         window.aquarevierCoreReady = true;
         document.dispatchEvent(new CustomEvent('aquarevier:core-ready'));
 
