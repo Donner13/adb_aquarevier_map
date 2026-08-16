@@ -32,7 +32,6 @@ const geojsonWorkerCode = `
         if (text.charCodeAt(0) === 0xFEFF) {
           cleanedText = text.slice(1);
         }
-        if (!cleanedText.trim()) throw new Error("File is empty after stripping BOM");
         return JSON.parse(cleanedText);
       })
       .then(data => self.postMessage({ id: id, data: data, success: true }))
@@ -86,7 +85,6 @@ function fetchGeoJSONWorker(url) {
       if (text.charCodeAt(0) === 0xFEFF) {
         cleanedText = text.slice(1);
       }
-      if (!cleanedText.trim()) throw new Error("File is empty after stripping BOM");
       return JSON.parse(cleanedText);
     });
   }
