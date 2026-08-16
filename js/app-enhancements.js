@@ -895,9 +895,13 @@
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (modal.id === 'command-palette-modal') {
-                            // The command palette intercepts Escape on document already and handles its own fade
-                            // So if we see it open, we know it's handling itself, we just need to ensure
-                            // we set closedAny to true to restore focus.
+                            // Unified closure: Provide a safe fallback if the palette's own listener is bypassed
+                            // by emitting a synthetic close event or just hiding it if the listener failed.
+                            // However, since closePalette is not globally exposed, we use a CustomEvent
+                            // or fallback to generic hiding to ensure the constraint 'authoritative closure' is met.
+                            modal.dispatchEvent(new CustomEvent('closeCommandPalette'));
+                            modal.style.display = 'none';
+                            modal.classList.add('hidden');
                             closedAny = true;
                             return;
                         }
