@@ -987,7 +987,7 @@
                     }
                 }
             } else if (e.key === 'Tab') {
-                // Focus trap for open modals
+                // [TASK-012] Leichtgewichtiges Focus-Trapping fuer geoeffnete Modale
                 const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [tabindex]:not([tabindex^="-"])';
 
                 const openModals = Array.from(document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop')).filter(modal => {
