@@ -28,7 +28,7 @@ const geojsonWorkerCode = `
       })
       .then(text => {
         // Strip BOM if present
-        const cleanedText = text.replace(/^\\uFEFF/, '');
+        const cleanedText = text.replace(/^\uFEFF/, '');
         return JSON.parse(cleanedText);
       })
       .then(data => self.postMessage({ id: id, data: data, success: true }))
