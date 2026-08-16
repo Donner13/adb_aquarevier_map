@@ -5,7 +5,7 @@ test.describe('Popup Content Sanitizer', () => {
   test('Popup generation sanitizes HTML in properties to prevent XSS', async ({ page }) => {
     // Removed test.fail since it is passing now.
 
-    await page.route('**/contacts_anonymized.geojson', route => {
+    await page.route('**/contacts_anonymized.geojson*', route => {
       route.fulfill({
         status: 200,
         contentType: 'application/json',
@@ -48,8 +48,17 @@ test.describe('Popup Content Sanitizer', () => {
       window.xssFired = false;
       const markers = markersLayer.getLayers();
       if (markers.length > 0) {
-        markers[0].fire('click'); // Click is handled to pan and open popup
-        markers[0].openPopup();
+
+        const targetMarker = markers.find(m => m.feature && m.feature.properties && m.feature.properties.id === 'xss-1');
+        if (targetMarker) {
+            targetMarker.fire('click');
+            targetMarker.openPopup();
+        } else {
+            // fallback
+            markers[0].fire('click');
+            markers[0].openPopup();
+        }
+
       }
     });
 
@@ -71,6 +80,9 @@ test.describe('Popup Content Sanitizer', () => {
     expect(popupHtml).not.toContain('<iframe');
 
     // The escaped payload should ideally be present as text
-    // expect(popupHtml).toContain('&lt;script&gt;window.xssFired=true&lt;/script&gt;');
+    // Instead of expecting it in the map popup, we test the function directly.
+    const zustaendigkeitStr = await page.evaluate(() => getZustaendigkeitHtml(window.layerDataStore['akteure'].features[0].properties));
+    expect(zustaendigkeitStr).toContain('&lt;img src=x onerror=&quot;window.xssFired=true&quot;&gt;Behoerde');
+    expect(zustaendigkeitStr).toContain('&lt;script&gt;window.xssFired=true&lt;/script&gt;Amt');
   });
 });

@@ -280,13 +280,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // getZustaendigkeitHtml is a global function defined in index/internal.html
     if (typeof getZustaendigkeitHtml === 'function') {
-      html += getZustaendigkeitHtml({
-        ...p,
-        zustaendigkeit_behoerde: escapeHtml(p.zustaendigkeit_behoerde),
-        zustaendigkeit_amt: escapeHtml(p.zustaendigkeit_amt),
-        zustaendigkeit_email: escapeHtml(p.zustaendigkeit_email),
-        zustaendigkeit_telefon: escapeHtml(p.zustaendigkeit_telefon)
-      });
+      html += getZustaendigkeitHtml(p);
     }
 
     // Pegelonline Live-Dashboard Placeholder
