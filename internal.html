@@ -2534,20 +2534,6 @@
                         <!-- Filled by JS -->
                     </div>
                 </div>
-                <!-- Export Section -->
-                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
-                    <div style="display: flex; gap: 8px;">
-                        <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;">📄 CSV Export</button>
-                        <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;">📑 PDF Export</button>
-                    </div>
-                    <div style="display: flex; gap: 8px;">
-                        <button id="embed-open-btn" class="filter-btn" style="flex: 1; justify-content: center;">🔗 Karte einbetten</button>
-                        <button id="open-data-export-btn" class="filter-btn" data-i18n-key="open_data_export" style="flex: 1; justify-content: center;" onclick="window.exportActiveLayersData('geojson')" title="Exportiert alle aktiven Karten-Layer als Open-Data GeoJSON">💾 Geodaten-Export</button>
-                    </div>
-                    <button id="generate-report-btn" class="filter-btn active" data-i18n-key="generate_report" style="justify-content: center; background: #6366f1; border-color: #6366f1; font-weight: 600; color: white;">📊 Bericht generieren (PDF)</button>
-                    <button id="generate-sprechzettel-btn" class="filter-btn" style="justify-content: center;">🗣️ Sprechzettel generieren</button>
-                    <button id="generate-beschlussvorlage-btn" class="filter-btn" style="justify-content: center;">📋 Beschlussvorlage generieren</button>
-                </div>
             </div>
             <div class="sidebar-footer">
                 <a href="impressum.html">Impressum</a>
@@ -2732,6 +2718,32 @@
         L.control.zoom({
             position: 'bottomright'
         }).addTo(map);
+
+        // Check Embed Mode URL Parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('embed') === '1') {
+            document.body.classList.add('embed-mode');
+
+            // Build Mini Legend
+            const miniLegendContainer = document.getElementById('embed-mini-legend-items');
+            for (const [group, color] of Object.entries(groupColors)) {
+                if (group !== 'Konsortium') {
+                    const item = document.createElement('div');
+                    item.className = 'embed-mini-legend-item';
+                    item.innerHTML = `<span class="embed-mini-legend-color" style="background-color: ${color}"></span><span>${group}</span>`;
+                    miniLegendContainer.appendChild(item);
+                }
+            }
+
+            // Set dynamic back link
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.delete('embed');
+            document.getElementById('embed-back-link').href = currentUrl.toString();
+
+            // Handle Map Resize for iframes
+            window.addEventListener('resize', () => map.invalidateSize());
+            setTimeout(() => map.invalidateSize(), 300);
+        }
 
         // Base Maps
         const baseLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
