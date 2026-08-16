@@ -261,7 +261,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
                 <span style="font-weight: 500; font-size: 11px;">⚡ Energieeffizienz</span>
                 <span style="background: ${color}; color: ${label === 'A' || label === 'B' || label === 'C' ? '#064e3b' : (label === 'D' ? '#713f12' : '#fef2f2')}; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 12px; border: 1px solid rgba(0,0,0,0.1);">Klasse ${label}</span>
             </div>
-            <div style="font-size: 11px; color: #475569;">
+            <div style="font-size: 11px; color: var(--text-secondary);">
                 Stromverbrauch: <b>${verbrauch.toFixed(2).replace('.', ',')} kWh/m³</b> gereinigtem Abwasser.
                 (${diff.toFixed(0)}% ${compareTxt} dem Bundesdurchschnitt von 0,35 kWh/m³)
             </div>
@@ -278,7 +278,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     if (cfg.id === 'pegel') {
       html += `<div class="pegelonline-container" style="margin-top:8px; padding:8px; background:#f0f9ff; border-radius:4px; font-size:12px; border:1px solid #bae6fd;">
         <div style="color:#0284c7; font-weight:bold; margin-bottom:4px;">📡 Live-Daten (PEGELONLINE)</div>
-        <div class="pegelonline-content" style="color:#64748b;">Lade Live-Daten...</div>
+        <div class="pegelonline-content" style="color: var(--text-secondary);">Lade Live-Daten...</div>
       </div>`;
     }
 
@@ -295,7 +295,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     const footer = cfg.footerTemplate
       ? cfg.footerTemplate(p)
       : 'Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0';
-    html += `<div style="font-size:10px;color:#475569;margin-top:6px;">${escapeHtml(footer)}</div>`;
+    html += `<div style="font-size:10px;color: var(--text-secondary);margin-top:6px;">${escapeHtml(footer)}</div>`;
     html += `</div>`;
     return html;
   }
