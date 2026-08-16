@@ -31,7 +31,7 @@ function createLogoCalloutMarker(lat, lng, name) {
         dx = -90; dy = -60;
         logoHtml = `
             <div class="logo-box logo-wver-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px 8px; background: #ffffff; border: 1.5px solid #0067b1; display: flex; align-items: center; justify-content: center; width: 110px; height: 38px; box-sizing: border-box; box-shadow: 0 2px 6px rgba(0,103,177,0.15); border-radius: 4px;">
-                <img src="https://wver.de/wp-content/uploads/2025/08/wver-logo.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="WVER">
+                <img onerror="this.onerror=null;this.src='logos/placeholder.png'" src="https://wver.de/wp-content/uploads/2025/08/wver-logo.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="WVER">
             </div>
         `;
         const targetX = ax + dx + 55;
@@ -46,7 +46,7 @@ function createLogoCalloutMarker(lat, lng, name) {
         dx = 30; dy = -60;
         logoHtml = `
             <div class="logo-box logo-schoellershammer-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px 8px; background: #ffffff; border: 1.5px solid #000000; display: flex; align-items: center; justify-content: center; width: 150px; height: 38px; box-sizing: border-box; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius: 4px;">
-                <img src="https://www.schoellershammer.de/wp-content/themes/schoellershammer/assets/images/logo.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="SCHOELLERSHAMMER">
+                <img onerror="this.onerror=null;this.src='logos/placeholder.png'" src="https://www.schoellershammer.de/wp-content/themes/schoellershammer/assets/images/logo.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="SCHOELLERSHAMMER">
             </div>
         `;
         const targetX = ax + dx + 10;
@@ -61,7 +61,7 @@ function createLogoCalloutMarker(lat, lng, name) {
         dx = 30; dy = -25;
         logoHtml = `
             <div class="logo-box logo-smurfit-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px 8px; background: #ffffff; border: 1.5px solid #005a9c; display: flex; align-items: center; justify-content: center; width: 140px; height: 38px; box-sizing: border-box; box-shadow: 0 2px 6px rgba(0,90,156,0.1); border-radius: 4px;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Smurfit_Westrock_%28logo%29.svg" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Smurfit Westrock">
+                <img onerror="this.onerror=null;this.src='logos/placeholder.png'" src="https://upload.wikimedia.org/wikipedia/commons/6/61/Smurfit_Westrock_%28logo%29.svg" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Smurfit Westrock">
             </div>
         `;
         const targetX = ax + dx + 10;
@@ -92,7 +92,7 @@ function createLogoCalloutMarker(lat, lng, name) {
         dx = -80; dy = -85;
         logoHtml = `
             <div class="logo-box logo-rlv-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px 8px; background: #ffffff; border: 1.5px solid #15803d; display: flex; align-items: center; justify-content: center; width: 100px; height: 38px; box-sizing: border-box; box-shadow: 0 2px 6px rgba(21,128,61,0.15); border-radius: 4px;">
-                <img src="https://www.rlv.de/wp-content/themes/rlv_template_final/assets/img/logo_rlv.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="RLV">
+                <img onerror="this.onerror=null;this.src='logos/placeholder.png'" src="https://www.rlv.de/wp-content/themes/rlv_template_final/assets/img/logo_rlv.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="RLV">
             </div>
         `;
         const targetX = ax + dx + 50;
@@ -107,7 +107,7 @@ function createLogoCalloutMarker(lat, lng, name) {
         dx = -170; dy = -30;
         logoHtml = `
             <div class="logo-box logo-eschweiler-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px 8px; background: #ffffff; border: 1.5px solid #1d4ed8; display: flex; align-items: center; justify-content: center; width: 165px; height: 42px; box-sizing: border-box; box-shadow: 0 2px 6px rgba(29,78,216,0.15); border-radius: 4px; gap: 6px;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/DEU_Eschweiler_COA.svg" style="max-width: 25px; max-height: 100%; object-fit: contain;" alt="Stadt Eschweiler">
+                <img onerror="this.onerror=null;this.src='logos/placeholder.png'" src="https://upload.wikimedia.org/wikipedia/commons/5/53/DEU_Eschweiler_COA.svg" style="max-width: 25px; max-height: 100%; object-fit: contain;" alt="Stadt Eschweiler">
                 <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:11px; color:#1d4ed8; letter-spacing:0.03em; line-height: 1.1;">STADT<br>ESCHWEILER</span>
             </div>
         `;
