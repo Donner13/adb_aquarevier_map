@@ -2401,10 +2401,10 @@
         </div>
 
         <!-- Embed Modal -->
-        <div id="embed-modal">
+        <div id="embed-modal" role="dialog" aria-modal="true" aria-labelledby="embed-modal-title">
             <div class="embed-modal-content">
                 <div class="embed-modal-header">
-                    <h2>🔗 Karte einbetten</h2>
+                    <h2 id="embed-modal-title">🔗 Karte einbetten</h2>
                     <button class="embed-modal-close" id="embed-close-btn">&times;</button>
                 </div>
 
@@ -7171,7 +7171,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
 
 
     <!-- Feedback Modal -->
-    <div id="feedback-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: var(--modal-backdrop); z-index: 2000; justify-content: center; align-items: center;">
+    <div id="feedback-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="feedback-modal-title" style="display: none; position: fixed; inset: 0; background: var(--modal-backdrop); z-index: 2000; justify-content: center; align-items: center;">
         <div class="modal-content" style="background: var(--bg-surface, #ffffff); width: 400px; max-width: 90%; border-radius: 8px; padding: 20px; box-shadow: var(--modal-shadow); display: flex; flex-direction: column;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
                 <div>
@@ -7213,9 +7213,9 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
 
 
     <!-- Onboarding Modal -->
-    <div id="onboarding-role-modal">
+    <div id="onboarding-role-modal" role="dialog" aria-modal="true" aria-labelledby="onboarding-role-title">
         <div class="modal-content">
-            <h2>Willkommen bei der AquaRevier-Akteurskarte</h2>
+            <h2 id="onboarding-role-title">Willkommen bei der AquaRevier-Akteurskarte</h2>
             <p>Wähle deine Rolle, damit wir dir die Karte passend vorfiltern:</p>
             <div class="onboarding-role-grid">
                 <div class="onboarding-role-card" onclick="applyRolePreset('Politik / Gemeinderat')">
