@@ -939,15 +939,16 @@
 
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden') && hasSize) {
                         const closeBtn = modal.querySelector('.close-btn, .scorecard-close, .embed-modal-close, [aria-label="Schließen"]');
+                        let buttonHandled = false;
+
                         if (closeBtn && typeof closeBtn.click === 'function') {
                             closeBtn.click();
+                            // Trust the close button click if it exists. Re-checking synchronously can break modals with fade-out animations.
+                            buttonHandled = true;
                         }
 
-                        // Fallback logic executes regardless of whether click() was called, because
-                        // if click() fails to synchronously hide the modal (e.g. missing listener),
-                        // we must ensure it closes to prevent being permanently stuck.
-                        if (window.getComputedStyle(modal).display !== 'none') {
-                            if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
+                        if (!buttonHandled) {
+                            if (modal.classList.contains('scorecard-backdrop') && !modal.hasAttribute('id')) {
                                 modal.remove();
                             } else {
                                 modal.style.display = 'none';
