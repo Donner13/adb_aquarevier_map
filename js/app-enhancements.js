@@ -935,17 +935,28 @@
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
+                        let handled = false;
                         if (typeof modal.closeModal === 'function') {
                             try {
                                 modal.closeModal();
+                                handled = true;
                             } catch (error) {
                                 console.error('Error during modal.closeModal():', error);
                             }
                         } else {
                             const closeBtn = modal.querySelector('.close-btn');
                             if (closeBtn) {
-                                closeBtn.click();
-                            } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
+                                try {
+                                    closeBtn.click();
+                                    handled = true;
+                                } catch (error) {
+                                    console.error('Error clicking close-btn:', error);
+                                }
+                            }
+                        }
+
+                        if (!handled) {
+                            if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
                                 modal.remove();
                             } else {
                                 modal.style.display = 'none';
