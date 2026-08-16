@@ -936,28 +936,8 @@
         }
     };
 
-    // --- 11. MAP LAYER GROUP CLEARING ---
-    function initMapLayerClearing() {
-        if (typeof L !== 'undefined' && L.MarkerClusterGroup) {
-            const originalInit = L.MarkerClusterGroup.prototype.initialize;
-            L.MarkerClusterGroup.prototype.initialize = function (options) {
-                if (window.overlayMaps) {
-                    Object.values(window.overlayMaps).forEach(layer => {
-                        if (layer && typeof layer.clearLayers === 'function') {
-                            layer.clearLayers();
-                        }
-                    });
-                }
-                if (originalInit) {
-                    originalInit.call(this, options);
-                }
-            };
-        }
-    }
-
     // --- 5. INITIALIZE ALL ON DOM READY ---
     function initializeEnhancements() {
-        initMapLayerClearing();
         applyLayerColorHarmony();
         initCommandPalette();
         initSystemHealthBadge();
