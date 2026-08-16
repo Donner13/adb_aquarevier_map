@@ -158,8 +158,8 @@
             });
         }
 
-        dossier.centerLat = lats.length !== 0 ? lats.reduce((a, b) => a + b, 0) / lats.length : null;
-        dossier.centerLng = lngs.length !== 0 ? lngs.reduce((a, b) => a + b, 0) / lngs.length : null;
+        dossier.centerLat = lats.length !== 0 ? lats.reduce((a, b) => a + b, 0) / lats.length : dossier.centerLat;
+        dossier.centerLng = lngs.length !== 0 ? lngs.reduce((a, b) => a + b, 0) / lngs.length : dossier.centerLng;
 
         window.currentGemeindeDossier = dossier;
         return dossier;
