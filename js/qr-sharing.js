@@ -76,7 +76,7 @@
                 </div>
                 
                 <div style="padding: 20px;">
-                    <div style="font-size: 11.5px; color: #64748b; margin-bottom: 14px;">
+                    <div style="font-size: 11.5px; color: var(--text-secondary, #64748b); margin-bottom: 14px;">
                         Scanne den QR-Code mit deinem Smartphone, um diesen Kartenausschnitt &amp; die aktiven Layer direkt vor Ort im Feld zu öffnen.
                     </div>
                     

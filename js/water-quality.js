@@ -42,7 +42,7 @@
                 <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 440px; border-radius: 12px; padding: 20px; text-align: center;">
                     <div style="font-size: 24px; margin-bottom: 8px;">⚠️</div>
                     <div id="wrrl-quality-modal-title" style="font-weight: 700; color: #dc2626; margin-bottom: 4px;">Wassergüte-Daten nicht verfügbar</div>
-                    <div style="font-size: 11px; color: #64748b; margin-bottom: 14px;">Die Messwerte für '${escapeHtml(name)}' konnten vom Server nicht geladen werden.</div>
+                    <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: 14px;">Die Messwerte für '${escapeHtml(name)}' konnten vom Server nicht geladen werden.</div>
                     <button type="button" class="btn btn-sm btn-secondary" onclick="closeWrrlQualityModal()">Schließen</button>
                 </div>
             `;
@@ -63,22 +63,22 @@
                 <div style="padding: 18px;">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;">
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px;">
-                            <div style="font-size: 10px; color: #64748b;">Ökologischer Zustand</div>
+                            <div style="font-size: 10px; color: var(--text-secondary, #64748b);">Ökologischer Zustand</div>
                             <div style="font-size: 13px; font-weight: 700; color: #0f172a; margin-top: 2px;">${escapeHtml(data.ecoStatus)}</div>
                         </div>
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px;">
-                            <div style="font-size: 10px; color: #64748b;">Chemischer Zustand</div>
+                            <div style="font-size: 10px; color: var(--text-secondary, #64748b);">Chemischer Zustand</div>
                             <div style="font-size: 13px; font-weight: 700; color: #0f172a; margin-top: 2px;">${escapeHtml(data.chemStatus)}</div>
                         </div>
                     </div>
 
                     <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; margin-bottom: 14px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                            <span style="font-size: 10.5px; color: #64748b;">Durchgängigkeit für Fische:</span>
+                            <span style="font-size: 10.5px; color: var(--text-secondary, #64748b);">Durchgängigkeit für Fische:</span>
                             <span style="font-weight: 600; color: #0284c7;">${escapeHtml(data.fishPassability)}</span>
                         </div>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 10.5px; color: #64748b;">Entwicklungstrend:</span>
+                            <span style="font-size: 10.5px; color: var(--text-secondary, #64748b);">Entwicklungstrend:</span>
                             <span style="font-weight: 600; color: #16a34a;">${escapeHtml(data.trend)}</span>
                         </div>
                     </div>
