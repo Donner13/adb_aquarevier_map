@@ -894,10 +894,6 @@
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
-                        // We dispatch a custom event to tell the modal it should close via escape.
-                        // The global listener doesn't need to know the specifics of how the modal cleans up.
-                        // If it's a generic modal, it will be hidden below.
-
                         if (modal.id === 'command-palette-modal') {
                             // The command palette intercepts Escape on document already and handles its own fade
                             // So if we see it open, we know it's handling itself, we just need to ensure
@@ -928,8 +924,6 @@
                         }
 
                         if (modal.classList.contains('scorecard-backdrop')) {
-                            // The scorecard backdrop is technically an overlay container
-                            // It was originally removed from DOM, we restore this behavior
                             modal.remove();
                         } else {
                             modal.style.display = 'none';
