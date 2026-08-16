@@ -883,7 +883,51 @@
 
         // Global Escape key listener to close all open modals
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
+            if (e.key === 'Tab') {
+                let activeModal = null;
+                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop');
+                for (let i = 0; i < openModals.length; i++) {
+                    const modal = openModals[i];
+                    const style = window.getComputedStyle(modal);
+                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
+                        activeModal = modal;
+                        break;
+                    }
+                }
+
+                if (activeModal) {
+                    const focusableElements = activeModal.querySelectorAll('a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])');
+                    const visibleFocusableElements = Array.from(focusableElements).filter(el => {
+                        return el.offsetWidth > 0 || el.offsetHeight > 0 || el.getClientRects().length > 0;
+                    });
+
+                    if (visibleFocusableElements.length > 0) {
+                        const firstFocusableElement = visibleFocusableElements[0];
+                        const lastFocusableElement = visibleFocusableElements[visibleFocusableElements.length - 1];
+
+                        if (e.shiftKey) {
+                            // if shift-tab and on first element, jump to last
+                            if (document.activeElement === firstFocusableElement || !activeModal.contains(document.activeElement)) {
+                                e.preventDefault();
+                                lastFocusableElement.focus();
+                            }
+                        } else {
+                            // if tab and on last element, jump to first
+                            if (document.activeElement === lastFocusableElement || !activeModal.contains(document.activeElement)) {
+                                e.preventDefault();
+                                firstFocusableElement.focus();
+                            }
+                        }
+                    } else {
+                        // if no focusable elements, force focus onto the modal container itself
+                        e.preventDefault();
+                        if (!activeModal.hasAttribute('tabindex')) {
+                            activeModal.setAttribute('tabindex', '-1');
+                        }
+                        activeModal.focus();
+                    }
+                }
+            } else if (e.key === 'Escape') {
                 let closedAny = false;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
