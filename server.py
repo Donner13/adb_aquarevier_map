@@ -188,10 +188,11 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         origin = self.headers.get('Origin')
         parsed_origin = urllib.parse.urlparse(origin) if origin else None
 
+        self.send_header('Vary', 'Origin')
+
         if parsed_origin and parsed_origin.hostname in ('localhost', '127.0.0.1'):
             self.send_header('Access-Control-Allow-Origin', origin)
             self.send_header('Access-Control-Allow-Credentials', 'true')
-            self.send_header('Vary', 'Origin')
 
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
