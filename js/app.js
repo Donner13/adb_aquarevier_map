@@ -103,9 +103,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (dossierData && typeof dossierData.stats === 'object') {
              const stats = dossierData.stats;
-             if (Array.isArray(stats.pegel)) pegelAnzahl = stats.pegel.length;
-             if (Array.isArray(stats.gewerbegebiete)) gewerbeAnzahl = stats.gewerbegebiete.length;
+             if (Array.isArray(stats.pegel)) {
+                 pegelAnzahl = stats.pegel.length;
+             }
+             if (Array.isArray(stats.gewerbegebiete)) {
+                 gewerbeAnzahl = stats.gewerbegebiete.length;
+             }
              if (stats.wasserRisiko !== undefined) wasserRisiko = stats.wasserRisiko;
+        }
+
+        // Review fix: "ein Fallback auf die bekannten Datenquellen fehlt."
+        if (pegelAnzahl === "Keine Daten" && window.geojsonData && window.geojsonData.pegel && Array.isArray(window.geojsonData.pegel.features)) {
+             pegelAnzahl = window.geojsonData.pegel.features.filter(f => f.properties && f.properties.gemeinde === gemeindeName).length;
+        }
+        if (gewerbeAnzahl === "Keine Daten" && window.geojsonData && window.geojsonData.gewerbegebiete && Array.isArray(window.geojsonData.gewerbegebiete.features)) {
+             gewerbeAnzahl = window.geojsonData.gewerbegebiete.features.filter(f => f.properties && f.properties.gemeinde === gemeindeName).length;
         }
 
         document.getElementById('stakeholder-kpi-wasser').textContent = wasserRisiko;
@@ -127,69 +139,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Review fix: "handling of openGemeindeDossier globally may introduce maintenance issues" & "bindMapLayerClicks function has a potential issue with its return value".
-    // We avoid global openGemeindeDossier overwrites, and attach securely to map layers natively.
+    // Review fix: "Die bestehende openGemeindeDossier-Logik wird entgegen Taskbeschreibung nicht integriert..."
+    // "map.eachLayer() und layeradd sehen bei GeoJSON-Layergruppen häufig nur den Container... dann wird kein Gemeinde-Klick gebunden."
+    // Integrate cleanly with openGemeindeDossier to catch ALL clicks (map, sidebar, programmatic) reliably.
 
-    let layerHooked = false;
-    function bindMapLayerClicks() {
-        if (typeof map !== 'undefined' && !layerHooked) {
-            layerHooked = true; // Set immediately to prevent race conditions
+    // Instead of completely redefining or intercepting clicks manually (which misses programmatic calls or GeoJSON clusters),
+    // we hook into the existing `openGemeindeDossier` safely. Since `openGemeindeDossier` might be defined later,
+    // we use a property setter to detect when it's assigned, or just wrap it directly if it already exists.
 
-            map.on('layeradd', function(e) {
-                const layer = e.layer;
-                if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.typ === 'Gemeinde' && !layer._stakeholderHook) {
-                    layer.on('click', function() {
-                        window.openStakeholderModal(layer.feature.properties.name);
-                    });
-                    layer._stakeholderHook = true;
-                }
-            });
+    function injectStakeholderHook() {
+        const originalOpenDossier = window.openGemeindeDossier;
 
-            // Backfill already loaded layers
-            map.eachLayer(function(layer) {
-                if (layer.feature && layer.feature.properties && layer.feature.properties.name && layer.feature.properties.typ === 'Gemeinde' && !layer._stakeholderHook) {
-                    layer.on('click', function() {
-                        window.openStakeholderModal(layer.feature.properties.name);
-                    });
-                    layer._stakeholderHook = true;
-                }
-            });
+        if (typeof originalOpenDossier === 'function' && !originalOpenDossier._isStakeholderHooked) {
+            window.openGemeindeDossier = function(gemeindeName) {
+                // Execute original logic first to compile dossier and open original modal (if any)
+                originalOpenDossier(gemeindeName);
 
+                // Then open our new Stakeholder Modal
+                window.openStakeholderModal(gemeindeName);
+            };
+            window.openGemeindeDossier._isStakeholderHooked = true;
             return true;
         }
         return false;
     }
 
-    if (!bindMapLayerClicks()) {
-        window.addEventListener('load', () => {
-            if (!bindMapLayerClicks()) {
-                // Short polling for asynchronous map initialization
-                let attempts = 0;
-                const interval = setInterval(() => {
-                    if (bindMapLayerClicks() || attempts > 50) {
-                        clearInterval(interval);
-                    }
-                    attempts++;
-                }, 100);
+    // Try immediately
+    if (!injectStakeholderHook()) {
+        // If not available yet, poll briefly until `gemeinde-steckbrief.js` initializes it
+        let attempts = 0;
+        const interval = setInterval(() => {
+            if (injectStakeholderHook() || attempts > 20) {
+                clearInterval(interval);
             }
-        });
+            attempts++;
+        }, 100);
     }
-
-    // Sidebar integration: delegate clicks purely in DOM for the list, avoiding global function interceptors
-    document.addEventListener('click', function(e) {
-        const btn = e.target.closest('.gemeinde-sidebar-item, [onclick*="openGemeindeDossier"]');
-        if (btn) {
-            let name = '';
-            if (btn.hasAttribute('onclick')) {
-                const match = btn.getAttribute('onclick').match(/openGemeindeDossier\(['"]([^'"]+)['"]\)/);
-                if (match && match[1]) name = match[1];
-            } else if (btn.dataset && btn.dataset.name) {
-                name = btn.dataset.name;
-            }
-            if (name) {
-                window.openStakeholderModal(name);
-            }
-        }
-    });
-
 });
