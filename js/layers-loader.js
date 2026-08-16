@@ -17,6 +17,34 @@
  */
 
 
+// Centralized strict validation for GeoJSON Point coordinates prior to marker rendering
+function filterValidGeoJsonFeature(feature) {
+  if (!feature || !feature.geometry) return false;
+  // Non-Point features are allowed to pass through the filter untouched
+  if (feature.geometry.type !== 'Point') return true;
+
+  const coords = feature.geometry.coordinates;
+  if (!coords || coords.length < 2) return false;
+
+  const rawLng = coords[0];
+  const rawLat = coords[1];
+
+  // Reject explicitly empty/null values, arrays, and booleans
+  if (rawLng === null || rawLat === null || rawLng === '' || rawLat === '') return false;
+  if (typeof rawLng === 'boolean' || typeof rawLat === 'boolean') return false;
+  if (Array.isArray(rawLng) || Array.isArray(rawLat)) return false;
+  if (typeof rawLng === 'string' && rawLng.trim() === '') return false;
+  if (typeof rawLat === 'string' && rawLat.trim() === '') return false;
+
+  const lng = Number(rawLng);
+  const lat = Number(rawLat);
+
+  if (Number.isNaN(lng) || Number.isNaN(lat)) return false;
+  if (lng < -180 || lng > 180 || lat < -90 || lat > 90) return false;
+
+  return true;
+}
+
 // Setup reusable web worker for GeoJSON parsing to unblock main thread
 const geojsonWorkerCode = `
   self.onmessage = function(e) {
@@ -332,17 +360,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
           if (cfg.id === 'contacts' || cfg.id === 'akteure') window.geojsonData = data;
           window[cfg.geoDataVar] = data;  // backward-compat global
           const markers = L.geoJSON(data, {
-            filter: (feature) => {
-              if (!feature.geometry || feature.geometry.type !== 'Point' || !feature.geometry.coordinates || feature.geometry.coordinates.length < 2) return false;
-              const rawLng = feature.geometry.coordinates[0];
-              const rawLat = feature.geometry.coordinates[1];
-              if (rawLng === null || rawLat === null || rawLng === '' || rawLat === '') return false;
-              const lng = Number(rawLng);
-              const lat = Number(rawLat);
-              if (Number.isNaN(lng) || Number.isNaN(lat)) return false;
-              if (lng < -180 || lng > 180 || lat < -90 || lat > 90) return false;
-              return true;
-            },
+            filter: filterValidGeoJsonFeature,
             pointToLayer: (feature, latlng) => {
               const marker = L.marker(latlng, { icon: buildIcon() });
               // Safely extract name from nested blocks like Stammdaten or Lage if they exist
@@ -411,17 +429,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         window[cfg.geoDataVar] = data;  // backward-compat global
 
         const geoLayer = L.geoJSON(data, {
-          filter: (feature) => {
-            if (!feature.geometry || feature.geometry.type !== 'Point' || !feature.geometry.coordinates || feature.geometry.coordinates.length < 2) return false;
-            const rawLng = feature.geometry.coordinates[0];
-            const rawLat = feature.geometry.coordinates[1];
-            if (rawLng === null || rawLat === null || rawLng === '' || rawLat === '') return false;
-            const lng = Number(rawLng);
-            const lat = Number(rawLat);
-            if (Number.isNaN(lng) || Number.isNaN(lat)) return false;
-            if (lng < -180 || lng > 180 || lat < -90 || lat > 90) return false;
-            return true;
-          },
+          filter: filterValidGeoJsonFeature,
           pointToLayer: (feature, latlng) => {
             const marker = L.marker(latlng, { icon: buildIcon() });
             let extractedName = '';
@@ -483,3 +491,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
   }
 }
 
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports.filterValidGeoJsonFeature = filterValidGeoJsonFeature;
+}
