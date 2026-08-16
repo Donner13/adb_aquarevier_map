@@ -51,6 +51,7 @@
         }
 
         body.dark-theme {
+            --color-sonstige: #9ca3af;
             --bg-base: #0b0f19;
             --bg-surface: rgba(17, 24, 39, 0.95);
             --bg-surface-hover: rgba(31, 41, 55, 0.95);
@@ -1319,8 +1320,7 @@
         }
         .logo-schoellershammer-sub {
             font-size: 8px;
-            color: #64748b;
-            margin-top: -1px;
+            color: var(--text-secondary, #64748b); margin-top: -1px;
         }
 
         .logo-smurfit-box {
@@ -1790,7 +1790,7 @@
             text-overflow: ellipsis;
         }
         .feedback-meta {
-            color: var(--text-secondary, #64748b);
+            color: #64748b;
             font-size: 10px;
             display: flex;
             justify-content: space-between;
@@ -2370,11 +2370,11 @@
                     </div>
                     <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #cbd5e1); border-radius: 6px; padding: 10px; margin-top: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                            <span style="font-size: 11px; color: var(--text-secondary, #64748b);">Jahr:</span>
+                            <span style="font-size: 11px; color: #64748b;">Jahr:</span>
                             <span id="timeseries-year-display" style="font-size: 16px; font-weight: 700; color: #2563eb;">2025</span>
                         </div>
                         <input type="range" id="timeseries-slider" min="0" max="6" step="1" value="5" style="width: 100%; margin-bottom: 8px; cursor: pointer;" oninput="setTimeSeriesYearIndex(parseInt(this.value, 10))">
-                        <div style="display: flex; justify-content: space-between; font-size: 9.5px; color: #64748b; margin-bottom: 8px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 9.5px; color: var(--text-secondary, #64748b); margin-bottom: 8px;">
                             <span>2000</span>
                             <span>2010</span>
                             <span>2020</span>
@@ -2444,7 +2444,7 @@
                         </div>
                     </div>
                     <div id="hazard-layer-group">
-                        <div style="font-size: 11px; color: #64748b; margin-bottom: 8px; font-weight: 500;">Fluvial (LANUV)</div>
+                        <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: 8px; font-weight: 500;">Fluvial (LANUV)</div>
                         <div class="filter-group">
                             <button class="filter-btn" data-layer-name="HQ häufig (LANUV)" title="LANUV Hochwassergefahrenkarte">
                                 <span class="swatch" style="background: #fde047;"></span>
@@ -2459,7 +2459,7 @@
                                 <span>HQ extrem (LANUV)</span>
                             </button>
                         </div>
-                        <div style="font-size: 11px; color: #64748b; margin-top: 12px; margin-bottom: 8px; font-weight: 500;">Pluvial (Kommunen)</div>
+                        <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-top: 12px; margin-bottom: 8px; font-weight: 500;">Pluvial (Kommunen)</div>
                         <div class="filter-group">
                             <button class="filter-btn" data-layer-name="Starkregen Euskirchen" title="Starkregengefahrenkarte Kreis Euskirchen (WMS Karte)">
                                 <span class="swatch" style="background: #7c3aed;"></span>
@@ -2863,7 +2863,7 @@
                                     <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'}</div>
                                     <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
                                     <div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.wsg_name || 'Unbekannt').replace(/'/g, "\\'")}', 'Wasserschutzgebiete', '${p.id || p.wsg_name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>
-                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
+                                    <div style="font-size: 10px; color: var(--text-secondary, #475569); margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
                                 </div>
                             `;
                             layer.bindPopup(html);
@@ -2896,7 +2896,7 @@
                                     <div class="popup-title">${p.wsg_name || 'Unbekannt'}</div>
                                     <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'} (Fassungsbereich)</div>
                                     <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
-                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
+                                    <div style="font-size: 10px; color: var(--text-secondary, #475569); margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
                                 </div>
                             `;
                             layer.bindPopup(html);
@@ -3379,7 +3379,7 @@
                     const latlng = layer.getLatLng ? layer.getLatLng() : {lat:0, lng:0};
                     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', 'Industrieeinleiter', '${p.betriebs_nr || p.name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
                     html += `
-                            <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
+                            <div style="font-size: 10px; color: var(--text-secondary, #475569); margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
                         </div>
                     `;
                     layer.bindPopup(html);
@@ -3499,7 +3499,7 @@
                                     : '');
                             html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(title || '').replace(/'/g, "\\'")}', 'Einzugsgebiet-Statistik', '${p.id || title || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
                             html += `
-                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Spatial Join: ELWAS-WEB Industrieeinleiter × LANUV Teileinzugsgebiete (Rur)</div>
+                                    <div style="font-size: 10px; color: var(--text-secondary, #475569); margin-top: 6px;">Spatial Join: ELWAS-WEB Industrieeinleiter × LANUV Teileinzugsgebiete (Rur)</div>
                                 </div>
                             `;
                             layer.bindPopup(html);
@@ -4271,11 +4271,11 @@
             div.style.color = '#1e293b';
             div.innerHTML = `
                 <div style="font-weight:700; margin-bottom:4px; font-size:12.5px;">Gefahrenkarten</div>
-                <div style="font-size:11px; color:#64748b; margin-bottom:2px;">Fluvial (LANUV)</div>
+                <div style="font-size:11px; color: var(--text-secondary, #64748b); margin-bottom:2px;">Fluvial (LANUV)</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#fde047; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #ca8a04;"></span>HQ häufig</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#f97316; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #c2410c;"></span>HQ 100</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#dc2626; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #991b1b;"></span>HQ extrem</div>
-                <div style="font-size:11px; color:#64748b; margin-top:6px; margin-bottom:2px;">Pluvial (Kommunen)</div>
+                <div style="font-size:11px; color: var(--text-secondary, #64748b); margin-top:6px; margin-bottom:2px;">Pluvial (Kommunen)</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#7c3aed; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #5b21b6;"></span>Starkregen</div>
             `;
             return div;
