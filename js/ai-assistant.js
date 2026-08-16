@@ -41,7 +41,7 @@
                 </div>
 
                 <div style="padding: 16px; flex: 1; overflow-y: auto;">
-                    <div style="font-size: 11px; color: #64748b; margin-bottom: 12px;">
+                    <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 12px;">
                         Stelle eine Frage oder wähle eine Beispielfrage aus:
                     </div>
 
@@ -81,7 +81,7 @@
         if (input) input.value = question;
 
         box.style.display = 'block';
-        box.innerHTML = `<div style="color: #64748b; text-align: center;">🤖 Analysiere Geo-Datenbank...</div>`;
+        box.innerHTML = `<div style="color: var(--text-secondary); text-align: center;">🤖 Analysiere Geo-Datenbank...</div>`;
 
         setTimeout(() => {
             const q = question.toLowerCase();

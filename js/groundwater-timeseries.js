@@ -128,7 +128,7 @@
         if (statsSummary) {
             if (totalStations === 0) {
                 statsSummary.innerHTML = `
-                    <div style="font-size: 11px; color: #64748b; text-align: center; padding: 4px;">
+                    <div style="font-size: 11px; color: var(--text-secondary); text-align: center; padding: 4px;">
                         <span style="background:#fef3c7; color:#92400e; font-size:10px; padding:2px 6px; border-radius:4px; font-weight:600; display:inline-block; margin-bottom:4px;">⚠️ HYDROLOGISCHE SIMULATION</span><br>
                         Aktiviere den Layer "Grundwassermessstellen", um Stations-Modellreihen (2000-2030) anzuzeigen.
                     </div>
@@ -146,15 +146,15 @@
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; text-align: center; font-size: 11px;">
                         <div style="background: #f8fafc; padding: 4px; border-radius: 4px; border: 1px solid #e2e8f0;">
                             <div style="font-weight: 700; color: ${avgColor};">${avgDelta >= 0 ? '+' : ''}${avgDelta} m</div>
-                            <div style="font-size: 9.5px; color: #64748b;">Ø Sim. Delta</div>
+                            <div style="font-size: 9.5px; color: var(--text-secondary);">Ø Sim. Delta</div>
                         </div>
                         <div style="background: #f8fafc; padding: 4px; border-radius: 4px; border: 1px solid #e2e8f0;">
                             <div style="font-weight: 700; color: #2563eb;">${risingCount}</div>
-                            <div style="font-size: 9.5px; color: #64748b;">📈 Anstieg</div>
+                            <div style="font-size: 9.5px; color: var(--text-secondary);">📈 Anstieg</div>
                         </div>
                         <div style="background: #f8fafc; padding: 4px; border-radius: 4px; border: 1px solid #e2e8f0;">
                             <div style="font-weight: 700; color: #dc2626;">${droppingCount}</div>
-                            <div style="font-size: 9.5px; color: #64748b;">📉 Absenkung</div>
+                            <div style="font-size: 9.5px; color: var(--text-secondary);">📉 Absenkung</div>
                         </div>
                     </div>
                 `;
