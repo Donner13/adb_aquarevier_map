@@ -309,6 +309,7 @@
 
         function openPalette() {
             modal.hidden = false;
+            modal.classList.remove('hidden');
             modal.style.display = 'flex';
             requestAnimationFrame(() => { modal.style.opacity = '1'; });
             input.value = '';
@@ -324,6 +325,7 @@
                 modal.style.display = 'none';
             }, 200);
         }
+        modal.closeModal = closePalette;
 
         // Global Keydown Handler
         document.addEventListener('keydown', (e) => {
@@ -337,10 +339,7 @@
 
             if (modal.hidden) return;
 
-            if (e.key === 'Escape') {
-                e.preventDefault();
-                closePalette();
-            } else if (e.key === 'ArrowDown') {
+            if (e.key === 'ArrowDown') {
                 e.preventDefault();
                 selectedIndex = (selectedIndex + 1) % (commandItems.length || 1);
                 renderResults(input.value);
@@ -966,6 +965,7 @@
                                 } else {
                                     modal.style.display = 'none';
                                     modal.classList.add('hidden');
+                                    modal.hidden = true;
                                 }
                             }
                         };
@@ -974,7 +974,7 @@
                             forceCloseFallback();
                         } else {
                             // Verify after a short delay to allow custom handlers/animations to run, force close if they failed silently
-                            setTimeout(forceCloseFallback, 150);
+                            setTimeout(forceCloseFallback, 250);
                         }
                         closedAny = true;
                     }
