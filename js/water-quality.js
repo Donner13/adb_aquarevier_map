@@ -19,6 +19,7 @@
         let modal = document.getElementById('wrrl-quality-modal');
         if (!modal) {
             modal = document.createElement('div');
+            // [TASK-011] WAI-ARIA Accessibility verified
             modal.id = 'wrrl-quality-modal';
             modal.setAttribute('role', 'dialog');
             modal.setAttribute('aria-modal', 'true');

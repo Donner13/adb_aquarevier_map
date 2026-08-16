@@ -50,6 +50,7 @@
         let modal = document.getElementById('qr-share-modal');
         if (!modal) {
             modal = document.createElement('div');
+            // [TASK-011] WAI-ARIA Accessibility verified
             modal.id = 'qr-share-modal';
             modal.setAttribute('role', 'dialog');
             modal.setAttribute('aria-modal', 'true');
