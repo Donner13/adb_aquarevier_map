@@ -885,7 +885,7 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Tab') {
                 let activeModal = null;
-                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop');
+                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 for (let i = 0; i < openModals.length; i++) {
                     const modal = openModals[i];
                     const style = window.getComputedStyle(modal);
@@ -931,14 +931,49 @@
                 let closedAny = false;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
+                    if (!document.body.contains(modal)) return;
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
-                        if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
-                            modal.remove();
+                        let handled = false;
+                        if (typeof modal.closeModal === 'function') {
+                            try {
+                                modal.closeModal();
+                                handled = true;
+                            } catch (error) {
+                                console.error('Error during modal.closeModal():', error);
+                            }
                         } else {
-                            modal.style.display = 'none';
-                            modal.classList.add('hidden');
+                            // Find the closest close-btn that belongs to this specific modal level
+                            const closeBtns = Array.from(modal.querySelectorAll('.close-btn'));
+                            const closeBtn = closeBtns.find(btn => btn.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay') === modal) || closeBtns[0];
+
+                            if (closeBtn) {
+                                try {
+                                    closeBtn.click();
+                                    handled = true;
+                                } catch (error) {
+                                    console.error('Error clicking close-btn:', error);
+                                }
+                            }
+                        }
+
+                        const forceCloseFallback = () => {
+                            if (document.body.contains(modal) && window.getComputedStyle(modal).display !== 'none' && !modal.classList.contains('hidden')) {
+                                if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
+                                    modal.remove();
+                                } else {
+                                    modal.style.display = 'none';
+                                    modal.classList.add('hidden');
+                                }
+                            }
+                        };
+
+                        if (!handled) {
+                            forceCloseFallback();
+                        } else {
+                            // Verify after a short delay to allow custom handlers/animations to run, force close if they failed silently
+                            setTimeout(forceCloseFallback, 150);
                         }
                         closedAny = true;
                     }

@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akteurskarte - AquaRevier</title>
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="alternate" type="application/json+oembed" href="https://adb-aquarevier-secure.surge.sh/oembed.json" title="AquaRevier Akteurskarte" />
     
     <!-- docx -->
     <script src="vendor/docx/index.umd.js"></script>
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="vendor/leaflet/leaflet.css"/>
@@ -52,6 +62,12 @@
             --modal-backdrop: rgba(0, 0, 0, 0.7);
             --modal-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
+        /* [TASK-014] WCAG AA Contrast Fix for dimmed text in Dark Mode */
+        body.dark-theme .logo-schoellershammer-sub,
+        body.dark-theme .logo-tillmann-p {
+            color: var(--text-secondary);
+        }
+
 
 
         body.dark-theme .leaflet-bar a {
