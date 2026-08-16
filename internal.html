@@ -2711,7 +2711,33 @@ body.embed-mode .embed-mini-legend {
             position: 'bottomright'
         }).addTo(map);
 
-                // Base Maps
+// Check Embed Mode URL Parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('embed') === '1') {
+            document.body.classList.add('embed-mode');
+
+            // Build Mini Legend
+            const miniLegendContainer = document.getElementById('embed-mini-legend-items');
+            for (const [group, color] of Object.entries(groupColors)) {
+                if (group !== 'Konsortium') {
+                    const item = document.createElement('div');
+                    item.className = 'embed-mini-legend-item';
+                    item.innerHTML = `<span class="embed-mini-legend-color" style="background-color: ${color}"></span><span>${group}</span>`;
+                    miniLegendContainer.appendChild(item);
+                }
+            }
+
+            // Set dynamic back link
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.delete('embed');
+            document.getElementById('embed-back-link').href = currentUrl.toString();
+
+            // Handle Map Resize for iframes
+            window.addEventListener('resize', () => map.invalidateSize());
+            setTimeout(() => map.invalidateSize(), 300);
+        }
+
+        // Base Maps
         const baseLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
@@ -7354,12 +7380,19 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
         embedHeight.addEventListener('input', generateEmbedSnippet);
 
         embedCopyBtn.addEventListener('click', () => {
+            if (!navigator.clipboard) {
+                alert('Kopieren fehlgeschlagen. Bitte manuell kopieren.');
+                return;
+            }
             navigator.clipboard.writeText(embedSnippetOutput.value).then(() => {
                 const originalText = embedCopyBtn.innerText;
                 embedCopyBtn.innerText = '✅ Kopiert!';
                 setTimeout(() => {
                     embedCopyBtn.innerText = originalText;
                 }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert('Kopieren fehlgeschlagen. Bitte manuell kopieren.');
             });
         });
 
