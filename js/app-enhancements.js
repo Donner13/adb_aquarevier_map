@@ -938,6 +938,9 @@
                                 modal.closeModal();
                             } catch (err) {
                                 console.error('Error closing modal:', err);
+                                // Fallback if custom close fails
+                                modal.style.display = 'none';
+                                modal.classList.add('hidden');
                             }
                         } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
                             modal.remove();
