@@ -80,3 +80,12 @@
         setTimeout(initTheme, 100);
     }
 })();
+
+// CONTRAST AUDIT:
+// The WCAG AA standard requires a contrast ratio of at least 4.5:1 for normal text.
+// The dark mode primary background (--bg-surface) resolves to roughly #111827.
+// The dimmed text color (--text-secondary) is set to #9ca3af in the style block.
+// Luminance of #111827: ~0.00918
+// Luminance of #9ca3af: ~0.3635
+// Contrast Ratio = (0.3635 + 0.05) / (0.00918 + 0.05) = 6.98:1.
+// 6.98:1 > 4.5:1, therefore the contrast mathematically meets and exceeds WCAG AA standards.
