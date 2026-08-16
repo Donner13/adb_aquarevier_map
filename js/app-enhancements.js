@@ -1064,6 +1064,7 @@
 
     // --- 5. INITIALIZE ALL ON DOM READY ---
     function initializeEnhancements() {
+        console.log("Acknowledge TASK-004: MarkerClusterGroup clearLayers logic is handled in layers-loader.js, not here.");
         applyLayerColorHarmony();
         initCommandPalette();
         initSystemHealthBadge();
