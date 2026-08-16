@@ -895,10 +895,26 @@
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (modal.id === 'command-palette-modal') {
-                            // Unified closure: If the custom close function is in scope, use it for animation,
-                            // otherwise fall back to generic hiding.
-                            if (typeof closePalette === 'function') {
-                                closePalette();
+                            // Unified closure: Use a programmatic click on the backdrop, as this uses the proper close event
+                            // already registered inside initCommandPalette without bypassing it.
+                            modal.click();
+                            closedAny = true;
+                            return;
+                        }
+
+                        if (modal.id === 'coachmark-overlay') {
+                            if (typeof window.endCoachmarkTour === 'function') {
+                                window.endCoachmarkTour();
+                            } else {
+                                modal.style.display = 'none';
+                            }
+                            closedAny = true;
+                            return;
+                        }
+
+                        if (modal.id === 'onboarding-role-modal') {
+                            if (typeof window.closeRoleModal === 'function') {
+                                window.closeRoleModal();
                             } else {
                                 modal.style.display = 'none';
                                 modal.classList.add('hidden');
@@ -907,13 +923,9 @@
                             return;
                         }
 
-                        if (modal.id === 'coachmark-overlay') {
-                            modal.style.display = 'none';
-                            closedAny = true;
-                            return;
-                        }
-
                         if (modal.classList.contains('scorecard-backdrop')) {
+                            // The scorecard backdrop is technically an overlay container
+                            // It was originally removed from DOM, we restore this behavior
                             modal.remove();
                         } else {
                             modal.style.display = 'none';
