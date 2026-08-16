@@ -205,7 +205,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             try:
                 with open(os.path.join(DIRECTORY, 'js', 'layers-config.js'), 'r', encoding='utf-8') as f:
                     content = f.read()
-                    layer_files = re.findall(r"file:\s*'([^']+)'", content)
+                    layer_files = re.findall(r"file:\s*['\"]([^'\"]+)['\"]", content)
                     core_files.extend(layer_files)
             except Exception:
                 unreadable.append('js/layers-config.js')
@@ -216,12 +216,8 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 filepath = os.path.join(DIRECTORY, file_name)
                 if not os.path.exists(filepath):
                     missing.append(file_name)
-                else:
-                    try:
-                        with open(filepath, 'r', encoding='utf-8') as f:
-                            json.load(f)
-                    except Exception:
-                        unreadable.append(file_name)
+                elif not os.access(filepath, os.R_OK):
+                    unreadable.append(file_name)
 
             status = 'error' if missing or unreadable else 'ok'
 
