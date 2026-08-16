@@ -6967,7 +6967,7 @@ function renderMapAndSidebar() {
             let html = '';
             for (const entry of manifest) {
                 const date = new Date(entry.run_timestamp).toLocaleString('de-DE');
-                let badgeStyle = "background: var(--text-secondary, #475569); color: white;";
+                let badgeStyle = "background: #475569; color: white;";
                 let badgeText = "DIFF";
                 if (entry.baseline) {
                     badgeStyle = "background: #3b82f6; color: white;";
