@@ -122,7 +122,6 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
   /** Baut den Popup-HTML-String aus cfg.popupFields */
   function buildPopupHtml(p) {
-
     const glossarSpan = (key) =>
       key ? `<span class="glossar-icon" data-glossar="${escapeHtml(key)}">i</span>` : '';
     // Feste deutsche Config-Strings (groupLabel/field.label) werden bei
@@ -135,8 +134,6 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       <div class="popup-card">
         <div class="popup-group" style="color:${cfg.color}">${escapeHtml(tLabel(cfg.groupLabel))}</div>
         <div class="popup-title">${escapeHtml(p.name || 'Unbekannt')}</div>
-        <!-- Fallback for dynamic logos -->
-        <img onerror="this.onerror=null; this.src='logos/placeholder.png'" style="display:none;" alt="" />
     `;
 
     for (const field of (cfg.popupFields || [])) {
@@ -274,6 +271,8 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       : 'Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0';
     html += `<div style="font-size:10px;color:#475569;margin-top:6px;">${escapeHtml(footer)}</div>`;
     html += `</div>`;
+    // Add fallback to any dynamically generated company logo within the popup HTML
+    html = html.replace(/<img\s+(?!onerror)([^>]*?)src=["'](.*?)["'](.*?)>/gi, `<img onerror="this.onerror=null; this.src='logos/placeholder.png'" $1src="$2"$3>`);
     return html;
   }
 
