@@ -889,7 +889,7 @@
                 for (let i = 0; i < openModals.length; i++) {
                     const modal = openModals[i];
                     const style = window.getComputedStyle(modal);
-                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden') && !modal.hidden) {
+                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
                         activeModal = modal;
                         break;
                     }
@@ -932,7 +932,7 @@
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"]');
                 openModals.forEach(modal => {
                     const style = window.getComputedStyle(modal);
-                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden') && !modal.hidden) {
+                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (modal.id === 'command-palette-modal') {
                             return; // Command palette handles its own closure animation
