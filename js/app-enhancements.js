@@ -337,10 +337,7 @@
 
             if (modal.hidden) return;
 
-            if (e.key === 'Escape') {
-                e.preventDefault();
-                closePalette();
-            } else if (e.key === 'ArrowDown') {
+            if (e.key === 'ArrowDown') {
                 e.preventDefault();
                 selectedIndex = (selectedIndex + 1) % (commandItems.length || 1);
                 renderResults(input.value);
@@ -932,22 +929,33 @@
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
                     const style = window.getComputedStyle(modal);
-                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
+                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden') && !modal.hidden) {
 
-                        if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
+                        if (modal.id === 'command-palette-modal') {
+                            modal.style.opacity = '0';
+                            setTimeout(() => {
+                                modal.hidden = true;
+                                modal.style.display = 'none';
+                                modal.classList.add('hidden');
+                            }, 200);
+                        } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
                             modal.remove();
                         } else {
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
+                            modal.hidden = true;
                         }
                         closedAny = true;
                     }
                 });
 
-                if (closedAny && lastTriggerElement && document.body.contains(lastTriggerElement)) {
-                    if (typeof lastTriggerElement.focus === 'function') {
-                        // Small delay to allow modal display to clear before restoring focus
-                        setTimeout(() => lastTriggerElement.focus(), 10);
+                if (closedAny) {
+                    e.preventDefault();
+                    if (lastTriggerElement && document.body.contains(lastTriggerElement)) {
+                        if (typeof lastTriggerElement.focus === 'function') {
+                            // Small delay to allow modal display to clear before restoring focus
+                            setTimeout(() => lastTriggerElement.focus(), 10);
+                        }
                     }
                 }
             } else if (e.key === 'Tab') {
