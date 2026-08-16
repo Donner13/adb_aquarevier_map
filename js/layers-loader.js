@@ -122,7 +122,8 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
   /** Baut den Popup-HTML-String aus cfg.popupFields */
   function buildPopupHtml(p) {
-    // onerror="this.src='logos/placeholder.png'" (dummy comment for Firmenlogos)
+    // Fix for missing Firmenlogos
+    let dummyLogoStr = `<img onerror="this.src='logos/placeholder.png'" style="display:none;" />`;
 
     const glossarSpan = (key) =>
       key ? `<span class="glossar-icon" data-glossar="${escapeHtml(key)}">i</span>` : '';
