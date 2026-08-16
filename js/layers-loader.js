@@ -151,7 +151,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     let html = `
       <div class="popup-card">
         <div class="popup-group" style="color:${cfg.color}">${escapeHtml(tLabel(cfg.groupLabel))}</div>
-        <div class="popup-title">${escapeHtml(p.name || 'Unbekannt')}</div>
+        <div class="popup-title">${escapeHtml(p.name || p.bezeichnung || p.betreibername || p.standort || p.id || 'Unbekannt')}</div>
     `;
 
     for (const field of (cfg.popupFields || [])) {
