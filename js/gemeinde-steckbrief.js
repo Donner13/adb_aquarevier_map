@@ -177,9 +177,8 @@
         let modal = document.getElementById('gemeinde-dossier-modal');
         if (!modal) {
             modal = document.createElement('div');
-            // [TASK-011] WAI-ARIA Accessibility verified
             modal.id = 'gemeinde-dossier-modal';
-            modal.setAttribute('role', 'dialog');
+            modal.setAttribute('role', 'dialog'); // [TASK-011]
             modal.setAttribute('aria-modal', 'true');
             modal.setAttribute('aria-labelledby', 'gemeinde-dossier-modal-title');
             modal.style.cssText = `
