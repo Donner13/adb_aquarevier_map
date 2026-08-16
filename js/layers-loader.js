@@ -334,6 +334,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
           const markers = L.geoJSON(data, {
             filter: (feature) => {
               if (!feature.geometry || !feature.geometry.coordinates) return false;
+              if (feature.geometry.type !== 'Point') return true; // Only filter Point geometries for now
               const coords = feature.geometry.coordinates;
               if (coords.length < 2) return false;
               const lng = coords[0];
@@ -413,6 +414,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         const geoLayer = L.geoJSON(data, {
           filter: (feature) => {
             if (!feature.geometry || !feature.geometry.coordinates) return false;
+            if (feature.geometry.type !== 'Point') return true; // Only filter Point geometries for now
             const coords = feature.geometry.coordinates;
             if (coords.length < 2) return false;
             const lng = coords[0];
