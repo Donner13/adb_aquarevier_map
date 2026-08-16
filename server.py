@@ -206,7 +206,16 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             missing_files = []
             for geojson_file in CORE_GEOJSONS:
                 file_path = os.path.join(DIRECTORY, geojson_file)
-                if not os.access(file_path, os.R_OK):
+                is_readable_file = False
+                if os.path.isfile(file_path):
+                    try:
+                        with open(file_path, 'r', encoding='utf-8') as f:
+                            pass
+                        is_readable_file = True
+                    except Exception:
+                        pass
+
+                if not is_readable_file:
                     missing_files.append(geojson_file)
 
             if missing_files:
