@@ -933,8 +933,9 @@
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
                     const style = window.getComputedStyle(modal);
-                    // Use getClientRects() as a robust visibility check including 0x0 containers
-                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden') && modal.getClientRects().length > 0) {
+                    const rects = modal.getClientRects();
+                    const hasSize = rects.length > 0 && (rects[0].width > 0 || rects[0].height > 0) || (modal.offsetWidth > 0 || modal.offsetHeight > 0);
+                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden') && hasSize) {
                         const closeBtn = modal.querySelector('.close-btn, .scorecard-close, .embed-modal-close, [aria-label="Schließen"]');
                         if (closeBtn && typeof closeBtn.click === 'function') {
                             closeBtn.click();
