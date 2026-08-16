@@ -213,7 +213,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             core_files = sorted(list(set(core_files)))
 
             for file_name in core_files:
-                if os.path.basename(file_name) != file_name:
+                if '..' in file_name or os.path.isabs(file_name):
                     unreadable.append(file_name)
                     continue
 
