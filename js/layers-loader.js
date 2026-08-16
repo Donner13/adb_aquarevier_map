@@ -141,9 +141,6 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       }
     }
 
-    const escapeForJs = (str) => escapeHtml(String(str || '').replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/'/g, "\\'"));
-    const glossarSpan = (key) =>
-      key ? `<span class="glossar-icon" data-glossar="${escapeHtml(key)}">i</span>` : '';
     // Feste deutsche Config-Strings (groupLabel/field.label) werden bei
     // aktivem Englisch ueber ein DE->EN-Mapping angezeigt (siehe
     // js/app-enhancements.js AQUAREVIER_I18N) - Fallback ist immer Deutsch,
@@ -288,7 +285,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     const parsedLng = Number(p.lng || p.longitude || p.lon);
     const safeLng = Number.isFinite(parsedLng) ? parsedLng : 0;
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-      <button type="button" onclick="openFeedbackModal('${escapeForJs(p.name)}', '${escapeForJs(cfg.groupLabel)}', '${escapeForJs(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${safeLat}, ${safeLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
+      <button type="button" onclick="openFeedbackModal('${escapeHtml(String(p.name || '').replace(/'/g, "\\'"))}', '${escapeHtml(String(cfg.groupLabel || '').replace(/'/g, "\\'"))}', '${escapeHtml(String(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '').replace(/'/g, "\\'"))}', ${safeLat}, ${safeLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
     </div>`;
 
     // Footer
@@ -346,8 +343,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
                       }
                   }
               }
-              const nameProp = extractedName;
-              const ariaLabel = nameProp ? `${cfg.groupLabel}: ${nameProp}` : `${cfg.groupLabel} Standort`;
+              const ariaLabel = extractedName ? `${cfg.groupLabel}: ${extractedName}` : `${cfg.groupLabel} Standort`;
               // Try to use the global makeMarkerAccessible if defined
               if (typeof makeMarkerAccessible === 'function') {
                 return makeMarkerAccessible(marker, ariaLabel);
@@ -414,8 +410,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
                     }
                 }
             }
-            const nameProp = extractedName;
-            const ariaLabel = nameProp ? `${cfg.groupLabel}: ${nameProp}` : `${cfg.groupLabel} Standort`;
+            const ariaLabel = extractedName ? `${cfg.groupLabel}: ${extractedName}` : `${cfg.groupLabel} Standort`;
             if (typeof makeMarkerAccessible === 'function') {
               return makeMarkerAccessible(marker, ariaLabel);
             }

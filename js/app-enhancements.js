@@ -958,7 +958,7 @@
                             }
                         }
 
-                        const forceCloseFallback = () => {
+                        if (!handled) {
                             if (document.body.contains(modal) && window.getComputedStyle(modal).display !== 'none' && !modal.classList.contains('hidden')) {
                                 if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
                                     modal.remove();
@@ -967,13 +967,6 @@
                                     modal.classList.add('hidden');
                                 }
                             }
-                        };
-
-                        if (!handled) {
-                            forceCloseFallback();
-                        } else {
-                            // Verify after a short delay to allow custom handlers/animations to run, force close if they failed silently
-                            setTimeout(forceCloseFallback, 150);
                         }
                         closedAny = true;
                     }
