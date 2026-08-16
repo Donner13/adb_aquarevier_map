@@ -933,18 +933,26 @@
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
                     const style = window.getComputedStyle(modal);
-                    const rects = modal.getClientRects();
-                    const hasSize = (rects.length > 0 && (rects[0].width > 0 || rects[0].height > 0)) || (modal.offsetWidth > 0 || modal.offsetHeight > 0);
+                    // Use getClientRects() length as indicator of being rendered, without forcing strictly >0 width/height
+                    // which might fail for valid visually-hidden flex/grid overlay containers.
+                    const hasSize = modal.getClientRects().length > 0 || (modal.offsetWidth > 0 || modal.offsetHeight > 0);
 
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden') && hasSize) {
                         const closeBtn = modal.querySelector('.close-btn, .scorecard-close, .embed-modal-close, [aria-label="Schließen"]');
                         if (closeBtn && typeof closeBtn.click === 'function') {
                             closeBtn.click();
-                        } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
-                            modal.remove();
-                        } else {
-                            modal.style.display = 'none';
-                            modal.classList.add('hidden');
+                        }
+
+                        // Fallback logic executes regardless of whether click() was called, because
+                        // if click() fails to synchronously hide the modal (e.g. missing listener),
+                        // we must ensure it closes to prevent being permanently stuck.
+                        if (window.getComputedStyle(modal).display !== 'none') {
+                            if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
+                                modal.remove();
+                            } else {
+                                modal.style.display = 'none';
+                                modal.classList.add('hidden');
+                            }
                         }
                         closedAny = true;
                     }
