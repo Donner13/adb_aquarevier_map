@@ -214,7 +214,8 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         : ' (keine quantifizierten Industrieeinleiter oberhalb gefunden)';
       html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${escapeHtml(String(p.mq_m3s))} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${escapeHtml(pctStr)}% davon als Industrieabwasser ein${escapeHtml(betriebeHinweis)}.</div>`;
       if (p.upstream_betriebe_count > 0) {
-        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${escapeHtml(String(p.pegel_nr))}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
+        let jsSafePegelNr = String(p.pegel_nr || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${escapeHtml(jsSafePegelNr)}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
       }
     }
 
@@ -282,9 +283,10 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     // and then apply escapeHtml for the final HTML attribute context.
     let jsSafeName = String(p.name || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
     let jsSafeId = String(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    let jsSafeGroupLabel = String(cfg.groupLabel || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-      <button type="button" onclick="openFeedbackModal('${escapeHtml(jsSafeName)}', '${escapeHtml(cfg.groupLabel)}', '${escapeHtml(jsSafeId)}', ${feedbackLat}, ${feedbackLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
+      <button type="button" onclick="openFeedbackModal('${escapeHtml(jsSafeName)}', '${escapeHtml(jsSafeGroupLabel)}', '${escapeHtml(jsSafeId)}', ${feedbackLat}, ${feedbackLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
     </div>`;
 
     // Footer
