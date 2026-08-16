@@ -52,7 +52,7 @@
             --bg-surface-hover: rgba(31, 41, 55, 0.95);
             --border-color: rgba(255, 255, 255, 0.12);
             --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
+            --text-secondary: #cbd5e1;
             --accent-primary: #6366f1;
             --accent-glow: rgba(99, 102, 241, 0.4);
             --modal-backdrop: rgba(0, 0, 0, 0.7);
@@ -753,7 +753,7 @@
         }
         .logo-schoellershammer-sub {
             font-size: 8px;
-            color: #64748b;
+            color: var(--text-secondary, #64748b);
             margin-top: -1px;
         }
 
@@ -1498,7 +1498,7 @@
             background: rgba(0, 0, 0, 0.04);
         }
         body.light-theme .update-radar-close {
-            color: #64748b;
+            color: var(--text-secondary, #64748b);
         }
         body.light-theme .update-radar-close:hover {
             color: #0f172a;
@@ -1952,7 +1952,7 @@
                             <span id="timeseries-year-display" style="font-size: 16px; font-weight: 700; color: #2563eb;">2025</span>
                         </div>
                         <input type="range" id="timeseries-slider" min="0" max="6" step="1" value="5" style="width: 100%; margin-bottom: 8px; cursor: pointer;" oninput="setTimeSeriesYearIndex(parseInt(this.value, 10))">
-                        <div style="display: flex; justify-content: space-between; font-size: 9.5px; color: #64748b; margin-bottom: 8px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 9.5px; color: var(--text-secondary, #64748b); margin-bottom: 8px;">
                             <span>2000</span>
                             <span>2010</span>
                             <span>2020</span>
@@ -2315,7 +2315,7 @@
                         </div>
                     </div>
                     <div id="hazard-layer-group">
-                        <div style="font-size: 11px; color: #64748b; margin-bottom: 8px; font-weight: 500;">Fluvial (LANUV)</div>
+                        <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: 8px; font-weight: 500;">Fluvial (LANUV)</div>
                         <div class="filter-group">
                             <button class="filter-btn" data-layer-name="HQ häufig (LANUV)" title="LANUV Hochwassergefahrenkarte">
                                 <span class="swatch" style="background: #fde047;"></span>
@@ -2330,7 +2330,7 @@
                                 <span>HQ extrem (LANUV)</span>
                             </button>
                         </div>
-                        <div style="font-size: 11px; color: #64748b; margin-top: 12px; margin-bottom: 8px; font-weight: 500;">Pluvial (Kommunen)</div>
+                        <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-top: 12px; margin-bottom: 8px; font-weight: 500;">Pluvial (Kommunen)</div>
                         <div class="filter-group">
                             <button class="filter-btn" data-layer-name="Starkregen Euskirchen" title="Starkregengefahrenkarte Kreis Euskirchen">
                                 <span class="swatch" style="background: #7c3aed;"></span>
@@ -3639,13 +3639,13 @@
         const boundaryLegend = L.control({ position: 'bottomleft' });
         boundaryLegend.onAdd = function () {
             const div = L.DomUtil.create('div', 'info-legend');
-            div.style.background = '#ffffff';
+            div.style.background = 'var(--bg-surface, #ffffff)';
             div.style.padding = '8px 12px';
             div.style.borderRadius = '6px';
             div.style.boxShadow = '0 1.5px 5px rgba(0,0,0,0.25)';
             div.style.fontSize = '12px';
             div.style.lineHeight = '1.7';
-            div.style.color = '#1e293b';
+            div.style.color = 'var(--text-primary, #1e293b)';
             div.innerHTML = `
                 <div style="font-weight:700; margin-bottom:4px; font-size:12.5px;">Grenzen & Gebiete</div>
                 <div><span style="display:inline-block; width:22px; border-top:2.4px solid #000000; vertical-align:middle; margin-right:6px;"></span>Landkreisgrenzen (Rheinisches Revier)</div>
@@ -3660,13 +3660,13 @@
         const markerLegend = L.control({ position: 'bottomleft' });
         markerLegend.onAdd = function () {
             const div = L.DomUtil.create('div', 'info-legend marker-legend');
-            div.style.background = '#ffffff';
+            div.style.background = 'var(--bg-surface, #ffffff)';
             div.style.padding = '8px 12px';
             div.style.borderRadius = '6px';
             div.style.boxShadow = '0 1.5px 5px rgba(0,0,0,0.25)';
             div.style.fontSize = '11.5px';
             div.style.lineHeight = '1.6';
-            div.style.color = '#1e293b';
+            div.style.color = 'var(--text-primary, #1e293b)';
             div.style.marginTop = '6px';
             div.style.maxHeight = '180px';
             div.style.overflowY = 'auto';
@@ -5191,20 +5191,20 @@ function renderMapAndSidebar() {
         const hazardLegend = L.control({ position: 'bottomleft' });
         hazardLegend.onAdd = function () {
             const div = L.DomUtil.create('div', 'info-legend');
-            div.style.background = '#ffffff';
+            div.style.background = 'var(--bg-surface, #ffffff)';
             div.style.padding = '8px 12px';
             div.style.borderRadius = '6px';
             div.style.boxShadow = '0 1.5px 5px rgba(0,0,0,0.25)';
             div.style.fontSize = '12px';
             div.style.lineHeight = '1.7';
-            div.style.color = '#1e293b';
+            div.style.color = 'var(--text-primary, #1e293b)';
             div.innerHTML = `
                 <div style="font-weight:700; margin-bottom:4px; font-size:12.5px;">Gefahrenkarten</div>
-                <div style="font-size:11px; color:#64748b; margin-bottom:2px;">Fluvial (LANUV)</div>
+                <div style="font-size:11px; color: var(--text-secondary, #64748b); margin-bottom:2px;">Fluvial (LANUV)</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#fde047; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #ca8a04;"></span>HQ häufig</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#f97316; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #c2410c;"></span>HQ 100</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#dc2626; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #991b1b;"></span>HQ extrem</div>
-                <div style="font-size:11px; color:#64748b; margin-top:6px; margin-bottom:2px;">Pluvial (Kommunen)</div>
+                <div style="font-size:11px; color: var(--text-secondary, #64748b); margin-top:6px; margin-bottom:2px;">Pluvial (Kommunen)</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#7c3aed; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #5b21b6;"></span>Starkregen</div>
             `;
             return div;

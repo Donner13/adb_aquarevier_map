@@ -256,7 +256,7 @@
 
         if (res.totalHits === 0) {
             resultsContainer.innerHTML = `
-                <div style="padding: 10px; text-align: center; color: #64748b; font-size: 12px; background: #f8fafc; border-radius: 4px;">
+                <div style="padding: 10px; text-align: center; color: var(--text-secondary, #64748b); font-size: 12px; background: #f8fafc; border-radius: 4px;">
                     Keine Objekte im gewählten Radius von ${kmStr} km gefunden.
                 </div>
             `;
@@ -297,7 +297,7 @@
                          onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
                         <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 170px;">
                             <div style="font-weight: 500; font-size: 11px; color: #0f172a;">${escapeHtml(item.name)}</div>
-                            ${item.sub ? `<div style="font-size: 10px; color: #64748b;">${escapeHtml(item.sub)}</div>` : ''}
+                            ${item.sub ? `<div style="font-size: 10px; color: var(--text-secondary, #64748b);">${escapeHtml(item.sub)}</div>` : ''}
                         </div>
                         <span style="font-size: 10px; font-weight: 600; color: #2563eb; background: #eff6ff; padding: 1px 4px; border-radius: 3px; white-space: nowrap;">
                             ${distText}

@@ -278,7 +278,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     if (cfg.id === 'pegel') {
       html += `<div class="pegelonline-container" style="margin-top:8px; padding:8px; background:#f0f9ff; border-radius:4px; font-size:12px; border:1px solid #bae6fd;">
         <div style="color:#0284c7; font-weight:bold; margin-bottom:4px;">📡 Live-Daten (PEGELONLINE)</div>
-        <div class="pegelonline-content" style="color:#64748b;">Lade Live-Daten...</div>
+        <div class="pegelonline-content" style="color: var(--text-secondary, #64748b);">Lade Live-Daten...</div>
       </div>`;
     }
 
