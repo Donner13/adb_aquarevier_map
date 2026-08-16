@@ -163,8 +163,12 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         resolved_path = os.path.realpath(translated)
 
         # Guard against path traversal attacks and symlink escapes
-        if os.path.commonpath([resolved_directory, resolved_path]) != resolved_directory:
-            raise PathTraversalError("Path traversal attempt detected")
+        try:
+            if os.path.commonpath([resolved_directory, resolved_path]) != resolved_directory:
+                raise PathTraversalError("Path traversal attempt detected")
+        except ValueError:
+            # commonpath raises ValueError on Windows if drive letters mix (e.g. C: vs D:)
+            raise PathTraversalError("Path traversal attempt detected across drives")
         return translated
 
     def send_head(self):
