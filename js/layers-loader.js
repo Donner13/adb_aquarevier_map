@@ -78,8 +78,8 @@ function fetchGeoJSONWorker(url) {
       return res.text();
     }).then(text => {
       // Strip BOM if present
-      const cleanedText = text.replace(/^\uFEFF/, '');
-      return JSON.parse(cleanedText);
+      text = text.replace(/^\uFEFF/, '');
+      return JSON.parse(text);
     });
   }
   return new Promise((resolve, reject) => {
