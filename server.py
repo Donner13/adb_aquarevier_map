@@ -162,10 +162,20 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         None, in which case the caller has nothing further to do.
         """
         path = self.translate_path(self.path)
+
+        # If the path is a directory, SimpleHTTPRequestHandler will try to serve an index file.
+        # We must resolve this implicitly targeted file to check its real path.
+        if os.path.isdir(path):
+            for index in "index.html", "index.htm":
+                index_path = os.path.join(path, index)
+                if os.path.exists(index_path):
+                    path = index_path
+                    break
+
         resolved_target = os.path.realpath(path)
         resolved_dir = os.path.realpath(self.directory)
 
-        # Ensure the resolved target is within the intended directory
+        # Ensure the final resolved target is within the intended directory
         if not (resolved_target == resolved_dir or resolved_target.startswith(resolved_dir + os.sep)):
             self.send_error(404, "File not found")
             return None
