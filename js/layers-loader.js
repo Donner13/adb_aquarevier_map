@@ -332,6 +332,18 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
           if (cfg.id === 'contacts' || cfg.id === 'akteure') window.geojsonData = data;
           window[cfg.geoDataVar] = data;  // backward-compat global
           const markers = L.geoJSON(data, {
+            filter: (feature) => {
+              if (!feature.geometry || !feature.geometry.coordinates) return false;
+              if (feature.geometry.type !== 'Point') return true; // Only filter Point geometries for now
+              const coords = feature.geometry.coordinates;
+              if (coords.length < 2) return false;
+              const lng = coords[0];
+              const lat = coords[1];
+              // Standard geographic valid boundaries
+              if (typeof lng !== 'number' || typeof lat !== 'number' || Number.isNaN(lng) || Number.isNaN(lat)) return false;
+              if (lng < -180 || lng > 180 || lat < -90 || lat > 90) return false;
+              return true;
+            },
             pointToLayer: (feature, latlng) => {
               const marker = L.marker(latlng, { icon: buildIcon() });
               // Safely extract name from nested blocks like Stammdaten or Lage if they exist
@@ -400,6 +412,18 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         window[cfg.geoDataVar] = data;  // backward-compat global
 
         const geoLayer = L.geoJSON(data, {
+          filter: (feature) => {
+            if (!feature.geometry || !feature.geometry.coordinates) return false;
+            if (feature.geometry.type !== 'Point') return true; // Only filter Point geometries for now
+            const coords = feature.geometry.coordinates;
+            if (coords.length < 2) return false;
+            const lng = coords[0];
+            const lat = coords[1];
+            // Standard geographic valid boundaries
+            if (typeof lng !== 'number' || typeof lat !== 'number' || Number.isNaN(lng) || Number.isNaN(lat)) return false;
+            if (lng < -180 || lng > 180 || lat < -90 || lat > 90) return false;
+            return true;
+          },
           pointToLayer: (feature, latlng) => {
             const marker = L.marker(latlng, { icon: buildIcon() });
             let extractedName = '';
