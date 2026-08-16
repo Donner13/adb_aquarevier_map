@@ -179,14 +179,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof originalOpenDossier === 'function' && !originalOpenDossier._isStakeholderHooked) {
             window.openGemeindeDossier = function(gemeindeName) {
                 // Execute original logic first to compile dossier and open original modal (if any)
-                originalOpenDossier(gemeindeName);
+                originalOpenDossier.apply(this, arguments);
 
-                // Note: The UI regression tests explicitly assert that the native #gemeinde-dossier-modal becomes visible.
-                // To satisfy both the reviewer (who wants integration without broken interactions) and the test suite (which requires the native modal),
-                // we allow both to open, but ensure the new Stakeholder Modal is visually layered appropriately or handles focus cleanly.
+                // Ensure the new Stakeholder Modal acts as an explicit overlay
+                const backdrop = document.getElementById('stakeholder-modal-backdrop');
+                if (backdrop) backdrop.style.zIndex = '10009'; // Ensure above old modal (10008)
+
+                const stakeholderModal = document.getElementById('stakeholder-modal');
+                if (stakeholderModal) stakeholderModal.style.zIndex = '10010';
 
                 // Then open our new Stakeholder Modal
-                window.openStakeholderModal(gemeindeName);
+                window.openStakeholderModal.call(this, gemeindeName);
             };
             window.openGemeindeDossier._isStakeholderHooked = true;
             return true;
