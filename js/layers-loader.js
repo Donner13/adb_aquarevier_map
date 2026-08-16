@@ -272,7 +272,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     html += `<div style="font-size:10px;color:#475569;margin-top:6px;">${escapeHtml(footer)}</div>`;
     html += `</div>`;
     // Add fallback to any dynamically generated company logo within the popup HTML
-    html = html.replace(/<img\s+(?!onerror)([^>]*?)src=["'](.*?)["'](.*?)>/gi, `<img onerror="this.onerror=null; this.src='logos/placeholder.png'" $1src="$2"$3>`);
+    html = html.replace(/<img\b(?!.*\bonerror=)/gi, `<img onerror="this.onerror=null; this.src='logos/placeholder.png'" `);
     return html;
   }
 
