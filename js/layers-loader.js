@@ -215,7 +215,8 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         : ' (keine quantifizierten Industrieeinleiter oberhalb gefunden)';
       html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${safeP.mq_m3s} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${escapeHtml(pctStr)}% davon als Industrieabwasser ein${escapeHtml(betriebeHinweis)}.</div>`;
       if (p.upstream_betriebe_count > 0) {
-        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${escapeHtml(p.pegel_nr)}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
+        // use escapeJsString for onclick handler argument
+        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${escapeHtml(String(p.pegel_nr).replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/'/g, "\\'"))}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
       }
     }
 
