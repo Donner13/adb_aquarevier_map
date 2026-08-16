@@ -240,7 +240,7 @@
 
         if (!window.lastRadiusResults) return;
         const res = window.lastRadiusResults;
-        const kmStr = (res.radiusMeters !== 0 ? res.radiusMeters / 1000 : 0).toLocaleString('de-DE', { maximumFractionDigits: 1 });
+        const kmStr = ((typeof res.radiusMeters === 'number' && res.radiusMeters > 0) ? res.radiusMeters / 1000 : 0).toLocaleString('de-DE', { maximumFractionDigits: 1 });
 
         if (clearBtn) clearBtn.disabled = false;
 
@@ -287,9 +287,9 @@
             `;
 
             items.forEach(item => {
-                const distText = item.dist >= 1000 
-                    ? (item.dist !== 0 ? (item.dist / 1000).toFixed(1) : '0.0') + ' km'
-                    : Math.round(item.dist) + ' m';
+                const distText = (typeof item.dist === 'number' && item.dist >= 1000)
+                    ? (item.dist / 1000).toFixed(1) + ' km'
+                    : Math.round(item.dist || 0) + ' m';
 
                 html += `
                     <div onclick="zoomToRadiusHit(${item.lat}, ${item.lng}, '${escapeHtml(item.name)}')" 
