@@ -196,6 +196,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         else:
             self.send_header('Access-Control-Allow-Origin', '*')
 
+        self.send_header('Vary', 'Origin')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
         super().end_headers()
