@@ -1887,7 +1887,7 @@
                             <span class="counter-badge" id="cnt-layer-boundary">(0/0)</span>
                         </button>
                         <button class="filter-btn active" data-layer-name="Kreisgrenzen (Schwarz gestrichelt)" title="Grenzen der 7 Kreise und kreisfreien Städte im Untersuchungsgebiet">
-                            <span class="swatch" style="background-color: var(--text-secondary, #475569); border: 1.2px dashed #ffffff;"></span>
+                            <span class="swatch" style="background-color: #475569; border: 1.2px dashed #ffffff;"></span>
                             <span class="filter-label">Kreisgrenzen</span>
                             <span class="counter-badge" id="cnt-layer-kreise">(0/0)</span>
                         </button>
@@ -6967,7 +6967,7 @@ function renderMapAndSidebar() {
             let html = '';
             for (const entry of manifest) {
                 const date = new Date(entry.run_timestamp).toLocaleString('de-DE');
-                let badgeStyle = "background: #475569; color: white;";
+                let badgeStyle = "background: var(--text-secondary, #475569); color: white;";
                 let badgeText = "DIFF";
                 if (entry.baseline) {
                     badgeStyle = "background: #3b82f6; color: white;";
