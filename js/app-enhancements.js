@@ -896,11 +896,14 @@
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (modal.id === 'command-palette-modal') {
-                            // Dispatch custom event to gracefully close palette if supported
-                            modal.dispatchEvent(new CustomEvent('closeCommandPalette'));
-                            // Fallback to ensuring it is closed visually
-                            modal.style.display = 'none';
-                            modal.classList.add('hidden');
+                            // Unified closure: If the custom close function is in scope, use it for animation,
+                            // otherwise fall back to generic hiding.
+                            if (typeof closePalette === 'function') {
+                                closePalette();
+                            } else {
+                                modal.style.display = 'none';
+                                modal.classList.add('hidden');
+                            }
                             closedAny = true;
                             return;
                         }
