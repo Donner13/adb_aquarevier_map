@@ -1,4 +1,4 @@
-const CACHE_NAME = "aquarevier-cache-v2";
+const CACHE_NAME = "aquarevier-cache-v3";
 const urlsToCache = [
   "./",
   "./index.html",
@@ -20,11 +20,8 @@ self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName.startsWith("aquarevier-cache-") && cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
+        cacheNames.filter(cacheName => cacheName.startsWith("aquarevier-cache-") && cacheName !== CACHE_NAME)
+                  .map(cacheName => caches.delete(cacheName))
       );
     })
   );
