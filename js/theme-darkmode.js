@@ -74,7 +74,8 @@
 
         // Decoupled Media-Query Listener: Register exactly once
         if (window.matchMedia && !window._themeMediaQueryListenerAdded) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            const mq = window.matchMedia('(prefers-color-scheme: dark)');
+            const handleThemeChange = (e) => {
                 const currentSavedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
                 if (!currentSavedTheme) {
                     if ((e.matches && !window.isDarkMode) || (!e.matches && window.isDarkMode)) {
@@ -84,7 +85,13 @@
                         window.StorageModule.removeItem('aquarevier_theme');
                     }
                 }
-            });
+            };
+
+            if (mq.addEventListener) {
+                mq.addEventListener('change', handleThemeChange);
+            } else if (mq.addListener) {
+                mq.addListener(handleThemeChange);
+            }
             window._themeMediaQueryListenerAdded = true;
         }
     }
