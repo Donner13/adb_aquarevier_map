@@ -1629,6 +1629,56 @@
             white-space: nowrap;
             border-width: 0;
         }
+
+        /* Embed Mode CSS */
+        body.embed-mode #sidebar {
+            display: none !important;
+        }
+        body.embed-mode .unified-search-container {
+            display: none !important;
+        }
+        body.embed-mode #map {
+            width: 100vw !important;
+            flex: none !important;
+        }
+        .embed-mini-legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--bg-surface);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 1000;
+            font-size: 11px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+        }
+        body.embed-mode .embed-mini-legend {
+            display: flex;
+        }
+        .embed-mini-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .embed-mini-legend-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .embed-back-link {
+            font-size: 11px;
+            color: var(--accent-primary);
+            text-decoration: none;
+            margin-bottom: 6px;
+            display: inline-block;
+        }
     </style>
 
     <!-- Tile CDN Preconnects -->
@@ -2106,6 +2156,8 @@
                     <button class="filter-btn active" id="btn-new-contact" style="width:100%; justify-content:center; margin-bottom:6px;">➕ Neuer Akteur</button>
                     <button class="filter-btn" id="btn-export-geojson" style="width:100%; justify-content:center; margin-bottom:6px;">💾 Als .geojson exportieren</button>
                     <button class="filter-btn" id="btn-export-csv" style="width:100%; justify-content:center; margin-bottom:6px;">📄 Als .csv exportieren</button>
+                    <button class="filter-btn" id="generate-sprechzettel-btn" style="width:100%; justify-content:center; margin-bottom:6px;">🗣️ Sprechzettel generieren</button>
+                    <button class="filter-btn" id="generate-beschlussvorlage-btn" style="width:100%; justify-content:center; margin-bottom:6px;">📋 Beschlussvorlage generieren</button>
                     <button class="filter-btn" id="btn-save-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #059669; border-color: #059669; color: white;">💾 Auf Server speichern</button>
                     <button class="filter-btn" id="btn-deploy-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #2563eb; border-color: #2563eb; color: white;">🚀 Karte veröffentlichen (Deploy)</button>
                     <button class="filter-btn active" id="btn-generate-report" style="width:100%; justify-content:center; margin-bottom:6px; background: #6366f1; border-color: #6366f1; color: white; font-weight: 600;">📊 Bericht generieren (PDF)</button>
@@ -2393,14 +2445,14 @@
                 <!-- Export Section -->
                 <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
                     <div style="display: flex; gap: 8px;">
-                        <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;">📄 CSV Export</button>
-                        <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;">📑 PDF Export</button>
+                        <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('csv')">📄 CSV Export</button>
+                        <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()">📑 PDF Export</button>
                     </div>
                     <div style="display: flex; gap: 8px;">
-                        <button id="embed-open-btn" class="filter-btn" style="flex: 1; justify-content: center;">🔗 Karte einbetten</button>
+                        <button id="embed-open-btn" class="filter-btn" style="flex: 1; justify-content: center;" onclick="if(typeof openEmbedModal==='function') openEmbedModal()">🔗 Karte einbetten</button>
                         <button id="open-data-export-btn" class="filter-btn" data-i18n-key="open_data_export" style="flex: 1; justify-content: center;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('geojson')" title="Exportiert alle aktiven Karten-Layer als Open-Data GeoJSON">💾 Geodaten-Export</button>
                     </div>
-                    <button id="generate-report-btn" class="filter-btn active" data-i18n-key="generate_report" style="justify-content: center; background: #6366f1; border-color: #6366f1; font-weight: 600; color: white;">📊 Bericht generieren (PDF)</button>
+                    <button id="generate-report-btn" class="filter-btn active" data-i18n-key="generate_report" style="justify-content: center; background: #6366f1; border-color: #6366f1; font-weight: 600; color: white;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()">📊 Bericht generieren (PDF)</button>
                     <button id="generate-sprechzettel-btn" class="filter-btn" style="justify-content: center;">🗣️ Sprechzettel generieren</button>
                     <button id="generate-beschlussvorlage-btn" class="filter-btn" style="justify-content: center;">📋 Beschlussvorlage generieren</button>
                 </div>
@@ -2459,6 +2511,8 @@
 
         <div id="pegel-analysis-panel" class="hidden"></div>
 
+    </div>
+
     <div id="presentation-bar">
         <div class="title" id="presentation-title"></div>
         <div class="step-counter" id="presentation-step-counter"></div>
@@ -2468,7 +2522,6 @@
             <button id="next-step-btn" class="control-btn">Weiter →</button>
             <button id="exit-presentation-btn" class="control-btn exit-btn">✕ Beenden</button>
         </div>
-    </div>
     </div>
 
     <!-- Leaflet JS -->
