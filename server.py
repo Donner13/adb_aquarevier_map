@@ -206,15 +206,17 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 with open(os.path.join(DIRECTORY, 'js', 'layers-config.js'), 'r', encoding='utf-8') as f:
                     content = f.read()
                     layer_files = re.findall(r"file:\s*['\"]([^'\"]+\.geojson)['\"]", content)
-                    # Filter out path traversal attempts
-                    safe_layer_files = [f for f in layer_files if os.path.basename(f) == f]
-                    core_files.extend(safe_layer_files)
+                    core_files.extend(layer_files)
             except Exception:
                 unreadable.append('js/layers-config.js')
 
             core_files = sorted(list(set(core_files)))
 
             for file_name in core_files:
+                if '..' in file_name or file_name.startswith('/'):
+                    unreadable.append(file_name)
+                    continue
+
                 filepath = os.path.join(DIRECTORY, file_name)
                 if not os.path.exists(filepath):
                     missing.append(file_name)
