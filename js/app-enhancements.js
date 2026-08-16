@@ -935,7 +935,11 @@
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (typeof modal.closeModal === 'function') {
-                            modal.closeModal();
+                            try {
+                                modal.closeModal();
+                            } catch (error) {
+                                console.error('Error during modal.closeModal():', error);
+                            }
                         } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
                             modal.remove();
                         } else {
