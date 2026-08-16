@@ -68,6 +68,14 @@
             color: var(--text-secondary);
         }
 
+        /* Target specifically color properties to avoid matching background-color or border-color */
+        body.dark-theme [style*="color: #64748b"]:not([style*="-color: #64748b"]),
+        body.dark-theme [style*="color:#64748b"]:not([style*="-color:#64748b"]),
+        body.dark-theme [style*="color: #475569"]:not([style*="-color: #475569"]),
+        body.dark-theme [style*="color:#475569"]:not([style*="-color:#475569"]) {
+            color: var(--text-secondary) !important;
+        }
+
 
 
         body.dark-theme .leaflet-bar a {
