@@ -366,10 +366,6 @@
             if (e.target === modal) closePalette();
         });
 
-        modal.addEventListener('closeCommandPalette', () => {
-            closePalette();
-        });
-
         // Add visual KBD trigger to search inputs
         const searchInputs = document.querySelectorAll('#usearch-input, #search-input');
         searchInputs.forEach(inp => {
@@ -892,7 +888,7 @@
 
                 // Select all known overlays, explicitly catching ones like coachmarks and onboarding
                 const openModals = document.querySelectorAll(
-                    '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #onboarding-role-modal'
+                    '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay'
                 );
 
                 openModals.forEach(modal => {
@@ -900,9 +896,11 @@
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
                         if (modal.id === 'command-palette-modal') {
-                            // Trigger the custom event which calls closePalette() to do the fade out.
-                            // Do not force display:none here, let the animation finish safely.
+                            // Dispatch custom event to gracefully close palette if supported
                             modal.dispatchEvent(new CustomEvent('closeCommandPalette'));
+                            // Fallback to ensuring it is closed visually
+                            modal.style.display = 'none';
+                            modal.classList.add('hidden');
                             closedAny = true;
                             return;
                         }
