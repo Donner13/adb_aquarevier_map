@@ -883,6 +883,8 @@
 
         // Global Escape key listener to close all open modals
         document.addEventListener('keydown', (e) => {
+            if (e.defaultPrevented) return;
+
             if (e.key === 'Tab') {
                 let activeModal = null;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
@@ -932,9 +934,11 @@
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
                     const style = window.getComputedStyle(modal);
-                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
-
-                        if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
+                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden') && (modal.offsetWidth > 0 || modal.offsetHeight > 0)) {
+                        const closeBtn = modal.querySelector('.close-btn, .scorecard-close, .embed-modal-close, [aria-label="Schließen"]');
+                        if (closeBtn) {
+                            closeBtn.click();
+                        } else if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
                             modal.remove();
                         } else {
                             modal.style.display = 'none';
