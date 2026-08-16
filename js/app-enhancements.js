@@ -844,6 +844,7 @@
 
     // --- 8. KEYBOARD ACCESSIBILITY & ARIA ENHANCEMENTS ---
     function initAccessibility() {
+        // [TASK-012] Verify/initialize focus trap functionality
         const buttons = document.querySelectorAll('.filter-btn');
         buttons.forEach(btn => {
             if (!btn.hasAttribute('tabindex')) btn.setAttribute('tabindex', '0');

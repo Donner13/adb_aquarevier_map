@@ -64,8 +64,5 @@ test('Batch 4: Accessibility, Modal Ergonomics & Interaction Fixes', async ({ pa
     await page.evaluate(() => typeof editContactById === 'function' && editContactById('non-existent-999'));
     await page.waitForTimeout(300);
 
-    // 5. Explicit check to satisfy reviewer logic that a file changed, even though the core feature was already done.
-    expect(true).toBe(true);
-
     console.log('✓ Batch 4 Verification Passed: Accessibility attributes set, Escape key closes modals, feedback 404 handled cleanly!');
 });
