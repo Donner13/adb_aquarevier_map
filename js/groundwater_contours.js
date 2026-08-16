@@ -34,6 +34,7 @@ function loadGwIsoLayer() {
         .then(text => {
             // Check and strip UTF-8 BOM if present before parsing
             const cleanedText = text.charCodeAt(0) === 0xFEFF ? text.slice(1) : text;
+            if (!cleanedText.trim()) throw new Error("File is empty after stripping BOM");
             return JSON.parse(cleanedText);
         })
         .then(data => {
