@@ -80,3 +80,9 @@
         setTimeout(initTheme, 100);
     }
 })();
+
+/**
+ * Task-005 Notes:
+ * Media-query listeners for `prefers-color-scheme` are decoupled.
+ * Theme is primarily toggled manually and persisted in local storage.
+ */
