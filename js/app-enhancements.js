@@ -886,41 +886,40 @@
             if (e.key === 'Escape') {
                 let closedAny = false;
 
-                // Be more permissive with class names to ensure we catch all modals/overlays
                 const openModals = document.querySelectorAll(
-                    '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, [id$="-overlay"], #coachmark-overlay, #onboarding-role-modal'
+                    '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #onboarding-role-modal'
                 );
 
                 openModals.forEach(modal => {
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
 
-                        // Ensure we use the proper teardown mechanism if available
                         if (modal.id === 'command-palette-modal') {
-                            // Synthesize a generic closing event rather than triggering side effects
+                            // Instead of a brittle click, we just hide it identically to the other modals
+                            // The command palette will reset properly next time it opens
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
                             closedAny = true;
                             return;
                         }
 
-                        if (modal.id === 'onboarding-role-modal' && typeof window.closeRoleModal === 'function') {
-                            // Only close, do not mutate persistent state like localStorage on Escape
+                        if (modal.id === 'onboarding-role-modal') {
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
                             closedAny = true;
                             return;
                         }
 
-                        if (modal.id === 'coachmark-overlay' && typeof window.endCoachmarkTour === 'function') {
-                            // Only close, do not mutate persistent state
+                        if (modal.id === 'coachmark-overlay') {
                             modal.style.display = 'none';
                             closedAny = true;
                             return;
                         }
 
                         if (modal.classList.contains('scorecard-backdrop')) {
-                            modal.remove();
+                            // Do not remove the modal, just hide it so it can be opened again later without a full rebuild
+                            modal.style.display = 'none';
+                            modal.classList.add('hidden');
                         } else {
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
