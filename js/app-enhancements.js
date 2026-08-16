@@ -936,13 +936,20 @@
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
                         // Try to find a close button within the modal to gracefully close it and trigger cleanup
-                        // Target direct children or typical header locations first to avoid clicking arbitrary nested close buttons
+                        // Prioritize buttons in headers to avoid accidentally closing nested dialogs
                         let closeBtn = Array.from(modal.children).find(el => el.matches('.close-btn, .scorecard-close, [aria-label="Schließen"]'));
                         if (!closeBtn) {
-                            closeBtn = modal.querySelector('.modal-header .close-btn, .modal-header [aria-label="Schließen"], > .close-btn, > [aria-label="Schließen"]');
+                            closeBtn = modal.querySelector('.modal-header .close-btn, .modal-header [aria-label="Schließen"]');
                         }
                         if (!closeBtn) {
-                            closeBtn = modal.querySelector('.close-btn, .scorecard-close, [aria-label="Schließen"]');
+                            // If none of those match, find any close button, but ensure it belongs to this specific modal,
+                            // not a nested one inside another backdrop
+                            const nestedModalSelector = '.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay';
+                            const allCloseBtns = Array.from(modal.querySelectorAll('.close-btn, .scorecard-close, [aria-label="Schließen"]'));
+                            closeBtn = allCloseBtns.find(btn => {
+                                const parentModal = btn.closest(nestedModalSelector);
+                                return parentModal === modal;
+                            });
                         }
 
                         if (closeBtn) {
@@ -952,7 +959,6 @@
                         } else {
                             modal.style.display = 'none';
                             modal.classList.add('hidden');
-                            modal.hidden = true;
                         }
                         closedAny = true;
                     }
