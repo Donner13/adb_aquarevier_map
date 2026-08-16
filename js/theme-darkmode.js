@@ -62,12 +62,18 @@
     // Listen to OS theme changes globally (decoupled from toggles)
     if (window.matchMedia) {
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // Only auto-switch if no manual override exists
             const savedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
-            if (!savedTheme) { // Only auto-switch if no manual override exists
+            if (!savedTheme) {
                 if (e.matches && !window.isDarkMode) {
                     window.toggleDarkMode();
+                    // Clear the implicitly set storage so it continues to follow OS preference
+                    window.StorageModule.removeItem('theme');
+                    window.StorageModule.removeItem('aquarevier_theme');
                 } else if (!e.matches && window.isDarkMode) {
                     window.toggleDarkMode();
+                    window.StorageModule.removeItem('theme');
+                    window.StorageModule.removeItem('aquarevier_theme');
                 }
             }
         });
