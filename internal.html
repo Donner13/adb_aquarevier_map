@@ -1613,7 +1613,344 @@
             white-space: nowrap;
             border-width: 0;
         }
-    </style>
+            /* Choropleth Colors (Okabe-Ito Blue Ramp) */
+        .choropleth-color-1 { fill: #cfe8f3; }
+        .choropleth-color-2 { fill: #8fc4e3; }
+        .choropleth-color-3 { fill: #4a9bd1; }
+        .choropleth-color-4 { fill: #0072B2; }
+        .choropleth-color-5 { fill: #004a75; }
+
+        /* Dropdown for Choropleth Metric */
+        .choropleth-controls {
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 10px;
+        }
+
+        .choropleth-controls label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+
+        .choropleth-controls select {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-surface-hover);
+            color: var(--text-primary);
+            font-size: 1em;
+            appearance: none; /* Remove default dropdown arrow */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23f3f4f6%22%20d%3D%22M287%20197.3%20159.3%2069.7c-4.7-4.7-12.3-4.7-17%200L5.4%20197.3c-4.7%204.7-4.7%2012.3%200%2017L25.1%20234c4.7%204.7%2012.3%204.7%2017%200l108.6-108.6L259.3%20234c4.7%204.7%2012.3%204.7%2017%200l19.7-19.7c-4.3-4.7-4.3-12.3-9-17%22/%3E%3C/svg%3E'); /* Custom arrow */
+            background-repeat: no-repeat;
+            background-position: right 12px top 50%;
+            background-size: 12px auto;
+            cursor: pointer;
+        }
+
+        body.light-theme .choropleth-controls select {
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%230f172a%22%20d%3D%22M287%20197.3%20159.3%2069.7c-4.7-4.7-12.3-4.7-17%200L5.4%20197.3c-4.7%204.7-4.7%2012.3%200%2017L25.1%20234c4.7%204.7%2012.3%204.7%2017%200l108.6-108.6L259.3%20234c4.7%204.7%2012.3%204.7%2017%200l19.7-19.7c-4.3-4.7-4.3-12.3-9-17%22/%3E%3C/svg%3E');
+        }
+
+        .choropleth-controls select:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 1px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        #app-container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Embed Mode */
+        body.embed-mode #sidebar {
+            display: none !important;
+        }
+        body.embed-mode .unified-search-container {
+            display: none !important;
+        }
+        body.embed-mode #map {
+            width: 100vw !important;
+            flex: none !important;
+        }
+
+        .embed-mini-legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--bg-surface);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 1000;
+            font-size: 11px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+        }
+        body.embed-mode .embed-mini-legend {
+            display: flex;
+        }
+        .embed-mini-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .embed-mini-legend-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .embed-back-link {
+            font-size: 11px;
+            color: var(--accent-primary);
+            text-decoration: none;
+            margin-bottom: 6px;
+            display: inline-block;
+        }
+        .embed-back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Embed Modal */
+        #embed-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--modal-backdrop);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        .embed-modal-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            width: 800px;
+            max-width: 90vw;
+            box-shadow: var(--modal-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .embed-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+        .embed-modal-header h2 {
+            margin: 0;
+            font-size: 18px;
+            color: var(--text-primary);
+        }
+        .embed-modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 24px;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .embed-modal-close:hover {
+            color: var(--text-primary);
+        }
+        .embed-controls {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .embed-controls label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+        .embed-controls input[type="number"] {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            width: 80px;
+        }
+        #embed-snippet-output {
+            width: 100%;
+            height: 60px;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            resize: none;
+        }
+        .embed-preview-container {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            height: 400px;
+        }
+        .embed-info-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Extended Popup Styles */
+        .extended-popup {
+            max-height: 350px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .extended-popup::-webkit-scrollbar {
+            width: 4px;
+        }
+        .extended-popup::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+        body.light-theme .extended-popup::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-body {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .popup-detail strong {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .popup-detail a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+        .popup-detail a:hover {
+            text-decoration: underline;
+        }
+
+        .coords-detail {
+            font-family: monospace;
+            font-size: 10px;
+            margin-top: 6px;
+            color: var(--text-secondary);
+        }
+
+        .popup-footer {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .website-btn {
+            display: block;
+            text-align: center;
+            background: var(--accent-primary);
+            color: #ffffff;
+            padding: 8px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .copy-contact-btn {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 10px;
+            background-color: var(--accent-primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .copy-contact-btn:hover {
+            background-color: var(--accent-hover);
+        }
+        body.light-theme .copy-contact-btn {
+            color: white;
+        }
+        .website-btn:hover {
+            background: #4f46e5;
+            transform: translateY(-1px);
+            color: #ffffff;
+        }
+        body.light-theme .website-btn {
+            color: #ffffff !important;
+        }
+
+        .info-msg {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            border: 1px dashed var(--border-color);
+        }
+
+        .leaflet-control-layers {
+            background: rgba(15, 23, 42, 0.9) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid var(--border-color) !important;
+            color: var(--text-primary) !important;
+            border-radius: 8px !important;
+            padding: 8px !important;
+        }
+        .leaflet-control-layers-toggle {
+            filter: invert(1);
+        }
+
+</style>
 
     <!-- Tile CDN Preconnects -->
     <link rel="preconnect" href="https://basemaps.cartocdn.com" crossorigin>
@@ -2090,18 +2427,26 @@
                     <button class="filter-btn active" id="btn-new-contact" style="width:100%; justify-content:center; margin-bottom:6px;">➕ Neuer Akteur</button>
                     <button class="filter-btn" id="btn-export-geojson" style="width:100%; justify-content:center; margin-bottom:6px;">💾 Als .geojson exportieren</button>
                     <button class="filter-btn" id="btn-export-csv" style="width:100%; justify-content:center; margin-bottom:6px;">📄 Als .csv exportieren</button>
-                    <button class="filter-btn" id="export-csv-btn" style="display:none;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('csv')"></button>
-                    <button class="filter-btn" id="export-pdf-btn" style="display:none;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()"></button>
-                    <button class="filter-btn" id="open-data-export-btn" style="display:none;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('geojson')"></button>
-                    <button class="filter-btn" id="embed-open-btn" style="display:none;" onclick="if(typeof openEmbedModal==='function') openEmbedModal()"></button>
-                    <button class="filter-btn" id="generate-report-btn" style="display:none;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()"></button>
-                    <button class="filter-btn" id="generate-sprechzettel-btn" style="width:100%; justify-content:center; margin-bottom:6px;">🗣️ Sprechzettel generieren</button>
-                    <button class="filter-btn" id="generate-beschlussvorlage-btn" style="width:100%; justify-content:center; margin-bottom:6px;">📋 Beschlussvorlage generieren</button>
                     <button class="filter-btn" id="btn-save-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #059669; border-color: #059669; color: white;">💾 Auf Server speichern</button>
                     <button class="filter-btn" id="btn-deploy-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #2563eb; border-color: #2563eb; color: white;">🚀 Karte veröffentlichen (Deploy)</button>
                     <button class="filter-btn active" id="btn-generate-report" style="width:100%; justify-content:center; margin-bottom:6px; background: #6366f1; border-color: #6366f1; color: white; font-weight: 600;">📊 Bericht generieren (PDF)</button>
                     <button class="filter-btn" id="btn-reset-local" style="width:100%; justify-content:center; font-size:10px; color:#ef4444; margin-bottom:6px;">↺ Lokale Änderungen verwerfen</button>
                     <div id="save-status" style="font-size:10px; color: var(--text-secondary); margin-top:6px; min-height:14px;"></div>
+                </div>
+
+                <!-- Export Section -->
+                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; gap: 8px;">
+                        <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;">📄 CSV Export</button>
+                        <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;">📑 PDF Export</button>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button id="embed-open-btn" class="filter-btn" style="flex: 1; justify-content: center;">🔗 Karte einbetten</button>
+                        <button id="open-data-export-btn" class="filter-btn" data-i18n-key="open_data_export" style="flex: 1; justify-content: center;" onclick="window.exportActiveLayersData('geojson')" title="Exportiert alle aktiven Karten-Layer als Open-Data GeoJSON">💾 Geodaten-Export</button>
+                    </div>
+                    <button id="generate-report-btn" class="filter-btn active" data-i18n-key="generate_report" style="justify-content: center; background: #6366f1; border-color: #6366f1; font-weight: 600; color: white;">📊 Bericht generieren (PDF)</button>
+                    <button id="generate-sprechzettel-btn" class="filter-btn" style="justify-content: center;">🗣️ Sprechzettel generieren</button>
+                    <button id="generate-beschlussvorlage-btn" class="filter-btn" style="justify-content: center;">📋 Beschlussvorlage generieren</button>
                 </div>
 
                 <!-- GIS & Design Customizer -->
