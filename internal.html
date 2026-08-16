@@ -2106,13 +2106,6 @@
                     <button class="filter-btn active" id="btn-new-contact" style="width:100%; justify-content:center; margin-bottom:6px;">➕ Neuer Akteur</button>
                     <button class="filter-btn" id="btn-export-geojson" style="width:100%; justify-content:center; margin-bottom:6px;">💾 Als .geojson exportieren</button>
                     <button class="filter-btn" id="btn-export-csv" style="width:100%; justify-content:center; margin-bottom:6px;">📄 Als .csv exportieren</button>
-                    <button class="filter-btn" id="export-csv-btn" style="display:none;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('csv')"></button>
-                    <button class="filter-btn" id="export-pdf-btn" style="display:none;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()"></button>
-                    <button class="filter-btn" id="open-data-export-btn" style="display:none;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('geojson')"></button>
-                    <button class="filter-btn" id="embed-open-btn" style="display:none;" onclick="if(typeof openEmbedModal==='function') openEmbedModal()"></button>
-                    <button class="filter-btn" id="generate-report-btn" style="display:none;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()"></button>
-                    <button class="filter-btn" id="generate-sprechzettel-btn" style="width:100%; justify-content:center; margin-bottom:6px;">🗣️ Sprechzettel generieren</button>
-                    <button class="filter-btn" id="generate-beschlussvorlage-btn" style="width:100%; justify-content:center; margin-bottom:6px;">📋 Beschlussvorlage generieren</button>
                     <button class="filter-btn" id="btn-save-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #059669; border-color: #059669; color: white;">💾 Auf Server speichern</button>
                     <button class="filter-btn" id="btn-deploy-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #2563eb; border-color: #2563eb; color: white;">🚀 Karte veröffentlichen (Deploy)</button>
                     <button class="filter-btn active" id="btn-generate-report" style="width:100%; justify-content:center; margin-bottom:6px; background: #6366f1; border-color: #6366f1; color: white; font-weight: 600;">📊 Bericht generieren (PDF)</button>
@@ -2391,11 +2384,27 @@
                         <div class="contacts-meta" id="contacts-count" aria-live="polite" style="margin-bottom: 0;">0 von 0 Kontakten angezeigt</div>
                         <button id="reset-filters-btn" class="filter-btn" data-i18n-key="reset_filters" style="padding: 4px 8px; font-size: 10px;">Filter zurücksetzen</button>
                     </div>
-                    <button id="share-view-btn" class="filter-btn" style="width: 100%; margin-bottom: 12px; font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
+                    <button id="share-view-btn" class="filter-btn" data-i18n-key="share_view" style="width: 100%; margin-bottom: 12px; font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
                     <div class="contact-list" id="contact-list-container">
                         <!-- Filled by JS -->
                     </div>
                 </div>
+
+                <!-- Export Section -->
+                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; gap: 8px;">
+                        <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;">📄 CSV Export</button>
+                        <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;">📑 PDF Export</button>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button id="embed-open-btn" class="filter-btn" style="flex: 1; justify-content: center;">🔗 Karte einbetten</button>
+                        <button id="open-data-export-btn" class="filter-btn" data-i18n-key="open_data_export" style="flex: 1; justify-content: center;" onclick="window.exportActiveLayersData('geojson')" title="Exportiert alle aktiven Karten-Layer als Open-Data GeoJSON">💾 Geodaten-Export</button>
+                    </div>
+                    <button id="generate-report-btn" class="filter-btn active" data-i18n-key="generate_report" style="justify-content: center; background: #6366f1; border-color: #6366f1; font-weight: 600; color: white;">📊 Bericht generieren (PDF)</button>
+                    <button id="generate-sprechzettel-btn" class="filter-btn" style="justify-content: center;">🗣️ Sprechzettel generieren</button>
+                    <button id="generate-beschlussvorlage-btn" class="filter-btn" style="justify-content: center;">📋 Beschlussvorlage generieren</button>
+                </div>
+
             </div>
             <div class="sidebar-footer">
                 <a href="impressum.html">Impressum</a>
@@ -2416,7 +2425,7 @@
             <div class="embed-modal-content">
                 <div class="embed-modal-header">
                     <h2>🔗 Karte einbetten</h2>
-                    <button class="embed-modal-close" id="embed-close-btn">&times;</button>
+                    <button class="embed-modal-close" id="embed-close-btn" aria-label="Schließen">&times;</button>
                 </div>
 
                 <div class="embed-info-text">
