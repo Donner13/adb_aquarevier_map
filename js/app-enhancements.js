@@ -956,16 +956,8 @@
 
     // --- 9. AUTO SYSTEM THEME SYNC ---
     function initAutoThemeSync() {
-        if (!window.StorageModule.getItem('theme') && !window.StorageModule.getItem('aquarevier_theme')) {
-            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (prefersDark) {
-                document.body.classList.remove('light-theme');
-                document.body.classList.add('dark-theme');
-            } else {
-                document.body.classList.add('light-theme');
-                document.body.classList.remove('dark-theme');
-            }
-        }
+        // Theme init is handled by js/theme-darkmode.js
+        // matchMedia query removed as requested
     }
 
     // --- 10. GLOBAL EMBED MODAL HELPER ---
