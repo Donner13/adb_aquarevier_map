@@ -59,10 +59,6 @@
         }
     };
 
-    // NOTE: This module deliberately avoids registering a persistent "change" listener on window.matchMedia
-    // to prevent redundant registrations and memory leaks across theme switches. The initialization logic
-    // relies solely on initTheme() and manual toggling via toggleDarkMode().
-
     // Restore user theme preference on load
     function initTheme() {
         const savedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
