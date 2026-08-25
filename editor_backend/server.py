@@ -236,8 +236,6 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                         self.wfile.write(json.dumps({"status": "error", "message": "Invalid GeoJSON Feature"}).encode('utf-8'))
                         return
 
-                # Validate feature geometry coordinates
-                for feat in data.get('features', []):
                     geom = feat.get('geometry')
                     if geom:
                         coords = geom.get('coordinates')
