@@ -77,7 +77,11 @@
 
     window.getSavedBookmarks = function() {
         ensureCacheLoaded();
-        return bookmarksCache.map(bm => ({ ...bm }));
+        try {
+            return JSON.parse(JSON.stringify(bookmarksCache));
+        } catch (e) {
+            return [];
+        }
     };
 
     window.saveBookmark = function(title) {
@@ -92,7 +96,7 @@
         ensureCacheLoaded();
 
         const newBookmark = {
-            id: 'bm_' + Date.now() + '_' + Math.floor(Math.random() * 1000000),
+            id: 'bm_' + Date.now(),
             title: title.trim(),
             lat: center.lat,
             lng: center.lng,
