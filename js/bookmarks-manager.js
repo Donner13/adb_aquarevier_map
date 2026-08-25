@@ -86,7 +86,7 @@
         ensureCacheLoaded();
 
         const newBookmark = {
-            id: 'bm_' + Date.now(),
+            id: 'bm_' + Date.now() + '_' + Math.floor(Math.random() * 1000000),
             title: title.trim(),
             lat: center.lat,
             lng: center.lng,
@@ -141,7 +141,7 @@
         let html = '';
         bookmarks.forEach(bm => {
             html += `
-                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 6px 8px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 6px 8px; margin-bottom: 4px; display: flex; justify-content: space-between; align-align: center; font-size: 11px;">
                     <div style="cursor: pointer; flex: 1;" onclick="applyBookmark('${bm.id}')">
                         <div style="font-weight: 600; color: #1e293b;">⭐ ${escapeHtml(bm.title)}</div>
                         <div style="font-size: 9.5px; color: #64748b;">Zoom ${bm.zoom} • ${bm.date}</div>

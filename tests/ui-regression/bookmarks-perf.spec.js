@@ -75,6 +75,63 @@ test.describe('Bookmarks Manager Performance & Logic Tests', () => {
         expect(perfResult.optimizedMs).toBeLessThan(perfResult.baselineMs);
     });
 
+    test('large scale benchmark scaling with 2,000 items', async ({ page }) => {
+        const perfResult = await page.evaluate(() => {
+            const N = 2000;
+            const bookmarks = [];
+            for (let i = 0; i < N; i++) {
+                bookmarks.push({
+                    id: 'bm_scale_' + i,
+                    title: 'Scale Bookmark ' + i,
+                    lat: 50.0,
+                    lng: 7.0,
+                    zoom: 12,
+                    date: '25.08.2025'
+                });
+            }
+            window.StorageModule.setItem('aquarevier_saved_bookmarks_v1', JSON.stringify(bookmarks));
+
+            const start = performance.now();
+            for (let i = 0; i < 2000; i++) {
+                window.applyBookmark('bm_scale_' + (i % N));
+            }
+            const durationMs = performance.now() - start;
+
+            return { durationMs, count: window.getSavedBookmarks().length };
+        });
+
+        expect(perfResult.count).toBe(2000);
+        expect(perfResult.durationMs).toBeLessThan(100);
+    });
+
+    test('saveBookmark and deleteBookmark maintain performance and sync', async ({ page }) => {
+        const result = await page.evaluate(() => {
+            const startSave = performance.now();
+            for (let i = 0; i < 50; i++) {
+                window.saveBookmark('New Favorite ' + i);
+            }
+            const saveDuration = performance.now() - startSave;
+
+            const listBeforeDelete = window.getSavedBookmarks();
+
+            const startDelete = performance.now();
+            for (let i = 0; i < 25; i++) {
+                window.deleteBookmark(listBeforeDelete[i].id);
+            }
+            const deleteDuration = performance.now() - startDelete;
+
+            return {
+                saveDuration,
+                deleteDuration,
+                finalCount: window.getSavedBookmarks().length
+            };
+        });
+
+        expect(result.finalCount).toBe(25);
+        expect(result.saveDuration).toBeLessThan(500);
+        expect(result.deleteDuration).toBeLessThan(500);
+    });
+
     test('getSavedBookmarks returns an immutable shallow copy', async ({ page }) => {
         const isProtected = await page.evaluate(() => {
             window.saveBookmark('Immutable Test');
