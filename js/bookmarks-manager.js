@@ -99,6 +99,7 @@
     };
 
     window.applyBookmark = function(id) {
+        if (id === null || id === undefined) return;
         ensureLoaded();
         const bm = bookmarksMap.get(id);
         if (bm && typeof map !== 'undefined') {
