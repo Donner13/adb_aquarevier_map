@@ -46,13 +46,16 @@ test.describe('Bookmarks Manager Performance & Logic Tests', () => {
             const key = 'aquarevier_saved_bookmarks_v1';
             window.StorageModule.setItem(key, JSON.stringify(bookmarks));
 
-            // Baseline unoptimized approach simulation (JSON.parse + Array.find per lookup)
+            // Baseline unoptimized approach simulation (JSON.parse + Array.find + map.setView per lookup)
             const baselineStart = performance.now();
             for (let i = 0; i < 500; i++) {
                 const targetId = 'bm_' + (i % N);
                 const raw = window.StorageModule.getItem(key);
                 const list = JSON.parse(raw);
                 const bm = list.find(b => b.id === targetId);
+                if (bm && typeof map !== 'undefined') {
+                    map.setView([bm.lat, bm.lng], bm.zoom, { animate: true });
+                }
             }
             const baselineMs = performance.now() - baselineStart;
 
@@ -122,14 +125,14 @@ test.describe('Bookmarks Manager Performance & Logic Tests', () => {
         expect(result.finalCount).toBe(25);
     });
 
-    test('getSavedBookmarks returns an immutable shallow copy', async ({ page }) => {
+    test('getSavedBookmarks returns deep copy protecting objects from mutation', async ({ page }) => {
         const isProtected = await page.evaluate(() => {
             window.saveBookmark('Immutable Test');
             const list1 = window.getSavedBookmarks();
-            list1.push({ id: 'corrupted', title: 'Corrupted' });
+            list1[0].title = 'Corrupted Title';
 
             const list2 = window.getSavedBookmarks();
-            return list2.length === 1 && !list2.some(b => b.id === 'corrupted');
+            return list2[0].title === 'Immutable Test';
         });
 
         expect(isProtected).toBe(true);

@@ -39,7 +39,7 @@
         bookmarksMap.clear();
         for (let i = 0; i < bookmarksCache.length; i++) {
             const bm = bookmarksCache[i];
-            if (bm && bm.id) {
+            if (bm && bm.id !== undefined && bm.id !== null) {
                 bookmarksMap.set(bm.id, bm);
             }
         }
@@ -77,7 +77,7 @@
 
     window.getSavedBookmarks = function() {
         ensureCacheLoaded();
-        return bookmarksCache.slice();
+        return bookmarksCache.map(bm => ({ ...bm }));
     };
 
     window.saveBookmark = function(title) {
