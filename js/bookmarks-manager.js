@@ -71,7 +71,7 @@
 
         ensureLoaded();
         const newBookmark = {
-            id: 'bm_' + Date.now(),
+            id: 'bm_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8),
             title: title.trim(),
             lat: center.lat,
             lng: center.lng,
