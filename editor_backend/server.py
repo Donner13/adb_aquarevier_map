@@ -228,6 +228,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                     self.wfile.write(json.dumps({"status": "error", "message": "Invalid GeoJSON FeatureCollection"}).encode('utf-8'))
                     return
 
+                # Validate feature structure and geometry coordinates in a single pass
                 for feat in data.get('features', []):
                     if not isinstance(feat, dict) or feat.get('type') != 'Feature' or 'geometry' not in feat or 'properties' not in feat:
                         self.send_response(400)
@@ -236,8 +237,6 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                         self.wfile.write(json.dumps({"status": "error", "message": "Invalid GeoJSON Feature"}).encode('utf-8'))
                         return
 
-                # Validate feature geometry coordinates
-                for feat in data.get('features', []):
                     geom = feat.get('geometry')
                     if geom:
                         coords = geom.get('coordinates')
