@@ -1,5 +1,4 @@
 import urllib.parse
-import re
 
 with open('fiw.svg', 'r') as f:
     fiw_svg = f.read().strip()
