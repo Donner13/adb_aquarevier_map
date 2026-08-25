@@ -13,6 +13,8 @@
 
     function ensureCacheLoaded() {
         if (cacheInitialized) return;
+        if (!bookmarksMap) bookmarksMap = new Map();
+
         try {
             let raw = null;
             if (window.StorageModule && typeof window.StorageModule.getItem === 'function') {
@@ -29,25 +31,34 @@
         } catch (e) {
             bookmarksCache = [];
         }
+
         bookmarksMap.clear();
-        bookmarksCache.forEach(bm => {
+        for (let i = 0; i < bookmarksCache.length; i++) {
+            const bm = bookmarksCache[i];
             if (bm && bm.id) {
                 bookmarksMap.set(bm.id, bm);
             }
-        });
+        }
         cacheInitialized = true;
     }
 
     function persistBookmarks() {
         const json = JSON.stringify(bookmarksCache);
         try {
+            let success = false;
             if (window.StorageModule && typeof window.StorageModule.setItem === 'function') {
-                window.StorageModule.setItem(STORAGE_KEY, json);
+                success = window.StorageModule.setItem(STORAGE_KEY, json);
             } else if (typeof localStorage !== 'undefined') {
                 localStorage.setItem(STORAGE_KEY, json);
+                success = true;
+            }
+            if (!success && typeof window.showToast === 'function') {
+                window.showToast("Speichern im Browserspeicher fehlgeschlagen", "⚠️");
             }
         } catch (e) {
-            // Silently swallow storage write errors if browser storage is unavailable or quota exceeded
+            if (typeof window.showToast === 'function') {
+                window.showToast("Speichern im Browserspeicher fehlgeschlagen", "⚠️");
+            }
         }
     }
 
@@ -77,7 +88,9 @@
         };
 
         bookmarksCache.push(newBookmark);
-        bookmarksMap.set(newBookmark.id, newBookmark);
+        if (bookmarksMap) {
+            bookmarksMap.set(newBookmark.id, newBookmark);
+        }
 
         persistBookmarks();
         window.renderBookmarksList();
@@ -86,7 +99,7 @@
 
     window.deleteBookmark = function(id) {
         ensureCacheLoaded();
-        if (!bookmarksMap.has(id)) return;
+        if (!bookmarksMap || !bookmarksMap.has(id)) return;
 
         bookmarksCache = bookmarksCache.filter(b => b.id !== id);
         bookmarksMap.delete(id);
@@ -97,6 +110,7 @@
 
     window.applyBookmark = function(id) {
         ensureCacheLoaded();
+        if (!bookmarksMap) return;
         const bm = bookmarksMap.get(id);
         if (bm && typeof map !== 'undefined') {
             map.setView([bm.lat, bm.lng], bm.zoom, { animate: true });
@@ -108,7 +122,7 @@
         if (!container) return;
 
         const bookmarks = window.getSavedBookmarks();
-        if (bookmarks.length === 0) {
+        if (!bookmarks || bookmarks.length === 0) {
             container.innerHTML = `
                 <div style="font-size: 10.5px; color: #64748b; text-align: center; padding: 6px;">
                     Keine gespeicherten Favoriten. Klicke auf "➕ Favorit speichern".
