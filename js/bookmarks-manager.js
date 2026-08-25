@@ -11,34 +11,11 @@
     let bookmarksMap = new Map();
     let cacheInitialized = false;
 
-    function hookStorageModule() {
-        if (window.StorageModule && !window.StorageModule._bookmarksHooked) {
-            const origSet = window.StorageModule.setItem;
-            const origRemove = window.StorageModule.removeItem;
-            if (typeof origSet === 'function') {
-                window.StorageModule.setItem = function(key, value) {
-                    const res = origSet.apply(this, arguments);
-                    if (key === STORAGE_KEY) cacheInitialized = false;
-                    return res;
-                };
-            }
-            if (typeof origRemove === 'function') {
-                window.StorageModule.removeItem = function(key) {
-                    const res = origRemove.apply(this, arguments);
-                    if (key === STORAGE_KEY) cacheInitialized = false;
-                    return res;
-                };
-            }
-            window.StorageModule._bookmarksHooked = true;
-        }
-    }
-
     /**
      * Lazy-loads bookmarks from storage into in-memory array and Map caches.
-     * Guarantees zero storage reads and zero JSON parsing on subsequent access.
+     * Prevents synchronous disk I/O and JSON re-parsing on subsequent access.
      */
     function ensureCacheLoaded() {
-        hookStorageModule();
         if (cacheInitialized) return;
         if (!bookmarksMap) bookmarksMap = new Map();
 
@@ -83,14 +60,14 @@
                 localStorage.setItem(STORAGE_KEY, raw);
             }
         } catch (e) {
-            // Ignore storage write failures (e.g. storage full or disabled)
+            // Ignore storage write failures
         }
     }
 
-    // Synchronize cache when localStorage is updated in another tab
+    // Synchronize cache when localStorage is updated or cleared in another tab
     if (typeof window !== 'undefined' && window.addEventListener) {
         window.addEventListener('storage', (e) => {
-            if (e && e.key === STORAGE_KEY) {
+            if (!e || !e.key || e.key === STORAGE_KEY) {
                 cacheInitialized = false;
                 if (typeof window.renderBookmarksList === 'function') {
                     window.renderBookmarksList();
