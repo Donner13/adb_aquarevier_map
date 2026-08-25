@@ -22,7 +22,9 @@
                     for (let i = 0; i < parsed.length; i++) {
                         const bm = parsed[i];
                         if (bm && bm.id !== undefined && bm.id !== null) {
-                            bookmarksMap.set(bm.id, bm);
+                            if (!bookmarksMap.has(bm.id)) {
+                                bookmarksMap.set(bm.id, bm);
+                            }
                         }
                     }
                 }
