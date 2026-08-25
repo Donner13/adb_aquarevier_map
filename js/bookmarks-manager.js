@@ -40,7 +40,9 @@
         for (let i = 0; i < bookmarksCache.length; i++) {
             const bm = bookmarksCache[i];
             if (bm && bm.id !== undefined && bm.id !== null) {
-                bookmarksMap.set(bm.id, bm);
+                if (!bookmarksMap.has(bm.id)) {
+                    bookmarksMap.set(bm.id, bm);
+                }
             }
         }
         cacheInitialized = true;
@@ -105,7 +107,7 @@
         };
 
         bookmarksCache.push(newBookmark);
-        if (bookmarksMap) {
+        if (bookmarksMap && !bookmarksMap.has(newBookmark.id)) {
             bookmarksMap.set(newBookmark.id, newBookmark);
         }
 
