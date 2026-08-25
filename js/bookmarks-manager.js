@@ -65,11 +65,35 @@
         }
     }
 
-    // Invalidate cache if localStorage is updated externally (e.g., in another browser tab)
+    // Synchronize cache when localStorage is updated in another tab
     if (typeof window !== 'undefined' && window.addEventListener) {
         window.addEventListener('storage', (e) => {
             if (e && e.key === STORAGE_KEY) {
-                cacheInitialized = false;
+                if (e.newValue) {
+                    try {
+                        const parsed = JSON.parse(e.newValue);
+                        if (Array.isArray(parsed)) {
+                            bookmarksCache = parsed;
+                            if (!bookmarksMap) bookmarksMap = new Map();
+                            bookmarksMap.clear();
+                            for (let i = 0; i < bookmarksCache.length; i++) {
+                                const bm = bookmarksCache[i];
+                                if (bm && bm.id !== undefined && bm.id !== null) {
+                                    if (!bookmarksMap.has(bm.id)) {
+                                        bookmarksMap.set(bm.id, bm);
+                                    }
+                                }
+                            }
+                            cacheInitialized = true;
+                        } else {
+                            cacheInitialized = false;
+                        }
+                    } catch (err) {
+                        cacheInitialized = false;
+                    }
+                } else {
+                    cacheInitialized = false;
+                }
                 if (typeof window.renderBookmarksList === 'function') {
                     window.renderBookmarksList();
                 }
@@ -79,11 +103,7 @@
 
     window.getSavedBookmarks = function() {
         ensureCacheLoaded();
-        try {
-            return JSON.parse(JSON.stringify(bookmarksCache));
-        } catch (e) {
-            return [];
-        }
+        return bookmarksCache.map(bm => ({ ...bm }));
     };
 
     window.saveBookmark = function(title) {

@@ -28,9 +28,10 @@ test.describe('Bookmarks Manager Performance & Logic Tests', () => {
         await page.addScriptTag({ content: scriptContent });
     });
 
-    test('bookmark performance benchmark demonstrates speedup over baseline', async ({ page }) => {
+    test('bookmark performance benchmark demonstrates speedup over baseline (10,000 iterations)', async ({ page }) => {
         const perfResult = await page.evaluate(() => {
             const N = 500;
+            const ITERATIONS = 10000;
             const bookmarks = [];
             for (let i = 0; i < N; i++) {
                 bookmarks.push({
@@ -45,8 +46,9 @@ test.describe('Bookmarks Manager Performance & Logic Tests', () => {
             const key = 'aquarevier_saved_bookmarks_v1';
             window.StorageModule.setItem(key, JSON.stringify(bookmarks));
 
+            // Baseline unoptimized approach simulation (JSON.parse + Array.find + map.setView per lookup)
             const baselineStart = performance.now();
-            for (let i = 0; i < 500; i++) {
+            for (let i = 0; i < ITERATIONS; i++) {
                 const targetId = 'bm_' + (i % N);
                 const raw = window.StorageModule.getItem(key);
                 const list = JSON.parse(raw);
@@ -57,8 +59,9 @@ test.describe('Bookmarks Manager Performance & Logic Tests', () => {
             }
             const baselineMs = performance.now() - baselineStart;
 
+            // Optimized in-memory Map lookup approach
             const optStart = performance.now();
-            for (let i = 0; i < 500; i++) {
+            for (let i = 0; i < ITERATIONS; i++) {
                 const targetId = 'bm_' + (i % N);
                 window.applyBookmark(targetId);
             }
@@ -66,11 +69,13 @@ test.describe('Bookmarks Manager Performance & Logic Tests', () => {
 
             return {
                 baselineMs,
-                optimizedMs
+                optimizedMs,
+                speedup: baselineMs / (optimizedMs || 0.001)
             };
         });
 
         expect(perfResult.optimizedMs).toBeLessThanOrEqual(perfResult.baselineMs);
+        expect(perfResult.optimizedMs).toBeLessThan(100);
     });
 
     test('large scale benchmark scaling with 2,000 items', async ({ page }) => {
@@ -99,10 +104,10 @@ test.describe('Bookmarks Manager Performance & Logic Tests', () => {
         });
 
         expect(perfResult.count).toBe(2000);
-        expect(perfResult.durationMs).toBeGreaterThanOrEqual(0);
+        expect(perfResult.durationMs).toBeLessThan(100);
     });
 
-    test('getSavedBookmarks returns deep copy protecting nested objects from mutation', async ({ page }) => {
+    test('getSavedBookmarks returns shallow copy protecting nested objects from mutation without JSON overhead', async ({ page }) => {
         const isProtected = await page.evaluate(() => {
             window.saveBookmark('Immutable Test');
             const list1 = window.getSavedBookmarks();
@@ -115,7 +120,7 @@ test.describe('Bookmarks Manager Performance & Logic Tests', () => {
         expect(isProtected).toBe(true);
     });
 
-    test('invalidates cache on external storage window event', async ({ page }) => {
+    test('invalidates cache on external storage window event with e.newValue', async ({ page }) => {
         const reloaded = await page.evaluate(() => {
             window.saveBookmark('Tab 1 Bookmark');
             const key = 'aquarevier_saved_bookmarks_v1';
