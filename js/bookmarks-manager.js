@@ -50,9 +50,13 @@
 
     window.getSavedBookmarks = function() {
         if (cachedBookmarks === null) {
-            loadCacheFromStorage();
+            try {
+                loadCacheFromStorage();
+            } catch (e) {
+                cachedBookmarks = [];
+            }
         }
-        return cachedBookmarks.slice();
+        return Array.isArray(cachedBookmarks) ? cachedBookmarks.slice() : [];
     };
 
     window.saveBookmark = function(title) {
@@ -65,7 +69,11 @@
         const zoom = map.getZoom();
 
         if (cachedBookmarks === null) {
-            loadCacheFromStorage();
+            try {
+                loadCacheFromStorage();
+            } catch (e) {
+                cachedBookmarks = [];
+            }
         }
 
         const newBookmark = {
@@ -87,7 +95,11 @@
 
     window.deleteBookmark = function(id) {
         if (cachedBookmarks === null) {
-            loadCacheFromStorage();
+            try {
+                loadCacheFromStorage();
+            } catch (e) {
+                cachedBookmarks = [];
+            }
         }
         cachedBookmarks = cachedBookmarks.filter(b => b.id !== id);
         bookmarksMap.delete(id);
@@ -98,7 +110,11 @@
 
     window.applyBookmark = function(id) {
         if (cachedBookmarks === null) {
-            loadCacheFromStorage();
+            try {
+                loadCacheFromStorage();
+            } catch (e) {
+                cachedBookmarks = [];
+            }
         }
         const bm = bookmarksMap.get(id);
         if (bm && typeof map !== 'undefined') {
