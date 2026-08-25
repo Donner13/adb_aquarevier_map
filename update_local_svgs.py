@@ -1,4 +1,3 @@
-import re
 import urllib.parse
 with open('index.html', 'r') as f:
     content = f.read()
