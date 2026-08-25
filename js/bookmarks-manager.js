@@ -7,19 +7,53 @@
 (function() {
     const STORAGE_KEY = 'aquarevier_saved_bookmarks_v1';
 
-    window.getSavedBookmarks = function() {
+    let bookmarksCache = [];
+    let bookmarksMap = new Map();
+    let cacheInitialized = false;
+
+    function ensureCacheLoaded() {
+        if (cacheInitialized) return;
         try {
-            const raw = window.StorageModule.getItem(STORAGE_KEY);
-            if (!raw) return [];
-            try {
-                const parsed = JSON.parse(raw); // parse safely
-                return Array.isArray(parsed) ? parsed : [];
-            } catch (parseError) {
-                return [];
+            let raw = null;
+            if (window.StorageModule && typeof window.StorageModule.getItem === 'function') {
+                raw = window.StorageModule.getItem(STORAGE_KEY);
+            } else if (typeof localStorage !== 'undefined') {
+                raw = localStorage.getItem(STORAGE_KEY);
+            }
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed)) {
+                    bookmarksCache = parsed;
+                }
             }
         } catch (e) {
-            return [];
+            bookmarksCache = [];
         }
+        bookmarksMap.clear();
+        bookmarksCache.forEach(bm => {
+            if (bm && bm.id) {
+                bookmarksMap.set(bm.id, bm);
+            }
+        });
+        cacheInitialized = true;
+    }
+
+    function persistBookmarks() {
+        const json = JSON.stringify(bookmarksCache);
+        try {
+            if (window.StorageModule && typeof window.StorageModule.setItem === 'function') {
+                window.StorageModule.setItem(STORAGE_KEY, json);
+            } else if (typeof localStorage !== 'undefined') {
+                localStorage.setItem(STORAGE_KEY, json);
+            }
+        } catch (e) {
+            console.warn('Could not persist bookmarks:', e);
+        }
+    }
+
+    window.getSavedBookmarks = function() {
+        ensureCacheLoaded();
+        return bookmarksCache;
     };
 
     window.saveBookmark = function(title) {
@@ -31,7 +65,8 @@
         const center = map.getCenter();
         const zoom = map.getZoom();
 
-        const bookmarks = window.getSavedBookmarks();
+        ensureCacheLoaded();
+
         const newBookmark = {
             id: 'bm_' + Date.now(),
             title: title.trim(),
@@ -41,22 +76,28 @@
             date: new Date().toLocaleDateString('de-DE')
         };
 
-        bookmarks.push(newBookmark);
-        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+        bookmarksCache.push(newBookmark);
+        bookmarksMap.set(newBookmark.id, newBookmark);
+
+        persistBookmarks();
         window.renderBookmarksList();
         if (typeof window.showToast === 'function') window.showToast(`Lesezeichen "${title.trim()}" gespeichert`, "🔖");
     };
 
     window.deleteBookmark = function(id) {
-        let bookmarks = window.getSavedBookmarks();
-        bookmarks = bookmarks.filter(b => b.id !== id);
-        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+        ensureCacheLoaded();
+        if (!bookmarksMap.has(id)) return;
+
+        bookmarksCache = bookmarksCache.filter(b => b.id !== id);
+        bookmarksMap.delete(id);
+
+        persistBookmarks();
         window.renderBookmarksList();
     };
 
     window.applyBookmark = function(id) {
-        const bookmarks = window.getSavedBookmarks();
-        const bm = bookmarks.find(b => b.id === id);
+        ensureCacheLoaded();
+        const bm = bookmarksMap.get(id);
         if (bm && typeof map !== 'undefined') {
             map.setView([bm.lat, bm.lng], bm.zoom, { animate: true });
         }
