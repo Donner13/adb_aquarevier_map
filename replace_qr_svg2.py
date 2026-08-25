@@ -1,5 +1,3 @@
-import re
-
 with open('js/qr-sharing.js', 'r') as f:
     content = f.read()
 
