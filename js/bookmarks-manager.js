@@ -46,7 +46,7 @@
 
     function persistBookmarks() {
         try {
-            window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(cachedBookmarks));
+            window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(cachedBookmarks || []));
         } catch (e) {
             console.warn('Failed to persist bookmarks to storage:', e);
         }
