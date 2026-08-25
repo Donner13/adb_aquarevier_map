@@ -39,6 +39,15 @@
         }
     }
 
+    window.addEventListener('storage', function(e) {
+        if (e.key === STORAGE_KEY) {
+            cachedBookmarks = null;
+            if (typeof window.renderBookmarksList === 'function') {
+                window.renderBookmarksList();
+            }
+        }
+    });
+
     window.getSavedBookmarks = function() {
         if (cachedBookmarks === null) {
             loadCacheFromStorage();
@@ -60,7 +69,7 @@
         }
 
         const newBookmark = {
-            id: 'bm_' + Date.now(),
+            id: 'bm_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
             title: title.trim(),
             lat: center.lat,
             lng: center.lng,
