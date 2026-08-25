@@ -19,10 +19,12 @@
                     const parsed = JSON.parse(raw); // parse safely
                     cachedBookmarks = Array.isArray(parsed) ? parsed : [];
                 } catch (parseError) {
+                    console.warn('Failed to parse bookmarks JSON, falling back to empty list:', parseError);
                     cachedBookmarks = [];
                 }
             }
         } catch (e) {
+            console.warn('Failed to access storage for bookmarks, falling back to empty list:', e);
             cachedBookmarks = [];
         }
         rebuildMap();
@@ -54,6 +56,7 @@
             try {
                 loadCacheFromStorage();
             } catch (e) {
+                console.warn('Error loading cache in getSavedBookmarks:', e);
                 cachedBookmarks = [];
             }
         }
@@ -73,6 +76,7 @@
             try {
                 loadCacheFromStorage();
             } catch (e) {
+                console.warn('Error loading cache in saveBookmark:', e);
                 cachedBookmarks = [];
             }
         }
@@ -99,6 +103,7 @@
             try {
                 loadCacheFromStorage();
             } catch (e) {
+                console.warn('Error loading cache in deleteBookmark:', e);
                 cachedBookmarks = [];
             }
         }
@@ -114,6 +119,7 @@
             try {
                 loadCacheFromStorage();
             } catch (e) {
+                console.warn('Error loading cache in applyBookmark:', e);
                 cachedBookmarks = [];
             }
         }
