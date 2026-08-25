@@ -24,7 +24,8 @@ class TestDeploySurge(unittest.TestCase):
         import deploy_surge
 
         mock_popen.assert_called_once()
-        _, kwargs = mock_popen.call_args
+        args, kwargs = mock_popen.call_args
+        self.assertEqual(args[0], ['npx', 'surge', '--project', '.', '--domain', deploy_surge.domain])
         self.assertNotIn('shell', kwargs)
         self.assertFalse(kwargs.get('shell', False))
 
