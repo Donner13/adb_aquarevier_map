@@ -47,7 +47,7 @@
                 localStorage.setItem(STORAGE_KEY, json);
             }
         } catch (e) {
-            console.warn('Could not persist bookmarks:', e);
+            // Silently swallow storage write errors if browser storage is unavailable or quota exceeded
         }
     }
 
