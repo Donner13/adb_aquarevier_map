@@ -28,9 +28,9 @@
             }
             if (raw) {
                 const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed)) {
-                    bookmarksCache = parsed;
-                }
+                bookmarksCache = Array.isArray(parsed) ? parsed : [];
+            } else {
+                bookmarksCache = [];
             }
         } catch (e) {
             bookmarksCache = [];
@@ -72,28 +72,24 @@
                 if (e.newValue) {
                     try {
                         const parsed = JSON.parse(e.newValue);
-                        if (Array.isArray(parsed)) {
-                            bookmarksCache = parsed;
-                            if (!bookmarksMap) bookmarksMap = new Map();
-                            bookmarksMap.clear();
-                            for (let i = 0; i < bookmarksCache.length; i++) {
-                                const bm = bookmarksCache[i];
-                                if (bm && bm.id !== undefined && bm.id !== null) {
-                                    if (!bookmarksMap.has(bm.id)) {
-                                        bookmarksMap.set(bm.id, bm);
-                                    }
-                                }
-                            }
-                            cacheInitialized = true;
-                        } else {
-                            cacheInitialized = false;
-                        }
+                        bookmarksCache = Array.isArray(parsed) ? parsed : [];
                     } catch (err) {
-                        cacheInitialized = false;
+                        bookmarksCache = [];
                     }
                 } else {
-                    cacheInitialized = false;
+                    bookmarksCache = [];
                 }
+                if (!bookmarksMap) bookmarksMap = new Map();
+                bookmarksMap.clear();
+                for (let i = 0; i < bookmarksCache.length; i++) {
+                    const bm = bookmarksCache[i];
+                    if (bm && bm.id !== undefined && bm.id !== null) {
+                        if (!bookmarksMap.has(bm.id)) {
+                            bookmarksMap.set(bm.id, bm);
+                        }
+                    }
+                }
+                cacheInitialized = true;
                 if (typeof window.renderBookmarksList === 'function') {
                     window.renderBookmarksList();
                 }
