@@ -43,13 +43,21 @@
         try {
             window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(cachedBookmarks));
         } catch (e) {
-            // handle persistence failure gracefully
+            console.warn('Failed to persist bookmarks to storage:', e);
         }
+    }
+
+    if (typeof window !== 'undefined' && window.addEventListener) {
+        window.addEventListener('storage', function(e) {
+            if (e.key === STORAGE_KEY) {
+                cachedBookmarks = null;
+            }
+        });
     }
 
     window.getSavedBookmarks = function() {
         ensureLoaded();
-        return cachedBookmarks;
+        return cachedBookmarks.slice();
     };
 
     window.saveBookmark = function(title) {
@@ -82,7 +90,10 @@
         ensureLoaded();
         if (bookmarksMap.has(id)) {
             bookmarksMap.delete(id);
-            cachedBookmarks = cachedBookmarks.filter(b => b.id !== id);
+            const idx = cachedBookmarks.findIndex(b => b.id === id);
+            if (idx !== -1) {
+                cachedBookmarks.splice(idx, 1);
+            }
             persistBookmarks();
             window.renderBookmarksList();
         }
