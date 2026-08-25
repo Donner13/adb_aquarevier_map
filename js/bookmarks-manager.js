@@ -49,7 +49,7 @@
 
     if (typeof window !== 'undefined' && window.addEventListener) {
         window.addEventListener('storage', function(e) {
-            if (e.key === STORAGE_KEY) {
+            if (e.key === STORAGE_KEY || e.key === null) {
                 cachedBookmarks = null;
             }
         });
@@ -57,7 +57,7 @@
 
     window.getSavedBookmarks = function() {
         ensureLoaded();
-        return cachedBookmarks.slice();
+        return cachedBookmarks.map(b => ({ ...b }));
     };
 
     window.saveBookmark = function(title) {
@@ -90,10 +90,7 @@
         ensureLoaded();
         if (bookmarksMap.has(id)) {
             bookmarksMap.delete(id);
-            const idx = cachedBookmarks.findIndex(b => b.id === id);
-            if (idx !== -1) {
-                cachedBookmarks.splice(idx, 1);
-            }
+            cachedBookmarks = cachedBookmarks.filter(b => b.id !== id);
             persistBookmarks();
             window.renderBookmarksList();
         }
