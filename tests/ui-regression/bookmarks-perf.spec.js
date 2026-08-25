@@ -9,11 +9,11 @@ test.describe('Bookmarks Manager Performance & Logic Tests', () => {
         await page.goto('about:blank');
 
         await page.evaluate(() => {
-            const storageMap = new Map();
+            const storage = new Map();
             window.StorageModule = {
-                getItem: (key) => storageMap.get(key) || null,
-                setItem: (key, val) => storageMap.set(key, val),
-                removeItem: (key) => storageMap.delete(key)
+                getItem: (key) => storage.get(key) || null,
+                setItem: (key, val) => storage.set(key, val),
+                removeItem: (key) => storage.delete(key)
             };
             window.map = {
                 setView: (coords, zoom, options) => {
