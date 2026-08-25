@@ -7,19 +7,78 @@
 (function() {
     const STORAGE_KEY = 'aquarevier_saved_bookmarks_v1';
 
-    window.getSavedBookmarks = function() {
+    let bookmarksCache = [];
+    let bookmarksMap = new Map();
+    let cacheInitialized = false;
+
+    /**
+     * Lazy-loads bookmarks from storage into in-memory array and Map caches.
+     * Prevents synchronous disk I/O and JSON re-parsing on subsequent access.
+     */
+    function ensureCacheLoaded() {
+        if (cacheInitialized) return;
+        if (!bookmarksMap) bookmarksMap = new Map();
+
         try {
-            const raw = window.StorageModule.getItem(STORAGE_KEY);
-            if (!raw) return [];
-            try {
-                const parsed = JSON.parse(raw); // parse safely
-                return Array.isArray(parsed) ? parsed : [];
-            } catch (parseError) {
-                return [];
+            let raw = null;
+            if (window.StorageModule && typeof window.StorageModule.getItem === 'function') {
+                raw = window.StorageModule.getItem(STORAGE_KEY);
+            } else if (typeof localStorage !== 'undefined') {
+                raw = localStorage.getItem(STORAGE_KEY);
+            }
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                bookmarksCache = Array.isArray(parsed) ? parsed : [];
+            } else {
+                bookmarksCache = [];
             }
         } catch (e) {
-            return [];
+            bookmarksCache = [];
         }
+
+        bookmarksMap.clear();
+        for (let i = 0; i < bookmarksCache.length; i++) {
+            const bm = bookmarksCache[i];
+            if (bm && bm.id !== undefined && bm.id !== null) {
+                if (!bookmarksMap.has(bm.id)) {
+                    bookmarksMap.set(bm.id, bm);
+                }
+            }
+        }
+        cacheInitialized = true;
+    }
+
+    /**
+     * Persists current in-memory bookmarks to local browser storage.
+     */
+    function persistBookmarks() {
+        try {
+            const raw = JSON.stringify(bookmarksCache);
+            if (window.StorageModule && typeof window.StorageModule.setItem === 'function') {
+                window.StorageModule.setItem(STORAGE_KEY, raw);
+            } else if (typeof localStorage !== 'undefined') {
+                localStorage.setItem(STORAGE_KEY, raw);
+            }
+        } catch (e) {
+            // Ignore storage write failures
+        }
+    }
+
+    // Synchronize cache when localStorage is updated or cleared in another tab
+    if (typeof window !== 'undefined' && window.addEventListener) {
+        window.addEventListener('storage', (e) => {
+            if (!e || !e.key || e.key === STORAGE_KEY) {
+                cacheInitialized = false;
+                if (typeof window.renderBookmarksList === 'function') {
+                    window.renderBookmarksList();
+                }
+            }
+        });
+    }
+
+    window.getSavedBookmarks = function() {
+        ensureCacheLoaded();
+        return bookmarksCache.map(bm => ({ ...bm }));
     };
 
     window.saveBookmark = function(title) {
@@ -31,7 +90,8 @@
         const center = map.getCenter();
         const zoom = map.getZoom();
 
-        const bookmarks = window.getSavedBookmarks();
+        ensureCacheLoaded();
+
         const newBookmark = {
             id: 'bm_' + Date.now(),
             title: title.trim(),
@@ -41,22 +101,31 @@
             date: new Date().toLocaleDateString('de-DE')
         };
 
-        bookmarks.push(newBookmark);
-        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+        bookmarksCache.push(newBookmark);
+        if (bookmarksMap && !bookmarksMap.has(newBookmark.id)) {
+            bookmarksMap.set(newBookmark.id, newBookmark);
+        }
+
+        persistBookmarks();
         window.renderBookmarksList();
         if (typeof window.showToast === 'function') window.showToast(`Lesezeichen "${title.trim()}" gespeichert`, "🔖");
     };
 
     window.deleteBookmark = function(id) {
-        let bookmarks = window.getSavedBookmarks();
-        bookmarks = bookmarks.filter(b => b.id !== id);
-        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+        ensureCacheLoaded();
+        if (!bookmarksMap || !bookmarksMap.has(id)) return;
+
+        bookmarksCache = bookmarksCache.filter(b => b.id !== id);
+        bookmarksMap.delete(id);
+
+        persistBookmarks();
         window.renderBookmarksList();
     };
 
     window.applyBookmark = function(id) {
-        const bookmarks = window.getSavedBookmarks();
-        const bm = bookmarks.find(b => b.id === id);
+        ensureCacheLoaded();
+        if (!bookmarksMap) return;
+        const bm = bookmarksMap.get(id);
         if (bm && typeof map !== 'undefined') {
             map.setView([bm.lat, bm.lng], bm.zoom, { animate: true });
         }
@@ -67,7 +136,7 @@
         if (!container) return;
 
         const bookmarks = window.getSavedBookmarks();
-        if (bookmarks.length === 0) {
+        if (!bookmarks || bookmarks.length === 0) {
             container.innerHTML = `
                 <div style="font-size: 10.5px; color: #64748b; text-align: center; padding: 6px;">
                     Keine gespeicherten Favoriten. Klicke auf "➕ Favorit speichern".
