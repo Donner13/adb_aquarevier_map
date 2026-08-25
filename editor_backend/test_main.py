@@ -1,6 +1,5 @@
 import os
 import json
-import base64
 import tempfile
 import pytest
 from unittest.mock import patch
