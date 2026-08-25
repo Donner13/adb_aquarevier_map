@@ -45,15 +45,10 @@
     function persistBookmarks() {
         const json = JSON.stringify(bookmarksCache);
         try {
-            let success = false;
             if (window.StorageModule && typeof window.StorageModule.setItem === 'function') {
-                success = window.StorageModule.setItem(STORAGE_KEY, json);
+                window.StorageModule.setItem(STORAGE_KEY, json);
             } else if (typeof localStorage !== 'undefined') {
                 localStorage.setItem(STORAGE_KEY, json);
-                success = true;
-            }
-            if (!success && typeof window.showToast === 'function') {
-                window.showToast("Speichern im Browserspeicher fehlgeschlagen", "⚠️");
             }
         } catch (e) {
             if (typeof window.showToast === 'function') {
@@ -62,9 +57,21 @@
         }
     }
 
+    // Invalidate cache if localStorage is updated externally (e.g., in another browser tab)
+    if (typeof window !== 'undefined' && window.addEventListener) {
+        window.addEventListener('storage', (e) => {
+            if (e && e.key === STORAGE_KEY) {
+                cacheInitialized = false;
+                if (typeof window.renderBookmarksList === 'function') {
+                    window.renderBookmarksList();
+                }
+            }
+        });
+    }
+
     window.getSavedBookmarks = function() {
         ensureCacheLoaded();
-        return bookmarksCache;
+        return bookmarksCache.slice();
     };
 
     window.saveBookmark = function(title) {
