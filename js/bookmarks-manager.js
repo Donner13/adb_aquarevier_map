@@ -6,20 +6,44 @@
 
 (function() {
     const STORAGE_KEY = 'aquarevier_saved_bookmarks_v1';
+    let cachedBookmarks = null;
+    const bookmarksMap = new Map();
 
-    window.getSavedBookmarks = function() {
+    function loadCacheFromStorage() {
         try {
             const raw = window.StorageModule.getItem(STORAGE_KEY);
-            if (!raw) return [];
-            try {
-                const parsed = JSON.parse(raw); // parse safely
-                return Array.isArray(parsed) ? parsed : [];
-            } catch (parseError) {
-                return [];
+            if (!raw) {
+                cachedBookmarks = [];
+            } else {
+                try {
+                    const parsed = JSON.parse(raw); // parse safely
+                    cachedBookmarks = Array.isArray(parsed) ? parsed : [];
+                } catch (parseError) {
+                    cachedBookmarks = [];
+                }
             }
         } catch (e) {
-            return [];
+            cachedBookmarks = [];
         }
+        rebuildMap();
+    }
+
+    function rebuildMap() {
+        bookmarksMap.clear();
+        if (Array.isArray(cachedBookmarks)) {
+            cachedBookmarks.forEach(bm => {
+                if (bm && bm.id) {
+                    bookmarksMap.set(bm.id, bm);
+                }
+            });
+        }
+    }
+
+    window.getSavedBookmarks = function() {
+        if (cachedBookmarks === null) {
+            loadCacheFromStorage();
+        }
+        return cachedBookmarks.slice();
     };
 
     window.saveBookmark = function(title) {
@@ -31,7 +55,10 @@
         const center = map.getCenter();
         const zoom = map.getZoom();
 
-        const bookmarks = window.getSavedBookmarks();
+        if (cachedBookmarks === null) {
+            loadCacheFromStorage();
+        }
+
         const newBookmark = {
             id: 'bm_' + Date.now(),
             title: title.trim(),
@@ -41,22 +68,30 @@
             date: new Date().toLocaleDateString('de-DE')
         };
 
-        bookmarks.push(newBookmark);
-        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+        cachedBookmarks.push(newBookmark);
+        bookmarksMap.set(newBookmark.id, newBookmark);
+
+        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(cachedBookmarks));
         window.renderBookmarksList();
         if (typeof window.showToast === 'function') window.showToast(`Lesezeichen "${title.trim()}" gespeichert`, "🔖");
     };
 
     window.deleteBookmark = function(id) {
-        let bookmarks = window.getSavedBookmarks();
-        bookmarks = bookmarks.filter(b => b.id !== id);
-        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+        if (cachedBookmarks === null) {
+            loadCacheFromStorage();
+        }
+        cachedBookmarks = cachedBookmarks.filter(b => b.id !== id);
+        bookmarksMap.delete(id);
+
+        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(cachedBookmarks));
         window.renderBookmarksList();
     };
 
     window.applyBookmark = function(id) {
-        const bookmarks = window.getSavedBookmarks();
-        const bm = bookmarks.find(b => b.id === id);
+        if (cachedBookmarks === null) {
+            loadCacheFromStorage();
+        }
+        const bm = bookmarksMap.get(id);
         if (bm && typeof map !== 'undefined') {
             map.setView([bm.lat, bm.lng], bm.zoom, { animate: true });
         }
