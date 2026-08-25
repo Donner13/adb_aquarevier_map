@@ -107,7 +107,10 @@
                 cachedBookmarks = [];
             }
         }
-        cachedBookmarks = cachedBookmarks.filter(b => b.id !== id);
+        const index = cachedBookmarks.findIndex(b => b.id === id);
+        if (index !== -1) {
+            cachedBookmarks.splice(index, 1);
+        }
         bookmarksMap.delete(id);
 
         window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(cachedBookmarks));
