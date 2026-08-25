@@ -11,6 +11,10 @@
     let bookmarksMap = new Map();
     let cacheInitialized = false;
 
+    /**
+     * Lazy-loads bookmarks from storage into in-memory array and Map caches.
+     * Prevents synchronous disk I/O and JSON re-parsing on subsequent access.
+     */
     function ensureCacheLoaded() {
         if (cacheInitialized) return;
         if (!bookmarksMap) bookmarksMap = new Map();
@@ -42,13 +46,15 @@
         cacheInitialized = true;
     }
 
+    /**
+     * Persists current in-memory bookmarks to local browser storage.
+     */
     function persistBookmarks() {
-        const json = JSON.stringify(bookmarksCache);
         try {
             if (window.StorageModule && typeof window.StorageModule.setItem === 'function') {
-                window.StorageModule.setItem(STORAGE_KEY, json);
+                window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarksCache));
             } else if (typeof localStorage !== 'undefined') {
-                localStorage.setItem(STORAGE_KEY, json);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarksCache));
             }
         } catch (e) {
             if (typeof window.showToast === 'function') {
