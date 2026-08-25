@@ -8,7 +8,6 @@ This Python script serves as an auxiliary standalone HTTP layer audit runner.
 
 import asyncio
 import subprocess
-import time
 import sys
 from playwright.async_api import async_playwright
 
@@ -18,7 +17,7 @@ async def run_playwright_layer_audit():
     
     # Start local HTTP server
     server = subprocess.Popen([sys.executable, "-m", "http.server", "8888"], cwd=".")
-    time.sleep(2)
+    await asyncio.sleep(2)
 
     try:
         async with async_playwright() as p:
