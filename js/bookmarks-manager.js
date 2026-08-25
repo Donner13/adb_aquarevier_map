@@ -40,8 +40,9 @@
     }
 
     window.addEventListener('storage', function(e) {
-        if (e.key === STORAGE_KEY) {
+        if (e.key === STORAGE_KEY || e.key === null) {
             cachedBookmarks = null;
+            bookmarksMap.clear();
             if (typeof window.renderBookmarksList === 'function') {
                 window.renderBookmarksList();
             }
