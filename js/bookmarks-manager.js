@@ -35,6 +35,9 @@
         }
     }
 
+    /**
+     * Lazy-initialization guard: ensures bookmarks are loaded from storage into memory on first access.
+     */
     function ensureLoaded() {
         if (cachedBookmarks === null) {
             loadCache();
