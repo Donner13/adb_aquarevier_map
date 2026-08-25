@@ -94,8 +94,8 @@
             bookmarksMap.delete(id);
             cachedBookmarks = cachedBookmarks.filter(b => b.id !== id);
             persistBookmarks();
-            window.renderBookmarksList();
         }
+        window.renderBookmarksList();
     };
 
     window.applyBookmark = function(id) {
