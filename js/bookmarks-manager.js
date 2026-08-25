@@ -9,30 +9,38 @@
 
     let bookmarksCache = [];
     let bookmarksMap = new Map();
-    let cacheInitialized = false;
+    let lastRawString = undefined;
 
     /**
-     * Lazy-loads bookmarks from storage into in-memory array and Map caches.
-     * Prevents synchronous disk I/O and JSON re-parsing on subsequent access.
+     * Ensures in-memory array and Map caches are up-to-date.
+     * Uses lightweight string equality on storage content to prevent JSON re-parsing
+     * while guaranteeing freshness if storage is modified directly in the same or external tabs.
      */
     function ensureCacheLoaded() {
-        if (cacheInitialized) return;
         if (!bookmarksMap) bookmarksMap = new Map();
 
+        let raw = null;
         try {
-            let raw = null;
             if (window.StorageModule && typeof window.StorageModule.getItem === 'function') {
                 raw = window.StorageModule.getItem(STORAGE_KEY);
             } else if (typeof localStorage !== 'undefined') {
                 raw = localStorage.getItem(STORAGE_KEY);
             }
-            if (raw) {
+        } catch (e) {
+            raw = null;
+        }
+
+        if (raw === lastRawString) return;
+
+        lastRawString = raw;
+        if (raw) {
+            try {
                 const parsed = JSON.parse(raw);
                 bookmarksCache = Array.isArray(parsed) ? parsed : [];
-            } else {
+            } catch (e) {
                 bookmarksCache = [];
             }
-        } catch (e) {
+        } else {
             bookmarksCache = [];
         }
 
@@ -45,23 +53,22 @@
                 }
             }
         }
-        cacheInitialized = true;
     }
 
     /**
      * Persists current in-memory bookmarks to local browser storage.
      */
     function persistBookmarks() {
+        const raw = JSON.stringify(bookmarksCache);
+        lastRawString = raw;
         try {
             if (window.StorageModule && typeof window.StorageModule.setItem === 'function') {
-                window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarksCache));
+                window.StorageModule.setItem(STORAGE_KEY, raw);
             } else if (typeof localStorage !== 'undefined') {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarksCache));
+                localStorage.setItem(STORAGE_KEY, raw);
             }
         } catch (e) {
-            if (typeof window.showToast === 'function') {
-                window.showToast("Speichern im Browserspeicher fehlgeschlagen", "⚠️");
-            }
+            // Ignore storage write failures (e.g. storage disabled)
         }
     }
 
@@ -69,27 +76,7 @@
     if (typeof window !== 'undefined' && window.addEventListener) {
         window.addEventListener('storage', (e) => {
             if (e && e.key === STORAGE_KEY) {
-                if (e.newValue) {
-                    try {
-                        const parsed = JSON.parse(e.newValue);
-                        bookmarksCache = Array.isArray(parsed) ? parsed : [];
-                    } catch (err) {
-                        bookmarksCache = [];
-                    }
-                } else {
-                    bookmarksCache = [];
-                }
-                if (!bookmarksMap) bookmarksMap = new Map();
-                bookmarksMap.clear();
-                for (let i = 0; i < bookmarksCache.length; i++) {
-                    const bm = bookmarksCache[i];
-                    if (bm && bm.id !== undefined && bm.id !== null) {
-                        if (!bookmarksMap.has(bm.id)) {
-                            bookmarksMap.set(bm.id, bm);
-                        }
-                    }
-                }
-                cacheInitialized = true;
+                ensureCacheLoaded();
                 if (typeof window.renderBookmarksList === 'function') {
                     window.renderBookmarksList();
                 }

@@ -105,6 +105,22 @@ test.describe('Bookmarks Manager Performance & Logic Tests', () => {
         expect(perfResult.count).toBe(2000);
     });
 
+    test('detects same-tab direct storage updates via string comparison', async ({ page }) => {
+        const reloaded = await page.evaluate(() => {
+            window.saveBookmark('Initial Bookmark');
+            const key = 'aquarevier_saved_bookmarks_v1';
+
+            // Directly modify storage in same tab without dispatching event
+            const externalData = [{ id: 'bm_direct', title: 'Direct Storage Modification', lat: 51, lng: 7, zoom: 10, date: '2025' }];
+            window.StorageModule.setItem(key, JSON.stringify(externalData));
+
+            const list = window.getSavedBookmarks();
+            return list.length === 1 && list[0].id === 'bm_direct';
+        });
+
+        expect(reloaded).toBe(true);
+    });
+
     test('getSavedBookmarks returns shallow copy protecting nested objects from mutation without JSON overhead', async ({ page }) => {
         const isProtected = await page.evaluate(() => {
             window.saveBookmark('Immutable Test');
