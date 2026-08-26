@@ -1,0 +1,43 @@
+{
+  "title": "Universal Search Audit and Proposals",
+  "audit_findings": [
+    {
+      "component": "Cmd+K command palette",
+      "issue": "Missing Cmd+K / Ctrl+K keyboard shortcut to focus the universal search input.",
+      "severity": "High",
+      "recommendation": "Add a keyboard event listener in keyboard-shortcuts.js or universal-search.js to intercept Cmd+K / Ctrl+K, prevent the default browser behavior, and focus the search input field."
+    },
+    {
+      "component": "Debounce logic",
+      "issue": "Debounce is implemented with a 150ms delay, which might be too short for large datasets, and there is no loading indicator.",
+      "severity": "Low",
+      "recommendation": "Increase debounce time to 300ms for better performance with large datasets or complex fuzzy matching. Add a loading state if search takes longer."
+    },
+    {
+      "component": "Fuzzy matching",
+      "issue": "Current search uses simple string inclusion (.includes(q)). This is strict substring matching, not fuzzy matching.",
+      "severity": "Medium",
+      "recommendation": "Implement true fuzzy matching (e.g., using Fuse.js or custom Levenshtein distance) to handle typos and approximate matches."
+    },
+    {
+      "component": "Keyboard navigation",
+      "issue": "No arrow key (Up/Down) navigation or Enter key selection for search results in the dropdown.",
+      "severity": "High",
+      "recommendation": "Add keydown event listeners on the input field to navigate results with ArrowUp/ArrowDown, highlight the selected item, and trigger selection with Enter. Add 'Escape' to close dropdown."
+    },
+    {
+      "component": "Highlight results",
+      "issue": "Search terms are not highlighted in the result titles or subtitles.",
+      "severity": "Medium",
+      "recommendation": "Update renderSearchDropdown to wrap matching substrings in <mark> tags or similar highlighting elements."
+    }
+  ],
+  "proposed_changes": [
+    "Add Ctrl/Cmd + K shortcut listener.",
+    "Implement Up/Down arrow key navigation in the search dropdown.",
+    "Implement Enter key selection for the active dropdown item.",
+    "Implement Esc key to close the dropdown.",
+    "Highlight matched text within the search results.",
+    "Adjust debounce timing to 300ms."
+  ]
+}
