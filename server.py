@@ -203,10 +203,8 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         # Enable CORS for origin validation
         origin = self.headers.get('Origin')
 
-        # Always emit Vary: Origin when Origin-based reflection is used
-        self.send_header('Vary', 'Origin')
-
         if origin:
+            self.send_header('Vary', 'Origin')
             parsed = urllib.parse.urlparse(origin)
             if parsed.scheme in ('http', 'https') and parsed.hostname in ('localhost', '127.0.0.1'):
                 self.send_header('Access-Control-Allow-Origin', origin)
