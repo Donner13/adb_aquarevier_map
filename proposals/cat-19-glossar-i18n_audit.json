@@ -1,0 +1,85 @@
+{
+  "description": "CAT-19-GLOSSAR-I18N Audit Report and Translation Proposal",
+  "missingTranslations": {
+    "ABWV_ANHANG": {
+      "de": "AbwV = Abwasserverordnung des Bundes. Der 'Anhang' klassifiziert, aus welcher Branche das Abwasser stammt (z.B. Anhang 22 = Chemische Industrie) und legt branchenspezifische Grenzwerte fest.",
+      "en": "AbwV = Federal Wastewater Ordinance. The 'Annex' classifies the industry source of the wastewater (e.g., Annex 22 = Chemical Industry) and sets industry-specific threshold limits."
+    },
+    "NQ": {
+      "de": "NQ = Niedrigwasserabfluss. Der kleinste in einem Beobachtungszeitraum gemessene Abfluss eines Gewässers, in m³/s.",
+      "en": "NQ = Low water discharge. The lowest recorded discharge of a water body in a given observation period, in m³/s."
+    },
+    "MNQ": {
+      "de": "MNQ = Mittlerer Niedrigwasserabfluss. Das arithmetische Mittel der Niedrigwasserabflüsse in einem Beobachtungszeitraum, in m³/s. Dient als Referenzwert für die Einordnung aktueller Niedrigwasser-Ereignisse.",
+      "en": "MNQ = Mean low water discharge. The arithmetic mean of the low water discharges in an observation period, in m³/s. Serves as a reference value for classifying current low water events."
+    },
+    "MQ": {
+      "de": "MQ = Mittelwasserabfluss. Der langjährige Durchschnittsabfluss eines Gewässers, in m³/s.",
+      "en": "MQ = Mean water discharge. The long-term average discharge of a water body, in m³/s."
+    },
+    "HQ": {
+      "de": "HQ = Hochwasserabfluss. Der größte gemessene bzw. statistisch erwartete Abfluss eines Gewässers, in m³/s.",
+      "en": "HQ = High water discharge. The highest recorded or statistically expected discharge of a water body, in m³/s."
+    },
+    "TEILEINZUGSGEBIET": {
+      "de": "Teilfläche eines größeren Flusseinzugsgebiets: die Landfläche, von der Regenwasser in einen bestimmten Gewässerabschnitt abfließt.",
+      "en": "Sub-catchment area of a larger river basin: the land area from which rainwater flows into a specific river section."
+    },
+    "EINLEITUNGSART": {
+      "de": "Beschreibt, wie ein Betrieb sein Abwasser einleitet (z.B. direkt in ein Gewässer oder indirekt über die öffentliche Kanalisation/Kläranlage).",
+      "en": "Describes how a facility discharges its wastewater (e.g., directly into a water body or indirectly via the public sewer system/wastewater treatment plant)."
+    },
+    "AUSBAUGROESSE_EW": {
+      "de": "EW = Einwohnerwert. Bemessungsgröße einer Kläranlage: 1 EW entspricht ungefähr der Abwasserfracht, die eine Person pro Tag verursacht (inkl. angeschlossener Industrie).",
+      "en": "EW = Population equivalent (PE). Design parameter of a wastewater treatment plant: 1 PE corresponds approximately to the wastewater load caused by one person per day (including connected industry)."
+    },
+    "MESSSTELLENART": {
+      "de": "Art der Grundwassermessstelle, z.B. Messung des Grundwasserstands (Menge) oder der Wasserqualität (Beschaffenheit).",
+      "en": "Type of groundwater monitoring station, e.g., measurement of groundwater level (quantity) or water quality (composition)."
+    },
+    "BAUWERKSART": {
+      "de": "Typ des Querbauwerks im Gewässer, z.B. Wehr, Sohlgleite oder Sohlabsturz — oft ein Wanderungshindernis für Fische.",
+      "en": "Type of cross structure in the water body, e.g., weir, bottom ramp, or bottom drop — often a migration barrier for fish."
+    },
+    "ABWASSERBEREICH": {
+      "de": "Gibt an, welche Art Abwasser ein Regenbecken puffert: Mischwasser (Regen+Schmutzwasser gemeinsam), Regenwasser oder Schmutzwasser getrennt.",
+      "en": "Indicates the type of wastewater a stormwater basin buffers: combined wastewater (rain + sanitary wastewater combined), rainwater, or sanitary wastewater separated."
+    },
+    "WASSERSCHUTZGEBIET": {
+      "de": "Gesetzlich festgesetzte Schutzzone rund um eine Trinkwassergewinnungsanlage mit Nutzungsauflagen.",
+      "en": "Legally designated protection zone around a drinking water abstraction facility with usage restrictions."
+    },
+    "BETREIBER": {
+      "de": "Das Unternehmen oder die Organisation, die eine Anlage (z.B. Kläranlage, Stauanlage) betreibt und für deren Funktion verantwortlich ist.",
+      "en": "The company or organization that operates a facility (e.g., wastewater treatment plant, dam) and is responsible for its functioning."
+    },
+    "GEWAESSER_EINLEITUNG": {
+      "de": "Das Gewässer (Fluss, See, Bach), in das Abwasser oder gereinigtes Wasser eingeleitet wird.",
+      "en": "The water body (river, lake, stream) into which wastewater or treated water is discharged."
+    },
+    "PEGEL": {
+      "de": "Eine Messstelle an einem Gewässer, die den Wasserstand und/oder den Abfluss kontinuierlich erfasst.",
+      "en": "A monitoring station on a water body that continuously records the water level and/or discharge."
+    },
+    "STAUANLAGE": {
+      "de": "Ein Bauwerk in einem Gewässer (z.B. Wehr, Damm), das dazu dient, den Wasserstand zu regulieren, Wasser zu speichern oder Energie zu gewinnen.",
+      "en": "A structure in a water body (e.g., weir, dam) used to regulate the water level, store water, or generate energy."
+    },
+    "QUERBAUWERK": {
+      "de": "Ein Bauwerk, das quer zur Fließrichtung eines Gewässers errichtet ist und den Abfluss beeinflusst, z.B. Wehre, Sohlgleiten oder Abstürze.",
+      "en": "A structure built across the flow direction of a water body that affects the discharge, e.g., weirs, bottom ramps, or drops."
+    },
+    "REGENBECKEN": {
+      "de": "Ein Bauwerk in der Kanalisation, das bei starkem Regen überschüssiges Misch- oder Regenwasser zwischenspeichert, um die Kläranlage zu entlasten und Gewässer vor Überlauf zu schützen.",
+      "en": "A structure in the sewer system that temporarily stores excess combined or rainwater during heavy rainfall to relieve the wastewater treatment plant and protect water bodies from overflow."
+    },
+    "GRUNDWASSERMESSSTELLE": {
+      "de": "Eine Einrichtung zur Beobachtung des Grundwassers, z.B. zur Messung des Grundwasserstands oder zur Entnahme von Proben für Qualitätsanalysen.",
+      "en": "A facility for observing groundwater, e.g., for measuring the groundwater level or taking samples for quality analysis."
+    },
+    "EINZUGSGEBIET": {
+      "de": "Das gesamte Landgebiet, aus dem Wasser (z.B. Regenwasser) in ein bestimmtes Gewässer oder Gewässersystem abfließt.",
+      "en": "The entire land area from which water (e.g., rainwater) flows into a specific water body or water system."
+    }
+  }
+}
