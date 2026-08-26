@@ -41,4 +41,33 @@ test.describe("Legend Color Mapping", () => {
 
         assertNoJsErrors(page);
     });
+
+    test("embed-mini-legend colors match configured group colors in internal map", async ({ page }) => {
+        await page.addInitScript(() => {
+            localStorage.setItem("aquarevier_onboarding_completed_v1", "1");
+            localStorage.setItem("platschi_fact_date", new Date().toDateString());
+        });
+        await page.goto("/internal.html?embed=1", { waitUntil: "domcontentloaded" });
+        await page.waitForSelector("#embed-mini-legend");
+        await page.waitForFunction(() =>
+            window.map && typeof window.map.hasLayer === "function" && window.aquarevierCoreReady === true
+        );
+
+        const groupColors = await page.evaluate(() => groupColors);
+        const expectedGroups = Object.keys(groupColors).filter(g => g !== "Konsortium");
+
+        for (const group of expectedGroups) {
+            const locator = page.locator(`.embed-mini-legend-item:has-text("${group}")`);
+            await expect(locator).toBeVisible();
+
+            const expectedColorHex = groupColors[group];
+            const expectedColorRgb = hexToRgb(expectedColorHex);
+            const colorSpan = locator.locator(".embed-mini-legend-color");
+
+            const backgroundColor = await colorSpan.evaluate((el) => window.getComputedStyle(el).backgroundColor);
+            expect(backgroundColor).toBe(expectedColorRgb);
+        }
+
+        assertNoJsErrors(page);
+    });
 });
