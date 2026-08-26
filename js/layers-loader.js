@@ -271,7 +271,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // getZustaendigkeitHtml is a global function defined in index/internal.html
     if (typeof getZustaendigkeitHtml === 'function') {
-      html += getZustaendigkeitHtml(p);
+      html += getZustaendigkeitHtml(safeP);
     }
 
     // Pegelonline Live-Dashboard Placeholder
@@ -293,7 +293,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // Footer
     const footer = cfg.footerTemplate
-      ? cfg.footerTemplate(p)
+      ? cfg.footerTemplate(safeP)
       : 'Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0';
     html += `<div style="font-size:10px;color:#475569;margin-top:6px;">${escapeHtml(footer)}</div>`;
     html += `</div>`;
