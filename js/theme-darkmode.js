@@ -59,11 +59,25 @@
         }
     };
 
+    // Centralized Media Query for System Theme
+    const mediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+    if (mediaQuery) {
+        mediaQuery.addEventListener('change', (e) => {
+            const savedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
+            if (!savedTheme) {
+                // Only auto-switch if user hasn't explicitly set a preference
+                if ((e.matches && !window.isDarkMode) || (!e.matches && window.isDarkMode)) {
+                    window.toggleDarkMode();
+                }
+            }
+        });
+    }
+
     // Restore user theme preference on load
     function initTheme() {
         const savedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        const shouldBeDark = savedTheme === 'dark' || (!savedTheme && (mediaQuery ? mediaQuery.matches : false));
 
         if (shouldBeDark) {
             window.isDarkMode = false; // set false so toggleDarkMode flips to true
