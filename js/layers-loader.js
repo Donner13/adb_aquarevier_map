@@ -222,7 +222,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         : ' (keine quantifizierten Industrieeinleiter oberhalb gefunden)';
       html += `<div class="popup-detail">🏭 Dieser Pegel führt im Median ${safeP.mq_m3s} m³/s, die oberhalb liegenden Betriebe leiten bis zu ${escapeHtml(pctStr)}% davon als Industrieabwasser ein${escapeHtml(betriebeHinweis)}.</div>`;
       if (safeP.upstream_betriebe_count > 0) {
-        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${escapeForJs(p.pegel_nr)}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
+        html += `<button class="action-btn" style="margin-top:8px; width:100%;" onclick="if(window.analyzePegel) window.analyzePegel('${escapeForJs(safeP.pegel_nr)}')">🔍 Industrieabwasser-Einzugsgebiet analysieren</button>`;
       }
     }
 
@@ -271,7 +271,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
     // getZustaendigkeitHtml is a global function defined in index/internal.html
     if (typeof getZustaendigkeitHtml === 'function') {
-      html += getZustaendigkeitHtml(p);
+      html += getZustaendigkeitHtml(safeP);
     }
 
     // Pegelonline Live-Dashboard Placeholder
@@ -288,12 +288,12 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     const parsedLng = Number(p.lng || p.longitude || p.lon);
     const safeLng = Number.isFinite(parsedLng) ? parsedLng : 0;
     html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-      <button type="button" onclick="openFeedbackModal('${escapeForJs(p.name)}', '${escapeForJs(cfg.groupLabel)}', '${escapeForJs(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${safeLat}, ${safeLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
+      <button type="button" onclick="openFeedbackModal('${escapeForJs(safeP.name)}', '${escapeForJs(cfg.groupLabel)}', '${escapeForJs(safeP.id || safeP.anlagen_nr || safeP.pegel_nr || safeP.betriebs_nr || safeP.name || '')}', ${safeLat}, ${safeLng})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
     </div>`;
 
     // Footer
     const footer = cfg.footerTemplate
-      ? cfg.footerTemplate(p)
+      ? cfg.footerTemplate(safeP)
       : 'Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0';
     html += `<div style="font-size:10px;color:#475569;margin-top:6px;">${escapeHtml(footer)}</div>`;
     html += `</div>`;
