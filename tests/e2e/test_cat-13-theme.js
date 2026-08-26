@@ -1,10 +1,10 @@
 const { test, expect } = require('@playwright/test');
 
 test.describe('CAT-13 Theme Audit Output Tests', () => {
-    test('should ensure proposals/cat13_theme_audit.json is generated', async ({ page }) => {
+    test('should ensure proposals/cat-13-theme_audit.json is generated', async ({ page }) => {
         const fs = require('fs');
         const path = require('path');
-        const proposalPath = path.join(__dirname, '../../proposals/cat13_theme_audit.json');
+        const proposalPath = path.join(__dirname, '../../proposals/cat-13-theme_audit.json');
 
         expect(fs.existsSync(proposalPath)).toBeTruthy();
 
