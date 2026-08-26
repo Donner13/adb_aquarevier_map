@@ -59,10 +59,25 @@
         }
     };
 
+    // Centralized Media Query for System Theme
+    const mediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+    if (mediaQuery) {
+        mediaQuery.addEventListener('change', (e) => {
+            const savedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
+            if (!savedTheme) {
+                // Only auto-switch if user hasn't explicitly set a preference
+                if ((e.matches && !window.isDarkMode) || (!e.matches && window.isDarkMode)) {
+                    window.toggleDarkMode();
+                }
+            }
+        });
+    }
+
     // Restore user theme preference on load
     function initTheme() {
         const savedTheme = window.StorageModule.getItem('theme') || window.StorageModule.getItem('aquarevier_theme');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const prefersDark = mediaQuery ? mediaQuery.matches : false;
         const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
 
         if (shouldBeDark) {
