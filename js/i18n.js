@@ -8,9 +8,11 @@
     const TRANSLATIONS = {
         de: {
             // General & Header
-            "app.title": "AquaRevier Akteurskarte",
+            "app.title": "Akteure - AquaRevier",
             "app.subtitle": "Rheinische Wasserlandschaft im Wandel",
             "app.lang": "EN",
+            "app.lang_title": "Sprache wechseln / Switch Language",
+            "app.lang_aria": "Sprachumschalter",
             "app.search_placeholder": "Akteure, Messstellen, Orte suchen...",
             "app.night_mode": "Nachtangel-Modus",
             "app.day_mode": "Tageslicht-Modus",
@@ -49,16 +51,33 @@
 
             // Groups & Risk
             "group.behorde": "Behörde",
+            "group.behorde_tooltip": "Wasserbehörden, Bezirksregierungen und Ministerien",
             "group.forschung": "Forschung",
+            "group.forschung_tooltip": "Universitäten und wissenschaftliche Institute im Rurgebiet",
             "group.gebietskorperschaft": "Gebietskörperschaft",
+            "group.gebietskorperschaft_tooltip": "Städte, Gemeinden und Kreise im Untersuchungsgebiet",
             "group.gewerbe": "Gewerbe/ Industrie",
+            "group.gewerbe_tooltip": "Gewerbebetriebe und größere Industriestandorte",
             "group.landwirtschaft": "Landwirtschaft",
+            "group.landwirtschaft_tooltip": "Landwirtschaftliche Verbände und Betriebe",
             "group.netzwerk": "Netzwerk/ Mult.",
+            "group.netzwerk_tooltip": "Netzwerke, Vereine und Multiplikatoren",
             "group.entsorger": "Ver-/ Entsorger",
+            "group.entsorger_tooltip": "Wasserverbände, Ver- und Entsorgungsbetriebe",
             "group.sonstige": "Sonstige",
+            "group.sonstige_tooltip": "Sonstige Akteure und Interessenvertreter",
+            "group.einzelakteure": "Einzelakteure",
+            "group.einzelakteure_tooltip": "Einzelpersonen und direkte Kontakte",
+            "group.konsortium": "Konsortium",
+            "group.konsortium_tooltip": "Mitglieder des AquaRevier-Konsortiums",
             "risk.high": "Risiko: Hoch",
+            "risk.high_tooltip": "Hohes Risiko (z.B. Direkteinleiter, Chemische Industrie, große Abwassermengen)",
             "risk.medium": "Risiko: Mittel",
-            "risk.low": "Risiko: Gering",
+            "risk.medium_tooltip": "Mittleres Risiko (z.B. Textil, Wäscherei, mittlere Abwassermengen)",
+            "risk.low": "Risiko: Niedrig",
+            "risk.low_tooltip": "Niedriges Risiko (Indirekteinleiter ohne spezifisches Profil)",
+            "risk.unbekannt": "Risiko: Unbekannt",
+            "risk.unbekannt_tooltip": "Keine Klassifizierung möglich (fehlende Daten)",
 
             // Layer Categories
             "layer_group.hydrology": "🌊 Hydrologie & Gewässer",
@@ -123,9 +142,11 @@
         },
         en: {
             // General & Header
-            "app.title": "AquaRevier Stakeholder Map",
+            "app.title": "Stakeholders - AquaRevier",
             "app.subtitle": "Rhenish Water Landscape in Transition",
             "app.lang": "DE",
+            "app.lang_title": "Switch language / Sprache wechseln",
+            "app.lang_aria": "Language Switcher",
             "app.search_placeholder": "Search stakeholders, stations, places...",
             "app.night_mode": "Night Fishing Mode",
             "app.day_mode": "Daylight Mode",
@@ -163,16 +184,33 @@
 
             // Groups & Risk
             "group.behorde": "Authority",
+            "group.behorde_tooltip": "Water authorities, regional governments and ministries",
             "group.forschung": "Research",
+            "group.forschung_tooltip": "Universities and scientific institutes in the Rur region",
             "group.gebietskorperschaft": "Municipality / District",
+            "group.gebietskorperschaft_tooltip": "Cities, municipalities and districts in the study area",
             "group.gewerbe": "Commerce / Industry",
+            "group.gewerbe_tooltip": "Commercial enterprises and major industrial sites",
             "group.landwirtschaft": "Agriculture",
+            "group.landwirtschaft_tooltip": "Agricultural associations and farms",
             "group.netzwerk": "Network / Multiplier",
+            "group.netzwerk_tooltip": "Networks, associations and multipliers",
             "group.entsorger": "Utility / Waste Mgmt",
+            "group.entsorger_tooltip": "Water associations, supply and waste management companies",
             "group.sonstige": "Other",
+            "group.sonstige_tooltip": "Other stakeholders and representatives",
+            "group.einzelakteure": "Individual Stakeholders",
+            "group.einzelakteure_tooltip": "Individual contacts and representatives",
+            "group.konsortium": "Consortium",
+            "group.konsortium_tooltip": "Members of the AquaRevier Consortium",
             "risk.high": "Risk: High",
+            "risk.high_tooltip": "High risk (e.g., direct dischargers, chemical industry, high wastewater flow)",
             "risk.medium": "Risk: Medium",
+            "risk.medium_tooltip": "Medium risk (e.g., textiles, laundry, moderate wastewater flow)",
             "risk.low": "Risk: Low",
+            "risk.low_tooltip": "Low risk (indirect dischargers without specific profile)",
+            "risk.unbekannt": "Risk: Unknown",
+            "risk.unbekannt_tooltip": "No classification possible (missing data)",
 
             // Layer Categories
             "layer_group.hydrology": "🌊 Hydrology & Water Bodies",
@@ -273,7 +311,9 @@
                 // with an implementation key such as "reset_filters".
                 if (translation === undefined) return;
 
-                if (el.tagName === 'INPUT' && el.type === 'text') {
+                if (el.tagName === 'TITLE') {
+                    document.title = translation;
+                } else if (el.tagName === 'INPUT' && el.type === 'text') {
                     el.placeholder = translation;
                 } else if (el.hasAttribute('data-i18n-target')) {
                     const targetAttr = el.getAttribute('data-i18n-target');
@@ -283,11 +323,34 @@
                 }
             });
 
+            const titleElements = document.querySelectorAll('[data-i18n-title-key]');
+            titleElements.forEach(el => {
+                const key = el.getAttribute('data-i18n-title-key');
+                const translation = TRANSLATIONS[lang]?.[key] ?? TRANSLATIONS.de?.[key];
+                if (translation !== undefined) {
+                    el.setAttribute('title', translation);
+                }
+            });
+
+            const ariaElements = document.querySelectorAll('[data-i18n-aria-key]');
+            ariaElements.forEach(el => {
+                const key = el.getAttribute('data-i18n-aria-key');
+                const translation = TRANSLATIONS[lang]?.[key] ?? TRANSLATIONS.de?.[key];
+                if (translation !== undefined) {
+                    el.setAttribute('aria-label', translation);
+                }
+            });
+
             // Update language toggle button text
             const toggleBtn = document.getElementById('langToggleBtn');
             if (toggleBtn) {
                 toggleBtn.textContent = lang === 'de' ? 'EN' : 'DE';
-                toggleBtn.setAttribute('title', lang === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln');
+                if (!toggleBtn.hasAttribute('data-i18n-title-key')) {
+                    toggleBtn.setAttribute('title', lang === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln');
+                }
+                if (!toggleBtn.hasAttribute('data-i18n-aria-key')) {
+                    toggleBtn.setAttribute('aria-label', lang === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln');
+                }
             }
 
             const legacyToggleBtn = document.getElementById('lang-toggle-btn');

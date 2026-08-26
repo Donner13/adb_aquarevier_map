@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akteurskarte - AquaRevier</title>
+    <title data-i18n-key="app.title">Akteure - AquaRevier</title>
 
     <!-- Google Fonts: Inter & Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2091,7 +2091,7 @@
                     <p data-i18n-key="app.subtitle">Rheinische Wasserlandschaft im Wandel</p>
                 </div>
                 <div style="display: flex; gap: 6px; align-items: center;">
-                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px 10px; font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" onclick="window.AquaI18n.toggleLanguage()">EN</button>
+                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px 10px; font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" data-i18n-title-key="app.lang_title" data-i18n-aria-key="app.lang_aria" onclick="window.AquaI18n.toggleLanguage()">EN</button>
                     <button id="audioToggleBtn" class="filter-btn" style="padding: 6px 10px; font-size: 13px;" title="Ton an/aus" aria-label="Audio Switcher" onclick="window.AquaAudio.toggleAudio()">🔇 Ton aus</button>
                     <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
                         ℹ️
@@ -2120,42 +2120,42 @@
                         </div>
                     </div>
                     <div class="filter-group">
-                        <button class="filter-btn active" data-group="Behörde" title="Wasserbehörden, Bezirksregierungen und Ministerien">
+                        <button class="filter-btn active" data-group="Behörde" title="Wasserbehörden, Bezirksregierungen und Ministerien" data-i18n-title-key="group.behorde_tooltip">
                             <span class="swatch" style="background-color: var(--color-behorde);"></span>
                             <span class="filter-label" data-i18n-key="group.behorde">Behörde</span>
                             <span class="counter-badge" id="cnt-group-Behörde">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Forschung" title="Universitäten und wissenschaftliche Institute im Rurgebiet">
+                        <button class="filter-btn active" data-group="Forschung" title="Universitäten und wissenschaftliche Institute im Rurgebiet" data-i18n-title-key="group.forschung_tooltip">
                             <span class="swatch" style="background-color: var(--color-forschung);"></span>
                             <span class="filter-label" data-i18n-key="group.forschung">Forschung</span>
                             <span class="counter-badge" id="cnt-group-Forschung">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Gebietskörperschaft" title="Städte, Gemeinden und Kreise im Untersuchungsgebiet">
+                        <button class="filter-btn active" data-group="Gebietskörperschaft" title="Städte, Gemeinden und Kreise im Untersuchungsgebiet" data-i18n-title-key="group.gebietskorperschaft_tooltip">
                             <span class="swatch" style="background-color: var(--color-gebietskorperschaft);"></span>
                             <span class="filter-label" data-i18n-key="group.gebietskorperschaft">Gebietskörperschaft</span>
                             <span class="counter-badge" id="cnt-group-Gebietskörperschaft">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Gewerbe/ Industrie" title="Gewerbebetriebe und größere Industriestandorte">
+                        <button class="filter-btn active" data-group="Gewerbe/ Industrie" title="Gewerbebetriebe und größere Industriestandorte" data-i18n-title-key="group.gewerbe_tooltip">
                             <span class="swatch" style="background-color: var(--color-gewerbe);"></span>
                             <span class="filter-label" data-i18n-key="group.gewerbe">Gewerbe/ Industrie</span>
                             <span class="counter-badge" id="cnt-group-Gewerbe-Industrie">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Landwirtschaft" title="Landwirtschaftliche Verbände und Betriebe">
+                        <button class="filter-btn active" data-group="Landwirtschaft" title="Landwirtschaftliche Verbände und Betriebe" data-i18n-title-key="group.landwirtschaft_tooltip">
                             <span class="swatch" style="background-color: var(--color-landwirtschaft);"></span>
                             <span class="filter-label" data-i18n-key="group.landwirtschaft">Landwirtschaft</span>
                             <span class="counter-badge" id="cnt-group-Landwirtschaft">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Netzwerk/ Multiplikator" title="Netzwerke, Vereine und Multiplikatoren">
+                        <button class="filter-btn active" data-group="Netzwerk/ Multiplikator" title="Netzwerke, Vereine und Multiplikatoren" data-i18n-title-key="group.netzwerk_tooltip">
                             <span class="swatch" style="background-color: var(--color-netzwerk);"></span>
                             <span class="filter-label" data-i18n-key="group.netzwerk">Netzwerk/ Mult.</span>
                             <span class="counter-badge" id="cnt-group-Netzwerk-Multiplikator">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Ver-/ Entsorger" title="Wasserverbände, Ver- und Entsorgungsbetriebe">
+                        <button class="filter-btn active" data-group="Ver-/ Entsorger" title="Wasserverbände, Ver- und Entsorgungsbetriebe" data-i18n-title-key="group.entsorger_tooltip">
                             <span class="swatch" style="background-color: var(--color-entsorger);"></span>
                             <span class="filter-label" data-i18n-key="group.entsorger">Ver-/ Entsorger</span>
                             <span class="counter-badge" id="cnt-group-Ver-Entsorger">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-group="Sonstige" title="Sonstige Akteure und Interessenvertreter">
+                        <button class="filter-btn active" data-group="Sonstige" title="Sonstige Akteure und Interessenvertreter" data-i18n-title-key="group.sonstige_tooltip">
                             <span class="swatch" style="background-color: var(--color-sonstige);"></span>
                             <span class="filter-label" data-i18n-key="group.sonstige">Sonstige</span>
                             <span class="counter-badge" id="cnt-group-Sonstige">(0/0)</span>
@@ -2173,24 +2173,24 @@
                         </div>
                     </div>
                     <div class="filter-group">
-                        <button class="filter-btn active" data-risk="Hoch" title="Hohes Risiko (z.B. Direkteinleiter, Chemische Industrie, große Abwassermengen)">
+                        <button class="filter-btn active" data-risk="Hoch" title="Hohes Risiko (z.B. Direkteinleiter, Chemische Industrie, große Abwassermengen)" data-i18n-title-key="risk.high_tooltip">
                             <span class="swatch" style="background-color: #D55E00;"></span>
                             <span class="filter-label" data-i18n-key="risk.high">Risiko: Hoch</span>
                             <span class="counter-badge" id="cnt-risk-Hoch">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-risk="Mittel" title="Mittleres Risiko (z.B. Textil, Wäscherei, mittlere Abwassermengen)">
+                        <button class="filter-btn active" data-risk="Mittel" title="Mittleres Risiko (z.B. Textil, Wäscherei, mittlere Abwassermengen)" data-i18n-title-key="risk.medium_tooltip">
                             <span class="swatch" style="background-color: #F0E442;"></span>
                             <span class="filter-label" data-i18n-key="risk.medium">Risiko: Mittel</span>
                             <span class="counter-badge" id="cnt-risk-Mittel">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-risk="Niedrig" title="Niedriges Risiko (Indirekteinleiter ohne spezifisches Profil)">
+                        <button class="filter-btn active" data-risk="Niedrig" title="Niedriges Risiko (Indirekteinleiter ohne spezifisches Profil)" data-i18n-title-key="risk.low_tooltip">
                             <span class="swatch" style="background-color: #009E73;"></span>
                             <span class="filter-label" data-i18n-key="risk.low">Risiko: Niedrig</span>
                             <span class="counter-badge" id="cnt-risk-Niedrig">(0/0)</span>
                         </button>
-                        <button class="filter-btn active" data-risk="Unbekannt" title="Keine Klassifizierung möglich (fehlende Daten)">
+                        <button class="filter-btn active" data-risk="Unbekannt" title="Keine Klassifizierung möglich (fehlende Daten)" data-i18n-title-key="risk.unbekannt_tooltip">
                             <span class="swatch" style="background-color: #999999;"></span>
-                            <span class="filter-label">Risiko: Unbekannt</span>
+                            <span class="filter-label" data-i18n-key="risk.unbekannt">Risiko: Unbekannt</span>
                             <span class="counter-badge" id="cnt-risk-Unbekannt">(0/0)</span>
                         </button>
                     </div>
