@@ -40,8 +40,7 @@ try:
         text=True,
         encoding='utf-8',
         errors='ignore',
-        bufsize=0, # unbuffered
-        shell=True
+        bufsize=0 # unbuffered
     )
 except Exception as e:
     print(f"Error launching Surge CLI: {e}")
