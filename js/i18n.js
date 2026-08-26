@@ -42,6 +42,23 @@
             "sidebar.export": "Daten-Export",
             "sidebar.reset": "Ansicht zurücksetzen",
             "sidebar.feedback": "Feedback geben",
+            "sidebar.actors_title": "👥 Regionale Akteure",
+            "sidebar.einleiter_title": "🏭 Industrieeinleiter (Risikoklasse)",
+            "sidebar.all_on": "Alle an",
+            "sidebar.all_off": "Alle aus",
+
+            // Groups & Risk
+            "group.behorde": "Behörde",
+            "group.forschung": "Forschung",
+            "group.gebietskorperschaft": "Gebietskörperschaft",
+            "group.gewerbe": "Gewerbe/ Industrie",
+            "group.landwirtschaft": "Landwirtschaft",
+            "group.netzwerk": "Netzwerk/ Mult.",
+            "group.entsorger": "Ver-/ Entsorger",
+            "group.sonstige": "Sonstige",
+            "risk.high": "Risiko: Hoch",
+            "risk.medium": "Risiko: Mittel",
+            "risk.low": "Risiko: Gering",
 
             // Layer Categories
             "layer_group.hydrology": "🌊 Hydrologie & Gewässer",
@@ -139,6 +156,23 @@
             "sidebar.export": "Data Export",
             "sidebar.reset": "Reset View",
             "sidebar.feedback": "Give Feedback",
+            "sidebar.actors_title": "👥 Regional Stakeholders",
+            "sidebar.einleiter_title": "🏭 Industrial Dischargers (Risk Class)",
+            "sidebar.all_on": "All on",
+            "sidebar.all_off": "All off",
+
+            // Groups & Risk
+            "group.behorde": "Authority",
+            "group.forschung": "Research",
+            "group.gebietskorperschaft": "Municipality / District",
+            "group.gewerbe": "Commerce / Industry",
+            "group.landwirtschaft": "Agriculture",
+            "group.netzwerk": "Network / Multiplier",
+            "group.entsorger": "Utility / Waste Mgmt",
+            "group.sonstige": "Other",
+            "risk.high": "Risk: High",
+            "risk.medium": "Risk: Medium",
+            "risk.low": "Risk: Low",
 
             // Layer Categories
             "layer_group.hydrology": "🌊 Hydrology & Water Bodies",
