@@ -150,10 +150,19 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
     // falls das i18n-Script (noch) nicht geladen ist.
     const tLabel = (s) => window.AQUAREVIER_I18N ? window.AQUAREVIER_I18N.translatePopupLabel(s) : s;
 
+    let extractedName = p.name || p.bezeichnung || p.standort || p.id || '';
+    if (!extractedName) {
+        if (p.Stammdaten && (p.Stammdaten.name || p.Stammdaten.Name)) {
+            extractedName = p.Stammdaten.name || p.Stammdaten.Name;
+        } else if (p.Lage && (p.Lage.name || p.Lage.Name)) {
+            extractedName = p.Lage.name || p.Lage.Name;
+        }
+    }
+
     let html = `
       <div class="popup-card">
         <div class="popup-group" style="color:${cfg.color}">${escapeHtml(tLabel(cfg.groupLabel))}</div>
-        <div class="popup-title">${safeP.name || 'Unbekannt'}</div>
+        <div class="popup-title">${escapeHtml(extractedName) || 'Unbekannt'}</div>
     `;
 
     for (const field of (cfg.popupFields || [])) {
