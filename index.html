@@ -2671,17 +2671,35 @@
         function getZustaendigkeitHtml(p) {
             if (!p.zustaendigkeit_behoerde) return '';
             
-            const contactText = `${p.zustaendigkeit_behoerde}\n${p.zustaendigkeit_amt}\nE-Mail: ${p.zustaendigkeit_email}\nTel: ${p.zustaendigkeit_telefon}`;
+            const esc = (str) => {
+                if (str === null || str === undefined) return '';
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            };
+
+            const safeBehoerde = esc(p.zustaendigkeit_behoerde);
+            const safeAmt = esc(p.zustaendigkeit_amt);
+            const safeEmail = esc(p.zustaendigkeit_email);
+            const safeTelefon = esc(p.zustaendigkeit_telefon);
+
+            const contactText = `${p.zustaendigkeit_behoerde}
+${p.zustaendigkeit_amt}
+E-Mail: ${p.zustaendigkeit_email}
+Tel: ${p.zustaendigkeit_telefon}`;
             const escapedContact = btoa(unescape(encodeURIComponent(contactText)));
             
             return `
                 <div class="popup-zustaendigkeit" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border-color); font-size: 11px;">
                     <div style="font-weight: 600; color: var(--accent-primary); margin-bottom: 2px;">🛡️ Zuständige Behörde:</div>
-                    <div style="color: var(--text-primary); font-weight: 500;">${p.zustaendigkeit_behoerde}</div>
-                    <div style="color: var(--text-secondary); font-size: 10px;">${p.zustaendigkeit_amt}</div>
+                    <div style="color: var(--text-primary); font-weight: 500;">${safeBehoerde}</div>
+                    <div style="color: var(--text-secondary); font-size: 10px;">${safeAmt}</div>
                     <div style="margin-top: 4px; display: flex; flex-direction: column; gap: 2px; color: var(--text-secondary);">
-                        ${p.zustaendigkeit_email ? `<span>✉️ <a href="mailto:${p.zustaendigkeit_email}" style="color: var(--accent-primary); text-decoration: none;">${p.zustaendigkeit_email}</a></span>` : ''}
-                        ${p.zustaendigkeit_telefon ? `<span>📞 ${p.zustaendigkeit_telefon}</span>` : ''}
+                        ${safeEmail ? `<span>✉️ <a href="mailto:${safeEmail}" style="color: var(--accent-primary); text-decoration: none;">${safeEmail}</a></span>` : ''}
+                        ${safeTelefon ? `<span>📞 ${safeTelefon}</span>` : ''}
                     </div>
                     <button class="filter-btn" style="margin-top: 6px; padding: 2px 6px; font-size: 9px; width: 100%; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-secondary); cursor: pointer;" 
                             onclick="copyContactToClipboard('${escapedContact}', this)">📋 Kontakt kopieren</button>
@@ -4165,18 +4183,23 @@
                 // Render the normal custom marker (colored by group, e.g. purple for Tillmann)
                 let marker = createCustomMarker(lat, lng, color, props.name, props.group);
                 
+
+                const esc = (str) => {
+                    if (str === null || str === undefined) return '';
+                    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+                };
                 let popupContent = `
                     <div class="popup-card extended-popup">
-                        <div class="popup-group" style="color: ${color}">${props.group || ''}</div>
-                        <div class="popup-title">${props.name || ''}</div>
+                        <div class="popup-group" style="color: ${color}">${esc(props.group)}</div>
+                        <div class="popup-title">${esc(props.name)}</div>
                         <div class="popup-body">
                 `;
 
-                if (props.organisation) popupContent += `<div class="popup-detail"><strong>Organisation:</strong> ${props.organisation}</div>`;
-                if (props.institution) popupContent += `<div class="popup-detail"><strong>Institution:</strong> ${props.institution}</div>`;
-                if (props.bereich) popupContent += `<div class="popup-detail"><strong>Bereich:</strong> ${props.bereich}</div>`;
-                if (props.email) popupContent += `<div class="popup-detail"><strong>E-Mail:</strong> <a href="mailto:${props.email}">${props.email}</a></div>`;
-                if (props.phone || props.telefon) popupContent += `<div class="popup-detail"><strong>Telefon:</strong> ${props.phone || props.telefon}</div>`;
+                if (props.organisation) popupContent += `<div class="popup-detail"><strong>Organisation:</strong> ${esc(props.organisation)}</div>`;
+                if (props.institution) popupContent += `<div class="popup-detail"><strong>Institution:</strong> ${esc(props.institution)}</div>`;
+                if (props.bereich) popupContent += `<div class="popup-detail"><strong>Bereich:</strong> ${esc(props.bereich)}</div>`;
+                if (props.email) popupContent += `<div class="popup-detail"><strong>E-Mail:</strong> <a href="mailto:${esc(props.email)}">${esc(props.email)}</a></div>`;
+                if (props.phone || props.telefon) popupContent += `<div class="popup-detail"><strong>Telefon:</strong> ${esc(props.phone || props.telefon)}</div>`;
 
                 popupContent += `
                             <div class="popup-detail coords-detail">

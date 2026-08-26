@@ -2540,17 +2540,35 @@
         function getZustaendigkeitHtml(p) {
             if (!p.zustaendigkeit_behoerde) return '';
             
-            const contactText = `${p.zustaendigkeit_behoerde}\n${p.zustaendigkeit_amt}\nE-Mail: ${p.zustaendigkeit_email}\nTel: ${p.zustaendigkeit_telefon}`;
+            const esc = (str) => {
+                if (str === null || str === undefined) return '';
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            };
+
+            const safeBehoerde = esc(p.zustaendigkeit_behoerde);
+            const safeAmt = esc(p.zustaendigkeit_amt);
+            const safeEmail = esc(p.zustaendigkeit_email);
+            const safeTelefon = esc(p.zustaendigkeit_telefon);
+
+            const contactText = `${p.zustaendigkeit_behoerde}
+${p.zustaendigkeit_amt}
+E-Mail: ${p.zustaendigkeit_email}
+Tel: ${p.zustaendigkeit_telefon}`;
             const escapedContact = btoa(unescape(encodeURIComponent(contactText)));
             
             return `
                 <div class="popup-zustaendigkeit" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border-color); font-size: 11px;">
                     <div style="font-weight: 600; color: var(--accent-primary); margin-bottom: 2px;">🛡️ Zuständige Behörde:</div>
-                    <div style="color: var(--text-primary); font-weight: 500;">${p.zustaendigkeit_behoerde}</div>
-                    <div style="color: var(--text-secondary); font-size: 10px;">${p.zustaendigkeit_amt}</div>
+                    <div style="color: var(--text-primary); font-weight: 500;">${safeBehoerde}</div>
+                    <div style="color: var(--text-secondary); font-size: 10px;">${safeAmt}</div>
                     <div style="margin-top: 4px; display: flex; flex-direction: column; gap: 2px; color: var(--text-secondary);">
-                        ${p.zustaendigkeit_email ? `<span>✉️ <a href="mailto:${p.zustaendigkeit_email}" style="color: var(--accent-primary); text-decoration: none;">${p.zustaendigkeit_email}</a></span>` : ''}
-                        ${p.zustaendigkeit_telefon ? `<span>📞 ${p.zustaendigkeit_telefon}</span>` : ''}
+                        ${safeEmail ? `<span>✉️ <a href="mailto:${safeEmail}" style="color: var(--accent-primary); text-decoration: none;">${safeEmail}</a></span>` : ''}
+                        ${safeTelefon ? `<span>📞 ${safeTelefon}</span>` : ''}
                     </div>
                     <button class="filter-btn" style="margin-top: 6px; padding: 2px 6px; font-size: 9px; width: 100%; justify-content: center; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-secondary); cursor: pointer;" 
                             onclick="copyContactToClipboard('${escapedContact}', this)">📋 Kontakt kopieren</button>
