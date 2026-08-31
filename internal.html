@@ -3276,45 +3276,6 @@
             })
             .catch(err => console.log("elwas_einleiter layer not loaded:", err));
 
-        document.querySelectorAll('.filter-btn[data-risk]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const riskVal = btn.getAttribute('data-risk');
-                const allRisks = Object.keys(elwasRiskColors);
-                if (riskVal === 'all') {
-                    const isAnyInactive = elwasActiveRisks.size < allRisks.length;
-                    document.querySelectorAll('.filter-btn[data-risk]').forEach(b => {
-                        const bb = b.getAttribute('data-risk');
-                        if (bb === 'all') return;
-                        if (isAnyInactive) {
-                            b.classList.add('active'); b.setAttribute('aria-pressed', 'true');
-                            elwasActiveRisks.add(bb);
-                        } else {
-                            b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
-                            elwasActiveRisks.delete(bb);
-                        }
-                    });
-                } else {
-                    if (elwasActiveRisks.has(riskVal)) {
-                        elwasActiveRisks.delete(riskVal);
-                    announceFilterState(riskVal, false);
-                        btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
-                    } else {
-                        elwasActiveRisks.add(riskVal);
-                    announceFilterState(riskVal, true);
-                        btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
-                    }
-                }
-                const allBtn = document.querySelector('.filter-btn[data-risk="all"]');
-                if (allBtn) {
-                    if (elwasActiveRisks.size === allRisks.length) {
-                        allBtn.classList.add('active'); allBtn.setAttribute('aria-pressed', 'true');
-                    } else {
-                        allBtn.classList.remove('active'); allBtn.setAttribute('aria-pressed', 'false');
-                    }
-                }
-                renderElwasLayer();
-            });
-        });
 
 
         // Einzugsgebiet-Statistik: Spatial Join (Point-in-Polygon) zwischen
