@@ -208,8 +208,9 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
   if (cfg.cluster) {
     const clusterGroup = L.markerClusterGroup({
-      maxClusterRadius: 60,
+      maxClusterRadius: 40,
       spiderfyOnMaxZoom: true,
+      disableClusteringAtZoom: 13,
       showCoverageOnHover: false,
       iconCreateFunction: (cluster) => {
         const count = cluster.getChildCount();
