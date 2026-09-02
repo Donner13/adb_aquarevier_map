@@ -1,0 +1,9 @@
+{
+  "finding": "The current pegel trend algorithm strictly sets specific thresholds comparing NQ and MNQ for drought indicators: nqNum < mnqNum * 0.5 (Severe Drought), nqNum < mnqNum (Observation), nqNum > mnqNum * 1.5 (Relaxed). There is no specific mathematical flood trend based on HQ / MHQ implemented in layers-loader.js logic currently in the snippet shown.",
+  "drought_thresholds": {
+    "severe": "NQ < MNQ * 0.5",
+    "observation": "NQ < MNQ",
+    "relaxed": "NQ > MNQ * 1.5"
+  },
+  "flood_thresholds": "Not currently calculated in popup logic"
+}
