@@ -208,8 +208,9 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
 
   if (cfg.cluster) {
     const clusterGroup = L.markerClusterGroup({
-      maxClusterRadius: 60,
+      maxClusterRadius: 40,
       spiderfyOnMaxZoom: true,
+      disableClusteringAtZoom: 13,
       showCoverageOnHover: false,
       iconCreateFunction: (cluster) => {
         const count = cluster.getChildCount();
@@ -262,10 +263,11 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       .then(data => {
         layerDataStore[cfg.id] = data;
         window[cfg.geoDataVar] = data;
+        const layerRenderer = cfg.preferCanvas ? L.canvas() : undefined;
         const options = {
           pointToLayer: (feature, latlng) => {
             if (cfg.useCircleMarker) {
-              return L.circleMarker(latlng, { radius: 4, fillColor: cfg.color, color: '#ffffff', weight: 1, fillOpacity: 0.8 });
+              return L.circleMarker(latlng, { radius: 4, fillColor: cfg.color, color: '#ffffff', weight: 1, fillOpacity: 0.8, renderer: layerRenderer });
             }
             return L.marker(latlng, { icon: buildIcon() });
           },
@@ -276,8 +278,8 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
             }
           }
         };
-        if (cfg.preferCanvas) {
-          options.renderer = L.canvas();
+        if (layerRenderer) {
+          options.renderer = layerRenderer;
         }
         const geoLayer = L.geoJSON(data, options);
         geoLayer.eachLayer(l => layerGroup.addLayer(l));
