@@ -1269,11 +1269,11 @@
 
         .logo-box {
             position: absolute;
-            background: #ffffff;
-            border: 1.5px solid #cbd5e1;
+            background: #ffffff !important;
+            border: 2px solid #334155;
             border-radius: 6px;
             padding: 6px 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -1285,12 +1285,12 @@
 
         .logo-box:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
         }
 
         body.light-theme .logo-box {
-            background: #ffffff;
-            border: 1.5px solid #cbd5e1;
+            background: #ffffff !important;
+            border: 2px solid #334155;
         }
 
         .logo-box img {
@@ -2746,26 +2746,11 @@
             setTimeout(() => map.invalidateSize(), 300);
         }
 
-        // Base Maps
-        const baseLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 20,
-            crossOrigin: 'anonymous'
-        }).addTo(map);
-
-        const baseDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 20,
-            crossOrigin: 'anonymous'
-        });
-
-        // 2. Base Map: OpenStreetMap Standard
+        // 1. Base Map: OpenStreetMap Standard (Default, no API key required)
         const baseOsm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             crossOrigin: 'anonymous'
-        });
+        }).addTo(map);
 
         // 3. Base Map: TopPlusOpen (Offizielle Deutschlandkarte BKG / Geodatenzentrum)
         const baseWebAtlas = window.WMSLoader.createBaseWebAtlas();
@@ -3693,8 +3678,7 @@
 
         // Map layer controller
         const baseMaps = {
-            "Dunkles Design (Standard)": baseDark,
-            "OpenStreetMap": baseOsm,
+            "OpenStreetMap (Standard)": baseOsm,
             "WebAtlasDE NRW (Offiziell)": baseWebAtlas
         };
 
@@ -4853,8 +4837,6 @@
         // Search trigger
         document.getElementById('search-input').addEventListener('input', renderMapAndSidebar);
 
-        baseMaps["Helles Design"] = baseLight;
-
         const themeToggle = document.getElementById('theme-toggle');
         let isDarkMode = localStorage.getItem('theme') === 'dark';
 
@@ -4862,14 +4844,9 @@
         if (isDarkMode) {
             document.body.classList.remove('light-theme');
             themeToggle.innerText = '☀️';
-            if (map.hasLayer(baseLight)) map.removeLayer(baseLight);
-            baseDark.addTo(map);
         } else {
             document.body.classList.add('light-theme');
             themeToggle.innerText = '🌙';
-            // baseLight is added by default on map creation, but just to be sure:
-            if (map.hasLayer(baseDark)) map.removeLayer(baseDark);
-            if (!map.hasLayer(baseLight)) baseLight.addTo(map);
         }
 
         themeToggle.addEventListener('click', () => {
@@ -4878,13 +4855,9 @@
             if (isDarkMode) {
                 document.body.classList.remove('light-theme');
                 themeToggle.innerText = '☀️';
-                if (map.hasLayer(baseLight)) map.removeLayer(baseLight);
-                baseDark.addTo(map);
             } else {
                 document.body.classList.add('light-theme');
                 themeToggle.innerText = '🌙';
-                if (map.hasLayer(baseDark)) map.removeLayer(baseDark);
-                baseLight.addTo(map);
             }
         });
 
