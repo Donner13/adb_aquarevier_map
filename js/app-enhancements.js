@@ -929,6 +929,7 @@
                     }
                 }
             } else if (e.key === 'Escape') {
+                if (e.defaultPrevented) return;
                 let closedAny = false;
                 const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
                 openModals.forEach(modal => {
@@ -974,7 +975,7 @@
                             forceCloseFallback();
                         } else {
                             // Verify after a short delay to allow custom handlers/animations to run, force close if they failed silently
-                            setTimeout(forceCloseFallback, 150);
+                            setTimeout(forceCloseFallback, 250);
                         }
                         closedAny = true;
                     }
@@ -987,7 +988,7 @@
                     }
                 }
             } else if (e.key === 'Tab') {
-                // Focus trap for open modals
+                // [TASK-012] Leichtgewichtiges Focus-Trapping fuer geoeffnete Modale
                 const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [tabindex]:not([tabindex^="-"])';
 
                 const openModals = Array.from(document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop')).filter(modal => {
@@ -1083,3 +1084,4 @@
     }
 
 })();
+// Trigger commit
