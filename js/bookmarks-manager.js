@@ -6,20 +6,61 @@
 
 (function() {
     const STORAGE_KEY = 'aquarevier_saved_bookmarks_v1';
+    let cachedBookmarks = null;
+    const bookmarksMap = new Map();
 
-    window.getSavedBookmarks = function() {
+    function loadCacheFromStorage() {
         try {
             const raw = window.StorageModule.getItem(STORAGE_KEY);
-            if (!raw) return [];
-            try {
-                const parsed = JSON.parse(raw);
-                return Array.isArray(parsed) ? parsed : [];
-            } catch (parseError) {
-                return [];
+            if (!raw) {
+                cachedBookmarks = [];
+            } else {
+                try {
+                    const parsed = JSON.parse(raw); // parse safely
+                    cachedBookmarks = Array.isArray(parsed) ? parsed : [];
+                } catch (parseError) {
+                    console.warn('Failed to parse bookmarks JSON, falling back to empty list:', parseError);
+                    cachedBookmarks = [];
+                }
             }
         } catch (e) {
-            return [];
+            console.warn('Failed to access storage for bookmarks, falling back to empty list:', e);
+            cachedBookmarks = [];
         }
+        rebuildMap();
+    }
+
+    function rebuildMap() {
+        bookmarksMap.clear();
+        if (Array.isArray(cachedBookmarks)) {
+            cachedBookmarks.forEach(bm => {
+                if (bm && bm.id) {
+                    bookmarksMap.set(bm.id, bm);
+                }
+            });
+        }
+    }
+
+    window.addEventListener('storage', function(e) {
+        if (e.key === STORAGE_KEY || e.key === null) {
+            cachedBookmarks = null;
+            bookmarksMap.clear();
+            if (typeof window.renderBookmarksList === 'function') {
+                window.renderBookmarksList();
+            }
+        }
+    });
+
+    window.getSavedBookmarks = function() {
+        if (cachedBookmarks === null) {
+            try {
+                loadCacheFromStorage();
+            } catch (e) {
+                console.warn('Error loading cache in getSavedBookmarks:', e);
+                cachedBookmarks = [];
+            }
+        }
+        return Array.isArray(cachedBookmarks) ? cachedBookmarks.slice() : [];
     };
 
     window.saveBookmark = function(title) {
@@ -31,9 +72,17 @@
         const center = map.getCenter();
         const zoom = map.getZoom();
 
-        const bookmarks = window.getSavedBookmarks();
+        if (cachedBookmarks === null) {
+            try {
+                loadCacheFromStorage();
+            } catch (e) {
+                console.warn('Error loading cache in saveBookmark:', e);
+                cachedBookmarks = [];
+            }
+        }
+
         const newBookmark = {
-            id: 'bm_' + Date.now(),
+            id: 'bm_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
             title: title.trim(),
             lat: center.lat,
             lng: center.lng,
@@ -41,22 +90,43 @@
             date: new Date().toLocaleDateString('de-DE')
         };
 
-        bookmarks.push(newBookmark);
-        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+        cachedBookmarks.push(newBookmark);
+        bookmarksMap.set(newBookmark.id, newBookmark);
+
+        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(cachedBookmarks));
         window.renderBookmarksList();
         if (typeof window.showToast === 'function') window.showToast(`Lesezeichen "${title.trim()}" gespeichert`, "🔖");
     };
 
     window.deleteBookmark = function(id) {
-        let bookmarks = window.getSavedBookmarks();
-        bookmarks = bookmarks.filter(b => b.id !== id);
-        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+        if (cachedBookmarks === null) {
+            try {
+                loadCacheFromStorage();
+            } catch (e) {
+                console.warn('Error loading cache in deleteBookmark:', e);
+                cachedBookmarks = [];
+            }
+        }
+        const index = cachedBookmarks.findIndex(b => b.id === id);
+        if (index !== -1) {
+            cachedBookmarks.splice(index, 1);
+        }
+        bookmarksMap.delete(id);
+
+        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(cachedBookmarks));
         window.renderBookmarksList();
     };
 
     window.applyBookmark = function(id) {
-        const bookmarks = window.getSavedBookmarks();
-        const bm = bookmarks.find(b => b.id === id);
+        if (cachedBookmarks === null) {
+            try {
+                loadCacheFromStorage();
+            } catch (e) {
+                console.warn('Error loading cache in applyBookmark:', e);
+                cachedBookmarks = [];
+            }
+        }
+        const bm = bookmarksMap.get(id);
         if (bm && typeof map !== 'undefined') {
             map.setView([bm.lat, bm.lng], bm.zoom, { animate: true });
         }
