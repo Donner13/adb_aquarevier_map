@@ -1,0 +1,1628 @@
+
+Running 90 tests using 1 worker
+
+  ✓   1 [chromium] › tests/ui-regression/layer-toggles.spec.js:50:5 › index.html › sidebar layer buttons match the known classification (2.7s)
+  ✓   2 [chromium] › tests/ui-regression/layer-toggles.spec.js:58:5 › index.html › default state matches config (4.3s)
+  ✓   3 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: 📏 Pegel (ELWAS) (3.2s)
+  ✓   4 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: ⛰️ Stauanlagen (ELWAS) (3.0s)
+  ✓   5 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: 🌧️ Regenbecken/-entlastungsanlagen (ELWAS) (2.9s)
+  ✓   6 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: 🧱 Querbauwerke (ELWAS) (3.2s)
+  ✓   7 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: Rur Einzugsgebiet (Hydrologisch) (3.0s)
+  ✓   8 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: Eigene Gewässer mit Namen (3.1s)
+  ✓   9 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: Landkreisgrenzen (Rheinisches Revier) (3.2s)
+  ✓  10 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: Kreisgrenzen (Schwarz gestrichelt) (3.0s)
+  ✓  11 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: 💧 Grundwassermessstellen (ELWAS, 3700+) (3.7s)
+  ✓  12 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: 🌊 Grundwassergleichenplan (Isolinien) (3.6s)
+  ✓  13 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: 🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser) (3.5s)
+  ✓  14 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: 📊 Kreis-Vergleich (Choroplethenkarte) (3.8s)
+  ✓  15 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: Wasserschutzgebiete (LANUV) (4.0s)
+  ✓  16 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: Wassergewinnungsgebiete (Zone I) (3.8s)
+  ✓  17 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: 📈 Grundwasserwiederanstieg (Modell) (3.2s)
+  ✓  18 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: ⚡ H₂-Elektrolyseure NRW (3.2s)
+  ✓  19 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: 🔭 Vogelbeobachtungs-Gebiete (3.4s)
+  ✓  20 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: Tagebaue & Bergbaufelder (GD) (5.5s)
+  ✓  21 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: HQ häufig (LANUV) (3.3s)
+  ✓  22 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: HQ100 (LANUV) (3.3s)
+  ✓  23 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: HQ extrem (LANUV) (3.2s)
+  ✓  24 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › index.html › toggle flips visual and map state: Starkregen Euskirchen (3.3s)
+  ✓  25 [chromium] › tests/ui-regression/layer-toggles.spec.js:103:5 › index.html › eager layers are already fetched at page load (2.5s)
+  ✓  26 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › index.html › lazy layer fetches on first toggle-on: 🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser) (2.9s)
+  ✓  27 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › index.html › lazy layer fetches on first toggle-on: 📊 Kreis-Vergleich (Choroplethenkarte) (3.4s)
+  ✓  28 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › index.html › lazy layer fetches on first toggle-on: Wasserschutzgebiete (LANUV) (3.5s)
+  ✓  29 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › index.html › lazy layer fetches on first toggle-on: Wassergewinnungsgebiete (Zone I) (3.6s)
+  ✓  30 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › index.html › lazy layer fetches on first toggle-on: 📈 Grundwasserwiederanstieg (Modell) (2.7s)
+  ✓  31 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › index.html › lazy layer fetches on first toggle-on: ⚡ H₂-Elektrolyseure NRW (2.5s)
+  ✓  32 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › index.html › lazy layer fetches on first toggle-on: 🔭 Vogelbeobachtungs-Gebiete (2.6s)
+  ✓  33 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › index.html › lazy layer fetches on first toggle-on: Tagebaue & Bergbaufelder (GD) (2.6s)
+  ✓  34 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › index.html › lazy layer fetches on first toggle-on: HQ häufig (LANUV) (2.6s)
+  ✓  35 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › index.html › lazy layer fetches on first toggle-on: HQ100 (LANUV) (2.6s)
+  ✓  36 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › index.html › lazy layer fetches on first toggle-on: HQ extrem (LANUV) (2.6s)
+  ✓  37 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › index.html › lazy layer fetches on first toggle-on: Starkregen Euskirchen (2.6s)
+  ✓  38 [chromium] › tests/ui-regression/layer-toggles.spec.js:129:5 › index.html › GWM cluster populates on first toggle-on (3.1s)
+  ✓  39 [chromium] › tests/ui-regression/layer-toggles.spec.js:145:7 › index.html › counter badge total matches real feature count: 💧 Grundwassermessstellen (ELWAS, 3700+) (3.1s)
+  ✓  40 [chromium] › tests/ui-regression/layer-toggles.spec.js:145:7 › index.html › counter badge total matches real feature count: ⛰️ Stauanlagen (ELWAS) (2.7s)
+  ✓  41 [chromium] › tests/ui-regression/layer-toggles.spec.js:145:7 › index.html › counter badge total matches real feature count: 🌧️ Regenbecken/-entlastungsanlagen (ELWAS) (2.7s)
+  ✓  42 [chromium] › tests/ui-regression/layer-toggles.spec.js:173:5 › index.html › two layers from different categories can be active simultaneously (4.5s)
+  ✘  43 [chromium] › tests/ui-regression/layer-toggles.spec.js:184:5 › index.html › default state screenshot (4.7s)
+  ✘  44 [chromium] › tests/ui-regression/layer-toggles.spec.js:192:7 › index.html › all layers ON: state + screenshot (15.4s)
+[WebServer] Terminated
+  ✘  45 [chromium] › tests/ui-regression/layer-toggles.spec.js:212:5 › index.html › all layers OFF: state + screenshot (20.9s)
+  ✘  46 [chromium] › tests/ui-regression/layer-toggles.spec.js:50:5 › internal.html › sidebar layer buttons match the known classification (263ms)
+  ✘  47 [chromium] › tests/ui-regression/layer-toggles.spec.js:58:5 › internal.html › default state matches config (271ms)
+  ✘  48 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 📏 Pegel (ELWAS) (270ms)
+  ✘  49 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: ⛰️ Stauanlagen (ELWAS) (266ms)
+  ✘  50 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🌧️ Regenbecken/-entlastungsanlagen (ELWAS) (281ms)
+  ✘  51 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🧱 Querbauwerke (ELWAS) (306ms)
+  ✘  52 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Rur Einzugsgebiet (Hydrologisch) (378ms)
+  ✘  53 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Eigene Gewässer mit Namen (273ms)
+  ✘  54 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Landkreisgrenzen (Rheinisches Revier) (260ms)
+  ✘  55 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Kreisgrenzen (Schwarz gestrichelt) (262ms)
+  ✘  56 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 💧 Grundwassermessstellen (ELWAS, 3700+) (283ms)
+  ✘  57 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🌊 Grundwassergleichenplan (Isolinien) (251ms)
+  ✘  58 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser) (252ms)
+  ✘  59 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 📊 Kreis-Vergleich (Choroplethenkarte) (261ms)
+  ✘  60 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Wasserschutzgebiete (LANUV) (237ms)
+  ✘  61 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Wassergewinnungsgebiete (Zone I) (267ms)
+  ✘  62 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 📈 Grundwasserwiederanstieg (Modell) (257ms)
+  ✘  63 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: ⚡ H₂-Elektrolyseure NRW (265ms)
+  ✘  64 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🔭 Vogelbeobachtungs-Gebiete (305ms)
+  ✘  65 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Tagebaue & Bergbaufelder (GD) (261ms)
+  ✘  66 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: HQ häufig (LANUV) (245ms)
+  ✘  67 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: HQ100 (LANUV) (266ms)
+  ✘  68 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: HQ extrem (LANUV) (287ms)
+  ✘  69 [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Starkregen Euskirchen (253ms)
+  ✘  70 [chromium] › tests/ui-regression/layer-toggles.spec.js:103:5 › internal.html › eager layers are already fetched at page load (270ms)
+  ✘  71 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: 🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser) (255ms)
+  ✘  72 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: 📊 Kreis-Vergleich (Choroplethenkarte) (263ms)
+  ✘  73 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: Wasserschutzgebiete (LANUV) (264ms)
+  ✘  74 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: Wassergewinnungsgebiete (Zone I) (277ms)
+  ✘  75 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: 📈 Grundwasserwiederanstieg (Modell) (258ms)
+  ✘  76 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: ⚡ H₂-Elektrolyseure NRW (258ms)
+  ✘  77 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: 🔭 Vogelbeobachtungs-Gebiete (252ms)
+  ✘  78 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: Tagebaue & Bergbaufelder (GD) (250ms)
+  ✘  79 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: HQ häufig (LANUV) (248ms)
+  ✘  80 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: HQ100 (LANUV) (234ms)
+  ✘  81 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: HQ extrem (LANUV) (247ms)
+  ✘  82 [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: Starkregen Euskirchen (249ms)
+  ✘  83 [chromium] › tests/ui-regression/layer-toggles.spec.js:129:5 › internal.html › GWM cluster populates on first toggle-on (246ms)
+  ✘  84 [chromium] › tests/ui-regression/layer-toggles.spec.js:145:7 › internal.html › counter badge total matches real feature count: 💧 Grundwassermessstellen (ELWAS, 3700+) (242ms)
+  ✘  85 [chromium] › tests/ui-regression/layer-toggles.spec.js:145:7 › internal.html › counter badge total matches real feature count: ⛰️ Stauanlagen (ELWAS) (253ms)
+  ✘  86 [chromium] › tests/ui-regression/layer-toggles.spec.js:145:7 › internal.html › counter badge total matches real feature count: 🌧️ Regenbecken/-entlastungsanlagen (ELWAS) (249ms)
+  ✘  87 [chromium] › tests/ui-regression/layer-toggles.spec.js:173:5 › internal.html › two layers from different categories can be active simultaneously (276ms)
+  ✘  88 [chromium] › tests/ui-regression/layer-toggles.spec.js:184:5 › internal.html › default state screenshot (275ms)
+  ✘  89 [chromium] › tests/ui-regression/layer-toggles.spec.js:192:7 › internal.html › all layers ON: state + screenshot (275ms)
+  ✘  90 [chromium] › tests/ui-regression/layer-toggles.spec.js:212:5 › internal.html › all layers OFF: state + screenshot (255ms)
+
+
+  1) [chromium] › tests/ui-regression/layer-toggles.spec.js:184:5 › index.html › default state screenshot
+
+    Error: expect(locator).toHaveScreenshot(expected) failed
+
+    Locator: locator('#map')
+      Expected an image 840px by 720px, received 629px by 720px. 159207 pixels (ratio 0.27 of all image pixels) are different.
+
+      Snapshot: index-default.png
+
+    Call log:
+      - Expect "toHaveScreenshot(index-default.png)" with timeout 5000ms
+        - verifying given screenshot expectation
+      - waiting for locator('#map')
+        - locator resolved to <div id="map" tabindex="0" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom">…</div>
+      - taking element screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - attempting scroll into view action
+        - waiting for element to be stable
+      - Expected an image 840px by 720px, received 629px by 720px. 159207 pixels (ratio 0.27 of all image pixels) are different.
+      - waiting 100ms before taking screenshot
+      - waiting for locator('#map')
+        - locator resolved to <div id="map" tabindex="0" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom">…</div>
+      - taking element screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - attempting scroll into view action
+        - waiting for element to be stable
+      - captured a stable screenshot
+      - Expected an image 840px by 720px, received 629px by 720px. 159207 pixels (ratio 0.27 of all image pixels) are different.
+
+
+      185 |       await gotoPage(page, filename);
+      186 |       await page.mouse.move(5, 5);
+    > 187 |       await expect(mapLocator(page)).toHaveScreenshot(pageId(filename) + '-default.png');
+          |                                      ^
+      188 |       assertNoJsErrors(page);
+      189 |     });
+      190 |
+        at /app/tests/ui-regression/layer-toggles.spec.js:187:38
+
+    attachment #1: index-default (image/png) ───────────────────────────────────────────────────────
+    Expected: tests/ui-regression/layer-toggles.spec.js-snapshots/index-default-chromium-linux.png
+    Received: test-results/layer-toggles-index-html-default-state-screenshot-chromium/index-default-actual.png
+    Diff:     test-results/layer-toggles-index-html-default-state-screenshot-chromium/index-default-diff.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/layer-toggles-index-html-default-state-screenshot-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-index-html-default-state-screenshot-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-index-html-default-state-screenshot-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › tests/ui-regression/layer-toggles.spec.js:192:7 › index.html › all layers ON: state + screenshot
+
+    Error: expect(locator).toHaveScreenshot(expected) failed
+
+    Locator: locator('#map')
+      Expected an image 840px by 720px, received 629px by 720px. 167444 pixels (ratio 0.28 of all image pixels) are different.
+
+      Snapshot: index-all-on.png
+
+    Call log:
+      - Expect "toHaveScreenshot(index-all-on.png)" with timeout 5000ms
+        - verifying given screenshot expectation
+      - waiting for locator('#map')
+        - locator resolved to <div id="map" tabindex="0" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom">…</div>
+      - taking element screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - attempting scroll into view action
+        - waiting for element to be stable
+      - Expected an image 840px by 720px, received 629px by 720px. 167444 pixels (ratio 0.28 of all image pixels) are different.
+      - waiting 100ms before taking screenshot
+      - waiting for locator('#map')
+        - locator resolved to <div id="map" tabindex="0" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom">…</div>
+      - taking element screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - attempting scroll into view action
+        - waiting for element to be stable
+      - captured a stable screenshot
+      - Expected an image 840px by 720px, received 629px by 720px. 167444 pixels (ratio 0.28 of all image pixels) are different.
+
+
+      206 |
+      207 |       await page.mouse.move(5, 5);
+    > 208 |       await expect(mapLocator(page)).toHaveScreenshot(pageId(filename) + '-all-on.png');
+          |                                      ^
+      209 |       assertNoJsErrors(page);
+      210 |     });
+      211 |
+        at /app/tests/ui-regression/layer-toggles.spec.js:208:38
+
+    attachment #1: index-all-on (image/png) ────────────────────────────────────────────────────────
+    Expected: tests/ui-regression/layer-toggles.spec.js-snapshots/index-all-on-chromium-linux.png
+    Received: test-results/layer-toggles-index-html-all-layers-ON-state-screenshot-chromium/index-all-on-actual.png
+    Diff:     test-results/layer-toggles-index-html-all-layers-ON-state-screenshot-chromium/index-all-on-diff.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/layer-toggles-index-html-all-layers-ON-state-screenshot-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-index-html-all-layers-ON-state-screenshot-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-index-html-all-layers-ON-state-screenshot-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › tests/ui-regression/layer-toggles.spec.js:212:5 › index.html › all layers OFF: state + screenshot
+
+    Error: expect(locator).toHaveScreenshot(expected) failed
+
+    Locator: locator('#map')
+      Expected an image 840px by 720px, received 629px by 720px. 150310 pixels (ratio 0.25 of all image pixels) are different.
+
+      Snapshot: index-all-off.png
+
+    Call log:
+      - Expect "toHaveScreenshot(index-all-off.png)" with timeout 5000ms
+        - verifying given screenshot expectation
+      - waiting for locator('#map')
+        - locator resolved to <div id="map" tabindex="0" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom">…</div>
+      - taking element screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - attempting scroll into view action
+        - waiting for element to be stable
+      - Expected an image 840px by 720px, received 629px by 720px. 150310 pixels (ratio 0.25 of all image pixels) are different.
+      - waiting 100ms before taking screenshot
+      - waiting for locator('#map')
+        - locator resolved to <div id="map" tabindex="0" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom">…</div>
+      - taking element screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - attempting scroll into view action
+        - waiting for element to be stable
+      - captured a stable screenshot
+      - Expected an image 840px by 720px, received 629px by 720px. 150310 pixels (ratio 0.25 of all image pixels) are different.
+
+
+      232 |
+      233 |       await page.mouse.move(5, 5);
+    > 234 |       await expect(mapLocator(page)).toHaveScreenshot(pageId(filename) + '-all-off.png');
+          |                                      ^
+      235 |       assertNoJsErrors(page);
+      236 |     });
+      237 |   });
+        at /app/tests/ui-regression/layer-toggles.spec.js:234:38
+
+    attachment #1: index-all-off (image/png) ───────────────────────────────────────────────────────
+    Expected: tests/ui-regression/layer-toggles.spec.js-snapshots/index-all-off-chromium-linux.png
+    Received: test-results/layer-toggles-index-html-all-layers-OFF-state-screenshot-chromium/index-all-off-actual.png
+    Diff:     test-results/layer-toggles-index-html-all-layers-OFF-state-screenshot-chromium/index-all-off-diff.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/layer-toggles-index-html-all-layers-OFF-state-screenshot-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-index-html-all-layers-OFF-state-screenshot-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-index-html-all-layers-OFF-state-screenshot-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › tests/ui-regression/layer-toggles.spec.js:50:5 › internal.html › sidebar layer buttons match the known classification
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:51:7
+
+    Error Context: test-results/layer-toggles-internal-htm-92c1e-ch-the-known-classification-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-92c1e-ch-the-known-classification-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-92c1e-ch-the-known-classification-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › tests/ui-regression/layer-toggles.spec.js:58:5 › internal.html › default state matches config
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:59:7
+
+    Error Context: test-results/layer-toggles-internal-html-default-state-matches-config-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-html-default-state-matches-config-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-html-default-state-matches-config-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 📏 Pegel (ELWAS)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-4dba8-d-map-state-📏-Pegel-ELWAS--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-4dba8-d-map-state-📏-Pegel-ELWAS--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-4dba8-d-map-state-📏-Pegel-ELWAS--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: ⛰️ Stauanlagen (ELWAS)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-5d451-state-⛰️-Stauanlagen-ELWAS--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-5d451-state-⛰️-Stauanlagen-ELWAS--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-5d451-state-⛰️-Stauanlagen-ELWAS--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🌧️ Regenbecken/-entlastungsanlagen (ELWAS)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-c5309---entlastungsanlagen-ELWAS--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-c5309---entlastungsanlagen-ELWAS--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-c5309---entlastungsanlagen-ELWAS--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🧱 Querbauwerke (ELWAS)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-080d4-tate-🧱-Querbauwerke-ELWAS--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-080d4-tate-🧱-Querbauwerke-ELWAS--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-080d4-tate-🧱-Querbauwerke-ELWAS--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Rur Einzugsgebiet (Hydrologisch)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-8ee3c-Einzugsgebiet-Hydrologisch--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-8ee3c-Einzugsgebiet-Hydrologisch--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-8ee3c-Einzugsgebiet-Hydrologisch--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Eigene Gewässer mit Namen
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-af19f-e-Eigene-Gewässer-mit-Namen-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-af19f-e-Eigene-Gewässer-mit-Namen-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-af19f-e-Eigene-Gewässer-mit-Namen-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Landkreisgrenzen (Rheinisches Revier)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-9918c-grenzen-Rheinisches-Revier--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-9918c-grenzen-Rheinisches-Revier--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-9918c-grenzen-Rheinisches-Revier--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Kreisgrenzen (Schwarz gestrichelt)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-9ab67-renzen-Schwarz-gestrichelt--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-9ab67-renzen-Schwarz-gestrichelt--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-9ab67-renzen-Schwarz-gestrichelt--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 💧 Grundwassermessstellen (ELWAS, 3700+)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-34b76-ssermessstellen-ELWAS-3700--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-34b76-ssermessstellen-ELWAS-3700--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-34b76-ssermessstellen-ELWAS-3700--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🌊 Grundwassergleichenplan (Isolinien)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-1fb8b-ssergleichenplan-Isolinien--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-1fb8b-ssergleichenplan-Isolinien--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-1fb8b-ssergleichenplan-Isolinien--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-a750e-tatistik-Betriebe-Abwasser--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-a750e-tatistik-Betriebe-Abwasser--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-a750e-tatistik-Betriebe-Abwasser--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 📊 Kreis-Vergleich (Choroplethenkarte)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-926d1-ergleich-Choroplethenkarte--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-926d1-ergleich-Choroplethenkarte--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-926d1-ergleich-Choroplethenkarte--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Wasserschutzgebiete (LANUV)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-844cc--Wasserschutzgebiete-LANUV--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-844cc--Wasserschutzgebiete-LANUV--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-844cc--Wasserschutzgebiete-LANUV--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Wassergewinnungsgebiete (Zone I)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-ff624-ergewinnungsgebiete-Zone-I--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-ff624-ergewinnungsgebiete-Zone-I--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-ff624-ergewinnungsgebiete-Zone-I--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 📈 Grundwasserwiederanstieg (Modell)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-1058e-wasserwiederanstieg-Modell--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-1058e-wasserwiederanstieg-Modell--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-1058e-wasserwiederanstieg-Modell--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: ⚡ H₂-Elektrolyseure NRW
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-780a7-ate-⚡-H₂-Elektrolyseure-NRW-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-780a7-ate-⚡-H₂-Elektrolyseure-NRW-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-780a7-ate-⚡-H₂-Elektrolyseure-NRW-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🔭 Vogelbeobachtungs-Gebiete
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-bba87-�-Vogelbeobachtungs-Gebiete-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-bba87-�-Vogelbeobachtungs-Gebiete-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-bba87-�-Vogelbeobachtungs-Gebiete-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  23) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Tagebaue & Bergbaufelder (GD)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-1098e--Tagebaue-Bergbaufelder-GD--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-1098e--Tagebaue-Bergbaufelder-GD--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-1098e--Tagebaue-Bergbaufelder-GD--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: HQ häufig (LANUV)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-c5f46--map-state-HQ-häufig-LANUV--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-c5f46--map-state-HQ-häufig-LANUV--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-c5f46--map-state-HQ-häufig-LANUV--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  25) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: HQ100 (LANUV)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-0215c--and-map-state-HQ100-LANUV--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-0215c--and-map-state-HQ100-LANUV--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-0215c--and-map-state-HQ100-LANUV--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  26) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: HQ extrem (LANUV)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-fe1a2--map-state-HQ-extrem-LANUV--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-fe1a2--map-state-HQ-extrem-LANUV--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-fe1a2--map-state-HQ-extrem-LANUV--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  27) [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Starkregen Euskirchen
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:70:9
+
+    Error Context: test-results/layer-toggles-internal-htm-77a7e-state-Starkregen-Euskirchen-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-77a7e-state-Starkregen-Euskirchen-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-77a7e-state-Starkregen-Euskirchen-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  28) [chromium] › tests/ui-regression/layer-toggles.spec.js:103:5 › internal.html › eager layers are already fetched at page load
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:104:7
+
+    Error Context: test-results/layer-toggles-internal-htm-1f921-lready-fetched-at-page-load-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-1f921-lready-fetched-at-page-load-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-1f921-lready-fetched-at-page-load-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  29) [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: 🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:115:9
+
+    Error Context: test-results/layer-toggles-internal-htm-9e61f-tatistik-Betriebe-Abwasser--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-9e61f-tatistik-Betriebe-Abwasser--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-9e61f-tatistik-Betriebe-Abwasser--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  30) [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: 📊 Kreis-Vergleich (Choroplethenkarte)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:115:9
+
+    Error Context: test-results/layer-toggles-internal-htm-834a1-ergleich-Choroplethenkarte--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-834a1-ergleich-Choroplethenkarte--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-834a1-ergleich-Choroplethenkarte--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  31) [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: Wasserschutzgebiete (LANUV)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:115:9
+
+    Error Context: test-results/layer-toggles-internal-htm-3167b--Wasserschutzgebiete-LANUV--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-3167b--Wasserschutzgebiete-LANUV--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-3167b--Wasserschutzgebiete-LANUV--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32) [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: Wassergewinnungsgebiete (Zone I)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:115:9
+
+    Error Context: test-results/layer-toggles-internal-htm-d482a-ergewinnungsgebiete-Zone-I--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-d482a-ergewinnungsgebiete-Zone-I--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-d482a-ergewinnungsgebiete-Zone-I--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  33) [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: 📈 Grundwasserwiederanstieg (Modell)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:115:9
+
+    Error Context: test-results/layer-toggles-internal-htm-9928d-wasserwiederanstieg-Modell--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-9928d-wasserwiederanstieg-Modell--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-9928d-wasserwiederanstieg-Modell--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  34) [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: ⚡ H₂-Elektrolyseure NRW
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:115:9
+
+    Error Context: test-results/layer-toggles-internal-htm-9aba8--on-⚡-H₂-Elektrolyseure-NRW-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-9aba8--on-⚡-H₂-Elektrolyseure-NRW-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-9aba8--on-⚡-H₂-Elektrolyseure-NRW-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  35) [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: 🔭 Vogelbeobachtungs-Gebiete
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:115:9
+
+    Error Context: test-results/layer-toggles-internal-htm-ac0bf-�-Vogelbeobachtungs-Gebiete-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-ac0bf-�-Vogelbeobachtungs-Gebiete-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-ac0bf-�-Vogelbeobachtungs-Gebiete-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  36) [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: Tagebaue & Bergbaufelder (GD)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:115:9
+
+    Error Context: test-results/layer-toggles-internal-htm-bbf3d--Tagebaue-Bergbaufelder-GD--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-bbf3d--Tagebaue-Bergbaufelder-GD--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-bbf3d--Tagebaue-Bergbaufelder-GD--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  37) [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: HQ häufig (LANUV)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:115:9
+
+    Error Context: test-results/layer-toggles-internal-htm-f519b--toggle-on-HQ-häufig-LANUV--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-f519b--toggle-on-HQ-häufig-LANUV--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-f519b--toggle-on-HQ-häufig-LANUV--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  38) [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: HQ100 (LANUV)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:115:9
+
+    Error Context: test-results/layer-toggles-internal-htm-4f732-irst-toggle-on-HQ100-LANUV--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-4f732-irst-toggle-on-HQ100-LANUV--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-4f732-irst-toggle-on-HQ100-LANUV--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  39) [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: HQ extrem (LANUV)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:115:9
+
+    Error Context: test-results/layer-toggles-internal-htm-cb142--toggle-on-HQ-extrem-LANUV--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-cb142--toggle-on-HQ-extrem-LANUV--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-cb142--toggle-on-HQ-extrem-LANUV--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  40) [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: Starkregen Euskirchen
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:115:9
+
+    Error Context: test-results/layer-toggles-internal-htm-fe97c-le-on-Starkregen-Euskirchen-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-fe97c-le-on-Starkregen-Euskirchen-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-fe97c-le-on-Starkregen-Euskirchen-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  41) [chromium] › tests/ui-regression/layer-toggles.spec.js:129:5 › internal.html › GWM cluster populates on first toggle-on
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:130:7
+
+    Error Context: test-results/layer-toggles-internal-htm-01780-opulates-on-first-toggle-on-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-01780-opulates-on-first-toggle-on-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-01780-opulates-on-first-toggle-on-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  42) [chromium] › tests/ui-regression/layer-toggles.spec.js:145:7 › internal.html › counter badge total matches real feature count: 💧 Grundwassermessstellen (ELWAS, 3700+)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:146:9
+
+    Error Context: test-results/layer-toggles-internal-htm-236d4-ssermessstellen-ELWAS-3700--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-236d4-ssermessstellen-ELWAS-3700--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-236d4-ssermessstellen-ELWAS-3700--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  43) [chromium] › tests/ui-regression/layer-toggles.spec.js:145:7 › internal.html › counter badge total matches real feature count: ⛰️ Stauanlagen (ELWAS)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:146:9
+
+    Error Context: test-results/layer-toggles-internal-htm-bd192-count-⛰️-Stauanlagen-ELWAS--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-bd192-count-⛰️-Stauanlagen-ELWAS--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-bd192-count-⛰️-Stauanlagen-ELWAS--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  44) [chromium] › tests/ui-regression/layer-toggles.spec.js:145:7 › internal.html › counter badge total matches real feature count: 🌧️ Regenbecken/-entlastungsanlagen (ELWAS)
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:146:9
+
+    Error Context: test-results/layer-toggles-internal-htm-dd5f2---entlastungsanlagen-ELWAS--chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-dd5f2---entlastungsanlagen-ELWAS--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-dd5f2---entlastungsanlagen-ELWAS--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  45) [chromium] › tests/ui-regression/layer-toggles.spec.js:173:5 › internal.html › two layers from different categories can be active simultaneously
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:174:7
+
+    Error Context: test-results/layer-toggles-internal-htm-deb2b-an-be-active-simultaneously-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-htm-deb2b-an-be-active-simultaneously-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-htm-deb2b-an-be-active-simultaneously-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  46) [chromium] › tests/ui-regression/layer-toggles.spec.js:184:5 › internal.html › default state screenshot
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:185:7
+
+    Error Context: test-results/layer-toggles-internal-html-default-state-screenshot-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-html-default-state-screenshot-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-html-default-state-screenshot-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  47) [chromium] › tests/ui-regression/layer-toggles.spec.js:192:7 › internal.html › all layers ON: state + screenshot
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:193:7
+
+    Error Context: test-results/layer-toggles-internal-html-all-layers-ON-state-screenshot-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-html-all-layers-ON-state-screenshot-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-html-all-layers-ON-state-screenshot-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  48) [chromium] › tests/ui-regression/layer-toggles.spec.js:212:5 › internal.html › all layers OFF: state + screenshot
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8000/internal.html
+    Call log:
+      - navigating to "http://localhost:8000/internal.html", waiting until "domcontentloaded"
+
+
+       at fixtures.js:82
+
+      80 |   });
+      81 |   try {
+    > 82 |     await page.goto(`/${filename}`, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |   } catch (error) {
+      84 |     // Chromium can emit this once when the host network adapter changes
+      85 |     // while a localhost navigation is in flight. Retry only this classified
+        at gotoPage (/app/tests/ui-regression/fixtures.js:82:16)
+        at /app/tests/ui-regression/layer-toggles.spec.js:213:7
+
+    Error Context: test-results/layer-toggles-internal-html-all-layers-OFF-state-screenshot-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/layer-toggles-internal-html-all-layers-OFF-state-screenshot-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/layer-toggles-internal-html-all-layers-OFF-state-screenshot-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  48 failed
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:184:5 › index.html › default state screenshot
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:192:7 › index.html › all layers ON: state + screenshot
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:212:5 › index.html › all layers OFF: state + screenshot
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:50:5 › internal.html › sidebar layer buttons match the known classification
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:58:5 › internal.html › default state matches config
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 📏 Pegel (ELWAS)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: ⛰️ Stauanlagen (ELWAS)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🌧️ Regenbecken/-entlastungsanlagen (ELWAS)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🧱 Querbauwerke (ELWAS)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Rur Einzugsgebiet (Hydrologisch)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Eigene Gewässer mit Namen
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Landkreisgrenzen (Rheinisches Revier)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Kreisgrenzen (Schwarz gestrichelt)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 💧 Grundwassermessstellen (ELWAS, 3700+)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🌊 Grundwassergleichenplan (Isolinien)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 📊 Kreis-Vergleich (Choroplethenkarte)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Wasserschutzgebiete (LANUV)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Wassergewinnungsgebiete (Zone I)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 📈 Grundwasserwiederanstieg (Modell)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: ⚡ H₂-Elektrolyseure NRW
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: 🔭 Vogelbeobachtungs-Gebiete
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Tagebaue & Bergbaufelder (GD)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: HQ häufig (LANUV)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: HQ100 (LANUV)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: HQ extrem (LANUV)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:69:7 › internal.html › toggle flips visual and map state: Starkregen Euskirchen
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:103:5 › internal.html › eager layers are already fetched at page load
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: 🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: 📊 Kreis-Vergleich (Choroplethenkarte)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: Wasserschutzgebiete (LANUV)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: Wassergewinnungsgebiete (Zone I)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: 📈 Grundwasserwiederanstieg (Modell)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: ⚡ H₂-Elektrolyseure NRW
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: 🔭 Vogelbeobachtungs-Gebiete
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: Tagebaue & Bergbaufelder (GD)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: HQ häufig (LANUV)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: HQ100 (LANUV)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: HQ extrem (LANUV)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:114:7 › internal.html › lazy layer fetches on first toggle-on: Starkregen Euskirchen
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:129:5 › internal.html › GWM cluster populates on first toggle-on
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:145:7 › internal.html › counter badge total matches real feature count: 💧 Grundwassermessstellen (ELWAS, 3700+)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:145:7 › internal.html › counter badge total matches real feature count: ⛰️ Stauanlagen (ELWAS)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:145:7 › internal.html › counter badge total matches real feature count: 🌧️ Regenbecken/-entlastungsanlagen (ELWAS)
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:173:5 › internal.html › two layers from different categories can be active simultaneously
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:184:5 › internal.html › default state screenshot
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:192:7 › internal.html › all layers ON: state + screenshot
+    [chromium] › tests/ui-regression/layer-toggles.spec.js:212:5 › internal.html › all layers OFF: state + screenshot
+  42 passed (4.3m)
