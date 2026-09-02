@@ -377,6 +377,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
             onEachFeature: (feature, layer) => layer.bindPopup(buildPopupHtml(feature.properties))
           });
           // Add individual markers (not the FeatureGroup) to cluster
+          clusterGroup.clearLayers();
           clusterGroup.addLayers(markers.getLayers());
           // Counter badge must reflect real feature count once the lazy
           // cluster load resolves - see updateSidebarCounters() in
