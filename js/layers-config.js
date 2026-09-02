@@ -41,7 +41,9 @@ const LAYER_CONFIGS = [
     className: 'gwm-marker',
     groupLabel: 'Grundwassermessstelle',
     defaultOn: false,
-    cluster: true,  // uses MarkerClusterGroup + lazy-loading
+    cluster: false,
+    preferCanvas: true,
+    useCircleMarker: true,
     geoDataVar: 'gwmGeoData',
     layerVar: 'gwmLayer',
     popupFields: [

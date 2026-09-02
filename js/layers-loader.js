@@ -262,15 +262,24 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
       .then(data => {
         layerDataStore[cfg.id] = data;
         window[cfg.geoDataVar] = data;
-        const geoLayer = L.geoJSON(data, {
-          pointToLayer: (feature, latlng) => L.marker(latlng, { icon: buildIcon() }),
+        const options = {
+          pointToLayer: (feature, latlng) => {
+            if (cfg.useCircleMarker) {
+              return L.circleMarker(latlng, { radius: 4, fillColor: cfg.color, color: '#ffffff', weight: 1, fillOpacity: 0.8 });
+            }
+            return L.marker(latlng, { icon: buildIcon() });
+          },
           onEachFeature: (feature, layer) => {
             layer.bindPopup(window.buildFeaturePopupHtml(feature.properties, cfg.id));
             if (cfg.pegelStats && window.analyzePegel) {
               layer.on('click', () => window.analyzePegel(feature.properties.pegel_nr));
             }
           }
-        });
+        };
+        if (cfg.preferCanvas) {
+          options.renderer = L.canvas();
+        }
+        const geoLayer = L.geoJSON(data, options);
         geoLayer.eachLayer(l => layerGroup.addLayer(l));
         if (typeof updateSidebarCounters === 'function') updateSidebarCounters();
         window.dispatchEvent(new CustomEvent('aquarevier:layer-loaded', { detail: { id: cfg.id } }));
