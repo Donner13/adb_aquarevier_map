@@ -67,8 +67,8 @@
         const list = Object.values(gemeindenMap).map(g => ({
             name: g.name,
             kreis: g.kreis,
-            centerLat: g.count !== 0 ? g.latSum / g.count : null,
-            centerLng: g.count !== 0 ? g.lngSum / g.count : null,
+            centerLat: g.count > 0 ? g.latSum / g.count : null,
+            centerLng: g.count > 0 ? g.lngSum / g.count : null,
             totalObjects: g.count
         }));
 
@@ -78,14 +78,16 @@
 
     /**
      * Compiles dossier data for a selected municipality name.
+     * [AQ-108] Now auto-loads datasets.
      */
-    window.compileGemeindeDossier = function(gemeindeName) {
+    window.compileGemeindeDossier = async function(gemeindeName) {
         if (!gemeindeName) return null;
         const targetName = gemeindeName.toLowerCase().trim();
 
         const dossier = {
             name: gemeindeName,
             kreis: 'Rheinisches Revier',
+            region: 'Rheinisches Revier', // [AQ-110]
             centerLat: null,
             centerLng: null,
             stats: {
@@ -100,17 +102,30 @@
             }
         };
 
+        // [AQ-108] Ensure data is loaded
+        if (window.layerLoaders) {
+            const promises = Object.values(window.layerLoaders).map(loader => loader());
+            try {
+                await Promise.all(promises);
+            } catch (e) {
+                console.warn("Some layers failed to load for dossier", e);
+            }
+        }
+
         let lats = [];
         let lngs = [];
 
         function checkItem(f, categoryKey, label) {
             if (!f || !f.properties) return;
             const p = f.properties;
-            const gName = (p.gemeinde || p.stadt || p.ort || '').toLowerCase().trim();
-            const kName = (p.kreis || p.landkreis || '').toLowerCase().trim();
-            const isNameMatch = gName === targetName || (p.name && p.name.toLowerCase().includes(targetName));
-            const isKreisMatch = kName && dossier.kreis && kName.includes(dossier.kreis.toLowerCase().replace('kreis ', '').trim());
-            if (isNameMatch || isKreisMatch) {
+
+            // [AQ-109] Stricter matching: only explicit municipality fields or geometry
+            const gField = (p.gemeinde || p.stadt || p.ort || '').toLowerCase().trim();
+            const kField = (p.kreis || p.landkreis || '').toLowerCase().trim();
+
+            const isNameMatch = gField === targetName;
+
+            if (isNameMatch) {
                 if (p.kreis && dossier.kreis === 'Rheinisches Revier') {
                     dossier.kreis = p.kreis;
                 }
@@ -119,8 +134,10 @@
                 if (f.geometry && f.geometry.type === 'Point') {
                     lat = f.geometry.coordinates[1];
                     lng = f.geometry.coordinates[0];
-                    lats.push(lat);
-                    lngs.push(lng);
+                    if (Number.isFinite(lat) && Number.isFinite(lng)) { // [AQ-111]
+                        lats.push(lat);
+                        lngs.push(lng);
+                    }
                 }
                 dossier.stats[categoryKey].push({
                     name: name,
@@ -158,55 +175,73 @@
             });
         }
 
-        dossier.centerLat = lats.length !== 0 ? lats.reduce((a, b) => a + b, 0) / lats.length : null;
-        dossier.centerLng = lngs.length !== 0 ? lngs.reduce((a, b) => a + b, 0) / lngs.length : null;
+        if (lats.length > 0) {
+            dossier.centerLat = lats.reduce((a, b) => a + b, 0) / lats.length;
+            dossier.centerLng = lngs.reduce((a, b) => a + b, 0) / lngs.length;
+        }
 
         window.currentGemeindeDossier = dossier;
         return dossier;
     };
 
     /**
-     * Renders and opens the Gemeinde Dossier Modal.
+     * Renders and opens the Gemeinde Dossier Modal with ARIA accessibility [AQ-124].
      */
-    window.openGemeindeDossier = function(gemeindeName) {
-        const dossier = window.compileGemeindeDossier(gemeindeName);
-        if (!dossier) return;
-
+    window.openGemeindeDossier = async function(gemeindeName) {
         let modal = document.getElementById('gemeinde-dossier-modal');
         if (!modal) {
             modal = document.createElement('div');
             modal.id = 'gemeinde-dossier-modal';
             modal.setAttribute('role', 'dialog');
             modal.setAttribute('aria-modal', 'true');
-            modal.setAttribute('aria-labelledby', 'gemeinde-dossier-modal-title');
+            modal.setAttribute('aria-labelledby', 'dossier-title');
             modal.style.cssText = `
                 position: fixed;
                 inset: 0;
                 z-index: 10008;
-                background: var(--modal-backdrop, rgba(0, 0, 0, 0.6));
+                background: rgba(0, 0, 0, 0.6);
                 backdrop-filter: blur(5px);
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 padding: 15px;
+                opacity: 0;
+                transition: opacity 0.3s ease;
             `;
             document.body.appendChild(modal);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) window.closeGemeindeDossier();
+            });
+        }
+
+        modal.innerHTML = `
+            <div id="dossier-card" style="background: #ffffff; width: 100%; max-width: 620px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column; max-height: 85vh;">
+                <div style="padding: 40px; text-align: center;">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <div style="margin-top: 10px;">Dossier wird geladen...</div>
+                </div>
+            </div>
+        `;
+        modal.style.display = 'flex';
+        requestAnimationFrame(() => modal.style.opacity = '1');
+
+        const dossier = await window.compileGemeindeDossier(gemeindeName);
+        if (!dossier) {
+            window.closeGemeindeDossier();
+            return;
         }
 
         const totalObj = Object.values(dossier.stats).reduce((acc, arr) => acc + arr.length, 0);
 
         modal.innerHTML = `
-            <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 620px; border-radius: 12px; box-shadow: var(--modal-shadow, 0 10px 30px rgba(0, 0, 0, 0.5)); overflow: hidden; display: flex; flex-direction: column; max-height: 85vh;">
+            <div id="dossier-card" style="background: #ffffff; width: 100%; max-width: 620px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column; max-height: 85vh;">
                 <div style="background: #1e293b; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <div id="gemeinde-dossier-modal-title" style="font-size: 16px; font-weight: 700;">🏛️ Gemeinde-Steckbrief: ${escapeHtml(dossier.name)}</div>
+                        <div id="dossier-title" style="font-size: 16px; font-weight: 700;">🏛️ Gemeinde-Steckbrief: ${escapeHtml(dossier.name)}</div>
                         <div style="font-size: 11px; color: #94a3b8;">${escapeHtml(dossier.kreis)} • ${totalObj} registrierte Infrastruktur-Objekte</div>
                     </div>
-                    <button type="button" onclick="closeGemeindeDossier()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
-                </div>
-                
-                <div id="gemeinde-loading-indicator" style="display:none; padding:8px 16px; background:#eff6ff; color:#1d4ed8; font-size:11px; text-align:center;">
-                    🔄 Dossier wird zusammengestellt...
+                    <button id="dossier-close-btn" type="button" onclick="closeGemeindeDossier()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
                 </div>
                 
                 <div style="padding: 16px; overflow-y: auto; flex: 1; font-size: 12px;">
@@ -232,14 +267,18 @@
 
                     <!-- Actions Bar -->
                     <div style="display: flex; gap: 8px; margin-bottom: 14px;">
-                        ${dossier.centerLat ? `
+                        ${(Number.isFinite(dossier.centerLat) && Number.isFinite(dossier.centerLng)) ? `
                             <button type="button" class="btn btn-sm btn-primary" style="flex:1; font-size:11px;" onclick="zoomToGemeindeCenter(${dossier.centerLat}, ${dossier.centerLng})">
                                 📍 In Karte zentrieren
                             </button>
                             <button type="button" class="btn btn-sm btn-outline-primary" style="flex:1; font-size:11px;" onclick="triggerGemeindeRadiusAnalysis(${dossier.centerLat}, ${dossier.centerLng})">
                                 🎯 5-km-Umkreis analysieren
                             </button>
-                        ` : ''}
+                        ` : `
+                            <div style="flex:1; background:#f1f5f9; color:#64748b; padding:6px; border-radius:4px; text-align:center; font-size:10px;">
+                                ⚠️ Keine Koordinaten für Zentrierung verfügbar.
+                            </div>
+                        `}
                         <button type="button" class="btn btn-sm btn-outline-success" style="font-size:11px;" onclick="exportGemeindeDossierCSV()">
                             📥 CSV Export
                         </button>
@@ -255,7 +294,12 @@
             </div>
         `;
 
-        modal.style.display = 'flex';
+        // Focus management [AQ-124]
+        window._lastFocusElement = document.activeElement;
+        setTimeout(() => {
+            const closeBtn = document.getElementById('dossier-close-btn');
+            if (closeBtn) closeBtn.focus();
+        }, 100);
     };
 
     function renderDossierCategorySection(title, items) {
@@ -282,11 +326,17 @@
 
     window.closeGemeindeDossier = function() {
         const modal = document.getElementById('gemeinde-dossier-modal');
-        if (modal) modal.style.display = 'none';
+        if (modal) {
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                if (window._lastFocusElement) window._lastFocusElement.focus();
+            }, 300);
+        }
     };
 
     window.zoomToGemeindeCenter = function(lat, lng) {
-        if (typeof map !== 'undefined') {
+        if (typeof map !== 'undefined' && Number.isFinite(lat) && Number.isFinite(lng)) {
             map.setView([lat, lng], 13, { animate: true });
         }
         window.closeGemeindeDossier();
@@ -299,20 +349,32 @@
         }
     };
 
+    /**
+     * Exports current dossier data as CSV with sanitization [AQ-106, AQ-107].
+     */
     window.exportGemeindeDossierCSV = function() {
         if (!window.currentGemeindeDossier) return;
         const d = window.currentGemeindeDossier;
 
-        let csv = `Gemeinde;Kategorie;Name;Details;Breitengrad;Längengrad\n`;
+        const headers = ['Gemeinde', 'Kategorie', 'Name', 'Details', 'Breitengrad', 'Längengrad'];
+        let csvRows = [headers.map(h => window.sanitizeCsvCell(h)).join(';')];
+
         Object.keys(d.stats).forEach(cat => {
             d.stats[cat].forEach(item => {
-                const nameClean = (item.name || '').replace(/;/g, ',');
-                const subClean = (item.sub || '').replace(/;/g, ',');
-                csv += `"${d.name}";"${cat}";"${nameClean}";"${subClean}";${item.lat || ''};${item.lng || ''}\n`;
+                const row = [
+                    d.name,
+                    cat,
+                    item.name || '',
+                    item.sub || '',
+                    item.lat || '',
+                    item.lng || ''
+                ];
+                csvRows.push(row.map(cell => window.sanitizeCsvCell(cell)).join(';'));
             });
         });
 
-        const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+        const csvString = csvRows.join('\n');
+        const blob = new Blob(['\uFEFF' + csvString], { type: 'text/csv;charset=utf-8;' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;

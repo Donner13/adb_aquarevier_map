@@ -23,11 +23,19 @@ window.analyzePegel = function(pegelNr) {
     window.activePegelLines.clearLayers();
     window.activePegelMarkers.clearLayers();
 
+    // [AQ-121] Validate coordinates
+    if (!Number.isFinite(p.lat) || !Number.isFinite(p.lng)) {
+        console.error("Invalid pegel coordinates", p);
+        return;
+    }
+
     const pLatLng = [p.lat, p.lng];
     const bounds = L.latLngBounds([pLatLng]);
 
     const betriebe = p.upstream_betriebe || [];
     betriebe.forEach(betrieb => {
+        if (!Number.isFinite(betrieb.lat) || !Number.isFinite(betrieb.lng)) return; // [AQ-121]
+
         const bLatLng = [betrieb.lat, betrieb.lng];
 
         const line = L.polyline([pLatLng, bLatLng], {
@@ -86,12 +94,14 @@ function populatePegelAnalysisPanel(p) {
     const btn = document.getElementById('btn-pegel-analysis');
     if (btn) btn.classList.add('active');
 
-    const pctStr = (p.upstream_mq_pct !== null && p.upstream_mq_pct !== undefined) ? Number(p.upstream_mq_pct).toFixed(2).replace('.', ',') : '0,00';
+    // [AQ-122] Safe numeric parsing to avoid NaN
+    const rawPct = parseFloat(String(p.upstream_mq_pct || '0').replace(',', '.'));
+    const pctStr = (!isNaN(rawPct) ? rawPct.toFixed(2) : '0,00').replace('.', ',');
 
     let html = `
         <div class="panel-header">
             <h3>🌊 Pegel-Abwasser-Analyse</h3>
-            <button class="close-btn" onclick="window.closePegelAnalysis()">✖</button>
+            <button class="close-btn" onclick="window.closePegelAnalysis()" aria-label="Schließen">✖</button>
         </div>
         <div class="panel-content">
             <h4>Pegel: ${escapeHtml(p.name || 'Unbekannt')}</h4>
@@ -101,13 +111,16 @@ function populatePegelAnalysisPanel(p) {
             <div class="analysis-stats">
                 <div class="stat-box">
                     <span class="stat-value">${escapeHtml(pctStr)}%</span>
-                    <span class="stat-label">Industrieabwasser-Anteil (Vol)</span>
+                    <span class="stat-label">Abwasser-Anteil (Räumlich berechnet)</span>
                 </div>
                 <div class="stat-box">
                     <span class="stat-value">${escapeHtml(p.upstream_betriebe_count || 0)}</span>
-                    <span class="stat-label">Einleiter oberhalb</span>
+                    <span class="stat-label">Einleiter im Einzugsgebiet</span>
                 </div>
             </div>
+            <p style="font-size: 10px; color: var(--text-secondary); margin-top: 8px; line-height: 1.2;">
+                ℹ️ Hinweis: Dies ist eine räumliche Upstream-Analyse basierend auf genehmigten Mengen. Es handelt sich nicht um eine chemische Echtzeit-Messung.
+            </p>
 
             <h5>Angeschlossene Betriebe</h5>
             <ul class="betrieb-list">

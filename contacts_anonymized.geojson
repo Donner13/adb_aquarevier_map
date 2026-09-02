@@ -163,22 +163,6 @@
     },
     {
       "type": "Feature",
-      "id": "anon_12",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.955884006056397,
-          50.76774500505751
-        ]
-      },
-      "properties": {
-        "name": "Bio Bursch GmbH & Co. KG (Biohof Bursch)",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
-      }
-    },
-    {
-      "type": "Feature",
       "id": "anon_13",
       "geometry": {
         "type": "Point",
@@ -231,8 +215,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          7.378533995832547,
-          52.50802200217439
+          13.378582,
+          52.508034
         ]
       },
       "properties": {
@@ -655,22 +639,6 @@
         "name": "Stadt Geilenkirchen (Geilenkirchen)",
         "group": "Gebietskörperschaft",
         "color": "#fbbf24"
-      }
-    },
-    {
-      "type": "Feature",
-      "id": "anon_43",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.958546995967418,
-          50.74910700339347
-        ]
-      },
-      "properties": {
-        "name": "Pesch Gemüse GmbH & Co. KG (Gemüsebau Pesch)",
-        "group": "Landwirtschaft",
-        "color": "#10b981"
       }
     },
     {

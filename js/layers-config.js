@@ -13,12 +13,12 @@ const LAYER_CONFIGS = [
     id: 'klaeranlagen',
     file: 'klaeranlagen.geojson',
     name: 'Kläranlagen (ELWAS)',
-    overlayLabel: '🚰 Kläranlagen (ELWAS)',
-    icon: '🚰',
+    overlayLabel: '🌀 Kläranlagen (ELWAS)',
+    icon: '🌀',
     color: '#0072B2',
     className: 'klaeranlage-marker',
     groupLabel: 'Kläranlage',
-    defaultOn: true,
+    defaultOn: false,
     cluster: false,
     // windowGlobal: name of the global variable to assign geoData to (for sidebar counters)
     geoDataVar: 'klaeranlagenGeoData',
@@ -60,8 +60,7 @@ const LAYER_CONFIGS = [
     color: '#009E73',
     className: 'pegel-marker',
     groupLabel: 'Pegel',
-    iconAnchor: [11, 22],
-    defaultOn: true,
+    defaultOn: false,
     cluster: false,
     geoDataVar: 'pegelGeoData',
     layerVar: 'pegelLayer',
@@ -82,7 +81,7 @@ const LAYER_CONFIGS = [
     color: '#D55E00',
     className: 'stauanlage-marker',
     groupLabel: 'Stauanlage',
-    defaultOn: true,
+    defaultOn: false,
     cluster: false,
     geoDataVar: 'stauanlagenGeoData',
     layerVar: 'stauanlagenLayer',
@@ -102,7 +101,7 @@ const LAYER_CONFIGS = [
     color: '#CC79A7',
     className: 'regenbecken-marker',
     groupLabel: 'Regenbecken / Sonderbauwerk',
-    defaultOn: true,
+    defaultOn: false,
     cluster: false,
     geoDataVar: 'regenbeckenGeoData',
     layerVar: 'regenbeckenLayer',
@@ -122,7 +121,7 @@ const LAYER_CONFIGS = [
     color: '#E69F00',
     className: 'querbauwerke-marker',
     groupLabel: 'Querbauwerk / Bauwerk',
-    defaultOn: true,
+    defaultOn: false,
     cluster: false,
     geoDataVar: 'querbauwerkeGeoData',
     layerVar: 'querbauwerkeLayer',
@@ -155,21 +154,37 @@ const LAYER_CONFIGS = [
     footerTemplate: p => `Quelle: ${p.source || 'Ministerium für Wirtschaft, Industrie, Klimaschutz und Energie NRW'} (CC0), Datenstand ${p.data_date || '08.06.2026'}`
   },
   {
-    id: 'vogelbeobachtungsgebiete',
-    file: 'vogelbeobachtungsgebiete.geojson',
-    name: 'Vogelbeobachtungs-Gebiete',
-    overlayLabel: '🔭 Vogelbeobachtungs-Gebiete',
-    icon: '🔭',
-    color: '#8B5CF6',
-    className: 'vogel-marker',
-    groupLabel: 'Vogelbeobachtungs-Gebiet',
+    id: 'gewaesserguete',
+    file: 'gewaesserguete.geojson',
+    name: 'Gewässergüte (WRRL)',
+    overlayLabel: '💧 Gewässergüte (WRRL, Chemie/Ökologie)',
+    groupLabel: 'Gewässergüte',
+    color: '#0284c7',
+    geometryType: 'polyline',
     defaultOn: false,
-    cluster: false,
-    geoDataVar: 'vogelGeoData',
-    layerVar: 'vogelLayer',
+    geoDataVar: 'gewaessergueteGeoData',
+    layerVar: 'gewaessergueteLayer',
+    styleConfig: {
+      weight: 3.5,
+      opacity: 0.9,
+      colorMap: {
+        'Sehr gut': '#0072B2',
+        'Gut': '#009E73',
+        'Mäßig': '#F0E442',
+        'Unbefriedigend': '#E69F00',
+        'Schlecht': '#D55E00',
+        'Unbekannt': '#94a3b8'
+      },
+      colorField: 'ökologischer_zustand'
+    },
     popupFields: [
-      { label: '🔗 eBird-Profil', expr: p => '<a href="' + p.ebird_url + '" target="_blank" rel="noopener noreferrer">In eBird ansehen</a>' }
-    ]
+      { label: '🌊 Gewässer', field: 'name' },
+      { label: '📍 Abschnitt', field: 'abschnitt' },
+      { label: '🐟 Ökologischer Zustand', field: 'ökologischer_zustand', glossar: 'OEKOLOGISCHER_ZUSTAND' },
+      { label: '🧪 Chemischer Zustand', field: 'chemischer_zustand', glossar: 'CHEMISCHER_ZUSTAND' },
+      { label: '📅 Zyklus', field: 'bewertungszyklus' }
+    ],
+    footerTemplate: p => `Quelle: ${p.quelle || 'LANUV/Open.NRW'}`
   }
 ];
 

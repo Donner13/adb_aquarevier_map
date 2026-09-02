@@ -277,7 +277,7 @@
 
     class AquaI18n {
         constructor() {
-            this.currentLang = window.StorageModule.getItem('aquarevier_lang') || 'de';
+            this.currentLang = localStorage.getItem('aquarevier_lang') || 'de';
         }
 
         init() {
@@ -287,7 +287,7 @@
         setLanguage(lang) {
             if (!TRANSLATIONS[lang]) return;
             this.currentLang = lang;
-            window.StorageModule.setItem('aquarevier_lang', lang);
+            try { localStorage.setItem('aquarevier_lang', lang); } catch (e) { console.warn('Storage unavailable:', e); }
             this.applyLanguage(lang);
             document.dispatchEvent(new CustomEvent('aquarevier:langchange', { detail: { lang } }));
         }

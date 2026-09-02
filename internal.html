@@ -5,18 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTERN - Akteurskarte Editor - AquaRevier</title>
     
-    <!-- Google Fonts: Inter & Outfit -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
     <!-- docx -->
     <script src="vendor/docx/index.umd.js"></script>
-
-    <!-- Google Fonts: Inter & Outfit -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="vendor/leaflet/leaflet.css"/>
@@ -35,8 +25,6 @@
             --text-secondary: #475569;
             --accent-primary: #2563eb;
             --accent-glow: rgba(37, 99, 235, 0.2);
-            --modal-backdrop: rgba(0, 0, 0, 0.6);
-            --modal-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             
             /* Group Colors (Excluding Einzelakteure as they are filtered) */
             --color-behorde: #D55E00;
@@ -57,33 +45,9 @@
             --bg-surface-hover: rgba(31, 41, 55, 0.95);
             --border-color: rgba(255, 255, 255, 0.12);
             --text-primary: #f3f4f6;
-            --text-secondary: #d1d5db;
-            --accent-primary: #818cf8;
+            --text-secondary: #9ca3af;
+            --accent-primary: #6366f1;
             --accent-glow: rgba(99, 102, 241, 0.4);
-            --modal-backdrop: rgba(0, 0, 0, 0.7);
-            --modal-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-        }
-        /* [TASK-014] WCAG AA Contrast Fix for dimmed text in Dark Mode */
-        body.dark-theme .logo-schoellershammer-sub,
-        body.dark-theme .logo-tillmann-p {
-            color: var(--text-secondary);
-        }
-
-
-
-        body.dark-theme .leaflet-bar a {
-            background-color: var(--bg-surface);
-            color: var(--text-primary);
-            border-color: var(--border-color);
-        }
-
-        body.dark-theme .leaflet-bar a:hover {
-            background-color: var(--bg-surface-hover);
-        }
-
-        body.dark-theme .leaflet-control-layers-toggle {
-            filter: brightness(0) invert(1);
-            opacity: 1;
         }
 
         body.dark-theme .search-box input {
@@ -708,23 +672,33 @@
 
         .logo-box {
             position: absolute;
-            background: #ffffff;
-            border: 1.5px solid #cbd5e1;
-            border-radius: 6px;
-            padding: 6px 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #ffffff !important;
+            border: 2px solid #1e293b !important;
+            border-radius: 6px !important;
+            padding: 4px 8px !important;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             white-space: nowrap;
             z-index: 10;
             pointer-events: auto;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-
         .logo-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            transform: scale(1.08) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+        }
+        body.light-theme .logo-box, body.dark-theme .logo-box {
+            background: #ffffff !important;
+            border: 2px solid #1e293b !important;
+        }
+        .logo-box img {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            object-fit: contain !important;
+            display: block !important;
         }
 
         body.light-theme .logo-box {
@@ -764,7 +738,7 @@
         }
         .logo-schoellershammer-sub {
             font-size: 8px;
-            color: var(--text-secondary, #64748b);
+            color: #64748b;
             margin-top: -1px;
         }
 
@@ -783,7 +757,7 @@
         .logo-tillmann-p {
             font-size: 7px;
             letter-spacing: 0.1em;
-            color: var(--text-secondary, #64748b);
+            color: #475569;
             text-transform: uppercase;
         }
         .logo-tillmann-t {
@@ -846,6 +820,7 @@
             border-radius: 6px;
             padding: 6px 10px;
             font-size: 13px;
+            outline: none;
             cursor: pointer;
             transition: all 0.2s ease;
         }
@@ -857,7 +832,7 @@
         .scorecard-backdrop {
             position: fixed;
             inset: 0;
-            background: var(--modal-backdrop);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(4px);
             z-index: 9999;
             display: flex;
@@ -867,7 +842,7 @@
         .scorecard-modal {
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
-            box-shadow: var(--modal-shadow);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
             border-radius: 12px;
             width: 90%;
             max-width: 750px;
@@ -1207,22 +1182,6 @@
             --item-hover: #e6e6e6;
         }
 
-
-        body.high-contrast .leaflet-bar a {
-            background-color: var(--bg-color) !important;
-            color: var(--text-primary) !important;
-            border: 2px solid var(--border-color) !important;
-        }
-        body.high-contrast .leaflet-bar a:hover {
-            background-color: var(--item-hover) !important;
-        }
-        body.high-contrast .leaflet-control-layers-toggle {
-            filter: brightness(0) invert(1) drop-shadow(0 0 2px var(--border-color)) !important;
-        }
-        body.light-theme.high-contrast .leaflet-control-layers-toggle {
-            filter: brightness(0) drop-shadow(0 0 2px var(--border-color)) !important;
-        }
-
         body.high-contrast .contact-name span:first-child,
         body.high-contrast .popup-title,
         body.high-contrast .sidebar-header h1,
@@ -1350,7 +1309,7 @@
         .feedback-badge.offen { background-color: #fee2e2; color: #991b1b; }
         .feedback-badge.in-pruefung { background-color: #dbeafe; color: #1e40af; }
         .feedback-badge.behoben { background-color: #dcfce3; color: #166534; }
-        .feedback-badge.abgelehnt { background-color: #f1f5f9; color: var(--text-secondary, #64748b); }
+        .feedback-badge.abgelehnt { background-color: #f1f5f9; color: #475569; }
 
         .feedback-item {
             padding: 8px;
@@ -1362,7 +1321,7 @@
         }
         .feedback-title {
             font-weight: 500;
-            color: var(--text-primary);
+            color: var(--text-primary, #0f172a);
             margin-bottom: 4px;
             white-space: nowrap;
             overflow: hidden;
@@ -1388,7 +1347,7 @@
             position: fixed;
             inset: 0;
             z-index: 10001;
-            background: var(--modal-backdrop);
+            background: rgba(0, 0, 0, 0.6);
             display: none;
             justify-content: center;
             align-items: center;
@@ -1401,7 +1360,7 @@
             max-width: 800px;
             width: 90%;
             color: var(--text-primary);
-            box-shadow: var(--modal-shadow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             text-align: center;
         }
         .onboarding-role-grid {
@@ -1509,7 +1468,7 @@
             background: rgba(0, 0, 0, 0.04);
         }
         body.light-theme .update-radar-close {
-            color: var(--text-secondary, #64748b);
+            color: #64748b;
         }
         body.light-theme .update-radar-close:hover {
             color: #0f172a;
@@ -1617,40 +1576,20 @@
                 /* display: none !important; */
             }
         }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
+    
+        /* Desaturated / subtle OpenStreetMap basemap to ensure high prominence for actor points and logos */
+        .leaflet-tile-pane {
+            filter: saturate(0.35) brightness(1.03) contrast(1.02);
         }
+
     </style>
 
-    <!-- Tile CDN Preconnects -->
-    <link rel="preconnect" href="https://basemaps.cartocdn.com" crossorigin>
-    <link rel="dns-prefetch" href="https://basemaps.cartocdn.com">
-    <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
-    <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
-    <link rel="preconnect" href="https://sgx.geodatenzentrum.de" crossorigin>
-    <link rel="dns-prefetch" href="https://sgx.geodatenzentrum.de">
-    <link rel="preconnect" href="https://www.wms.nrw.de" crossorigin>
-    <link rel="dns-prefetch" href="https://www.wms.nrw.de">
-    <link rel="preconnect" href="https://starkregen-euskirchen-v11.cismet.de" crossorigin>
-    <link rel="dns-prefetch" href="https://starkregen-euskirchen-v11.cismet.de">
-    <link rel="manifest" href="manifest.json">
 </head>
 <body class="light-theme">
     <div id="app-container">
-        <!-- A11y Live Region for Filters -->
-        <div id="filter-live-region" class="sr-only" aria-live="polite"></div>
 
         <!-- Mobile Sidebar Toggle -->
-        <button id="mobile-sidebar-toggle" aria-label="Filter und Daten ein/ausblenden">
+        <button id="mobile-sidebar-toggle">
             <span class="icon" style="font-size:16px;">☰</span>
             <span class="text">Filter & Daten</span>
         </button>
@@ -1664,22 +1603,14 @@
                     <p>Volle Daten, direkt bearbeitbar</p>
                 </div>
                 <div style="display: flex; gap: 6px; align-items: center;">
-                    <button id="langToggleBtn" class="filter-btn" style="padding: 6px 10px; font-weight: 700; font-size: 13px;" title="Sprache wechseln / Switch Language" aria-label="Language Switcher" data-i18n-title-key="app.lang_title" data-i18n-aria-key="app.lang_aria" onclick="window.AquaI18n.toggleLanguage()">EN</button>
-                    <button id="audioToggleBtn" class="filter-btn" style="padding: 6px 10px; font-size: 13px;" title="Ton an/aus" aria-label="Audio Switcher" onclick="window.AquaAudio.toggleAudio()">🔇 Ton aus</button>
                     <button id="laien-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Laien-Modus: Fachbegriffe erklären" aria-label="Laien-Modus umschalten">
                         ℹ️
                     </button>
                     <button id="presentation-mode-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Präsentationsmodus starten (Beamer)" aria-label="Präsentationsmodus starten">
                         🎥
                     </button>
-                    <button id="contrast-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Hochkontrastmodus umschalten" aria-label="Hochkontrastmodus umschalten" aria-pressed="false">
-                        ◐
-                    </button>
                     <button id="replay-tour-btn" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Tour erneut starten" aria-label="Einführungstour erneut starten" onclick="showRoleModal()">🎓</button>
-                    <button id="theme-toggle" class="filter-btn" style="padding: 8px; border-radius: 50%; font-size: 16px; min-width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: center;" title="Farbschema wechseln" aria-label="Farbschema umschalten">
-                        🌙
-                    </button>
-                </div>
+                    </div>
             </div>
             
             <div class="sidebar-content">
@@ -1793,11 +1724,6 @@
                             <span class="filter-label"><span data-i18n-key="layer_gwm">Grundwassermessstellen</span><span class="glossar-icon" data-glossar="GRUNDWASSERMESSSTELLE">i</span></span>
                             <span class="counter-badge" id="cnt-layer-grundwassermessstellen">(0/0)</span>
                         </button>
-                        <button class="filter-btn" data-layer-name="🌊 Grundwassergleichenplan (Isolinien)" title="Interpolierter Grundwasserstand als Flächenkarte (IDW/Kriging auf ELWAS-Messstellen)">
-                            <span class="swatch" style="background: linear-gradient(90deg, #56B4E9, #0072B2); width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 5px;"></span>
-                            <span class="filter-label">Grundwassergleichen</span>
-                            <span class="counter-badge" id="cnt-layer-gwiso">(0/0)</span>
-                        </button>
                         <button class="filter-btn" data-layer-name="📈 Grundwasserwiederanstieg (Modell)" title="Interpolierte Konturen des erwarteten Grundwasserwiederanstiegs">
                             <span class="filter-label"><span data-i18n-key="layer_gwwa">Grundwasserwiederanstieg</span><span class="glossar-icon" data-glossar="GRUNDWASSERWIEDERANSTIEG">i</span></span>
                             <span class="counter-badge" id="cnt-layer-gwwa">(0/0)</span>
@@ -1809,6 +1735,11 @@
                             <span class="swatch" style="background-color: #009E73;"></span>
                             <span class="filter-label"><span data-i18n-key="layer_pegel">Flusspegel</span><span class="glossar-icon" data-glossar="PEGEL">i</span></span>
                             <span class="counter-badge" id="cnt-layer-pegel">(0/0)</span>
+                        </button>
+                        <button class="filter-btn" data-layer-name="💧 Gewässergüte (WRRL, Chemie/Ökologie)" title="Chemischer & ökologischer Zustand nach EU-Wasserrahmenrichtlinie (WRRL)">
+                            <span class="swatch" style="background-color: #0072B2;"></span>
+                            <span class="filter-label">Gewässergüte (WRRL)</span>
+                            <span class="counter-badge" id="cnt-layer-gewaesserguete">(0/0)</span>
                         </button>
                         <button class="filter-btn active" data-layer-name="⛰️ Stauanlagen (ELWAS)" title="Talsperren, Wehre und Rückhaltebecken (ELWAS)">
                             <span class="swatch" style="background-color: #D55E00;"></span>
@@ -1831,15 +1762,10 @@
                             <span class="filter-label"><span data-i18n-key="layer_h2">H2-Industrie (NRW)</span></span>
                             <span class="counter-badge" id="cnt-layer-h2_elektrolyseure_nrw">(0/0)</span>
                         </button>
-                        <button class="filter-btn" data-layer-name="🔭 Vogelbeobachtungs-Gebiete" title="Sichtungen geschützter Wasservögel (eBird)">
-                            <span class="swatch" style="background-color: #8B5CF6;"></span>
-                            <span class="filter-label">Vogelbeobachtungs-Gebiete</span>
-                            <span class="counter-badge" id="cnt-layer-vogelbeobachtungsgebiete">(0/0)</span>
-                        </button>
                         <button class="filter-btn" data-layer-name="🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)" title="Aggregierte Einleitungsstatistik pro Teileinzugsgebiet (Choroplethenkarte)">
                             <span class="swatch" style="background-color: #991b1b;"></span>
                             <span class="filter-label">Einzugsgebiet-Statistik<span class="glossar-icon" data-glossar="EINZUGSGEBIET">i</span></span>
-                            <span class="counter-badge" id="cnt-layer-stats">(0/0)</span>
+                            <span class="counter-badge" id="cnt-layer-stats" style="display:none;"></span>
                         </button>
                         <button class="filter-btn" data-layer-name="📊 Kreis-Vergleich (Choroplethenkarte)" title="Vergleich der 7 Kreise nach wählbarer Kennzahl inkl. Bevölkerungsbezug">
                             <span class="swatch" style="background-color: #0072B2; border: 1.2px solid #ffffff;"></span>
@@ -1859,12 +1785,12 @@
                         <button class="filter-btn active" data-layer-name="Rur Einzugsgebiet (Hydrologisch)" title="Hydrologisches Einzugsgebiet der Rur">
                             <span class="swatch" style="background-color: #3b82f6;"></span>
                             <span class="filter-label">Rur Einzugsgebiet</span>
-                            <span class="counter-badge" id="cnt-layer-catchment">(0/0)</span>
+                            <span class="counter-badge" id="cnt-layer-catchment" style="display:none;"></span>
                         </button>
                         <button class="filter-btn" data-layer-name="Wasserschutzgebiete (LANUV)" title="Offizielle Wasserschutzgebiete in NRW (LANUV WMS)">
                             <span class="swatch" style="background-color: #F0E442;"></span>
                             <span class="filter-label">Wasserschutzgebiete<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span></span>
-                            <span class="counter-badge" id="cnt-layer-wsg">(0/0)</span>
+                            <span class="counter-badge" id="cnt-layer-wsg" style="display:none;"></span>
                         </button>
                         <button class="filter-btn" data-layer-name="Wassergewinnungsgebiete (Zone I)" title="Fassungsbereich (Zone I) von Trinkwasserschutzgebieten">
                             <span class="swatch" style="background-color: #005A9C;"></span>
@@ -1874,22 +1800,22 @@
                         <button class="filter-btn" data-layer-name="Tagebaue & Bergbaufelder (GD)" title="Tagebaue und Bergbaufelder in der Region (GD WMS)">
                             <span class="swatch" style="background-color: #92400e;"></span>
                             <span class="filter-label">Tagebaue & Bergbau</span>
-                            <span class="counter-badge" id="cnt-layer-mining">(0/0)</span>
+                            <span class="counter-badge" id="cnt-layer-mining" style="display:none;"></span>
                         </button>
                         <button class="filter-btn active" data-layer-name="Eigene Gewässer mit Namen" title="Haupterweiterung der Gewässerläufe mit Namenstags">
                             <span class="swatch" style="background-color: #0072B2;"></span>
                             <span class="filter-label">Gewässernetz (Namen)</span>
-                            <span class="counter-badge" id="cnt-layer-rivers">(0/0)</span>
+                            <span class="counter-badge" id="cnt-layer-rivers" style="display:none;"></span>
                         </button>
                         <button class="filter-btn active" data-layer-name="Landkreisgrenzen (Rheinisches Revier)" title="Grenzen des Rheinischen Reviers (Strukturwandel-Region)">
                             <span class="swatch" style="background-color: #000000; border: 1.2px dashed #ffffff;"></span>
                             <span class="filter-label">Revier-Grenze</span>
-                            <span class="counter-badge" id="cnt-layer-boundary">(0/0)</span>
+                            <span class="counter-badge" id="cnt-layer-boundary" style="display:none;"></span>
                         </button>
                         <button class="filter-btn active" data-layer-name="Kreisgrenzen (Schwarz gestrichelt)" title="Grenzen der 7 Kreise und kreisfreien Städte im Untersuchungsgebiet">
-                            <span class="swatch" style="background-color: var(--text-secondary, #64748b); border: 1.2px dashed #ffffff;"></span>
+                            <span class="swatch" style="background-color: #475569; border: 1.2px dashed #ffffff;"></span>
                             <span class="filter-label">Kreisgrenzen</span>
-                            <span class="counter-badge" id="cnt-layer-kreise">(0/0)</span>
+                            <span class="counter-badge" id="cnt-layer-kreise" style="display:none;"></span>
                         </button>
                     </div>
                 </div>
@@ -1928,7 +1854,7 @@
                                 ❌ Reset
                             </button>
                         </div>
-                        <div id="radius-status-info" style="font-size: 10.5px; color: var(--text-secondary, #64748b); background: #f8fafc; padding: 6px 8px; border-radius: 4px; border: 1px dashed #cbd5e1; text-align: center;">
+                        <div id="radius-status-info" style="font-size: 10.5px; color: #475569; background: #f8fafc; padding: 6px 8px; border-radius: 4px; border: 1px dashed #cbd5e1; text-align: center;">
                             Klicke auf "📍 Punkt wählen" &amp; danach auf die Karte.
                         </div>
                         <div id="radius-results-container" style="display: none; margin-top: 8px; max-height: 250px; overflow-y: auto; font-size: 11px;">
@@ -1946,7 +1872,7 @@
                         <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: 8px;">
                             Wähle eine Gemeinde aus, um alle lokalen Akteure &amp; Wasser-Objekte auszuwerten:
                         </div>
-                        <select class="form-select form-select-sm gemeinde-dossier-select" style="font-size: 11px; padding: 4px 6px; border-radius: 4px; width: 100%; margin-bottom: 8px;" onchange="if(this.value) openGemeindeDossier(this.value)">
+                        <select class="form-select form-select-sm gemeinde-dossier-select" aria-label="Gemeinde für Dossier auswählen" style="font-size: 11px; padding: 4px 6px; border-radius: 4px; width: 100%; margin-bottom: 8px;" onchange="if(this.value) openGemeindeDossier(this.value)">
                             <option value="">-- Gemeinde wählen --</option>
                         </select>
                     </div>
@@ -1962,8 +1888,8 @@
                             <span style="font-size: 11px; color: var(--text-secondary, #64748b);">Jahr:</span>
                             <span id="timeseries-year-display" style="font-size: 16px; font-weight: 700; color: #2563eb;">2025</span>
                         </div>
-                        <input type="range" id="timeseries-slider" min="0" max="6" step="1" value="5" style="width: 100%; margin-bottom: 8px; cursor: pointer;" oninput="setTimeSeriesYearIndex(parseInt(this.value, 10))">
-                        <div style="display: flex; justify-content: space-between; font-size: 9.5px; color: var(--text-secondary, #64748b); margin-bottom: 8px;">
+                        <input type="range" id="timeseries-slider" aria-label="Grundwasser-Zeitserie Jahr auswählen" min="0" max="6" step="1" value="5" style="width: 100%; margin-bottom: 8px; cursor: pointer;" oninput="setTimeSeriesYearIndex(parseInt(this.value, 10))">
+                        <div style="display: flex; justify-content: space-between; font-size: 9.5px; color: #64748b; margin-bottom: 8px;">
                             <span>2000</span>
                             <span>2010</span>
                             <span>2020</span>
@@ -2004,8 +1930,7 @@
                         <div style="display: flex; gap: 4px; margin-top: 8px;">
                             <button type="button" class="btn btn-sm btn-outline-dark" style="flex:1; font-size: 10px;" onclick="openAiAssistantModal()">🤖 KI-Assistent</button>
                             <button type="button" class="btn btn-sm btn-outline-dark" style="flex:1; font-size: 10px;" onclick="openWrrlQualityModal()">🐟 WRRL-Güte</button>
-                            <button id="btn-toggle-theme" type="button" class="btn btn-sm btn-outline-dark" style="flex:1; font-size: 10px;" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-                        </div>
+                            </div>
                     </div>
                 </div>
 
@@ -2084,6 +2009,14 @@
                             </div>
                         </div>
                         <div class="form-row" style="margin-bottom:6px;">
+                            <label style="font-size:10px;">Adresse</label>
+                            <input type="text" id="contact-address" placeholder="Straße, PLZ Ort" style="width:100%; box-sizing:border-box;">
+                        </div>
+                        <div class="form-row" style="margin-bottom:6px;">
+                            <label style="font-size:10px;">Ansprechpartner</label>
+                            <input type="text" id="contact-person" placeholder="Vorname Nachname" style="width:100%; box-sizing:border-box;">
+                        </div>
+                        <div class="form-row" style="margin-bottom:6px;">
                             <label style="font-size:10px;">Beschreibung</label>
                             <textarea id="contact-desc" rows="2" style="width:100%; box-sizing:border-box;"></textarea>
                         </div>
@@ -2106,8 +2039,15 @@
                     <button class="filter-btn active" id="btn-new-contact" style="width:100%; justify-content:center; margin-bottom:6px;">➕ Neuer Akteur</button>
                     <button class="filter-btn" id="btn-export-geojson" style="width:100%; justify-content:center; margin-bottom:6px;">💾 Als .geojson exportieren</button>
                     <button class="filter-btn" id="btn-export-csv" style="width:100%; justify-content:center; margin-bottom:6px;">📄 Als .csv exportieren</button>
+                    <button class="filter-btn" id="export-csv-btn" style="display:none;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('csv')"></button>
+                    <button class="filter-btn" id="export-pdf-btn" style="display:none;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()"></button>
+                    <button class="filter-btn" id="open-data-export-btn" style="display:none;" onclick="if(window.exportActiveLayersData) window.exportActiveLayersData('geojson')"></button>
+                    <button class="filter-btn" id="embed-open-btn" style="display:none;" onclick="if(typeof openEmbedModal==='function') openEmbedModal()"></button>
+                    <button class="filter-btn" id="generate-report-btn" style="display:none;" onclick="if(document.getElementById('btn-generate-report')) document.getElementById('btn-generate-report').click()"></button>
+                    <button class="filter-btn" id="generate-sprechzettel-btn" style="width:100%; justify-content:center; margin-bottom:6px;">🗣️ Sprechzettel generieren</button>
+                    <button class="filter-btn" id="generate-beschlussvorlage-btn" style="width:100%; justify-content:center; margin-bottom:6px;">📋 Beschlussvorlage generieren</button>
                     <button class="filter-btn" id="btn-save-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #059669; border-color: #059669; color: white;">💾 Auf Server speichern</button>
-                    <button class="filter-btn" id="btn-deploy-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #2563eb; border-color: #2563eb; color: white;">🚀 Karte veröffentlichen (Deploy)</button>
+                    <button class="filter-btn" id="btn-deploy-server" style="width:100%; justify-content:center; margin-bottom:6px; background: #2563eb; border-color: #2563eb; color: white;">📋 Veröffentlichung vorbereiten</button>
                     <button class="filter-btn active" id="btn-generate-report" style="width:100%; justify-content:center; margin-bottom:6px; background: #6366f1; border-color: #6366f1; color: white; font-weight: 600;">📊 Bericht generieren (PDF)</button>
                     <button class="filter-btn" id="btn-reset-local" style="width:100%; justify-content:center; font-size:10px; color:#ef4444; margin-bottom:6px;">↺ Lokale Änderungen verwerfen</button>
                     <div id="save-status" style="font-size:10px; color: var(--text-secondary); margin-top:6px; min-height:14px;"></div>
@@ -2319,7 +2259,7 @@
                         </div>
                     </div>
                     <div id="hazard-layer-group">
-                        <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-bottom: 8px; font-weight: 500;">Fluvial (LANUV)</div>
+                        <div style="font-size: 11px; color: #64748b; margin-bottom: 8px; font-weight: 500;">Fluvial (LANUV)</div>
                         <div class="filter-group">
                             <button class="filter-btn" data-layer-name="HQ häufig (LANUV)" title="LANUV Hochwassergefahrenkarte">
                                 <span class="swatch" style="background: #fde047;"></span>
@@ -2334,7 +2274,7 @@
                                 <span>HQ extrem (LANUV)</span>
                             </button>
                         </div>
-                        <div style="font-size: 11px; color: var(--text-secondary, #64748b); margin-top: 12px; margin-bottom: 8px; font-weight: 500;">Pluvial (Kommunen)</div>
+                        <div style="font-size: 11px; color: #64748b; margin-top: 12px; margin-bottom: 8px; font-weight: 500;">Pluvial (Kommunen)</div>
                         <div class="filter-group">
                             <button class="filter-btn" data-layer-name="Starkregen Euskirchen" title="Starkregengefahrenkarte Kreis Euskirchen">
                                 <span class="swatch" style="background: #7c3aed;"></span>
@@ -2384,27 +2324,11 @@
                         <div class="contacts-meta" id="contacts-count" aria-live="polite" style="margin-bottom: 0;">0 von 0 Kontakten angezeigt</div>
                         <button id="reset-filters-btn" class="filter-btn" data-i18n-key="reset_filters" style="padding: 4px 8px; font-size: 10px;">Filter zurücksetzen</button>
                     </div>
-                    <button id="share-view-btn" class="filter-btn" data-i18n-key="share_view" style="width: 100%; margin-bottom: 12px; font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
+                    <button id="share-view-btn" class="filter-btn" style="width: 100%; margin-bottom: 12px; font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
                     <div class="contact-list" id="contact-list-container">
                         <!-- Filled by JS -->
                     </div>
                 </div>
-
-                <!-- Export Section -->
-                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
-                    <div style="display: flex; gap: 8px;">
-                        <button id="export-csv-btn" class="filter-btn" style="flex: 1; justify-content: center;">📄 CSV Export</button>
-                        <button id="export-pdf-btn" class="filter-btn" style="flex: 1; justify-content: center;">📑 PDF Export</button>
-                    </div>
-                    <div style="display: flex; gap: 8px;">
-                        <button id="embed-open-btn" class="filter-btn" style="flex: 1; justify-content: center;">🔗 Karte einbetten</button>
-                        <button id="open-data-export-btn" class="filter-btn" data-i18n-key="open_data_export" style="flex: 1; justify-content: center;" onclick="window.exportActiveLayersData('geojson')" title="Exportiert alle aktiven Karten-Layer als Open-Data GeoJSON">💾 Geodaten-Export</button>
-                    </div>
-                    <button id="generate-report-btn" class="filter-btn active" data-i18n-key="generate_report" style="justify-content: center; background: #6366f1; border-color: #6366f1; font-weight: 600; color: white;">📊 Bericht generieren (PDF)</button>
-                    <button id="generate-sprechzettel-btn" class="filter-btn" style="justify-content: center;">🗣️ Sprechzettel generieren</button>
-                    <button id="generate-beschlussvorlage-btn" class="filter-btn" style="justify-content: center;">📋 Beschlussvorlage generieren</button>
-                </div>
-
             </div>
             <div class="sidebar-footer">
                 <a href="impressum.html">Impressum</a>
@@ -2415,49 +2339,6 @@
 
         <!-- Map -->
         <div id="map"></div>
-        <div id="embed-mini-legend" class="embed-mini-legend">
-            <a id="embed-back-link" class="embed-back-link" target="_blank" rel="noopener noreferrer">↗ Vollständige Karte ansehen</a>
-            <div id="embed-mini-legend-items"></div>
-        </div>
-
-        <!-- Embed Modal -->
-        <div id="embed-modal">
-            <div class="embed-modal-content">
-                <div class="embed-modal-header">
-                    <h2>🔗 Karte einbetten</h2>
-                    <button class="embed-modal-close" id="embed-close-btn" aria-label="Schließen">&times;</button>
-                </div>
-
-                <div class="embed-info-text">
-                    Für WordPress & andere oEmbed-fähige CMS reicht es, den reinen Link <strong>https://adb-aquarevier-secure.surge.sh/</strong> in einen eigenen Absatz/Block einzufügen — die Vorschau erscheint dann automatisch.
-                </div>
-
-                <div class="embed-controls">
-                    <label>
-                        <input type="radio" name="embed-width-type" value="responsive" checked> Responsive (100%)
-                    </label>
-                    <label>
-                        <input type="radio" name="embed-width-type" value="fixed"> Feste Breite
-                        <input type="number" id="embed-width-px" value="800" disabled> px
-                    </label>
-                    <span style="border-left: 1px solid var(--border-color); height: 20px;"></span>
-                    <label>
-                        Höhe:
-                        <input type="number" id="embed-height" value="600"> px
-                    </label>
-                </div>
-
-                <textarea id="embed-snippet-output" readonly></textarea>
-
-                <button id="embed-copy-btn" class="filter-btn active" style="width: fit-content; background: #10b981; border-color: #10b981; font-weight: 600; color: white;">📋 Code kopieren</button>
-
-                <div style="font-size: 14px; font-weight: 600; color: var(--text-primary); margin-top: 8px;">Live-Vorschau</div>
-                <div class="embed-preview-container">
-                    <iframe id="embed-preview-iframe" src="" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
-
         <div id="pegel-analysis-panel" class="hidden"></div>
 
         <div id="presentation-bar">
@@ -2482,12 +2363,9 @@
     <link rel="stylesheet" href="vendor/tippy/tippy.css"/>
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/tippy/tippy-bundle.umd.min.js"></script>
-    <script src="js/modules/storage.js"></script>
     <script src="glossar.js"></script>
-    <script src="js/modules/wms_loader.js"></script>
     <script src="js/layers-config.js"></script>
     <script src="js/layers-loader.js"></script>
-    <script src="js/groundwater_contours.js"></script>
     <script src="js/pegel-analysis.js"></script>
     <script src="js/radius-analysis.js"></script>
     <script src="js/gemeinde-steckbrief.js"></script>
@@ -2496,8 +2374,9 @@
     <script src="js/qr-sharing.js"></script>
     <script src="js/bookmarks-manager.js"></script>
     <script src="js/pwa-offline.js"></script>
-    <script src="js/theme-darkmode.js"></script>
-    <script src="js/ai-assistant.js"></script>
+    
+    <script src="js/aquarevier-assistant-v3.js?v=v3"></script>
+    <script src="js/ai-assistant.js?v=v3"></script>
     <script src="js/water-quality.js"></script>
     <script src="js/keyboard-shortcuts.js"></script>
 
@@ -2612,26 +2491,61 @@
         });
 
         // 3. Base Map: TopPlusOpen (Offizielle Deutschlandkarte BKG / Geodatenzentrum)
-        const baseWebAtlas = window.WMSLoader.createBaseWebAtlas();
+        const baseWebAtlas = L.tileLayer.wms("https://sgx.geodatenzentrum.de/wms_topplus_open", {
+            layers: 'web',
+            format: 'image/png',
+            transparent: false,
+            attribution: "&copy; BKG / Geodatenzentrum"
+        });
 
         // 4. Overlays: NRW Administrative Boundaries (Landkreisgrenzen & Landesgrenze)
-        const wmsBorders = window.WMSLoader.createWmsBorders();
+        const wmsBorders = L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_dvg", {
+            layers: 'nw_dvg_la,nw_dvg_k', // Landesgrenze (la) und Kreisgrenzen (k)
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.6,
+            attribution: "Geobasis NRW"
+        });
         // Standardmäßig aus: die eigenen Vektor-Kreisgrenzen (kreiseLayer, schwarz gestrichelt,
         // s.u.) übernehmen das schon farblich kontrollierbar; dieses WMS-Raster liefert nur
         // das feste graue NRW-Rendering und lässt sich nicht umfärben.
 
         // 5. Overlays: NRW Rivers and Lakes (Gewässernetz)
-        const wmsRivers = window.WMSLoader.createWmsRivers(); // Disabled by default
+        const wmsRivers = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
+            layers: 'gsk3e_hauptgewaesser_seen,gsk3e_hauptgewaesser_linien',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.8,
+            attribution: "LANUV NRW"
+        }); // Disabled by default
 
         // 5b. Overlays: Detailed Rivers (LANUV WMS showing minor/piped streams)
-        const wmsDetailedRivers = window.WMSLoader.createWmsDetailedRivers(); // Disabled by default
+        const wmsDetailedRivers = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
+            layers: '2,3,4,5,6,8,9,10',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.8,
+            attribution: "LANUV NRW"
+        }); // Disabled by default
 
         // 5c. Overlays: Hydrological Catchments (LANUV WMS showing exact watersheds)
-        const wmsCatchments = window.WMSLoader.createWmsCatchments(); // Disabled by default
+        const wmsCatchments = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/gsk3e", {
+            layers: '0,11',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.4,
+            attribution: "LANUV NRW"
+        }); // Disabled by default
 
         // 6. Overlays: Tagebaue / Bergbauberechtigungen Gewinnung (GD NRW)
         // Scope changed from 'nur aktive Berechtigungen' (nw_bergbauberechtigungen_gewinnend) to 'alle Berechtigungen' (19) as the new WMS service no longer provides this subdivision.
-        const wmsMining = window.WMSLoader.createWmsMining();
+        const wmsMining = L.tileLayer.wms("https://www.wms.nrw.de/wms/bebu", {
+            layers: '19',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.5,
+            attribution: "GD NRW"
+        });
 
         // 7. Overlays: Wasserschutzgebiete gesamt (LANUV NRW) - Local GeoJSON with styling
         const wsgLayer = L.layerGroup();
@@ -2713,7 +2627,7 @@
                                     <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'}</div>
                                     <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
                                     <div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.wsg_name || 'Unbekannt').replace(/'/g, "\\'")}', 'Wasserschutzgebiete', '${p.id || p.wsg_name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>
-                                    <div style="font-size: 10px; color: var(--text-secondary, #64748b); margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
+                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
                                 </div>
                             `;
                             layer.bindPopup(html);
@@ -2746,7 +2660,7 @@
                                     <div class="popup-title">${p.wsg_name || 'Unbekannt'}</div>
                                     <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'} (Fassungsbereich)</div>
                                     <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
-                                    <div style="font-size: 10px; color: var(--text-secondary, #64748b); margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
+                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
                                 </div>
                             `;
                             layer.bindPopup(html);
@@ -2764,7 +2678,6 @@
             if (e.layer === wsgLayer) loadWsgLayer();
             if (e.layer === wsgGewinnungLayer) loadWsgLayer();
             if (e.layer === gwwaLayer) loadGwwaLayer();
-            if (e.layer === gwIsoLayer) loadGwIsoLayer();
         });
 
 
@@ -2774,14 +2687,38 @@
         // hw = Hohe Wahrscheinlichkeit (HQ häufig)
         // mw = Mittlere Wahrscheinlichkeit (HQ100)
         // nw = Niedrige Wahrscheinlichkeit (HQ extrem)
-        const wmsHwgkHaeufig = window.WMSLoader.createWmsHwgkHaeufig();
+        const wmsHwgkHaeufig = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
+            layers: 'Tiefen_Ueberflutungsgebiet_hw',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.6,
+            attribution: "LANUV NRW"
+        });
 
-        const wmsHwgkHq100 = window.WMSLoader.createWmsHwgkHq100();
+        const wmsHwgkHq100 = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
+            layers: 'Tiefen_Ueberflutungsgebiet_mw',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.6,
+            attribution: "LANUV NRW"
+        });
 
-        const wmsHwgkExtrem = window.WMSLoader.createWmsHwgkExtrem();
+        const wmsHwgkExtrem = L.tileLayer.wms("https://www.wms.nrw.de/umwelt/HW_Gefahrenkarte", {
+            layers: 'Tiefen_Ueberflutungsgebiet_nw',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.6,
+            attribution: "LANUV NRW"
+        });
 
         // 8b. Kommunale Starkregengefahrenkarten (Pluvial)
-        const wmsStarkregenEuskirchen = window.WMSLoader.createWmsStarkregenEuskirchen();
+        const wmsStarkregenEuskirchen = L.tileLayer.wms("https://starkregen-euskirchen-v11.cismet.de/geoserver/wms", {
+            layers: 'starkregen:L_T100_v1.1_depth3857',
+            format: 'image/png',
+            transparent: true,
+            opacity: 0.6,
+            attribution: "Kreis Euskirchen / cismet GmbH"
+        });
 
         // 9. Custom Boundary: Untersuchungsgebiet (Landkreise als Hintergrund)
         let leafletUG = null;
@@ -3250,7 +3187,7 @@
                     }
                     html += getZustaendigkeitHtml(p);
                     html += `
-                            <div style="font-size: 10px; color: var(--text-secondary, #64748b); margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Stand: Datenlizenz Deutschland - Namensnennung 2.0</div>
+                            <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Stand: Datenlizenz Deutschland - Namensnennung 2.0</div>
                         </div>
                     `;
                     layer.bindPopup(html);
@@ -3276,6 +3213,43 @@
             })
             .catch(err => console.log("elwas_einleiter layer not loaded:", err));
 
+        document.querySelectorAll('.filter-btn[data-risk]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const riskVal = btn.getAttribute('data-risk');
+                const allRisks = Object.keys(elwasRiskColors);
+                if (riskVal === 'all') {
+                    const isAnyInactive = elwasActiveRisks.size < allRisks.length;
+                    document.querySelectorAll('.filter-btn[data-risk]').forEach(b => {
+                        const bb = b.getAttribute('data-risk');
+                        if (bb === 'all') return;
+                        if (isAnyInactive) {
+                            b.classList.add('active'); b.setAttribute('aria-pressed', 'true');
+                            elwasActiveRisks.add(bb);
+                        } else {
+                            b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
+                            elwasActiveRisks.delete(bb);
+                        }
+                    });
+                } else {
+                    if (elwasActiveRisks.has(riskVal)) {
+                        elwasActiveRisks.delete(riskVal);
+                        btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false');
+                    } else {
+                        elwasActiveRisks.add(riskVal);
+                        btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
+                    }
+                }
+                const allBtn = document.querySelector('.filter-btn[data-risk="all"]');
+                if (allBtn) {
+                    if (elwasActiveRisks.size === allRisks.length) {
+                        allBtn.classList.add('active'); allBtn.setAttribute('aria-pressed', 'true');
+                    } else {
+                        allBtn.classList.remove('active'); allBtn.setAttribute('aria-pressed', 'false');
+                    }
+                }
+                renderElwasLayer();
+            });
+        });
 
 
         // Einzugsgebiet-Statistik: Spatial Join (Point-in-Polygon) zwischen
@@ -3330,7 +3304,7 @@
                                     : '');
                             html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(title || '').replace(/'/g, "\\'")}', 'Einzugsgebiet-Statistik', '${p.id || title || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
                             html += `
-                                    <div style="font-size: 10px; color: var(--text-secondary, #64748b); margin-top: 6px;">Spatial Join: ELWAS-WEB Industrieeinleiter × LANUV Teileinzugsgebiete (Rur)</div>
+                                    <div style="font-size: 10px; color: #475569; margin-top: 6px;">Spatial Join: ELWAS-WEB Industrieeinleiter × LANUV Teileinzugsgebiete (Rur)</div>
                                 </div>
                             `;
                             layer.bindPopup(html);
@@ -3354,7 +3328,7 @@
         });
 
 
-        const contrastToggle = document.getElementById('contrast-toggle');
+        
         let highContrast = localStorage.getItem('aquarevier-high-contrast') === 'true';
         function applyContrastMode() {
             document.body.classList.toggle('high-contrast', highContrast);
@@ -3557,9 +3531,7 @@
 
         // Map layer controller
         const baseMaps = {
-            "Dunkles Design (Standard)": baseDark,
-            "OpenStreetMap": baseOsm,
-            "WebAtlasDE NRW (Offiziell)": baseWebAtlas
+            "OpenStreetMap (Standard)": baseOsm
         };
 
         const overlayMaps = {
@@ -3584,7 +3556,6 @@
             "Tagebaue & Bergbaufelder (GD)": wmsMining,
             "Wasserschutzgebiete (LANUV)": wsgLayer,
             "Wassergewinnungsgebiete (Zone I)": wsgGewinnungLayer,
-            "🌊 Grundwassergleichenplan (Isolinien)": gwIsoLayer,
             "📈 Grundwasserwiederanstieg (Modell)": gwwaLayer,
             "🏭 Industrieeinleiter (ELWAS)": elwasLayer,
             "🧮 Einzugsgebiet-Statistik (Betriebe & Abwasser)": catchmentStatsLayer,
@@ -3596,6 +3567,9 @@
         // addGeoLayer() fügt jeden Layer selbst in overlayMaps ein.
         // ---------------------------------------------------------------
         window.LAYER_CONFIGS.forEach(cfg => addGeoLayer(cfg, map, overlayMaps, layerDataStore));
+        // Shared UI modules (assistant, search, mascot) run outside this
+        // inline script and need the canonical Leaflet layer registry.
+        window.overlayMaps = overlayMaps;
 
         const layerControl = L.control.layers(baseMaps, {}, { position: 'topright' }).addTo(map);
 
@@ -3911,7 +3885,7 @@
                 div.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <strong style="color: var(--accent-primary)">${w.name}</strong>
-                        <button onclick="removeCustomWMS('${w.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer;" title="Löschen" aria-label="Löschen">🗑️</button>
+                        <button onclick="removeCustomWMS('${w.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer;" title="Löschen">🗑️</button>
                     </div>
                     <div style="color: var(--text-secondary); word-break: break-all;">${w.layers}</div>
                     <div style="display: flex; align-items: center; gap: 4px;">
@@ -4061,7 +4035,12 @@
                     geojsonData = JSON.parse(localRaw);
                     document.getElementById('save-status').innerText = 'Lokale Änderungen geladen (nicht exportiert).';
                 } else {
-                    let res = await fetch('contacts.geojson');
+                    let res = await fetch('/api/contacts', { cache: 'no-store' });
+                    if (!res.ok) {
+                        // Local Python editor fallback. The Cloudflare release never
+                        // contains contacts.geojson in its public asset directory.
+                        res = await fetch('contacts.geojson', { cache: 'no-store' });
+                    }
                     if (res.ok) {
                         geojsonData = await res.json();
                     } else {
@@ -4241,6 +4220,8 @@
             document.getElementById('contact-group').value = 'Sonstige';
             document.getElementById('contact-lat').value = '';
             document.getElementById('contact-lng').value = '';
+            document.getElementById('contact-address').value = '';
+            document.getElementById('contact-person').value = '';
             document.getElementById('contact-desc').value = '';
             document.getElementById('contact-phone').value = '';
             document.getElementById('contact-email').value = '';
@@ -4259,6 +4240,8 @@
             document.getElementById('contact-group').value = props.group || 'Sonstige';
             document.getElementById('contact-lat').value = lat;
             document.getElementById('contact-lng').value = lng;
+            document.getElementById('contact-address').value = props.address || '';
+            document.getElementById('contact-person').value = props.contact_person || '';
             document.getElementById('contact-desc').value = props.description || '';
             document.getElementById('contact-phone').value = props.phone || '';
             document.getElementById('contact-email').value = props.email || '';
@@ -4310,6 +4293,8 @@
                 id: editingId || ('a' + geojsonData.features.length + '_' + Date.now().toString(36)),
                 name: name,
                 group: group,
+                address: document.getElementById('contact-address').value,
+                contact_person: document.getElementById('contact-person').value,
                 description: document.getElementById('contact-desc').value,
                 phone: document.getElementById('contact-phone').value,
                 email: document.getElementById('contact-email').value,
@@ -4369,7 +4354,16 @@
                 return;
             }
 
-            const headers = ['Name', 'Gruppe', 'Beschreibung', 'Telefon', 'E-Mail', 'Logo', 'Breitengrad', 'Längengrad', 'Lizenz', 'Exportdatum'];
+            // Extract all unique property keys from features dynamically
+            const propertyKeys = new Set();
+            features.forEach(feature => {
+                if (feature.properties) {
+                    Object.keys(feature.properties).forEach(key => propertyKeys.add(key));
+                }
+            });
+
+            const propArray = Array.from(propertyKeys);
+            const headers = [...propArray, 'Breitengrad', 'Längengrad', 'Lizenz', 'Exportdatum'];
             const csvRows = [headers.join(';')];
 
             const today = new Date().toISOString().split('T')[0];
@@ -4381,13 +4375,10 @@
                 const lat = geom && geom.coordinates ? geom.coordinates[1] : '';
                 const lng = geom && geom.coordinates ? geom.coordinates[0] : '';
 
+                const rowVals = propArray.map(key => props[key] !== undefined && props[key] !== null ? props[key] : '');
+
                 const row = [
-                    props.name || '',
-                    props.group || '',
-                    props.description || '',
-                    props.phone || '',
-                    props.email || '',
-                    props.logo || '',
+                    ...rowVals,
                     lat,
                     lng,
                     license,
@@ -4419,23 +4410,10 @@
 
         document.getElementById('btn-save-server').addEventListener('click', saveToServer);
 
-        document.getElementById('btn-deploy-server').addEventListener('click', async () => {
+        document.getElementById('btn-deploy-server').addEventListener('click', () => {
             const status = document.getElementById('save-status');
-            status.innerText = 'Veröffentlichung läuft (Surge Deploy)...';
-            try {
-                const response = await fetch('/api/deploy', { method: 'POST' });
-                const result = await response.json();
-                if (response.ok && result.status === 'success') {
-                    status.innerText = 'Erfolgreich veröffentlicht!';
-                    alert('Veröffentlichung abgeschlossen:\n' + (result.output || result.message));
-                } else {
-                    status.innerText = 'Veröffentlichung fehlgeschlagen!';
-                    alert('Fehler:\n' + (result.output || result.message || 'Unbekannter Fehler'));
-                }
-            } catch (err) {
-                console.error(err);
-                status.innerText = 'Verbindungsfehler bei Veröffentlichung.';
-            }
+            status.innerText = 'Freigabe erforderlich: Änderungen speichern, prüfen und über den Release-Workflow veröffentlichen.';
+            alert('Die Veröffentlichung erfolgt erst nach Review über den Release-Workflow. Der Editor führt keinen direkten Git-Push oder Deploy aus.');
         });
 
         // Generate Detailed Report containing map capture and table analysis (internal editor view)
@@ -4655,46 +4633,34 @@
 
         // Custom marker generator
         function createCustomMarker(lat, lng, color, name, group) {
-            const size = styleSettings.markerSize || 14;
-            const border = styleSettings.markerBorder !== undefined ? styleSettings.markerBorder : 2.0;
-            
+            const size = 9;
+            const border = 1.5;
+
             let html = '';
             if (group === 'Landwirtschaft') {
-                // Diamond (Raute) styled using CSS transform
                 html = `
                     <div style="
-                        width: ${size - 2}px;
-                        height: ${size - 2}px;
+                        width: ${size}px;
+                        height: ${size}px;
                         background-color: ${color};
                         border: ${border}px solid #ffffff;
                         transform: rotate(45deg);
-                        box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                        box-shadow: 0 1px 4px rgba(0,0,0,0.3);
                         margin: 2px;
                     "></div>
                 `;
             } else if (group === 'Forschung' || group === 'Netzwerk/ Multiplikator' || group === 'Ver-/ Entsorger') {
-                // Pentagon (Fünfeck) using clip-path with nested div to simulate border
                 html = `
                     <div style="
                         width: ${size + 2}px;
                         height: ${size + 2}px;
-                        background-color: #ffffff;
-                        clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        box-shadow: 0 0 6px ${color};
-                    ">
-                        <div style="
-                            width: ${size - 2}px;
-                            height: ${size - 2}px;
-                            background-color: ${color};
-                            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-                        "></div>
-                    </div>
+                        background-color: ${color};
+                        border: ${border}px solid #ffffff;
+                        border-radius: 2px;
+                        box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+                    "></div>
                 `;
             } else {
-                // Circle
                 html = `
                     <div style="
                         width: ${size}px;
@@ -4702,14 +4668,14 @@
                         background-color: ${color};
                         border: ${border}px solid #ffffff;
                         border-radius: 50%;
-                        box-shadow: 0 0 6px ${color}, 0 0 2px rgba(0,0,0,0.5);
+                        box-shadow: 0 1px 4px rgba(0,0,0,0.3);
                     "></div>
                 `;
             }
 
             const icon = L.divIcon({
                 html: html,
-                className: 'custom-map-marker',
+                className: 'custom-map-pin',
                 iconSize: [size + 4, size + 4],
                 iconAnchor: [(size + 4) / 2, (size + 4) / 2]
             });
@@ -4717,7 +4683,7 @@
             return L.marker([lat, lng], { icon: icon });
         }
 
-        // Custom Logo Callout Marker generator
+
         function createLogoCalloutMarker(lat, lng, name, color, customLogoUrl = null) {
             const nameLower = name.toLowerCase();
             const hasIsaWord = /\bisa\b/.test(nameLower);
@@ -4737,7 +4703,7 @@
                 const targetX = ax + dx;
                 const targetY = ay + dy + 20;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary, #475569)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -4753,7 +4719,7 @@
                 const targetX = ax + dx + 55;
                 const targetY = ay + dy + 19;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary, #475569)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -4769,7 +4735,7 @@
                 const targetX = ax + dx;
                 const targetY = ay + dy + 21;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary, #475569)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -4785,7 +4751,7 @@
                 const targetX = ax + dx;
                 const targetY = ay + dy + 20;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary, #475569)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -4801,7 +4767,7 @@
                 const targetX = ax + dx;
                 const targetY = ay + dy + 18;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary, #475569)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -4817,7 +4783,7 @@
                 const targetX = ax + dx + 110;
                 const targetY = ay + dy + 19;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary, #475569)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -4833,7 +4799,7 @@
                 const targetX = ax + dx + 60;
                 const targetY = ay + dy + 25;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary, #475569)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -4849,7 +4815,7 @@
                 const startX = ax + dx + 85;
                 const startY = ay + dy + 10;
                 svgContent = `
-                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="var(--text-secondary, #475569)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${startX}" y1="${startY}" x2="${ax + (startX - ax)*0.25}" y2="${ay + (startY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax - 6},${ay + 3} ${ax - 3},${ay + 6}" fill="${color}" />
@@ -4865,7 +4831,7 @@
                 const startX = ax + dx + 85;
                 const startY = ay + dy + 10;
                 svgContent = `
-                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="var(--text-secondary, #475569)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${startX}" y1="${startY}" x2="${ax + (startX - ax)*0.25}" y2="${ay + (startY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax - 6},${ay + 3} ${ax - 3},${ay + 6}" fill="${color}" />
@@ -4881,7 +4847,7 @@
                 const startX = ax + dx + 85;
                 const startY = ay + dy + 10;
                 svgContent = `
-                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="var(--text-secondary, #475569)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${startX}" y1="${startY}" x2="${ax}" y2="${ay}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${startX}" y1="${startY}" x2="${ax + (startX - ax)*0.25}" y2="${ay + (startY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax - 6},${ay + 3} ${ax - 3},${ay + 6}" fill="${color}" />
@@ -4897,7 +4863,7 @@
                 const targetX = ax + dx + 10;
                 const targetY = ay + dy;
                 svgContent = `
-                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="var(--text-secondary, #475569)" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
+                    <line x1="${ax}" y1="${ay}" x2="${targetX}" y2="${targetY}" stroke="#475569" stroke-width="1.3" stroke-dasharray="2.5,2.5" />
                     <line x1="${ax}" y1="${ay}" x2="${ax + (targetX - ax)*0.25}" y2="${ay + (targetY - ay)*0.25}" stroke="${color}" stroke-width="2" />
                     <circle cx="${ax}" cy="${ay}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.2" />
                     <polygon points="${ax},${ay} ${ax + (targetX-ax)*0.09 - (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 + (targetX-ax)*0.05} ${ax + (targetX-ax)*0.09 + (targetY-ay)*0.05},${ay + (targetY-ay)*0.09 - (targetX-ax)*0.05}" fill="${color}" />
@@ -4935,29 +4901,7 @@
         }
 
         // Render Sidebar and Markers
-                function buildMarkerTooltipHtml(institution, group, people, color, tooltipPref) {
-            if (tooltipPref === 'none' || !tooltipPref) {
-                return '';
-            }
-            let tooltipHtml = '';
-            if (tooltipPref === 'name') {
-                tooltipHtml = `<b>${institution}</b>`;
-            } else if (tooltipPref === 'name_group') {
-                tooltipHtml = `<b>${institution}</b><br><span style="font-size:10px;color:${color}">${group}</span>`;
-            } else if (tooltipPref === 'all') {
-                tooltipHtml = `<b>${institution}</b><br><span style="font-size:10px;color:${color}">${group}</span>`;
-                const pNames = people.map(p => {
-                    let n = p.name.split('(')[0].trim() || p.name;
-                    return n;
-                });
-                if (pNames.length > 0) {
-                     tooltipHtml += `<br><span style="font-size:10px;">👤 ${pNames.join(', ')}</span>`;
-                }
-            }
-            return tooltipHtml;
-        }
-
-function renderMapAndSidebar() {
+        function renderMapAndSidebar() {
             markersLayer.clearLayers();
             const listContainer = document.getElementById('contact-list-container');
             listContainer.innerHTML = '';
@@ -5079,8 +5023,22 @@ function renderMapAndSidebar() {
 
                 // Add Marker Tooltip based on styleSettings
                 const tooltipPref = styleSettings.markerTooltip || 'name_group';
-                const tooltipHtml = buildMarkerTooltipHtml(institution, group, people, color, tooltipPref);
-                if (tooltipHtml) {
+                if (tooltipPref !== 'none') {
+                    let tooltipHtml = '';
+                    if (tooltipPref === 'name') {
+                        tooltipHtml = `<b>${institution}</b>`;
+                    } else if (tooltipPref === 'name_group') {
+                        tooltipHtml = `<b>${institution}</b><br><span style="font-size:10px;color:${color}">${group}</span>`;
+                    } else if (tooltipPref === 'all') {
+                        tooltipHtml = `<b>${institution}</b><br><span style="font-size:10px;color:${color}">${group}</span>`;
+                        const pNames = people.map(p => {
+                            let n = p.name.split('(')[0].trim() || p.name;
+                            return n;
+                        });
+                        if (pNames.length > 0) {
+                             tooltipHtml += `<br><span style="font-size:10px;">👤 ${pNames.join(', ')}</span>`;
+                        }
+                    }
                     marker.bindTooltip(tooltipHtml, { sticky: true });
                 }
 
@@ -5149,24 +5107,43 @@ function renderMapAndSidebar() {
             updateSidebarCounters();
         }
 
-
-        // Helper to announce filter state changes for screen readers
-        function announceFilterState(filterName, isActive) {
-            const liveRegion = document.getElementById('filter-live-region');
-            if (liveRegion) {
-                const state = isActive ? 'aktiviert' : 'deaktiviert';
-                liveRegion.textContent = `Filter ${filterName} ${state}`;
-            }
-        }
-
-        function announceQuickAction(actionName) {
-            const liveRegion = document.getElementById('filter-live-region');
-            if (liveRegion) {
-                liveRegion.textContent = `Schnellaktion: ${actionName}`;
-            }
-        }
-
         // Helper to update active/inactive button states
+
+        // Legend: Gewässergüte (WRRL)
+        const wrrlLegend = L.control({ position: 'bottomleft' });
+        wrrlLegend.onAdd = function () {
+            const div = L.DomUtil.create('div', 'info-legend wrrl-legend');
+            div.style.background = '#ffffff';
+            div.style.padding = '8px 12px';
+            div.style.borderRadius = '6px';
+            div.style.boxShadow = '0 1.5px 5px rgba(0,0,0,0.25)';
+            div.style.fontSize = '12px';
+            div.style.lineHeight = '1.7';
+            div.style.color = '#1e293b';
+            div.style.marginTop = '6px';
+            const bar = (color) => `<span style="display:inline-block; width:18px; height:4px; background:${color}; vertical-align:middle; margin-right:6px; border-radius:2px;"></span>`;
+            div.innerHTML = `
+                <div style="font-weight:700; margin-bottom:4px; font-size:12.5px;">Ökologischer Zustand (WRRL)</div>
+                <div>${bar('#0072B2')} Sehr gut / höchstes Pot.</div>
+                <div>${bar('#009E73')} Gut / gutes Pot.</div>
+                <div>${bar('#F0E442')} Mäßig / mäßiges Pot.</div>
+                <div>${bar('#E69F00')} Unbefriedigend / unbef. Pot.</div>
+                <div>${bar('#D55E00')} Schlecht / schlechtes Pot.</div>
+                <div>${bar('#94a3b8')} Unbewertet / Unbekannt</div>
+            `;
+            return div;
+        };
+
+        function updateWrrlLegend() {
+            const layerActive = Object.keys(overlayMaps).some(name =>
+                name.includes('Gewässergüte') && map.hasLayer(overlayMaps[name])
+            );
+            if (layerActive) {
+                wrrlLegend.addTo(map);
+            } else {
+                wrrlLegend.remove();
+            }
+        }
 
         // Legend: Hochwasser- & Starkregengefahren
         const hazardLegend = L.control({ position: 'bottomleft' });
@@ -5181,11 +5158,11 @@ function renderMapAndSidebar() {
             div.style.color = '#1e293b';
             div.innerHTML = `
                 <div style="font-weight:700; margin-bottom:4px; font-size:12.5px;">Gefahrenkarten</div>
-                <div style="font-size:11px; color: var(--text-secondary, #64748b); margin-bottom:2px;">Fluvial (LANUV)</div>
+                <div style="font-size:11px; color:#64748b; margin-bottom:2px;">Fluvial (LANUV)</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#fde047; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #ca8a04;"></span>HQ häufig</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#f97316; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #c2410c;"></span>HQ 100</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#dc2626; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #991b1b;"></span>HQ extrem</div>
-                <div style="font-size:11px; color: var(--text-secondary, #64748b); margin-top:6px; margin-bottom:2px;">Pluvial (Kommunen)</div>
+                <div style="font-size:11px; color:#64748b; margin-top:6px; margin-bottom:2px;">Pluvial (Kommunen)</div>
                 <div><span style="display:inline-block; width:14px; height:14px; background:#7c3aed; opacity:0.8; vertical-align:middle; margin-right:6px; border:1px solid #5b21b6;"></span>Starkregen</div>
             `;
             return div;
@@ -5210,9 +5187,11 @@ function renderMapAndSidebar() {
 
         map.on('overlayadd', function(e) {
             if (hazardLayersList.includes(e.name)) updateHazardLegend();
+            if (e.name.includes('Gewässergüte')) updateWrrlLegend();
         });
         map.on('overlayremove', function(e) {
             if (hazardLayersList.includes(e.name)) updateHazardLegend();
+            if (e.name.includes('Gewässergüte')) updateWrrlLegend();
         });
 
         function updateButtonVisualStates() {
@@ -5461,6 +5440,80 @@ function renderMapAndSidebar() {
         // Live viewport counter updates
         function updateSidebarCounters() {
             const bounds = map.getBounds();
+            const searchQuery = (document.getElementById('search-input') ? document.getElementById('search-input').value : '').toLowerCase();
+
+            // 1. Group counters
+            if (geojsonData && geojsonData.features && geojsonData.features.length > 0) {
+                document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
+                    const group = btn.getAttribute('data-group');
+                    const total = geojsonData.features.filter(f => f.properties && f.properties.group === group).length;
+                    const visible = geojsonData.features.filter(f => {
+                        if (!f.properties || f.properties.group !== group) return false;
+                        if (!f.geometry || !f.geometry.coordinates) return false;
+                        const coords = f.geometry.coordinates;
+                        const latlng = L.latLng(coords[1], coords[0]);
+                        if (!bounds.contains(latlng)) return false;
+                        if (searchQuery) {
+                            return (f.properties.name || '').toLowerCase().includes(searchQuery) ||
+                                   (f.properties.group || '').toLowerCase().includes(searchQuery);
+                        }
+                        return true;
+                    }).length;
+                    const badge = btn.querySelector('.counter-badge');
+                    if (badge) {
+                        badge.style.display = 'inline-block';
+                        badge.innerText = `(${visible}/${total})`;
+                    }
+                });
+                
+                const cntElem = document.getElementById('contacts-count');
+                if (cntElem) {
+                    cntElem.innerText = `${geojsonData.features.length} Institutionen / Akteure geladen`;
+                }
+            }
+
+            // 2. Industrieeinleiter (ELWAS)
+            const cntEinleiter = document.getElementById('cnt-einleiter-total');
+            if (cntEinleiter) {
+                if (elwasGeoData && elwasGeoData.features) {
+                    const total = elwasGeoData.features.length;
+                    const visible = elwasGeoData.features.filter(f => {
+                        if (!f.geometry || !f.geometry.coordinates) return false;
+                        const coords = f.geometry.coordinates;
+                        return bounds.contains(L.latLng(coords[1], coords[0]));
+                    }).length;
+                    cntEinleiter.style.display = 'inline-block';
+                    cntEinleiter.innerText = `(${visible}/${total})`;
+                }
+            }
+
+            // 3. Dynamic Fachdaten Layer counters
+            const pointLayers = [
+                { id: 'cnt-layer-pegel', data: window.pegelGeoData || (window.layerDataStore && window.layerDataStore['pegel']) },
+                { id: 'cnt-layer-klaeranlagen', data: window.klaeranlagenGeoData || (window.layerDataStore && window.layerDataStore['klaeranlagen']) },
+                { id: 'cnt-layer-stauanlagen', data: window.stauanlagenGeoData || (window.layerDataStore && window.layerDataStore['stauanlagen']) },
+                { id: 'cnt-layer-regenbecken', data: window.regenbeckenGeoData || (window.layerDataStore && window.layerDataStore['regenbecken']) },
+                { id: 'cnt-layer-querbauwerke', data: window.querbauwerkeGeoData || (window.layerDataStore && window.layerDataStore['querbauwerke']) },
+                { id: 'cnt-layer-h2_elektrolyseure_nrw', data: window.h2ElektrolyseureGeoData || (window.layerDataStore && window.layerDataStore['h2_elektrolyseure_nrw']) }
+            ];
+
+            pointLayers.forEach(pl => {
+                const badge = document.getElementById(pl.id);
+                if (badge && pl.data && pl.data.features) {
+                    const total = pl.data.features.length;
+                    const visible = pl.data.features.filter(f => {
+                        if (!f.geometry || !f.geometry.coordinates) return false;
+                        const coords = f.geometry.coordinates;
+                        return bounds.contains(L.latLng(coords[1], coords[0]));
+                    }).length;
+                    badge.style.display = 'inline-block';
+                    badge.innerText = `(${visible}/${total})`;
+                }
+            });
+        }
+
+
+            const bounds = map.getBounds();
             const searchQuery = document.getElementById('search-input').value.toLowerCase();
 
             // 1. Group counters
@@ -5537,8 +5590,18 @@ function renderMapAndSidebar() {
                             const coords = f.geometry.coordinates;
                             return bounds.contains(L.latLng(coords[1], coords[0]));
                         } else {
-                            const coords = f.geometry.type === 'Polygon' ? f.geometry.coordinates[0][0] : f.geometry.coordinates[0];
-                            return coords ? bounds.contains(L.latLng(coords[1], coords[0])) : false;
+                            // Unified handling for Polygon, MultiPolygon, LineString, MultiLineString
+                            let pointToCheck = null;
+                            if (f.geometry.type === 'Polygon') {
+                                pointToCheck = f.geometry.coordinates[0][0];
+                            } else if (f.geometry.type === 'MultiPolygon') {
+                                pointToCheck = f.geometry.coordinates[0][0][0];
+                            } else if (f.geometry.type === 'LineString') {
+                                pointToCheck = f.geometry.coordinates[0];
+                            } else if (f.geometry.type === 'MultiLineString') {
+                                pointToCheck = f.geometry.coordinates[0][0];
+                            }
+                            return pointToCheck ? bounds.contains(L.latLng(pointToCheck[1], pointToCheck[0])) : false;
                         }
                     }).length;
                     if (badge) {
@@ -5559,10 +5622,8 @@ function renderMapAndSidebar() {
                 const group = btn.getAttribute('data-group');
                 if (activeFilters.has(group)) {
                     activeFilters.delete(group);
-                    announceFilterState(group, false);
                 } else {
                     activeFilters.add(group);
-                    announceFilterState(group, true);
                 }
                 updateButtonVisualStates();
                 renderMapAndSidebar();
@@ -5575,10 +5636,8 @@ function renderMapAndSidebar() {
                 const riskVal = btn.getAttribute('data-risk');
                 if (elwasActiveRisks.has(riskVal)) {
                     elwasActiveRisks.delete(riskVal);
-                    announceFilterState(riskVal, false);
                 } else {
                     elwasActiveRisks.add(riskVal);
-                    announceFilterState(riskVal, true);
                 }
                 updateButtonVisualStates();
                 renderElwasLayer();
@@ -5593,11 +5652,9 @@ function renderMapAndSidebar() {
                 if (map.hasLayer(layer)) {
                     map.removeLayer(layer);
                     map.fire('overlayremove', { layer: layer, name: name });
-                    announceFilterState(name, false);
                 } else {
                     map.addLayer(layer);
                     map.fire('overlayadd', { layer: layer, name: name });
-                    announceFilterState(name, true);
                 }
                 updateButtonVisualStates();
                 updateSidebarCounters();
@@ -5606,7 +5663,6 @@ function renderMapAndSidebar() {
 
         // Quick Action: Regionale Akteure - Alle an
         document.getElementById('btn-actors-all').addEventListener('click', () => {
-            announceQuickAction('Regionale Akteure - Alle an');
             Object.keys(groupColors).forEach(g => activeFilters.add(g));
             updateButtonVisualStates();
             renderMapAndSidebar();
@@ -5614,7 +5670,6 @@ function renderMapAndSidebar() {
 
         // Quick Action: Regionale Akteure - Alle aus
         document.getElementById('btn-actors-none').addEventListener('click', () => {
-            announceQuickAction('Regionale Akteure - Alle aus');
             activeFilters.clear();
             updateButtonVisualStates();
             renderMapAndSidebar();
@@ -5622,7 +5677,6 @@ function renderMapAndSidebar() {
 
         // Quick Action: Industrie-Branchen - Alle an
         document.getElementById('btn-branches-all').addEventListener('click', () => {
-            announceQuickAction('Industrie-Branchen - Alle an');
             Object.keys(elwasRiskColors).forEach(b => elwasActiveRisks.add(b));
             updateButtonVisualStates();
             renderElwasLayer();
@@ -5630,7 +5684,6 @@ function renderMapAndSidebar() {
 
         // Quick Action: Industrie-Branchen - Alle aus
         document.getElementById('btn-branches-none').addEventListener('click', () => {
-            announceQuickAction('Industrie-Branchen - Alle aus');
             elwasActiveRisks.clear();
             updateButtonVisualStates();
             renderElwasLayer();
@@ -5639,7 +5692,6 @@ function renderMapAndSidebar() {
         // Quick Action: Fachdaten & Layer - Alle an
         // Quick Action: Hazard & Starkregen - Alle an
         document.getElementById('btn-hazard-all').addEventListener('click', () => {
-            announceQuickAction('Hochwasser & Starkregen - Alle an');
             const container = document.getElementById('hazard-layer-group');
             const btns = container.querySelectorAll('.filter-btn[data-layer-name]');
             btns.forEach(btn => {
@@ -5655,7 +5707,6 @@ function renderMapAndSidebar() {
 
         // Quick Action: Hazard & Starkregen - Alle aus
         document.getElementById('btn-hazard-none').addEventListener('click', () => {
-            announceQuickAction('Hochwasser & Starkregen - Alle aus');
             const container = document.getElementById('hazard-layer-group');
             const btns = container.querySelectorAll('.filter-btn[data-layer-name]');
             btns.forEach(btn => {
@@ -5664,7 +5715,6 @@ function renderMapAndSidebar() {
                 if (map.hasLayer(layer)) {
                     map.removeLayer(layer);
                     map.fire('overlayremove', { layer: layer, name: name });
-                    announceFilterState(name, false);
                 }
             });
             updateButtonVisualStates();
@@ -5672,7 +5722,6 @@ function renderMapAndSidebar() {
 
 
         document.getElementById('btn-layers-all').addEventListener('click', () => {
-            announceQuickAction('Fachdaten & Layer - Alle an');
             Array.from(document.querySelectorAll('.filter-btn[data-layer-name]')).filter(b => !b.closest('#hazard-layer-group')).forEach(btn => {
                 const name = btn.getAttribute('data-layer-name');
                 const layer = overlayMaps[name];
@@ -5687,14 +5736,12 @@ function renderMapAndSidebar() {
 
         // Quick Action: Fachdaten & Layer - Alle aus
         document.getElementById('btn-layers-none').addEventListener('click', () => {
-            announceQuickAction('Fachdaten & Layer - Alle aus');
             Array.from(document.querySelectorAll('.filter-btn[data-layer-name]')).filter(b => !b.closest('#hazard-layer-group')).forEach(btn => {
                 const name = btn.getAttribute('data-layer-name');
                 const layer = overlayMaps[name];
                 if (map.hasLayer(layer)) {
                     map.removeLayer(layer);
                     map.fire('overlayremove', { layer: layer, name: name });
-                    announceFilterState(name, false);
                 }
             });
             updateButtonVisualStates();
@@ -5706,10 +5753,8 @@ function renderMapAndSidebar() {
             updateButtonVisualStates();
             updateSidebarCounters();
 
-            // Onboarding Check
-            if (!localStorage.getItem('aquarevier_onboarding_completed_v1')) {
-                window.showRoleModal();
-            }
+            // Keep the editor immediately usable for first-time visitors. The
+            // optional role onboarding remains available via showRoleModal().
         }, 100);
 
         // Search trigger
@@ -5717,7 +5762,7 @@ function renderMapAndSidebar() {
 
         baseMaps["Helles Design"] = baseLight;
 
-        const themeToggle = document.getElementById('theme-toggle');
+        
         let isDarkMode = localStorage.getItem('theme') === 'dark';
 
         // Apply saved theme state on load
@@ -5731,7 +5776,7 @@ function renderMapAndSidebar() {
             themeToggle.innerText = '🌙';
             // baseLight is added by default on map creation, but just to be sure:
             if (map.hasLayer(baseDark)) map.removeLayer(baseDark);
-            if (!map.hasLayer(baseLight)) baseLight.addTo(map);
+            if (!map.hasLayer(baseLight)) baseOsm.addTo(map);
         }
 
         themeToggle.addEventListener('click', () => {
@@ -5746,7 +5791,7 @@ function renderMapAndSidebar() {
                 document.body.classList.add('light-theme');
                 themeToggle.innerText = '🌙';
                 if (map.hasLayer(baseDark)) map.removeLayer(baseDark);
-                baseLight.addTo(map);
+                baseOsm.addTo(map);
             }
         });
 
@@ -5785,7 +5830,7 @@ function renderMapAndSidebar() {
                 regenbecken: '#CC79A7',
                 querbauwerk: '#E69F00',
                 kreis: '#1e3a8a',
-                gemeinde: 'var(--text-secondary, #64748b)',
+                gemeinde: '#64748b',
                 gewaesser: '#2563eb'
             };
             const catLabels = {
@@ -6085,11 +6130,10 @@ function renderMapAndSidebar() {
                     const container = L.DomUtil.create('div', 'leaflet-control unified-search-control');
                     container.innerHTML = `
                         <div class="usearch-box" style="position: relative;">
-                            <input type="text" id="usearch-input" aria-label="Universalsuche" autocomplete="off" spellcheck="false"
+                            <input type="text" id="usearch-input" role="combobox" aria-label="Universalsuche" autocomplete="off" spellcheck="false"
                                    placeholder="🔍 Alles durchsuchen (Akteure, ELWAS, Orte...)" style="padding-right: 60px;">
                             <span class="cmd-shortcut-hint" onclick="if(window.toggleCommandPalette) window.toggleCommandPalette()" title="Command Palette öffnen (Ctrl+K)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 10px; font-weight: 600; padding: 2px 5px; background: rgba(99, 102, 241, 0.15); border: 1px solid var(--border-color, #cbd5e1); border-radius: 4px; color: var(--accent-primary, #6366f1); cursor: pointer; user-select: none;">Ctrl+K</span>
                             <div id="usearch-results" class="usearch-results"></div>
-                            <div id="usearch-live-region" class="sr-only" aria-live="polite"></div>
                         </div>
                     `;
                     L.DomEvent.disableClickPropagation(container);
@@ -6138,16 +6182,12 @@ function renderMapAndSidebar() {
             }
 
             function renderResults(matches) {
-                const liveRegion = document.getElementById('usearch-live-region');
                 if (!matches.length) {
                     const q = usearchInput.value.trim();
                     usearchResults.innerHTML = q.length >= 2 ? `<div class="usearch-empty">Keine Treffer für „${q}"</div>` : '';
                     usearchResults.style.display = q.length >= 2 ? 'block' : 'none';
-                    if (liveRegion && q.length >= 2) liveRegion.textContent = "Keine Treffer gefunden";
-                    else if (liveRegion) liveRegion.textContent = "";
                     return;
                 }
-                if (liveRegion) liveRegion.textContent = matches.length + " Ergebnisse gefunden";
                 usearchResults.innerHTML = matches.map((r, i) => `
                     <div class="usearch-item" data-idx="${i}">
                         <span class="usearch-tag" style="background:${r.color}22; color:${r.color}">${r.catLabel}</span>
@@ -6592,7 +6632,7 @@ function renderMapAndSidebar() {
                         panel.innerHTML = `
                             <div class="update-radar-header">
                                 <span>${headerText}</span>
-                                <button class="update-radar-close" title="Schließen" aria-label="Schließen">&times;</button>
+                                <button class="update-radar-close" title="Schließen">&times;</button>
                             </div>
                             <div class="update-radar-content">
                                 ${diffs.map((d, i) => {
@@ -6865,7 +6905,7 @@ function renderMapAndSidebar() {
         <div class="scorecard-modal" id="kreisScorecardModal">
             <div class="scorecard-header">
                 <div class="scorecard-title" id="scorecardModalTitle">Kreisvergleich</div>
-                <button class="scorecard-close" id="scorecardModalClose" aria-label="Schließen">&times;</button>
+                <button class="scorecard-close" id="scorecardModalClose">&times;</button>
             </div>
             <div class="scorecard-body">
                 <div class="scorecard-kpi-narration" id="scorecardModalNarration">
@@ -7036,15 +7076,18 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
             const issueTitle = `[Datenfeedback] ${category} – ${layerName}: ${title}`;
             const issueBody = `**Kategorie:** ${category}\n**Layer:** ${layerName}\n**Feature-ID:** ${featureId || 'N/A'}\n**Koordinaten:** ${lat}, ${lng}\n**Quellseite:** ${window.location.pathname}\n**Zeitstempel:** ${new Date().toISOString()}\n\n**Was ist falsch?**\n${text}`;
 
-            const url = new URL('https://github.com/Dtunder/adb-aquarevier-feedback/issues/new');
-            url.searchParams.append('title', issueTitle);
-            url.searchParams.append('body', issueBody);
-            url.searchParams.append('labels', `data-feedback,status:offen,kategorie:${category}`);
-
-            window.open(url.toString(), '_blank');
+            const blob = new Blob([`${issueTitle}\n\n${issueBody}\n`], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `AquaRevier_Feedback_${new Date().toISOString().slice(0, 10)}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
             closeFeedbackModal();
 
-            alert("Vorbereitete Meldung in neuem Tab geöffnet:\nBitte im geöffneten Tab unten auf 'Submit new issue' klicken, um das Feedback tatsächlich auf GitHub einzureichen.");
+            alert("Die Meldung wurde als Datei gespeichert. Bitte sende sie über den vereinbarten Projektkanal an das AquaRevier-Team.");
         }
 
         async function loadFeedbackIssues() {
@@ -7067,7 +7110,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
             }
 
             try {
-                const response = await fetch('https://api.github.com/repos/Dtunder/adb-aquarevier-feedback/issues?state=all&labels=data-feedback&sort=created&direction=desc&per_page=50');
+                const response = await fetch('feedback-issues.json');
                 if (response.status === 404) {
                     listContainer.innerHTML = '<div style="font-size: 11px; color: var(--text-secondary, #64748b); text-align: center; padding: 12px 0;">Meldungs-Kanal bereit. Aktuell keine offenen Daten-Meldungen.</div>';
                     return;
@@ -7152,14 +7195,14 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
 
 
     <!-- Feedback Modal -->
-    <div id="feedback-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: var(--modal-backdrop); z-index: 2000; justify-content: center; align-items: center;">
-        <div class="modal-content" style="background: var(--bg-surface, #ffffff); width: 400px; max-width: 90%; border-radius: 8px; padding: 20px; box-shadow: var(--modal-shadow); display: flex; flex-direction: column;">
+    <div id="feedback-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center;">
+        <div class="modal-content" style="background: var(--bg-surface, #ffffff); width: 400px; max-width: 90%; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
                 <div>
-                    <h3 id="feedback-modal-title" style="margin: 0; font-size: 16px; color: var(--text-primary);">Fehler melden</h3>
+                    <h3 id="feedback-modal-title" style="margin: 0; font-size: 16px; color: var(--text-primary, #0f172a);">Fehler melden</h3>
                     <div id="feedback-modal-layer" style="font-size: 12px; color: var(--text-secondary, #64748b); margin-top: 4px;">Layer: -</div>
                 </div>
-                <button type="button" onclick="closeFeedbackModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-secondary, #64748b);" aria-label="Schließen">&times;</button>
+                <button type="button" onclick="closeFeedbackModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-secondary, #64748b);">&times;</button>
             </div>
 
             <form id="feedback-form" onsubmit="submitFeedback(event)" style="display: flex; flex-direction: column; gap: 12px;">
@@ -7168,8 +7211,8 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
                 <input type="hidden" id="feedback-lng">
 
                 <div>
-                    <label for="feedback-category" style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; color: var(--text-primary);">Kategorie *</label>
-                    <select id="feedback-category" required style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; background: var(--bg-surface, #ffffff); color: var(--text-primary);">
+                    <label for="feedback-category" style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; color: var(--text-primary, #0f172a);">Kategorie *</label>
+                    <select id="feedback-category" required style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);">
                         <option value="">-- Bitte wählen --</option>
                         <option value="falscher-wert">Falscher Wert</option>
                         <option value="position">Falsche Position / Koordinaten</option>
@@ -7179,13 +7222,13 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
                 </div>
 
                 <div>
-                    <label for="feedback-text" style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; color: var(--text-primary);">Was ist falsch? *</label>
-                    <textarea id="feedback-text" required minlength="10" rows="4" style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; resize: vertical; background: var(--bg-surface, #ffffff); color: var(--text-primary);"></textarea>
+                    <label for="feedback-text" style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; color: var(--text-primary, #0f172a);">Was ist falsch? *</label>
+                    <textarea id="feedback-text" required minlength="10" rows="4" style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; resize: vertical; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);"></textarea>
                     <div id="feedback-error" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: none;">Bitte füllen Sie alle Pflichtfelder aus (mind. 10 Zeichen im Text).</div>
                 </div>
 
                 <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px;">
-                    <button type="button" onclick="closeFeedbackModal()" style="padding: 8px 12px; border: 1px solid var(--border-color, #e2e8f0); background: transparent; border-radius: 4px; cursor: pointer; color: var(--text-primary);">Abbrechen</button>
+                    <button type="button" onclick="closeFeedbackModal()" style="padding: 8px 12px; border: 1px solid var(--border-color, #e2e8f0); background: transparent; border-radius: 4px; cursor: pointer; color: var(--text-primary, #0f172a);">Abbrechen</button>
                     <button type="submit" style="padding: 8px 12px; border: none; background: var(--accent-primary, #0ea5e9); color: white; border-radius: 4px; cursor: pointer; font-weight: 500;">Meldung erstellen</button>
                 </div>
             </form>
@@ -7241,7 +7284,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
         <div class="scorecard-modal" id="textGeneratorModal" style="max-width: 800px; width: 90%; max-height: 90vh; display: flex; flex-direction: column;">
             <div class="scorecard-header" style="flex-shrink: 0;">
                 <div class="scorecard-title" id="textGeneratorTitle">Text generieren</div>
-                <button class="scorecard-close" id="textGeneratorClose" aria-label="Schließen">&times;</button>
+                <button class="scorecard-close" id="textGeneratorClose">&times;</button>
             </div>
             <div class="scorecard-body" style="display: flex; flex-direction: column; flex: 1; overflow: hidden; padding: 20px; gap: 15px;">
                 <div id="textGeneratorHint" style="font-size: 14px; color: var(--text-secondary); flex-shrink: 0;"></div>

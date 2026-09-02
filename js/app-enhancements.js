@@ -11,6 +11,17 @@
 (function () {
     'use strict';
 
+    // --- 0. HELPERS ---
+    window.escapeHtml = function(str) {
+        if (str === null || str === undefined) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    };
+
     // --- 1. TOAST NOTIFICATION SYSTEM ---
     window.showToast = function (message, icon = '✓', duration = 3000) {
         let container = document.getElementById('toast-container');
@@ -41,7 +52,7 @@
             color: var(--text-primary, #f3f4f6);
             border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15));
             border-radius: 12px;
-            box-shadow: var(--modal-shadow, 0 10px 30px rgba(0, 0, 0, 0.5)), 0 0 15px var(--accent-glow, rgba(99, 102, 241, 0.3));
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 15px var(--accent-glow, rgba(99, 102, 241, 0.3));
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             font-family: 'Inter', sans-serif;
@@ -52,7 +63,11 @@
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         `;
 
-        toast.innerHTML = `<span style="font-weight:700; color: var(--accent-primary, #6366f1);">${icon}</span> <span>${message}</span>`;
+        // [AQ-SECURITY] Escape message to prevent XSS in toasts
+        const safeMessage = window.escapeHtml(message);
+        const safeIcon = window.escapeHtml(icon);
+
+        toast.innerHTML = `<span style="font-weight:700; color: var(--accent-primary, #6366f1);">${safeIcon}</span> <span>${safeMessage}</span>`;
         container.appendChild(toast);
 
         // Animate in
@@ -81,7 +96,7 @@
             position: fixed;
             inset: 0;
             z-index: 10005;
-            background: var(--modal-backdrop, rgba(0, 0, 0, 0.6));
+            background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             display: none;
@@ -100,7 +115,7 @@
                 color: var(--text-primary, #f3f4f6);
                 border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15));
                 border-radius: 16px;
-                box-shadow: var(--modal-shadow, 0 25px 60px rgba(0, 0, 0, 0.5)), 0 0 25px var(--accent-glow, rgba(99, 102, 241, 0.3));
+                box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 25px var(--accent-glow, rgba(99, 102, 241, 0.3));
                 overflow: hidden;
                 display: flex;
                 flex-direction: column;
@@ -401,60 +416,26 @@
     }
 
     // --- 3. OPEN DATA EXPORT (GEOJSON & CSV) ---
+    /**
+     * Sanitizes a single CSV cell to prevent formula injection and fix quoting [AQ-106, AQ-107].
+     */
+    window.sanitizeCsvCell = function(value) {
+        if (value === null || value === undefined) return '""';
+        let str = String(value);
+
+        // Escape double quotes by doubling them
+        str = str.replace(/"/g, '""');
+
+        // Check for CSV Formula Injection characters (=, +, -, @)
+        if (['=', '+', '-', '@'].includes(str.charAt(0))) {
+            str = "'" + str; // Add leading apostrophe to neutralize
+        }
+
+        return `"${str}"`;
+    };
+
     window.exportActiveLayersData = function (format = 'geojson') {
         const activeFeatures = [];
-
-        const isStrictNumber = (n) => typeof n === 'number' && Number.isFinite(n);
-        const isPositionArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isStrictNumber);
-        const isMultiPointArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPositionArray);
-        const isLineStringArray = (arr) => Array.isArray(arr) && arr.length >= 2 && arr.every(isPositionArray);
-        const isMultiLineStringArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLineStringArray);
-
-        const isLinearRing = (arr) => {
-            if (!Array.isArray(arr)) return false;
-
-            if (arr.length < 4) return false;
-            if (!arr.every(isPositionArray)) return false;
-            const first = arr[0], last = arr[arr.length - 1];
-            if (first.length !== last.length) return false;
-            for (let i = 0; i < first.length; i++) if (first[i] !== last[i]) return false;
-            return true;
-        };
-        const isPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isLinearRing);
-        const isMultiPolygonArray = (arr) => Array.isArray(arr) && arr.length > 0 && arr.every(isPolygonArray);
-
-        const assertValidGeometry = (geom, isCollectionItem = false) => {
-            if (geom === null) {
-                if (isCollectionItem) throw new TypeError('GeometryCollection element cannot be null');
-                return;
-            }
-            if (typeof geom !== 'object') throw new TypeError('Geometry must be an object or null');
-            if (!geom.type || typeof geom.type !== 'string') throw new TypeError('Geometry must have a type string');
-            const validTypes = ['Point', 'MultiPoint', 'LineString', 'MultiLineString', 'Polygon', 'MultiPolygon', 'GeometryCollection'];
-            if (!validTypes.includes(geom.type)) throw new TypeError('Invalid geometry type');
-
-            if (geom.type === 'GeometryCollection') {
-                if (!Array.isArray(geom.geometries)) throw new TypeError('GeometryCollection must have a geometries array');
-                geom.geometries.forEach(g => assertValidGeometry(g, true));
-            } else {
-                if (!Array.isArray(geom.coordinates)) throw new TypeError('Geometry must have a coordinates array');
-                if (geom.type === 'Point' && !isPositionArray(geom.coordinates)) throw new TypeError('Invalid Point coordinates');
-
-                if (geom.type === 'MultiPoint' && !isMultiPointArray(geom.coordinates)) throw new TypeError('Invalid MultiPoint coordinates');
-                if (geom.type === 'LineString' && !isLineStringArray(geom.coordinates)) throw new TypeError('Invalid LineString coordinates');
-                if (geom.type === 'MultiLineString' && !isMultiLineStringArray(geom.coordinates)) throw new TypeError('Invalid MultiLineString coordinates');
-                if (geom.type === 'Polygon' && !isPolygonArray(geom.coordinates)) throw new TypeError('Invalid Polygon coordinates');
-                if (geom.type === 'MultiPolygon' && !isMultiPolygonArray(geom.coordinates)) throw new TypeError('Invalid MultiPolygon coordinates');
-            }
-        };
-
-        const assertValidFeature = (f) => {
-            if (typeof f !== 'object' || f === null || Array.isArray(f)) throw new TypeError('Feature must be an object');
-            if (f.type !== 'Feature') throw new TypeError('Type must be Feature');
-            if (!('properties' in f)) throw new TypeError('Feature must have properties member');
-            if (f.properties !== null && (typeof f.properties !== 'object' || Array.isArray(f.properties))) throw new TypeError('Properties must be an object or null');
-            assertValidGeometry(f.geometry);
-        };
         if (window.layerDataStore && window.overlayMaps && window.map) {
             Object.keys(window.overlayMaps).forEach(label => {
                 const layer = window.overlayMaps[label];
@@ -464,9 +445,7 @@
                         const storeData = window.layerDataStore[key];
                         if (storeData && storeData.features) {
                             storeData.features.forEach(f => {
-                                if (format === 'geojson') assertValidFeature(f);
                                 const featCopy = JSON.parse(JSON.stringify(f));
-                                if (!featCopy.properties) featCopy.properties = {};
                                 featCopy.properties._layer_name = key;
                                 activeFeatures.push(featCopy);
                             });
@@ -481,9 +460,7 @@
                 const storeData = window.layerDataStore[key];
                 if (storeData && storeData.features) {
                     storeData.features.forEach(f => {
-                        if (format === 'geojson') assertValidFeature(f);
                         const featCopy = JSON.parse(JSON.stringify(f));
-                        if (!featCopy.properties) featCopy.properties = {};
                         featCopy.properties._layer_name = key;
                         activeFeatures.push(featCopy);
                     });
@@ -526,19 +503,18 @@
                 if (f.properties) Object.keys(f.properties).forEach(k => allKeys.add(k));
             });
             const keyArray = Array.from(allKeys);
-            let csv = '\uFEFF' + keyArray.join(';') + '\n';
+            let csvRows = [keyArray.map(k => window.sanitizeCsvCell(k)).join(';')];
 
             activeFeatures.forEach(f => {
                 const row = keyArray.map(k => {
                     let val = f.properties[k];
-                    if (val === null || val === undefined) return '""';
-                    if (typeof val === 'object') val = JSON.stringify(val);
-                    val = String(val).replace(/"/g, '""');
-                    return `"${val}"`;
+                    if (typeof val === 'object' && val !== null) val = JSON.stringify(val);
+                    return window.sanitizeCsvCell(val);
                 });
-                csv += row.join(';') + '\n';
+                csvRows.push(row.join(';'));
             });
 
+            const csv = '\uFEFF' + csvRows.join('\n');
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -734,22 +710,22 @@
      *  falls aktuell Englisch aktiv ist. Deutsch (Quellsprache) bleibt sonst
      *  unveraendert - kein Datenverlust, nur Anzeige-Ebene. */
     function translatePopupLabel(deText) {
-        const lang = window.StorageModule.getItem('aquarevier_lang') || 'de';
+        const lang = localStorage.getItem('aquarevier_lang') || 'de';
         if (lang !== 'en') return deText;
         return POPUP_LABEL_TRANSLATIONS[deText] || GROUP_LABEL_TRANSLATIONS[deText] || deText;
     }
     window.AQUAREVIER_I18N = {
         dict: I18N_DICT,
-        currentLang: () => window.StorageModule.getItem('aquarevier_lang') || 'de',
+        currentLang: () => localStorage.getItem('aquarevier_lang') || 'de',
         translatePopupLabel
     };
 
     function initLanguageToggle() {
-        let currentLang = window.StorageModule.getItem('aquarevier_lang') || 'de';
+        let currentLang = localStorage.getItem('aquarevier_lang') || 'de';
 
         function applyLanguage(lang) {
             currentLang = lang;
-            window.StorageModule.setItem('aquarevier_lang', lang);
+            try { localStorage.setItem('aquarevier_lang', lang); } catch (e) { console.warn('Storage unavailable:', e); }
             const dict = I18N_DICT[lang];
             if (!dict) return;
 
@@ -771,8 +747,8 @@
             const exportBtn = document.getElementById('open-data-export-btn');
             if (exportBtn) exportBtn.textContent = dict.open_data_export;
 
-            const langBtn = document.getElementById('lang-toggle-btn');
-            if (langBtn) langBtn.textContent = dict.switch_lang;
+            const langBtn = document.getElementById('lang-toggle-btn') || document.getElementById('langToggleBtn');
+            if (langBtn) langBtn.textContent = lang === 'de' ? 'EN' : 'DE';
 
             // Generisches data-i18n-key-System: jedes Element mit diesem
             // Attribut wird direkt aus dict[key] befuellt (placeholder bei
@@ -858,189 +834,25 @@
             });
         });
 
-
-    let lastTriggerElement = null;
-
-    // Track last active element before a modal is opened
-    document.addEventListener('focusin', (e) => {
-        const isInsideModal = e.target.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
-        if (!isInsideModal) {
-            lastTriggerElement = e.target;
-        }
-    }, true);
-
-    document.addEventListener('click', (e) => {
-        const isInsideModal = e.target.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
-        if (!isInsideModal) {
-            // Also update on click, in case element is clicked but not focused (e.g. mouse click on div)
-            // or for buttons that don't steal focus perfectly in all browsers
-            const trigger = e.target.closest('button, a, [role="button"], input, select, textarea');
-            if (trigger) {
-                lastTriggerElement = trigger;
-            }
-        }
-    }, true);
-
         // Global Escape key listener to close all open modals
         document.addEventListener('keydown', (e) => {
-            if (e.defaultPrevented) return;
-            if (e.key === 'Tab') {
-                let activeModal = null;
-                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
-                for (let i = 0; i < openModals.length; i++) {
-                    const modal = openModals[i];
-                    const style = window.getComputedStyle(modal);
-                    if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
-                        activeModal = modal;
-                        break;
-                    }
-                }
-
-                if (activeModal) {
-                    const focusableElements = activeModal.querySelectorAll('a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])');
-                    const visibleFocusableElements = Array.from(focusableElements).filter(el => {
-                        return el.offsetWidth > 0 || el.offsetHeight > 0 || el.getClientRects().length > 0;
-                    });
-
-                    if (visibleFocusableElements.length > 0) {
-                        const firstFocusableElement = visibleFocusableElements[0];
-                        const lastFocusableElement = visibleFocusableElements[visibleFocusableElements.length - 1];
-
-                        if (e.shiftKey) {
-                            // if shift-tab and on first element, jump to last
-                            if (document.activeElement === firstFocusableElement || !activeModal.contains(document.activeElement)) {
-                                e.preventDefault();
-                                lastFocusableElement.focus();
-                            }
-                        } else {
-                            // if tab and on last element, jump to first
-                            if (document.activeElement === lastFocusableElement || !activeModal.contains(document.activeElement)) {
-                                e.preventDefault();
-                                firstFocusableElement.focus();
-                            }
-                        }
-                    } else {
-                        // if no focusable elements, force focus onto the modal container itself
-                        e.preventDefault();
-                        if (!activeModal.hasAttribute('tabindex')) {
-                            activeModal.setAttribute('tabindex', '-1');
-                        }
-                        activeModal.focus();
-                    }
-                }
-            } else if (e.key === 'Escape') {
-                let closedAny = false;
-                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay, #coachmark-overlay, #stakeholder-modal-overlay');
+            if (e.key === 'Escape') {
+                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"]');
                 openModals.forEach(modal => {
-                    if (!document.body.contains(modal)) return;
+                    if (modal.id === 'onboarding-role-modal') return;
                     const style = window.getComputedStyle(modal);
                     if (style.display !== 'none' && style.visibility !== 'hidden' && !modal.classList.contains('hidden')) {
-
-                        let handled = false;
-                        if (typeof modal.closeModal === 'function') {
-                            try {
-                                modal.closeModal();
-                                handled = true;
-                            } catch (error) {
-                                console.error('Error during modal.closeModal():', error);
-                            }
-                        } else {
-                            // Find the closest close-btn that belongs to this specific modal level
-                            const closeBtns = Array.from(modal.querySelectorAll('.close-btn, .scorecard-close, [aria-label="Schließen"]'));
-                            const closeBtn = closeBtns.find(btn => btn.closest('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop, .modal-overlay') === modal) || closeBtns[0];
-
-                            if (closeBtn) {
-                                try {
-                                    closeBtn.click();
-                                    handled = true;
-                                } catch (error) {
-                                    console.error('Error clicking close-btn:', error);
-                                }
-                            }
-                        }
-
-                        const forceCloseFallback = () => {
-                            if (document.body.contains(modal) && window.getComputedStyle(modal).display !== 'none' && !modal.classList.contains('hidden')) {
-                                if (modal.classList.contains('scorecard-backdrop') && !modal.id) {
-                                    modal.remove();
-                                } else {
-                                    modal.style.display = 'none';
-                                    modal.classList.add('hidden');
-                                }
-                            }
-                        };
-
-                        if (!handled) {
-                            forceCloseFallback();
-                        } else {
-                            // Verify after a short delay to allow custom handlers/animations to run, force close if they failed silently
-                            setTimeout(forceCloseFallback, 150);
-                        }
-                        closedAny = true;
+                        modal.style.display = 'none';
+                        modal.classList.add('hidden');
                     }
                 });
-
-                if (closedAny && lastTriggerElement && document.body.contains(lastTriggerElement)) {
-                    if (typeof lastTriggerElement.focus === 'function') {
-                        // Small delay to allow modal display to clear before restoring focus
-                        setTimeout(() => lastTriggerElement.focus(), 10);
-                    }
-                }
-            } else if (e.key === 'Tab') {
-                // Focus trap for open modals
-                const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [tabindex]:not([tabindex^="-"])';
-
-                const openModals = Array.from(document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .scorecard-backdrop')).filter(modal => {
-                    const style = window.getComputedStyle(modal);
-                    if (style.display === 'none' || style.visibility === 'hidden' || modal.classList.contains('hidden')) return false;
-
-                    // Filter out backdrops without actual dialog content
-                    if (modal.classList.contains('scorecard-backdrop')) {
-                         if (!modal.querySelector('.scorecard-modal, .scorecard-dialog, .modal, [role="dialog"]') || modal.children.length === 0) {
-                             return false;
-                         }
-                    }
-
-                    // Only consider the modal if it actually contains visible focusable elements
-                    const elements = Array.from(modal.querySelectorAll(focusableElementsString)).filter(el => {
-                        return el.offsetWidth > 0 && el.offsetHeight > 0 && window.getComputedStyle(el).visibility !== 'hidden';
-                    });
-
-                    return elements.length > 0;
-                });
-
-                if (openModals.length > 0) {
-                    // Use the topmost (last in DOM) open modal that passed the filters
-                    const activeModal = openModals[openModals.length - 1];
-
-                    // Extract the focusable elements from the active modal
-                    const focusableElements = Array.from(activeModal.querySelectorAll(focusableElementsString)).filter(el => {
-                        return el.offsetWidth > 0 && el.offsetHeight > 0 && window.getComputedStyle(el).visibility !== 'hidden';
-                    });
-
-                    // We are guaranteed to have at least one element due to the array filter above
-                    const firstElement = focusableElements[0];
-                    const lastElement = focusableElements[focusableElements.length - 1];
-
-                    if (e.shiftKey) {
-                        if (document.activeElement === firstElement || !activeModal.contains(document.activeElement)) {
-                            lastElement.focus();
-                            e.preventDefault();
-                        }
-                    } else {
-                        if (document.activeElement === lastElement || !activeModal.contains(document.activeElement)) {
-                            firstElement.focus();
-                            e.preventDefault();
-                        }
-                    }
-                }
             }
         });
     }
 
     // --- 9. AUTO SYSTEM THEME SYNC ---
     function initAutoThemeSync() {
-        if (!window.StorageModule.getItem('theme') && !window.StorageModule.getItem('aquarevier_theme')) {
+        if (!localStorage.getItem('theme') && !localStorage.getItem('aquarevier_theme')) {
             const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
             if (prefersDark) {
                 document.body.classList.remove('light-theme');

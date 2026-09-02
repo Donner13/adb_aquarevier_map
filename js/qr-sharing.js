@@ -53,26 +53,30 @@
             modal.id = 'qr-share-modal';
             modal.setAttribute('role', 'dialog');
             modal.setAttribute('aria-modal', 'true');
-            modal.setAttribute('aria-labelledby', 'qr-share-modal-title');
+            modal.setAttribute('aria-labelledby', 'qr-modal-title');
             modal.style.cssText = `
                 position: fixed;
                 inset: 0;
                 z-index: 10010;
-                background: var(--modal-backdrop, rgba(0, 0, 0, 0.6));
+                background: rgba(0, 0, 0, 0.65);
                 backdrop-filter: blur(5px);
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 padding: 15px;
             `;
+            // Backdrop click handler
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) window.closeQrShareModal();
+            });
             document.body.appendChild(modal);
         }
 
         modal.innerHTML = `
-            <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 420px; border-radius: 12px; box-shadow: var(--modal-shadow, 0 10px 30px rgba(0, 0, 0, 0.5)); overflow: hidden; text-align: center; font-size: 12px;">
+            <div id="qr-card" style="background: #ffffff; width: 100%; max-width: 420px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden; text-align: center; font-size: 12px;">
                 <div style="background: #1e293b; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
-                    <span id="qr-share-modal-title" style="font-size: 15px; font-weight: 700;">📱 QR-Code &amp; Deep-Link Teilen</span>
-                    <button type="button" onclick="closeQrShareModal()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
+                    <span id="qr-modal-title" style="font-size: 15px; font-weight: 700;">📱 QR-Code &amp; Deep-Link Teilen</span>
+                    <button id="qr-close-btn" type="button" onclick="closeQrShareModal()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
                 </div>
                 
                 <div style="padding: 20px;">
@@ -81,14 +85,14 @@
                     </div>
                     
                     <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; display: inline-block; margin-bottom: 14px;">
-                        <img src="${qrApiUrl}" alt="QR Code" width="200" height="200" style="display: block; border-radius: 4px;" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'200\\' height=\\'200\\'><path fill=\\'%23f1f5f9\\' d=\\'M0 0h200v200H0z\\'/><text x=\\'100\\' y=\\'105\\' fill=\\'%2364748b\\' font-size=\\'12\\' text-anchor=\\'middle\\'>QR-Code (Offline)</text></svg>';">
+                        <img src="${qrApiUrl}" alt="QR Code" width="200" height="200" style="display: block; border-radius: 4px;" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'200\\' height=\\'200\\'><rect width=\\'200\\' height=\\'200\\' fill=\\'%23f1f5f9\\'/><text x=\\'100\\' y=\\'105\\' font-size=\\'12\\' text-anchor=\\'middle\\' fill=\\'%2364748b\\'>QR-Code (Offline)</text></svg>';">
                     </div>
 
                     <div style="margin-bottom: 14px;">
-                        <input type="text" id="qr-deeplink-input" value="${escapeHtml(deepLink)}" readonly style="width: 100%; font-size: 11px; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 4px; background: #f1f5f9; text-align: center;">
+                        <input type="text" id="qr-deeplink-input" value="${escapeHtml(deepLink)}" readonly aria-label="Teilbarer Link" style="width: 100%; font-size: 11px; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 4px; background: #f1f5f9; text-align: center;">
                     </div>
 
-                    <button type="button" class="btn btn-sm btn-primary" style="width: 100%; font-size: 12px; padding: 6px;" onclick="copyDeepLinkToClipboard()">
+                    <button type="button" id="qr-copy-btn" class="btn btn-sm btn-primary" style="width: 100%; font-size: 12px; padding: 6px;" onclick="copyDeepLinkToClipboard()">
                         📋 Link in Zwischenablage kopieren
                     </button>
                 </div>
@@ -96,11 +100,21 @@
         `;
 
         modal.style.display = 'flex';
+
+        // Focus management [AQ-123]
+        window._qrLastFocus = document.activeElement;
+        setTimeout(() => {
+            const copyBtn = document.getElementById('qr-copy-btn');
+            if (copyBtn) copyBtn.focus();
+        }, 100);
     };
 
     window.closeQrShareModal = function() {
         const modal = document.getElementById('qr-share-modal');
-        if (modal) modal.style.display = 'none';
+        if (modal) {
+            modal.style.display = 'none';
+            if (window._qrLastFocus) window._qrLastFocus.focus();
+        }
     };
 
     window.copyDeepLinkToClipboard = function() {

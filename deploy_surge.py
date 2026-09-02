@@ -3,37 +3,48 @@ import time
 import sys
 import random
 import string
+import os
 from pathlib import Path
 
+# --- Configuration ---
 root = Path(__file__).resolve().parent
-vendor_result = subprocess.run(
-    ['node', 'tools/build_vendor_assets.js'],
-    cwd=root,
-    capture_output=True,
-    text=True,
-    timeout=60
-)
-if vendor_result.returncode != 0:
-    print(vendor_result.stdout)
-    print(vendor_result.stderr)
-    print("Deployment stopped: vendor assets could not be prepared.")
-    sys.exit(1)
-print(vendor_result.stdout.strip())
+dist_dir = root / "dist_public"
+domain = "adb-aquarevier-secure.surge.sh"
+
+def run_step(name, command, cwd=None):
+    print(f"[*] Step: {name}...")
+    result = subprocess.run(
+        command,
+        cwd=cwd or root,
+        capture_output=True,
+        text=True,
+        shell=True
+    )
+    if result.returncode != 0:
+        print(f"  [!] Error in step '{name}':")
+        print(result.stdout)
+        print(result.stderr)
+        sys.exit(1)
+    print(f"  [+] Success.")
+    return result.stdout.strip()
+
+# 1. Build Public Release
+run_step("Build Public Release", [sys.executable, 'tools/build_public_release.py'])
 
 def generate_random_string(length=6):
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
 
 email = f"dtunder-{generate_random_string(5)}@surge.sh"
 password = generate_random_string(12)
-domain = "adb-aquarevier-secure.surge.sh"
 
-print(f"Deploying to Surge...")
-print(f"Temporary Account Email: {email}")
-print(f"Subdomain: http://{domain}")
+print(f"\nDeploying to Surge...")
+print(f"Project Directory: {dist_dir}")
+print(f"Domain: http://{domain}")
 
 try:
+    # Use dist_dir as the project path
     p = subprocess.Popen(
-        ['npx', 'surge', '--project', '.', '--domain', domain],
+        ['npx', 'surge', '--project', str(dist_dir), '--domain', domain],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
@@ -53,8 +64,7 @@ deployed = False
 email_sent = False
 password_sent = False
 
-while time.time() - start_time < 180:
-    # Read one character at a time to avoid blocking on newlines
+while time.time() - start_time < 300: # Increased timeout to 5 mins
     char = p.stdout.read(1)
     if not char:
         break
@@ -62,27 +72,22 @@ while time.time() - start_time < 180:
         sys.stdout.write(char)
         sys.stdout.flush()
     except UnicodeEncodeError:
-        try:
-            sys.stdout.write(char.encode('ascii', errors='replace').decode('ascii'))
-            sys.stdout.flush()
-        except Exception:
-            pass
+        pass
     buffer += char
     
-    # Check for prompts in the accumulated buffer
     if "email:" in buffer.lower() and not email_sent:
-        print("\n>> Sending email...")
+        print("\n>> Sending temporary email...")
         p.stdin.write(email + "\n")
         p.stdin.flush()
         email_sent = True
-        buffer = "" # Clear buffer
+        buffer = ""
         
     elif "password:" in buffer.lower() and not password_sent:
-        print("\n>> Sending password...")
+        print("\n>> Sending temporary password...")
         p.stdin.write(password + "\n")
         p.stdin.flush()
         password_sent = True
-        buffer = "" # Clear buffer
+        buffer = ""
         
     if "Success!" in buffer or "deployed to" in buffer:
         deployed = True
@@ -97,8 +102,8 @@ if p.returncode is None:
 if deployed:
     print("\n==============================================")
     print("DEPLOYMENT ERFOLGREICH!")
-    print(f"Deine Webseite ist jetzt live unter:")
-    print(f"-> http://{domain}")
+    print(f"Live unter: http://{domain}")
     print("==============================================")
 else:
     print("\nDeployment failed or timed out.")
+    sys.exit(1)

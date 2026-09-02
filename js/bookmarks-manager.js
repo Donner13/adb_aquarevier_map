@@ -9,14 +9,8 @@
 
     window.getSavedBookmarks = function() {
         try {
-            const raw = window.StorageModule.getItem(STORAGE_KEY);
-            if (!raw) return [];
-            try {
-                const parsed = JSON.parse(raw);
-                return Array.isArray(parsed) ? parsed : [];
-            } catch (parseError) {
-                return [];
-            }
+            const raw = localStorage.getItem(STORAGE_KEY);
+            return raw ? JSON.parse(raw) : [];
         } catch (e) {
             return [];
         }
@@ -42,7 +36,7 @@
         };
 
         bookmarks.push(newBookmark);
-        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks)); } catch (e) { console.warn('Storage unavailable:', e); }
         window.renderBookmarksList();
         if (typeof window.showToast === 'function') window.showToast(`Lesezeichen "${title.trim()}" gespeichert`, "🔖");
     };
@@ -50,7 +44,7 @@
     window.deleteBookmark = function(id) {
         let bookmarks = window.getSavedBookmarks();
         bookmarks = bookmarks.filter(b => b.id !== id);
-        window.StorageModule.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks)); } catch (e) { console.warn('Storage unavailable:', e); }
         window.renderBookmarksList();
     };
 

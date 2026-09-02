@@ -111,9 +111,25 @@
 
     /**
      * Executes the radius analysis around a specific center coordinate.
+     * [AQ-104] Now auto-loads required datasets.
      */
-    window.runRadiusAnalysis = function(centerLat, centerLng, radiusMeters) {
+    window.runRadiusAnalysis = async function(centerLat, centerLng, radiusMeters) {
         if (typeof map === 'undefined') return;
+
+        const statusInfo = document.getElementById('radius-status-info');
+        if (statusInfo) {
+            statusInfo.innerHTML = '🔄 Lade erforderliche Daten für Analyse...';
+        }
+
+        // Ensure all layers from LAYER_CONFIGS are loaded [AQ-104]
+        if (window.layerLoaders) {
+            const promises = Object.values(window.layerLoaders).map(loader => loader());
+            try {
+                await Promise.all(promises);
+            } catch (e) {
+                console.warn("Some layers failed to load for radius analysis", e);
+            }
+        }
 
         // Clear existing circle and marker
         if (window.radiusCircle) {
@@ -181,7 +197,7 @@
             });
         }
 
-        // 2. Check ELWAS / Point Layer Datasets in layerDataStore
+        // 2. Check ELWAS / Point & Polyline Layer Datasets in layerDataStore [AQ-105]
         const layerDatasetLabels = {
             'grundwassermessstellen': '💧 Grundwassermessstellen',
             'pegel': '📏 Flusspegel',
@@ -189,7 +205,8 @@
             'regenbecken': '🌧️ Regenbecken',
             'querbauwerke': '🧱 Querbauwerke',
             'elwas_einleiter': '🏭 Industrieeinleiter',
-            'h2_elektrolyseure_nrw': '⚡ H2-Industrie'
+            'h2_elektrolyseure_nrw': '⚡ H2-Industrie',
+            'gewaesserguete': '💧 Gewässergüte'
         };
 
         if (window.layerDataStore) {
@@ -198,19 +215,35 @@
                 if (geojson && Array.isArray(geojson.features)) {
                     const label = layerDatasetLabels[key];
                     geojson.features.forEach(f => {
-                        if (!f.geometry || f.geometry.type !== 'Point') return;
-                        const coords = f.geometry.coordinates;
-                        const dist = haversineDistance(centerLat, centerLng, coords[1], coords[0]);
+                        if (!f.geometry) return;
+
+                        let dist = Infinity;
+                        let lat, lng;
+
+                        if (f.geometry.type === 'Point') {
+                            const coords = f.geometry.coordinates;
+                            lat = coords[1];
+                            lng = coords[0];
+                            dist = haversineDistance(centerLat, centerLng, lat, lng);
+                        } else if (f.geometry.type === 'LineString' || f.geometry.type === 'MultiLineString' || f.geometry.type === 'Polygon' || f.geometry.type === 'MultiPolygon') {
+                            // [AQ-105] Use distance to nearest point of geometry
+                            dist = getMinDistanceToGeometry(centerLat, centerLng, f.geometry);
+                            // For result zooming, use centroid or first point
+                            const center = getGeometryCenter(f.geometry);
+                            lat = center[0];
+                            lng = center[1];
+                        }
+
                         if (dist <= radiusMeters) {
                             const p = f.properties || {};
                             const name = p.name || p.bezeichnung || p.betreiber || p.anlagen_nr || key;
-                            const sub = p.gewaesser || p.gemeinde || p.kreis || p.typ || '';
+                            const sub = p.gewaesser || p.gemeinde || p.kreis || p.typ || p.abschnitt || '';
                             addHit(label, {
                                 name: name,
                                 sub: sub,
                                 dist: dist,
-                                lat: coords[1],
-                                lng: coords[0],
+                                lat: lat,
+                                lng: lng,
                                 properties: p
                             });
                         }
@@ -364,23 +397,31 @@
 
     /**
      * Exports current radius query results as a CSV file.
+     * [AQ-106, AQ-107] Improved escaping and injection protection.
      */
     window.exportRadiusResultsCSV = function() {
         if (!window.lastRadiusResults || window.lastRadiusResults.totalHits === 0) return;
         const res = window.lastRadiusResults;
 
-        let csv = 'Kategorie;Name;Zusatz/Ort;Entfernung_Meter;Breitengrad;Längengrad\n';
+        const headers = ['Kategorie', 'Name', 'Zusatz/Ort', 'Entfernung_Meter', 'Breitengrad', 'Längengrad'];
+        let csvRows = [headers.map(h => sanitizeCsvCell(h)).join(';')];
 
         Object.keys(res.byCategory).forEach(cat => {
             res.byCategory[cat].forEach(item => {
-                const catClean = cat.replace(/;/g, ',');
-                const nameClean = (item.name || '').replace(/;/g, ',');
-                const subClean = (item.sub || '').replace(/;/g, ',');
-                csv += `"${catClean}";"${nameClean}";"${subClean}";${Math.round(item.dist)};${item.lat};${item.lng}\n`;
+                const row = [
+                    cat,
+                    item.name || '',
+                    item.sub || '',
+                    Math.round(item.dist),
+                    item.lat,
+                    item.lng
+                ];
+                csvRows.push(row.map(cell => sanitizeCsvCell(cell)).join(';'));
             });
         });
 
-        const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+        const csvString = csvRows.join('\n');
+        const blob = new Blob(['\uFEFF' + csvString], { type: 'text/csv;charset=utf-8;' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -390,6 +431,146 @@
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     };
+
+    /**
+     * Sanitizes a single CSV cell to prevent formula injection and fix quoting [AQ-106, AQ-107].
+     */
+    function sanitizeCsvCell(value) {
+        if (value === null || value === undefined) return '""';
+        let str = String(value);
+
+        // Escape double quotes by doubling them
+        str = str.replace(/"/g, '""');
+
+        // Check for CSV Formula Injection characters (=, +, -, @)
+        if (['=', '+', '-', '@'].includes(str.charAt(0))) {
+            str = "'" + str; // Add leading apostrophe to neutralize
+        }
+
+        return `"${str}"`;
+    }
+
+    /**
+     * Helper to find minimum distance to a GeoJSON geometry.
+     * [AQ-105] Improved to support edge distance and polygon intersection.
+     */
+    function getMinDistanceToGeometry(lat, lng, geom) {
+        if (geom.type === 'Point') {
+            return haversineDistance(lat, lng, geom.coordinates[1], geom.coordinates[0]);
+        }
+
+        if (geom.type === 'Polygon' || geom.type === 'MultiPolygon') {
+            if (isPointInGeometry(lat, lng, geom)) return 0;
+        }
+
+        let minPlayerDist = Infinity;
+
+        function processCoords(coords, type) {
+            if (typeof coords[0] === 'number') {
+                // This shouldn't happen for Lines/Polygons if structured correctly,
+                // but as a fallback check vertices.
+                const d = haversineDistance(lat, lng, coords[1], coords[0]);
+                if (d < minPlayerDist) minPlayerDist = d;
+            } else if (Array.isArray(coords[0]) && typeof coords[0][0] === 'number') {
+                // We have a list of points (a LineString or a Polygon Ring)
+                for (let i = 0; i < coords.length - 1; i++) {
+                    const d = distToSegment(lat, lng, coords[i][1], coords[i][0], coords[i+1][1], coords[i+1][0]);
+                    if (d < minPlayerDist) minPlayerDist = d;
+                }
+            } else {
+                coords.forEach(c => processCoords(c, type));
+            }
+        }
+
+        processCoords(geom.coordinates, geom.type);
+        return minPlayerDist;
+    }
+
+    /**
+     * Calculates distance from a point to a line segment using Haversine approximations for small distances.
+     */
+    function distToSegment(plat, plng, vlat, vlng, wlat, wlng) {
+        const d2 = distSq(vlat, vlng, wlat, wlng);
+        if (d2 === 0) return haversineDistance(plat, plng, vlat, vlng);
+        let t = ((plat - vlat) * (wlat - vlat) + (plng - vlng) * (wlng - vlng)) / d2;
+        t = Math.max(0, Math.min(1, t));
+        return haversineDistance(plat, plng, vlat + t * (wlat - vlat), vlng + t * (wlng - vlng));
+    }
+
+    function distSq(vlat, vlng, wlat, wlng) {
+        return (vlat - wlat) ** 2 + (vlng - wlng) ** 2;
+    }
+
+    /**
+     * Ray-casting algorithm to check if point is inside geometry.
+     */
+    function isPointInGeometry(lat, lng, geom) {
+        if (geom.type === 'Polygon') {
+            return isPointInPolygon(lat, lng, geom.coordinates);
+        } else if (geom.type === 'MultiPolygon') {
+            return geom.coordinates.some(poly => isPointInPolygon(lat, lng, poly));
+        }
+        return false;
+    }
+
+    function isPointInPolygon(lat, lng, rings) {
+        // First ring is exterior, others are holes
+        let inside = false;
+        const x = lng, y = lat;
+
+        // Check exterior ring
+        const exterior = rings[0];
+        for (let i = 0, j = exterior.length - 1; i < exterior.length; j = i++) {
+            const xi = exterior[i][0], yi = exterior[i][1];
+            const xj = exterior[j][0], yj = exterior[j][1];
+            const intersect = ((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+            if (intersect) inside = !inside;
+        }
+
+        if (!inside) return false;
+
+        // Check holes
+        for (let k = 1; k < rings.length; k++) {
+            if (isPointInPolygonRing(lat, lng, rings[k])) return false;
+        }
+
+        return true;
+    }
+
+    function isPointInPolygonRing(lat, lng, ring) {
+        let inside = false;
+        const x = lng, y = lat;
+        for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+            const xi = ring[i][0], yi = ring[i][1];
+            const xj = ring[j][0], yj = ring[j][1];
+            const intersect = ((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+            if (intersect) inside = !inside;
+        }
+        return inside;
+    }
+
+    /**
+     * Helper to get a representative center for a geometry.
+     */
+    function getGeometryCenter(geom) {
+        if (geom.type === 'Point') return [geom.coordinates[1], geom.coordinates[0]];
+
+        let lats = [], lngs = [];
+        function collect(coords) {
+            if (typeof coords[0] === 'number') {
+                lats.push(coords[1]);
+                lngs.push(coords[0]);
+            } else {
+                coords.forEach(collect);
+            }
+        }
+        collect(geom.coordinates);
+
+        if (lats.length === 0) return [0, 0];
+        const avgLat = lats.reduce((a, b) => a + b, 0) / lats.length;
+        const avgLng = lngs.reduce((a, b) => a + b, 0) / lngs.length;
+        return [avgLat, avgLng];
+    }
 
     /**
      * Utility HTML escape helper.

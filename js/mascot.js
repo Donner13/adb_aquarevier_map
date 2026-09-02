@@ -7,9 +7,9 @@
 
     const FUN_FACTS = [
         "Wusstest du? Die Rur fließt durch drei Länder: Belgien, Deutschland und die Niederlande!",
-        "Das Rheinische Revier umfasst über 60 Kläranlagen, die täglich Hunderttausende Kubikmeter Abwasser reinigen.",
+        "Das Rheinische Revier verfügt über eine Vielzahl von Kläranlagen, die täglich große Mengen Abwasser reinigen.",
         "Grundwasser braucht oft Jahrzehnte, um durch Erdschichten zu filtern – echte Naturreinigung!",
-        "Ein durchschnittliches Regenrückhaltebecken im Revier fasst so viel Wasser wie 15 olympische Schwimmbecken.",
+        "Ein durchschnittliches Regenrückhaltebecken im Revier fasst das Volumen vieler Schwimmbecken.",
         "Der Wasserspiegel in Tagebau-Restseen wird über Jahrzehnte sorgfältig gesteuert, um stabile Ufer zu sichern."
     ];
 
@@ -90,7 +90,10 @@
             widget.className = 'platschi-container';
             widget.innerHTML = `
                 <div class="platschi-speech-bubble" id="platschiBubble" style="display: none;">
-                    <span id="platschiText">Hallo! Ich bin Platschi, dein Wasser-Guide! 🦦</span>
+                    <div id="platschiText">Hallo! Ich bin Platschi, dein Wasser-Guide! 🦦</div>
+                    <div id="platschiActions" style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
+                        <button onclick="if(window.openAiAssistantModal) { window.openAiAssistantModal(); window.AquaMascot.hideBubble(); } else if(window.toggleAssistant) { window.toggleAssistant(); }" style="background: var(--accent-primary, #0ea5e9); color: white; border: none; border-radius: 4px; padding: 4px 8px; font-size: 11px; cursor: pointer; width: 100%;">🤖 Assistent fragen</button>
+                    </div>
                     <button class="platschi-bubble-close" onclick="window.AquaMascot.hideBubble()">&times;</button>
                 </div>
                 <button class="platschi-avatar" id="platschiAvatar" type="button" aria-label="Platschi Tipps" onclick="window.AquaMascot.toggleBubble()">
@@ -103,10 +106,10 @@
 
             // Trigger random fun fact on first daily load
             setTimeout(() => {
-                const hasSeenToday = window.StorageModule.getItem('platschi_fact_date') === new Date().toDateString();
+                const hasSeenToday = localStorage.getItem('platschi_fact_date') === new Date().toDateString();
                 if (!hasSeenToday) {
                     this.showRandomFact();
-                    window.StorageModule.setItem('platschi_fact_date', new Date().toDateString());
+                    try { localStorage.setItem('platschi_fact_date', new Date().toDateString()); } catch (e) { console.warn('Storage unavailable:', e); }
                 }
             }, 2500);
         }
@@ -115,7 +118,7 @@
             const bubble = document.getElementById('platschiBubble');
             const textSpan = document.getElementById('platschiText');
             if (bubble && textSpan) {
-                textSpan.textContent = text;
+                textSpan.innerText = text;
                 bubble.style.display = 'block';
                 if (duration > 0) {
                     setTimeout(() => {
@@ -170,7 +173,7 @@
                 this.activeMood = 'happy';
                 if (badge) badge.textContent = '🟢';
                 if (emoji) emoji.textContent = '🦦✨';
-                this.showText("Der Pegelstand ist stabil im optimalen Bereich! 🐟");
+                this.showText("Der Pegelstand liegt aktuell im unauffälligen Bereich. 🐟");
             }
         }
 

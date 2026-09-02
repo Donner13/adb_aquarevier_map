@@ -13,9 +13,9 @@
     window.timeSeriesMarkersGroup = null;
 
     /**
-     * Simulation trend model generator (SIMULATION / HYDROLOGICAL MODEL).
-     * Clarification: Real time-series measurement datasets (2000-2030) are not present in the static GeoJSON layer.
-     * Values are modeled trends for demonstration/scenario simulation.
+     * Simulation trend model generator (SYNTHETIC VISUALIZATION / DEMO SCENARIO).
+     * Clarification: Real time-series measurement datasets (2000-2030) are not present in this view.
+     * Values are modeled trends for demonstration/scenario simulation and NOT scientifically validated.
      */
     function getStationDelta(stationId, year) {
         let hash = 0;
@@ -59,7 +59,7 @@
 
         const year = window.timeSeriesYears[index];
         const yearDisplay = document.getElementById('timeseries-year-display');
-        const slider = document.getElementById('timeseries-slider');
+        const slider = document.getElementById('timeseries-slider'); // [AQ-113] Unified ID
 
         if (yearDisplay) yearDisplay.textContent = String(year);
         if (slider) slider.value = String(index);
@@ -69,13 +69,27 @@
 
     /**
      * Updates map markers & summary stats for a given year.
+     * [AQ-114] Now ensures Messstellen data is loaded.
      */
-    window.updateTimeSeriesVisualization = function(year) {
+    window.updateTimeSeriesVisualization = async function(year) {
         if (typeof map === 'undefined') return;
 
         if (!window.timeSeriesMarkersGroup) {
             window.timeSeriesMarkersGroup = L.layerGroup().addTo(map);
         }
+
+        // [AQ-114] Auto-load data if missing
+        if (window.layerLoaders && window.layerLoaders['grundwassermessstellen'] && (!window.layerDataStore || !window.layerDataStore['grundwassermessstellen'])) {
+            const spinner = document.getElementById('gwm-timeseries-spinner');
+            if (spinner) spinner.style.display = 'block';
+            try {
+                await window.layerLoaders['grundwassermessstellen']();
+            } catch (e) {
+                console.error("Failed to load GWM for timeseries", e);
+            }
+            if (spinner) spinner.style.display = 'none';
+        }
+
         window.timeSeriesMarkersGroup.clearLayers();
 
         let totalStations = 0;
@@ -111,11 +125,12 @@
                 color: '#ffffff',
                 weight: 1.5,
                 opacity: 0.9,
-                fillOpacity: 0.8
+                fillOpacity: 0.8,
+                interactive: false
             }).bindTooltip(`
                 <div style="font-size: 11px;">
-                    <b>${escapeHtml(p.name || 'Messstelle')}</b> <span style="background:#e0f2fe; color:#0369a1; font-size:9px; padding:1px 4px; border-radius:3px; font-weight:600;">SIMULATION</span><br>
-                    Modelljahr: <b>${year}</b><br>
+                    <b>${escapeHtml(p.name || 'Messstelle')}</b> <span style="background:#e0f2fe; color:#0369a1; font-size:9px; padding:1px 4px; border-radius:3px; font-weight:600;">DEMO-SZENARIO</span><br>
+                    Simulationsjahr: <b>${year}</b><br>
                     Simuliertes Delta: <b style="color:${color};">${delta >= 0 ? '+' : ''}${delta} m</b>
                 </div>
             `, { direction: 'top', offset: [0, -6] });
@@ -141,7 +156,7 @@
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Lade Grundwasser-Zeitreihe...
                     </div>
                     <div style="background:#fef3c7; color:#92400e; font-size:9.5px; padding:2px 4px; border-radius:3px; text-align:center; font-weight:600; margin-bottom:4px;">
-                        ⚠️ Trendmodell / Modellierte Werte (Keine Echtdaten-Zeitreihe)
+                        ⚠️ Synthetische Visualisierung / Demo-Szenario (Keine hydrologische Prognose)
                     </div>
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; text-align: center; font-size: 11px;">
                         <div style="background: #f8fafc; padding: 4px; border-radius: 4px; border: 1px solid #e2e8f0;">
@@ -210,12 +225,34 @@
     window.resetTimeSeries = function() {
         window.pauseTimeSeries();
         if (typeof map !== 'undefined' && window.timeSeriesMarkersGroup) {
-            map.removeLayer(window.timeSeriesMarkersGroup);
-            window.timeSeriesMarkersGroup = null;
+            window.timeSeriesMarkersGroup.clearLayers();
+            // Do not remove group completely to avoid reference issues
         }
-        const slider = document.getElementById('timeseries-year-slider');
-        if (slider) slider.value = 5;
-        window.setTimeSeriesYearIndex(5); // Reset to 2025
+        const slider = document.getElementById('timeseries-slider');
+        if (slider) slider.value = "5";
+        window.currentTimeSeriesIndex = 5;
+        const year = window.timeSeriesYears[5];
+        const yearDisplay = document.getElementById('timeseries-year-display');
+        if (yearDisplay) yearDisplay.textContent = String(year);
+        window.updateTimeSeriesVisualization(year);
+    };
+
+    /**
+     * Shows modal/toast with model information.
+     */
+    window.showGroundwaterInfo = function() {
+        const info = `
+            <strong>Modellbasis & Datenherkunft</strong><br>
+            • Quelle: Historische LANUV-Daten (bis 2024)<br>
+            • Methode: Synthetische Trend-Simulation (Lineare Interpolation + Hash-Varianz)<br>
+            • Hinweis: Dies ist eine Visualisierung eines fiktiven Erholungsszenarios (2025-2030) nach Ende der Tagebausümpfung.<br>
+            • Unsicherheit: Die Werte dienen der Demonstration und sind keine wissenschaftlich belastbare Prognose.
+        `;
+        if (typeof window.showToastNotification === 'function') {
+            window.showToastNotification(info, 'info', 10000);
+        } else {
+            alert(info.replace(/<br>/g, '\n').replace(/<[^>]*>/g, ''));
+        }
     };
 
     function escapeHtml(str) {
