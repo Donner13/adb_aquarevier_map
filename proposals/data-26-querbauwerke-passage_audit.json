@@ -1,0 +1,9 @@
+{
+  "audit_target": "querbauwerke.geojson",
+  "missing_fields": [
+    "oekologische_durchgaengigkeit",
+    "passierbarkeit",
+    "fallhoehe"
+  ],
+  "recommendation": "The ELWAS scraper for Querbauwerke (scrape_querbauwerke.py) currently extracts only basic metadata (name, typ, gewaesser, zustaendigkeit). It fails to extract critical ecological metrics such as 'ökologische Durchgängigkeit', 'Passierbarkeit' (fish passability), and 'Fallhöhe' (drop height). The scraper and geojson structure should be updated to scrape and store these values."
+}
