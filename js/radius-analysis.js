@@ -289,7 +289,7 @@
 
         if (res.totalHits === 0) {
             resultsContainer.innerHTML = `
-                <div style="padding: 10px; text-align: center; color: #64748b; font-size: 12px; background: #f8fafc; border-radius: 4px;">
+                <div style="padding: 10px; text-align: center; color: #64748b; font-size: 0.75rem; background: #f8fafc; border-radius: 4px;">
                     Keine Objekte im gewählten Radius von ${kmStr} km gefunden.
                 </div>
             `;
@@ -298,8 +298,8 @@
 
         let html = `
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <span style="font-weight: 600; font-size: 12px; color: #1e293b;">Ergebnisliste (${res.totalHits}):</span>
-                <button type="button" class="btn btn-sm btn-outline-success" style="font-size: 10px; padding: 1px 6px;" onclick="exportRadiusResultsCSV()">
+                <span style="font-weight: 600; font-size: 0.75rem; color: #1e293b;">Ergebnisliste (${res.totalHits}):</span>
+                <button type="button" class="btn btn-sm btn-outline-success" style="font-size: 0.625rem; padding: 1px 6px;" onclick="exportRadiusResultsCSV()">
                     📥 CSV Export
                 </button>
             </div>
@@ -312,9 +312,9 @@
 
             html += `
                 <div style="margin-bottom: 8px; border: 1px solid #e2e8f0; border-radius: 4px; overflow: hidden; background: #ffffff;">
-                    <div style="background: #f1f5f9; padding: 4px 8px; font-weight: 600; font-size: 11px; color: #334155; display: flex; justify-content: space-between;">
+                    <div style="background: #f1f5f9; padding: 4px 8px; font-weight: 600; font-size: 0.6875rem; color: #334155; display: flex; justify-content: space-between;">
                         <span>${cat}</span>
-                        <span class="badge bg-secondary" style="font-size: 10px;">${items.length}</span>
+                        <span class="badge bg-secondary" style="font-size: 0.625rem;">${items.length}</span>
                     </div>
                     <div style="max-height: 120px; overflow-y: auto;">
             `;
@@ -329,10 +329,10 @@
                          style="padding: 4px 8px; border-bottom: 1px solid #f1f5f9; cursor: pointer; display: flex; justify-content: space-between; align-items: center;"
                          onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
                         <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 170px;">
-                            <div style="font-weight: 500; font-size: 11px; color: #0f172a;">${escapeHtml(item.name)}</div>
-                            ${item.sub ? `<div style="font-size: 10px; color: #64748b;">${escapeHtml(item.sub)}</div>` : ''}
+                            <div style="font-weight: 500; font-size: 0.6875rem; color: #0f172a;">${escapeHtml(item.name)}</div>
+                            ${item.sub ? `<div style="font-size: 0.625rem; color: #64748b;">${escapeHtml(item.sub)}</div>` : ''}
                         </div>
-                        <span style="font-size: 10px; font-weight: 600; color: #2563eb; background: #eff6ff; padding: 1px 4px; border-radius: 3px; white-space: nowrap;">
+                        <span style="font-size: 0.625rem; font-weight: 600; color: #2563eb; background: #eff6ff; padding: 1px 4px; border-radius: 3px; white-space: nowrap;">
                             ${distText}
                         </span>
                     </div>
@@ -357,7 +357,7 @@
         
         const popup = L.popup()
             .setLatLng([lat, lng])
-            .setContent(`<div style="font-size:12px; font-weight:bold; padding:4px;">📍 ${escapeHtml(name)}</div>`)
+            .setContent(`<div style="font-size: 0.75rem; font-weight:bold; padding:4px;">📍 ${escapeHtml(name)}</div>`)
             .openOn(map);
     };
 

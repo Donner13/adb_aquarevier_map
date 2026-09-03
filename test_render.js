@@ -76,8 +76,8 @@ function createLogoCalloutMarker(lat, lng, name) {
         dx = 20; dy = 20;
         logoHtml = `
             <div class="logo-box logo-tillmann-box" style="left: ${ax + dx}px; top: ${ay + dy}px; border: 1.5px solid #1d4ed8; display: flex; flex-direction: column; align-items: center; padding: 4px 10px; background: #ffffff; border-radius: 4px; box-shadow: 0 2px 6px rgba(29,78,216,0.1);">
-                <div style="font-family:'Outfit',sans-serif; font-weight:900; font-size:8px; letter-spacing:0.1em; color:#1d4ed8; text-transform:uppercase; border-bottom: 2px solid #1d4ed8; padding-bottom: 1px; margin-bottom: 1px;">PAPIERFABRIK</div>
-                <div style="font-family:'Outfit',sans-serif; font-weight:900; font-size:14px; letter-spacing:0.05em; color:#1d4ed8; text-transform:uppercase; line-height: 1.1;">TILLMANN</div>
+                <div style="font-family:'Outfit',sans-serif; font-weight:900; font-size: 0.5rem; letter-spacing:0.1em; color:#1d4ed8; text-transform:uppercase; border-bottom: 2px solid #1d4ed8; padding-bottom: 1px; margin-bottom: 1px;">PAPIERFABRIK</div>
+                <div style="font-family:'Outfit',sans-serif; font-weight:900; font-size: 0.875rem; letter-spacing:0.05em; color:#1d4ed8; text-transform:uppercase; line-height: 1.1;">TILLMANN</div>
             </div>
         `;
         const targetX = ax + dx + 10;
@@ -108,7 +108,7 @@ function createLogoCalloutMarker(lat, lng, name) {
         logoHtml = `
             <div class="logo-box logo-eschweiler-box" style="left: ${ax + dx}px; top: ${ay + dy}px; padding: 4px 8px; background: #ffffff; border: 1.5px solid #1d4ed8; display: flex; align-items: center; justify-content: center; width: 165px; height: 42px; box-sizing: border-box; box-shadow: 0 2px 6px rgba(29,78,216,0.15); border-radius: 4px; gap: 6px;">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/DEU_Eschweiler_COA.svg" style="max-width: 25px; max-height: 100%; object-fit: contain;" alt="Stadt Eschweiler">
-                <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:11px; color:#1d4ed8; letter-spacing:0.03em; line-height: 1.1;">STADT<br>ESCHWEILER</span>
+                <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size: 0.6875rem; color:#1d4ed8; letter-spacing:0.03em; line-height: 1.1;">STADT<br>ESCHWEILER</span>
             </div>
         `;
         const targetX = ax + dx + 135;
@@ -128,7 +128,7 @@ function createLogoCalloutMarker(lat, lng, name) {
                     <span style="color: #0891b2; border-right: 1.5px solid #cbd5e1; padding-right: 6px; padding-left: 6px;">IWW</span>
                     <span style="color: #16a34a; padding-left: 6px;">FiW</span>
                 </div>
-                <div style="font-size: 8px; color: #64748b; font-weight: 600; text-align: center; border-top: 1px solid #e2e8f0; margin-top: 4px; padding-top: 2px; letter-spacing: 0.02em;">
+                <div style="font-size: 0.5rem; color: #64748b; font-weight: 600; text-align: center; border-top: 1px solid #e2e8f0; margin-top: 4px; padding-top: 2px; letter-spacing: 0.02em;">
                     Aachener Wasserforschung
                 </div>
             </div>

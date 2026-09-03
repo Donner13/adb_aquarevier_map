@@ -128,8 +128,8 @@
                 fillOpacity: 0.8,
                 interactive: false
             }).bindTooltip(`
-                <div style="font-size: 11px;">
-                    <b>${escapeHtml(p.name || 'Messstelle')}</b> <span style="background:#e0f2fe; color:#0369a1; font-size:9px; padding:1px 4px; border-radius:3px; font-weight:600;">DEMO-SZENARIO</span><br>
+                <div style="font-size: 0.6875rem;">
+                    <b>${escapeHtml(p.name || 'Messstelle')}</b> <span style="background:#e0f2fe; color:#0369a1; font-size: 0.5625rem; padding:1px 4px; border-radius:3px; font-weight:600;">DEMO-SZENARIO</span><br>
                     Simulationsjahr: <b>${year}</b><br>
                     Simuliertes Delta: <b style="color:${color};">${delta >= 0 ? '+' : ''}${delta} m</b>
                 </div>
@@ -143,8 +143,8 @@
         if (statsSummary) {
             if (totalStations === 0) {
                 statsSummary.innerHTML = `
-                    <div style="font-size: 11px; color: #64748b; text-align: center; padding: 4px;">
-                        <span style="background:#fef3c7; color:#92400e; font-size:10px; padding:2px 6px; border-radius:4px; font-weight:600; display:inline-block; margin-bottom:4px;">⚠️ HYDROLOGISCHE SIMULATION</span><br>
+                    <div style="font-size: 0.6875rem; color: #64748b; text-align: center; padding: 4px;">
+                        <span style="background:#fef3c7; color:#92400e; font-size: 0.625rem; padding:2px 6px; border-radius:4px; font-weight:600; display:inline-block; margin-bottom:4px;">⚠️ HYDROLOGISCHE SIMULATION</span><br>
                         Aktiviere den Layer "Grundwassermessstellen", um Stations-Modellreihen (2000-2030) anzuzeigen.
                     </div>
                 `;
@@ -152,24 +152,24 @@
                 const avgDelta = (deltaSum / totalStations).toFixed(1);
                 const avgColor = getDeltaColor(parseFloat(avgDelta));
                 statsSummary.innerHTML = `
-                    <div id="gwm-timeseries-spinner" style="display:none; text-align:center; padding:6px; color:#2563eb; font-size:11px;">
+                    <div id="gwm-timeseries-spinner" style="display:none; text-align:center; padding:6px; color:#2563eb; font-size: 0.6875rem;">
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Lade Grundwasser-Zeitreihe...
                     </div>
-                    <div style="background:#fef3c7; color:#92400e; font-size:9.5px; padding:2px 4px; border-radius:3px; text-align:center; font-weight:600; margin-bottom:4px;">
+                    <div style="background:#fef3c7; color:#92400e; font-size: 0.59375rem; padding:2px 4px; border-radius:3px; text-align:center; font-weight:600; margin-bottom:4px;">
                         ⚠️ Synthetische Visualisierung / Demo-Szenario (Keine hydrologische Prognose)
                     </div>
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; text-align: center; font-size: 11px;">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; text-align: center; font-size: 0.6875rem;">
                         <div style="background: #f8fafc; padding: 4px; border-radius: 4px; border: 1px solid #e2e8f0;">
                             <div style="font-weight: 700; color: ${avgColor};">${avgDelta >= 0 ? '+' : ''}${avgDelta} m</div>
-                            <div style="font-size: 9.5px; color: #64748b;">Ø Sim. Delta</div>
+                            <div style="font-size: 0.59375rem; color: #64748b;">Ø Sim. Delta</div>
                         </div>
                         <div style="background: #f8fafc; padding: 4px; border-radius: 4px; border: 1px solid #e2e8f0;">
                             <div style="font-weight: 700; color: #2563eb;">${risingCount}</div>
-                            <div style="font-size: 9.5px; color: #64748b;">📈 Anstieg</div>
+                            <div style="font-size: 0.59375rem; color: #64748b;">📈 Anstieg</div>
                         </div>
                         <div style="background: #f8fafc; padding: 4px; border-radius: 4px; border: 1px solid #e2e8f0;">
                             <div style="font-weight: 700; color: #dc2626;">${droppingCount}</div>
-                            <div style="font-size: 9.5px; color: #64748b;">📉 Absenkung</div>
+                            <div style="font-size: 0.59375rem; color: #64748b;">📉 Absenkung</div>
                         </div>
                     </div>
                 `;

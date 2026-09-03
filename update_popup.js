@@ -6,7 +6,7 @@ const oldPopup = `                const popupContent = \`
                     <div class="popup-card">
                         <div class="popup-group" style="color: \${color}">\${props.group}</div>
                         <div class="popup-title">\${props.name}</div>
-                        <div class="popup-detail" style="font-family: monospace; font-size:10px; margin-top: 6px;">
+                        <div class="popup-detail" style="font-family: monospace; font-size: 0.625rem; margin-top: 6px;">
                             📍 \${lat.toFixed(6)}, \${lng.toFixed(6)}
                         </div>
                     </div>

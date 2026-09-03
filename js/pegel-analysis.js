@@ -118,7 +118,7 @@ function populatePegelAnalysisPanel(p) {
                     <span class="stat-label">Einleiter im Einzugsgebiet</span>
                 </div>
             </div>
-            <p style="font-size: 10px; color: var(--text-secondary); margin-top: 8px; line-height: 1.2;">
+            <p style="font-size: 0.625rem; color: var(--text-secondary); margin-top: 8px; line-height: 1.2;">
                 ℹ️ Hinweis: Dies ist eine räumliche Upstream-Analyse basierend auf genehmigten Mengen. Es handelt sich nicht um eine chemische Echtzeit-Messung.
             </p>
 

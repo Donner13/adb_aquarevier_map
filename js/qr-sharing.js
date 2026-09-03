@@ -73,14 +73,14 @@
         }
 
         modal.innerHTML = `
-            <div id="qr-card" style="background: #ffffff; width: 100%; max-width: 420px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden; text-align: center; font-size: 12px;">
+            <div id="qr-card" style="background: #ffffff; width: 100%; max-width: 420px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden; text-align: center; font-size: 0.75rem;">
                 <div style="background: #1e293b; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
-                    <span id="qr-modal-title" style="font-size: 15px; font-weight: 700;">📱 QR-Code &amp; Deep-Link Teilen</span>
-                    <button id="qr-close-btn" type="button" onclick="closeQrShareModal()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
+                    <span id="qr-modal-title" style="font-size: 0.9375rem; font-weight: 700;">📱 QR-Code &amp; Deep-Link Teilen</span>
+                    <button id="qr-close-btn" type="button" onclick="closeQrShareModal()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 1.25rem; cursor: pointer;">✕</button>
                 </div>
                 
                 <div style="padding: 20px;">
-                    <div style="font-size: 11.5px; color: #64748b; margin-bottom: 14px;">
+                    <div style="font-size: 0.71875rem; color: #64748b; margin-bottom: 14px;">
                         Scanne den QR-Code mit deinem Smartphone, um diesen Kartenausschnitt &amp; die aktiven Layer direkt vor Ort im Feld zu öffnen.
                     </div>
                     
@@ -89,10 +89,10 @@
                     </div>
 
                     <div style="margin-bottom: 14px;">
-                        <input type="text" id="qr-deeplink-input" value="${escapeHtml(deepLink)}" readonly aria-label="Teilbarer Link" style="width: 100%; font-size: 11px; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 4px; background: #f1f5f9; text-align: center;">
+                        <input type="text" id="qr-deeplink-input" value="${escapeHtml(deepLink)}" readonly aria-label="Teilbarer Link" style="width: 100%; font-size: 0.6875rem; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 4px; background: #f1f5f9; text-align: center;">
                     </div>
 
-                    <button type="button" id="qr-copy-btn" class="btn btn-sm btn-primary" style="width: 100%; font-size: 12px; padding: 6px;" onclick="copyDeepLinkToClipboard()">
+                    <button type="button" id="qr-copy-btn" class="btn btn-sm btn-primary" style="width: 100%; font-size: 0.75rem; padding: 6px;" onclick="copyDeepLinkToClipboard()">
                         📋 Link in Zwischenablage kopieren
                     </button>
                 </div>
