@@ -820,24 +820,29 @@
 
     // --- 8. KEYBOARD ACCESSIBILITY & ARIA ENHANCEMENTS ---
     function initAccessibility() {
-        const buttons = document.querySelectorAll('.filter-btn');
-        buttons.forEach(btn => {
+        const interactiveSelectors = '.filter-btn, .close, .leaflet-control-zoom-in, .leaflet-control-zoom-out, .leaflet-control-layers-toggle, button, [role="button"]';
+        const interactiveElements = document.querySelectorAll(interactiveSelectors);
+        interactiveElements.forEach(btn => {
             if (!btn.hasAttribute('tabindex')) btn.setAttribute('tabindex', '0');
             const isLink = btn.tagName === 'A';
             if (!isLink && !btn.hasAttribute('role')) btn.setAttribute('role', 'button');
             
-            btn.addEventListener('keydown', (e) => {
-                if ((!isLink && (e.key === 'Enter' || e.key === ' ')) || (isLink && e.key === ' ')) {
-                    e.preventDefault();
-                    btn.click();
-                }
-            });
+            // Avoid duplicate listeners
+            if (!btn.hasAttribute('data-kbd-listener')) {
+                btn.setAttribute('data-kbd-listener', 'true');
+                btn.addEventListener('keydown', (e) => {
+                    if ((!isLink && (e.key === 'Enter' || e.key === ' ')) || (isLink && (e.key === ' ' || e.key === 'Enter'))) {
+                        e.preventDefault();
+                        btn.click();
+                    }
+                });
+            }
         });
 
         // Global Escape key listener to close all open modals
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"]');
+                const openModals = document.querySelectorAll('.modal, .custom-modal, [id$="-modal"], .modal-overlay, .modal-backdrop');
                 openModals.forEach(modal => {
                     if (modal.id === 'onboarding-role-modal') return;
                     const style = window.getComputedStyle(modal);

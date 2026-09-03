@@ -1570,6 +1570,40 @@
             box-sizing: border-box;
         }
 
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent-primary, #2563eb);
+            color: white;
+            padding: 8px;
+            z-index: 100000;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+            outline: 3px solid #ff5f00;
+            outline-offset: 2px;
+        }
+
+        /* Dark Theme Leaflet Controls */
+        body.dark-theme .leaflet-bar a {
+            background-color: var(--bg-surface, rgba(17, 24, 39, 0.95)) !important;
+            color: var(--text-primary, #f3f4f6) !important;
+            border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.12)) !important;
+        }
+
+        body.dark-theme.high-contrast .leaflet-bar a {
+            background-color: rgb(0, 0, 0) !important;
+            color: #ffffff !important;
+            border: 2px solid #ffffff !important;
+        }
+
+        body.dark-theme.high-contrast .leaflet-control-layers-toggle {
+            filter: invert(1) drop-shadow(2px 2px 0px #000) !important;
+        }
+
         /* Accessbility Focus & High Contrast styles */
         button:focus-visible,
         .contact-item:focus-visible,
@@ -2013,6 +2047,10 @@
 
 </head>
 <body class="light-theme">
+
+    <a href="#app-container" class="skip-link" tabindex="0">Skip to content</a>
+    <a href="#sidebar" class="skip-link" tabindex="0">Skip to navigation</a>
+
     <div id="app-container">
 
         <!-- Mobile Sidebar Toggle -->
