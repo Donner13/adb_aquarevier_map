@@ -11,6 +11,7 @@
     window.timeSeriesInterval = null;
     window.timeSeriesSpeedMs = 1500;
     window.timeSeriesMarkersGroup = null;
+    window.isTimeSeriesVisible = false;
 
     /**
      * Simulation trend model generator (SYNTHETIC VISUALIZATION / DEMO SCENARIO).
@@ -52,7 +53,10 @@
     /**
      * Renders time-series data for the specified year index.
      */
-    window.setTimeSeriesYearIndex = function(index) {
+    window.setTimeSeriesYearIndex = function(index, forceVisible) {
+        if (forceVisible !== undefined) {
+            window.isTimeSeriesVisible = forceVisible;
+        }
         if (index < 0) index = 0;
         if (index >= window.timeSeriesYears.length) index = window.timeSeriesYears.length - 1;
         window.currentTimeSeriesIndex = index;
@@ -78,6 +82,11 @@
             window.timeSeriesMarkersGroup = L.layerGroup().addTo(map);
         }
 
+        if (window.isTimeSeriesVisible !== true) {
+            if (window.timeSeriesMarkersGroup) window.timeSeriesMarkersGroup.clearLayers();
+            return;
+        }
+
         // [AQ-114] Auto-load data if missing
         if (window.layerLoaders && window.layerLoaders['grundwassermessstellen'] && (!window.layerDataStore || !window.layerDataStore['grundwassermessstellen'])) {
             const spinner = document.getElementById('gwm-timeseries-spinner');
@@ -88,6 +97,11 @@
                 console.error("Failed to load GWM for timeseries", e);
             }
             if (spinner) spinner.style.display = 'none';
+        }
+
+        if (window.isTimeSeriesVisible !== true) {
+            if (window.timeSeriesMarkersGroup) window.timeSeriesMarkersGroup.clearLayers();
+            return;
         }
 
         window.timeSeriesMarkersGroup.clearLayers();
@@ -181,6 +195,7 @@
      * Toggles Play / Pause animation loop.
      */
     window.toggleTimeSeriesPlay = function() {
+        window.isTimeSeriesVisible = true;
         const btn = document.getElementById('btn-timeseries-play');
         if (!window.isTimeSeriesPlaying) {
             window.pauseTimeSeries();
@@ -223,6 +238,7 @@
      * Clears animation and removes time-series markers.
      */
     window.resetTimeSeries = function() {
+        window.isTimeSeriesVisible = false;
         window.pauseTimeSeries();
         if (typeof map !== 'undefined' && window.timeSeriesMarkersGroup) {
             window.timeSeriesMarkersGroup.clearLayers();
@@ -263,8 +279,8 @@
     // Initialize deterministically once the controls exist. A delayed reset
     // used to overwrite real user input made during the first 600 ms.
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => window.setTimeSeriesYearIndex(5), { once: true });
+        document.addEventListener('DOMContentLoaded', () => window.setTimeSeriesYearIndex(5, false), { once: true });
     } else {
-        window.setTimeSeriesYearIndex(5);
+        window.setTimeSeriesYearIndex(5, false);
     }
 })();
