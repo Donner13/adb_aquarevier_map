@@ -2295,13 +2295,13 @@
                             <span>2030 (Prog.)</span>
                         </div>
                         <div style="display: flex; gap: 6px; margin-bottom: 8px;">
-                            <button id="btn-timeseries-play" type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: #16a34a; border: 1px solid #15803d; color: white; font-weight: 600;" onclick="toggleTimeSeriesPlay()">
+                            <button id="btn-timeseries-play" type="button" class="filter-btn" style="flex: 1; font-size: 11px; justify-content: center; background: #16a34a; border: 1px solid #15803d; color: white; font-weight: 600;" >
                                 ▶️ Play
                             </button>
-                            <button id="btn-timeseries-reset" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" onclick="resetTimeSeries()">
+                            <button id="btn-timeseries-reset" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" >
                                 🔄 Reset
                             </button>
-                            <button id="btn-timeseries-info" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" onclick="window.showGroundwaterInfo()">
+                            <button id="btn-timeseries-info" type="button" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" >
                                 ℹ️ Info
                             </button>
                         </div>
@@ -6184,7 +6184,7 @@ function buildUnifiedSearchIndex() {
                 coachmarkResizeHandler = () => window.positionCoachmark();
                 window.addEventListener('resize', coachmarkResizeHandler);
             }
-            document.querySelector('.sidebar-content')?.addEventListener('scroll', coachmarkResizeHandler);
+            document.querySelector('.sidebar-content')?.addEventListener('scroll', coachmarkResizeHandler, { passive: true });
         };
 
         window.updateCoachmarkContent = function() {
