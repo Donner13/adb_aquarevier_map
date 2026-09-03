@@ -190,6 +190,9 @@
                 btn.style.background = '#d97706';
                 btn.style.borderColor = '#b45309';
             }
+            if (window.timeSeriesInterval) {
+                clearInterval(window.timeSeriesInterval);
+            }
             window.timeSeriesInterval = setInterval(() => {
                 let nextIdx = window.currentTimeSeriesIndex + 1;
                 if (nextIdx >= window.timeSeriesYears.length) {

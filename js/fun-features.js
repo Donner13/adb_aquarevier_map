@@ -61,11 +61,16 @@
         // --- Cursor Trail on Drag ---
         initCursorTrail() {
             let isDragging = false;
+            let activeDrops = 0;
+            const MAX_DROPS = 30;
+
             document.addEventListener('mousedown', () => { isDragging = true; });
             document.addEventListener('mouseup', () => { isDragging = false; });
 
             document.addEventListener('mousemove', (e) => {
-                if (!isDragging || Math.random() > 0.3) return;
+                if (!isDragging || Math.random() > 0.3 || activeDrops >= MAX_DROPS) return;
+
+                activeDrops++;
                 const drop = document.createElement('span');
                 drop.className = 'cursor-water-drop';
                 drop.textContent = '💧';
@@ -74,7 +79,11 @@
                 const cy = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
                 drop.style.top = `${cy - 6}px`;
                 document.body.appendChild(drop);
-                setTimeout(() => drop.remove(), 600);
+
+                setTimeout(() => {
+                    drop.remove();
+                    activeDrops--;
+                }, 600);
             });
         }
 

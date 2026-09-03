@@ -3,8 +3,16 @@
  */
 document.addEventListener('DOMContentLoaded', () => {
     // Retry mechanism in case map is initialized asynchronously
+    let retries = 0;
     const initInterval = setInterval(() => {
-        if (typeof L === 'undefined' || typeof map === 'undefined') return;
+        if (typeof L === 'undefined' || typeof map === 'undefined') {
+            retries++;
+            if (retries >= 50) {
+                clearInterval(initInterval);
+                console.warn('Map initialization timed out after 50 retries.');
+            }
+            return;
+        }
         clearInterval(initInterval);
         initStakeholderFeatures();
     }, 200);
