@@ -301,7 +301,7 @@
                                 <div class="popup-group" style="color: #94a3b8">Akteur (Stand 2025)</div>
                                 <div class="popup-title">${props.name}</div>
                         `;
-                        if (props.abbreviation) popupContent += `<div style="font-size: 11px; margin-top:-4px; margin-bottom:6px; color:#cbd5e1">${props.abbreviation}</div>`;
+                        if (props.abbreviation) popupContent += `<div style="font-size: 0.6875rem; margin-top:-4px; margin-bottom:6px; color:#cbd5e1">${props.abbreviation}</div>`;
                         popupContent += `<div class="popup-detail">💼 Gruppe: ${props.group}</div>`;
                         if (props.sector) popupContent += `<div class="popup-detail">🏢 Branche: ${props.sector}</div>`;
                         if (props.address) popupContent += `<div class="popup-detail">📍 Adresse: ${props.address}</div>`;
@@ -524,8 +524,8 @@
                 dx = 20; dy = 20;
                 logoHtml = `
                     <div class="logo-box logo-tillmann-box" style="left: ${ax + dx}px; top: ${ay + dy}px; border: 1.2px solid #1d4ed8; display: flex; flex-direction: column; align-items: center; padding: 3px 8px; background: #ffffff; border-radius: 4px; box-shadow: 0 1.5px 5px rgba(29,78,216,0.1); width: 110px; height: 32px; box-sizing: border-box; justify-content: center; gap: 0px;">
-                        <div style="font-family:'Outfit',sans-serif; font-weight:900; font-size:7px; letter-spacing:0.07em; color:#1d4ed8; text-transform:uppercase; border-bottom: 1.2px solid #1d4ed8; line-height: 1.0; margin-bottom: 2px; padding-bottom: 1px;">PAPIERFABRIK</div>
-                        <div style="font-family:'Outfit',sans-serif; font-weight:900; font-size:12px; letter-spacing:0.04em; color:#1d4ed8; text-transform:uppercase; line-height: 1.0;">TILLMANN</div>
+                        <div style="font-family:'Outfit',sans-serif; font-weight:900; font-size: 0.4375rem; letter-spacing:0.07em; color:#1d4ed8; text-transform:uppercase; border-bottom: 1.2px solid #1d4ed8; line-height: 1.0; margin-bottom: 2px; padding-bottom: 1px;">PAPIERFABRIK</div>
+                        <div style="font-family:'Outfit',sans-serif; font-weight:900; font-size: 0.75rem; letter-spacing:0.04em; color:#1d4ed8; text-transform:uppercase; line-height: 1.0;">TILLMANN</div>
                     </div>
                 `;
                 const targetX = ax + dx;
@@ -713,7 +713,7 @@
                     <div class="popup-card">
                         <div class="popup-group" style="color: ${color}">${props.group}</div>
                         <div class="popup-title">${props.name}</div>
-                        <div class="popup-detail" style="font-family: monospace; font-size:10px; margin-top: 6px;">
+                        <div class="popup-detail" style="font-family: monospace; font-size: 0.625rem; margin-top: 6px;">
                             📍 ${lat.toFixed(6)}, ${lng.toFixed(6)}
                         </div>
                     </div>

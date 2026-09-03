@@ -246,10 +246,10 @@
                      onmouseover="this.style.background='#f8fafc'"
                      onmouseout="this.style.background='transparent'">
                     <div>
-                        <div style="font-weight: 600; font-size: 11.5px; color: #0f172a;">${escapeHtml(item.title)}</div>
-                        <div style="font-size: 10px; color: #64748b;">${escapeHtml(item.subtitle)}</div>
+                        <div style="font-weight: 600; font-size: 0.71875rem; color: #0f172a;">${escapeHtml(item.title)}</div>
+                        <div style="font-size: 0.625rem; color: #64748b;">${escapeHtml(item.subtitle)}</div>
                     </div>
-                    <span class="badge bg-light text-dark" style="font-size: 9.5px; border: 1px solid #cbd5e1;">${item.category}</span>
+                    <span class="badge bg-light text-dark" style="font-size: 0.59375rem; border: 1px solid #cbd5e1;">${item.category}</span>
                 </div>
             `;
         });

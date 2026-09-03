@@ -238,48 +238,48 @@
             <div id="dossier-card" style="background: #ffffff; width: 100%; max-width: 620px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column; max-height: 85vh;">
                 <div style="background: #1e293b; color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <div id="dossier-title" style="font-size: 16px; font-weight: 700;">🏛️ Gemeinde-Steckbrief: ${escapeHtml(dossier.name)}</div>
-                        <div style="font-size: 11px; color: #94a3b8;">${escapeHtml(dossier.kreis)} • ${totalObj} registrierte Infrastruktur-Objekte</div>
+                        <div id="dossier-title" style="font-size: 1.0rem; font-weight: 700;">🏛️ Gemeinde-Steckbrief: ${escapeHtml(dossier.name)}</div>
+                        <div style="font-size: 0.6875rem; color: #94a3b8;">${escapeHtml(dossier.kreis)} • ${totalObj} registrierte Infrastruktur-Objekte</div>
                     </div>
-                    <button id="dossier-close-btn" type="button" onclick="closeGemeindeDossier()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;">✕</button>
+                    <button id="dossier-close-btn" type="button" onclick="closeGemeindeDossier()" aria-label="Schließen" title="Schließen" style="background: transparent; border: none; color: #94a3b8; font-size: 1.25rem; cursor: pointer;">✕</button>
                 </div>
                 
-                <div style="padding: 16px; overflow-y: auto; flex: 1; font-size: 12px;">
+                <div style="padding: 16px; overflow-y: auto; flex: 1; font-size: 0.75rem;">
                     <!-- Key Figures Grid -->
                     <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px;">
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; text-align: center;">
-                            <div style="font-size: 18px; font-weight: 700; color: #2563eb;">${dossier.stats.akteure.length}</div>
-                            <div style="font-size: 10px; color: #64748b;">🤝 Akteure</div>
+                            <div style="font-size: 1.125rem; font-weight: 700; color: #2563eb;">${dossier.stats.akteure.length}</div>
+                            <div style="font-size: 0.625rem; color: #64748b;">🤝 Akteure</div>
                         </div>
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; text-align: center;">
-                            <div style="font-size: 18px; font-weight: 700; color: #0284c7;">${dossier.stats.messstellen.length}</div>
-                            <div style="font-size: 10px; color: #64748b;">💧 Messstellen</div>
+                            <div style="font-size: 1.125rem; font-weight: 700; color: #0284c7;">${dossier.stats.messstellen.length}</div>
+                            <div style="font-size: 0.625rem; color: #64748b;">💧 Messstellen</div>
                         </div>
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; text-align: center;">
-                            <div style="font-size: 18px; font-weight: 700; color: #7c3aed;">${dossier.stats.einleiter.length + dossier.stats.klaeranlagen.length}</div>
-                            <div style="font-size: 10px; color: #64748b;">🏭 Abwasser/Einleiter</div>
+                            <div style="font-size: 1.125rem; font-weight: 700; color: #7c3aed;">${dossier.stats.einleiter.length + dossier.stats.klaeranlagen.length}</div>
+                            <div style="font-size: 0.625rem; color: #64748b;">🏭 Abwasser/Einleiter</div>
                         </div>
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; text-align: center;">
-                            <div style="font-size: 18px; font-weight: 700; color: #d97706;">${dossier.stats.pegel.length + dossier.stats.stauanlagen.length + dossier.stats.regenbecken.length + dossier.stats.querbauwerke.length}</div>
-                            <div style="font-size: 10px; color: #64748b;">🌊 Gewässerbauwerke</div>
+                            <div style="font-size: 1.125rem; font-weight: 700; color: #d97706;">${dossier.stats.pegel.length + dossier.stats.stauanlagen.length + dossier.stats.regenbecken.length + dossier.stats.querbauwerke.length}</div>
+                            <div style="font-size: 0.625rem; color: #64748b;">🌊 Gewässerbauwerke</div>
                         </div>
                     </div>
 
                     <!-- Actions Bar -->
                     <div style="display: flex; gap: 8px; margin-bottom: 14px;">
                         ${(Number.isFinite(dossier.centerLat) && Number.isFinite(dossier.centerLng)) ? `
-                            <button type="button" class="btn btn-sm btn-primary" style="flex:1; font-size:11px;" onclick="zoomToGemeindeCenter(${dossier.centerLat}, ${dossier.centerLng})">
+                            <button type="button" class="btn btn-sm btn-primary" style="flex:1; font-size: 0.6875rem;" onclick="zoomToGemeindeCenter(${dossier.centerLat}, ${dossier.centerLng})">
                                 📍 In Karte zentrieren
                             </button>
-                            <button type="button" class="btn btn-sm btn-outline-primary" style="flex:1; font-size:11px;" onclick="triggerGemeindeRadiusAnalysis(${dossier.centerLat}, ${dossier.centerLng})">
+                            <button type="button" class="btn btn-sm btn-outline-primary" style="flex:1; font-size: 0.6875rem;" onclick="triggerGemeindeRadiusAnalysis(${dossier.centerLat}, ${dossier.centerLng})">
                                 🎯 5-km-Umkreis analysieren
                             </button>
                         ` : `
-                            <div style="flex:1; background:#f1f5f9; color:#64748b; padding:6px; border-radius:4px; text-align:center; font-size:10px;">
+                            <div style="flex:1; background:#f1f5f9; color:#64748b; padding:6px; border-radius:4px; text-align:center; font-size: 0.625rem;">
                                 ⚠️ Keine Koordinaten für Zentrierung verfügbar.
                             </div>
                         `}
-                        <button type="button" class="btn btn-sm btn-outline-success" style="font-size:11px;" onclick="exportGemeindeDossierCSV()">
+                        <button type="button" class="btn btn-sm btn-outline-success" style="font-size: 0.6875rem;" onclick="exportGemeindeDossierCSV()">
                             📥 CSV Export
                         </button>
                     </div>
@@ -306,9 +306,9 @@
         if (!items || items.length === 0) return '';
         let html = `
             <div style="margin-bottom: 10px; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden;">
-                <div style="background: #f1f5f9; padding: 6px 10px; font-weight: 600; font-size: 11px; color: #334155; display: flex; justify-content: space-between;">
+                <div style="background: #f1f5f9; padding: 6px 10px; font-weight: 600; font-size: 0.6875rem; color: #334155; display: flex; justify-content: space-between;">
                     <span>${title}</span>
-                    <span class="badge bg-secondary" style="font-size: 10px;">${items.length}</span>
+                    <span class="badge bg-secondary" style="font-size: 0.625rem;">${items.length}</span>
                 </div>
                 <div style="max-height: 100px; overflow-y: auto;">
         `;
@@ -316,7 +316,7 @@
             html += `
                 <div style="padding: 4px 10px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
                     <span style="font-weight: 500; color: #0f172a;">${escapeHtml(item.name)}</span>
-                    ${item.sub ? `<span style="font-size: 10px; color: #64748b;">${escapeHtml(item.sub)}</span>` : ''}
+                    ${item.sub ? `<span style="font-size: 0.625rem; color: #64748b;">${escapeHtml(item.sub)}</span>` : ''}
                 </div>
             `;
         });

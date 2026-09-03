@@ -82,7 +82,7 @@ window.buildFeaturePopupHtml = function(p, layerId) {
                 trendIcon = '📈';
             }
 
-            html += `<div class="popup-detail" style="color: ${trendColor}; font-weight: 500; font-size: 11px; margin-top: 4px; padding: 4px; background: #f8fafc; border-radius: 4px; border: 1px solid #e2e8f0;">
+            html += `<div class="popup-detail" style="color: ${trendColor}; font-weight: 500; font-size: 0.6875rem; margin-top: 4px; padding: 4px; background: #f8fafc; border-radius: 4px; border: 1px solid #e2e8f0;">
                 ${trendIcon} Niedrigwasser-Status: ${escapeHtml(trendText)}
             </div>`;
         }
@@ -105,20 +105,20 @@ window.buildFeaturePopupHtml = function(p, layerId) {
   }
 
   if (cfg.id === 'pegel') {
-    html += `<div class="pegelonline-container" style="margin-top:8px; padding:8px; background:#f0f9ff; border-radius:4px; font-size:12px; border:1px solid #bae6fd;">
+    html += `<div class="pegelonline-container" style="margin-top:8px; padding:8px; background:#f0f9ff; border-radius:4px; font-size: 0.75rem; border:1px solid #bae6fd;">
       <div style="color:#0284c7; font-weight:bold; margin-bottom:4px;">📡 Live-Daten (PEGELONLINE)</div>
       <div class="pegelonline-content" style="color:#64748b;">Lade Live-Daten...</div>
     </div>`;
   }
 
   html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-    <button type="button" onclick="openFeedbackModal('${escapeHtml(p.name || '').replace(/'/g, "\\'")}', '${escapeHtml(cfg.groupLabel)}', '${escapeHtml(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${p.lat || p.latitude || 0}, ${p.lng || p.longitude || p.lon || 0})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 11px; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
+    <button type="button" onclick="openFeedbackModal('${escapeHtml(p.name || '').replace(/'/g, "\\'")}', '${escapeHtml(cfg.groupLabel)}', '${escapeHtml(p.id || p.anlagen_nr || p.pegel_nr || p.betriebs_nr || p.name || '')}', ${p.lat || p.latitude || 0}, ${p.lng || p.longitude || p.lon || 0})" style="background:transparent; border:none; padding:0; color: var(--accent-primary, #0ea5e9); text-decoration: underline; font-size: 0.6875rem; display: flex; align-items: center; gap: 4px; cursor: pointer;">⚠️ Fehler melden</button>
   </div>`;
 
   const footer = cfg.footerTemplate
     ? cfg.footerTemplate(p)
     : 'Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0';
-  html += `<div style="font-size:10px;color:#475569;margin-top:6px;">${escapeHtml(footer)}</div>`;
+  html += `<div style="font-size: 0.625rem;color:#475569;margin-top:6px;">${escapeHtml(footer)}</div>`;
   html += `</div>`;
   return html;
 };
@@ -144,7 +144,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         background-color:${cfg.color};
         border:2px solid #fff;border-radius:50%;
         display:flex;align-items:center;justify-content:center;
-        font-size:12px;
+        font-size: 0.75rem;
         box-shadow:0 0 6px ${cfg.color},0 0 2px rgba(0,0,0,0.5);
       ">${cfg.icon}</div>`,
       className: cfg.className,
@@ -216,7 +216,7 @@ function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
         const count = cluster.getChildCount();
         const dim = count >= 100 ? 44 : (count >= 10 ? 38 : 32);
         return L.divIcon({
-          html: `<div style="width:${dim}px;height:${dim}px;line-height:${dim}px;background:rgba(86,180,233,0.855);border:2px solid #fff;border-radius:50%;color:#fff;font-weight:600;text-align:center;font-size:12px;box-shadow:0 0 6px rgba(0,0,0,0.5);">${count}</div>`,
+          html: `<div style="width:${dim}px;height:${dim}px;line-height:${dim}px;background:rgba(86,180,233,0.855);border:2px solid #fff;border-radius:50%;color:#fff;font-weight:600;text-align:center;font-size: 0.75rem;box-shadow:0 0 6px rgba(0,0,0,0.5);">${count}</div>`,
           className: 'gwm-cluster-icon',
           iconSize: L.point(dim, dim)
         });

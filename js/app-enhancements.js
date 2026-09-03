@@ -56,7 +56,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             font-family: 'Inter', sans-serif;
-            font-size: 13px;
+            font-size: 0.8125rem;
             font-weight: 500;
             opacity: 0;
             transform: translateY(-10px) scale(0.95);
@@ -122,19 +122,19 @@
                 font-family: 'Inter', sans-serif;
             ">
                 <div style="display: flex; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--border-color, rgba(255,255,255,0.1)); gap: 12px;">
-                    <span style="font-size: 18px;">⚡</span>
+                    <span style="font-size: 1.125rem;">⚡</span>
                     <input type="text" id="cmd-input" data-i18n-key="cmd_placeholder" placeholder="Schnellsuche (Gemeinden, Layer, Akteure, Aktionen)..." style="
                         flex: 1;
                         background: transparent;
                         border: none;
                         outline: none;
-                        font-size: 15px;
+                        font-size: 0.9375rem;
                         color: var(--text-primary, #f3f4f6);
                         font-family: 'Inter', sans-serif;
                     " autocomplete="off">
                     <kbd style="
                         padding: 2px 6px;
-                        font-size: 10px;
+                        font-size: 0.625rem;
                         font-weight: 600;
                         background: var(--bg-base, #0b0f19);
                         border: 1px solid var(--border-color, rgba(255,255,255,0.15));
@@ -148,7 +148,7 @@
                     gap: 16px;
                     padding: 10px 18px;
                     border-top: 1px solid var(--border-color, rgba(255,255,255,0.1));
-                    font-size: 11px;
+                    font-size: 0.6875rem;
                     color: var(--text-secondary, #9ca3af);
                     background: rgba(0, 0, 0, 0.15);
                 ">
@@ -275,7 +275,7 @@
             if (selectedIndex >= commandItems.length) selectedIndex = 0;
 
             if (commandItems.length === 0) {
-                results.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-secondary, #9ca3af); font-size: 13px;">Keine Treffer für "${filterText}" gefunden.</div>`;
+                results.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-secondary, #9ca3af); font-size: 0.8125rem;">Keine Treffer für "${filterText}" gefunden.</div>`;
                 return;
             }
 
@@ -287,7 +287,7 @@
                     padding: 10px 14px;
                     border-radius: 10px;
                     cursor: pointer;
-                    font-size: 13px;
+                    font-size: 0.8125rem;
                     margin-bottom: 2px;
                     background: ${idx === selectedIndex ? 'var(--bg-surface-hover, rgba(31, 41, 55, 0.9))' : 'transparent'};
                     color: ${idx === selectedIndex ? 'var(--accent-primary, #6366f1)' : 'var(--text-primary, #f3f4f6)'};
@@ -298,7 +298,7 @@
                         <span style="font-weight:${idx === selectedIndex ? '600' : '400'}">${item.label}</span>
                     </span>
                     <span style="
-                        font-size: 10px;
+                        font-size: 0.625rem;
                         font-weight: 600;
                         text-transform: uppercase;
                         letter-spacing: 0.5px;
@@ -396,7 +396,7 @@
                     top: 50%;
                     transform: translateY(-50%);
                     padding: 2px 6px;
-                    font-size: 10px;
+                    font-size: 0.625rem;
                     font-weight: 600;
                     background: var(--bg-surface, rgba(17, 24, 39, 0.8));
                     color: var(--text-secondary, #9ca3af);
@@ -549,7 +549,7 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             font-family: 'Inter', sans-serif;
-            font-size: 11px;
+            font-size: 0.6875rem;
             font-weight: 500;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -781,7 +781,7 @@
             const langBtn = document.createElement('button');
             langBtn.id = 'lang-toggle-btn';
             langBtn.className = 'filter-btn';
-            langBtn.style.cssText = 'padding: 4px 8px; font-size: 10px; margin-left: 6px;';
+            langBtn.style.cssText = 'padding: 4px 8px; font-size: 0.625rem; margin-left: 6px;';
             langBtn.textContent = currentLang === 'de' ? '🇬🇧 English' : '🇩🇪 Deutsch';
             langBtn.addEventListener('click', () => {
                 applyLanguage(currentLang === 'de' ? 'en' : 'de');

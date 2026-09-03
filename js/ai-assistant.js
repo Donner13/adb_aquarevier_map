@@ -43,16 +43,16 @@
         }
 
         modal.innerHTML = `
-            <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 500px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column; max-height: 85vh; font-size: 13px; border: 1px solid var(--border-color, #cbd5e1);">
+            <div style="background: var(--bg-surface, #ffffff); width: 100%; max-width: 500px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column; max-height: 85vh; font-size: 0.8125rem; border: 1px solid var(--border-color, #cbd5e1);">
                 <div style="background: var(--accent-primary, #2563eb); color: #ffffff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="font-size: 20px;">🤖</span>
+                        <span style="font-size: 1.25rem;">🤖</span>
                         <div>
-                            <div style="font-size: 15px; font-weight: 700;">AquaRevier Fachassistent V3</div>
-                            <div id="ai-status-text" style="font-size: 10px; opacity: 0.85;">Hybrid-Modus · sichere lokale Reserve</div>
+                            <div style="font-size: 0.9375rem; font-weight: 700;">AquaRevier Fachassistent V3</div>
+                            <div id="ai-status-text" style="font-size: 0.625rem; opacity: 0.85;">Hybrid-Modus · sichere lokale Reserve</div>
                         </div>
                     </div>
-                    <button type="button" onclick="closeAiAssistantModal()" aria-label="Schließen" style="background: transparent; border: none; color: #ffffff; font-size: 22px; cursor: pointer; opacity: 0.8;">✕</button>
+                    <button type="button" onclick="closeAiAssistantModal()" aria-label="Schließen" style="background: transparent; border: none; color: #ffffff; font-size: 1.375rem; cursor: pointer; opacity: 0.8;">✕</button>
                 </div>
 
                 <div id="ai-chat-history" style="padding: 16px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; background: var(--bg-base, #f8fafc);">
@@ -64,14 +64,14 @@
 
                 <div style="padding: 12px 16px; background: var(--bg-surface, #ffffff); border-top: 1px solid var(--border-color, #e2e8f0);">
                     <div id="ai-suggestions" style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 8px; scrollbar-width: none;">
-                        <button class="btn btn-sm btn-outline-primary" style="font-size: 10px; white-space: nowrap; border-radius: 15px; padding: 4px 12px;" onclick="askAiQuestion('Wo sind die kläranlgaen bei eschweilr?')">🏭 Kläranlagen</button>
-                        <button class="btn btn-sm btn-outline-primary" style="font-size: 10px; white-space: nowrap; border-radius: 15px; padding: 4px 12px;" onclick="askAiQuestion('Gibt es Abwasseranlagen an der Rur?')">🌊 Abwasser Rur</button>
-                        <button class="btn btn-sm btn-outline-primary" style="font-size: 10px; white-space: nowrap; border-radius: 15px; padding: 4px 12px;" onclick="askAiQuestion('Warum ist der Pegel rot?')">🔴 Warum rot?</button>
-                        <button class="btn btn-sm btn-outline-primary" style="font-size: 10px; white-space: nowrap; border-radius: 15px; padding: 4px 12px;" onclick="askAiQuestion('Wie blende ich Kläranlagen aus?')">❓ Hilfe</button>
+                        <button class="btn btn-sm btn-outline-primary" style="font-size: 0.625rem; white-space: nowrap; border-radius: 15px; padding: 4px 12px;" onclick="askAiQuestion('Wo sind die kläranlgaen bei eschweilr?')">🏭 Kläranlagen</button>
+                        <button class="btn btn-sm btn-outline-primary" style="font-size: 0.625rem; white-space: nowrap; border-radius: 15px; padding: 4px 12px;" onclick="askAiQuestion('Gibt es Abwasseranlagen an der Rur?')">🌊 Abwasser Rur</button>
+                        <button class="btn btn-sm btn-outline-primary" style="font-size: 0.625rem; white-space: nowrap; border-radius: 15px; padding: 4px 12px;" onclick="askAiQuestion('Warum ist der Pegel rot?')">🔴 Warum rot?</button>
+                        <button class="btn btn-sm btn-outline-primary" style="font-size: 0.625rem; white-space: nowrap; border-radius: 15px; padding: 4px 12px;" onclick="askAiQuestion('Wie blende ich Kläranlagen aus?')">❓ Hilfe</button>
                     </div>
                     <div style="display: flex; gap: 8px; align-items: center;">
-                        <input type="text" id="ai-v3-input" placeholder="Fachfrage stellen..." autocomplete="off" style="flex: 1; font-size: 13px; padding: 10px 16px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 24px; outline: none; background: var(--bg-base, #fff); color: var(--text-primary);" onkeydown="if(event.key==='Enter') askAiQuestion(this.value)">
-                        <button type="button" class="btn btn-primary" style="width: 40px; height: 40px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: transform 0.2s;" onclick="askAiQuestion(document.getElementById('ai-v3-input').value)" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">➔</button>
+                        <input type="text" id="ai-v3-input" placeholder="Fachfrage stellen..." autocomplete="off" style="flex: 1; font-size: 0.8125rem; padding: 10px 16px; border: 1px solid var(--border-color, #cbd5e1); border-radius: 24px; outline: none; background: var(--bg-base, #fff); color: var(--text-primary);" onkeydown="if(event.key==='Enter') askAiQuestion(this.value)">
+                        <button type="button" class="btn btn-primary" style="width: 40px; height: 40px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 1.0rem; transition: transform 0.2s;" onclick="askAiQuestion(document.getElementById('ai-v3-input').value)" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">➔</button>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
         const typingId = 'ai-typing-' + Date.now();
         const typingDiv = document.createElement('div');
         typingDiv.id = typingId;
-        typingDiv.style.cssText = 'align-self: flex-start; background: #f1f5f9; color: #64748b; padding: 8px 14px; border-radius: 12px; border-bottom-left-radius: 2px; font-style: italic; font-size: 12px; margin-bottom: 12px;';
+        typingDiv.style.cssText = 'align-self: flex-start; background: #f1f5f9; color: #64748b; padding: 8px 14px; border-radius: 12px; border-bottom-left-radius: 2px; font-style: italic; font-size: 0.75rem; margin-bottom: 12px;';
         typingDiv.innerText = '🤖 Analysiere...';
         chatHistory.appendChild(typingDiv);
         chatHistory.scrollTop = chatHistory.scrollHeight;
@@ -172,13 +172,13 @@
 
         let html = text;
         if (meta) {
-            html += `<div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed rgba(0,0,0,0.1); font-size: 10px; color: #64748b;">`;
+            html += `<div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed rgba(0,0,0,0.1); font-size: 0.625rem; color: #64748b;">`;
             if (meta.source) html += `<div><b>Quelle:</b> ${meta.source}</div>`;
 
             if (meta.action && meta.action.type !== 'none') {
                 const actionId = 'ai-act-' + Math.random().toString(36).substr(2, 9);
                 const label = getActionLabel(meta.action);
-                html += `<button id="${actionId}" class="btn btn-xs btn-primary" style="margin-top: 6px; font-size: 9px; padding: 2px 8px; border-radius: 4px; display: block; background: #2563eb; color: #fff; border: none; cursor: pointer;">📍 Aktion: ${label}</button>`;
+                html += `<button id="${actionId}" class="btn btn-xs btn-primary" style="margin-top: 6px; font-size: 0.5625rem; padding: 2px 8px; border-radius: 4px; display: block; background: #2563eb; color: #fff; border: none; cursor: pointer;">📍 Aktion: ${label}</button>`;
 
                 setTimeout(() => {
                     const btn = document.getElementById(actionId);

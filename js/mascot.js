@@ -45,12 +45,12 @@
                         box-shadow: 0 8px 24px rgba(15,23,42,.3);
                         cursor: pointer;
                     }
-                    .platschi-emoji { font-size: 28px; line-height: 1; }
+                    .platschi-emoji { font-size: 1.75rem; line-height: 1; }
                     .platschi-mood-badge {
                         position: absolute;
                         right: -3px;
                         bottom: -3px;
-                        font-size: 13px;
+                        font-size: 0.8125rem;
                         background: var(--bg-surface, #fff);
                         border-radius: 50%;
                         padding: 2px;
@@ -76,7 +76,7 @@
                         background: transparent;
                         color: inherit;
                         cursor: pointer;
-                        font-size: 22px;
+                        font-size: 1.375rem;
                     }
                     @media (max-width: 480px) {
                         .platschi-container { right: 12px; bottom: 76px; }
@@ -92,7 +92,7 @@
                 <div class="platschi-speech-bubble" id="platschiBubble" style="display: none;">
                     <div id="platschiText">Hallo! Ich bin Platschi, dein Wasser-Guide! 🦦</div>
                     <div id="platschiActions" style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;">
-                        <button onclick="if(window.openAiAssistantModal) { window.openAiAssistantModal(); window.AquaMascot.hideBubble(); } else if(window.toggleAssistant) { window.toggleAssistant(); }" style="background: var(--accent-primary, #0ea5e9); color: white; border: none; border-radius: 4px; padding: 4px 8px; font-size: 11px; cursor: pointer; width: 100%;">🤖 Assistent fragen</button>
+                        <button onclick="if(window.openAiAssistantModal) { window.openAiAssistantModal(); window.AquaMascot.hideBubble(); } else if(window.toggleAssistant) { window.toggleAssistant(); }" style="background: var(--accent-primary, #0ea5e9); color: white; border: none; border-radius: 4px; padding: 4px 8px; font-size: 0.6875rem; cursor: pointer; width: 100%;">🤖 Assistent fragen</button>
                     </div>
                     <button class="platschi-bubble-close" onclick="window.AquaMascot.hideBubble()">&times;</button>
                 </div>

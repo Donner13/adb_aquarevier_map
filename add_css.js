@@ -46,7 +46,7 @@ const cssToAdd = `
 
         .coords-detail {
             font-family: monospace;
-            font-size: 10px;
+            font-size: 0.625rem;
             margin-top: 6px;
             color: var(--text-secondary);
         }
@@ -65,7 +65,7 @@ const cssToAdd = `
             padding: 8px;
             border-radius: 6px;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 0.75rem;
             font-weight: 500;
             transition: background 0.2s, transform 0.2s;
         }
