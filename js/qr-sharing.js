@@ -45,7 +45,8 @@
      */
     window.openQrShareModal = function() {
         const deepLink = window.generateCurrentMapDeepLink();
-        const qrApiUrl = `https://quickchart.io/qr?text=${encodeURIComponent(deepLink)}&size=240&margin=1`;
+        // Removed quickchart.io for privacy compliance
+        // const qrApiUrl = `https://quickchart.io/qr?text=${encodeURIComponent(deepLink)}&size=240&margin=1`;
 
         let modal = document.getElementById('qr-share-modal');
         if (!modal) {
@@ -85,7 +86,7 @@
                     </div>
                     
                     <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; display: inline-block; margin-bottom: 14px;">
-                        <img src="${qrApiUrl}" alt="QR Code" width="200" height="200" style="display: block; border-radius: 4px;" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'200\\' height=\\'200\\'><rect width=\\'200\\' height=\\'200\\' fill=\\'%23f1f5f9\\'/><text x=\\'100\\' y=\\'105\\' font-size=\\'12\\' text-anchor=\\'middle\\' fill=\\'%2364748b\\'>QR-Code (Offline)</text></svg>';">
+                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><rect width='200' height='200' fill='%23f1f5f9'/><text x='100' y='105' font-size='12' text-anchor='middle' fill='%2364748b'>QR-Code aus Datenschutzgründen offline</text></svg>" alt="QR Code Offline" width="200" height="200" style="display: block; border-radius: 4px;">
                     </div>
 
                     <div style="margin-bottom: 14px;">
