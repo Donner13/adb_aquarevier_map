@@ -68,7 +68,7 @@ window.analyzePegel = function(pegelNr) {
     });
 
     if (typeof map !== 'undefined') {
-        map.flyToBounds(bounds, { padding: [50, 50], duration: 1.5 });
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches ? map.fitBounds(bounds, { padding: [50, 50], duration: 1.5 }) : map.flyToBounds(bounds, { padding: [50, 50], duration: 1.5 });
     }
 
     populatePegelAnalysisPanel(p);
@@ -100,11 +100,11 @@ function populatePegelAnalysisPanel(p) {
 
     let html = `
         <div class="panel-header">
-            <h3>🌊 Pegel-Abwasser-Analyse</h3>
+            <h2>🌊 Pegel-Abwasser-Analyse</h2>
             <button class="close-btn" onclick="window.closePegelAnalysis()" aria-label="Schließen">✖</button>
         </div>
         <div class="panel-content">
-            <h4>Pegel: ${escapeHtml(p.name || 'Unbekannt')}</h4>
+            <h3>Pegel: ${escapeHtml(p.name || 'Unbekannt')}</h3>
             <p><strong>Gewässer:</strong> ${escapeHtml(p.gewaesser || '-')}</p>
             <p><strong>MQ (Median):</strong> ${escapeHtml(p.mq_m3s || '-')} m³/s</p>
 
@@ -122,7 +122,7 @@ function populatePegelAnalysisPanel(p) {
                 ℹ️ Hinweis: Dies ist eine räumliche Upstream-Analyse basierend auf genehmigten Mengen. Es handelt sich nicht um eine chemische Echtzeit-Messung.
             </p>
 
-            <h5>Angeschlossene Betriebe</h5>
+            <h4>Angeschlossene Betriebe</h4>
             <ul class="betrieb-list">
     `;
 
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (panel) {
                     panel.innerHTML = `
                         <div class="panel-header">
-                            <h3>🌊 Pegel-Abwasser-Analyse</h3>
+                            <h2>🌊 Pegel-Abwasser-Analyse</h2>
                             <button class="close-btn" onclick="window.closePegelAnalysis()">✖</button>
                         </div>
                         <div class="panel-content" style="text-align: center; padding: 20px;">

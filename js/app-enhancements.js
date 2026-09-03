@@ -188,7 +188,7 @@
                     label: `📍 Zoom zu Gemeinde ${m.name}`,
                     icon: "📍",
                     action: () => {
-                        if (window.map) window.map.flyTo([m.lat, m.lng], m.zoom, { duration: 1.2 });
+                        if (window.map) window.window.matchMedia("(prefers-reduced-motion: reduce)").matches ? map.setView([m.lat, m.lng], m.zoom, { duration: 1.2 }) : map.flyTo([m.lat, m.lng], m.zoom, { duration: 1.2 });
                         window.showToast(`Zentriert auf ${m.name}`, "📍");
                     }
                 });
@@ -810,7 +810,7 @@
             link.addEventListener('click', () => {
                 const info = kreisData[link.dataset.portalKey];
                 if (info && window.map) {
-                    window.map.flyTo([info.lat, info.lng], info.zoom, { duration: 1.2 });
+                    window.window.matchMedia("(prefers-reduced-motion: reduce)").matches ? map.setView([info.lat, info.lng], info.zoom, { duration: 1.2 }) : map.flyTo([info.lat, info.lng], info.zoom, { duration: 1.2 });
                     const label = link.querySelector('.filter-label')?.textContent.replace('🔗', '').trim() || '';
                     window.showToast(`🌊 Starkregen-Fokus: ${label} auf Karte zentriert!`, "📍");
                 }

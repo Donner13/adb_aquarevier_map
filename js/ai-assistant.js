@@ -225,12 +225,12 @@
                 const btn = document.getElementById(action.name) || document.querySelector(`.filter-btn[data-layer-name="${action.name}"]`);
                 if (btn && !btn.classList.contains('active')) btn.click();
             } else if (action.type === 'zoomTo') {
-                if (window.map) window.map.flyTo([action.lat, action.lng], action.zoom || 13);
+                if (window.map) window.window.matchMedia("(prefers-reduced-motion: reduce)").matches ? map.setView([action.lat, action.lng], action.zoom || 13) : map.flyTo([action.lat, action.lng], action.zoom || 13);
             } else if (action.type === 'zoom_and_activate') {
                 const coords = (action.location && assistant.MUNICIPALITIES[action.location]) ||
                                (action.river && assistant.RIVERS[action.river]);
                 if (coords && window.map) {
-                    window.map.flyTo(coords, action.location ? 14 : 12);
+                    window.window.matchMedia("(prefers-reduced-motion: reduce)").matches ? map.setView(coords, action.location ? 14 : 12) : map.flyTo(coords, action.location ? 14 : 12);
                 }
                 if (action.topic && assistant.TOPICS[action.topic]) {
                     const layerName = assistant.TOPICS[action.topic].layer;

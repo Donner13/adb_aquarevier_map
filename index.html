@@ -2013,6 +2013,7 @@
 
 </head>
 <body class="light-theme">
+    <a href="#map" class="skip-link" style="position: absolute; top: -40px; left: 0; background: var(--accent-primary); color: white; padding: 8px; z-index: 100000; transition: top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Zum Hauptinhalt springen</a>
     <div id="app-container">
 
         <!-- Mobile Sidebar Toggle -->
@@ -2023,7 +2024,7 @@
 
 
         <!-- Sidebar -->
-        <div id="sidebar">
+        <div id="sidebar" role="complementary">
             <div class="sidebar-header">
                 <div>
                     <h1 data-i18n-key="app.title">AquaRevier Akteurskarte</h1>
@@ -2173,7 +2174,7 @@
                         </button>
                         <div class="choropleth-select-container" id="choroplethMetricContainer" style="display: none;">
                             <label for="choroplethMetricSelect">Kennzahl:</label>
-                            <select id="choroplethMetricSelect">
+                            <select id="choroplethMetricSelect" aria-label="Metrik auswählen">
                                 <option value="anzahl_einleiter" selected>Industrieeinleiter (Anzahl)</option>
                                 <option value="klaeranlagen_kapazitaet_ew">Kläranlagen-Kapazität (Ausbaugröße EW)</option>
                                 <option value="freie_kapazitaet_ew">Freie Kapazität (EW)</option>
@@ -2230,7 +2231,7 @@
                         </div>
                         <div style="display: flex; gap: 6px; align-items: center; margin-bottom: 8px;">
                             <label for="radius-select" style="font-size: 11px; font-weight: 600; white-space: nowrap; margin: 0;">Radius:</label>
-                            <select id="radius-select" class="form-select form-select-sm" style="font-size: 11px; padding: 2px 6px; border-radius: 4px; flex: 1;">
+                            <select id="radius-select" class="form-select form-select-sm" aria-label="Radius auswählen" style="font-size: 11px; padding: 2px 6px; border-radius: 4px; flex: 1;">
                                 <option value="1000">1 km</option>
                                 <option value="2000">2 km</option>
                                 <option value="5000" selected>5 km</option>
@@ -2419,7 +2420,7 @@
                 <div>
                     <div class="section-title">Institutionen Suchen</div>
                     <div class="search-box">
-                        <input type="text" id="search-input" data-i18n-key="search_placeholder" placeholder="Nach Name oder Ort suchen...">
+                        <input type="text" id="search-input" data-i18n-key="search_placeholder" placeholder="Nach Name oder Ort suchen..." aria-label="Suchen">
                     </div>
                     
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
@@ -2455,7 +2456,7 @@
         </div>
 
         <!-- Map -->
-        <div id="map"></div>
+        <div id="map" tabindex="-1" role="main"></div>
         <div id="embed-mini-legend" class="embed-mini-legend">
             <a id="embed-back-link" class="embed-back-link" target="_blank" rel="noopener noreferrer">↗ Vollständige Karte ansehen</a>
             <div id="embed-mini-legend-items"></div>
@@ -2813,7 +2814,7 @@
                                     <div class="popup-title">${p.wsg_name || 'Unbekannt'}</div>
                                     <div class="popup-detail">🛡️ Zone<span class="glossar-icon" data-glossar="WASSERSCHUTZGEBIET">i</span>: ${p.wsg_zone || '–'}</div>
                                     <div class="popup-detail">⚙️ Status: ${p.areastatus || '–'}</div>
-                                    <div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.wsg_name || 'Unbekannt').replace(/'/g, "\\'")}', 'Wasserschutzgebiete', '${p.id || p.wsg_name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>
+                                    <div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" role="button" onclick="openFeedbackModal('${(p.wsg_name || 'Unbekannt').replace(/'/g, "\\'")}', 'Wasserschutzgebiete', '${p.id || p.wsg_name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>
                                     <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ${p.quelle || 'LANUV NRW'}</div>
                                 </div>
                             `;
@@ -3159,7 +3160,7 @@
                         if (props.address) popupContent += `<div class="popup-detail">📍 Adresse: ${props.address}</div>`;
                         if (props.common_projects) popupContent += `<div class="popup-detail">🤝 Projekte: ${props.common_projects}</div>`;
                         const latlng = layer.getLatLng ? layer.getLatLng() : {lat:0, lng:0};
-                        popupContent += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(props.name || '').replace(/'/g, "\\'")}', 'Akteur 2025', '${props.id || props.name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
+                        popupContent += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" role="button" onclick="openFeedbackModal('${(props.name || '').replace(/'/g, "\\'")}', 'Akteur 2025', '${props.id || props.name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
                         popupContent += `</div>`;
                         layer.bindPopup(popupContent);
                     }
@@ -3336,7 +3337,7 @@
                     }
                     html += getZustaendigkeitHtml(p);
                     const latlng = layer.getLatLng ? layer.getLatLng() : {lat:0, lng:0};
-                    html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', 'Industrieeinleiter', '${p.betriebs_nr || p.name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
+                    html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" role="button" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', 'Industrieeinleiter', '${p.betriebs_nr || p.name || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
                     html += `
                             <div style="font-size: 10px; color: #475569; margin-top: 6px;">Quelle: ELWAS-WEB (Land NRW), Datenlizenz Deutschland - Namensnennung 2.0</div>
                         </div>
@@ -3419,7 +3420,7 @@
                                 : (p.anzahl_betriebe > 0
                                     ? `<div class="popup-detail">💧 Keine Mengenangabe für die Betriebe hier verfügbar</div>`
                                     : '');
-                            html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(title || '').replace(/'/g, "\\'")}', 'Einzugsgebiet-Statistik', '${p.id || title || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
+                            html += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" role="button" onclick="openFeedbackModal('${(title || '').replace(/'/g, "\\'")}', 'Einzugsgebiet-Statistik', '${p.id || title || ''}', ${latlng.lat}, ${latlng.lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
                             html += `
                                     <div style="font-size: 10px; color: #475569; margin-top: 6px;">Spatial Join: ELWAS-WEB Industrieeinleiter × LANUV Teileinzugsgebiete (Rur)</div>
                                 </div>
@@ -4059,7 +4060,7 @@
                     `;
                 }
 
-                popupContent += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(props.name || '').replace(/'/g, "\\'")}', 'Akteur', '${props.id || props.name || ''}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
+                popupContent += `<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" role="button" onclick="openFeedbackModal('${(props.name || '').replace(/'/g, "\\'")}', 'Akteur', '${props.id || props.name || ''}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div>`;
 
                 popupContent += `</div>`;
 
@@ -5241,7 +5242,7 @@ function buildUnifiedSearchIndex() {
                                 cat: 'einleiter', label: p.name || 'Unbekannt',
                                 sub: [p.gemeinde, p.kreis].filter(Boolean).join(', '),
                                 lat, lng, color,
-                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">💧 Einleitungsart: ${p.einleitungsart || '–'}</div><div class="popup-detail">🚦 Relevanzklasse: <strong style="color: ${color};">${risk}</strong></div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}${getZustaendigkeitHtml(p)}<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', 'Industrieeinleiter', '${p.betriebs_nr || p.name || ''}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div></div>`
+                                popupHtml: `<div class="popup-card"><div class="popup-group" style="color:${color}">Industrieeinleiter</div><div class="popup-title">${p.name || 'Unbekannt'}</div><div class="popup-detail">🏭 AbwV Anhang: ${anhang_codes.map(a => 'Anhang ' + a).join(', ') || '–'}</div><div class="popup-detail">💧 Einleitungsart: ${p.einleitungsart || '–'}</div><div class="popup-detail">🚦 Relevanzklasse: <strong style="color: ${color};">${risk}</strong></div><div class="popup-detail">📍 ${p.gemeinde || ''}${p.gemeinde && p.kreis ? ', ' : ''}${p.kreis || ''}</div>${p.gewaesser_liste ? `<div class="popup-detail">🌊 Einleitung in: ${p.gewaesser_liste}</div>` : ''}${getZustaendigkeitHtml(p)}<div style="margin-top: 8px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 6px;"><a href="#" role="button" onclick="openFeedbackModal('${(p.name || '').replace(/'/g, "\\'")}', 'Industrieeinleiter', '${p.betriebs_nr || p.name || ''}', ${lat}, ${lng}); return false;" style="color: var(--accent-primary, #0ea5e9); text-decoration: none; font-size: 11px; display: flex; align-items: center; gap: 4px;">⚠️ Fehler melden</a></div></div>`
                             });
                             if (p.gemeinde) { addAgg(gemeindeAgg, p.gemeinde, lat, lng); addAggDetailed(gemeindeDetailAgg, p.gemeinde, { cat: 'einleiter', lat, lng, props: p }); }
                             (p.gewaesser_liste || '').split(',').map(s => s.trim()).filter(Boolean).forEach(g => addAgg(gewaesserAgg, g, lat, lng));
@@ -5724,16 +5725,16 @@ function buildUnifiedSearchIndex() {
                     const layer = step.fitBoundsLayer;
                     const bounds = typeof layer.getBounds === 'function' ? layer.getBounds() : null;
                     if (bounds && bounds.isValid()) {
-                        map.flyToBounds(bounds, { padding: [60, 60] });
+                        window.matchMedia("(prefers-reduced-motion: reduce)").matches ? map.fitBounds(bounds, { padding: [60, 60] }) : map.flyToBounds(bounds, { padding: [60, 60] });
                     } else {
                         if (step.fitBoundsLayer === elwasLayer) {
-                            map.flyTo([51.15, 6.75], 9);
+                            window.matchMedia("(prefers-reduced-motion: reduce)").matches ? map.setView([51.15, 6.75], 9) : map.flyTo([51.15, 6.75], 9);
                         } else if (step.fitBoundsLayer === pegelLayer) {
-                            map.flyTo([50.9, 6.4], 10);
+                            window.matchMedia("(prefers-reduced-motion: reduce)").matches ? map.setView([50.9, 6.4], 10) : map.flyTo([50.9, 6.4], 10);
                         }
                     }
                 } else if (step.center && step.zoom) {
-                    map.flyTo(step.center, step.zoom);
+                    window.matchMedia("(prefers-reduced-motion: reduce)").matches ? map.setView(step.center, step.zoom) : map.flyTo(step.center, step.zoom);
                 }
                 
                 // Update Bar UI
@@ -6256,6 +6257,7 @@ function buildUnifiedSearchIndex() {
             document.getElementById('feedback-category').value = '';
             document.getElementById('feedback-text').value = '';
             document.getElementById('feedback-error').style.display = 'none';
+            document.getElementById('feedback-text').removeAttribute('aria-invalid');
 
             document.getElementById('feedback-modal').style.display = 'flex';
         }
@@ -6272,6 +6274,7 @@ function buildUnifiedSearchIndex() {
 
             if (!category || !text || text.length < 10) {
                 document.getElementById('feedback-error').style.display = 'block';
+                document.getElementById('feedback-text').setAttribute('aria-invalid', 'true');
                 return;
             }
 
@@ -6441,7 +6444,7 @@ function buildUnifiedSearchIndex() {
         <div class="modal-content" style="background: var(--bg-surface, #ffffff); width: 400px; max-width: 90%; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
                 <div>
-                    <h3 id="feedback-modal-title" style="margin: 0; font-size: 16px; color: var(--text-primary, #0f172a);">Fehler melden</h3>
+                    <h2 id="feedback-modal-title" style="margin: 0; font-size: 16px; color: var(--text-primary, #0f172a);">Fehler melden</h2>
                     <div id="feedback-modal-layer" style="font-size: 12px; color: var(--text-secondary, #64748b); margin-top: 4px;">Layer: -</div>
                 </div>
                 <button type="button" onclick="closeFeedbackModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-secondary, #64748b);">&times;</button>
@@ -6466,7 +6469,7 @@ function buildUnifiedSearchIndex() {
                 <div>
                     <label for="feedback-text" style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; color: var(--text-primary, #0f172a);">Was ist falsch? *</label>
                     <textarea id="feedback-text" required minlength="10" rows="4" style="width: 100%; padding: 8px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 4px; resize: vertical; background: var(--bg-surface, #ffffff); color: var(--text-primary, #0f172a);"></textarea>
-                    <div id="feedback-error" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: none;">Bitte füllen Sie alle Pflichtfelder aus (mind. 10 Zeichen im Text).</div>
+                    <div id="feedback-error" role="alert" aria-live="assertive" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: none;">Bitte füllen Sie alle Pflichtfelder aus (mind. 10 Zeichen im Text).</div>
                 </div>
 
                 <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px;">
@@ -6500,7 +6503,7 @@ function buildUnifiedSearchIndex() {
                     <p>Gewässer mit Namen, WSG & öffentliche Akteure</p>
                 </div>
             </div>
-            <a href="#" onclick="closeRoleModal(); localStorage.setItem('aquarevier_onboarding_completed_v1', '1'); return false;" style="color: var(--text-primary); text-decoration: underline; font-size: 14px; opacity: 0.8;">Überspringen, ich kenne mich aus</a>
+            <a href="#" role="button" onclick="closeRoleModal(); localStorage.setItem('aquarevier_onboarding_completed_v1', '1'); return false;" style="color: var(--text-primary); text-decoration: underline; font-size: 14px; opacity: 0.8;">Überspringen, ich kenne mich aus</a>
         </div>
     </div>
 
@@ -6508,7 +6511,7 @@ function buildUnifiedSearchIndex() {
     <div id="coachmark-overlay">
         <div id="coachmark-spotlight"></div>
         <div id="coachmark-tooltip">
-            <h4 id="coachmark-title">Titel</h4>
+            <h3 id="coachmark-title">Titel</h3>
             <p id="coachmark-text">Text</p>
             <div class="coachmark-footer">
                 <div class="coachmark-progress" id="coachmark-progress">Schritt 1 von 4</div>
@@ -6525,16 +6528,16 @@ function buildUnifiedSearchIndex() {
         <div class="scorecard-modal" id="textGeneratorModal" style="max-width: 800px; width: 90%; max-height: 90vh; display: flex; flex-direction: column;">
             <div class="scorecard-header" style="flex-shrink: 0;">
                 <div class="scorecard-title" id="textGeneratorTitle">Text generieren</div>
-                <button class="scorecard-close" id="textGeneratorClose">&times;</button>
+                <button class="scorecard-close" id="textGeneratorClose" aria-label="Schließen"><button class="scorecard-close" id="textGeneratorClose">&times;</button>times;</button>
             </div>
             <div class="scorecard-body" style="display: flex; flex-direction: column; flex: 1; overflow: hidden; padding: 20px; gap: 15px;">
                 <div id="textGeneratorHint" style="font-size: 14px; color: var(--text-secondary); flex-shrink: 0;"></div>
                 <textarea id="textGeneratorContent" style="flex: 1; min-height: 250px; width: 100%; resize: none; background: rgba(0,0,0,0.2); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 12px; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5;"></textarea>
 
                 <div id="textGeneratorActions" style="display: flex; gap: 10px; flex-shrink: 0;">
-                    <button id="btn-textgen-copy" class="filter-btn" style="flex: 1; justify-content: center; display: none;">📋 In Zwischenablage kopieren</button>
-                    <button id="btn-textgen-txt" class="filter-btn" style="flex: 1; justify-content: center; display: none;">💾 Als .txt herunterladen</button>
-                    <button id="btn-textgen-docx" class="filter-btn" style="flex: 1; justify-content: center; display: none;">💾 Als .docx herunterladen</button>
+                    <button id="btn-textgen-copy" class="filter-btn" style="flex: 1; justify-content: center; display: none;" aria-label="In Zwischenablage kopieren">📋 In Zwischenablage kopieren</button>
+                    <button id="btn-textgen-txt" class="filter-btn" style="flex: 1; justify-content: center; display: none;" aria-label="Als .txt herunterladen">💾 Als .txt herunterladen</button>
+                    <button id="btn-textgen-docx" class="filter-btn" style="flex: 1; justify-content: center; display: none;" aria-label="Als .docx herunterladen">💾 Als .docx herunterladen</button>
                 </div>
             </div>
         </div>
