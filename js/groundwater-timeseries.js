@@ -262,9 +262,77 @@
 
     // Initialize deterministically once the controls exist. A delayed reset
     // used to overwrite real user input made during the first 600 ms.
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => window.setTimeSeriesYearIndex(5), { once: true });
+
+
+    // Event Handler References
+    let sliderInputHandler = null;
+    let playBtnClickHandler = null;
+    let resetBtnClickHandler = null;
+    let infoBtnClickHandler = null;
+
+    function initTimeSeriesEvents() {
+        const slider = document.getElementById('timeseries-slider');
+        if (slider) {
+            sliderInputHandler = (e) => window.setTimeSeriesYearIndex(parseInt(e.target.value, 10));
+            slider.addEventListener('input', sliderInputHandler, { passive: true });
+        }
+
+        const playBtn = document.getElementById('btn-timeseries-play');
+        if (playBtn) {
+            playBtnClickHandler = (e) => { e.preventDefault(); window.toggleTimeSeriesPlay(); };
+            playBtn.addEventListener('click', playBtnClickHandler);
+            playBtn.addEventListener('touchstart', playBtnClickHandler, { passive: false });
+        }
+
+        const resetBtn = document.getElementById('btn-timeseries-reset');
+        if (resetBtn) {
+            resetBtnClickHandler = (e) => { e.preventDefault(); window.resetTimeSeries(); };
+            resetBtn.addEventListener('click', resetBtnClickHandler);
+            resetBtn.addEventListener('touchstart', resetBtnClickHandler, { passive: false });
+        }
+
+        const infoBtn = document.getElementById('btn-timeseries-info');
+        if (infoBtn) {
+            infoBtnClickHandler = (e) => { e.preventDefault(); window.showGroundwaterInfo(); };
+            infoBtn.addEventListener('click', infoBtnClickHandler);
+            infoBtn.addEventListener('touchstart', infoBtnClickHandler, { passive: false });
+        }
+    }
+
+    window.cleanupTimeSeriesEvents = function() {
+        const slider = document.getElementById('timeseries-slider');
+        if (slider && sliderInputHandler) {
+            slider.removeEventListener('input', sliderInputHandler);
+        }
+
+        const playBtn = document.getElementById('btn-timeseries-play');
+        if (playBtn && playBtnClickHandler) {
+            playBtn.removeEventListener('click', playBtnClickHandler);
+            playBtn.removeEventListener('touchstart', playBtnClickHandler);
+        }
+
+        const resetBtn = document.getElementById('btn-timeseries-reset');
+        if (resetBtn && resetBtnClickHandler) {
+            resetBtn.removeEventListener('click', resetBtnClickHandler);
+            resetBtn.removeEventListener('touchstart', resetBtnClickHandler);
+        }
+
+        const infoBtn = document.getElementById('btn-timeseries-info');
+        if (infoBtn && infoBtnClickHandler) {
+            infoBtn.removeEventListener('click', infoBtnClickHandler);
+            infoBtn.removeEventListener('touchstart', infoBtnClickHandler);
+        }
+    };
+if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.setTimeSeriesYearIndex(5);
+            initTimeSeriesEvents();
+            window.addEventListener('aquarevier:cleanup', window.cleanupTimeSeriesEvents);
+        }, { once: true });
     } else {
         window.setTimeSeriesYearIndex(5);
+        initTimeSeriesEvents();
+        window.addEventListener('aquarevier:cleanup', window.cleanupTimeSeriesEvents);
     }
+
 })();
