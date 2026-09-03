@@ -255,6 +255,16 @@
         });
 
         dropdown.innerHTML = html;
+
+        let liveRegion = document.getElementById("usearch-live-region");
+        if (!liveRegion) {
+            liveRegion = document.createElement("div");
+            liveRegion.id = "usearch-live-region";
+            liveRegion.setAttribute("aria-live", "polite");
+            liveRegion.style.cssText = "position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;";
+            document.body.appendChild(liveRegion);
+        }
+        liveRegion.textContent = results.length + " Ergebnisse gefunden.";
         dropdown.style.display = 'block';
         inputElem.setAttribute('aria-expanded', 'true');
 
@@ -294,7 +304,7 @@
             }
 
             if (item.bounds) {
-                map.flyToBounds(item.bounds, { padding: [50, 50], duration: 1.5 });
+                window.matchMedia("(prefers-reduced-motion: reduce)").matches ? map.fitBounds(item.bounds, { padding: [50, 50], duration: 1.5 }) : map.flyToBounds(item.bounds, { padding: [50, 50], duration: 1.5 });
             } else {
                 map.setView([item.lat, item.lng], 15, { animate: true });
             }
