@@ -9,7 +9,8 @@
   "scripts": {
     "vendor": "node tools/build_vendor_assets.js",
     "check:links": "python tools/check_external_links.py",
-    "test": "npm run vendor && playwright test"
+    "test": "npm run vendor && npm run test:unit && playwright test",
+    "test:unit": "node tests/unit/test_layer_control.js"
   },
   "repository": {
     "type": "git",
