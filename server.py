@@ -222,6 +222,54 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed_path = urllib.parse.urlparse(self.path)
+
+        if parsed_path.path == '/health':
+            core_files = ['contacts.geojson', 'contacts_anonymized.geojson']
+            missing = []
+            unreadable = []
+
+            try:
+                with open(os.path.join(DIRECTORY, 'js', 'layers-config.js'), 'r', encoding='utf-8') as f:
+                    content = f.read()
+                    layer_files = re.findall(r"file:\s*['\"]([^'\"]+\.geojson)['\"]", content)
+                    if not layer_files:
+                        unreadable.append('js/layers-config.js')
+                    else:
+                        core_files.extend(layer_files)
+            except Exception:
+                unreadable.append('js/layers-config.js')
+
+            core_files = sorted(list(set(core_files)))
+
+            for file_name in core_files:
+                if '..' in file_name or os.path.isabs(file_name):
+                    unreadable.append(file_name)
+                    continue
+
+                filepath = os.path.join(DIRECTORY, file_name)
+                if not os.path.exists(filepath):
+                    missing.append(file_name)
+                elif not os.path.isfile(filepath):
+                    unreadable.append(file_name)
+                else:
+                    try:
+                        with open(filepath, 'r', encoding='utf-8') as f:
+                            json.load(f)
+                    except Exception:
+                        unreadable.append(file_name)
+
+            status = 'error' if missing or unreadable else 'ok'
+
+            self.send_response(200 if status == 'ok' else 503)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps({
+                "status": status,
+                "missing": sorted(missing),
+                "unreadable": sorted(unreadable)
+            }).encode('utf-8'))
+            return
+
         # Protect raw PII contacts.geojson file from direct GET access without auth
         if parsed_path.path == '/contacts.geojson' or parsed_path.path.startswith('/api/'):
             if not self.check_auth():
