@@ -1,0 +1,186 @@
+{
+    "files_to_modify": [
+        "index.html",
+        "js/i18n.js"
+    ],
+    "issues": [
+        {
+            "description": "Missing data-i18n-key for role modal title",
+            "current_html": "<h2>Willkommen bei der AquaRevier-Akteurskarte</h2>",
+            "proposed_html": "<h2 data-i18n-key=\"onboarding.role_modal_title\">Willkommen bei der AquaRevier-Akteurskarte</h2>",
+            "translations": {
+                "de": {
+                    "onboarding.role_modal_title": "Willkommen bei der AquaRevier-Akteurskarte"
+                },
+                "en": {
+                    "onboarding.role_modal_title": "Welcome to the AquaRevier Stakeholder Map"
+                }
+            }
+        },
+        {
+            "description": "Missing data-i18n-key for role modal subtitle",
+            "current_html": "<p>W\u00e4hle deine Rolle, damit wir dir die Karte passend vorfiltern:</p>",
+            "proposed_html": "<p data-i18n-key=\"onboarding.role_modal_subtitle\">W\u00e4hle deine Rolle, damit wir dir die Karte passend vorfiltern:</p>",
+            "translations": {
+                "de": {
+                    "onboarding.role_modal_subtitle": "W\u00e4hle deine Rolle, damit wir dir die Karte passend vorfiltern:"
+                },
+                "en": {
+                    "onboarding.role_modal_subtitle": "Choose your role so we can pre-filter the map for you:"
+                }
+            }
+        },
+        {
+            "description": "Missing data-i18n-key for politics role title",
+            "current_html": "<h3>\ud83c\udfdb\ufe0f Politik / Gemeinderat</h3>",
+            "proposed_html": "<h3 data-i18n-key=\"onboarding.role_politics\">\ud83c\udfdb\ufe0f Politik / Gemeinderat</h3>",
+            "translations": {
+                "de": {
+                    "onboarding.role_politics": "\ud83c\udfdb\ufe0f Politik / Gemeinderat"
+                },
+                "en": {
+                    "onboarding.role_politics": "\ud83c\udfdb\ufe0f Politics / Local Council"
+                }
+            }
+        },
+        {
+            "description": "Missing data-i18n-key for politics role desc",
+            "current_html": "<p>Kreisgrenzen, Statistik & Beh\u00f6rden/Politik</p>",
+            "proposed_html": "<p data-i18n-key=\"onboarding.role_politics_desc\">Kreisgrenzen, Statistik & Beh\u00f6rden/Politik</p>",
+            "translations": {
+                "de": {
+                    "onboarding.role_politics_desc": "Kreisgrenzen, Statistik & Beh\u00f6rden/Politik"
+                },
+                "en": {
+                    "onboarding.role_politics_desc": "District borders, statistics & authorities/politics"
+                }
+            }
+        },
+        {
+            "description": "Missing data-i18n-key for administration role title",
+            "current_html": "<h3>\ud83c\udfe2 Gemeinde / Verwaltung</h3>",
+            "proposed_html": "<h3 data-i18n-key=\"onboarding.role_administration\">\ud83c\udfe2 Gemeinde / Verwaltung</h3>",
+            "translations": {
+                "de": {
+                    "onboarding.role_administration": "\ud83c\udfe2 Gemeinde / Verwaltung"
+                },
+                "en": {
+                    "onboarding.role_administration": "\ud83c\udfe2 Municipality / Administration"
+                }
+            }
+        },
+        {
+            "description": "Missing data-i18n-key for administration role desc",
+            "current_html": "<p>Fachdaten wie Pegel, Grundwasser & Stauanlagen</p>",
+            "proposed_html": "<p data-i18n-key=\"onboarding.role_administration_desc\">Fachdaten wie Pegel, Grundwasser & Stauanlagen</p>",
+            "translations": {
+                "de": {
+                    "onboarding.role_administration_desc": "Fachdaten wie Pegel, Grundwasser & Stauanlagen"
+                },
+                "en": {
+                    "onboarding.role_administration_desc": "Technical data like river gauges, groundwater & dams"
+                }
+            }
+        },
+        {
+            "description": "Missing data-i18n-key for industry role title",
+            "current_html": "<h3>\ud83c\udfed Industrie / Gewerbe</h3>",
+            "proposed_html": "<h3 data-i18n-key=\"onboarding.role_industry\">\ud83c\udfed Industrie / Gewerbe</h3>",
+            "translations": {
+                "de": {
+                    "onboarding.role_industry": "\ud83c\udfed Industrie / Gewerbe"
+                },
+                "en": {
+                    "onboarding.role_industry": "\ud83c\udfed Industry / Commerce"
+                }
+            }
+        },
+        {
+            "description": "Missing data-i18n-key for industry role desc",
+            "current_html": "<p>Alle Industriebranchen, Einzugsgebiete & WSG</p>",
+            "proposed_html": "<p data-i18n-key=\"onboarding.role_industry_desc\">Alle Industriebranchen, Einzugsgebiete & WSG</p>",
+            "translations": {
+                "de": {
+                    "onboarding.role_industry_desc": "Alle Industriebranchen, Einzugsgebiete & WSG"
+                },
+                "en": {
+                    "onboarding.role_industry_desc": "All industrial sectors, catchment areas & water protection zones"
+                }
+            }
+        },
+        {
+            "description": "Missing data-i18n-key for citizen role title",
+            "current_html": "<h3>\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc66 B\u00fcrger / \u00d6ffentlichkeit</h3>",
+            "proposed_html": "<h3 data-i18n-key=\"onboarding.role_citizen\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc66 B\u00fcrger / \u00d6ffentlichkeit</h3>",
+            "translations": {
+                "de": {
+                    "onboarding.role_citizen": "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc66 B\u00fcrger / \u00d6ffentlichkeit"
+                },
+                "en": {
+                    "onboarding.role_citizen": "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc66 Citizens / Public"
+                }
+            }
+        },
+        {
+            "description": "Missing data-i18n-key for citizen role desc",
+            "current_html": "<p>Gew\u00e4sser mit Namen, WSG & \u00f6ffentliche Akteure</p>",
+            "proposed_html": "<p data-i18n-key=\"onboarding.role_citizen_desc\">Gew\u00e4sser mit Namen, WSG & \u00f6ffentliche Akteure</p>",
+            "translations": {
+                "de": {
+                    "onboarding.role_citizen_desc": "Gew\u00e4sser mit Namen, WSG & \u00f6ffentliche Akteure"
+                },
+                "en": {
+                    "onboarding.role_citizen_desc": "Named water bodies, water protection zones & public stakeholders"
+                }
+            }
+        },
+        {
+            "description": "Missing data-i18n-key for skip text",
+            "current_html": "\u00dcberspringen, ich kenne mich aus",
+            "proposed_html": "<a href=\"#\" onclick=\"closeRoleModal(); localStorage.setItem('aquarevier_onboarding_completed_v1', '1'); return false;\" style=\"color: var(--text-primary); text-decoration: underline; font-size: 14px; opacity: 0.8;\" data-i18n-key=\"onboarding.skip_role\">\u00dcberspringen, ich kenne mich aus</a>",
+            "translations": {
+                "de": {
+                    "onboarding.skip_role": "\u00dcberspringen, ich kenne mich aus"
+                },
+                "en": {
+                    "onboarding.skip_role": "Skip, I know my way around"
+                }
+            }
+        },
+        {
+            "description": "Hardcoded text in coachmark title and text in JS",
+            "current_html": "coachmarkSteps array in inline JS",
+            "proposed_html": "Update coachmarkSteps to use translated strings via AquaI18n.t() or by checking current lang, or store keys in array and translate in updateCoachmarkContent().",
+            "translations": {
+                "de": {
+                    "tour.step1.title": "Globale Suche",
+                    "tour.step1.text": "Hier durchsuchst du alle 35+ Datenquellen auf einmal \u2014 Akteure, Gew\u00e4sser, Gemeinden, Anlagen.",
+                    "tour.step2.title": "Akteure",
+                    "tour.step2.text": "Hier findest du das Netzwerk: Beh\u00f6rden, Verb\u00e4nde und wichtige Unternehmen der Region.",
+                    "tour.step3.title": "Fachdaten",
+                    "tour.step3.text": "Hier aktivierst du amtliche Fachdaten wie Pegel, Grundwassermessstellen oder Wasserschutzgebiete.",
+                    "tour.step4.title": "Zur\u00fccksetzen",
+                    "tour.step4.text": "Verirrst du dich? Ein Klick setzt alle Filter zur\u00fcck auf die Vollansicht.",
+                    "tour.progress": "Schritt {step} von {total}",
+                    "tour.btn.skip": "\u00dcberspringen",
+                    "tour.btn.next": "Weiter",
+                    "tour.btn.done": "Fertig"
+                },
+                "en": {
+                    "tour.step1.title": "Global Search",
+                    "tour.step1.text": "Search through all 35+ data sources at once \u2014 stakeholders, water bodies, municipalities, facilities.",
+                    "tour.step2.title": "Stakeholders",
+                    "tour.step2.text": "Find the network here: authorities, associations, and key companies in the region.",
+                    "tour.step3.title": "Technical Data",
+                    "tour.step3.text": "Activate official technical data here such as river gauges, groundwater monitoring stations, or water protection zones.",
+                    "tour.step4.title": "Reset",
+                    "tour.step4.text": "Getting lost? One click resets all filters to the full view.",
+                    "tour.progress": "Step {step} of {total}",
+                    "tour.btn.skip": "Skip",
+                    "tour.btn.next": "Next",
+                    "tour.btn.done": "Done"
+                }
+            }
+        }
+    ]
+}
