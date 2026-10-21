@@ -67,8 +67,8 @@
         const list = Object.values(gemeindenMap).map(g => ({
             name: g.name,
             kreis: g.kreis,
-            centerLat: g.count > 0 ? g.latSum / g.count : null,
-            centerLng: g.count > 0 ? g.lngSum / g.count : null,
+            centerLat: (!g.count || g.count === 0) ? null : g.latSum / g.count,
+            centerLng: (!g.count || g.count === 0) ? null : g.lngSum / g.count,
             totalObjects: g.count
         }));
 
