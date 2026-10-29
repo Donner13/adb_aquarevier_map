@@ -2379,6 +2379,7 @@
     <script src="js/ai-assistant.js?v=v3"></script>
     <script src="js/water-quality.js"></script>
     <script src="js/keyboard-shortcuts.js"></script>
+    <script src="js/editor/tooltip.js"></script>
 
     <!-- jsPDF for PDF Export -->
     <script src="vendor/jspdf/jspdf.umd.min.js"></script>
@@ -5021,25 +5022,10 @@
                 `;
                 marker.bindPopup(popupContent);
 
-                // Add Marker Tooltip based on styleSettings
+                // Add Marker Tooltip based on styleSettings via externalized module
                 const tooltipPref = styleSettings.markerTooltip || 'name_group';
-                if (tooltipPref !== 'none') {
-                    let tooltipHtml = '';
-                    if (tooltipPref === 'name') {
-                        tooltipHtml = `<b>${institution}</b>`;
-                    } else if (tooltipPref === 'name_group') {
-                        tooltipHtml = `<b>${institution}</b><br><span style="font-size:10px;color:${color}">${group}</span>`;
-                    } else if (tooltipPref === 'all') {
-                        tooltipHtml = `<b>${institution}</b><br><span style="font-size:10px;color:${color}">${group}</span>`;
-                        const pNames = people.map(p => {
-                            let n = p.name.split('(')[0].trim() || p.name;
-                            return n;
-                        });
-                        if (pNames.length > 0) {
-                             tooltipHtml += `<br><span style="font-size:10px;">👤 ${pNames.join(', ')}</span>`;
-                        }
-                    }
-                    marker.bindTooltip(tooltipHtml, { sticky: true });
+                if (window.applyMarkerTooltip) {
+                    window.applyMarkerTooltip(marker, tooltipPref, institution, group, color, people);
                 }
 
                 markersLayer.addLayer(marker);
