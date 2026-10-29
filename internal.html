@@ -2201,17 +2201,8 @@
                         <!-- UI Theme Configurator -->
                         <div style="margin-bottom: 10px;">
                             <strong style="font-size: 11px; display: block; margin-bottom: 4px;">Sidebar UI Theme (Farben)</strong>
-                            <div class="form-row" style="margin-bottom: 6px; display: flex; gap: 4px; font-size:10px; align-items:center;">
-                                <span>Hintergrund</span>
-                                <input type="color" id="cfg-theme-bgBase" value="#0b0f19" onchange="updateTheme('bgBase', this.value)" style="width: 30px; height: 20px;">
-                            </div>
-                            <div class="form-row" style="margin-bottom: 6px; display: flex; gap: 4px; font-size:10px; align-items:center;">
-                                <span>Textfarbe</span>
-                                <input type="color" id="cfg-theme-textPrimary" value="#f3f4f6" onchange="updateTheme('textPrimary', this.value)" style="width: 30px; height: 20px;">
-                            </div>
-                            <div class="form-row" style="margin-bottom: 6px; display: flex; gap: 4px; font-size:10px; align-items:center;">
-                                <span>Akzentfarbe</span>
-                                <input type="color" id="cfg-theme-accentPrimary" value="#6366f1" onchange="updateTheme('accentPrimary', this.value)" style="width: 30px; height: 20px;">
+                            <div id="theme-customizer-container" style="display: flex; flex-direction: column; gap: 4px;">
+                                <!-- Dynamically populated by js/editor/ui-theme-customizer.js -->
                             </div>
                         </div>
 
@@ -3969,10 +3960,8 @@
                 if (el) el.checked = (styleSettings.searchFields || []).includes(f);
             });
 
-            if (styleSettings.theme) {
-                document.getElementById('cfg-theme-bgBase').value = styleSettings.theme.bgBase;
-                document.getElementById('cfg-theme-textPrimary').value = styleSettings.theme.textPrimary;
-                document.getElementById('cfg-theme-accentPrimary').value = styleSettings.theme.accentPrimary;
+            if (window.renderThemeCustomizer) {
+                window.renderThemeCustomizer();
             }
 
             const b = styleSettings.boundaries;
@@ -7320,6 +7309,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
     <script src="js/mascot.js"></script>
     <script src="js/fun-features.js"></script>
     <script src="js/audio-system.js"></script>
+    <script src="js/editor/ui-theme-customizer.js"></script>
 </body>
 </html>
 
