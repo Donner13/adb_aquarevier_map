@@ -2061,6 +2061,10 @@
                     </div>
                     <div class="glass-panel" id="customizer-panel" style="padding: 10px; border-radius: 8px; margin-bottom: 10px; background: var(--bg-surface); border: 1px solid var(--border-color); display: none;">
                         
+                        <!-- Basemap Options -->
+                        <div id="basemap-customizer-container"></div>
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 8px 0;">
+
                         <!-- Marker Options -->
                         <div style="margin-bottom: 10px;">
                             <strong style="font-size: 11px; display: block; margin-bottom: 4px;">Akteur-Marker</strong>
@@ -2497,6 +2501,11 @@
             transparent: false,
             attribution: "&copy; BKG / Geodatenzentrum"
         });
+
+        window.baseLight = baseLight;
+        window.baseDark = baseDark;
+        window.baseOsm = baseOsm;
+        window.baseWebAtlas = baseWebAtlas;
 
         // 4. Overlays: NRW Administrative Boundaries (Landkreisgrenzen & Landesgrenze)
         const wmsBorders = L.tileLayer.wms("https://www.wms.nrw.de/geobasis/wms_nw_dvg", {
@@ -3691,6 +3700,7 @@
                 accentPrimary: '#6366f1'
             }
         };
+        window.styleSettings = styleSettings;
 
         function toggleCustomizerPanel() {
             const panel = document.getElementById('customizer-panel');
@@ -4059,6 +4069,7 @@
 
                 if (geojsonData.styleSettings) {
                     styleSettings = Object.assign(styleSettings, geojsonData.styleSettings);
+                    window.styleSettings = styleSettings;
                     if (geojsonData.styleSettings.boundaries) {
                         styleSettings.boundaries = Object.assign(styleSettings.boundaries, geojsonData.styleSettings.boundaries);
                     }
@@ -4109,6 +4120,11 @@
                     renderCustomWMSList();
                 }
 
+                if (window.BasemapManager) {
+                    window.BasemapManager.initUI();
+                    window.BasemapManager.applyBasemap();
+                }
+
                 renderMapAndSidebar();
                 updateBoundaryStyles(true);
             } catch (err) {
@@ -4116,6 +4132,7 @@
             }
         }
 
+        window.persistLocal = persistLocal;
         function persistLocal() {
             geojsonData.styleSettings = styleSettings;
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(geojsonData));
@@ -5769,14 +5786,9 @@
         if (isDarkMode) {
             document.body.classList.remove('light-theme');
             themeToggle.innerText = '☀️';
-            if (map.hasLayer(baseLight)) map.removeLayer(baseLight);
-            baseDark.addTo(map);
         } else {
             document.body.classList.add('light-theme');
             themeToggle.innerText = '🌙';
-            // baseLight is added by default on map creation, but just to be sure:
-            if (map.hasLayer(baseDark)) map.removeLayer(baseDark);
-            if (!map.hasLayer(baseLight)) baseOsm.addTo(map);
         }
 
         themeToggle.addEventListener('click', () => {
@@ -5785,13 +5797,12 @@
             if (isDarkMode) {
                 document.body.classList.remove('light-theme');
                 themeToggle.innerText = '☀️';
-                if (map.hasLayer(baseLight)) map.removeLayer(baseLight);
-                baseDark.addTo(map);
             } else {
                 document.body.classList.add('light-theme');
                 themeToggle.innerText = '🌙';
-                if (map.hasLayer(baseDark)) map.removeLayer(baseDark);
-                baseOsm.addTo(map);
+            }
+            if (window.BasemapManager) {
+                window.BasemapManager.applyBasemap();
             }
         });
 
@@ -7315,6 +7326,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
         }
     </script>
     <!-- AquaRevier Suite Modules -->
+    <script src="js/editor/basemap.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/error-handling.js"></script>
     <script src="js/mascot.js"></script>
