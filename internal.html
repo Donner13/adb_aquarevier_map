@@ -4144,16 +4144,35 @@
             const krWeight = parseFloat(document.getElementById('cfg-kr-weight').value);
             const krDash = document.getElementById('cfg-kr-dash').value;
 
-            const caColor = document.getElementById('cfg-ca-color').value;
-            const caFill = document.getElementById('cfg-ca-fill').value;
-            const caWeight = parseFloat(document.getElementById('cfg-ca-weight').value);
-            const caOpacity = parseFloat(document.getElementById('cfg-ca-opacity').value);
-
             styleSettings.boundaries = {
                 ugColor, ugFill, ugWeight, ugOpacity,
-                krColor, krWeight, krDash,
-                caColor, caFill, caWeight, caOpacity
+                krColor, krWeight, krDash
             };
+
+            // Delegate Rur watershed styling to js/editor/rur-watershed.js
+            if (window.updateRurWatershedStyle) {
+                window.updateRurWatershedStyle(styleSettings, leafletCA);
+            } else {
+                // Fallback if not loaded
+                const caColor = document.getElementById('cfg-ca-color').value;
+                const caFill = document.getElementById('cfg-ca-fill').value;
+                const caWeight = parseFloat(document.getElementById('cfg-ca-weight').value);
+                const caOpacity = parseFloat(document.getElementById('cfg-ca-opacity').value);
+
+                styleSettings.boundaries.caColor = caColor;
+                styleSettings.boundaries.caFill = caFill;
+                styleSettings.boundaries.caWeight = caWeight;
+                styleSettings.boundaries.caOpacity = caOpacity;
+
+                if (leafletCA) {
+                    leafletCA.setStyle({
+                        color: caColor,
+                        weight: caWeight,
+                        fillColor: caFill,
+                        fillOpacity: caOpacity
+                    });
+                }
+            }
 
             if (leafletUG) {
                 leafletUG.setStyle({
@@ -4170,14 +4189,7 @@
                     dashArray: krDash
                 });
             }
-            if (leafletCA) {
-                leafletCA.setStyle({
-                    color: caColor,
-                    weight: caWeight,
-                    fillColor: caFill,
-                    fillOpacity: caOpacity
-                });
-            }
+            // (leafletCA styling is handled in updateRurWatershedStyle above)
 
             if (!skipPersist) {
                 persistLocal();
@@ -7320,6 +7332,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
     <script src="js/mascot.js"></script>
     <script src="js/fun-features.js"></script>
     <script src="js/audio-system.js"></script>
+    <script src="js/editor/rur-watershed.js"></script>
 </body>
 </html>
 
