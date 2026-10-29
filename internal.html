@@ -2324,7 +2324,20 @@
                         <div class="contacts-meta" id="contacts-count" aria-live="polite" style="margin-bottom: 0;">0 von 0 Kontakten angezeigt</div>
                         <button id="reset-filters-btn" class="filter-btn" data-i18n-key="reset_filters" style="padding: 4px 8px; font-size: 10px;">Filter zurücksetzen</button>
                     </div>
-                    <button id="share-view-btn" class="filter-btn" style="width: 100%; margin-bottom: 12px; font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
+                    <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                        <button id="share-view-btn" class="filter-btn" style="flex: 1; font-size: 11px;" title="Kopiert einen Link, der die aktuelle Filter- und Kartenansicht wiederherstellt">🔗 Ansicht teilen</button>
+                        <button id="toggle-batch-mode-btn" class="filter-btn" style="flex: 1; font-size: 11px;" title="Mehrere Akteure auswählen und bearbeiten" onclick="toggleBatchMode()">☑️ Stapelverarbeitung</button>
+                    </div>
+                    <div id="batch-controls" style="display: none; background: var(--bg-surface); padding: 12px; border: 1px dashed var(--border-color); border-radius: 8px; margin-bottom: 12px;">
+                        <div style="font-size: 12px; font-weight: bold; margin-bottom: 8px;" id="batch-selected-count">0 ausgewählt</div>
+                        <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                            <select id="batch-group-select" class="form-select" style="flex: 1; padding: 4px; font-size: 11px;" disabled onchange="handleBatchGroupSelectChange()">
+                                <option value="">Neue Gruppe wählen...</option>
+                            </select>
+                            <button id="batch-assign-btn" class="filter-btn" style="font-size: 11px; padding: 4px 8px;" disabled onclick="executeBatchAssign()">Zuweisen</button>
+                        </div>
+                        <button id="batch-delete-btn" class="filter-btn" style="width: 100%; font-size: 11px; background: #fee2e2; color: #991b1b; border-color: #fca5a5;" disabled onclick="executeBatchDelete()">🗑️ Ausgewählte löschen</button>
+                    </div>
                     <div class="contact-list" id="contact-list-container">
                         <!-- Filled by JS -->
                     </div>
@@ -5077,16 +5090,25 @@
                 item.setAttribute('role', 'button');
                 item.setAttribute('tabindex', '0');
                 item.setAttribute('aria-label', `${props.name}, Gruppe ${props.group}. Auf Karte anzeigen.`);
+                let batchCheckboxHtml = '';
+                if (typeof injectBatchCheckboxHtml === 'function') {
+                    batchCheckboxHtml = injectBatchCheckboxHtml(props);
+                }
                 item.innerHTML = `
-                    <div class="contact-name">
-                        <span>${props.name}</span>
-                        <span class="contact-group-badge badge-${props.group.toLowerCase().split('/')[0].trim().replace(/\s/g, '')}">${displayGroup}</span>
-                    </div>
-                    <div class="contact-coords">
-                        <span>Lat: ${lat.toFixed(4)}</span>
-                        <span>Lng: ${lng.toFixed(4)}</span>
+                    ${batchCheckboxHtml}
+                    <div style="flex: 1;">
+                        <div class="contact-name">
+                            <span>${props.name}</span>
+                            <span class="contact-group-badge badge-${props.group.toLowerCase().split('/')[0].trim().replace(/\s/g, '')}">${displayGroup}</span>
+                        </div>
+                        <div class="contact-coords">
+                            <span>Lat: ${lat.toFixed(4)}</span>
+                            <span>Lng: ${lng.toFixed(4)}</span>
+                        </div>
                     </div>
                 `;
+                item.style.display = 'flex';
+                item.style.alignItems = 'center';
 
                 const activateItem = () => {
                     map.panTo([lat, lng]);
@@ -7301,6 +7323,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
 
     <!-- Application Perfection & Enhancement Suite -->
     <script src="js/app-enhancements.js?v=20260729-linkfix"></script>
+    <script src="js/editor/batch-processing.js"></script>
     <script>
         // Mobile Sidebar Toggle Logic
         const mobileSidebarToggle = document.getElementById('mobile-sidebar-toggle');
