@@ -2379,6 +2379,7 @@
     <script src="js/ai-assistant.js?v=v3"></script>
     <script src="js/water-quality.js"></script>
     <script src="js/keyboard-shortcuts.js"></script>
+    <script src="js/editor/group_aliases.js"></script>
 
     <!-- jsPDF for PDF Export -->
     <script src="vendor/jspdf/jspdf.umd.min.js"></script>
@@ -3897,12 +3898,7 @@
             });
         }
 
-        function updateGroupName(group, val) {
-            styleSettings.groupNames[group] = val;
-            updateFilterButtonNames();
-            renderMapAndSidebar();
-            persistLocal();
-        }
+        // updateGroupName moved to js/editor/group_aliases.js
 
         function updateGroupLogo(group, val) {
             if (!styleSettings.groupLogos) styleSettings.groupLogos = {};
