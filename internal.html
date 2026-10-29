@@ -2372,6 +2372,7 @@
     <script src="js/groundwater-timeseries.js"></script>
     <script src="js/universal-search.js"></script>
     <script src="js/qr-sharing.js"></script>
+    <script src="js/editor/wms-customizer.js"></script>
     <script src="js/bookmarks-manager.js"></script>
     <script src="js/pwa-offline.js"></script>
     
@@ -3573,7 +3574,7 @@
 
         const layerControl = L.control.layers(baseMaps, {}, { position: 'topright' }).addTo(map);
 
-        const wmsLayersMap = {
+        window.wmsLayersMap = {
 
             "HQ häufig (LANUV)": wmsHwgkHaeufig,
             "HQ100 (LANUV)": wmsHwgkHq100,
@@ -3652,7 +3653,7 @@
         const LOCAL_STORAGE_KEY = 'contacts_local_full';
 
         // GIS & Customizer State
-        let styleSettings = {
+        window.styleSettings = {
             markerSize: 14,
             markerBorder: 2,
             markerTooltip: 'name_group',
@@ -3752,50 +3753,9 @@
             renderMapAndSidebar();
             persistLocal();
         }
-
-        function renderWmsCustomizer() {
-            const container = document.getElementById('wms-customizer-container');
-            container.innerHTML = '';
-
-            Object.keys(wmsLayersMap).forEach(wmsName => {
-                const settings = styleSettings.wmsSettings[wmsName] || { opacity: 0.5, zIndex: 5 };
-
-                const row = document.createElement('div');
-                row.style.borderBottom = '1px dashed var(--border-color)';
-                row.style.paddingBottom = '4px';
-
-                row.innerHTML = `
-                    <div style="font-size: 10px; color: var(--text-primary); margin-bottom: 2px;">${wmsName}</div>
-                    <div style="display: flex; gap: 6px; align-items: center; font-size: 9px;">
-                        <span>Deckkraft:</span>
-                        <input type="range" min="0" max="1" step="0.05" value="${settings.opacity}" style="width: 50px;" oninput="updateWmsSetting('${wmsName}', 'opacity', this.value)">
-                        <span>Z-Index:</span>
-                        <input type="number" min="1" max="20" value="${settings.zIndex}" style="width: 40px;" onchange="updateWmsSetting('${wmsName}', 'zIndex', this.value)">
-                    </div>
-                `;
-                container.appendChild(row);
-            });
         }
 
-        function updateWmsSetting(name, prop, val) {
-            if (!styleSettings.wmsSettings[name]) styleSettings.wmsSettings[name] = {};
-            styleSettings.wmsSettings[name][prop] = parseFloat(val);
-            applyWmsSettingsToLayers();
-            persistLocal();
-        }
-
-        function applyWmsSettingsToLayers() {
-            Object.keys(wmsLayersMap).forEach(wmsName => {
-                const layer = wmsLayersMap[wmsName];
-                const settings = styleSettings.wmsSettings[wmsName];
-                if (settings && layer) {
-                    layer.setOpacity(settings.opacity);
-                    layer.setZIndex(settings.zIndex);
-                }
-            });
-        }
-
-        const customWMSLayers = {};
+        window.customWMSLayers = {};
 
         function addCustomWMS() {
             const name = document.getElementById('custom-wms-name').value.trim();
@@ -4097,10 +4057,10 @@
                 });
 
                 renderGroupCustomizer();
-                renderWmsCustomizer();
+                if (typeof renderWmsCustomizer === 'function') renderWmsCustomizer(); else if (typeof window.renderWmsCustomizer === 'function') window.renderWmsCustomizer();
                 applyTheme();
                 applyStyleSettingsToUI();
-                applyWmsSettingsToLayers();
+                if (typeof applyWmsSettingsToLayers === 'function') applyWmsSettingsToLayers(); else if (typeof window.applyWmsSettingsToLayers === 'function') window.applyWmsSettingsToLayers();
 
                 if (styleSettings.customWMS) {
                     styleSettings.customWMS.forEach(wmsConfig => {
@@ -4116,7 +4076,7 @@
             }
         }
 
-        function persistLocal() {
+        window.persistLocal = function persistLocal() {
             geojsonData.styleSettings = styleSettings;
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(geojsonData));
             const status = document.getElementById('save-status');
@@ -4184,7 +4144,7 @@
             }
         }
 
-        let saveToServerTimeout = null;
+        window.saveToServerTimeout = null;
         async function saveToServer() {
             if (saveToServerTimeout) clearTimeout(saveToServerTimeout);
             saveToServerTimeout = setTimeout(async () => {
@@ -4901,7 +4861,7 @@
         }
 
         // Render Sidebar and Markers
-        function renderMapAndSidebar() {
+        window.renderMapAndSidebar = function renderMapAndSidebar() {
             markersLayer.clearLayers();
             const listContainer = document.getElementById('contact-list-container');
             listContainer.innerHTML = '';
