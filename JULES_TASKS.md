@@ -23,7 +23,7 @@ Füge Optionen hinzu, um festlegen zu können, welche Informationen im Tooltip a
 #### [ ] TASK-05: Kreisgrenzen (Dashed Line Style) konfigurieren
 Exponiere Styling-Eigenschaften für die 7 Kreise des Rheinischen Reviers (Farbe, Linienstärke und Strichmuster/Dash-Array wie "6, 4" oder "1, 5" für Punkte).
 
-#### [ ] TASK-06: Untersuchungsgebiet-Hintergrund (Fill Style) anpassen
+#### [x] TASK-06: Untersuchungsgebiet-Hintergrund (Fill Style) anpassen
 Erlaube die Anpassung des Untersuchungsgebiets-Overlays: Randfarbe, Füllfarbe, Linienstärke und die Füll-Deckkraft (Fill Opacity) stufenlos über Schieberegler.
 
 #### [ ] TASK-07: Hydrologisches Einzugsgebiet (Rur Watershed) anpassen
