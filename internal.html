@@ -2179,7 +2179,7 @@
                             <div class="form-row" style="margin-bottom: 6px;">
                                 <input type="text" id="custom-wms-layers" placeholder="Layer-Namen (kommagetrennt)" style="font-size: 10px; width: 100%; box-sizing: border-box;">
                             </div>
-                            <button class="filter-btn active" id="btn-add-custom-wms" style="width: 100%; justify-content: center; font-size: 10px; padding: 4px;" onclick="addCustomWMS()">➕ WMS hinzufügen</button>
+                            <button class="filter-btn active" id="btn-add-custom-wms" style="width: 100%; justify-content: center; font-size: 10px; padding: 4px;" onclick="window.addCustomWMS()">➕ WMS hinzufügen</button>
 
                             <div id="custom-wms-list" style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px; max-height: 100px; overflow-y: auto;">
                                 <!-- Custom WMS listed here -->
@@ -2371,6 +2371,7 @@
     <script src="js/gemeinde-steckbrief.js"></script>
     <script src="js/groundwater-timeseries.js"></script>
     <script src="js/universal-search.js"></script>
+    <script src="js/editor/custom_wms.js"></script>
     <script src="js/qr-sharing.js"></script>
     <script src="js/bookmarks-manager.js"></script>
     <script src="js/pwa-offline.js"></script>
@@ -3795,107 +3796,7 @@
             });
         }
 
-        const customWMSLayers = {};
 
-        function addCustomWMS() {
-            const name = document.getElementById('custom-wms-name').value.trim();
-            const url = document.getElementById('custom-wms-url').value.trim();
-            const layers = document.getElementById('custom-wms-layers').value.trim();
-
-            if (!name || !url || !layers) {
-                alert("Bitte füllen Sie alle Felder aus (Name, URL, Layers).");
-                return;
-            }
-
-            const wmsConfig = { id: Date.now().toString(), name, url, layers, opacity: 0.8, zIndex: 5 };
-
-            if (!styleSettings.customWMS) styleSettings.customWMS = [];
-            styleSettings.customWMS.push(wmsConfig);
-
-            document.getElementById('custom-wms-name').value = '';
-            document.getElementById('custom-wms-url').value = '';
-            document.getElementById('custom-wms-layers').value = '';
-
-            loadCustomWMSLayer(wmsConfig);
-            renderCustomWMSList();
-            persistLocal();
-        }
-
-        function removeCustomWMS(id) {
-            if (!styleSettings.customWMS) return;
-            const idx = styleSettings.customWMS.findIndex(w => w.id === id);
-            if (idx > -1) {
-                const wmsConfig = styleSettings.customWMS[idx];
-                const layer = customWMSLayers[wmsConfig.name];
-                if (layer) {
-                    map.removeLayer(layer);
-                    layerControl.removeLayer(layer);
-                    delete customWMSLayers[wmsConfig.name];
-                }
-                styleSettings.customWMS.splice(idx, 1);
-                renderCustomWMSList();
-                persistLocal();
-            }
-        }
-
-        function updateCustomWMSSetting(id, opacity) {
-            const wmsConfig = styleSettings.customWMS.find(w => w.id === id);
-            if (wmsConfig) {
-                wmsConfig.opacity = parseFloat(opacity);
-                const layer = customWMSLayers[wmsConfig.name];
-                if (layer) {
-                    layer.setOpacity(wmsConfig.opacity);
-                }
-                persistLocal();
-            }
-        }
-
-        function loadCustomWMSLayer(wmsConfig) {
-            if (customWMSLayers[wmsConfig.name]) return; // already loaded
-
-            const layer = L.tileLayer.wms(wmsConfig.url, {
-                layers: wmsConfig.layers,
-                format: 'image/png',
-                transparent: true,
-                opacity: wmsConfig.opacity,
-                zIndex: wmsConfig.zIndex || 5
-            });
-
-            customWMSLayers[wmsConfig.name] = layer;
-            layerControl.addOverlay(layer, "🌐 " + wmsConfig.name);
-        }
-
-        function renderCustomWMSList() {
-            const list = document.getElementById('custom-wms-list');
-            list.innerHTML = '';
-
-            if (!styleSettings.customWMS) return;
-
-            styleSettings.customWMS.forEach(w => {
-                const div = document.createElement('div');
-                div.style.background = 'rgba(255,255,255,0.03)';
-                div.style.border = '1px solid var(--border-color)';
-                div.style.padding = '4px';
-                div.style.borderRadius = '4px';
-                div.style.fontSize = '9px';
-                div.style.display = 'flex';
-                div.style.flexDirection = 'column';
-                div.style.gap = '4px';
-
-                div.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <strong style="color: var(--accent-primary)">${w.name}</strong>
-                        <button onclick="removeCustomWMS('${w.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer;" title="Löschen">🗑️</button>
-                    </div>
-                    <div style="color: var(--text-secondary); word-break: break-all;">${w.layers}</div>
-                    <div style="display: flex; align-items: center; gap: 4px;">
-                        <span>Opacity:</span>
-                        <input type="range" min="0" max="1" step="0.05" value="${w.opacity}" style="width: 100%;" oninput="updateCustomWMSSetting('${w.id}', this.value)">
-                    </div>
-                `;
-                list.appendChild(div);
-            });
-        }
 
         function updateGroupName(group, val) {
             styleSettings.groupNames[group] = val;
@@ -4104,9 +4005,9 @@
 
                 if (styleSettings.customWMS) {
                     styleSettings.customWMS.forEach(wmsConfig => {
-                        loadCustomWMSLayer(wmsConfig);
+                        window.loadCustomWMSLayer(wmsConfig);
                     });
-                    renderCustomWMSList();
+                    window.renderCustomWMSList();
                 }
 
                 renderMapAndSidebar();

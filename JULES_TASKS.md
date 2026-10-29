@@ -38,7 +38,7 @@ Füge Text- und Farb-Steuerungen für die Schriftgröße, Schriftfarbe und Schat
 #### [ ] TASK-10: WMS-Overlays anpassen (Reihenfolge & Transparenz)
 Erlaube es dem Nutzer, die Deckkraft (Opacity) der WMS-Karten-Feeds (Wasserschutzgebiete, Tagebaue) per Schieberegler einzustellen und deren Layer-Reihenfolge (Z-Index) zu ändern.
 
-#### [ ] TASK-11: Custom WMS-Server hinzufügen
+#### [x] TASK-11: Custom WMS-Server hinzufügen
 Implementiere ein Formular, um eigene offizielle WMS-Feeds zu abonnieren (Eingabe von Name, WMS-URL, Layer-Namen und Transparenz) und in der Layer-Auswahl anzuzeigen.
 
 #### [ ] TASK-12: Logo-Manager für Akteure
