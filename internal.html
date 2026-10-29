@@ -2112,9 +2112,9 @@
                             <div style="margin-bottom: 8px; border-bottom: 1px dashed var(--border-color); padding-bottom: 6px;">
                                 <span style="font-size: 10px; font-weight: bold; color: var(--text-primary);">Kreise:</span>
                                 <div style="display: flex; gap: 6px; align-items: center; margin-top: 4px;">
-                                    <input type="color" id="cfg-kr-color" value="#000000" onchange="updateBoundaryStyles()">
-                                    <input type="range" id="cfg-kr-weight" min="0" max="6" step="0.5" value="2" style="width:60px;" oninput="updateBoundaryStyles()">
-                                    <input type="text" id="cfg-kr-dash" value="6, 4" placeholder="Strichung" style="width:50px; font-size:10px; padding:2px;" onchange="updateBoundaryStyles()">
+                                    <input type="color" id="cfg-kr-color" value="#000000" onchange="updateKreisgrenzenStyles()">
+                                    <input type="range" id="cfg-kr-weight" min="0" max="6" step="0.5" value="2" style="width:60px;" oninput="updateKreisgrenzenStyles()">
+                                    <input type="text" id="cfg-kr-dash" value="6, 4" placeholder="Strichung" style="width:50px; font-size:10px; padding:2px;" onchange="updateKreisgrenzenStyles()">
                                 </div>
                             </div>
 
@@ -3980,9 +3980,11 @@
             document.getElementById('cfg-ug-fill').value = b.ugFill;
             document.getElementById('cfg-ug-weight').value = b.ugWeight;
             document.getElementById('cfg-ug-opacity').value = b.ugOpacity;
-            document.getElementById('cfg-kr-color').value = b.krColor;
-            document.getElementById('cfg-kr-weight').value = b.krWeight;
-            document.getElementById('cfg-kr-dash').value = b.krDash;
+
+            if (typeof initKreisgrenzenUI === 'function') {
+                initKreisgrenzenUI(styleSettings);
+            }
+
             document.getElementById('cfg-ca-color').value = b.caColor;
             document.getElementById('cfg-ca-fill').value = b.caFill;
             document.getElementById('cfg-ca-weight').value = b.caWeight;
@@ -4140,20 +4142,15 @@
             const ugWeight = parseFloat(document.getElementById('cfg-ug-weight').value);
             const ugOpacity = parseFloat(document.getElementById('cfg-ug-opacity').value);
 
-            const krColor = document.getElementById('cfg-kr-color').value;
-            const krWeight = parseFloat(document.getElementById('cfg-kr-weight').value);
-            const krDash = document.getElementById('cfg-kr-dash').value;
-
             const caColor = document.getElementById('cfg-ca-color').value;
             const caFill = document.getElementById('cfg-ca-fill').value;
             const caWeight = parseFloat(document.getElementById('cfg-ca-weight').value);
             const caOpacity = parseFloat(document.getElementById('cfg-ca-opacity').value);
 
-            styleSettings.boundaries = {
+            styleSettings.boundaries = Object.assign(styleSettings.boundaries || {}, {
                 ugColor, ugFill, ugWeight, ugOpacity,
-                krColor, krWeight, krDash,
                 caColor, caFill, caWeight, caOpacity
-            };
+            });
 
             if (leafletUG) {
                 leafletUG.setStyle({
@@ -4163,13 +4160,11 @@
                     fillOpacity: ugOpacity
                 });
             }
-            if (leafletKR) {
-                leafletKR.setStyle({
-                    color: krColor,
-                    weight: krWeight,
-                    dashArray: krDash
-                });
+
+            if (typeof updateKreisgrenzenStyles === 'function') {
+                updateKreisgrenzenStyles(true);
             }
+
             if (leafletCA) {
                 leafletCA.setStyle({
                     color: caColor,
@@ -7319,6 +7314,7 @@ Geändert: ${data.changed.map(f => f.name || f.id).join(', ')}`;
     <script src="js/error-handling.js"></script>
     <script src="js/mascot.js"></script>
     <script src="js/fun-features.js"></script>
+    <script src="js/editor/kreisgrenzen.js"></script>
     <script src="js/audio-system.js"></script>
 </body>
 </html>
