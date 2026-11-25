@@ -3329,6 +3329,7 @@
 
 
         
+        const contrastToggle = document.getElementById('contrast-toggle');
         let highContrast = localStorage.getItem('aquarevier-high-contrast') === 'true';
         function applyContrastMode() {
             document.body.classList.toggle('high-contrast', highContrast);
@@ -5512,110 +5513,6 @@
             });
         }
 
-
-            const bounds = map.getBounds();
-            const searchQuery = document.getElementById('search-input').value.toLowerCase();
-
-            // 1. Group counters
-            document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
-                const group = btn.getAttribute('data-group');
-                const total = geojsonData.features.filter(f => f.properties.group === group).length;
-                const visible = geojsonData.features.filter(f => {
-                    if (f.properties.group !== group) return false;
-                    const coords = f.geometry.coordinates;
-                    const latlng = L.latLng(coords[1], coords[0]);
-                    if (!bounds.contains(latlng)) return false;
-                    if (searchQuery) {
-                        return f.properties.name.toLowerCase().includes(searchQuery) ||
-                               f.properties.group.toLowerCase().includes(searchQuery);
-                    }
-                    return true;
-                }).length;
-                const badge = btn.querySelector('.counter-badge');
-                if (badge) badge.innerText = `(${visible}/${total})`;
-            });
-
-            // 2. Branche counters
-            document.querySelectorAll('.filter-btn[data-risk]').forEach(btn => {
-                const riskVal = btn.getAttribute('data-risk');
-                if (!elwasGeoData) return;
-                const total = elwasGeoData.features.filter(f => {
-                    return getEinleiterRisk(f) === riskVal;
-                }).length;
-                const visible = elwasGeoData.features.filter(f => {
-                    if (getEinleiterRisk(f) !== riskVal) return false;
-                    const coords = f.geometry.coordinates;
-                    return bounds.contains(L.latLng(coords[1], coords[0]));
-                }).length;
-                const badge = btn.querySelector('.counter-badge');
-                if (badge) badge.innerText = `(${visible}/${total})`;
-            });
-
-            // 3. Layer counters
-            document.querySelectorAll('.filter-btn[data-layer-name]').forEach(btn => {
-                const layerName = btn.getAttribute('data-layer-name');
-                let geoData = null;
-                // Config-driven layers: look up by overlayLabel match
-                const cfgMatch = (window.LAYER_CONFIGS || []).find(cfg =>
-                    layerName === cfg.overlayLabel ||
-                    layerName.includes(cfg.name) ||
-                    cfg.overlayLabel.includes(layerName)
-                );
-                if (cfgMatch) {
-                    geoData = layerDataStore[cfgMatch.id] || null;
-                } else if (layerName.includes("Einzugsgebiet-Statistik")) {
-                    geoData = statsGeoData;
-                } else if (layerName.includes("Kreis-Vergleich")) {
-                    geoData = kreisChoroplethData;
-                } else if (layerName.includes("Wasserschutzgebiete")) {
-                    geoData = wsgGeoData;
-                } else if (layerName.includes("Wassergewinnungsgebiete")) {
-                    if (wsgGeoData && wsgGeoData.features) {
-                        geoData = {
-                            features: wsgGeoData.features.filter(f => {
-                                const zone = f.properties && f.properties.wsg_zone ? String(f.properties.wsg_zone).toUpperCase() : "";
-                                return zone === "1" || zone === "1A" || zone === "1B" || zone === "I";
-                            })
-                        };
-                    }
-                }
-
-                let total = 0, visible = 0;
-                const badge = btn.querySelector('.counter-badge');
-                if (geoData && geoData.features) {
-                    total = geoData.features.length;
-                    visible = geoData.features.filter(f => {
-                        if (!f.geometry || !f.geometry.coordinates) return false;
-                        if (f.geometry.type === 'Point') {
-                            const coords = f.geometry.coordinates;
-                            return bounds.contains(L.latLng(coords[1], coords[0]));
-                        } else {
-                            // Unified handling for Polygon, MultiPolygon, LineString, MultiLineString
-                            let pointToCheck = null;
-                            if (f.geometry.type === 'Polygon') {
-                                pointToCheck = f.geometry.coordinates[0][0];
-                            } else if (f.geometry.type === 'MultiPolygon') {
-                                pointToCheck = f.geometry.coordinates[0][0][0];
-                            } else if (f.geometry.type === 'LineString') {
-                                pointToCheck = f.geometry.coordinates[0];
-                            } else if (f.geometry.type === 'MultiLineString') {
-                                pointToCheck = f.geometry.coordinates[0][0];
-                            }
-                            return pointToCheck ? bounds.contains(L.latLng(pointToCheck[1], pointToCheck[0])) : false;
-                        }
-                    }).length;
-                    if (badge) {
-                        badge.style.display = 'inline-block';
-                        badge.innerText = `(${visible}/${total})`;
-                    }
-                } else {
-                    if (badge) {
-                        badge.style.display = 'none';
-                    }
-                }
-            });
-        }
-
         // Toggle listeners for Group buttons
         document.querySelectorAll('.filter-btn[data-group]').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -5763,37 +5660,8 @@
         baseMaps["Helles Design"] = baseLight;
 
         
-        let isDarkMode = localStorage.getItem('theme') === 'dark';
-
-        // Apply saved theme state on load
-        if (isDarkMode) {
-            document.body.classList.remove('light-theme');
-            themeToggle.innerText = '☀️';
-            if (map.hasLayer(baseLight)) map.removeLayer(baseLight);
-            baseDark.addTo(map);
-        } else {
-            document.body.classList.add('light-theme');
-            themeToggle.innerText = '🌙';
-            // baseLight is added by default on map creation, but just to be sure:
-            if (map.hasLayer(baseDark)) map.removeLayer(baseDark);
-            if (!map.hasLayer(baseLight)) baseOsm.addTo(map);
-        }
-
-        themeToggle.addEventListener('click', () => {
-            isDarkMode = !isDarkMode;
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-            if (isDarkMode) {
-                document.body.classList.remove('light-theme');
-                themeToggle.innerText = '☀️';
-                if (map.hasLayer(baseLight)) map.removeLayer(baseLight);
-                baseDark.addTo(map);
-            } else {
-                document.body.classList.add('light-theme');
-                themeToggle.innerText = '🌙';
-                if (map.hasLayer(baseDark)) map.removeLayer(baseDark);
-                baseOsm.addTo(map);
-            }
-        });
+        // Single light theme (theme toggle was removed in the basemap cleanup).
+        document.body.classList.add('light-theme');
 
         // Rerender when zoom changes to show/hide details dynamically
         map.on('zoomend', () => {

@@ -21,7 +21,7 @@
 
 const base = require('@playwright/test');
 
-const EXTERNAL_TILE_HOST_RE = /basemaps\.cartocdn\.com|tile\.openstreetmap\.org|wms\.nrw\.de|cismet\.de|quickchart\.io/;
+const EXTERNAL_TILE_HOST_RE = /basemaps\.cartocdn\.com|tile\.openstreetmap\.org|wms\.nrw\.de|cismet\.de|quickchart\.io|fiw\.rwth-aachen\.de|schoellershammer\.de|wver\.de|rlv\.de/;
 
 // Smallest-possible valid PNG (1x1, black pixel) - deterministic placeholder,
 // no image-generation dependency needed.

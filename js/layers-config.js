@@ -156,6 +156,10 @@ const LAYER_CONFIGS = [
   {
     id: 'gewaesserguete',
     file: 'gewaesserguete.geojson',
+    // pending: Datendatei gewaesserguete.geojson existiert (noch) nicht im Repo.
+    // Layer wird nicht registriert/geladen, bis die Datei geliefert und per
+    // Stichprobe geprueft ist (dann pending entfernen).
+    pending: true,
     name: 'Gewässergüte (WRRL)',
     overlayLabel: '💧 Gewässergüte (WRRL, Chemie/Ökologie)',
     groupLabel: 'Gewässergüte',
