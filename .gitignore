@@ -35,3 +35,4 @@ tools/watchdog_*.jsonl
 tools/STOP_WATCHDOG
 wms_check_results.json
 venv/
+dist_public/
