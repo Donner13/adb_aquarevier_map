@@ -3329,6 +3329,7 @@
 
 
         
+        const contrastToggle = document.getElementById('contrast-toggle');
         let highContrast = localStorage.getItem('aquarevier-high-contrast') === 'true';
         function applyContrastMode() {
             document.body.classList.toggle('high-contrast', highContrast);
