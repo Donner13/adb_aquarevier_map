@@ -50,8 +50,8 @@ jobs:
           SURGE_LOGIN: dtunder-x2a8v@surge.sh
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
-          sed -i '/internal.html/d' .surgeignore
-          surge . adb-aquarevier-secure.surge.sh --token $SURGE_TOKEN
+          python tools/build_public_release.py
+          surge dist_public adb-aquarevier-secure.surge.sh --token $SURGE_TOKEN
 
       - name: Deployment Summary
         run: |
