@@ -124,6 +124,10 @@ window.buildFeaturePopupHtml = function(p, layerId) {
 };
 
 function addGeoLayer(cfg, map, overlayMaps, layerDataStore) {
+  if (cfg.pending) {
+    console.warn(`[addGeoLayer] Layer "${cfg.id}" uebersprungen: Datendatei fehlt (pending).`);
+    return;
+  }
   const size = cfg.cluster ? 10 : 22;
 
   if (!window.LAYER_ID_TO_CONFIG) window.LAYER_ID_TO_CONFIG = {};
